@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.1083f880.css",
-    "main.js": "/static/js/main.e180eb8c.js",
+    "main.css": "/static/css/main.3d7efda2.css",
+    "main.js": "/static/js/main.1df61ccc.js",
     "static/js/453.ce69df7a.chunk.js": "/static/js/453.ce69df7a.chunk.js",
     "static/media/Mohave-Italic-VariableFont_wght.ttf": "/static/media/Mohave-Italic-VariableFont_wght.fa3f07d8bdf408174e1f.ttf",
     "static/media/Mohave-VariableFont_wght.ttf": "/static/media/Mohave-VariableFont_wght.98622cebd2ab05563425.ttf",
     "static/media/BrunoAceSC-Regular.ttf": "/static/media/BrunoAceSC-Regular.93fc3265381275167a94.ttf",
     "index.html": "/index.html",
-    "main.1083f880.css.map": "/static/css/main.1083f880.css.map",
-    "main.e180eb8c.js.map": "/static/js/main.e180eb8c.js.map",
+    "main.3d7efda2.css.map": "/static/css/main.3d7efda2.css.map",
+    "main.1df61ccc.js.map": "/static/js/main.1df61ccc.js.map",
     "453.ce69df7a.chunk.js.map": "/static/js/453.ce69df7a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1083f880.css",
-    "static/js/main.e180eb8c.js"
+    "static/css/main.3d7efda2.css",
+    "static/js/main.1df61ccc.js"
   ]
 }
