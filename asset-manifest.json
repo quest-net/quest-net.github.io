@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.c51e549c.css",
-    "main.js": "/static/js/main.f86da908.js",
+    "main.css": "/static/css/main.83260399.css",
+    "main.js": "/static/js/main.416cdd1c.js",
     "static/js/453.ce69df7a.chunk.js": "/static/js/453.ce69df7a.chunk.js",
     "static/media/Mohave-Italic-VariableFont_wght.ttf": "/static/media/Mohave-Italic-VariableFont_wght.fa3f07d8bdf408174e1f.ttf",
     "static/media/Mohave-VariableFont_wght.ttf": "/static/media/Mohave-VariableFont_wght.98622cebd2ab05563425.ttf",
     "static/media/BrunoAceSC-Regular.ttf": "/static/media/BrunoAceSC-Regular.93fc3265381275167a94.ttf",
     "static/media/sphere.svg": "/static/media/sphere.1d52bfa8cea44dc66c973fe48a5807dc.svg",
     "index.html": "/index.html",
-    "main.c51e549c.css.map": "/static/css/main.c51e549c.css.map",
-    "main.f86da908.js.map": "/static/js/main.f86da908.js.map",
+    "main.83260399.css.map": "/static/css/main.83260399.css.map",
+    "main.416cdd1c.js.map": "/static/js/main.416cdd1c.js.map",
     "453.ce69df7a.chunk.js.map": "/static/js/453.ce69df7a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c51e549c.css",
-    "static/js/main.f86da908.js"
+    "static/css/main.83260399.css",
+    "static/js/main.416cdd1c.js"
   ]
 }
