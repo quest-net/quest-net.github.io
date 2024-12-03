@@ -1,20 +1,24 @@
 {
   "files": {
-    "main.css": "/static/css/main.6cbf29fe.css",
-    "main.js": "/static/js/main.f021f9cc.js",
+    "main.css": "/static/css/main.86ca9117.css",
+    "main.js": "/static/js/main.7551ca57.js",
     "static/js/453.ce69df7a.chunk.js": "/static/js/453.ce69df7a.chunk.js",
     "static/media/env.svg": "/static/media/env.9d0ec001b383d4f8a7c55ba5ae5caf62.svg",
     "static/media/Mohave-Italic-VariableFont_wght.ttf": "/static/media/Mohave-Italic-VariableFont_wght.fa3f07d8bdf408174e1f.ttf",
     "static/media/Mohave-VariableFont_wght.ttf": "/static/media/Mohave-VariableFont_wght.98622cebd2ab05563425.ttf",
     "static/media/BrunoAceSC-Regular.ttf": "/static/media/BrunoAceSC-Regular.93fc3265381275167a94.ttf",
     "static/media/sphere.svg": "/static/media/sphere.1d52bfa8cea44dc66c973fe48a5807dc.svg",
+    "static/media/gear.svg": "/static/media/gear.1724c55505e6c8501efe69c8a4693b9a.svg",
+    "static/media/bag.svg": "/static/media/bag.c46cf6a006e4ce43721b5e6dc7e9940e.svg",
+    "static/media/sword.svg": "/static/media/sword.2719ee8d151d28c83c6ae4b5b04c1125.svg",
     "index.html": "/index.html",
-    "main.6cbf29fe.css.map": "/static/css/main.6cbf29fe.css.map",
-    "main.f021f9cc.js.map": "/static/js/main.f021f9cc.js.map",
+    "static/media/star.svg": "/static/media/star.49fc2a304075c1a103e837f189250af5.svg",
+    "main.86ca9117.css.map": "/static/css/main.86ca9117.css.map",
+    "main.7551ca57.js.map": "/static/js/main.7551ca57.js.map",
     "453.ce69df7a.chunk.js.map": "/static/js/453.ce69df7a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6cbf29fe.css",
-    "static/js/main.f021f9cc.js"
+    "static/css/main.86ca9117.css",
+    "static/js/main.7551ca57.js"
   ]
 }
