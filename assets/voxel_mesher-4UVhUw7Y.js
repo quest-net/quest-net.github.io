@@ -1,6 +1,6 @@
-let w, m, T, je, Oe;
+let w, m, W, Le, Ie;
 let __tla = (async () => {
-  const q = "/assets/voxel_mesher_bg-ce6FZj3H.wasm", G = async (n = {}, e) => {
+  const H = "/assets/voxel_mesher_bg-BCkxX9Sk.wasm", J = async (n = {}, e) => {
     let t;
     if (e.startsWith("data:")) {
       const r = e.replace(/^data:.*?base64,/, "");
@@ -25,11 +25,11 @@ let __tla = (async () => {
   w = class {
     static __wrap(e) {
       const t = Object.create(w.prototype);
-      return t.__wbg_ptr = e, W.register(t, t.__wbg_ptr, t), t;
+      return t.__wbg_ptr = e, U.register(t, t.__wbg_ptr, t), t;
     }
     __destroy_into_raw() {
       const e = this.__wbg_ptr;
-      return this.__wbg_ptr = 0, W.unregister(this), e;
+      return this.__wbg_ptr = 0, U.unregister(this), e;
     }
     free() {
       const e = this.__destroy_into_raw();
@@ -41,6 +41,15 @@ let __tla = (async () => {
     bucket_id(e) {
       return _.meshbuild_bucket_id(this.__wbg_ptr, e) >>> 0;
     }
+    occupancy_height() {
+      return _.meshbuild_occupancy_height(this.__wbg_ptr) >>> 0;
+    }
+    occupancy_length() {
+      return _.meshbuild_occupancy_length(this.__wbg_ptr) >>> 0;
+    }
+    occupancy_width() {
+      return _.meshbuild_occupancy_width(this.__wbg_ptr) >>> 0;
+    }
     take_colors(e) {
       const t = _.meshbuild_take_colors(this.__wbg_ptr, e);
       let r;
@@ -49,7 +58,7 @@ let __tla = (async () => {
     take_fog() {
       const e = _.meshbuild_take_fog(this.__wbg_ptr);
       let t;
-      return e[0] !== 0 && (t = x(e[0], e[1]).slice(), _.__wbindgen_free(e[0], e[1] * 1, 1)), t;
+      return e[0] !== 0 && (t = A(e[0], e[1]).slice(), _.__wbindgen_free(e[0], e[1] * 1, 1)), t;
     }
     take_highlights(e) {
       const t = _.meshbuild_take_highlights(this.__wbg_ptr, e);
@@ -68,7 +77,7 @@ let __tla = (async () => {
     }
     take_occupancy() {
       const e = _.meshbuild_take_occupancy(this.__wbg_ptr);
-      var t = x(e[0], e[1]).slice();
+      var t = A(e[0], e[1]).slice();
       return _.__wbindgen_free(e[0], e[1] * 1, 1), t;
     }
     take_positions(e) {
@@ -94,11 +103,11 @@ let __tla = (async () => {
   m = class {
     static __wrap(e) {
       const t = Object.create(m.prototype);
-      return t.__wbg_ptr = e, U.register(t, t.__wbg_ptr, t), t;
+      return t.__wbg_ptr = e, R.register(t, t.__wbg_ptr, t), t;
     }
     __destroy_into_raw() {
       const e = this.__wbg_ptr;
-      return this.__wbg_ptr = 0, U.unregister(this), e;
+      return this.__wbg_ptr = 0, R.unregister(this), e;
     }
     free() {
       const e = this.__destroy_into_raw();
@@ -106,7 +115,7 @@ let __tla = (async () => {
     }
     take_colors() {
       const e = _.svodecode_take_colors(this.__wbg_ptr);
-      var t = x(e[0], e[1]).slice();
+      var t = A(e[0], e[1]).slice();
       return _.__wbindgen_free(e[0], e[1] * 1, 1), t;
     }
     take_positions() {
@@ -116,71 +125,71 @@ let __tla = (async () => {
     }
   };
   Symbol.dispose && (m.prototype[Symbol.dispose] = m.prototype.free);
-  T = class {
+  W = class {
     __destroy_into_raw() {
       const e = this.__wbg_ptr;
-      return this.__wbg_ptr = 0, R.unregister(this), e;
+      return this.__wbg_ptr = 0, z.unregister(this), e;
     }
     free() {
       const e = this.__destroy_into_raw();
       _.__wbg_voxelmesher_free(e, 0);
     }
-    build(e, t, r, o, a, s) {
-      const c = v(e, _.__wbindgen_malloc), l = i, A = d(t, _.__wbindgen_malloc), F = i, M = _.voxelmesher_build(this.__wbg_ptr, c, l, A, F, r, o, a, s);
+    build(e, t, r, o, a, s, c) {
+      const l = k(e, _.__wbindgen_malloc), g = i, F = d(t, _.__wbindgen_malloc), S = i, M = _.voxelmesher_build(this.__wbg_ptr, l, g, F, S, r, o, a, s, c);
       return w.__wrap(M);
     }
-    build_from_svo(e, t, r, o, a) {
-      const s = d(e, _.__wbindgen_malloc), c = i, l = _.voxelmesher_build_from_svo(this.__wbg_ptr, s, c, t, r, o, a);
-      return w.__wrap(l);
+    build_from_svo(e, t, r, o, a, s) {
+      const c = d(e, _.__wbindgen_malloc), l = i, g = _.voxelmesher_build_from_svo(this.__wbg_ptr, c, l, t, r, o, a, s);
+      return w.__wrap(g);
     }
     constructor(e, t, r, o, a, s, c) {
-      const l = v(e, _.__wbindgen_malloc), A = i, F = v(t, _.__wbindgen_malloc), M = i, C = d(r, _.__wbindgen_malloc), L = i, I = d(o, _.__wbindgen_malloc), V = i, $ = d(a, _.__wbindgen_malloc), H = i, N = d(s, _.__wbindgen_malloc), P = i, X = ne(c, _.__wbindgen_malloc), Y = i, Z = _.voxelmesher_new(l, A, F, M, C, L, I, V, $, H, N, P, X, Y);
-      return this.__wbg_ptr = Z, R.register(this, this.__wbg_ptr, this), this;
+      const l = k(e, _.__wbindgen_malloc), g = i, F = k(t, _.__wbindgen_malloc), S = i, M = d(r, _.__wbindgen_malloc), L = i, I = d(o, _.__wbindgen_malloc), V = i, $ = d(a, _.__wbindgen_malloc), X = i, N = d(s, _.__wbindgen_malloc), P = i, Y = ne(c, _.__wbindgen_malloc), q = i, G = _.voxelmesher_new(l, g, F, S, M, L, I, V, $, X, N, P, Y, q);
+      return this.__wbg_ptr = G, z.register(this, this.__wbg_ptr, this), this;
     }
   };
-  Symbol.dispose && (T.prototype[Symbol.dispose] = T.prototype.free);
-  je = function(n) {
+  Symbol.dispose && (W.prototype[Symbol.dispose] = W.prototype.free);
+  Le = function(n) {
     const e = d(n, _.__wbindgen_malloc), t = i, r = _.decode_svo_wasm(e, t);
     return m.__wrap(r);
   };
-  Oe = function(n, e) {
-    const t = v(n, _.__wbindgen_malloc), r = i, o = d(e, _.__wbindgen_malloc), a = i, s = _.encode_svo_wasm(t, r, o, a);
-    var c = x(s[0], s[1]).slice();
+  Ie = function(n, e) {
+    const t = k(n, _.__wbindgen_malloc), r = i, o = d(e, _.__wbindgen_malloc), a = i, s = _.encode_svo_wasm(t, r, o, a);
+    var c = A(s[0], s[1]).slice();
     return _.__wbindgen_free(s[0], s[1] * 1, 1), c;
   };
-  function J(n, e) {
-    throw new Error(B(n, e));
-  }
   function K(n, e) {
+    throw new Error(C(n, e));
+  }
+  function Q(n, e) {
     let t, r;
     try {
-      t = n, r = e, console.error(B(n, e));
+      t = n, r = e, console.error(C(n, e));
     } finally {
       _.__wbindgen_free(t, r, 1);
     }
   }
-  function Q() {
+  function Z() {
     return new Error();
   }
   function ee(n, e) {
     const t = e.stack, r = _e(t, _.__wbindgen_malloc, _.__wbindgen_realloc), o = i;
-    z().setInt32(n + 4, o, true), z().setInt32(n + 0, r, true);
+    B().setInt32(n + 4, o, true), B().setInt32(n + 0, r, true);
   }
   function te() {
     const n = _.__wbindgen_externrefs, e = n.grow(4);
     n.set(0, void 0), n.set(e + 0, void 0), n.set(e + 1, null), n.set(e + 2, true), n.set(e + 3, false);
   }
-  const W = typeof FinalizationRegistry > "u" ? {
+  const U = typeof FinalizationRegistry > "u" ? {
     register: () => {
     },
     unregister: () => {
     }
-  } : new FinalizationRegistry((n) => _.__wbg_meshbuild_free(n, 1)), U = typeof FinalizationRegistry > "u" ? {
+  } : new FinalizationRegistry((n) => _.__wbg_meshbuild_free(n, 1)), R = typeof FinalizationRegistry > "u" ? {
     register: () => {
     },
     unregister: () => {
     }
-  } : new FinalizationRegistry((n) => _.__wbg_svodecode_free(n, 1)), R = typeof FinalizationRegistry > "u" ? {
+  } : new FinalizationRegistry((n) => _.__wbg_svodecode_free(n, 1)), z = typeof FinalizationRegistry > "u" ? {
     register: () => {
     },
     unregister: () => {
@@ -190,33 +199,33 @@ let __tla = (async () => {
     return n = n >>> 0, E().subarray(n / 4, n / 4 + e);
   }
   function D(n, e) {
-    return n = n >>> 0, j().subarray(n / 4, n / 4 + e);
+    return n = n >>> 0, O().subarray(n / 4, n / 4 + e);
   }
-  function x(n, e) {
+  function A(n, e) {
     return n = n >>> 0, f().subarray(n / 1, n / 1 + e);
   }
   let u = null;
-  function z() {
+  function B() {
     return (u === null || u.buffer.detached === true || u.buffer.detached === void 0 && u.buffer !== _.memory.buffer) && (u = new DataView(_.memory.buffer)), u;
   }
-  let h = null;
+  let p = null;
   function E() {
-    return (h === null || h.byteLength === 0) && (h = new Float32Array(_.memory.buffer)), h;
+    return (p === null || p.byteLength === 0) && (p = new Float32Array(_.memory.buffer)), p;
   }
-  function B(n, e) {
+  function C(n, e) {
     return se(n >>> 0, e);
   }
-  let p = null;
-  function j() {
-    return (p === null || p.byteLength === 0) && (p = new Uint32Array(_.memory.buffer)), p;
-  }
   let y = null;
-  function f() {
-    return (y === null || y.byteLength === 0) && (y = new Uint8Array(_.memory.buffer)), y;
+  function O() {
+    return (y === null || y.byteLength === 0) && (y = new Uint32Array(_.memory.buffer)), y;
   }
-  function v(n, e) {
+  let v = null;
+  function f() {
+    return (v === null || v.byteLength === 0) && (v = new Uint8Array(_.memory.buffer)), v;
+  }
+  function k(n, e) {
     const t = e(n.length * 4, 4) >>> 0;
-    return j().set(n, t / 4), i = n.length, t;
+    return O().set(n, t / 4), i = n.length, t;
   }
   function d(n, e) {
     const t = e(n.length * 1, 1) >>> 0;
@@ -228,7 +237,7 @@ let __tla = (async () => {
   }
   function _e(n, e, t) {
     if (t === void 0) {
-      const c = g.encode(n), l = e(c.length, 1) >>> 0;
+      const c = h.encode(n), l = e(c.length, 1) >>> 0;
       return f().subarray(l, l + c.length).set(c), i = c.length, l;
     }
     let r = n.length, o = e(r, 1) >>> 0;
@@ -241,27 +250,27 @@ let __tla = (async () => {
     }
     if (s !== r) {
       s !== 0 && (n = n.slice(s)), o = t(o, r, r = s + n.length * 3, 1) >>> 0;
-      const c = f().subarray(o + s, o + r), l = g.encodeInto(n, c);
+      const c = f().subarray(o + s, o + r), l = h.encodeInto(n, c);
       s += l.written, o = t(o, r, s, 1) >>> 0;
     }
     return i = s, o;
   }
-  let k = new TextDecoder("utf-8", {
+  let x = new TextDecoder("utf-8", {
     ignoreBOM: true,
     fatal: true
   });
-  k.decode();
+  x.decode();
   const re = 2146435072;
-  let S = 0;
+  let T = 0;
   function se(n, e) {
-    return S += e, S >= re && (k = new TextDecoder("utf-8", {
+    return T += e, T >= re && (x = new TextDecoder("utf-8", {
       ignoreBOM: true,
       fatal: true
-    }), k.decode(), S = e), k.decode(f().subarray(n, n + e));
+    }), x.decode(), T = e), x.decode(f().subarray(n, n + e));
   }
-  const g = new TextEncoder();
-  "encodeInto" in g || (g.encodeInto = function(n, e) {
-    const t = g.encode(n);
+  const h = new TextEncoder();
+  "encodeInto" in h || (h.encodeInto = function(n, e) {
+    const t = h.encode(n);
     return e.set(t), {
       read: n.length,
       written: t.length
@@ -272,55 +281,58 @@ let __tla = (async () => {
     _ = n;
   }
   URL = globalThis.URL;
-  const ie = await G({
+  const ie = await J({
     "./voxel_mesher_bg.js": {
-      __wbg_new_227d7c05414eb861: Q,
+      __wbg_new_227d7c05414eb861: Z,
       __wbg_stack_3b0d974bbf31e44f: ee,
-      __wbg_error_a6fa202b58aa1cd3: K,
-      __wbg___wbindgen_throw_1506f2235d1bdba0: J,
+      __wbg_error_a6fa202b58aa1cd3: Q,
+      __wbg___wbindgen_throw_1506f2235d1bdba0: K,
       __wbindgen_init_externref_table: te
     }
-  }, q), { memory: ce, __wbg_meshbuild_free: ae, __wbg_svodecode_free: le, __wbg_voxelmesher_free: de, decode_svo_wasm: be, encode_svo_wasm: ue, meshbuild_bucket_count: fe, meshbuild_bucket_id: we, meshbuild_take_colors: ge, meshbuild_take_fog: me, meshbuild_take_highlights: he, meshbuild_take_indices: pe, meshbuild_take_normals: ye, meshbuild_take_occupancy: ve, meshbuild_take_positions: ke, meshbuild_take_surface_deform: xe, meshbuild_take_tile_heights: Ae, meshbuild_voxel_count: Fe, svodecode_take_positions: Me, voxelmesher_build: Se, voxelmesher_build_from_svo: Te, voxelmesher_new: We, svodecode_take_colors: Ue, __wbindgen_free: Re, __wbindgen_malloc: ze, __wbindgen_realloc: De, __wbindgen_externrefs: Ee, __wbindgen_start: O } = ie, Be = Object.freeze(Object.defineProperty({
+  }, H), { memory: ce, __wbg_meshbuild_free: ae, __wbg_svodecode_free: le, __wbg_voxelmesher_free: de, decode_svo_wasm: be, encode_svo_wasm: ue, meshbuild_bucket_count: fe, meshbuild_bucket_id: we, meshbuild_occupancy_height: ge, meshbuild_occupancy_length: he, meshbuild_occupancy_width: me, meshbuild_take_colors: pe, meshbuild_take_fog: ye, meshbuild_take_highlights: ve, meshbuild_take_indices: ke, meshbuild_take_normals: xe, meshbuild_take_occupancy: Ae, meshbuild_take_positions: Fe, meshbuild_take_surface_deform: Se, meshbuild_take_tile_heights: Me, meshbuild_voxel_count: Te, svodecode_take_positions: We, voxelmesher_build: Ue, voxelmesher_build_from_svo: Re, voxelmesher_new: ze, svodecode_take_colors: Be, __wbindgen_free: De, __wbindgen_malloc: Ee, __wbindgen_realloc: Ce, __wbindgen_externrefs: Oe, __wbindgen_start: j } = ie, je = Object.freeze(Object.defineProperty({
     __proto__: null,
     __wbg_meshbuild_free: ae,
     __wbg_svodecode_free: le,
     __wbg_voxelmesher_free: de,
-    __wbindgen_externrefs: Ee,
-    __wbindgen_free: Re,
-    __wbindgen_malloc: ze,
-    __wbindgen_realloc: De,
-    __wbindgen_start: O,
+    __wbindgen_externrefs: Oe,
+    __wbindgen_free: De,
+    __wbindgen_malloc: Ee,
+    __wbindgen_realloc: Ce,
+    __wbindgen_start: j,
     decode_svo_wasm: be,
     encode_svo_wasm: ue,
     memory: ce,
     meshbuild_bucket_count: fe,
     meshbuild_bucket_id: we,
-    meshbuild_take_colors: ge,
-    meshbuild_take_fog: me,
-    meshbuild_take_highlights: he,
-    meshbuild_take_indices: pe,
-    meshbuild_take_normals: ye,
-    meshbuild_take_occupancy: ve,
-    meshbuild_take_positions: ke,
-    meshbuild_take_surface_deform: xe,
-    meshbuild_take_tile_heights: Ae,
-    meshbuild_voxel_count: Fe,
-    svodecode_take_colors: Ue,
-    svodecode_take_positions: Me,
-    voxelmesher_build: Se,
-    voxelmesher_build_from_svo: Te,
-    voxelmesher_new: We
+    meshbuild_occupancy_height: ge,
+    meshbuild_occupancy_length: he,
+    meshbuild_occupancy_width: me,
+    meshbuild_take_colors: pe,
+    meshbuild_take_fog: ye,
+    meshbuild_take_highlights: ve,
+    meshbuild_take_indices: ke,
+    meshbuild_take_normals: xe,
+    meshbuild_take_occupancy: Ae,
+    meshbuild_take_positions: Fe,
+    meshbuild_take_surface_deform: Se,
+    meshbuild_take_tile_heights: Me,
+    meshbuild_voxel_count: Te,
+    svodecode_take_colors: Be,
+    svodecode_take_positions: We,
+    voxelmesher_build: Ue,
+    voxelmesher_build_from_svo: Re,
+    voxelmesher_new: ze
   }, Symbol.toStringTag, {
     value: "Module"
   }));
-  oe(Be);
-  O();
+  oe(je);
+  j();
 })();
 export {
   w as MeshBuild,
   m as SvoDecode,
-  T as VoxelMesher,
+  W as VoxelMesher,
   __tla,
-  je as decode_svo_wasm,
-  Oe as encode_svo_wasm
+  Le as decode_svo_wasm,
+  Ie as encode_svo_wasm
 };
