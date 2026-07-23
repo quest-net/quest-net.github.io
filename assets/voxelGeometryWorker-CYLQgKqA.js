@@ -296,7 +296,7 @@
     function S(o, e, t) {
         return Math.max(e, Math.min(t, o));
     }
-    function zi(o, e) {
+    function Ii(o, e) {
         return (o % e + e) % e;
     }
     function Ge(o, e, t) {
@@ -1083,7 +1083,7 @@
         o in Ht || (Ht[o] = !0, console.warn(o));
     }
     const Dt = new de().set(.4123908, .3575843, .1804808, .212639, .7151687, .0721923, .0193308, .1191948, .9505322), Pt = new de().set(3.2409699, -1.5373832, -.4986108, -.9692436, 1.8759675, .0415551, .0556301, -.203977, 1.0569715);
-    function Ii() {
+    function zi() {
         const o = {
             enabled: !0,
             workingColorSpace: bt,
@@ -1170,7 +1170,7 @@
             }
         }), o;
     }
-    const W = Ii();
+    const W = zi();
     function J(o) {
         return o < .04045 ? o * .0773993808 : Math.pow(o * .9478672986 + .0521327014, 2.4);
     }
@@ -1483,7 +1483,7 @@
         }
         lookAt(e, t, i) {
             const s = this.elements;
-            return R.subVectors(e, t), R.lengthSq() === 0 && (R.z = 1), R.normalize(), ie.crossVectors(i, R), ie.lengthSq() === 0 && (Math.abs(i.z) === 1 ? R.x += 1e-4 : R.z += 1e-4, R.normalize(), ie.crossVectors(i, R)), ie.normalize(), ze.crossVectors(R, ie), s[0] = ie.x, s[4] = ze.x, s[8] = R.x, s[1] = ie.y, s[5] = ze.y, s[9] = R.y, s[2] = ie.z, s[6] = ze.z, s[10] = R.z, this;
+            return R.subVectors(e, t), R.lengthSq() === 0 && (R.z = 1), R.normalize(), ie.crossVectors(i, R), ie.lengthSq() === 0 && (Math.abs(i.z) === 1 ? R.x += 1e-4 : R.z += 1e-4, R.normalize(), ie.crossVectors(i, R)), ie.normalize(), Ie.crossVectors(R, ie), s[0] = ie.x, s[4] = Ie.x, s[8] = R.x, s[1] = ie.y, s[5] = Ie.y, s[9] = R.y, s[2] = ie.z, s[6] = Ie.z, s[10] = R.z, this;
         }
         multiply(e) {
             return this.multiplyMatrices(this, e);
@@ -1595,7 +1595,7 @@
             return e[t] = i[0], e[t + 1] = i[1], e[t + 2] = i[2], e[t + 3] = i[3], e[t + 4] = i[4], e[t + 5] = i[5], e[t + 6] = i[6], e[t + 7] = i[7], e[t + 8] = i[8], e[t + 9] = i[9], e[t + 10] = i[10], e[t + 11] = i[11], e[t + 12] = i[12], e[t + 13] = i[13], e[t + 14] = i[14], e[t + 15] = i[15], e;
         }
     }
-    const me = new M, D = new Q, Pi = new M(0, 0, 0), Ui = new M(1, 1, 1), ie = new M, ze = new M, R = new M, Ut = new Q, Bt = new Se;
+    const me = new M, D = new Q, Pi = new M(0, 0, 0), Ui = new M(1, 1, 1), ie = new M, Ie = new M, R = new M, Ut = new Q, Bt = new Se;
     class Me {
         constructor(e = 0, t = 0, i = 0, s = Me.DEFAULT_ORDER){
             this.isEuler = !0, this._x = e, this._y = t, this._z = i, this._order = s;
@@ -1716,7 +1716,7 @@
         }
     }
     let Vi = 0;
-    const Vt = new M, pe = new Se, X = new Q, Ie = new M, ve = new M, Gi = new M, $i = new Se, Gt = new M(1, 0, 0), $t = new M(0, 1, 0), qt = new M(0, 0, 1), jt = {
+    const Vt = new M, pe = new Se, X = new Q, ze = new M, ve = new M, Gi = new M, $i = new Se, Gt = new M(1, 0, 0), $t = new M(0, 1, 0), qt = new M(0, 0, 1), jt = {
         type: "added"
     }, qi = {
         type: "removed"
@@ -1824,9 +1824,9 @@
             return this.updateWorldMatrix(!0, !1), e.applyMatrix4(X.copy(this.matrixWorld).invert());
         }
         lookAt(e, t, i) {
-            e.isVector3 ? Ie.copy(e) : Ie.set(e, t, i);
+            e.isVector3 ? ze.copy(e) : ze.set(e, t, i);
             const s = this.parent;
-            this.updateWorldMatrix(!0, !1), ve.setFromMatrixPosition(this.matrixWorld), this.isCamera || this.isLight ? X.lookAt(ve, Ie, this.up) : X.lookAt(Ie, ve, this.up), this.quaternion.setFromRotationMatrix(X), s && (X.extractRotation(s.matrixWorld), pe.setFromRotationMatrix(X), this.quaternion.premultiply(pe.invert()));
+            this.updateWorldMatrix(!0, !1), ve.setFromMatrixPosition(this.matrixWorld), this.isCamera || this.isLight ? X.lookAt(ve, ze, this.up) : X.lookAt(ze, ve, this.up), this.quaternion.setFromRotationMatrix(X), s && (X.extractRotation(s.matrixWorld), pe.setFromRotationMatrix(X), this.quaternion.premultiply(pe.invert()));
         }
         add(e) {
             if (arguments.length > 1) {
@@ -2183,7 +2183,7 @@
             return this.r = e, this.g = t, this.b = i, W.colorSpaceToWorking(this, s), this;
         }
         setHSL(e, t, i, s = W.workingColorSpace) {
-            if (e = zi(e, 1), t = S(t, 0, 1), i = S(i, 0, 1), t === 0) this.r = this.g = this.b = i;
+            if (e = Ii(e, 1), t = S(t, 0, 1), i = S(i, 0, 1), t === 0) this.r = this.g = this.b = i;
             else {
                 const n = i <= .5 ? i * (1 + t) : i + t - i * t, r = 2 * i - n;
                 this.r = Ze(r, n, e + 1 / 3), this.g = Ze(r, n, e), this.b = Ze(r, n, e - 1 / 3);
@@ -2592,21 +2592,23 @@
     function ts(o) {
         return Ai.editorColors.get(o);
     }
-    const ue = {
+    const is = {
+        DEFAULT: 1.25
+    }, ue = {
         ROUGHNESS: .85,
         METALNESS: 0
     }, We = {
-        RADIUS: 1.25,
+        RADIUS: is.DEFAULT,
         CONE_SCALE: 2.6,
         FEATHER: .7,
         ACTOR_MARGIN: .6
-    }, is = .25, U = [
+    }, ss = .25, U = [
         "varying vec3 vVoxelAoWorldPosition;",
         "varying vec3 vVoxelAoWorldNormal;"
     ], B = [
         "vVoxelAoWorldPosition = (modelMatrix * vec4(transformed, 1.0)).xyz;",
         "vVoxelAoWorldNormal = normalize(mat3(modelMatrix) * normal);"
-    ], ss = [
+    ], ns = [
         "uniform highp sampler3D voxelAoOccupancy;",
         "uniform vec3 voxelAoOrigin;",
         "uniform vec3 voxelAoSize;",
@@ -2635,7 +2637,7 @@
         "	float occ = sides / 4.0;",
         "	return mix(0.45, 1.0, 1.0 - occ);",
         "}"
-    ], ns = [
+    ], rs = [
         "uniform highp sampler3D voxelAoOccupancy;",
         "uniform vec3 voxelAoOrigin;",
         "uniform vec3 voxelAoSize;",
@@ -2666,7 +2668,7 @@
         "}"
     ];
     function P(o = !1) {
-        return o ? ns : ss;
+        return o ? rs : ns;
     }
     const b = "computeVoxelAo(vVoxelAoWorldPosition, vVoxelAoWorldNormal)";
     function V(o, e) {
@@ -2677,13 +2679,13 @@
         }, o.uniforms.voxelAoSize = {
             value: e.size
         }, o.uniforms.voxelAoRadius = {
-            value: is
+            value: ss
         }, o.uniforms.voxelAoVoxelSize = {
             value: e.voxelSize
         };
     }
     let ke = null;
-    function rs() {
+    function os() {
         if (ke) return ke;
         const o = new Uint8Array(4), e = new Di(o, 1, 1, 1);
         return e.format = 1023, e.type = 1009, e.magFilter = 1003, e.minFilter = 1003, e.wrapS = 1001, e.wrapT = 1001, e.wrapR = 1001, e.generateMipmaps = !1, e.needsUpdate = !0, ke = {
@@ -2742,7 +2744,7 @@
         "#include <dithering_fragment>"
     ];
     function Y(o, e) {
-        const t = e ?? rs();
+        const t = e ?? os();
         o.uniforms.movementHighlightMap = {
             value: t.texture
         }, o.uniforms.movementHighlightSize = {
@@ -2753,7 +2755,7 @@
             value: e ? 1 : 0
         };
     }
-    function os() {
+    function as() {
         return {
             enabled: {
                 value: 0
@@ -2782,12 +2784,12 @@
         };
     }
     let Ke = null;
-    function as() {
-        return Ke || (Ke = os()), Ke;
+    function ls() {
+        return Ke || (Ke = as()), Ke;
     }
-    const z = [
+    const I = [
         "varying vec3 vHeroWorldPos;"
-    ], I = [
+    ], z = [
         "vHeroWorldPos = (modelMatrix * vec4(transformed, 1.0)).xyz;"
     ], N = [
         "uniform float uHeroEnabled;",
@@ -2821,22 +2823,22 @@
         "if (uHeroEnabled > 0.5 && heroOccluded(vHeroWorldPos)) discard;"
     ];
     function H(o, e) {
-        const t = e ?? as();
+        const t = e ?? ls();
         o.uniforms.uHeroEnabled = t.enabled, o.uniforms.uHeroActorPos = t.actorPos, o.uniforms.uHeroCamPos = t.camPos, o.uniforms.uHeroRadius = t.radius, o.uniforms.uHeroConeScale = t.coneScale, o.uniforms.uHeroFeather = t.feather, o.uniforms.uHeroCutY = t.cutY, o.uniforms.uHeroCutSign = t.cutSign;
     }
-    function ls(o, e, t, i, s) {
+    function hs(o, e, t, i, s) {
         o.onBeforeCompile = (n)=>{
             V(n, e), Y(n, t), H(n, i), n.vertexShader = n.vertexShader.replace("#include <common>", [
                 "#include <common>",
                 ...U,
                 ...G,
-                ...z
+                ...I
             ].join(`
 `)), n.vertexShader = n.vertexShader.replace("#include <begin_vertex>", [
                 "#include <begin_vertex>",
                 ...B,
                 ...$,
-                ...I
+                ...z
             ].join(`
 `)), n.fragmentShader = n.fragmentShader.replace("#include <common>", [
                 "#include <common>",
@@ -2850,13 +2852,13 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
 `));
         };
     }
-    const hs = (o)=>{
+    const cs = (o)=>{
         const { movementHighlight: e, voxelAo: t, heroOcclusion: i, performanceMode: s = !1 } = o, n = new O({
             roughness: ue.ROUGHNESS,
             metalness: ue.METALNESS,
             vertexColors: !0
         });
-        return ls(n, t, e, i, s), {
+        return hs(n, t, e, i, s), {
             material: n,
             castShadow: !0,
             receiveShadow: !0
@@ -2865,17 +2867,17 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
         bucketKey: "default",
         occlusionGroup: "solid",
         shaderVersion: 4,
-        factory: hs
-    }, cs = "/materials/flesh_250/flesh_noise_64x64.png", us = "#cc2244", ds = .45, fs = .7, ms = 0, ps = .4, Yt = .5, gs = .25, xs = 1.2;
+        factory: cs
+    }, us = "/materials/flesh_250/flesh_noise_64x64.png", ds = "#cc2244", fs = .45, ms = .7, ps = 0, gs = .4, Yt = .5, xs = .25, ys = 1.2;
     let Qe = null;
-    function ys() {
+    function vs() {
         if (!Qe) {
-            const o = new L().load(cs);
+            const o = new L().load(us);
             o.colorSpace = bt, o.wrapS = 1e3, o.wrapT = 1e3, o.magFilter = 1006, o.minFilter = 1006, o.generateMipmaps = !1, Qe = o;
         }
         return Qe;
     }
-    const vs = [
+    const _s = [
         "mat2 fleshRM2D(float a) {",
         "    return mat2(cos(a), sin(a), -sin(a), cos(a));",
         "}",
@@ -2895,7 +2897,7 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
         "        if (i >= iters) break;",
         "        u = matrix * u;",
         "        n = matrix * n;",
-        `        q = u * frequency + t * ${ps.toFixed(4)}`,
+        `        q = u * frequency + t * ${gs.toFixed(4)}`,
         `          + fleshAperiodicSin(t * ${Yt.toFixed(4)} - centeredDot * 1.2) * 0.4 * ${Yt.toFixed(4)}`,
         "          + i + n;",
         "        result += dot(cos(q) / frequency, vec2(2.0, 2.0));",
@@ -2915,18 +2917,18 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
         "}"
     ].join(`
 `);
-    function _s() {
+    function Ss() {
         return [
             ...U,
             "uniform float uFleshTime;"
         ];
     }
-    function Ss() {
+    function Ms() {
         return [
             ...B
         ];
     }
-    function Ms(o) {
+    function ws(o) {
         return [
             ...P(o),
             "uniform float uFleshTime;",
@@ -2937,19 +2939,19 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             "    if (n.x >= n.z) return worldPos.zy;",
             "    return worldPos.xy;",
             "}",
-            vs
+            _s
         ];
     }
-    function ws(o) {
+    function Fs(o) {
         return [
             "#include <color_fragment>",
-            `vec2 fleshUvWorld = getFleshUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${ds.toFixed(4)};`,
+            `vec2 fleshUvWorld = getFleshUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${fs.toFixed(4)};`,
             `float fleshOriginalNoise = fleshFBM(fleshUvWorld, uFleshTime, ${o ? "false" : "true"});`,
             "float fleshNoise = clamp(fleshOriginalNoise, 0.0, 1.0);",
-            `float fleshFluidNoiseAngle = fleshOriginalNoise * 13.05 + uFleshTime * ${gs.toFixed(4)};`,
+            `float fleshFluidNoiseAngle = fleshOriginalNoise * 13.05 + uFleshTime * ${xs.toFixed(4)};`,
             "vec2 fleshFluidOffset = vec2(",
             "    cos(fleshFluidNoiseAngle) + fleshOriginalNoise * 14.0,",
-            `    sin(fleshFluidNoiseAngle) + uFleshTime * ${xs.toFixed(4)}`,
+            `    sin(fleshFluidNoiseAngle) + uFleshTime * ${ys.toFixed(4)}`,
             ") / 681.72;",
             "float fleshFluidSample = texture2D(uFleshNoise, fleshUvWorld * 0.12 + fleshFluidOffset).x;",
             "float fleshFluidNoise = pow(fleshFluidSample, 5.5 * 0.5) * 0.27;",
@@ -2965,7 +2967,7 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             "diffuseColor = vec4(clamp(fleshBaseColor, 0.0, 1.0), 1.0);"
         ];
     }
-    const Fs = [
+    const As = [
         "gl_FragColor.rgb += vec3(1.0, 0.35, 0.2) * fleshBrightness;",
         "float fleshSpecVal = fleshSpecular(fleshNormalVec, fleshLightDir, fleshPos3);",
         "float fleshSpecBase = 1.0 - clamp(dot(normalize(vec3(0.9, 0.1, 1.0) - fleshPos3), reflect(-fleshLightDir, fleshNormalVec)), 0.0, 1.0);",
@@ -2980,49 +2982,49 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
         "gl_FragColor.rgb += vec3(1.0, 0.05, 0.2) * 0.02;"
     ].join(`
 `);
-    function As() {
-        return Fs + `
+    function bs() {
+        return As + `
 ` + j.join(`
 `);
     }
-    function bs(o, e, t, i, s, n, r) {
+    function Es(o, e, t, i, s, n, r) {
         o.onBeforeCompile = (a)=>{
             V(a, i), a.uniforms.uFleshTime = t, a.uniforms.uFleshNoise = {
                 value: e
             }, Y(a, s), H(a, n), a.vertexShader = a.vertexShader.replace("#include <common>", [
                 "#include <common>",
-                ..._s(),
+                ...Ss(),
                 ...G,
-                ...z
+                ...I
             ].join(`
 `)), a.vertexShader = a.vertexShader.replace("#include <begin_vertex>", [
                 "#include <begin_vertex>",
-                ...Ss(),
+                ...Ms(),
                 ...$,
-                ...I
+                ...z
             ].join(`
 `)), a.fragmentShader = a.fragmentShader.replace("#include <common>", [
                 "#include <common>",
-                ...Ms(r),
+                ...ws(r),
                 ...q,
                 ...N
             ].join(`
 `)), a.fragmentShader = a.fragmentShader.replace("#include <clipping_planes_fragment>", k.join(`
-`)), a.fragmentShader = a.fragmentShader.replace("#include <color_fragment>", ws(r).join(`
-`)), a.fragmentShader = a.fragmentShader.replace("#include <dithering_fragment>", As());
+`)), a.fragmentShader = a.fragmentShader.replace("#include <color_fragment>", Fs(r).join(`
+`)), a.fragmentShader = a.fragmentShader.replace("#include <dithering_fragment>", bs());
         };
     }
-    const Es = (o)=>{
-        const { movementHighlight: e, voxelAo: t, heroOcclusion: i, performanceMode: s = !1 } = o, n = ys(), r = {
+    const Cs = (o)=>{
+        const { movementHighlight: e, voxelAo: t, heroOcclusion: i, performanceMode: s = !1 } = o, n = vs(), r = {
             value: 0
         }, a = new O({
-            roughness: fs,
-            metalness: ms,
+            roughness: ms,
+            metalness: ps,
             vertexColors: !1,
             transparent: !1,
             depthWrite: !0
         });
-        return bs(a, n, r, t, e, i, s), {
+        return Es(a, n, r, t, e, i, s), {
             material: a,
             onAnimationFrame: (l)=>{
                 r.value = l * .001;
@@ -3031,20 +3033,20 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             receiveShadow: !0,
             renderOrder: 0
         };
-    }, Cs = {
+    }, Ts = {
         bucketKey: "flesh_250",
         occlusionGroup: "flesh_250",
         shaderVersion: 6,
         geometry: {
             vertexColors: !1
         },
-        factory: Es,
+        factory: Cs,
         special: {
             paletteIndex: 250,
             label: "Flesh",
-            swatchColor: us
+            swatchColor: ds
         }
-    }, Ts = "#cfd4dc", Rs = {
+    }, Rs = "#cfd4dc", Ls = {
         bucketKey: "fog_251",
         occlusionGroup: "fog_251",
         shaderVersion: 1,
@@ -3053,18 +3055,18 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
         special: {
             paletteIndex: 251,
             label: "Fog",
-            swatchColor: Ts
+            swatchColor: Rs
         }
-    }, Ls = "#a8d8f0", Os = "#cce8ff", zs = .05, Is = 0, Ns = .22;
-    function ks(o, e) {
+    }, Os = "#a8d8f0", Is = "#cce8ff", zs = .05, Ns = 0, ks = .22;
+    function Hs(o, e) {
         o.onBeforeCompile = (t)=>{
             H(t, e), t.vertexShader = t.vertexShader.replace("#include <common>", [
                 "#include <common>",
-                ...z
+                ...I
             ].join(`
 `)), t.vertexShader = t.vertexShader.replace("#include <begin_vertex>", [
                 "#include <begin_vertex>",
-                ...I
+                ...z
             ].join(`
 `)), t.fragmentShader = t.fragmentShader.replace("#include <common>", [
                 "#include <common>",
@@ -3074,34 +3076,34 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
 `));
         };
     }
-    const Hs = (o)=>{
+    const Ws = (o)=>{
         const { heroOcclusion: e } = o, t = new O({
-            color: Os,
+            color: Is,
             roughness: zs,
-            metalness: Is,
+            metalness: Ns,
             vertexColors: !1,
             transparent: !0,
-            opacity: Ns,
+            opacity: ks,
             depthWrite: !1
         });
-        return ks(t, e), {
+        return Hs(t, e), {
             material: t,
             castShadow: !1,
             receiveShadow: !0,
             renderOrder: 2
         };
-    }, Ws = {
+    }, Ds = {
         bucketKey: "glass_246",
         occlusionGroup: "glass_246",
         shaderVersion: 3,
         geometry: {
             vertexColors: !1
         },
-        factory: Hs,
+        factory: Ws,
         special: {
             paletteIndex: 246,
             label: "Glass",
-            swatchColor: Ls,
+            swatchColor: Os,
             category: "buildings"
         }
     }, bi = "#CFB53B", et = .6, tt = [
@@ -3112,7 +3114,7 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
         .6,
         .32,
         .04
-    ], Ds = .5, Ps = 0, Us = "#aa4400", Bs = .25, Vs = [
+    ], Ps = .5, Us = 0, Bs = "#aa4400", Vs = .25, Gs = [
         "mat2 goldRot(float a) { return mat2(sin(a), cos(a), -cos(a), sin(a)); }",
         "float goldNoise(in vec2 x) { return smoothstep(0.,1.,sin(1.5*x.x)*sin(1.5*x.y)); }",
         "float goldFbm(vec2 p) {",
@@ -3147,25 +3149,25 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
         "}"
     ].join(`
 `);
-    function Gs() {
+    function $s() {
         return [
             ...U
         ];
     }
-    function $s() {
+    function qs() {
         return [
             ...B
         ];
     }
-    function qs(o) {
+    function js(o) {
         return [
             ...P(o),
-            Vs,
+            Gs,
             `const vec3 G_COL1 = vec3(${tt[0].toFixed(3)}, ${tt[1].toFixed(3)}, ${tt[2].toFixed(3)});`,
             `const vec3 G_COL2 = vec3(${it[0].toFixed(3)}, ${it[1].toFixed(3)}, ${it[2].toFixed(3)});`
         ];
     }
-    function js(o) {
+    function Ys(o) {
         const e = [
             "vec3 gNrm = normalize(vVoxelAoWorldNormal);",
             "bool gIsBottom = gNrm.y < -0.5;",
@@ -3198,50 +3200,50 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             "}"
         ];
     }
-    function Ys(o, e, t, i, s) {
+    function Xs(o, e, t, i, s) {
         o.onBeforeCompile = (n)=>{
             V(n, e), Y(n, t), H(n, i), n.vertexShader = n.vertexShader.replace("#include <common>", [
                 "#include <common>",
-                ...Gs(),
+                ...$s(),
                 ...G,
-                ...z
+                ...I
             ].join(`
 `)), n.vertexShader = n.vertexShader.replace("#include <begin_vertex>", [
                 "#include <begin_vertex>",
-                ...$s(),
+                ...qs(),
                 ...$,
-                ...I
+                ...z
             ].join(`
 `)), n.fragmentShader = n.fragmentShader.replace("#include <common>", [
                 "#include <common>",
-                ...qs(s),
+                ...js(s),
                 ...q,
                 ...N
             ].join(`
-`)), n.fragmentShader = n.fragmentShader.replace("#include <color_fragment>", js(s).join(`
+`)), n.fragmentShader = n.fragmentShader.replace("#include <color_fragment>", Ys(s).join(`
 `)), n.fragmentShader = n.fragmentShader.replace("#include <clipping_planes_fragment>", k.join(`
 `)), n.fragmentShader = n.fragmentShader.replace("#include <dithering_fragment>", j.join(`
 `));
         };
     }
-    const Xs = (o)=>{
+    const Zs = (o)=>{
         const { movementHighlight: e, voxelAo: t, heroOcclusion: i, performanceMode: s = !1 } = o, n = new O({
             color: bi,
-            emissive: new ne(Us),
-            emissiveIntensity: Bs,
-            roughness: Ds,
-            metalness: Ps,
+            emissive: new ne(Bs),
+            emissiveIntensity: Vs,
+            roughness: Ps,
+            metalness: Us,
             vertexColors: !1,
             transparent: !1,
             depthWrite: !0
         });
-        return Ys(n, t, e, i, s), {
+        return Xs(n, t, e, i, s), {
             material: n,
             castShadow: !0,
             receiveShadow: !0,
             renderOrder: 0
         };
-    }, Zs = {
+    }, Js = {
         bucketKey: "gold_247",
         occlusionGroup: "solid",
         shaderVersion: 5,
@@ -3250,19 +3252,19 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             preserveVoxelFaces: !1,
             deformSurface: !1
         },
-        factory: Xs,
+        factory: Zs,
         special: {
             paletteIndex: 247,
             label: "Gold",
             swatchColor: bi,
             category: "metals"
         }
-    }, Xt = "/materials/grass_242/grass_02_base_1k.png", Js = "/materials/grass_242/grass_02_normal_gl_1k.png", Ks = "/materials/grass_242/grass_02_roughness_1k.png", Qs = "/materials/grass_242/grass_02_amibent_occlusion_1k.png", en = "#4f8f37", Ot = .75, tn = 1.45, sn = .45, Zt = .86, Ct = 1, nn = 8, rn = 1;
+    }, Xt = "/materials/grass_242/grass_02_base_1k.png", Ks = "/materials/grass_242/grass_02_normal_gl_1k.png", Qs = "/materials/grass_242/grass_02_roughness_1k.png", en = "/materials/grass_242/grass_02_amibent_occlusion_1k.png", tn = "#4f8f37", Ot = .75, sn = 1.45, nn = .45, Zt = .86, Ct = 1, rn = 8, on = 1;
     let st = null, nt = null, rt = null, ot = null, at = null;
     function _e(o, e = !1) {
-        return o.wrapS = 1e3, o.wrapT = 1e3, o.magFilter = 1006, o.minFilter = e ? 1006 : 1008, o.anisotropy = e ? rn : nn, o.generateMipmaps = !e, o;
+        return o.wrapS = 1e3, o.wrapT = 1e3, o.magFilter = 1006, o.minFilter = e ? 1006 : 1008, o.anisotropy = e ? on : rn, o.generateMipmaps = !e, o;
     }
-    function on(o) {
+    function an(o) {
         if (o) {
             if (!nt) {
                 const t = _e(new L().load(Xt), !0);
@@ -3274,32 +3276,32 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
         const e = _e(new L().load(Xt), !1);
         return e.colorSpace = T, st = e, e;
     }
-    function an() {
+    function ln() {
         if (rt) return rt;
-        const o = _e(new L().load(Js), !1);
+        const o = _e(new L().load(Ks), !1);
         return rt = o, o;
     }
-    function ln() {
+    function hn() {
         if (ot) return ot;
-        const o = _e(new L().load(Ks), !1);
+        const o = _e(new L().load(Qs), !1);
         return ot = o, o;
     }
-    function hn() {
+    function cn() {
         if (at) return at;
-        const o = _e(new L().load(Qs), !1);
+        const o = _e(new L().load(en), !1);
         return at = o, o;
     }
-    function cn() {
+    function un() {
         return [
             ...U
         ];
     }
-    function un() {
+    function dn() {
         return [
             ...B
         ];
     }
-    function dn(o) {
+    function fn(o) {
         const e = [
             ...P(!1),
             "uniform sampler2D grassMap;"
@@ -3339,7 +3341,7 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             "}"
         ];
     }
-    function fn(o) {
+    function mn(o) {
         const e = [
             "#include <color_fragment>",
             `vec2 grassUv = getGrassUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${Ot.toFixed(2)};`,
@@ -3348,9 +3350,9 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             "diffuseColor.a *= grassTexel.a;",
             `diffuseColor.rgb *= ${b};`
         ];
-        return o || e.splice(3, 0, "float grassMicroAo = mix(1.0, texture2D(grassAoMap, grassUv).r, " + sn.toFixed(2) + ");", "diffuseColor.rgb *= grassMicroAo;"), e;
+        return o || e.splice(3, 0, "float grassMicroAo = mix(1.0, texture2D(grassAoMap, grassUv).r, " + nn.toFixed(2) + ");", "diffuseColor.rgb *= grassMicroAo;"), e;
     }
-    function mn() {
+    function pn() {
         return [
             "#include <roughnessmap_fragment>",
             `vec2 grassRoughnessUv = getGrassUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${Ot.toFixed(2)};`,
@@ -3358,15 +3360,15 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             `roughnessFactor = clamp(mix(${Zt.toFixed(2)}, ${Ct.toFixed(2)}, grassRoughnessSample), ${Zt.toFixed(2)}, ${Ct.toFixed(2)});`
         ];
     }
-    function pn() {
+    function gn() {
         return [
             `vec2 grassNormalUv = getGrassUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${Ot.toFixed(2)};`,
             "vec3 grassMapNormal = texture2D(grassNormalMap, grassNormalUv).xyz * 2.0 - 1.0;",
-            `grassMapNormal.xy *= ${tn.toFixed(2)};`,
+            `grassMapNormal.xy *= ${sn.toFixed(2)};`,
             "normal = normalize(grassGetTangentFrame(-vViewPosition, normal, grassNormalUv) * normalize(grassMapNormal));"
         ];
     }
-    function gn(o, e, t, i, s, n, r, a, h) {
+    function xn(o, e, t, i, s, n, r, a, h) {
         o.onBeforeCompile = (l)=>{
             V(l, n), l.uniforms.grassMap = {
                 value: e
@@ -3378,74 +3380,74 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
                 value: s
             }), Y(l, r), H(l, a), l.vertexShader = l.vertexShader.replace("#include <common>", [
                 "#include <common>",
-                ...cn(),
+                ...un(),
                 ...G,
-                ...z
+                ...I
             ].join(`
 `)), l.vertexShader = l.vertexShader.replace("#include <begin_vertex>", [
                 "#include <begin_vertex>",
-                ...un(),
+                ...dn(),
                 ...$,
-                ...I
+                ...z
             ].join(`
 `)), l.fragmentShader = l.fragmentShader.replace("#include <common>", [
                 "#include <common>",
-                ...dn(h),
+                ...fn(h),
                 ...q,
                 ...N
             ].join(`
-`)), l.fragmentShader = l.fragmentShader.replace("#include <color_fragment>", fn(h).join(`
-`)), h || (l.fragmentShader = l.fragmentShader.replace("#include <roughnessmap_fragment>", mn().join(`
-`)), l.fragmentShader = l.fragmentShader.replace("#include <normal_fragment_maps>", pn().join(`
+`)), l.fragmentShader = l.fragmentShader.replace("#include <color_fragment>", mn(h).join(`
+`)), h || (l.fragmentShader = l.fragmentShader.replace("#include <roughnessmap_fragment>", pn().join(`
+`)), l.fragmentShader = l.fragmentShader.replace("#include <normal_fragment_maps>", gn().join(`
 `))), l.fragmentShader = l.fragmentShader.replace("#include <clipping_planes_fragment>", k.join(`
 `)), l.fragmentShader = l.fragmentShader.replace("#include <dithering_fragment>", j.join(`
 `));
         };
     }
-    const xn = (o)=>{
-        const { movementHighlight: e, voxelAo: t, heroOcclusion: i, performanceMode: s = !1 } = o, n = on(s), r = s ? null : an(), a = s ? null : ln(), h = s ? null : hn(), l = new O({
+    const yn = (o)=>{
+        const { movementHighlight: e, voxelAo: t, heroOcclusion: i, performanceMode: s = !1 } = o, n = an(s), r = s ? null : ln(), a = s ? null : hn(), h = s ? null : cn(), l = new O({
             roughness: Ct,
             metalness: ue.METALNESS,
             vertexColors: !1
         });
-        return gn(l, n, r, a, h, t, e, i, s), {
+        return xn(l, n, r, a, h, t, e, i, s), {
             material: l,
             castShadow: !0,
             receiveShadow: !0
         };
-    }, yn = {
+    }, vn = {
         bucketKey: "grass_242",
         occlusionGroup: "solid",
         shaderVersion: 6,
         geometry: {
             vertexColors: !1
         },
-        factory: xn,
+        factory: yn,
         special: {
             paletteIndex: 242,
             label: "Grass",
-            swatchColor: en,
+            swatchColor: tn,
             category: "nature"
         }
-    }, Jt = "/materials/iron_bars_249/iron_bars_256x256.png", vn = "#6b6b6b", _n = 1, Sn = 8, Mn = 1, wn = .55, Fn = .45, An = .5;
+    }, Jt = "/materials/iron_bars_249/iron_bars_256x256.png", _n = "#6b6b6b", Sn = 1, Mn = 8, wn = 1, Fn = .55, An = .45, bn = .5;
     let lt = null, ht = null;
     function Kt(o, e) {
-        return o.colorSpace = T, o.wrapS = 1e3, o.wrapT = 1e3, o.magFilter = 1006, o.minFilter = e ? 1006 : 1008, o.anisotropy = e ? Mn : Sn, o.generateMipmaps = !e, o;
+        return o.colorSpace = T, o.wrapS = 1e3, o.wrapT = 1e3, o.magFilter = 1006, o.minFilter = e ? 1006 : 1008, o.anisotropy = e ? wn : Mn, o.generateMipmaps = !e, o;
     }
-    function bn(o) {
+    function En(o) {
         return o ? (ht || (ht = Kt(new L().load(Jt), !0)), ht) : (lt || (lt = Kt(new L().load(Jt), !1)), lt);
     }
-    function En() {
+    function Cn() {
         return [
             ...U
         ];
     }
-    function Cn() {
+    function Tn() {
         return [
             ...B
         ];
     }
-    function Tn(o) {
+    function Rn(o) {
         return [
             ...P(o),
             "uniform sampler2D ironBarsMap;",
@@ -3457,52 +3459,52 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             "}"
         ];
     }
-    function Rn() {
+    function Ln() {
         return [
             "#include <color_fragment>",
-            `vec2 ironBarsUv = getIronBarsUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${_n.toFixed(1)};`,
+            `vec2 ironBarsUv = getIronBarsUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${Sn.toFixed(1)};`,
             "vec4 ironBarsTexel = texture2D(ironBarsMap, ironBarsUv);",
             "diffuseColor.rgb *= ironBarsTexel.rgb;",
             "diffuseColor.a *= ironBarsTexel.a;",
             `diffuseColor.rgb *= ${b};`
         ];
     }
-    function Ln(o, e, t, i, s, n) {
+    function On(o, e, t, i, s, n) {
         o.onBeforeCompile = (r)=>{
             V(r, t), r.uniforms.ironBarsMap = {
                 value: e
             }, Y(r, i), H(r, s), r.vertexShader = r.vertexShader.replace("#include <common>", [
                 "#include <common>",
-                ...En(),
+                ...Cn(),
                 ...G,
-                ...z
+                ...I
             ].join(`
 `)), r.vertexShader = r.vertexShader.replace("#include <begin_vertex>", [
                 "#include <begin_vertex>",
-                ...Cn(),
+                ...Tn(),
                 ...$,
-                ...I
+                ...z
             ].join(`
 `)), r.fragmentShader = r.fragmentShader.replace("#include <common>", [
                 "#include <common>",
-                ...Tn(n),
+                ...Rn(n),
                 ...q,
                 ...N
             ].join(`
-`)), r.fragmentShader = r.fragmentShader.replace("#include <color_fragment>", Rn().join(`
+`)), r.fragmentShader = r.fragmentShader.replace("#include <color_fragment>", Ln().join(`
 `)), r.fragmentShader = r.fragmentShader.replace("#include <clipping_planes_fragment>", k.join(`
 `)), r.fragmentShader = r.fragmentShader.replace("#include <dithering_fragment>", j.join(`
 `));
         };
     }
-    const On = (o)=>{
-        const { movementHighlight: e, voxelAo: t, heroOcclusion: i, performanceMode: s = !1 } = o, n = bn(s), r = new O({
-            roughness: wn,
-            metalness: Fn,
+    const In = (o)=>{
+        const { movementHighlight: e, voxelAo: t, heroOcclusion: i, performanceMode: s = !1 } = o, n = En(s), r = new O({
+            roughness: Fn,
+            metalness: An,
             vertexColors: !1,
-            alphaTest: An
+            alphaTest: bn
         });
-        return Ln(r, n, t, e, i, s), {
+        return On(r, n, t, e, i, s), {
             material: r,
             castShadow: !1,
             receiveShadow: !0,
@@ -3515,14 +3517,14 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
         geometry: {
             vertexColors: !1
         },
-        factory: On,
+        factory: In,
         special: {
             paletteIndex: 249,
             label: "Iron Bars",
-            swatchColor: vn,
+            swatchColor: _n,
             category: "buildings"
         }
-    }, Ei = "#cc3300", In = 1.6, Nn = .85, ct = [
+    }, Ei = "#cc3300", Nn = 1.6, kn = .85, ct = [
         .02,
         0,
         0
@@ -3534,7 +3536,7 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
         1,
         .9,
         .25
-    ], Qt = .97, ei = .9, kn = .055, Hn = .018, ti = 1.8, ii = .35, si = 1, ni = 1.5, ri = .4, Wn = .45, Dn = 0, Pn = "#ff3300", Un = 3.2, Bn = [
+    ], Qt = .97, ei = .9, Hn = .055, Wn = .018, ti = 1.8, ii = .35, si = 1, ni = 1.5, ri = .4, Dn = .45, Pn = 0, Un = "#ff3300", Bn = 3.2, Vn = [
         "float lavaVoronoi(vec2 uv) {",
         "	vec2 i = floor(uv);",
         "	vec2 f = fract(uv);",
@@ -3556,15 +3558,15 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
         "}"
     ].join(`
 `);
-    function Vn() {
+    function Gn() {
         return [
             "attribute float surfaceDeformStrength;",
             ...U,
             "uniform float uLavaTime;"
         ];
     }
-    function Gn(o) {
-        const e = o ? Hn : kn;
+    function $n(o) {
+        const e = o ? Wn : Hn;
         return [
             "vec3 lavaWorld = (modelMatrix * vec4(transformed, 1.0)).xyz;",
             `float lavaRippleA = sin(lavaWorld.x * ${ti.toFixed(3)} + uLavaTime * ${ii.toFixed(3)});`,
@@ -3574,7 +3576,7 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             ...B
         ];
     }
-    function $n(o) {
+    function qn(o) {
         const e = [
             ...P(o),
             "uniform float uLavaTime;",
@@ -3582,9 +3584,9 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             `const vec3 L_MID    = vec3(${ut[0].toFixed(3)}, ${ut[1].toFixed(3)}, ${ut[2].toFixed(3)});`,
             `const vec3 L_BRIGHT = vec3(${dt[0].toFixed(3)}, ${dt[1].toFixed(3)}, ${dt[2].toFixed(3)});`
         ];
-        return o || e.push(Bn), e;
+        return o || e.push(Vn), e;
     }
-    function qn(o) {
+    function jn(o) {
         return o ? [
             "vec3 lNrm = normalize(vVoxelAoWorldNormal);",
             "bool lIsTop    = lNrm.y >  0.5;",
@@ -3617,8 +3619,8 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             `	diffuseColor = vec4(L_CRUST * ${b}, ${ei.toFixed(3)});`,
             "} else {",
             "if (lIsTop) {",
-            `	vec2 lUvCrust = vVoxelAoWorldPosition.xz / ${In.toFixed(3)};`,
-            `	vec2 lUvGlow  = vVoxelAoWorldPosition.xz / ${Nn.toFixed(3)};`,
+            `	vec2 lUvCrust = vVoxelAoWorldPosition.xz / ${Nn.toFixed(3)};`,
+            `	vec2 lUvGlow  = vVoxelAoWorldPosition.xz / ${kn.toFixed(3)};`,
             "	vec2 lUvCrustW = lUvCrust + vec2(",
             "		sin(uLavaTime * 0.28 + lUvCrust.y * 3.1) * 0.11,",
             "		cos(uLavaTime * 0.23 + lUvCrust.x * 2.8) * 0.11",
@@ -3652,53 +3654,53 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             "}"
         ];
     }
-    function jn() {
+    function Yn() {
         return [
             "float lavaEmissivePulse = 0.78 + 0.22 * sin(uLavaTime * 1.05);",
             "totalEmissiveRadiance *= lavaEmissivePulse;"
         ];
     }
-    function Yn(o, e, t, i, s, n) {
+    function Xn(o, e, t, i, s, n) {
         o.onBeforeCompile = (r)=>{
             V(r, t), r.uniforms.uLavaTime = e, Y(r, i), H(r, s), r.vertexShader = r.vertexShader.replace("#include <common>", [
                 "#include <common>",
-                ...Vn(),
+                ...Gn(),
                 ...G,
-                ...z
+                ...I
             ].join(`
 `)), r.vertexShader = r.vertexShader.replace("#include <begin_vertex>", [
                 "#include <begin_vertex>",
-                ...Gn(n),
+                ...$n(n),
                 ...$,
-                ...I
+                ...z
             ].join(`
 `)), r.fragmentShader = r.fragmentShader.replace("#include <common>", [
                 "#include <common>",
-                ...$n(n),
+                ...qn(n),
                 ...q,
                 ...N
             ].join(`
-`)), r.fragmentShader = r.fragmentShader.replace("#include <color_fragment>", qn(n).join(`
-`)), r.fragmentShader = r.fragmentShader.replace("#include <emissivemap_fragment>", jn().join(`
+`)), r.fragmentShader = r.fragmentShader.replace("#include <color_fragment>", jn(n).join(`
+`)), r.fragmentShader = r.fragmentShader.replace("#include <emissivemap_fragment>", Yn().join(`
 `)), r.fragmentShader = r.fragmentShader.replace("#include <clipping_planes_fragment>", k.join(`
 `)), r.fragmentShader = r.fragmentShader.replace("#include <dithering_fragment>", j.join(`
 `));
         };
     }
-    const Xn = (o)=>{
+    const Zn = (o)=>{
         const { movementHighlight: e, voxelAo: t, heroOcclusion: i, performanceMode: s = !1 } = o, n = {
             value: 0
         }, r = new O({
             color: Ei,
-            emissive: new ne(Pn),
-            emissiveIntensity: Un,
-            roughness: Wn,
-            metalness: Dn,
+            emissive: new ne(Un),
+            emissiveIntensity: Bn,
+            roughness: Dn,
+            metalness: Pn,
             vertexColors: !1,
             transparent: !0,
             depthWrite: !0
         });
-        return Yn(r, n, t, e, i, s), {
+        return Xn(r, n, t, e, i, s), {
             material: r,
             onAnimationFrame: (h)=>{
                 n.value = h * .001;
@@ -3707,7 +3709,7 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             receiveShadow: !0,
             renderOrder: 1
         };
-    }, Zn = {
+    }, Jn = {
         bucketKey: "lava_245",
         occlusionGroup: "lava_245",
         shaderVersion: 4,
@@ -3717,23 +3719,23 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             deformSurface: !0
         },
         passable: !0,
-        factory: Xn,
+        factory: Zn,
         special: {
             paletteIndex: 245,
             label: "Lava",
             swatchColor: Ei,
             category: "liquids"
         }
-    }, Tt = "#ffd166", Jn = .35, Kn = 0, Qn = 3.5;
-    function er(o, e) {
+    }, Tt = "#ffd166", Kn = .35, Qn = 0, er = 3.5;
+    function tr(o, e) {
         o.onBeforeCompile = (t)=>{
             H(t, e), t.vertexShader = t.vertexShader.replace("#include <common>", [
                 "#include <common>",
-                ...z
+                ...I
             ].join(`
 `)), t.vertexShader = t.vertexShader.replace("#include <begin_vertex>", [
                 "#include <begin_vertex>",
-                ...I
+                ...z
             ].join(`
 `)), t.fragmentShader = t.fragmentShader.replace("#include <common>", [
                 "#include <common>",
@@ -3743,21 +3745,21 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
 `));
         };
     }
-    const tr = (o)=>{
+    const ir = (o)=>{
         const { heroOcclusion: e } = o, t = new O({
             color: Tt,
             emissive: Tt,
-            emissiveIntensity: Qn,
-            roughness: Jn,
-            metalness: Kn,
+            emissiveIntensity: er,
+            roughness: Kn,
+            metalness: Qn,
             vertexColors: !1
         });
-        return er(t, e), {
+        return tr(t, e), {
             material: t,
             castShadow: !1,
             receiveShadow: !1
         };
-    }, ir = {
+    }, sr = {
         bucketKey: "light_243",
         occlusionGroup: "solid",
         shaderVersion: 3,
@@ -3765,7 +3767,7 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             vertexColors: !1
         },
         passable: !0,
-        factory: tr,
+        factory: ir,
         special: {
             paletteIndex: 243,
             label: "Light",
@@ -3779,7 +3781,7 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
         .22,
         .3,
         .45
-    ], sr = .35, nr = 0, rr = [
+    ], nr = .35, rr = 0, or = [
         "mat2 silverRot(float a) { return mat2(sin(a), cos(a), -cos(a), sin(a)); }",
         "float silverNoise(in vec2 x) { return smoothstep(0.,1.,sin(1.5*x.x)*sin(1.5*x.y)); }",
         "float silverFbm(vec2 p) {",
@@ -3814,25 +3816,25 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
         "}"
     ].join(`
 `);
-    function or() {
+    function ar() {
         return [
             ...U
         ];
     }
-    function ar() {
+    function lr() {
         return [
             ...B
         ];
     }
-    function lr(o) {
+    function hr(o) {
         return [
             ...P(o),
-            rr,
+            or,
             `const vec3 S_COL1 = vec3(${mt[0].toFixed(3)}, ${mt[1].toFixed(3)}, ${mt[2].toFixed(3)});`,
             `const vec3 S_COL2 = vec3(${pt[0].toFixed(3)}, ${pt[1].toFixed(3)}, ${pt[2].toFixed(3)});`
         ];
     }
-    function hr(o) {
+    function cr(o) {
         const e = [
             "vec3 sNrm = normalize(vVoxelAoWorldNormal);",
             "bool sIsBottom = sNrm.y < -0.5;",
@@ -3865,48 +3867,48 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             "}"
         ];
     }
-    function cr(o, e, t, i, s) {
+    function ur(o, e, t, i, s) {
         o.onBeforeCompile = (n)=>{
             V(n, e), Y(n, t), H(n, i), n.vertexShader = n.vertexShader.replace("#include <common>", [
                 "#include <common>",
-                ...or(),
+                ...ar(),
                 ...G,
-                ...z
+                ...I
             ].join(`
 `)), n.vertexShader = n.vertexShader.replace("#include <begin_vertex>", [
                 "#include <begin_vertex>",
-                ...ar(),
+                ...lr(),
                 ...$,
-                ...I
+                ...z
             ].join(`
 `)), n.fragmentShader = n.fragmentShader.replace("#include <common>", [
                 "#include <common>",
-                ...lr(s),
+                ...hr(s),
                 ...q,
                 ...N
             ].join(`
-`)), n.fragmentShader = n.fragmentShader.replace("#include <color_fragment>", hr(s).join(`
+`)), n.fragmentShader = n.fragmentShader.replace("#include <color_fragment>", cr(s).join(`
 `)), n.fragmentShader = n.fragmentShader.replace("#include <clipping_planes_fragment>", k.join(`
 `)), n.fragmentShader = n.fragmentShader.replace("#include <dithering_fragment>", j.join(`
 `));
         };
     }
-    const ur = (o)=>{
+    const dr = (o)=>{
         const { movementHighlight: e, voxelAo: t, heroOcclusion: i, performanceMode: s = !1 } = o, n = new O({
             color: Ci,
-            roughness: sr,
-            metalness: nr,
+            roughness: nr,
+            metalness: rr,
             vertexColors: !1,
             transparent: !1,
             depthWrite: !0
         });
-        return cr(n, t, e, i, s), {
+        return ur(n, t, e, i, s), {
             material: n,
             castShadow: !0,
             receiveShadow: !0,
             renderOrder: 0
         };
-    }, dr = {
+    }, fr = {
         bucketKey: "silver_248",
         occlusionGroup: "solid",
         shaderVersion: 5,
@@ -3915,32 +3917,32 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             preserveVoxelFaces: !1,
             deformSurface: !1
         },
-        factory: ur,
+        factory: dr,
         special: {
             paletteIndex: 248,
             label: "Silver",
             swatchColor: Ci,
             category: "metals"
         }
-    }, oi = "/materials/bricks_240/bricks_256x256.png", fr = "#8f8f8f", mr = 1, pr = 8, gr = 1;
+    }, oi = "/materials/bricks_240/bricks_256x256.png", mr = "#8f8f8f", pr = 1, gr = 8, xr = 1;
     let gt = null, xt = null;
     function ai(o, e) {
-        return o.colorSpace = T, o.wrapS = 1e3, o.wrapT = 1e3, o.magFilter = 1006, o.minFilter = e ? 1006 : 1008, o.anisotropy = e ? gr : pr, o.generateMipmaps = !e, o;
+        return o.colorSpace = T, o.wrapS = 1e3, o.wrapT = 1e3, o.magFilter = 1006, o.minFilter = e ? 1006 : 1008, o.anisotropy = e ? xr : gr, o.generateMipmaps = !e, o;
     }
-    function xr(o) {
+    function yr(o) {
         return o ? (xt || (xt = ai(new L().load(oi), !0)), xt) : (gt || (gt = ai(new L().load(oi), !1)), gt);
     }
-    function yr() {
+    function vr() {
         return [
             ...U
         ];
     }
-    function vr() {
+    function _r() {
         return [
             ...B
         ];
     }
-    function _r(o) {
+    function Sr(o) {
         return [
             ...P(o),
             "uniform sampler2D stoneBricksMap;",
@@ -3952,70 +3954,70 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             "}"
         ];
     }
-    function Sr() {
+    function Mr() {
         return [
             "#include <color_fragment>",
-            `vec2 stoneBricksUv = getStoneBricksUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${mr.toFixed(1)};`,
+            `vec2 stoneBricksUv = getStoneBricksUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${pr.toFixed(1)};`,
             "vec4 stoneBricksTexel = texture2D(stoneBricksMap, stoneBricksUv);",
             "diffuseColor.rgb *= stoneBricksTexel.rgb;",
             "diffuseColor.a *= stoneBricksTexel.a;",
             `diffuseColor.rgb *= ${b};`
         ];
     }
-    function Mr(o, e, t, i, s, n) {
+    function wr(o, e, t, i, s, n) {
         o.onBeforeCompile = (r)=>{
             V(r, t), r.uniforms.stoneBricksMap = {
                 value: e
             }, Y(r, i), H(r, s), r.vertexShader = r.vertexShader.replace("#include <common>", [
                 "#include <common>",
-                ...yr(),
+                ...vr(),
                 ...G,
-                ...z
+                ...I
             ].join(`
 `)), r.vertexShader = r.vertexShader.replace("#include <begin_vertex>", [
                 "#include <begin_vertex>",
-                ...vr(),
+                ..._r(),
                 ...$,
-                ...I
+                ...z
             ].join(`
 `)), r.fragmentShader = r.fragmentShader.replace("#include <common>", [
                 "#include <common>",
-                ..._r(n),
+                ...Sr(n),
                 ...q,
                 ...N
             ].join(`
 `)), r.fragmentShader = r.fragmentShader.replace("#include <clipping_planes_fragment>", k.join(`
-`)), r.fragmentShader = r.fragmentShader.replace("#include <color_fragment>", Sr().join(`
+`)), r.fragmentShader = r.fragmentShader.replace("#include <color_fragment>", Mr().join(`
 `)), r.fragmentShader = r.fragmentShader.replace("#include <dithering_fragment>", j.join(`
 `));
         };
     }
-    const wr = (o)=>{
-        const { movementHighlight: e, voxelAo: t, heroOcclusion: i, performanceMode: s = !1 } = o, n = xr(s), r = new O({
+    const Fr = (o)=>{
+        const { movementHighlight: e, voxelAo: t, heroOcclusion: i, performanceMode: s = !1 } = o, n = yr(s), r = new O({
             roughness: ue.ROUGHNESS,
             metalness: ue.METALNESS,
             vertexColors: !1
         });
-        return Mr(r, n, t, e, i, s), {
+        return wr(r, n, t, e, i, s), {
             material: r,
             castShadow: !0,
             receiveShadow: !0
         };
-    }, Fr = {
+    }, Ar = {
         bucketKey: "stonebricks_240",
         occlusionGroup: "solid",
         shaderVersion: 5,
         geometry: {
             vertexColors: !1
         },
-        factory: wr,
+        factory: Fr,
         special: {
             paletteIndex: 240,
             label: "Stone Bricks",
-            swatchColor: fr,
+            swatchColor: mr,
             category: "buildings"
         }
-    }, Ar = "#1a6699", br = 2, Er = 1.1, yt = [
+    }, br = "#1a6699", Er = 2, Cr = 1.1, yt = [
         .9,
         .9,
         .95
@@ -4027,7 +4029,7 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
         0,
         .2,
         .4
-    ], li = .86, hi = .75, ci = .48, Cr = .115, Tr = .045, ui = 2.4, di = 1.6, fi = .8, mi = 1.2, pi = 1.4, Rr = .2, Lr = 0, Or = [
+    ], li = .86, hi = .75, ci = .48, Tr = .115, Rr = .045, ui = 2.4, di = 1.6, fi = .8, mi = 1.2, pi = 1.4, Lr = .2, Or = 0, Ir = [
         "float waterVoronoi(vec2 uv) {",
         "	vec2 i = floor(uv);",
         "	vec2 f = fract(uv);",
@@ -4056,8 +4058,8 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             "uniform float uWaterTime;"
         ];
     }
-    function Ir(o) {
-        const e = o ? Tr : Cr;
+    function Nr(o) {
+        const e = o ? Rr : Tr;
         return [
             "vec3 waterWorld = (modelMatrix * vec4(transformed, 1.0)).xyz;",
             `float waterRippleA = sin(waterWorld.x * ${ui.toFixed(3)} + uWaterTime * ${di.toFixed(3)});`,
@@ -4067,7 +4069,7 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             ...B
         ];
     }
-    function Nr(o) {
+    function kr(o) {
         const e = [
             ...P(o),
             "uniform float uWaterTime;",
@@ -4075,9 +4077,9 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             `const vec3 W_MAIN = vec3(${vt[0].toFixed(3)}, ${vt[1].toFixed(3)}, ${vt[2].toFixed(3)});`,
             `const vec3 W_DARK = vec3(${_t[0].toFixed(3)}, ${_t[1].toFixed(3)}, ${_t[2].toFixed(3)});`
         ];
-        return o || e.push(Or), e;
+        return o || e.push(Ir), e;
     }
-    function kr(o) {
+    function Hr(o) {
         return o ? [
             "vec3 wNrm = normalize(vVoxelAoWorldNormal);",
             "bool wIsTopSurface = wNrm.y > 0.5;",
@@ -4117,8 +4119,8 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             `	diffuseColor = vec4(W_MAIN * ${b}, ${ci.toFixed(3)});`,
             "} else {",
             "if (wIsTopSurface) {",
-            `	vec2 wUvFoam   = vVoxelAoWorldPosition.xz / ${br.toFixed(3)};`,
-            `	vec2 wUvRipple = vVoxelAoWorldPosition.xz / ${Er.toFixed(3)};`,
+            `	vec2 wUvFoam   = vVoxelAoWorldPosition.xz / ${Er.toFixed(3)};`,
+            `	vec2 wUvRipple = vVoxelAoWorldPosition.xz / ${Cr.toFixed(3)};`,
             "	vec2 wUvFoamD = wUvFoam + vec2(",
             "		sin(uWaterTime * 2.0 + wUvFoam.y * 5.0) * 0.10,",
             "		cos(uWaterTime * 2.0 + wUvFoam.x * 5.0) * 0.10",
@@ -4152,43 +4154,43 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             "}"
         ];
     }
-    function Hr(o, e, t, i, s, n) {
+    function Wr(o, e, t, i, s, n) {
         o.onBeforeCompile = (r)=>{
             V(r, t), r.uniforms.uWaterTime = e, Y(r, i), H(r, s), r.vertexShader = r.vertexShader.replace("#include <common>", [
                 "#include <common>",
                 ...zr(),
                 ...G,
-                ...z
+                ...I
             ].join(`
 `)), r.vertexShader = r.vertexShader.replace("#include <begin_vertex>", [
                 "#include <begin_vertex>",
-                ...Ir(n),
+                ...Nr(n),
                 ...$,
-                ...I
+                ...z
             ].join(`
 `)), r.fragmentShader = r.fragmentShader.replace("#include <common>", [
                 "#include <common>",
-                ...Nr(n),
+                ...kr(n),
                 ...q,
                 ...N
             ].join(`
-`)), r.fragmentShader = r.fragmentShader.replace("#include <color_fragment>", kr(n).join(`
+`)), r.fragmentShader = r.fragmentShader.replace("#include <color_fragment>", Hr(n).join(`
 `)), r.fragmentShader = r.fragmentShader.replace("#include <clipping_planes_fragment>", k.join(`
 `)), r.fragmentShader = r.fragmentShader.replace("#include <dithering_fragment>", j.join(`
 `));
         };
     }
-    const Wr = (o)=>{
+    const Dr = (o)=>{
         const { movementHighlight: e, voxelAo: t, heroOcclusion: i, performanceMode: s = !1 } = o, n = {
             value: 0
         }, r = new O({
-            roughness: Rr,
-            metalness: Lr,
+            roughness: Lr,
+            metalness: Or,
             vertexColors: !1,
             transparent: !0,
             depthWrite: !0
         });
-        return Hr(r, n, t, e, i, s), {
+        return Wr(r, n, t, e, i, s), {
             material: r,
             onAnimationFrame: (h)=>{
                 n.value = h * .001;
@@ -4197,7 +4199,7 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             receiveShadow: !0,
             renderOrder: 1
         };
-    }, Dr = {
+    }, Pr = {
         bucketKey: "water_241",
         occlusionGroup: "water_241",
         shaderVersion: 10,
@@ -4207,32 +4209,32 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             deformSurface: !0
         },
         passable: !0,
-        factory: Wr,
+        factory: Dr,
         special: {
             paletteIndex: 241,
             label: "Water",
-            swatchColor: Ar,
+            swatchColor: br,
             category: "liquids"
         }
-    }, gi = "/materials/wood_244/wood_256x256.png", Pr = "#8b5a2b", Ur = 1, Br = 8, Vr = 1;
+    }, gi = "/materials/wood_244/wood_256x256.png", Ur = "#8b5a2b", Br = 1, Vr = 8, Gr = 1;
     let St = null, Mt = null;
     function xi(o, e) {
-        return o.colorSpace = T, o.wrapS = 1e3, o.wrapT = 1e3, o.magFilter = 1006, o.minFilter = e ? 1006 : 1008, o.anisotropy = e ? Vr : Br, o.generateMipmaps = !e, o;
+        return o.colorSpace = T, o.wrapS = 1e3, o.wrapT = 1e3, o.magFilter = 1006, o.minFilter = e ? 1006 : 1008, o.anisotropy = e ? Gr : Vr, o.generateMipmaps = !e, o;
     }
-    function Gr(o) {
+    function $r(o) {
         return o ? (Mt || (Mt = xi(new L().load(gi), !0)), Mt) : (St || (St = xi(new L().load(gi), !1)), St);
     }
-    function $r() {
+    function qr() {
         return [
             ...U
         ];
     }
-    function qr() {
+    function jr() {
         return [
             ...B
         ];
     }
-    function jr(o) {
+    function Yr(o) {
         return [
             ...P(o),
             "uniform sampler2D woodMap;",
@@ -4244,83 +4246,83 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             "}"
         ];
     }
-    function Yr() {
+    function Xr() {
         return [
             "#include <color_fragment>",
-            `vec2 woodUv = getWoodUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${Ur.toFixed(1)};`,
+            `vec2 woodUv = getWoodUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${Br.toFixed(1)};`,
             "vec4 woodTexel = texture2D(woodMap, woodUv);",
             "diffuseColor.rgb *= woodTexel.rgb;",
             "diffuseColor.a *= woodTexel.a;",
             `diffuseColor.rgb *= ${b};`
         ];
     }
-    function Xr(o, e, t, i, s, n) {
+    function Zr(o, e, t, i, s, n) {
         o.onBeforeCompile = (r)=>{
             V(r, t), r.uniforms.woodMap = {
                 value: e
             }, Y(r, i), H(r, s), r.vertexShader = r.vertexShader.replace("#include <common>", [
                 "#include <common>",
-                ...$r(),
+                ...qr(),
                 ...G,
-                ...z
+                ...I
             ].join(`
 `)), r.vertexShader = r.vertexShader.replace("#include <begin_vertex>", [
                 "#include <begin_vertex>",
-                ...qr(),
+                ...jr(),
                 ...$,
-                ...I
+                ...z
             ].join(`
 `)), r.fragmentShader = r.fragmentShader.replace("#include <common>", [
                 "#include <common>",
-                ...jr(n),
+                ...Yr(n),
                 ...q,
                 ...N
             ].join(`
-`)), r.fragmentShader = r.fragmentShader.replace("#include <color_fragment>", Yr().join(`
+`)), r.fragmentShader = r.fragmentShader.replace("#include <color_fragment>", Xr().join(`
 `)), r.fragmentShader = r.fragmentShader.replace("#include <clipping_planes_fragment>", k.join(`
 `)), r.fragmentShader = r.fragmentShader.replace("#include <dithering_fragment>", j.join(`
 `));
         };
     }
-    const Zr = (o)=>{
-        const { movementHighlight: e, voxelAo: t, heroOcclusion: i, performanceMode: s = !1 } = o, n = Gr(s), r = new O({
+    const Jr = (o)=>{
+        const { movementHighlight: e, voxelAo: t, heroOcclusion: i, performanceMode: s = !1 } = o, n = $r(s), r = new O({
             roughness: ue.ROUGHNESS,
             metalness: ue.METALNESS,
             vertexColors: !1
         });
-        return Xr(r, n, t, e, i, s), {
+        return Zr(r, n, t, e, i, s), {
             material: r,
             castShadow: !0,
             receiveShadow: !0
         };
-    }, Jr = {
+    }, Kr = {
         bucketKey: "wood_244",
         occlusionGroup: "solid",
         shaderVersion: 4,
         geometry: {
             vertexColors: !1
         },
-        factory: Zr,
+        factory: Jr,
         special: {
             paletteIndex: 244,
             label: "Wood",
-            swatchColor: Pr,
+            swatchColor: Ur,
             category: "nature"
         }
     }, ee = [
         De,
-        Fr,
-        Dr,
-        yn,
-        ir,
-        Jr,
-        Zn,
-        Ws,
-        Zs,
-        dr,
+        Ar,
+        Pr,
+        vn,
+        sr,
+        Kr,
+        Jn,
+        Ds,
+        Js,
+        fr,
         zn,
-        Cs,
-        Rs
+        Ts,
+        Ls
     ];
     ee.filter((o)=>o.special !== void 0).map((o)=>({
             index: o.special.paletteIndex,
@@ -4328,39 +4330,39 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             color: o.special.swatchColor,
             category: o.special.category ?? "miscellaneous"
         }));
-    const Kr = new Map(ee.filter((o)=>o.special !== void 0).map((o)=>[
+    const Qr = new Map(ee.filter((o)=>o.special !== void 0).map((o)=>[
             o.special.paletteIndex,
             o.bucketKey
-        ])), Qr = De.occlusionGroup ?? De.bucketKey, eo = new Map(ee.filter((o)=>o.special !== void 0).map((o)=>[
+        ])), eo = De.occlusionGroup ?? De.bucketKey, to = new Map(ee.filter((o)=>o.special !== void 0).map((o)=>[
             o.special.paletteIndex,
             o.occlusionGroup ?? o.bucketKey
-        ])), zt = new Map(ee.filter((o)=>o.special !== void 0).map((o)=>[
+        ])), It = new Map(ee.filter((o)=>o.special !== void 0).map((o)=>[
             o.special.paletteIndex,
             o.geometry
-        ])), It = De.geometry, Ti = new Set(ee.filter((o)=>o.special !== void 0).filter((o)=>o.passable === !0).map((o)=>o.special.paletteIndex));
-    function to(o) {
+        ])), zt = De.geometry, Ti = new Set(ee.filter((o)=>o.special !== void 0).filter((o)=>o.passable === !0).map((o)=>o.special.paletteIndex));
+    function io(o) {
         return Ti.has(o);
     }
-    const io = new Set(ee.filter((o)=>o.special !== void 0).filter((o)=>o.volumetric === !0).map((o)=>o.special.paletteIndex));
-    function so(o) {
-        return io.has(o);
-    }
+    const so = new Set(ee.filter((o)=>o.special !== void 0).filter((o)=>o.volumetric === !0).map((o)=>o.special.paletteIndex));
     function no(o) {
-        return Kr.get(o) ?? "default";
+        return so.has(o);
     }
     function ro(o) {
-        return eo.get(o) ?? Qr;
+        return Qr.get(o) ?? "default";
     }
     function oo(o) {
-        return (zt.get(o) ?? It)?.deformSurface === !0;
+        return to.get(o) ?? eo;
     }
     function ao(o) {
-        return (zt.get(o) ?? It)?.vertexColors !== !1;
+        return (It.get(o) ?? zt)?.deformSurface === !0;
     }
     function lo(o) {
-        return (zt.get(o) ?? It)?.preserveVoxelFaces === !0;
+        return (It.get(o) ?? zt)?.vertexColors !== !1;
     }
-    function ho() {
+    function ho(o) {
+        return (It.get(o) ?? zt)?.preserveVoxelFaces === !0;
+    }
+    function co() {
         const o = new Map, e = [], t = (f)=>{
             let d = o.get(f);
             return d === void 0 && (d = e.length, o.set(f, d), e.push(f)), d;
@@ -4368,7 +4370,7 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             let d = i.get(f);
             return d === void 0 && (d = i.size, i.set(f, d)), d;
         }, n = new Int32Array(256), r = new Int32Array(256), a = new Uint8Array(256), h = new Uint8Array(256), l = new Uint8Array(256), c = new Uint8Array(256), u = new Uint8Array(256);
-        for(let f = 0; f < 256; f++)n[f] = t(no(f)), r[f] = s(ro(f)), a[f] = ao(f) ? 1 : 0, h[f] = oo(f) ? 1 : 0, l[f] = lo(f) ? 1 : 0, c[f] = so(f) ? 1 : 0, u[f] = to(f) ? 1 : 0;
+        for(let f = 0; f < 256; f++)n[f] = t(ro(f)), r[f] = s(oo(f)), a[f] = lo(f) ? 1 : 0, h[f] = ao(f) ? 1 : 0, l[f] = ho(f) ? 1 : 0, c[f] = no(f) ? 1 : 0, u[f] = io(f) ? 1 : 0;
         return {
             bucketId: n,
             occlusionId: r,
@@ -4380,15 +4382,15 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             bucketKeyById: e
         };
     }
-    const le = ho(), co = new Map(ee.filter((o)=>o.special !== void 0).map((o)=>[
+    const le = co(), uo = new Map(ee.filter((o)=>o.special !== void 0).map((o)=>[
             o.special.paletteIndex,
             parseInt(o.special.swatchColor.slice(1), 16)
         ]));
     es({
         passableIndices: Ti,
-        editorColors: co
+        editorColors: uo
     });
-    function uo(o) {
+    function fo(o) {
         const { bucketKey: e, shaderVersion: t, factory: i } = o;
         return (s)=>{
             const n = i(s), r = [
@@ -4414,13 +4416,13 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
     }
     new Map(ee.filter((o)=>o.factory !== void 0).map((o)=>[
             o.bucketKey,
-            uo(o)
+            fo(o)
         ]));
     const yi = 1;
-    function fo(o) {
+    function mo(o) {
         return Math.max(yi, o.Resolution ?? yi);
     }
-    const Be = 12, vi = .22, mo = .88, po = .18, _i = .34, go = .9, xo = .98, yo = [
+    const Be = 12, vi = .22, po = .88, go = .18, _i = .34, xo = .9, yo = .98, vo = [
         [
             0,
             null
@@ -4432,7 +4434,7 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
         ...Array.from({
             length: 18
         }, (o, e)=>[
-                po,
+                go,
                 e * 20
             ])
     ];
@@ -4451,41 +4453,41 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             -.0041960863 * l - .7034186147 * c + 1.707614701 * u
         ];
     }
-    function vo(o, e, t) {
+    function _o(o, e, t) {
         const [i, s, n] = Ri(o, e, t), r = wt(i), a = wt(s), h = wt(n);
         return `#${Ft(r)}${Ft(a)}${Ft(h)}`;
     }
-    function _o(o, e, t) {
+    function So(o, e, t) {
         const [i, s, n] = Ri(o, e, t);
         return i >= 0 && i <= 1 && s >= 0 && s <= 1 && n >= 0 && n <= 1;
     }
-    function So(o, e) {
+    function Mo(o, e) {
         let t = 0, i = .4;
         for(let s = 0; s < 16; s++){
             const n = (t + i) / 2;
-            _o(o, n, e) ? t = n : i = n;
+            So(o, n, e) ? t = n : i = n;
         }
-        return t * xo;
+        return t * yo;
     }
     function Li(o) {
         const e = o / (Be - 1);
-        return vi + e * (mo - vi);
+        return vi + e * (po - vi);
     }
-    function Mo(o, e, t) {
+    function wo(o, e, t) {
         if (e <= 0 || t === null) return 0;
-        const i = o / (Be - 1), s = Math.pow(Math.sin(Math.PI * i), go), n = e * (_i + (1 - _i) * s);
-        return Math.min(n, So(Li(o), t));
+        const i = o / (Be - 1), s = Math.pow(Math.sin(Math.PI * i), xo), n = e * (_i + (1 - _i) * s);
+        return Math.min(n, Mo(Li(o), t));
     }
-    function wo() {
+    function Fo() {
         const o = [];
-        for (const [e, t] of yo)for(let i = 0; i < Be; i++){
-            const s = Li(i), n = Mo(i, e, t);
-            o.push(vo(s, n, t ?? 0));
+        for (const [e, t] of vo)for(let i = 0; i < Be; i++){
+            const s = Li(i), n = wo(i, e, t);
+            o.push(_o(s, n, t ?? 0));
         }
         return o;
     }
-    const Pe = wo(), Oi = Be - 1;
-    function Fo(o) {
+    const Pe = Fo(), Oi = Be - 1;
+    function Ao(o) {
         return Pe[o] ?? Pe[Oi];
     }
     function Si(o) {
@@ -4496,7 +4498,7 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             b: parseInt(e.slice(4, 6), 16)
         };
     }
-    function Ao(o) {
+    function bo(o) {
         return `#${(o & 16777215).toString(16).padStart(6, "0")}`;
     }
     function At(o) {
@@ -4511,12 +4513,12 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
             .0259040371 * r + .7827717662 * a - .808675766 * h
         ];
     }
-    function bo(o) {
-        const e = ts(o);
-        return e !== void 0 ? e : parseInt(Fo(o).slice(1), 16);
-    }
     function Eo(o) {
-        const { r: e, g: t, b: i } = Si(Ao(o)), [s, n, r] = Mi(e, t, i);
+        const e = ts(o);
+        return e !== void 0 ? e : parseInt(Ao(o).slice(1), 16);
+    }
+    function Co(o) {
+        const { r: e, g: t, b: i } = Si(bo(o)), [s, n, r] = Mi(e, t, i);
         let a = Oi, h = 1 / 0;
         for(let l = 0; l < Pe.length; l++){
             const c = Si(Pe[l]), [u, f, d] = Mi(c.r, c.g, c.b), m = s - u, p = n - f, x = r - d, g = m * m + p * p + x * x;
@@ -4524,20 +4526,20 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
         }
         return a;
     }
-    function Co(o) {
+    function To(o) {
         const e = Math.floor(o);
-        return e >= 0 && e <= 255 ? e : Eo(o);
+        return e >= 0 && e <= 255 ? e : Co(o);
     }
-    const To = le.bucketKeyById;
+    const Ro = le.bucketKeyById;
     let He = null;
-    function Ro() {
+    function Lo() {
         return He || (He = (async ()=>{
             const { VoxelMesher: e } = await import("./voxel_mesher-8kBYlObl.js").then(async (m)=>{
                 await m.__tla;
                 return m;
             }), t = new Float32Array(256 * 3);
             for(let i = 0; i < 256; i++){
-                const s = new ne(bo(Co(i)));
+                const s = new ne(Eo(To(i)));
                 t[i * 3] = s.r, t[i * 3 + 1] = s.g, t[i * 3 + 2] = s.b;
             }
             return new e(le.bucketId, le.occlusionId, le.usesVertexColors, le.deformsSurface, le.preservesVoxelFaces, le.isVolumetric, t);
@@ -4550,37 +4552,37 @@ diffuseColor.rgb *= ${b};`), n.fragmentShader = n.fragmentShader.replace("#inclu
         if (e instanceof ArrayBuffer) return e;
         throw new Error("Cannot transfer SharedArrayBuffer-backed voxel geometry buffers.");
     }
-    function Lo(o) {
+    function Oo(o) {
         return o instanceof Error ? o.message : String(o);
     }
     function wi(o, e, t) {
         self.postMessage({
             buildId: o,
-            error: `Failed to ${e}: ${Lo(t)}`
+            error: `Failed to ${e}: ${Oo(t)}`
         });
     }
     self.onmessage = async (o)=>{
         const { buildId: e, terrain: t, voxels: i } = o.data;
         let s;
         try {
-            s = await Ro();
+            s = await Lo();
         } catch (n) {
             console.error("[voxel-build] WASM mesher init FAILED:", n), wi(e, "initialize the WebAssembly terrain mesher", n);
             return;
         }
         try {
-            Oo(s, e, t, i);
+            Io(s, e, t, i);
         } catch (n) {
             console.error("[voxel-build] WASM build FAILED:", n), wi(e, "build the terrain geometry", n);
         }
     };
-    function Oo(o, e, t, i) {
-        const s = fo(t), n = Math.max(t.Width, t.Height, t.Length) * s, r = Qi(n), a = o.build_from_svo(i, t.Width, t.Height, t.Length, s, r), h = [], l = [];
+    function Io(o, e, t, i) {
+        const s = mo(t), n = Math.max(t.Width, t.Height, t.Length) * s, r = Qi(n), a = o.build_from_svo(i, t.Width, t.Height, t.Length, s, r), h = [], l = [];
         let c, u, f, d, m;
         try {
             const A = a.bucket_count();
             for(let v = 0; v < A; v++){
-                const w = To[a.bucket_id(v)], _ = a.take_positions(v), F = a.take_normals(v), y = a.take_colors(v), te = a.take_surface_deform(v), re = a.take_tile_heights(v), oe = a.take_highlights(v), ae = a.take_indices(v);
+                const w = Ro[a.bucket_id(v)], _ = a.take_positions(v), F = a.take_normals(v), y = a.take_colors(v), te = a.take_surface_deform(v), re = a.take_tile_heights(v), oe = a.take_highlights(v), ae = a.take_indices(v);
                 h.push({
                     key: w,
                     positions: _,
