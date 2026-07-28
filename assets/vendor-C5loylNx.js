@@ -1,7 +1,7 @@
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-import { r as _e } from "./vendor-react-B3UwxkLy.js";
+import { r as _e } from "./vendor-react-7vkcqmaY.js";
 function Br(e) {
   return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
 }
@@ -116,14 +116,14 @@ const dr = Object.getPrototypeOf, hr = /* @__PURE__ */ new WeakMap(), ca = (e) =
     } else c && r.push(c);
   };
   return s(e), r;
-}, gn = {}, jr = (e) => typeof e == "object" && e !== null, sc = (e) => jr(e) && !Yr.has(e) && (Array.isArray(e) || !(Symbol.iterator in e)) && !(e instanceof WeakMap) && !(e instanceof WeakSet) && !(e instanceof Error) && !(e instanceof Number) && !(e instanceof Date) && !(e instanceof String) && !(e instanceof RegExp) && !(e instanceof ArrayBuffer) && !(e instanceof Promise), ua = (e, t) => {
+}, gn = {}, jr = (e) => typeof e == "object" && e !== null, sc = (e) => jr(e) && !Fr.has(e) && (Array.isArray(e) || !(Symbol.iterator in e)) && !(e instanceof WeakMap) && !(e instanceof WeakSet) && !(e instanceof Error) && !(e instanceof Number) && !(e instanceof Date) && !(e instanceof String) && !(e instanceof RegExp) && !(e instanceof ArrayBuffer) && !(e instanceof Promise), ua = (e, t) => {
   const n = yo.get(e);
   if ((n == null ? void 0 : n[0]) === t) return n[1];
   const r = Array.isArray(e) ? [] : Object.create(Object.getPrototypeOf(e));
   return mo(r, true), yo.set(e, [t, r]), Reflect.ownKeys(e).forEach((o) => {
     if (Object.getOwnPropertyDescriptor(r, o)) return;
     const s = Reflect.get(e, o), { enumerable: a } = Reflect.getOwnPropertyDescriptor(e, o), c = { value: s, enumerable: a, configurable: true };
-    if (Yr.has(s)) mo(s, false);
+    if (Fr.has(s)) mo(s, false);
     else if (Be.has(s)) {
       const [i, l] = Be.get(s);
       c.value = ua(i, l());
@@ -141,7 +141,7 @@ const dr = Object.getPrototypeOf, hr = /* @__PURE__ */ new WeakMap(), ca = (e) =
   n(s), jr(a) && (a = rc(a) || a);
   const u = !Be.has(a) && fc(a) ? dc(a) : a;
   return t(s, u), Reflect.set(o, s, u, c), r(Je == null ? void 0 : Je("set", s, a, l)), true;
-} }), ic = (e, t, ...n) => [e, [t], ...n], Be = /* @__PURE__ */ new WeakMap(), Yr = /* @__PURE__ */ new WeakSet(), yo = /* @__PURE__ */ new WeakMap(), $n = [1], mn = /* @__PURE__ */ new WeakMap();
+} }), ic = (e, t, ...n) => [e, [t], ...n], Be = /* @__PURE__ */ new WeakMap(), Fr = /* @__PURE__ */ new WeakSet(), yo = /* @__PURE__ */ new WeakMap(), $n = [1], mn = /* @__PURE__ */ new WeakMap();
 let wo = Object.is, cc = (e, t) => new Proxy(e, t), fc = sc, lc = ua, uc = ac, Je;
 function dc(e = {}) {
   if (!jr(e)) throw new Error("object required");
@@ -159,7 +159,7 @@ function dc(e = {}) {
     let R;
     P && (R = [...P], R[1] = [m, ...R[1]]), o(R, y);
   }, i = /* @__PURE__ */ new Map(), l = (m, P) => {
-    const y = !Yr.has(P) && Be.get(P);
+    const y = !Fr.has(P) && Be.get(P);
     if (y) {
       if ((gn ? "production" : void 0) !== "production" && i.has(m)) throw new Error("prop listener already exists");
       if (r.size) {
@@ -310,7 +310,7 @@ function _t(e, t, n) {
 function ga(e, t, n) {
   return (n - e) / (t - e);
 }
-function Fr(e, t, n) {
+function Yr(e, t, n) {
   return _t(t[0], t[1], ga(e[0], e[1], n));
 }
 function ma(e) {
@@ -343,7 +343,7 @@ function wa(e, t, n = 0, r = e.length) {
   }
   return n;
 }
-var vc = Object.freeze({ __proto__: null, bisectLeft: wa, clamp: ya, copySign: An, interpolate: _t, interpolateInv: ga, isNone: Ie, isString: jt, last: pa, mapRange: Fr, multiplyMatrices: Q, parseCoordGrammar: ma, parseFunction: ha, serializeNumber: yn, skipNone: ne, spow: Re, toPrecision: da, type: Le, zdiv: Xr });
+var vc = Object.freeze({ __proto__: null, bisectLeft: wa, clamp: ya, copySign: An, interpolate: _t, interpolateInv: ga, isNone: Ie, isString: jt, last: pa, mapRange: Yr, multiplyMatrices: Q, parseCoordGrammar: ma, parseFunction: ha, serializeNumber: yn, skipNone: ne, spow: Re, toPrecision: da, type: Le, zdiv: Xr });
 class bc {
   add(t, n, r) {
     if (typeof arguments[0] != "string") {
@@ -387,7 +387,7 @@ function bo(e, t, n, r) {
     let d = f.range;
     u === "<percentage>" && (d || (d = [0, 1]));
     let h = a.range || a.refRange;
-    return d && h && (r[c] = Fr(d, h, r[c])), f;
+    return d && h && (r[c] = Yr(d, h, r[c])), f;
   });
 }
 function va(e, { meta: t } = {}) {
@@ -569,7 +569,7 @@ function Po(e, { coords: t } = {}) {
     });
     e.serializeCoords = (r, o) => r.map((s, a) => {
       let { fromRange: c, toRange: i, suffix: l } = n[a];
-      return c && i && (s = Fr(c, i, s)), s = yn(s, { precision: o, unit: l }), s;
+      return c && i && (s = Yr(c, i, s)), s = yn(s, { precision: o, unit: l }), s;
     });
   }
   return e;
@@ -583,13 +583,13 @@ class le extends O {
     }), t.fromBase ?? (t.fromBase = (n) => (n = wn(this.base.white, this.white, n), Q(t.fromXYZ_M, n)))), t.referred ?? (t.referred = "display"), super(t);
   }
 }
-function Yt(e, t) {
+function Ft(e, t) {
   return e = z(e), !t || e.space.equals(t) ? e.coords.slice() : (t = O.get(t), t.from(e));
 }
 function he(e, t) {
   e = z(e);
   let { space: n, index: r } = O.resolveCoord(t, e.space);
-  return Yt(e, n)[r];
+  return Ft(e, n)[r];
 }
 function Ur(e, t, n) {
   return e = z(e), t = O.get(t), e.coords = t.to(e.space, n), e;
@@ -601,7 +601,7 @@ function ke(e, t, n) {
     for (let o in r) ke(e, o, r[o]);
   } else {
     typeof n == "function" && (n = n(he(e, t)));
-    let { space: r, index: o } = O.resolveCoord(t, e.space), s = Yt(e, r);
+    let { space: r, index: o } = O.resolveCoord(t, e.space), s = Ft(e, r);
     s[o] = n, Ur(e, r, s);
   }
   return e;
@@ -648,10 +648,10 @@ function ba(e, t, { kL: n = 1, kC: r = 1, kH: o = 1 } = {}) {
   y * R === 0 ? D = 0 : q <= 180 ? D = M : M > 180 ? D = M - 360 : M < -180 ? D = M + 360 : me.warn("the unthinkable has happened");
   let j = 2 * Math.sqrt(R * y) * Math.sin(D * ot / 2), J = (s + l) / 2, g = (y + R) / 2, b = To(g), A;
   y * R === 0 ? A = B : q <= 180 ? A = B / 2 : B < 360 ? A = (B + 360) / 2 : A = (B - 360) / 2;
-  let E = (J - 50) ** 2, x = 1 + 0.015 * E / Math.sqrt(20 + E), Y = 1 + 0.045 * g, F = 1;
-  F -= 0.17 * Math.cos((A - 30) * ot), F += 0.24 * Math.cos(2 * A * ot), F += 0.32 * Math.cos((3 * A + 6) * ot), F -= 0.2 * Math.cos((4 * A - 63) * ot);
-  let v = 1 + 0.015 * g * F, k = 30 * Math.exp(-1 * ((A - 275) / 25) ** 2), $ = 2 * Math.sqrt(b / (b + So)), K = -1 * Math.sin(2 * k * ot) * $, ue = (_ / (n * x)) ** 2;
-  return ue += (L / (r * Y)) ** 2, ue += (j / (o * v)) ** 2, ue += K * (L / (r * Y)) * (j / (o * v)), Math.sqrt(ue);
+  let E = (J - 50) ** 2, x = 1 + 0.015 * E / Math.sqrt(20 + E), F = 1 + 0.045 * g, Y = 1;
+  Y -= 0.17 * Math.cos((A - 30) * ot), Y += 0.24 * Math.cos(2 * A * ot), Y += 0.32 * Math.cos((3 * A + 6) * ot), Y -= 0.2 * Math.cos((4 * A - 63) * ot);
+  let v = 1 + 0.015 * g * Y, k = 30 * Math.exp(-1 * ((A - 275) / 25) ** 2), $ = 2 * Math.sqrt(b / (b + So)), K = -1 * Math.sin(2 * k * ot) * $, ue = (_ / (n * x)) ** 2;
+  return ue += (L / (r * F)) ** 2, ue += (j / (o * v)) ** 2, ue += K * (L / (r * F)) * (j / (o * v)), Math.sqrt(ue);
 }
 const Ac = [[0.819022437996703, 0.3619062600528904, -0.1288737815209879], [0.0329836539323885, 0.9292868615863434, 0.0361446663506424], [0.0481771893596242, 0.2642395317527308, 0.6335478284694309]], Ec = [[1.2268798758459243, -0.5578149944602171, 0.2813910456659647], [-0.0405757452148008, 1.112286803280317, -0.0717110580655164], [-0.0763729366746601, -0.4214933324022432, 1.5869240198367816]], _c = [[0.210454268309314, 0.7936177747023054, -0.0040720430116193], [1.9779985324311684, -2.42859224204858, 0.450593709617411], [0.0259040424655478, 0.7827717124575296, -0.8086757549230774]], kc = [[1, 0.3963377773761749, 0.2158037573099136], [1, -0.1055613458156586, -0.0638541728258133], [1, -0.0894841775298119, -1.2914855480194092]];
 var ut = new O({ id: "oklab", name: "Oklab", coords: { l: { refRange: [0, 1], name: "Lightness" }, a: { refRange: [-0.4, 0.4] }, b: { refRange: [-0.4, 0.4] } }, white: "D65", base: se, fromBase(e) {
@@ -731,9 +731,9 @@ function zc(e, t) {
   let u = o - c, f = 2 * Math.sqrt(r * a) * Math.sin(u / 2 * (Math.PI / 180));
   return Math.sqrt(i ** 2 + l ** 2 + f ** 2);
 }
-const Sa = 3424 / 4096, Ra = 2413 / 128, Ta = 2392 / 128, Lo = 2610 / 16384, qc = 2523 / 32, jc = 16384 / 2610, Do = 32 / 2523, Yc = [[0.3592832590121217, 0.6976051147779502, -0.035891593232029], [-0.1920808463704993, 1.100476797037432, 0.0753748658519118], [0.0070797844607479, 0.0748396662186362, 0.8433265453898765]], Fc = [[2048 / 4096, 2048 / 4096, 0], [6610 / 4096, -13613 / 4096, 7003 / 4096], [17933 / 4096, -17390 / 4096, -543 / 4096]], Xc = [[0.9999999999999998, 0.0086090370379328, 0.111029625003026], [0.9999999999999998, -0.0086090370379328, -0.1110296250030259], [0.9999999999999998, 0.5600313357106791, -0.3206271749873188]], Uc = [[2.0701522183894223, -1.3263473389671563, 0.2066510476294053], [0.3647385209748072, 0.6805660249472273, -0.0453045459220347], [-0.0497472075358123, -0.0492609666966131, 1.1880659249923042]];
+const Sa = 3424 / 4096, Ra = 2413 / 128, Ta = 2392 / 128, Lo = 2610 / 16384, qc = 2523 / 32, jc = 16384 / 2610, Do = 32 / 2523, Fc = [[0.3592832590121217, 0.6976051147779502, -0.035891593232029], [-0.1920808463704993, 1.100476797037432, 0.0753748658519118], [0.0070797844607479, 0.0748396662186362, 0.8433265453898765]], Yc = [[2048 / 4096, 2048 / 4096, 0], [6610 / 4096, -13613 / 4096, 7003 / 4096], [17933 / 4096, -17390 / 4096, -543 / 4096]], Xc = [[0.9999999999999998, 0.0086090370379328, 0.111029625003026], [0.9999999999999998, -0.0086090370379328, -0.1110296250030259], [0.9999999999999998, 0.5600313357106791, -0.3206271749873188]], Uc = [[2.0701522183894223, -1.3263473389671563, 0.2066510476294053], [0.3647385209748072, 0.6805660249472273, -0.0453045459220347], [-0.0497472075358123, -0.0492609666966131, 1.1880659249923042]];
 var yr = new O({ id: "ictcp", name: "ICTCP", coords: { i: { refRange: [0, 1], name: "I" }, ct: { refRange: [-0.5, 0.5], name: "CT" }, cp: { refRange: [-0.5, 0.5], name: "CP" } }, base: Jr, fromBase(e) {
-  let t = Q(Yc, e);
+  let t = Q(Fc, e);
   return Wc(t);
 }, toBase(e) {
   let t = Jc(e);
@@ -744,7 +744,7 @@ function Wc(e) {
     let r = Sa + Ra * (n / 1e4) ** Lo, o = 1 + Ta * (n / 1e4) ** Lo;
     return (r / o) ** qc;
   });
-  return Q(Fc, t);
+  return Q(Yc, t);
 }
 function Jc(e) {
   return Q(Xc, e).map(function(r) {
@@ -1007,15 +1007,15 @@ var Ca = new le({ id: "rec2020", name: "REC.2020", base: En, toBase(e) {
 const yf = [[0.4865709486482162, 0.26566769316909306, 0.1982172852343625], [0.2289745640697488, 0.6917385218365064, 0.079286914093745], [0, 0.04511338185890264, 1.043944368900976]], wf = [[2.493496911941425, -0.9313836179191239, -0.40271078445071684], [-0.8294889695615747, 1.7626640603183463, 0.023624685841943577], [0.03584583024378447, -0.07617238926804182, 0.9568845240076872]];
 var La = new le({ id: "p3-linear", cssId: "--display-p3-linear", name: "Linear P3", white: "D65", toXYZ_M: yf, fromXYZ_M: wf });
 const vf = [[0.41239079926595934, 0.357584339383878, 0.1804807884018343], [0.21263900587151027, 0.715168678767756, 0.07219231536073371], [0.01933081871559182, 0.11919477979462598, 0.9505321522496607]], re = [[3.2409699419045226, -1.537383177570094, -0.4986107602930034], [-0.9692436362808796, 1.8759675015077202, 0.04155505740717559], [0.05563007969699366, -0.20397695888897652, 1.0569715142428786]];
-var Da = new le({ id: "srgb-linear", name: "Linear sRGB", white: "D65", toXYZ_M: vf, fromXYZ_M: re }), Yo = { aliceblue: [240 / 255, 248 / 255, 1], antiquewhite: [250 / 255, 235 / 255, 215 / 255], aqua: [0, 1, 1], aquamarine: [127 / 255, 1, 212 / 255], azure: [240 / 255, 1, 1], beige: [245 / 255, 245 / 255, 220 / 255], bisque: [1, 228 / 255, 196 / 255], black: [0, 0, 0], blanchedalmond: [1, 235 / 255, 205 / 255], blue: [0, 0, 1], blueviolet: [138 / 255, 43 / 255, 226 / 255], brown: [165 / 255, 42 / 255, 42 / 255], burlywood: [222 / 255, 184 / 255, 135 / 255], cadetblue: [95 / 255, 158 / 255, 160 / 255], chartreuse: [127 / 255, 1, 0], chocolate: [210 / 255, 105 / 255, 30 / 255], coral: [1, 127 / 255, 80 / 255], cornflowerblue: [100 / 255, 149 / 255, 237 / 255], cornsilk: [1, 248 / 255, 220 / 255], crimson: [220 / 255, 20 / 255, 60 / 255], cyan: [0, 1, 1], darkblue: [0, 0, 139 / 255], darkcyan: [0, 139 / 255, 139 / 255], darkgoldenrod: [184 / 255, 134 / 255, 11 / 255], darkgray: [169 / 255, 169 / 255, 169 / 255], darkgreen: [0, 100 / 255, 0], darkgrey: [169 / 255, 169 / 255, 169 / 255], darkkhaki: [189 / 255, 183 / 255, 107 / 255], darkmagenta: [139 / 255, 0, 139 / 255], darkolivegreen: [85 / 255, 107 / 255, 47 / 255], darkorange: [1, 140 / 255, 0], darkorchid: [153 / 255, 50 / 255, 204 / 255], darkred: [139 / 255, 0, 0], darksalmon: [233 / 255, 150 / 255, 122 / 255], darkseagreen: [143 / 255, 188 / 255, 143 / 255], darkslateblue: [72 / 255, 61 / 255, 139 / 255], darkslategray: [47 / 255, 79 / 255, 79 / 255], darkslategrey: [47 / 255, 79 / 255, 79 / 255], darkturquoise: [0, 206 / 255, 209 / 255], darkviolet: [148 / 255, 0, 211 / 255], deeppink: [1, 20 / 255, 147 / 255], deepskyblue: [0, 191 / 255, 1], dimgray: [105 / 255, 105 / 255, 105 / 255], dimgrey: [105 / 255, 105 / 255, 105 / 255], dodgerblue: [30 / 255, 144 / 255, 1], firebrick: [178 / 255, 34 / 255, 34 / 255], floralwhite: [1, 250 / 255, 240 / 255], forestgreen: [34 / 255, 139 / 255, 34 / 255], fuchsia: [1, 0, 1], gainsboro: [220 / 255, 220 / 255, 220 / 255], ghostwhite: [248 / 255, 248 / 255, 1], gold: [1, 215 / 255, 0], goldenrod: [218 / 255, 165 / 255, 32 / 255], gray: [128 / 255, 128 / 255, 128 / 255], green: [0, 128 / 255, 0], greenyellow: [173 / 255, 1, 47 / 255], grey: [128 / 255, 128 / 255, 128 / 255], honeydew: [240 / 255, 1, 240 / 255], hotpink: [1, 105 / 255, 180 / 255], indianred: [205 / 255, 92 / 255, 92 / 255], indigo: [75 / 255, 0, 130 / 255], ivory: [1, 1, 240 / 255], khaki: [240 / 255, 230 / 255, 140 / 255], lavender: [230 / 255, 230 / 255, 250 / 255], lavenderblush: [1, 240 / 255, 245 / 255], lawngreen: [124 / 255, 252 / 255, 0], lemonchiffon: [1, 250 / 255, 205 / 255], lightblue: [173 / 255, 216 / 255, 230 / 255], lightcoral: [240 / 255, 128 / 255, 128 / 255], lightcyan: [224 / 255, 1, 1], lightgoldenrodyellow: [250 / 255, 250 / 255, 210 / 255], lightgray: [211 / 255, 211 / 255, 211 / 255], lightgreen: [144 / 255, 238 / 255, 144 / 255], lightgrey: [211 / 255, 211 / 255, 211 / 255], lightpink: [1, 182 / 255, 193 / 255], lightsalmon: [1, 160 / 255, 122 / 255], lightseagreen: [32 / 255, 178 / 255, 170 / 255], lightskyblue: [135 / 255, 206 / 255, 250 / 255], lightslategray: [119 / 255, 136 / 255, 153 / 255], lightslategrey: [119 / 255, 136 / 255, 153 / 255], lightsteelblue: [176 / 255, 196 / 255, 222 / 255], lightyellow: [1, 1, 224 / 255], lime: [0, 1, 0], limegreen: [50 / 255, 205 / 255, 50 / 255], linen: [250 / 255, 240 / 255, 230 / 255], magenta: [1, 0, 1], maroon: [128 / 255, 0, 0], mediumaquamarine: [102 / 255, 205 / 255, 170 / 255], mediumblue: [0, 0, 205 / 255], mediumorchid: [186 / 255, 85 / 255, 211 / 255], mediumpurple: [147 / 255, 112 / 255, 219 / 255], mediumseagreen: [60 / 255, 179 / 255, 113 / 255], mediumslateblue: [123 / 255, 104 / 255, 238 / 255], mediumspringgreen: [0, 250 / 255, 154 / 255], mediumturquoise: [72 / 255, 209 / 255, 204 / 255], mediumvioletred: [199 / 255, 21 / 255, 133 / 255], midnightblue: [25 / 255, 25 / 255, 112 / 255], mintcream: [245 / 255, 1, 250 / 255], mistyrose: [1, 228 / 255, 225 / 255], moccasin: [1, 228 / 255, 181 / 255], navajowhite: [1, 222 / 255, 173 / 255], navy: [0, 0, 128 / 255], oldlace: [253 / 255, 245 / 255, 230 / 255], olive: [128 / 255, 128 / 255, 0], olivedrab: [107 / 255, 142 / 255, 35 / 255], orange: [1, 165 / 255, 0], orangered: [1, 69 / 255, 0], orchid: [218 / 255, 112 / 255, 214 / 255], palegoldenrod: [238 / 255, 232 / 255, 170 / 255], palegreen: [152 / 255, 251 / 255, 152 / 255], paleturquoise: [175 / 255, 238 / 255, 238 / 255], palevioletred: [219 / 255, 112 / 255, 147 / 255], papayawhip: [1, 239 / 255, 213 / 255], peachpuff: [1, 218 / 255, 185 / 255], peru: [205 / 255, 133 / 255, 63 / 255], pink: [1, 192 / 255, 203 / 255], plum: [221 / 255, 160 / 255, 221 / 255], powderblue: [176 / 255, 224 / 255, 230 / 255], purple: [128 / 255, 0, 128 / 255], rebeccapurple: [102 / 255, 51 / 255, 153 / 255], red: [1, 0, 0], rosybrown: [188 / 255, 143 / 255, 143 / 255], royalblue: [65 / 255, 105 / 255, 225 / 255], saddlebrown: [139 / 255, 69 / 255, 19 / 255], salmon: [250 / 255, 128 / 255, 114 / 255], sandybrown: [244 / 255, 164 / 255, 96 / 255], seagreen: [46 / 255, 139 / 255, 87 / 255], seashell: [1, 245 / 255, 238 / 255], sienna: [160 / 255, 82 / 255, 45 / 255], silver: [192 / 255, 192 / 255, 192 / 255], skyblue: [135 / 255, 206 / 255, 235 / 255], slateblue: [106 / 255, 90 / 255, 205 / 255], slategray: [112 / 255, 128 / 255, 144 / 255], slategrey: [112 / 255, 128 / 255, 144 / 255], snow: [1, 250 / 255, 250 / 255], springgreen: [0, 1, 127 / 255], steelblue: [70 / 255, 130 / 255, 180 / 255], tan: [210 / 255, 180 / 255, 140 / 255], teal: [0, 128 / 255, 128 / 255], thistle: [216 / 255, 191 / 255, 216 / 255], tomato: [1, 99 / 255, 71 / 255], turquoise: [64 / 255, 224 / 255, 208 / 255], violet: [238 / 255, 130 / 255, 238 / 255], wheat: [245 / 255, 222 / 255, 179 / 255], white: [1, 1, 1], whitesmoke: [245 / 255, 245 / 255, 245 / 255], yellow: [1, 1, 0], yellowgreen: [154 / 255, 205 / 255, 50 / 255] };
-let Fo = Array(3).fill("<percentage> | <number>[0, 255]"), Xo = Array(3).fill("<number>[0, 255]");
+var Da = new le({ id: "srgb-linear", name: "Linear sRGB", white: "D65", toXYZ_M: vf, fromXYZ_M: re }), Fo = { aliceblue: [240 / 255, 248 / 255, 1], antiquewhite: [250 / 255, 235 / 255, 215 / 255], aqua: [0, 1, 1], aquamarine: [127 / 255, 1, 212 / 255], azure: [240 / 255, 1, 1], beige: [245 / 255, 245 / 255, 220 / 255], bisque: [1, 228 / 255, 196 / 255], black: [0, 0, 0], blanchedalmond: [1, 235 / 255, 205 / 255], blue: [0, 0, 1], blueviolet: [138 / 255, 43 / 255, 226 / 255], brown: [165 / 255, 42 / 255, 42 / 255], burlywood: [222 / 255, 184 / 255, 135 / 255], cadetblue: [95 / 255, 158 / 255, 160 / 255], chartreuse: [127 / 255, 1, 0], chocolate: [210 / 255, 105 / 255, 30 / 255], coral: [1, 127 / 255, 80 / 255], cornflowerblue: [100 / 255, 149 / 255, 237 / 255], cornsilk: [1, 248 / 255, 220 / 255], crimson: [220 / 255, 20 / 255, 60 / 255], cyan: [0, 1, 1], darkblue: [0, 0, 139 / 255], darkcyan: [0, 139 / 255, 139 / 255], darkgoldenrod: [184 / 255, 134 / 255, 11 / 255], darkgray: [169 / 255, 169 / 255, 169 / 255], darkgreen: [0, 100 / 255, 0], darkgrey: [169 / 255, 169 / 255, 169 / 255], darkkhaki: [189 / 255, 183 / 255, 107 / 255], darkmagenta: [139 / 255, 0, 139 / 255], darkolivegreen: [85 / 255, 107 / 255, 47 / 255], darkorange: [1, 140 / 255, 0], darkorchid: [153 / 255, 50 / 255, 204 / 255], darkred: [139 / 255, 0, 0], darksalmon: [233 / 255, 150 / 255, 122 / 255], darkseagreen: [143 / 255, 188 / 255, 143 / 255], darkslateblue: [72 / 255, 61 / 255, 139 / 255], darkslategray: [47 / 255, 79 / 255, 79 / 255], darkslategrey: [47 / 255, 79 / 255, 79 / 255], darkturquoise: [0, 206 / 255, 209 / 255], darkviolet: [148 / 255, 0, 211 / 255], deeppink: [1, 20 / 255, 147 / 255], deepskyblue: [0, 191 / 255, 1], dimgray: [105 / 255, 105 / 255, 105 / 255], dimgrey: [105 / 255, 105 / 255, 105 / 255], dodgerblue: [30 / 255, 144 / 255, 1], firebrick: [178 / 255, 34 / 255, 34 / 255], floralwhite: [1, 250 / 255, 240 / 255], forestgreen: [34 / 255, 139 / 255, 34 / 255], fuchsia: [1, 0, 1], gainsboro: [220 / 255, 220 / 255, 220 / 255], ghostwhite: [248 / 255, 248 / 255, 1], gold: [1, 215 / 255, 0], goldenrod: [218 / 255, 165 / 255, 32 / 255], gray: [128 / 255, 128 / 255, 128 / 255], green: [0, 128 / 255, 0], greenyellow: [173 / 255, 1, 47 / 255], grey: [128 / 255, 128 / 255, 128 / 255], honeydew: [240 / 255, 1, 240 / 255], hotpink: [1, 105 / 255, 180 / 255], indianred: [205 / 255, 92 / 255, 92 / 255], indigo: [75 / 255, 0, 130 / 255], ivory: [1, 1, 240 / 255], khaki: [240 / 255, 230 / 255, 140 / 255], lavender: [230 / 255, 230 / 255, 250 / 255], lavenderblush: [1, 240 / 255, 245 / 255], lawngreen: [124 / 255, 252 / 255, 0], lemonchiffon: [1, 250 / 255, 205 / 255], lightblue: [173 / 255, 216 / 255, 230 / 255], lightcoral: [240 / 255, 128 / 255, 128 / 255], lightcyan: [224 / 255, 1, 1], lightgoldenrodyellow: [250 / 255, 250 / 255, 210 / 255], lightgray: [211 / 255, 211 / 255, 211 / 255], lightgreen: [144 / 255, 238 / 255, 144 / 255], lightgrey: [211 / 255, 211 / 255, 211 / 255], lightpink: [1, 182 / 255, 193 / 255], lightsalmon: [1, 160 / 255, 122 / 255], lightseagreen: [32 / 255, 178 / 255, 170 / 255], lightskyblue: [135 / 255, 206 / 255, 250 / 255], lightslategray: [119 / 255, 136 / 255, 153 / 255], lightslategrey: [119 / 255, 136 / 255, 153 / 255], lightsteelblue: [176 / 255, 196 / 255, 222 / 255], lightyellow: [1, 1, 224 / 255], lime: [0, 1, 0], limegreen: [50 / 255, 205 / 255, 50 / 255], linen: [250 / 255, 240 / 255, 230 / 255], magenta: [1, 0, 1], maroon: [128 / 255, 0, 0], mediumaquamarine: [102 / 255, 205 / 255, 170 / 255], mediumblue: [0, 0, 205 / 255], mediumorchid: [186 / 255, 85 / 255, 211 / 255], mediumpurple: [147 / 255, 112 / 255, 219 / 255], mediumseagreen: [60 / 255, 179 / 255, 113 / 255], mediumslateblue: [123 / 255, 104 / 255, 238 / 255], mediumspringgreen: [0, 250 / 255, 154 / 255], mediumturquoise: [72 / 255, 209 / 255, 204 / 255], mediumvioletred: [199 / 255, 21 / 255, 133 / 255], midnightblue: [25 / 255, 25 / 255, 112 / 255], mintcream: [245 / 255, 1, 250 / 255], mistyrose: [1, 228 / 255, 225 / 255], moccasin: [1, 228 / 255, 181 / 255], navajowhite: [1, 222 / 255, 173 / 255], navy: [0, 0, 128 / 255], oldlace: [253 / 255, 245 / 255, 230 / 255], olive: [128 / 255, 128 / 255, 0], olivedrab: [107 / 255, 142 / 255, 35 / 255], orange: [1, 165 / 255, 0], orangered: [1, 69 / 255, 0], orchid: [218 / 255, 112 / 255, 214 / 255], palegoldenrod: [238 / 255, 232 / 255, 170 / 255], palegreen: [152 / 255, 251 / 255, 152 / 255], paleturquoise: [175 / 255, 238 / 255, 238 / 255], palevioletred: [219 / 255, 112 / 255, 147 / 255], papayawhip: [1, 239 / 255, 213 / 255], peachpuff: [1, 218 / 255, 185 / 255], peru: [205 / 255, 133 / 255, 63 / 255], pink: [1, 192 / 255, 203 / 255], plum: [221 / 255, 160 / 255, 221 / 255], powderblue: [176 / 255, 224 / 255, 230 / 255], purple: [128 / 255, 0, 128 / 255], rebeccapurple: [102 / 255, 51 / 255, 153 / 255], red: [1, 0, 0], rosybrown: [188 / 255, 143 / 255, 143 / 255], royalblue: [65 / 255, 105 / 255, 225 / 255], saddlebrown: [139 / 255, 69 / 255, 19 / 255], salmon: [250 / 255, 128 / 255, 114 / 255], sandybrown: [244 / 255, 164 / 255, 96 / 255], seagreen: [46 / 255, 139 / 255, 87 / 255], seashell: [1, 245 / 255, 238 / 255], sienna: [160 / 255, 82 / 255, 45 / 255], silver: [192 / 255, 192 / 255, 192 / 255], skyblue: [135 / 255, 206 / 255, 235 / 255], slateblue: [106 / 255, 90 / 255, 205 / 255], slategray: [112 / 255, 128 / 255, 144 / 255], slategrey: [112 / 255, 128 / 255, 144 / 255], snow: [1, 250 / 255, 250 / 255], springgreen: [0, 1, 127 / 255], steelblue: [70 / 255, 130 / 255, 180 / 255], tan: [210 / 255, 180 / 255, 140 / 255], teal: [0, 128 / 255, 128 / 255], thistle: [216 / 255, 191 / 255, 216 / 255], tomato: [1, 99 / 255, 71 / 255], turquoise: [64 / 255, 224 / 255, 208 / 255], violet: [238 / 255, 130 / 255, 238 / 255], wheat: [245 / 255, 222 / 255, 179 / 255], white: [1, 1, 1], whitesmoke: [245 / 255, 245 / 255, 245 / 255], yellow: [1, 1, 0], yellowgreen: [154 / 255, 205 / 255, 50 / 255] };
+let Yo = Array(3).fill("<percentage> | <number>[0, 255]"), Xo = Array(3).fill("<number>[0, 255]");
 var pt = new le({ id: "srgb", name: "sRGB", base: Da, fromBase: (e) => e.map((t) => {
   let n = t < 0 ? -1 : 1, r = t * n;
   return r > 31308e-7 ? n * (1.055 * r ** (1 / 2.4) - 0.055) : 12.92 * t;
 }), toBase: (e) => e.map((t) => {
   let n = t < 0 ? -1 : 1, r = t * n;
   return r <= 0.04045 ? t / 12.92 : n * ((r + 0.055) / 1.055) ** 2.4;
-}), formats: { rgb: { coords: Fo }, rgb_number: { name: "rgb", commas: true, coords: Xo, noAlpha: true }, color: {}, rgba: { coords: Fo, commas: true, lastAlpha: true }, rgba_number: { name: "rgba", commas: true, coords: Xo }, hex: { type: "custom", toGamut: true, test: (e) => /^#([a-f0-9]{3,4}){1,2}$/i.test(e), parse(e) {
+}), formats: { rgb: { coords: Yo }, rgb_number: { name: "rgb", commas: true, coords: Xo, noAlpha: true }, color: {}, rgba: { coords: Yo, commas: true, lastAlpha: true }, rgba_number: { name: "rgba", commas: true, coords: Xo }, hex: { type: "custom", toGamut: true, test: (e) => /^#([a-f0-9]{3,4}){1,2}$/i.test(e), parse(e) {
   e.length <= 5 && (e = e.replace(/[a-f0-9]/gi, "$&$&"));
   let t = [];
   return e.replace(/[a-f0-9]{2}/gi, (n) => {
@@ -1028,7 +1028,7 @@ var pt = new le({ id: "srgb", name: "sRGB", base: Da, fromBase: (e) => e.map((t)
 } }, keyword: { type: "custom", test: (e) => /^[a-z]+$/i.test(e), parse(e) {
   e = e.toLowerCase();
   let t = { spaceId: "srgb", coords: null, alpha: 1 };
-  if (e === "transparent" ? (t.coords = Yo.black, t.alpha = 0) : t.coords = Yo[e], t.coords) return t;
+  if (e === "transparent" ? (t.coords = Fo.black, t.alpha = 0) : t.coords = Fo[e], t.coords) return t;
 } } } }), Na = new le({ id: "p3", cssId: "display-p3", name: "P3", base: La, fromBase: pt.fromBase, toBase: pt.toBase });
 me.display_space = pt;
 let bf;
@@ -1115,10 +1115,10 @@ var br = new O({ id: "lab-d65", name: "Lab D65", coords: { l: { refRange: [0, 10
   let t = [];
   return t[1] = (e[0] + 16) / 116, t[0] = e[1] / 500 + t[1], t[2] = t[1] - e[2] / 200, [t[0] > Go ? Math.pow(t[0], 3) : (116 * t[0] - 16) / Qt, e[0] > 8 ? Math.pow((e[0] + 16) / 116, 3) : e[0] / Qt, t[2] > Go ? Math.pow(t[2], 3) : (116 * t[2] - 16) / Qt].map((r, o) => r * jn[o]);
 }, formats: { "lab-d65": { coords: ["<number> | <percentage>", "<number> | <percentage>[-1,1]", "<number> | <percentage>[-1,1]"] } } });
-const Yn = Math.pow(5, 0.5) * 0.5 + 0.5;
+const Fn = Math.pow(5, 0.5) * 0.5 + 0.5;
 function qf(e, t) {
   e = z(e), t = z(t);
-  let n = he(e, [br, "l"]), r = he(t, [br, "l"]), o = Math.abs(Math.pow(n, Yn) - Math.pow(r, Yn)), s = Math.pow(o, 1 / Yn) * Math.SQRT2 - 40;
+  let n = he(e, [br, "l"]), r = he(t, [br, "l"]), o = Math.abs(Math.pow(n, Fn) - Math.pow(r, Fn)), s = Math.pow(o, 1 / Fn) * Math.SQRT2 - 40;
   return s < 7.5 ? 0 : s;
 }
 var nn = Object.freeze({ __proto__: null, contrastAPCA: Nf, contrastDeltaPhi: qf, contrastLstar: Hf, contrastMichelson: Bf, contrastWCAG21: Tf, contrastWeber: $f });
@@ -1134,21 +1134,21 @@ function jf(e, t, n = {}) {
   throw new TypeError(`Unknown contrast algorithm: ${r}`);
 }
 function _n(e) {
-  let [t, n, r] = Yt(e, se), o = t + 15 * n + 3 * r;
+  let [t, n, r] = Ft(e, se), o = t + 15 * n + 3 * r;
   return [4 * t / o, 9 * n / o];
 }
 function Ia(e) {
-  let [t, n, r] = Yt(e, se), o = t + n + r;
+  let [t, n, r] = Ft(e, se), o = t + n + r;
   return [t / o, n / o];
 }
-function Yf(e) {
+function Ff(e) {
   Object.defineProperty(e.prototype, "uv", { get() {
     return _n(this);
   } }), Object.defineProperty(e.prototype, "xy", { get() {
     return Ia(this);
   } });
 }
-var Ff = Object.freeze({ __proto__: null, register: Yf, uv: _n, xy: Ia });
+var Yf = Object.freeze({ __proto__: null, register: Ff, uv: _n, xy: Ia });
 function St(e, t, n = {}) {
   jt(n) && (n = { method: n });
   let { method: r = me.deltaE, ...o } = n;
@@ -1165,13 +1165,13 @@ function Uf(e, t = 0.25) {
 }
 var Wf = Object.freeze({ __proto__: null, darken: Uf, lighten: Xf });
 function $a(e, t, n = 0.5, r = {}) {
-  return [e, t] = [z(e), z(t)], Le(n) === "object" && ([n, r] = [0.5, n]), Ft(e, t, r)(n);
+  return [e, t] = [z(e), z(t)], Le(n) === "object" && ([n, r] = [0.5, n]), Yt(e, t, r)(n);
 }
 function Ha(e, t, n = {}) {
   let r;
   Kr(e) && ([r, n] = [e, t], [e, t] = r.rangeArgs.colors);
   let { maxDeltaE: o, deltaEMethod: s, steps: a = 2, maxSteps: c = 1e3, ...i } = n;
-  r || ([e, t] = [z(e), z(t)], r = Ft(e, t, i));
+  r || ([e, t] = [z(e), z(t)], r = Yt(e, t, i));
   let l = St(e, t), u = o > 0 ? Math.max(a, Math.ceil(l / o) + 1) : a, f = [];
   if (c !== void 0 && (u = Math.min(u, c)), u === 1) f = [{ p: 0.5, color: r(0.5) }];
   else {
@@ -1197,10 +1197,10 @@ function Ha(e, t, n = {}) {
   }
   return f = f.map((d) => d.color), f;
 }
-function Ft(e, t, n = {}) {
+function Yt(e, t, n = {}) {
   if (Kr(e)) {
     let [i, l] = [e, t];
-    return Ft(...i.rangeArgs.colors, { ...i.rangeArgs.options, ...l });
+    return Yt(...i.rangeArgs.colors, { ...i.rangeArgs.options, ...l });
   }
   let { space: r, outputSpace: o, progression: s, premultiplied: a } = n;
   e = z(e), t = z(t), e = dt(e), t = dt(t);
@@ -1223,9 +1223,9 @@ function Kr(e) {
 }
 me.interpolationSpace = "lab";
 function Jf(e) {
-  e.defineFunction("mix", $a, { returns: "color" }), e.defineFunction("range", Ft, { returns: "function<color>" }), e.defineFunction("steps", Ha, { returns: "array<color>" });
+  e.defineFunction("mix", $a, { returns: "color" }), e.defineFunction("range", Yt, { returns: "function<color>" }), e.defineFunction("steps", Ha, { returns: "array<color>" });
 }
-var Gf = Object.freeze({ __proto__: null, isRange: Kr, mix: $a, range: Ft, register: Jf, steps: Ha }), za = new O({ id: "hsl", name: "HSL", coords: { h: { refRange: [0, 360], type: "angle", name: "Hue" }, s: { range: [0, 100], name: "Saturation" }, l: { range: [0, 100], name: "Lightness" } }, base: pt, fromBase: (e) => {
+var Gf = Object.freeze({ __proto__: null, isRange: Kr, mix: $a, range: Yt, register: Jf, steps: Ha }), za = new O({ id: "hsl", name: "HSL", coords: { h: { refRange: [0, 360], type: "angle", name: "Hue" }, s: { range: [0, 100], name: "Saturation" }, l: { range: [0, 100], name: "Lightness" } }, base: pt, fromBase: (e) => {
   let t = Math.max(...e), n = Math.min(...e), [r, o, s] = e, [a, c, i] = [NaN, 0, (n + t) / 2], l = t - n;
   if (l !== 0) {
     switch (c = i === 0 || i === 1 ? 0 : (t - i) / Math.min(i, 1 - i), t) {
@@ -1276,9 +1276,9 @@ var Gf = Object.freeze({ __proto__: null, isRange: Kr, mix: $a, range: Ft, regis
 const Zf = [[0.5766690429101305, 0.1855582379065463, 0.1882286462349947], [0.29734497525053605, 0.6273635662554661, 0.07529145849399788], [0.02703136138641234, 0.07068885253582723, 0.9913375368376388]], Qf = [[2.0415879038107465, -0.5650069742788596, -0.34473135077832956], [-0.9692436362808795, 1.8759675015077202, 0.04155505740717557], [0.013444280632031142, -0.11836239223101838, 1.0151749943912054]];
 var ja = new le({ id: "a98rgb-linear", cssId: "--a98-rgb-linear", name: "Linear Adobe\xAE 98 RGB compatible", white: "D65", toXYZ_M: Zf, fromXYZ_M: Qf }), Vf = new le({ id: "a98rgb", cssId: "a98-rgb", name: "Adobe\xAE 98 RGB compatible", base: ja, toBase: (e) => e.map((t) => Math.pow(Math.abs(t), 563 / 256) * Math.sign(t)), fromBase: (e) => e.map((t) => Math.pow(Math.abs(t), 256 / 563) * Math.sign(t)) });
 const el = [[0.7977666449006423, 0.13518129740053308, 0.0313477341283922], [0.2880748288194013, 0.711835234241873, 8993693872564e-17], [0, 0, 0.8251046025104602]], tl = [[1.3457868816471583, -0.25557208737979464, -0.05110186497554526], [-0.5446307051249019, 1.5082477428451468, 0.02052744743642139], [0, 0, 1.2119675456389452]];
-var Ya = new le({ id: "prophoto-linear", cssId: "--prophoto-rgb-linear", name: "Linear ProPhoto", white: "D50", base: Wr, toXYZ_M: el, fromXYZ_M: tl });
+var Fa = new le({ id: "prophoto-linear", cssId: "--prophoto-rgb-linear", name: "Linear ProPhoto", white: "D50", base: Wr, toXYZ_M: el, fromXYZ_M: tl });
 const nl = 1 / 512, rl = 16 / 512;
-var ol = new le({ id: "prophoto", cssId: "prophoto-rgb", name: "ProPhoto", base: Ya, toBase(e) {
+var ol = new le({ id: "prophoto", cssId: "prophoto-rgb", name: "ProPhoto", base: Fa, toBase(e) {
   return e.map((t) => t < rl ? t / 16 : t ** 1.8);
 }, fromBase(e) {
   return e.map((t) => t >= nl ? t ** (1 / 1.8) : 16 * t);
@@ -1290,9 +1290,9 @@ var ol = new le({ id: "prophoto", cssId: "prophoto-rgb", name: "ProPhoto", base:
   let [t, n, r] = e, o, s;
   return isNaN(r) ? (o = 0, s = 0) : (o = n * Math.cos(r * Math.PI / 180), s = n * Math.sin(r * Math.PI / 180)), [t, o, s];
 }, formats: { oklch: { coords: ["<percentage> | <number>", "<number> | <percentage>[0,1]", "<number> | <angle>"] } } });
-let Fa = ie.D65;
-const al = 216 / 24389, Ko = 24389 / 27, [Zo, Qo] = _n({ space: se, coords: Fa });
-var Xa = new O({ id: "luv", name: "Luv", coords: { l: { refRange: [0, 100], name: "Lightness" }, u: { refRange: [-215, 215] }, v: { refRange: [-215, 215] } }, white: Fa, base: se, fromBase(e) {
+let Ya = ie.D65;
+const al = 216 / 24389, Ko = 24389 / 27, [Zo, Qo] = _n({ space: se, coords: Ya });
+var Xa = new O({ id: "luv", name: "Luv", coords: { l: { refRange: [0, 100], name: "Lightness" }, u: { refRange: [-215, 215] }, v: { refRange: [-215, 215] } }, white: Ya, base: se, fromBase(e) {
   let t = [ne(e[0]), ne(e[1]), ne(e[2])], n = t[1], [r, o] = _n({ space: se, coords: t });
   if (!Number.isFinite(r) || !Number.isFinite(o)) return [0, 0, 0];
   let s = n <= al ? Ko * n : 116 * Math.cbrt(n) - 16;
@@ -1311,13 +1311,13 @@ var Xa = new O({ id: "luv", name: "Luv", coords: { l: { refRange: [0, 100], name
   let [t, n, r] = e;
   return n < 0 && (n = 0), isNaN(r) && (r = 0), [t, n * Math.cos(r * Math.PI / 180), n * Math.sin(r * Math.PI / 180)];
 }, formats: { color: { id: "--lchuv", coords: ["<number> | <percentage>", "<number> | <percentage>", "<number> | <angle>"] } } });
-const il = 216 / 24389, cl = 24389 / 27, Vo = re[0][0], es = re[0][1], Fn = re[0][2], ts = re[1][0], ns = re[1][1], Xn = re[1][2], rs = re[2][0], os = re[2][1], Un = re[2][2];
+const il = 216 / 24389, cl = 24389 / 27, Vo = re[0][0], es = re[0][1], Yn = re[0][2], ts = re[1][0], ns = re[1][1], Xn = re[1][2], rs = re[2][0], os = re[2][1], Un = re[2][2];
 function at(e, t, n) {
   const r = t / (Math.sin(n) - e * Math.cos(n));
   return r < 0 ? 1 / 0 : r;
 }
 function bn(e) {
-  const t = Math.pow(e + 16, 3) / 1560896, n = t > il ? t : e / cl, r = n * (284517 * Vo - 94839 * Fn), o = n * (838422 * Fn + 769860 * es + 731718 * Vo), s = n * (632260 * Fn - 126452 * es), a = n * (284517 * ts - 94839 * Xn), c = n * (838422 * Xn + 769860 * ns + 731718 * ts), i = n * (632260 * Xn - 126452 * ns), l = n * (284517 * rs - 94839 * Un), u = n * (838422 * Un + 769860 * os + 731718 * rs), f = n * (632260 * Un - 126452 * os);
+  const t = Math.pow(e + 16, 3) / 1560896, n = t > il ? t : e / cl, r = n * (284517 * Vo - 94839 * Yn), o = n * (838422 * Yn + 769860 * es + 731718 * Vo), s = n * (632260 * Yn - 126452 * es), a = n * (284517 * ts - 94839 * Xn), c = n * (838422 * Xn + 769860 * ns + 731718 * ts), i = n * (632260 * Xn - 126452 * ns), l = n * (284517 * rs - 94839 * Un), u = n * (838422 * Un + 769860 * os + 731718 * rs), f = n * (632260 * Un - 126452 * os);
   return { r0s: r / s, r0i: o * e / s, r1s: r / (s + 126452), r1i: (o - 769860) * e / (s + 126452), g0s: a / i, g0i: c * e / i, g1s: a / (i + 126452), g1i: (c - 769860) * e / (i + 126452), b0s: l / f, b0i: u * e / f, b1s: l / (f + 126452), b1i: (u - 769860) * e / (f + 126452) };
 }
 function ss(e, t) {
@@ -1431,7 +1431,7 @@ var yl = new le({ id: "acescc", cssId: "--acescc", name: "ACEScc", coords: { r: 
   return e.map(function(t) {
     return t <= 0 ? (Math.log2(Vt) + 9.72) / 17.52 : t < Vt ? (Math.log2(Vt + t * 0.5) + 9.72) / 17.52 : (Math.log2(t) + 9.72) / 17.52;
   });
-} }), ms = Object.freeze({ __proto__: null, A98RGB: Vf, A98RGB_Linear: ja, ACEScc: yl, ACEScg: Ja, CAM16_JMh: of, HCT: Ot, HPLuv: ll, HSL: za, HSLuv: fl, HSV: qa, HWB: Kf, ICTCP: yr, JzCzHz: mr, Jzazbz: Ma, LCH: kt, LCHuv: Zr, Lab: pe, Lab_D65: br, Luv: Xa, OKLCH: sl, OKLab: ut, P3: Na, P3_Linear: La, ProPhoto: ol, ProPhoto_Linear: Ya, REC_2020: Ca, REC_2020_Linear: En, REC_2100_HLG: pl, REC_2100_PQ: hl, XYZ_ABS_D65: Jr, XYZ_D50: Wr, XYZ_D65: se, sRGB: pt, sRGB_Linear: Da });
+} }), ms = Object.freeze({ __proto__: null, A98RGB: Vf, A98RGB_Linear: ja, ACEScc: yl, ACEScg: Ja, CAM16_JMh: of, HCT: Ot, HPLuv: ll, HSL: za, HSLuv: fl, HSV: qa, HWB: Kf, ICTCP: yr, JzCzHz: mr, Jzazbz: Ma, LCH: kt, LCHuv: Zr, Lab: pe, Lab_D65: br, Luv: Xa, OKLCH: sl, OKLab: ut, P3: Na, P3_Linear: La, ProPhoto: ol, ProPhoto_Linear: Fa, REC_2020: Ca, REC_2020_Linear: En, REC_2100_HLG: pl, REC_2100_PQ: hl, XYZ_ABS_D65: Jr, XYZ_D50: Wr, XYZ_D65: se, sRGB: pt, sRGB_Linear: Da });
 class G {
   constructor(...t) {
     let n;
@@ -1482,7 +1482,7 @@ class G {
     else for (let n in t) G.defineFunction(n, t[n]);
   }
 }
-G.defineFunctions({ get: he, getAll: Yt, set: ke, setAll: Ur, to: Z, equals: Mf, inGamut: Ke, toGamut: He, distance: Pa, toString: At });
+G.defineFunctions({ get: he, getAll: Ft, set: ke, setAll: Ur, to: Z, equals: Mf, inGamut: Ke, toGamut: He, distance: Pa, toString: At });
 Object.assign(G, { util: vc, hooks: $e, WHITES: ie, Space: O, spaces: O.registry, parse: va, defaults: me });
 for (let e of Object.keys(ms)) O.register(ms[e]);
 for (let e in O.registry) Pr(e, O.registry[e]);
@@ -1524,7 +1524,7 @@ G.extend({ deltaE: St });
 Object.assign(G, { deltaEMethods: ht });
 G.extend(Wf);
 G.extend({ contrast: jf });
-G.extend(Ff);
+G.extend(Yf);
 G.extend(Rf);
 G.extend(Gf);
 G.extend(nn);
@@ -1904,7 +1904,7 @@ function ql() {
 var jl = ql();
 const md = Br(jl);
 /*! noble-secp256k1 - MIT License (c) 2019 Paul Miller (paulmillr.com) */
-const Ga = Object.freeze({ p: 0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2fn, n: 0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141n, h: 1n, a: 0n, b: 7n, Gx: 0x79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798n, Gy: 0x483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8n }), { p: De, n: Xt, Gx: Yl, Gy: Fl, b: Ka } = Ga, ce = 32, Ct = 64, Mr = { publicKey: ce + 1, publicKeyUncompressed: Ct + 1, seed: ce + ce / 2 }, ee = (e = "", t = Error) => {
+const Ga = Object.freeze({ p: 0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2fn, n: 0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141n, h: 1n, a: 0n, b: 7n, Gx: 0x79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798n, Gy: 0x483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8n }), { p: De, n: Xt, Gx: Fl, Gy: Yl, b: Ka } = Ga, ce = 32, Ct = 64, Mr = { publicKey: ce + 1, publicKeyUncompressed: Ct + 1, seed: ce + ce / 2 }, ee = (e = "", t = Error) => {
   const n = new t(e), { captureStackTrace: r } = Error;
   throw typeof r == "function" && r(n, ee), n;
 }, Xl = (e) => e instanceof Uint8Array || ArrayBuffer.isView(e) && e.constructor.name === "Uint8Array" && e.BYTES_PER_ELEMENT === 1, Pe = (e, t, n = "") => {
@@ -2052,7 +2052,7 @@ const _de = class _de {
 __publicField(_de, "BASE");
 __publicField(_de, "ZERO");
 let de = _de;
-const et = new de(Yl, Fl, 1n), We = new de(0n, 1n, 0n);
+const et = new de(Fl, Yl, 1n), We = new de(0n, 1n, 0n);
 de.BASE = et;
 de.ZERO = We;
 const Gl = (e, t, n) => et.multiply(t, false).add(e.multiply(n, false)).assertValidity(), tt = (e) => Sr("0x" + (Qa(e) || "0")), Pn = (e, t, n) => tt(e.subarray(t, n)), Kl = 2n ** 256n, Te = (e) => Va(Za(Ve(e, 0n, Kl), Ct)), Zl = (e) => {
@@ -2485,7 +2485,7 @@ var Hs = (e, { trickleIce: t, rtcConfig: n, rtcPolyfill: r, turnConfig: o, _test
     const k = L(typeof v.toJSON == "function" ? v.toJSON() : { candidate: v.candidate, sdpMid: v.sdpMid, sdpMLineIndex: v.sdpMLineIndex, usernameFragment: v.usernameFragment });
     T({ type: Mi, sdp: JSON.stringify(k) });
   };
-  const Y = () => {
+  const F = () => {
     if (a.connectionState === "failed" || a.connectionState === "closed" || a.iceConnectionState === "failed" || a.iceConnectionState === "closed") {
       R();
       return;
@@ -2501,7 +2501,7 @@ var Hs = (e, { trickleIce: t, rtcConfig: n, rtcPolyfill: r, turnConfig: o, _test
       return;
     }
   };
-  a.onconnectionstatechange = Y, a.addEventListener(Bu, Y), a.ontrack = (v) => {
+  a.onconnectionstatechange = F, a.addEventListener(Bu, F), a.ontrack = (v) => {
     var _a2, _b;
     const k = v.streams[0];
     if (k) {
@@ -2515,7 +2515,7 @@ var Hs = (e, { trickleIce: t, rtcConfig: n, rtcPolyfill: r, turnConfig: o, _test
     var _a2;
     return (_a2 = c.stream) == null ? void 0 : _a2.call(c, v.stream);
   };
-  const F = e ? new Promise((v) => S((k) => {
+  const Y = e ? new Promise((v) => S((k) => {
     k.type === vt && v(k);
   })) : Promise.resolve();
   return e && queueMicrotask(() => {
@@ -2527,7 +2527,7 @@ var Hs = (e, { trickleIce: t, rtcConfig: n, rtcPolyfill: r, turnConfig: o, _test
     return a.connectionState === "closed";
   }, getOffer: async (v = false) => {
     var _a2;
-    if (e) return v ? x(true) : ((_a2 = a.localDescription) == null ? void 0 : _a2.type) === vt ? u ? M(a) : A(a) : F;
+    if (e) return v ? x(true) : ((_a2 = a.localDescription) == null ? void 0 : _a2.type) === vt ? u ? M(a) : A(a) : Y;
   }, async signal(v) {
     var _a2, _b, _c2;
     if (v.type === "candidate") {
@@ -2570,7 +2570,7 @@ var Hs = (e, { trickleIce: t, rtcConfig: n, rtcPolyfill: r, turnConfig: o, _test
       var _a2, _b;
       (_a2 = c.track) == null ? void 0 : _a2.call(c, K, ue), (_b = c.stream) == null ? void 0 : _b.call(c, ue);
     });
-  }, offerPromise: F, addStream: (v) => v.getTracks().forEach((k) => a.addTrack(k, v)), removeStream: (v) => a.getSenders().filter((k) => k.track && v.getTracks().includes(k.track)).forEach((k) => a.removeTrack(k)), addTrack: (v, k) => a.addTrack(v, k), removeTrack: (v) => {
+  }, offerPromise: Y, addStream: (v) => v.getTracks().forEach((k) => a.addTrack(k, v)), removeStream: (v) => a.getSenders().filter((k) => k.track && v.getTracks().includes(k.track)).forEach((k) => a.removeTrack(k)), addTrack: (v, k) => a.addTrack(v, k), removeTrack: (v) => {
     const k = a.getSenders().find(($) => $.track === v);
     k && a.removeTrack(k);
   }, replaceTrack: (v, k) => {
@@ -2578,12 +2578,12 @@ var Hs = (e, { trickleIce: t, rtcConfig: n, rtcPolyfill: r, turnConfig: o, _test
     if ($) return $.replaceTrack(k);
   } };
 };
-const Hu = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:stun.cloudflare.com:3478"].map((e) => ({ urls: e })), zu = Object.getPrototypeOf(Uint8Array), tr = 32, qu = 0, nr = 32, zs = 34, rr = 35, dn = 36, Fe = 16 * 2 ** 10 - dn, bt = 255, ju = 65535, qs = "bufferedamountlow", js = "close", Ys = "error", Yu = 1e4, Fu = (e) => e instanceof ArrayBuffer ? new Uint8Array(e) : new Uint8Array(e.buffer, e.byteOffset, e.byteLength), Xu = (e, t = Yu) => e.readyState !== "open" || e.bufferedAmount <= e.bufferedAmountLowThreshold ? Promise.resolve(e.readyState === "open") : new Promise((n) => {
+const Hu = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:stun.cloudflare.com:3478"].map((e) => ({ urls: e })), zu = Object.getPrototypeOf(Uint8Array), tr = 32, qu = 0, nr = 32, zs = 34, rr = 35, dn = 36, Ye = 16 * 2 ** 10 - dn, bt = 255, ju = 65535, qs = "bufferedamountlow", js = "close", Fs = "error", Fu = 1e4, Yu = (e) => e instanceof ArrayBuffer ? new Uint8Array(e) : new Uint8Array(e.buffer, e.byteOffset, e.byteLength), Xu = (e, t = Fu) => e.readyState !== "open" || e.bufferedAmount <= e.bufferedAmountLowThreshold ? Promise.resolve(e.readyState === "open") : new Promise((n) => {
   let r = false, o = null;
   const s = (i) => {
-    r || (r = true, e.removeEventListener(qs, a), e.removeEventListener(js, c), e.removeEventListener(Ys, c), W(o), n(i));
+    r || (r = true, e.removeEventListener(qs, a), e.removeEventListener(js, c), e.removeEventListener(Fs, c), W(o), n(i));
   }, a = () => s(true), c = () => s(false);
-  if (e.addEventListener(qs, a), e.addEventListener(js, c), e.addEventListener(Ys, c), o = setTimeout(() => s(false), t), e.readyState !== "open") {
+  if (e.addEventListener(qs, a), e.addEventListener(js, c), e.addEventListener(Fs, c), o = setTimeout(() => s(false), t), e.readyState !== "open") {
     s(false);
     return;
   }
@@ -2616,25 +2616,25 @@ const Hu = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:
       r(_);
       const L = typeof y;
       if (L === "undefined") throw U("action data cannot be undefined");
-      const M = L !== "string", B = y instanceof Blob, q = B || y instanceof ArrayBuffer || y instanceof zu, D = T !== void 0, j = q ? Fu(B ? await y.arrayBuffer() : y) : Ne(M ? ye(y) : y), J = D ? Ne(ye(T)) : null, g = Math.ceil(j.byteLength / Fe) + (D ? 1 : 0) || 1, b = Dt(g, (A, E) => {
-        const x = E === g - 1, Y = !!(D && E === 0), F = new Uint8Array(dn + (Y ? (J == null ? void 0 : J.byteLength) ?? 0 : x ? j.byteLength - Fe * (g - (D ? 2 : 1)) : Fe));
-        return F.set(m), F.set([P >> 8, P & bt], nr), F.set([Number(x) | Number(Y) << 1 | Number(q) << 2 | Number(M) << 3], zs), F.set([Math.round((E + 1) / g * bt)], rr), F.set(D ? Y ? J ?? new Uint8Array() : j.subarray((E - 1) * Fe, E * Fe) : j.subarray(E * Fe, (E + 1) * Fe), dn), F;
+      const M = L !== "string", B = y instanceof Blob, q = B || y instanceof ArrayBuffer || y instanceof zu, D = T !== void 0, j = q ? Yu(B ? await y.arrayBuffer() : y) : Ne(M ? ye(y) : y), J = D ? Ne(ye(T)) : null, g = Math.ceil(j.byteLength / Ye) + (D ? 1 : 0) || 1, b = Dt(g, (A, E) => {
+        const x = E === g - 1, F = !!(D && E === 0), Y = new Uint8Array(dn + (F ? (J == null ? void 0 : J.byteLength) ?? 0 : x ? j.byteLength - Ye * (g - (D ? 2 : 1)) : Ye));
+        return Y.set(m), Y.set([P >> 8, P & bt], nr), Y.set([Number(x) | Number(F) << 1 | Number(q) << 2 | Number(M) << 3], zs), Y.set([Math.round((E + 1) / g * bt)], rr), Y.set(D ? F ? J ?? new Uint8Array() : j.subarray((E - 1) * Ye, E * Ye) : j.subarray(E * Ye, (E + 1) * Ye), dn), Y;
       });
       return P = P + 1 & ju, await nt(i(R, async (A, E) => {
         const { channel: x } = E;
-        let Y = 0;
-        for (; Y < g; ) {
+        let F = 0;
+        for (; F < g; ) {
           r(_);
-          const F = b[Y];
-          if (!F) break;
+          const Y = b[F];
+          if (!Y) break;
           if (x && x.bufferedAmount > x.bufferedAmountLowThreshold) {
             const $ = await Xu(x);
             if (r(_), !$) break;
           }
           const v = e(A, w.sendToPending);
           if (!v || v !== E) break;
-          E.sendData(F), Y++;
-          const k = F[rr] ?? bt;
+          E.sendData(Y), F++;
+          const k = Y[rr] ?? bt;
           S == null ? void 0 : S(k / bt, A, T);
         }
       }, { includePending: w.sendToPending })), [];
@@ -2663,7 +2663,7 @@ const Hu = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:
   return n.kind = e, n.name = e === "aborted" ? "AbortError" : n.name, n;
 }, or = (e) => {
   if (e == null ? void 0 : e.aborted) throw ct("aborted", "operation aborted");
-}, Fs = (e) => e && typeof e == "object" && !Array.isArray(e) && typeof e.r == "string" ? { r: e.r, ...Object.hasOwn(e, "m") ? { m: e.m } : {} } : null, Ju = (e) => e && typeof e == "object" && !Array.isArray(e) && typeof e.r == "string" ? { r: e.r, ...typeof e.e == "string" ? { e: e.e } : {} } : null, tn = (e, t) => t === void 0 ? e : { ...e, metadata: t }, Gu = ({ getPeer: e, getPeerIds: t, canReceiveFromPeer: n }) => {
+}, Ys = (e) => e && typeof e == "object" && !Array.isArray(e) && typeof e.r == "string" ? { r: e.r, ...Object.hasOwn(e, "m") ? { m: e.m } : {} } : null, Ju = (e) => e && typeof e == "object" && !Array.isArray(e) && typeof e.r == "string" ? { r: e.r, ...typeof e.e == "string" ? { e: e.e } : {} } : null, tn = (e, t) => t === void 0 ? e : { ...e, metadata: t }, Gu = ({ getPeer: e, getPeerIds: t, canReceiveFromPeer: n }) => {
   const r = {}, o = {}, s = Uu({ getPeer: e, getPeerIds: t, canReceiveFromPeer: n, throwIfAborted: or }), a = s.makeInternalAction, c = s.handleData, i = (h) => {
     const p = o[h];
     p && (W(p.timer), p.signal && p.abortHandler && p.signal.removeEventListener("abort", p.abortHandler), delete o[h]);
@@ -2696,7 +2696,7 @@ const Hu = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:
       y.onReceiveProgress = g;
     }, S = (g, b, A) => {
       var _a2;
-      const E = y.kind === "request" ? Fs(A) : null;
+      const E = y.kind === "request" ? Ys(A) : null;
       (_a2 = y.onReceiveProgress) == null ? void 0 : _a2.call(y, g, tn({ peerId: b }, E ? E.m : A));
     };
     if (m.onProgress(S), w === "message") {
@@ -2704,8 +2704,8 @@ const Hu = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:
       const b = () => {
         if (!g) return;
         const E = g;
-        y.pendingMessages.splice(0).forEach(({ payload: x, peerId: Y, metadata: F }) => {
-          Promise.resolve().then(() => E(x, tn({ peerId: Y }, F))).catch((v) => console.error(`${Se} action handler error:`, v));
+        y.pendingMessages.splice(0).forEach(({ payload: x, peerId: F, metadata: Y }) => {
+          Promise.resolve().then(() => E(x, tn({ peerId: F }, Y))).catch((v) => console.error(`${Se} action handler error:`, v));
         });
       }, A = { send: async (E, x = {}) => {
         await m.send(E, x.target, x.metadata, R(x.onProgress, x.metadata), x.signal);
@@ -2718,13 +2718,13 @@ const Hu = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:
       }, set onReceiveProgress(E) {
         T(E);
       } };
-      return m.onMessage((E, x, Y) => {
+      return m.onMessage((E, x, F) => {
         if (!g) {
-          y.pendingMessages.push(Y === void 0 ? { payload: E, peerId: x } : { payload: E, peerId: x, metadata: Y });
+          y.pendingMessages.push(F === void 0 ? { payload: E, peerId: x } : { payload: E, peerId: x, metadata: F });
           return;
         }
-        const F = g;
-        Promise.resolve().then(() => F(E, tn({ peerId: x }, Y))).catch((v) => console.error(`${Se} action handler error:`, v));
+        const Y = g;
+        Promise.resolve().then(() => Y(E, tn({ peerId: x }, F))).catch((v) => console.error(`${Se} action handler error:`, v));
       }), y.action = A, r[h] = y, b(), A;
     }
     let _ = (p == null ? void 0 : p.onRequest) ?? null;
@@ -2751,22 +2751,22 @@ const Hu = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:
       }, Wu) };
       y.pendingRequests.push(x);
     }, j = async (g, b) => {
-      const { target: A, metadata: E, onProgress: x, signal: Y, timeoutMs: F } = b;
-      if (or(Y), !e(A, false)) throw ct("disconnected", `no active peer with id ${A}`);
+      const { target: A, metadata: E, onProgress: x, signal: F, timeoutMs: Y } = b;
+      if (or(F), !e(A, false)) throw ct("disconnected", `no active peer with id ${A}`);
       const v = wt(20), k = new Promise(($, K) => {
-        const ue = { peerId: A, resolve: $, reject: K, timer: null, ...Y === void 0 ? {} : { signal: Y } }, Oe = () => {
+        const ue = { peerId: A, resolve: $, reject: K, timer: null, ...F === void 0 ? {} : { signal: F } }, Oe = () => {
           i(v), K(ct("aborted", "operation aborted"));
         };
-        Y && (ue.abortHandler = Oe, Y.addEventListener("abort", Oe, { once: true })), o[v] = ue;
+        F && (ue.abortHandler = Oe, F.addEventListener("abort", Oe, { once: true })), o[v] = ue;
       }).catch(($) => {
         throw $;
       });
       try {
-        await m.send(g, A, E === void 0 ? { r: v } : { r: v, m: E }, R(x, E), Y);
+        await m.send(g, A, E === void 0 ? { r: v } : { r: v, m: E }, R(x, E), F);
         const $ = o[v];
-        return $ && F !== void 0 && ($.timer = setTimeout(() => {
+        return $ && Y !== void 0 && ($.timer = setTimeout(() => {
           i(v), $.reject(ct("timeout", "request timed out"));
-        }, F)), await k;
+        }, Y)), await k;
       } catch ($) {
         throw i(v), $;
       }
@@ -2778,8 +2778,8 @@ const Hu = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:
       } catch (E) {
         const x = Ce(E, "request failed");
         if (x.kind === "aborted" || !x.kind) throw x;
-        const Y = x.kind === "timeout" ? { peerId: A, status: "timeout" } : x.kind === "disconnected" ? { peerId: A, status: "disconnected" } : { peerId: A, status: "rejected", error: x };
-        return (_b = b.onResult) == null ? void 0 : _b.call(b, Y), Y;
+        const F = x.kind === "timeout" ? { peerId: A, status: "timeout" } : x.kind === "disconnected" ? { peerId: A, status: "disconnected" } : { peerId: A, status: "rejected", error: x };
+        return (_b = b.onResult) == null ? void 0 : _b.call(b, F), F;
       }
     }))), get onRequest() {
       return _;
@@ -2791,7 +2791,7 @@ const Hu = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:
       T(g);
     } };
     return m.onMessage((g, b, A) => {
-      const E = Fs(A);
+      const E = Ys(A);
       E && D(g, b, E.m, E.r);
     }), y.action = J, r[h] = y, q(), J;
   }, makeInternalAction: a, handleData: c, clearPeer: u };
@@ -2917,17 +2917,17 @@ var Vu = (e, t, n, { onPeerHandshake: r, onHandshakeError: o, handshakeTimeoutMs
     if (!i[g]) throw U(`no active peer with id ${g}`);
     const b = Date.now();
     return await new Promise((A, E) => {
-      const x = l[g] ?? (l[g] = []), Y = () => {
+      const x = l[g] ?? (l[g] = []), F = () => {
         const v = l[g];
         if (!v) return;
-        const k = v.indexOf(F);
+        const k = v.indexOf(Y);
         k > -1 && v.splice(k, 1), v.length || delete l[g];
-      }, F = { resolve: () => {
-        Y(), A();
+      }, Y = { resolve: () => {
+        F(), A();
       }, reject: (v) => {
-        Y(), E(v);
+        F(), E(v);
       } };
-      x.push(F), _.send("", g).catch((v) => F.reject(Ce(v, "peer disconnected")));
+      x.push(Y), _.send("", g).catch((v) => Y.reject(Ce(v, "peer disconnected")));
     }), Date.now() - b;
   }, isPassive: () => a, getPeers: () => Pi(Ze(i).map(([g, b]) => [g, b.connection])), addStream: (g, b = {}) => p.addStream(g, b, B.send), removeStream: (g, b = {}) => {
     p.removeStream(g, b.target);
@@ -3380,7 +3380,7 @@ var E0 = ({ init: e, subscribe: t, announce: n, deactivate: r }) => {
     w(M);
     const j = Bt(Se, M, _), J = $t(j), g = $t(Bt(j, Me)), b = Ru(S.password ?? "", M, _), A = Tu(M, _), E = S._test_only_sharedPeerIdleMs ?? A0;
     let x = false;
-    const Y = (N) => async (I) => ({ type: I.type, sdp: await N(b, I.sdp) }), F = Y(Eu), v = Y(Au), k = i.getMap(M), $ = () => Hs(true, S);
+    const F = (N) => async (I) => ({ type: I.type, sdp: await N(b, I.sdp) }), Y = F(Eu), v = F(Au), k = i.getMap(M), $ = () => Hs(true, S);
     R || (R = new Ou($));
     const K = R, ue = async (N) => {
       const I = await N.getOffer(Date.now() - N.created > no);
@@ -3394,15 +3394,15 @@ var E0 = ({ init: e, subscribe: t, announce: n, deactivate: r }) => {
         (fe == null ? void 0 : fe.connectedPeer) === I.peer && (fe.connectedPeer = null, fe.connectedPeerUnhealthySinceMs = null, be(fe));
       } });
       H.connectedPeer = I.peer, H.connectedPeerUnhealthySinceMs = null, be(H), X && In(oe, N), zt(H, K);
-    }, Yi = (N, I, H) => {
+    }, Fi = (N, I, H) => {
       if (x) {
         N.destroy();
         return;
       }
       const oe = Ht(te.peerStates, I);
       if (oe.connectedPeer) {
-        const Ye = k[I];
-        if (Ye && oe.connectedPeer === Ye.peer && Ye.bindings[_]) return;
+        const Fe = k[I];
+        if (Fe && oe.connectedPeer === Fe.peer && Fe.bindings[_]) return;
         oe.connectedPeer !== N && !N.isDead && N.destroy();
         return;
       }
@@ -3413,7 +3413,7 @@ var E0 = ({ init: e, subscribe: t, announce: n, deactivate: r }) => {
       }
       const fe = !X;
       X || (X = i.register(M, I, N, E)), Oe(I, X), fe && h(M, X);
-    }, Fi = (N, I) => {
+    }, Yi = (N, I) => {
       if (x) return;
       const H = te.peerStates[I];
       (H == null ? void 0 : H.connectedPeer) === N && (Or(H), Ut());
@@ -3425,7 +3425,7 @@ var E0 = ({ init: e, subscribe: t, announce: n, deactivate: r }) => {
       Ze(te.peerStates).forEach(([I, H]) => {
         H.connectedPeer || H.answeringPeer || H.offerInitPromise || H.offerPeer || H.offerRelays.some(Boolean) ? N = true : H.status === "idle" && delete te.peerStates[I];
       }), N || (te.isActive = false, je = W(je), rt.forEach(W), rt.length = 0, io(), (qe == null ? void 0 : qe.roomToken) && p(M, qe.roomToken, false));
-    }, te = { appId: M, roomId: _, config: S, peerStates: {}, rootTopicPlaintext: j, rootTopicP: J, selfTopicP: g, toPlain: F, toCipher: v, isLeaving: () => x, isPassive: we, isActive: !we, onJoinError: B, sharedPeers: i, offerPool: K, encryptOffer: ue, initPeer: Hs, connectPeer: Yi, disconnectPeer: Fi, attachSharedPeerToRoom: Oe, checkDeactivate: Ut, announceIntervals: [], announceIntervalMs: sr }, Dn = { config: S, appId: M, roomId: _, isPassive: we }, Xi = S0(te);
+    }, te = { appId: M, roomId: _, config: S, peerStates: {}, rootTopicPlaintext: j, rootTopicP: J, selfTopicP: g, toPlain: Y, toCipher: v, isLeaving: () => x, isPassive: we, isActive: !we, onJoinError: B, sharedPeers: i, offerPool: K, encryptOffer: ue, initPeer: Hs, connectPeer: Fi, disconnectPeer: Yi, attachSharedPeerToRoom: Oe, checkDeactivate: Ut, announceIntervals: [], announceIntervalMs: sr }, Dn = { config: S, appId: M, roomId: _, isPassive: we }, Xi = S0(te);
     if (!P) {
       const N = e(S);
       y = (Array.isArray(N) ? N : [N]).map((I) => Promise.resolve(I)), P = true, T = ((_b = S.relayConfig) == null ? void 0 : _b.manualReconnection) ? ae : bu();
@@ -3435,17 +3435,18 @@ var E0 = ({ init: e, subscribe: t, announce: n, deactivate: r }) => {
     nt([J, g]).then(([N, I]) => {
       if (x) return;
       const H = async (oe, X) => {
+        var _a3;
         if (x || we && !te.isActive) return;
         const fe = we ? { passive: true } : void 0;
-        let Ye;
+        let Fe;
         try {
-          Ye = await n(oe, N, I, fe, Dn), Bn[X] = 0;
+          Fe = await n(oe, N, I, fe, Dn), Bn[X] = 0;
         } catch (Ki) {
           const po = Bn[X] ?? 0;
-          po === 0 && console.warn(`${Se}: announce failed - ${mt(Ki, "")}`), Bn[X] = po + 1;
+          po === 0 && ((_a3 = S.relayConfig) == null ? void 0 : _a3.warnOnRelayFailure) !== false && console.warn(`${Se}: announce failed - ${mt(Ki, "")}`), Bn[X] = po + 1;
         }
         if (x || we && !te.isActive) return;
-        typeof Ye == "number" && (te.announceIntervals[X] = Ye);
+        typeof Fe == "number" && (te.announceIntervals[X] = Fe);
         const lo = Nn[X] ?? 0;
         Nn[X] = lo + 1;
         const uo = te.announceIntervals[X] ?? sr, ho = R0[lo];
@@ -3565,16 +3566,16 @@ const Ci = vu((e) => e.socket), L0 = 5, Li = "x", Di = "EVENT", { secretKey: D0,
     const c = (_a2 = t.subIds)[a] ?? (_a2[a] = wt(64));
     e.send(ye(["REQ", c, { kinds: [...new Set(s.map(Bi))], since: o, "#x": s }]));
   });
-}, Y0 = (e) => {
+}, F0 = (e) => {
   const t = yt[e.url];
   t && t.topics.size > 0 && $i(e);
-}, yd = C0({ init: (e) => pu(e, F0, L0, true).map((t) => {
+}, yd = C0({ init: (e) => pu(e, Y0, L0, true).map((t) => {
   const n = Ci.register(t, () => wu(t, (r) => {
-    var _a2;
+    var _a2, _b;
     const [o, s, a, c] = It(r);
     if (o !== Di) {
       const i = `${Se}: relay failure from ${n.url} - `;
-      o === "NOTICE" ? console.warn(i + s) : o === "OK" && !a && console.warn(i + c);
+      ((_a2 = e.relayConfig) == null ? void 0 : _a2.warnOnRelayFailure) !== false && (o === "NOTICE" ? console.warn(i + s) : o === "OK" && !a && console.warn(i + c));
       return;
     }
     if (a && typeof a == "object" && "content" in a) {
@@ -3586,14 +3587,14 @@ const Ci = vu((e) => e.socket), L0 = 5, Li = "x", Di = "EVENT", { secretKey: D0,
       const u = yt[n.url];
       if ((u == null ? void 0 : u.subIds.includes(s)) && a.tags) {
         const f = a.tags.find((d) => d[0] === Li);
-        (f == null ? void 0 : f[1]) && ((_a2 = u.topics.get(f[1])) == null ? void 0 : _a2(f[1], i));
+        (f == null ? void 0 : f[1]) && ((_b = u.topics.get(f[1])) == null ? void 0 : _b(f[1], i));
       }
     }
-  }, () => Y0(n)));
+  }, () => F0(n)));
   return n.ready;
 }), subscribeTopic: (e, t, n) => (q0(e, t, (o, s) => void n(o, s)), () => {
   j0(e, t);
-}), publishTopic: async (e, t, n) => e.send(await z0(t, typeof n == "string" ? n : ye(n))) }), wd = Ci.getSockets, F0 = ["basspistol.org", "bucket.coracle.social", "chorus.almostmachines.dev", "chorus.pjv.me", "communities.nos.social", "ftp.halifax.rwth-aachen.de/nostr", "hol.is", "hornetstorage.net/relay", "koru.bitcointxoko.org", "nos.lol", "nostr-01.uid.ovh", "nostr-01.yakihonne.com", "nostr-relay.corb.net", "nostr.data.haus", "nostr.islandarea.net", "nostr.sathoarder.com", "nostr.self-determined.de", "nostr.tegila.com.br", "nostr.vulpem.com", "purplerelay.com", "relay-can.zombi.cloudrodion.com", "relay-rpi.edufeed.org", "relay.agorist.space", "relay.angor.io", "relay.artio.inf.unibe.ch", "relay.binaryrobot.com", "relay.damus.io", "relay.froth.zone", "relay.libernet.app", "relay.mostr.pub", "relay.mostro.network", "relay.nostr.place", "relay.nostrdice.com", "relay.notoshi.win", "relay.sigit.io", "relay02.lnfi.network", "relay2.angor.io", "schnorr.me", "slick.mjex.me", "social.amanah.eblessing.co", "staging.yabu.me", "strfry.openhoofd.nl", "strfry.shock.network", "testnet-relay.samt.st", "top.testrelay.top", "x.kojira.io", "yabu.me/v2"].map((e) => "wss://" + e);
+}), publishTopic: async (e, t, n) => e.send(await z0(t, typeof n == "string" ? n : ye(n))) }), wd = Ci.getSockets, Y0 = ["basspistol.org", "bucket.coracle.social", "chorus.almostmachines.dev", "chorus.pjv.me", "communities.nos.social", "ftp.halifax.rwth-aachen.de/nostr", "hol.is", "hornetstorage.net/relay", "koru.bitcointxoko.org", "nos.lol", "nostr-01.uid.ovh", "nostr-01.yakihonne.com", "nostr-relay.corb.net", "nostr.data.haus", "nostr.islandarea.net", "nostr.sathoarder.com", "nostr.self-determined.de", "nostr.tegila.com.br", "nostr.vulpem.com", "purplerelay.com", "relay-can.zombi.cloudrodion.com", "relay-rpi.edufeed.org", "relay.agorist.space", "relay.angor.io", "relay.artio.inf.unibe.ch", "relay.binaryrobot.com", "relay.damus.io", "relay.froth.zone", "relay.libernet.app", "relay.mostr.pub", "relay.mostro.network", "relay.nostr.place", "relay.nostrdice.com", "relay.notoshi.win", "relay.sigit.io", "relay02.lnfi.network", "relay2.angor.io", "schnorr.me", "slick.mjex.me", "social.amanah.eblessing.co", "staging.yabu.me", "strfry.openhoofd.nl", "strfry.shock.network", "testnet-relay.samt.st", "top.testrelay.top", "x.kojira.io", "yabu.me/v2"].map((e) => "wss://" + e);
 /*!
 * https://github.com/Starcounter-Jack/JSON-Patch
 * (c) 2017-2022 Joachim Wester
