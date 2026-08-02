@@ -7418,7 +7418,7 @@ void main(){
       u
     ]), a;
   }
-  const PI = "quest-net", li = "standard.relay.metered.ca", _I = "d5a6714f143dcd13e7ead283", DI = "0oHSh19BIy4wGU8d";
+  const PI = "quest-net", li = "global.relay.metered.ca", _I = "d5a6714f143dcd13e7ead283", DI = "0oHSh19BIy4wGU8d";
   function LI() {
     const e = _I, t = DI;
     return [
