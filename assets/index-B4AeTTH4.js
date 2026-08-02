@@ -7501,12 +7501,13 @@ void main(){
       }
     ];
   }
-  const Bh = BI(), HI = false, du = {
+  const Bh = BI(), HI = false, VI = 15, du = {
     join(e, t) {
       return e || (e = "ROOMCODE"), $y({
         appId: FI,
         relayConfig: {
-          warnOnRelayFailure: HI
+          warnOnRelayFailure: HI,
+          redundancy: VI
         },
         ...Bh ? {
           turnConfig: Bh
@@ -7628,7 +7629,7 @@ void main(){
         actorId: e.characterId
       }, t);
     }
-  }, VI = {
+  }, zI = {
     edit(e, t) {
       const s = V.getActiveCampaign(t);
       Object.assign(s.Settings, e.updates), _S(s);
@@ -7740,7 +7741,7 @@ void main(){
       }, t);
     }
   };
-  function zI(e, t) {
+  function GI(e, t) {
     return {
       Id: crypto.randomUUID(),
       A: {
@@ -7755,7 +7756,7 @@ void main(){
   function $r(e, t) {
     return e.terrainId === t.terrainId && e.x === t.x && e.y === t.y && e.h === t.h;
   }
-  function GI(e, t) {
+  function WI(e, t) {
     return e.A.terrainId === t || e.B.terrainId === t;
   }
   function uu(e, t) {
@@ -7776,11 +7777,11 @@ void main(){
     });
     return s;
   }
-  function WI(e, t) {
+  function XI(e, t) {
     return e.terrainId !== t.terrainId ? false : Math.max(Math.abs(e.x - t.x), Math.abs(e.y - t.y)) <= 1;
   }
-  function XI(e, t, s) {
-    return !t || !WI(e, t) ? null : {
+  function qI(e, t, s) {
+    return !t || !XI(e, t) ? null : {
       visible: true,
       usable: !s,
       locked: s
@@ -7837,7 +7838,7 @@ void main(){
         console.warn(`Terrain delete blocked (protected): ${a.Name}`);
         return;
       }
-      zt.despawnActorsOnTerrain(s, a.Id, t), s.VoxelTerrains.splice(r, 1), await Ve.deleteTerrain(s, a), Array.isArray(s.TerrainLinks) && (s.TerrainLinks = s.TerrainLinks.filter((o) => !GI(o, a.Id))), ie.create({
+      zt.despawnActorsOnTerrain(s, a.Id, t), s.VoxelTerrains.splice(r, 1), await Ve.deleteTerrain(s, a), Array.isArray(s.TerrainLinks) && (s.TerrainLinks = s.TerrainLinks.filter((o) => !WI(o, a.Id))), ie.create({
         action: "Terrain deleted",
         details: a.Name,
         category: "system",
@@ -7894,17 +7895,17 @@ void main(){
         ]
       }, t);
     }
-  }, Hh = 20, Vh = 20, zh = 1e3, Gh = 8, qI = /^(\d+)?d(\d+)(k([hl])(\d+))?$/i;
-  function YI(e) {
+  }, Hh = 20, Vh = 20, zh = 1e3, Gh = 8, YI = /^(\d+)?d(\d+)(k([hl])(\d+))?$/i;
+  function KI(e) {
     return function() {
       let t = e += 1831565813;
       return t = Math.imul(t ^ t >>> 15, t | 1), t ^= t + Math.imul(t ^ t >>> 7, t | 61), ((t ^ t >>> 14) >>> 0) / 4294967296;
     };
   }
-  function KI(e) {
-    return (e == null ? void 0 : e.seed) != null ? YI(e.seed) : (e == null ? void 0 : e.rng) ?? Math.random;
+  function QI(e) {
+    return (e == null ? void 0 : e.seed) != null ? KI(e.seed) : (e == null ? void 0 : e.rng) ?? Math.random;
   }
-  function QI(e, t) {
+  function ZI(e, t) {
     return Math.floor(t() * e) + 1;
   }
   function _c(e) {
@@ -7922,7 +7923,7 @@ void main(){
         a = -1;
         continue;
       }
-      const d = l.match(qI);
+      const d = l.match(YI);
       if (d) {
         const u = parseInt(d[1] || "1", 10), f = parseInt(d[2], 10);
         if (!(u > 0 && f > 0)) throw new Error(`Invalid dice: ${l}`);
@@ -7973,7 +7974,7 @@ void main(){
   function Sx(e) {
     return _c(e).canonical;
   }
-  function ZI(e, t) {
+  function JI(e, t) {
     if (!(t > 0)) return Sx(e || "");
     if (!e || !e.trim()) return `1d${t}`;
     let { items: s } = _c(e);
@@ -8003,7 +8004,7 @@ void main(){
     }).join("").trim();
   }
   function Bo(e, t) {
-    const s = KI(t), { items: r, canonical: a } = _c(e), o = [], i = [];
+    const s = QI(t), { items: r, canonical: a } = _c(e), o = [], i = [];
     let c = 0;
     const l = (v, y, w, N, C = 1) => {
       const T = w.map((I, A) => A);
@@ -8048,7 +8049,7 @@ void main(){
         continue;
       }
       const y = [];
-      for (let w = 0; w < v.count; w++) y.push(QI(v.sides, s));
+      for (let w = 0; w < v.count; w++) y.push(ZI(v.sides, s));
       l(d, v.sides, y, v.keep, v.sign), d++;
     }
     c += u;
@@ -8074,14 +8075,14 @@ void main(){
       dice: i
     };
   }
-  function JI(e) {
+  function eN(e) {
     try {
       return _c(e), true;
     } catch {
       return false;
     }
   }
-  function eN(e) {
+  function tN(e) {
     if (e.stats.numKept <= 1) return `Rolled ${e.formula}: ${e.total}`;
     const t = e.stats.highestDie ?? "-", s = e.stats.lowestDie ?? "-";
     return `Rolled ${e.formula}: ${e.total} [highest: ${t} | lowest: ${s}]`;
@@ -8107,12 +8108,12 @@ void main(){
     if (e.RollOutcome) return e.RollOutcome.crit;
     const t = e.Action || "", s = e.Details || "", r = /d20(?!\d)/i.test(t) || /d20(?!\d)/i.test(s), a = /d100/i.test(t) || /d100/i.test(s);
     return !r && !a ? false : !!(r && /(?:\[20\]|=20)(?!\d)/.test(s) || a && /(?:\[100\]|=100)/.test(s));
-  }, tN = (e) => {
+  }, nN = (e) => {
     if (!Lc(e)) return false;
     if (e.RollOutcome) return e.RollOutcome.fumble;
     const t = e.Action || "", s = e.Details || "";
     return /d(?:20|100)(?!\d)/i.test(t) || /d(?:20|100)(?!\d)/i.test(s) ? /(?:\[1\]|=1)(?!\d)/.test(s) : false;
-  }, nN = (e) => {
+  }, sN = (e) => {
     if (!Lc(e)) return null;
     if (e.RollOutcome) return e.RollOutcome.critValue;
     const t = e.Action || "", s = e.Details || "";
@@ -8126,7 +8127,7 @@ void main(){
     return a || e.find((o) => o.Name != null && Ix(t, o.Name));
   }
   const Xh = /* @__PURE__ */ new Map();
-  function sN(e) {
+  function rN(e) {
     let t = Xh.get(e);
     if (!t) {
       const s = e.replace(/[.+^${}()|[\]\\]/g, "\\$&").replace(/\*/g, ".*");
@@ -8135,9 +8136,9 @@ void main(){
     return t;
   }
   function Ix(e, t) {
-    return sN(e).test(t);
+    return rN(e).test(t);
   }
-  function rN(e, t, s) {
+  function aN(e, t, s) {
     s.forEach((r) => {
       r.Inventory.forEach((a) => {
         a.Id === e && qh(a, t);
@@ -8427,7 +8428,7 @@ void main(){
         Id: s.ItemTemplates[r].Id
       }, o !== a) {
         const i = kt(s);
-        rN(e.itemId, o, i);
+        aN(e.itemId, o, i);
       }
       ie.create({
         action: "Item edited",
@@ -8989,7 +8990,7 @@ void main(){
       return a ? Xr(r, a) : null;
     }).filter((r) => r !== null);
   }
-  function aN(e, t) {
+  function oN(e, t) {
     return {
       Id: e.Id,
       Name: t.Name,
@@ -9005,10 +9006,10 @@ void main(){
     ]));
     return e.map((r) => {
       const a = s.get(r.Id);
-      return a ? aN(r, a) : null;
+      return a ? oN(r, a) : null;
     }).filter((r) => r !== null);
   }
-  function oN(e, t) {
+  function iN(e, t) {
     return {
       Id: e.Id,
       Name: t.Name,
@@ -9022,20 +9023,20 @@ void main(){
     ]));
     return e.map((r) => {
       const a = s.get(r.Id);
-      return a ? oN(r, a) : null;
+      return a ? iN(r, a) : null;
     }).filter((r) => r !== null);
   }
-  const iN = {
+  const cN = {
     getConfig(e) {
       return V.getActiveCampaign(e).Settings.CalendarSettings;
     }
-  }, cN = 1e5;
+  }, lN = 1e5;
   function Yh(e, t) {
     const s = e.GameState.CalendarDay, r = Math.trunc(t);
     e.GameState.CalendarDay = r;
     const a = r - s;
     if (a <= 0) return;
-    const o = Math.min(a, cN);
+    const o = Math.min(a, lN);
     for (let i = 0; i < o; i++) Rx(e);
   }
   function Kh(e, t) {
@@ -9121,7 +9122,7 @@ void main(){
     const s = Math.min(Math.max(1, e.month), t.monthsPerYear), r = Math.min(Math.max(1, e.day), t.daysPerMonth), o = (Math.max(1, e.year) - 1) * Mx(t), i = (s - 1) * t.daysPerMonth, c = r - 1;
     return o + i + c;
   }
-  function lN(e) {
+  function dN(e) {
     const t = [
       "th",
       "st",
@@ -9130,7 +9131,7 @@ void main(){
     ], s = e % 100;
     return e + (t[(s - 20) % 10] || t[s] || t[0]);
   }
-  function dN(e, t) {
+  function uN(e, t) {
     const s = Px(e, t), r = t.monthNames[s.month - 1] ?? `Month ${s.month}`, a = t.daysPerWeek > 0 && s.dayOfWeekIndex !== void 0 ? t.dayNames[s.dayOfWeekIndex] ?? `Day ${s.dayOfWeekIndex + 1}` : void 0;
     return {
       parts: s,
@@ -9198,7 +9199,7 @@ void main(){
   function Pr(e) {
     return e ? e.filter((t) => t.startsWith(Io)).map((t) => t.substring(Io.length)) : [];
   }
-  function uN(e, t) {
+  function mN(e, t) {
     const s = /* @__PURE__ */ new Set();
     for (const r of e) {
       const a = Pr(r.tags);
@@ -9218,7 +9219,7 @@ void main(){
       ].join(oc)
     }));
   }
-  function mN(e, t) {
+  function hN(e, t) {
     return t.length === 0 ? e.filter((s) => Pr(s.tags).length === 0) : e.filter((s) => Pr(s.tags).some((a) => {
       const o = a.split(oc);
       return o.length === t.length && o.every((i, c) => i === t[c]);
@@ -9234,10 +9235,10 @@ void main(){
       a
     ];
   }
-  function hN(e) {
+  function fN(e) {
     return (e || []).filter((s) => !s.startsWith(Io));
   }
-  const fN = "https://www.youtube.com/oembed", pN = 5e3;
+  const pN = "https://www.youtube.com/oembed", gN = 5e3;
   function Qh(e) {
     const t = e.trim();
     if (/^[a-zA-Z0-9_-]{11}$/.test(t)) return t;
@@ -9254,27 +9255,27 @@ void main(){
     }
     return null;
   }
-  function gN(e) {
+  function xN(e) {
     const t = e.trim(), s = t.match(/[?&]list=([a-zA-Z0-9_-]+)/);
     return (s == null ? void 0 : s[1]) ? s[1] : /^PL[a-zA-Z0-9_-]+$/.test(t) ? t : null;
   }
   async function Zh(e) {
     return Lx(`https://www.youtube.com/watch?v=${e}`);
   }
-  async function xN(e) {
+  async function vN(e) {
     return Lx(`https://www.youtube.com/playlist?list=${e}`);
   }
-  function vN(e) {
+  function bN(e) {
     return e.replace(/[\\/]+/g, "-").replace(/\s+/g, " ").trim();
   }
   async function Lx(e) {
     var _a2;
-    const t = new AbortController(), s = setTimeout(() => t.abort(), pN);
+    const t = new AbortController(), s = setTimeout(() => t.abort(), gN);
     try {
       const r = new URLSearchParams({
         format: "json",
         url: e
-      }), a = await fetch(`${fN}?${r.toString()}`, {
+      }), a = await fetch(`${pN}?${r.toString()}`, {
         signal: t.signal
       });
       return a.ok && ((_a2 = (await a.json()).title) == null ? void 0 : _a2.trim()) || null;
@@ -9284,7 +9285,7 @@ void main(){
       clearTimeout(s);
     }
   }
-  async function bN(e) {
+  async function yN(e) {
     return new Promise((t, s) => {
       var _a2;
       const r = document.createElement("div");
@@ -9330,13 +9331,13 @@ void main(){
       }, 100);
     });
   }
-  const yN = "Untitled Audio Track", nr = {
+  const wN = "Untitled Audio Track", nr = {
     async create(e, t) {
       const s = V.getActiveCampaign(t), r = Qh(e.audio.YoutubeId);
       if (!r) throw new Error("Invalid YouTube URL. Please provide a valid YouTube video link or ID.");
       const a = e.audio.Name.trim(), o = a.length === 0 ? await Zh(r) : null, i = {
         Id: crypto.randomUUID(),
-        Name: o || a || yN,
+        Name: o || a || wN,
         YoutubeId: r,
         Tags: e.audio.Tags || []
       };
@@ -9351,11 +9352,11 @@ void main(){
       }, t);
     },
     async importPlaylistByIds(e, t) {
-      const s = V.getActiveCampaign(t), r = gN(e.playlistUrl);
+      const s = V.getActiveCampaign(t), r = xN(e.playlistUrl);
       if (!r) throw new Error("Invalid YouTube playlist URL or ID");
-      const a = await bN(r);
+      const a = await yN(r);
       if (a.length === 0) throw new Error("Playlist is empty or could not be loaded");
-      const i = (/* @__PURE__ */ new Date()).toISOString().replace(/[:.]/g, "-").slice(0, 19), c = await xN(r), l = c && vN(c) || `YoutubePlaylist-${i}`, d = Dx([
+      const i = (/* @__PURE__ */ new Date()).toISOString().replace(/[:.]/g, "-").slice(0, 19), c = await vN(r), l = c && bN(c) || `YoutubePlaylist-${i}`, d = Dx([
         l
       ]), u = await Promise.all(a.map((f) => Zh(f)));
       a.forEach((f, m) => {
@@ -9475,14 +9476,14 @@ void main(){
       }, t);
     }
   };
-  function wN(e, t, s) {
+  function SN(e, t, s) {
     s.forEach((r) => {
       r.Skills.forEach((a) => {
-        a.Id === e && SN(a, t);
+        a.Id === e && IN(a, t);
       });
     });
   }
-  function SN(e, t) {
+  function IN(e, t) {
     t === void 0 ? e.UsesLeft = void 0 : e.UsesLeft === void 0 ? e.UsesLeft = t : e.UsesLeft = Math.min(e.UsesLeft, t);
   }
   const Da = {
@@ -9530,7 +9531,7 @@ void main(){
         Id: s.SkillTemplates[r].Id
       }, o !== a) {
         const i = kt(s);
-        wN(e.skillId, o, i);
+        SN(e.skillId, o, i);
       }
       ie.create({
         action: "Skill edited",
@@ -9862,7 +9863,7 @@ void main(){
       }), c = u.key, l = u.hasAnyValue, d = h;
     }), i;
   }
-  function IN(e, t) {
+  function NN(e, t) {
     const s = new Set(t ?? []);
     let r = null;
     for (const a of e) s.has(a.ActorId) || (r === null || a.Order < r) && (r = a.Order);
@@ -9872,7 +9873,7 @@ void main(){
     const t = e.Settings.InitiativeSettings;
     return t ? t.Mode : "party";
   }
-  function NN(e) {
+  function CN(e) {
     const t = e.GameState.CombatState;
     if (!t.isActive) return [];
     const s = Ui(e), r = e.Settings.InitiativeSettings, o = (s === "individual" ? [
@@ -9919,7 +9920,7 @@ void main(){
       });
     });
   }
-  function CN(e) {
+  function jN(e) {
     [
       ...e.GameState.Characters,
       ...e.GameState.Entities
@@ -9950,11 +9951,11 @@ void main(){
       };
     });
   }
-  function jN(e, t) {
+  function AN(e, t) {
     const s = t === "party" ? e.GameState.Characters : e.GameState.Entities;
     so(s);
   }
-  function AN(e) {
+  function EN(e) {
     e.forEach((t) => {
       delete t.TurnStartPosition;
     });
@@ -9990,7 +9991,7 @@ void main(){
       ];
       r.forEach((a) => {
         a.Statuses = a.Statuses.filter((o) => o.expiration.type !== "turns");
-      }), AN(r), s.GameState.CombatState = {
+      }), EN(r), s.GameState.CombatState = {
         isActive: false,
         currentRound: 0,
         initiativeSide: "party",
@@ -10011,7 +10012,7 @@ void main(){
         console.warn("[Combat] Cannot increment round - combat is not active");
         return;
       }
-      r.currentRound++, a === "party" && (r.initiativeSide = r.initiativeSide === "party" ? "enemies" : "party"), ef(r), a === "party" ? jN(s, r.initiativeSide) : (so(s.GameState.Characters), so(s.GameState.Entities)), tf(s, 1), nf(s, 1), El(s), CN(s);
+      r.currentRound++, a === "party" && (r.initiativeSide = r.initiativeSide === "party" ? "enemies" : "party"), ef(r), a === "party" ? AN(s, r.initiativeSide) : (so(s.GameState.Characters), so(s.GameState.Entities)), tf(s, 1), nf(s, 1), El(s), jN(s);
       const o = a === "individual" ? "All actors" : r.initiativeSide === "party" ? "Party" : "Enemies";
       ie.create({
         action: "Round incremented",
@@ -10058,14 +10059,14 @@ void main(){
       ];
     }
   };
-  function EN(e, t, s) {
+  function TN(e, t, s) {
     s.forEach((r) => {
       r.Statuses.forEach((a) => {
-        a.Id === e && TN(a, t);
+        a.Id === e && kN(a, t);
       });
     });
   }
-  function TN(e, t) {
+  function kN(e, t) {
     switch (t.type) {
       case "permanent":
         e.expiration = {
@@ -10102,7 +10103,7 @@ void main(){
         break;
     }
   }
-  function kN(e) {
+  function RN(e) {
     switch (e.type) {
       case "permanent":
         return {
@@ -10203,7 +10204,7 @@ void main(){
         Id: s.StatusTemplates[r].Id
       }, o && JSON.stringify(o) !== JSON.stringify(a)) {
         const i = kt(s);
-        EN(e.statusId, o, i);
+        TN(e.statusId, o, i);
       }
       ie.create({
         action: "Status edited",
@@ -10250,7 +10251,7 @@ void main(){
           }
           for (let f = 0; f < r; f++) l.Statuses.push({
             Id: d,
-            expiration: kN(u.Expiration)
+            expiration: RN(u.Expiration)
           }), o++;
         });
       }), o > 0) {
@@ -10758,7 +10759,7 @@ void main(){
         actorId: e.sourceActorId
       }, t));
     }
-  }, RN = {
+  }, MN = {
     roll(e, t) {
       var _a2;
       const s = V.getActiveCampaign(t), r = e.actorId ? ve.getActiveActors(s).find((l) => l.Id === e.actorId) : void 0, a = r ? `${r.Name} rolled` : "Rolled", o = e.tags && e.tags.length > 0 ? ` [${e.tags.join(", ")}]` : "", i = ((_a2 = s.Settings.VisibilitySettings) == null ? void 0 : _a2.playersSeeDMRolls) ?? true, c = e.secret || !i ? [
@@ -10777,10 +10778,10 @@ void main(){
       }, t);
     }
   }, No = 4e3;
-  function MN(e) {
+  function PN(e) {
     return JSON.stringify(e);
   }
-  function PN(e) {
+  function _N(e) {
     if (!e) return null;
     try {
       const t = JSON.parse(e);
@@ -10794,7 +10795,7 @@ void main(){
     }
     return null;
   }
-  const _N = {
+  const DN = {
     create(e, t) {
       var _a2;
       if (t.IsOptimistic || typeof e.h != "number" || !Number.isFinite(e.h)) return;
@@ -10815,7 +10816,7 @@ void main(){
       }
       ie.create({
         action: `pinged location (${s}, ${r}, ${a})`,
-        details: MN({
+        details: PN({
           terrainId: e.terrainId,
           x: s,
           y: r,
@@ -10829,7 +10830,7 @@ void main(){
         actorId: e.actorId
       }, t);
     }
-  }, DN = {
+  }, LN = {
     create(e, t) {
       if (t.IsOptimistic) return;
       const s = e.emoji, r = e.actorId;
@@ -10878,7 +10879,7 @@ void main(){
         console.warn("Terrain link create rejected: a link already exists at that position");
         return;
       }
-      const a = zI(e.a, e.b);
+      const a = GI(e.a, e.b);
       s.TerrainLinks.push(a), ie.create({
         action: "Terrain link created",
         details: "Linked a tile on one map to another",
@@ -11027,7 +11028,7 @@ void main(){
         "dm",
         "player"
       ],
-      handler: RN.roll,
+      handler: MN.roll,
       scriptable: true
     },
     "item:use": {
@@ -11493,7 +11494,7 @@ void main(){
         "dm",
         "player"
       ],
-      handler: _N.create,
+      handler: DN.create,
       scriptable: true
     },
     "sticker:create": {
@@ -11501,7 +11502,7 @@ void main(){
         "dm",
         "player"
       ],
-      handler: DN.create,
+      handler: LN.create,
       scriptable: true
     },
     "note:create": {
@@ -11529,7 +11530,7 @@ void main(){
       roles: [
         "dm"
       ],
-      handler: VI.edit,
+      handler: zI.edit,
       scriptable: true
     },
     "calendar:edit": {
@@ -11657,11 +11658,11 @@ void main(){
     var _a2;
     return ((_a2 = Ln[e]) == null ? void 0 : _a2.scriptable) === true;
   }
-  const LN = [
+  const ON = [
     "Id"
   ];
   function kl(e) {
-    return e.length >= 1 && LN.includes(e[0]);
+    return e.length >= 1 && ON.includes(e[0]);
   }
   function mi(e) {
     const t = gu(e);
@@ -11676,12 +11677,12 @@ void main(){
     }
     return e;
   }
-  const $x = "__questNetCompressedStateUpdate", Bx = 64, Hx = 16 * 1024, ON = {
+  const $x = "__questNetCompressedStateUpdate", Bx = 64, Hx = 16 * 1024, FN = {
     compressFullUpdates: true,
     deltaPatchThreshold: Bx,
     deltaByteThreshold: Hx
   };
-  function FN(e, t) {
+  function UN(e, t) {
     let s = 0;
     for (const r of e) {
       const { path: a, value: o } = r;
@@ -11689,20 +11690,20 @@ void main(){
     }
     return s;
   }
-  function UN(e) {
+  function $N(e) {
     return typeof e == "object" && e !== null && e[$x] === true;
   }
-  async function $N(e, t = {}) {
+  async function BN(e, t = {}) {
     const s = {
-      ...ON,
+      ...FN,
       ...t
     }, r = Array.isArray(e.patches) ? e.patches.length : 0;
-    if (!(e.type === "full" && s.compressFullUpdates || e.type === "delta" && (r >= s.deltaPatchThreshold || FN(Array.isArray(e.patches) ? e.patches : [], s.deltaByteThreshold) >= s.deltaByteThreshold)) || !Vx()) return {
+    if (!(e.type === "full" && s.compressFullUpdates || e.type === "delta" && (r >= s.deltaPatchThreshold || UN(Array.isArray(e.patches) ? e.patches : [], s.deltaByteThreshold) >= s.deltaByteThreshold)) || !Vx()) return {
       data: e
     };
     const o = JSON.stringify(e);
     return {
-      data: await HN(o),
+      data: await VN(o),
       metadata: {
         [$x]: true,
         encoding: "gzip",
@@ -11711,40 +11712,40 @@ void main(){
       }
     };
   }
-  async function BN(e, t) {
-    if (!UN(t)) return e;
+  async function HN(e, t) {
+    if (!$N(t)) return e;
     if (!Vx()) throw new Error("Received compressed state update, but gzip is unavailable.");
     if (t.encoding !== "gzip") throw new Error(`Unsupported state update compression: ${t.encoding}`);
-    if (!zN(e)) throw new Error(`Compressed state update payload was not binary. Received ${GN(e)}.`);
-    const s = await VN(e);
+    if (!GN(e)) throw new Error(`Compressed state update payload was not binary. Received ${WN(e)}.`);
+    const s = await zN(e);
     return JSON.parse(s);
   }
   function Vx() {
     return typeof CompressionStream < "u" && typeof DecompressionStream < "u";
   }
-  async function HN(e) {
+  async function VN(e) {
     const t = new Blob([
       e
     ]).stream().pipeThrough(new CompressionStream("gzip"));
     return new Response(t).arrayBuffer();
   }
-  async function VN(e) {
+  async function zN(e) {
     const t = new Blob([
       e
     ]).stream().pipeThrough(new DecompressionStream("gzip"));
     return new Response(t).text();
   }
-  function zN(e) {
+  function GN(e) {
     return e instanceof ArrayBuffer || ArrayBuffer.isView(e);
   }
-  function GN(e) {
+  function WN(e) {
     var _a2;
     if (e === null) return "null";
     if (e === void 0) return "undefined";
     const t = typeof e == "object" ? (_a2 = e.constructor) == null ? void 0 : _a2.name : void 0;
     return t ? `${typeof e} (${t})` : typeof e;
   }
-  class WN {
+  class XN {
     constructor(t, s = () => {
     }, r) {
       __publicField(this, "room");
@@ -11814,7 +11815,7 @@ void main(){
       this.sendQueue = this.sendQueue.catch((s) => {
         console.error("[StateSync] State send queue error:", s);
       }).then(async () => {
-        const s = await $N(t, {
+        const s = await BN(t, {
           compressFullUpdates: true,
           deltaPatchThreshold: Bx,
           deltaByteThreshold: Hx
@@ -11829,7 +11830,7 @@ void main(){
     }
     async handleIncomingStateTransport(t, s) {
       try {
-        const r = await BN(t, s);
+        const r = await HN(t, s);
         this.handleIncomingState(r);
       } catch (r) {
         console.error("[StateSync] Error reading state update:", r);
@@ -11875,12 +11876,12 @@ void main(){
       s.newDocument ? (this.currentState = s.newDocument, this.version = (t.baseVersion ?? 0) + 1, this.onUpdateCallback && this.onUpdateCallback(s.newDocument)) : console.error("[StateSync] Failed to apply patches");
     }
   }
-  const XN = "ActiveCampaign", Rl = (e) => JSON.stringify(e), hi = (e) => JSON.parse(e);
-  function qN(e, t) {
+  const qN = "ActiveCampaign", Rl = (e) => JSON.stringify(e), hi = (e) => JSON.parse(e);
+  function YN(e, t) {
     const s = [];
     for (const m of e) {
       const h = m[1];
-      if (h.length === 0 || h[0] !== XN) continue;
+      if (h.length === 0 || h[0] !== qN) continue;
       const g = [];
       let b = true;
       for (let v = 1; v < h.length; v++) {
@@ -12000,7 +12001,7 @@ void main(){
   function zx(e) {
     return "/" + e.map((t) => t.replace(/~/g, "~0").replace(/\//g, "~1")).join("/");
   }
-  class YN {
+  class KN {
     constructor(t) {
       __publicField(this, "buffer", []);
       __publicField(this, "unsubscribe");
@@ -12011,7 +12012,7 @@ void main(){
     flush(t) {
       if (this.buffer.length === 0) return [];
       const s = this.buffer;
-      return this.buffer = [], qN(s, t);
+      return this.buffer = [], YN(s, t);
     }
     discard() {
       this.buffer = [];
@@ -12020,31 +12021,31 @@ void main(){
       this.unsubscribe(), this.buffer = [];
     }
   }
-  const KN = 1024 * 1024, _s = 2048, QN = 0.85, ZN = 250;
-  function JN(e, t, s) {
+  const QN = 1024 * 1024, _s = 2048, ZN = 0.85, JN = 250;
+  function eC(e, t, s) {
     if (t === 0 || s === 0) return false;
     const { data: r } = e.getImageData(0, 0, t, s);
-    for (let a = 3; a < r.length; a += 4) if (r[a] < ZN) return true;
+    for (let a = 3; a < r.length; a += 4) if (r[a] < JN) return true;
     return false;
   }
   async function cc(e) {
     return e.type === "image/gif" ? {
-      ...await tC(e),
+      ...await nC(e),
       cutout: false
-    } : eC(e);
+    } : tC(e);
   }
-  async function eC(e) {
+  async function tC(e) {
     return new Promise((t, s) => {
       const r = new Image(), a = new FileReader();
       a.onload = (o) => {
         var _a2;
         r.src = (_a2 = o.target) == null ? void 0 : _a2.result;
       }, r.onload = () => {
-        const { width: o, height: i } = nC(r.width, r.height), c = document.createElement("canvas");
+        const { width: o, height: i } = sC(r.width, r.height), c = document.createElement("canvas");
         c.width = o, c.height = i;
         const l = c.getContext("2d");
         l.drawImage(r, 0, 0, o, i);
-        const d = JN(l, o, i);
+        const d = eC(l, o, i);
         c.toBlob((u) => {
           if (!u) {
             s(new Error("Failed to compress image"));
@@ -12057,11 +12058,11 @@ void main(){
             mimeType: "image/webp",
             cutout: d
           });
-        }, "image/webp", QN);
+        }, "image/webp", ZN);
       }, r.onerror = () => s(new Error("Failed to load image")), a.onerror = () => s(new Error("Failed to read file")), a.readAsDataURL(e);
     });
   }
-  async function tC(e) {
+  async function nC(e) {
     return new Promise((t, s) => {
       const r = new Image(), a = new FileReader();
       a.onload = (o) => {
@@ -12073,7 +12074,7 @@ void main(){
           s(new Error(`GIF dimensions too large (${o}x${i}). Maximum dimension is ${_s}px. Please resize the GIF before uploading.`));
           return;
         }
-        if (e.size > KN) {
+        if (e.size > QN) {
           s(new Error(`GIF file too large (${(e.size / 1024 / 1024).toFixed(2)} MB). Maximum size is 1 MB.`));
           return;
         }
@@ -12086,7 +12087,7 @@ void main(){
       }, r.onerror = () => s(new Error("Failed to load GIF")), a.onerror = () => s(new Error("Failed to read file")), a.readAsDataURL(e);
     });
   }
-  function nC(e, t) {
+  function sC(e, t) {
     if (e <= _s && t <= _s) return {
       width: e,
       height: t
@@ -12100,8 +12101,8 @@ void main(){
       height: _s
     };
   }
-  const of = 3e4, sC = 1024 * 1024;
-  class rC {
+  const of = 3e4, rC = 1024 * 1024;
+  class aC {
     constructor(t, s, r, a = () => {
     }) {
       __publicField(this, "room");
@@ -12130,7 +12131,7 @@ void main(){
       const a = this.getDmPeerId();
       if (!a) throw new Error("Cannot upload: not connected to the DM");
       const { blob: o, width: i, height: c, mimeType: l, cutout: d } = await cc(t);
-      if (o.size > sC) throw new Error(`Image is too large (${(o.size / 1024 / 1024).toFixed(2)} MB). Maximum size is 1 MB.`);
+      if (o.size > rC) throw new Error(`Image is too large (${(o.size / 1024 / 1024).toFixed(2)} MB). Maximum size is 1 MB.`);
       const u = await o.arrayBuffer();
       return await this.requestUpload(u, {
         target: a,
@@ -12193,13 +12194,13 @@ void main(){
       return s.data.arrayBuffer();
     }
   }
-  const aC = 0.5, Co = 13, Gx = 1, lr = [
+  const oC = 0.5, Co = 13, Gx = 1, lr = [
     81,
     86,
     68,
     76
   ];
-  function* oC(e) {
+  function* iC(e) {
     for (const [t, s] of e) yield _g(t, s);
   }
   function xu(e) {
@@ -12209,27 +12210,27 @@ void main(){
     for (let a = 0; a < s.length; a++) t.set(s[a], r[a]);
     return t;
   }
-  function iC(e, t, s) {
+  function cC(e, t, s) {
     if (e.byteLength === 0 || t.byteLength === 0) return null;
     const r = xu(e), a = xu(t), o = [], i = [];
     for (const [f, m] of a) r.get(f) !== m && (o.push(f), i.push(m));
     let c = 0;
     for (const f of r.keys()) a.has(f) || (o.push(f), i.push(-1), c++);
-    const l = o.length - c, d = Co + l * 5 + c * 4, u = aC;
+    const l = o.length - c, d = Co + l * 5 + c * 4, u = oC;
     return d >= t.byteLength * u ? null : {
       positions: Uint32Array.from(o),
       newColors: Int16Array.from(i)
     };
   }
-  function cC(e, t) {
+  function lC(e, t) {
     const s = xu(e), { positions: r, newColors: a } = t;
     for (let o = 0; o < r.length; o++) {
       const i = a[o];
       i < 0 ? s.delete(r[o]) : s.set(r[o], i);
     }
-    return kc(oC(s));
+    return kc(iC(s));
   }
-  function lC(e) {
+  function dC(e) {
     const { positions: t, newColors: s } = e, r = t.length, a = [], o = [], i = [];
     for (let g = 0; g < r; g++) s[g] < 0 ? i.push(t[g]) : (a.push(t[g]), o.push(s[g]));
     const c = a.length, l = i.length, d = Co + c * 5 + l * 4, u = new ArrayBuffer(d), f = new DataView(u), m = new Uint8Array(u);
@@ -12240,7 +12241,7 @@ void main(){
     for (let g = 0; g < l; g++) f.setUint32(h, i[g], true), h += 4;
     return m;
   }
-  function dC(e) {
+  function uC(e) {
     if (e.length < Co || e[0] !== lr[0] || e[1] !== lr[1] || e[2] !== lr[2] || e[3] !== lr[3]) throw new Error("Invalid voxel delta payload.");
     if (e[4] !== Gx) throw new Error(`Unsupported voxel delta version: ${e[4]}`);
     const t = new DataView(e.buffer, e.byteOffset, e.byteLength), s = t.getUint32(5, true), r = t.getUint32(9, true), a = s + r, o = new Uint32Array(a), i = new Int16Array(a);
@@ -12255,7 +12256,7 @@ void main(){
       newColors: i
     };
   }
-  const uC = 3e4, mC = 300;
+  const mC = 3e4, hC = 300;
   class lc {
     constructor(t, s, r, a) {
       __publicField(this, "room");
@@ -12293,7 +12294,7 @@ void main(){
       try {
         const r = await this.requestTerrainData(t, {
           target: s,
-          timeoutMs: uC
+          timeoutMs: mC
         });
         if (!r || r.byteLength === 0) return {
           voxels: new Uint8Array(0),
@@ -12320,7 +12321,7 @@ void main(){
       if (r.byteLength === 0 || a.byteLength === 0 || !o || o === i) return;
       let c;
       try {
-        c = iC(r, a);
+        c = cC(r, a);
       } catch (u) {
         console.warn(`[TerrainTransferService] Delta compute failed for ${s}:`, u);
         return;
@@ -12328,7 +12329,7 @@ void main(){
       if (!c) return;
       let l;
       try {
-        l = lC(c);
+        l = dC(c);
       } catch (u) {
         console.warn(`[TerrainTransferService] Delta encode failed for ${s}:`, u);
         return;
@@ -12355,7 +12356,7 @@ void main(){
             o || (o = true, clearTimeout(i), (_a2 = this.waiters.get(a)) == null ? void 0 : _a2.delete(c), r());
           }
         };
-        i = setTimeout(c.settle, mC);
+        i = setTimeout(c.settle, hC);
         const l = this.waiters.get(a) ?? /* @__PURE__ */ new Set();
         l.add(c), this.waiters.set(a, l);
       });
@@ -12392,7 +12393,7 @@ void main(){
       if (d == null) return;
       let u;
       try {
-        u = cC(d, dC(i));
+        u = lC(d, uC(i));
       } catch (f) {
         console.warn(`[TerrainTransferService] Delta apply failed for ${r}:`, f);
         return;
@@ -12409,8 +12410,8 @@ void main(){
       this.waiters.clear(), this.appliedHashes.clear();
     }
   }
-  const cf = 800, hC = 250;
-  class fC {
+  const cf = 800, fC = 250;
+  class pC {
     constructor(t, s) {
       __publicField(this, "context");
       __publicField(this, "sendActorPosePacket");
@@ -12421,7 +12422,7 @@ void main(){
       const r = s.makeAction("actorPose");
       this.sendActorPosePacket = r.send, r.onMessage = (a, { peerId: o }) => {
         this.handleActorPose(a, o);
-      }, this.pruneInterval = setInterval(() => this.reconcileLiveActorPoses(), hC);
+      }, this.pruneInterval = setInterval(() => this.reconcileLiveActorPoses(), fC);
     }
     sendActorPose(t) {
       this.sendActorPosePacket && this.isActorPosePacket(t) && this.sendActorPosePacket(t);
@@ -12529,12 +12530,12 @@ void main(){
     "importScripts",
     "postMessage"
   ];
-  function pC(e) {
+  function gC(e) {
     return e.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   }
-  const gC = new RegExp("\\b(" + Wx.map(pC).join("|") + ")\\b");
-  function xC(e) {
-    const t = e.replace(/\/\*[\s\S]*?\*\//g, " ").replace(/\/\/[^\n]*/g, " "), s = gC.exec(t);
+  const xC = new RegExp("\\b(" + Wx.map(gC).join("|") + ")\\b");
+  function vC(e) {
+    const t = e.replace(/\/\*[\s\S]*?\*\//g, " ").replace(/\/\/[^\n]*/g, " "), s = xC.exec(t);
     return s ? s[1] : null;
   }
   function Vo(e) {
@@ -12542,7 +12543,7 @@ void main(){
       ok: false,
       error: "Script code must be a string."
     };
-    const t = xC(e);
+    const t = vC(e);
     return t ? {
       ok: false,
       token: t,
@@ -12554,8 +12555,8 @@ void main(){
   const Aa = {
     MAX_CASCADE_DEPTH: 16,
     MAX_TOTAL_ACTIONS: 256
-  }, vC = "scripting.disabled";
-  function bC(e, t, s, r) {
+  }, bC = "scripting.disabled";
+  function yC(e, t, s, r) {
     var _a2;
     const a = e.campaign(), o = ve.resolveActorId(a, t), i = (_a2 = cs.findTemplate(a, s)) == null ? void 0 : _a2.Id;
     return !o || !i ? Promise.resolve() : e.action("item:give", {
@@ -12568,7 +12569,7 @@ void main(){
       count: r ?? 1
     });
   }
-  async function yC(e, t, s, r) {
+  async function wC(e, t, s, r) {
     var _a2;
     const a = e.campaign(), o = ve.resolveActorId(a, t), i = (_a2 = cs.findTemplate(a, s)) == null ? void 0 : _a2.Id;
     if (!o || !i) return;
@@ -12582,7 +12583,7 @@ void main(){
       });
     }
   }
-  function wC(e, t, s) {
+  function SC(e, t, s) {
     const r = e.campaign(), a = ve.resolveActiveActor(r, t);
     if (!a) return Promise.resolve();
     const o = cs.findSlot(a, r, s);
@@ -12591,7 +12592,7 @@ void main(){
       itemId: o.Id
     }) : Promise.resolve();
   }
-  function SC(e, t, s) {
+  function IC(e, t, s) {
     const r = e.campaign(), a = ve.resolveActiveActor(r, t);
     if (!a) return Promise.resolve();
     const o = cs.findSlot(a, r, s);
@@ -12600,7 +12601,7 @@ void main(){
       itemId: o.Id
     }) : Promise.resolve();
   }
-  function IC(e, t, s) {
+  function NC(e, t, s) {
     const r = e.campaign(), a = ve.resolveActiveActor(r, t);
     if (!a) return Promise.resolve();
     const o = cs.findSlot(a, r, s);
@@ -12609,7 +12610,7 @@ void main(){
       itemId: o.Id
     }) : Promise.resolve();
   }
-  function NC(e, t, s, r) {
+  function CC(e, t, s, r) {
     const a = e.campaign(), o = ve.resolveActiveActor(a, t);
     if (!o) return Promise.resolve();
     const i = cs.findSlot(o, a, s);
@@ -12619,7 +12620,7 @@ void main(){
       usesLeft: r
     }) : Promise.resolve();
   }
-  function CC(e, t, s) {
+  function jC(e, t, s) {
     var _a2;
     const r = e.campaign(), a = (_a2 = cs.findTemplate(r, t)) == null ? void 0 : _a2.Id;
     return !a || !s ? Promise.resolve() : e.action("item:spawn", {
@@ -12628,7 +12629,7 @@ void main(){
       position: s
     });
   }
-  function jC(e, t, s, r) {
+  function AC(e, t, s, r) {
     var _a2;
     const a = e.campaign(), o = ve.resolveActorId(a, t), i = (_a2 = La.findTemplate(a, s)) == null ? void 0 : _a2.Id;
     return !o || !i ? Promise.resolve() : e.action("status:give", {
@@ -12641,7 +12642,7 @@ void main(){
       count: r ?? 1
     });
   }
-  function AC(e, t, s) {
+  function EC(e, t, s) {
     var _a2;
     const r = e.campaign(), a = ve.resolveActorId(r, t), o = (_a2 = La.findTemplate(r, s)) == null ? void 0 : _a2.Id;
     return !a || !o ? Promise.resolve() : e.action("status:remove", {
@@ -12649,7 +12650,7 @@ void main(){
       statusId: o
     });
   }
-  function EC(e, t, s, r) {
+  function TC(e, t, s, r) {
     var _a2;
     const a = e.campaign(), o = ve.resolveActorId(a, t), i = (_a2 = La.findTemplate(a, s)) == null ? void 0 : _a2.Id;
     return !o || !i || qx(e, t, s).length === 0 ? Promise.resolve() : e.action("status:adjustDuration", {
@@ -12665,7 +12666,7 @@ void main(){
     const r = e.campaign(), a = ve.resolveActiveActor(r, t);
     return a ? La.findSlots(a, r, s) : [];
   }
-  function TC(e, t, s) {
+  function kC(e, t, s) {
     const r = e.campaign(), a = ve.resolveActorId(r, t), o = Da.findTemplate(r, s);
     return !a || !o ? Promise.resolve() : e.action("skill:give", {
       skillIds: [
@@ -12677,7 +12678,7 @@ void main(){
       count: 1
     });
   }
-  function kC(e, t, s) {
+  function RC(e, t, s) {
     const r = e.campaign(), a = ve.resolveActiveActor(r, t);
     if (!a) return Promise.resolve();
     const o = Da.findSlot(a, r, s);
@@ -12686,7 +12687,7 @@ void main(){
       skillId: o.Id
     }) : Promise.resolve();
   }
-  function RC(e, t, s) {
+  function MC(e, t, s) {
     const r = e.campaign(), a = ve.resolveActiveActor(r, t);
     if (!a) return Promise.resolve();
     const o = Da.findSlot(a, r, s);
@@ -12695,7 +12696,7 @@ void main(){
       skillId: o.Id
     }) : Promise.resolve();
   }
-  function MC(e, t, s, r) {
+  function PC(e, t, s, r) {
     const a = e.campaign(), o = ve.resolveActiveActor(a, t);
     if (!o) return Promise.resolve();
     const i = Da.findSlot(o, a, s);
@@ -12705,7 +12706,7 @@ void main(){
       usesLeft: r
     }) : Promise.resolve();
   }
-  function PC(e, t) {
+  function _C(e, t) {
     var _a2;
     return (_a2 = sn(e.campaign().Settings.StatDefinitions, t)) == null ? void 0 : _a2.Id;
   }
@@ -12723,7 +12724,7 @@ void main(){
       }
     });
   }
-  const _C = /* @__PURE__ */ new Set([
+  const DC = /* @__PURE__ */ new Set([
     "getStat",
     "getStatValue",
     "getStatMax",
@@ -12758,7 +12759,7 @@ void main(){
     "useSkill",
     "setSkillUses"
   ]);
-  function DC(e, t, s) {
+  function LC(e, t, s) {
     return {
       getStat: (r) => ve.getStat(e, t.campaign(), r),
       getStatValue: (r) => ve.getStatValue(e, t.campaign(), r),
@@ -12791,7 +12792,7 @@ void main(){
         i !== o.Current && await lf(t, e, o.Id, i);
       },
       transferStatTo: async (r, a, o) => {
-        const i = ve.resolveActorId(t.campaign(), r), c = PC(t, a);
+        const i = ve.resolveActorId(t.campaign(), r), c = _C(t, a);
         !i || !c || await t.action("actor:transferStat", {
           sourceActorId: e.Id,
           sourceStatId: c,
@@ -12841,19 +12842,19 @@ void main(){
           e.Id
         ]
       }),
-      giveStatus: (r, a) => jC(t, s, r, a),
-      removeStatus: (r) => AC(t, s, r),
-      setStatusDuration: (r, a) => EC(t, s, r, a),
-      giveItem: (r, a) => bC(t, s, r, a),
-      removeItem: (r, a) => yC(t, s, r, a),
-      useItem: (r) => wC(t, s, r),
-      equipItem: (r) => SC(t, s, r),
-      unequipItem: (r) => IC(t, s, r),
-      setItemUses: (r, a) => NC(t, s, r, a),
-      giveSkill: (r) => TC(t, s, r),
-      removeSkill: (r) => kC(t, s, r),
-      useSkill: (r) => RC(t, s, r),
-      setSkillUses: (r, a) => MC(t, s, r, a)
+      giveStatus: (r, a) => AC(t, s, r, a),
+      removeStatus: (r) => EC(t, s, r),
+      setStatusDuration: (r, a) => TC(t, s, r, a),
+      giveItem: (r, a) => yC(t, s, r, a),
+      removeItem: (r, a) => wC(t, s, r, a),
+      useItem: (r) => SC(t, s, r),
+      equipItem: (r) => IC(t, s, r),
+      unequipItem: (r) => NC(t, s, r),
+      setItemUses: (r, a) => CC(t, s, r, a),
+      giveSkill: (r) => kC(t, s, r),
+      removeSkill: (r) => RC(t, s, r),
+      useSkill: (r) => MC(t, s, r),
+      setSkillUses: (r, a) => PC(t, s, r, a)
     };
   }
   function Fs(e, t) {
@@ -12862,12 +12863,12 @@ void main(){
     let r;
     const a = new Proxy(e, {
       get(o, i) {
-        return typeof i == "string" && _C.has(i) ? (r ?? (r = DC(o, t, a)), r[i]) : Reflect.get(o, i);
+        return typeof i == "string" && DC.has(i) ? (r ?? (r = LC(o, t, a)), r[i]) : Reflect.get(o, i);
       }
     });
     return t.facadeCache.set(e, a), a;
   }
-  function LC(e, t, s) {
+  function OC(e, t, s) {
     var _a2;
     const r = e.campaign();
     let a;
@@ -12884,7 +12885,7 @@ void main(){
       position: s
     }) : Promise.resolve();
   }
-  function OC(e) {
+  function FC(e) {
     return {
       get isActive() {
         return e.campaign().GameState.CombatState.isActive;
@@ -12908,19 +12909,19 @@ void main(){
           actorId: s
         });
       },
-      actorsThisRound: () => NN(e.campaign()).map((t) => Fs(t, e))
+      actorsThisRound: () => CN(e.campaign()).map((t) => Fs(t, e))
     };
   }
-  const FC = {
+  const UC = {
     findImage(e, t) {
       return sn(e.Images, t);
     }
   };
   function df(e, t) {
     var _a2;
-    return t ? (_a2 = FC.findImage(e.campaign(), t)) == null ? void 0 : _a2.Id : "";
+    return t ? (_a2 = UC.findImage(e.campaign(), t)) == null ? void 0 : _a2.Id : "";
   }
-  function UC(e) {
+  function $C(e) {
     return {
       setEnvironment: async (t) => {
         const s = df(e, t);
@@ -12941,7 +12942,7 @@ void main(){
       return sn(e.Audios, t);
     }
   };
-  function $C(e) {
+  function BC(e) {
     return {
       setTrack: async (t) => {
         const s = uf.findTrack(e.campaign(), t);
@@ -12960,7 +12961,7 @@ void main(){
       getTrack: (t) => uf.findTrack(e.campaign(), t)
     };
   }
-  function BC(e) {
+  function HC(e) {
     return {
       get day() {
         return e.campaign().GameState.CalendarDay;
@@ -12988,7 +12989,7 @@ void main(){
       longRest: () => e.action("calendar:longRest", {})
     };
   }
-  function HC(e, t) {
+  function VC(e, t) {
     return t ? e.action("ping:create", {
       terrainId: t.terrainId,
       x: t.x,
@@ -13026,7 +13027,7 @@ void main(){
       return t != null && typeof t == "object" ? t.Id : ve.resolveActorId(e, t) ?? ((_a2 = Wt.findInventory(e, t)) == null ? void 0 : _a2.Id);
     }
   };
-  function VC(e, t) {
+  function zC(e, t) {
     var _a2;
     return (_a2 = sn(e.campaign().Settings.StatDefinitions, t)) == null ? void 0 : _a2.Id;
   }
@@ -13039,7 +13040,7 @@ void main(){
       }
     });
   }
-  const zC = /* @__PURE__ */ new Set([
+  const GC = /* @__PURE__ */ new Set([
     "getStat",
     "getStatValue",
     "getStatMax",
@@ -13050,7 +13051,7 @@ void main(){
     "transferItemTo",
     "discardItem"
   ]);
-  function GC(e, t) {
+  function WC(e, t) {
     return {
       getStat: (s) => Wt.getStat(e, t.campaign(), s),
       getStatValue: (s) => Wt.getStatValue(e, t.campaign(), s),
@@ -13069,7 +13070,7 @@ void main(){
         o !== a.Current && await mf(t, e.Id, a.Id, o);
       },
       transferStatTo: async (s, r, a) => {
-        const o = Wt.resolveTransferTargetId(t.campaign(), s), i = VC(t, r);
+        const o = Wt.resolveTransferTargetId(t.campaign(), s), i = zC(t, r);
         !o || !i || await t.action("sharedInventory:transferStat", {
           sourceInventoryId: e.Id,
           sourceStatId: i,
@@ -13101,7 +13102,7 @@ void main(){
     let r;
     const a = new Proxy(e, {
       get(o, i) {
-        return typeof i == "string" && zC.has(i) ? (r ?? (r = GC(o, t)), r[i]) : Reflect.get(o, i);
+        return typeof i == "string" && GC.has(i) ? (r ?? (r = WC(o, t)), r[i]) : Reflect.get(o, i);
       }
     });
     return t.facadeCache.set(e, a), a;
@@ -13116,16 +13117,16 @@ void main(){
         return e.campaign();
       },
       get combat() {
-        return t ?? (t = OC(e));
+        return t ?? (t = FC(e));
       },
       get scene() {
-        return s ?? (s = UC(e));
+        return s ?? (s = $C(e));
       },
       get audio() {
-        return r ?? (r = $C(e));
+        return r ?? (r = BC(e));
       },
       get calendar() {
-        return a ?? (a = BC(e));
+        return a ?? (a = HC(e));
       },
       actors: () => Ml(e.campaign()).map((o) => Fs(o, e)),
       party: () => e.campaign().GameState.Characters.map((o) => Fs(o, e)),
@@ -13165,9 +13166,9 @@ void main(){
         });
       },
       action: (o, i) => e.action(o, i),
-      spawnActor: (o, i) => LC(e, o, i),
-      spawnItem: (o, i) => CC(e, o, i),
-      ping: (o) => HC(e, o)
+      spawnActor: (o, i) => OC(e, o, i),
+      spawnItem: (o, i) => jC(e, o, i),
+      ping: (o) => VC(e, o)
     };
   }
   const Kx = (async function() {
@@ -13175,14 +13176,14 @@ void main(){
   function zo(e) {
     return ve.getActiveActors(e);
   }
-  function WC(e, t) {
+  function XC(e, t) {
     return zo(e).some((s) => s.Id === t.Id);
   }
   function Pl(e) {
     var _a2;
-    return ((_a2 = e.AppSettings) == null ? void 0 : _a2[vC]) === "true";
+    return ((_a2 = e.AppSettings) == null ? void 0 : _a2[bC]) === "true";
   }
-  function XC(e) {
+  function qC(e) {
     return new Proxy({}, {
       get: (t, s) => {
         var _a2;
@@ -13199,13 +13200,13 @@ void main(){
       } : void 0
     });
   }
-  function qC(e) {
+  function YC(e) {
     const t = {};
     for (const s of e.Parameters ?? []) t[s.Key] = s.Default;
     return Object.freeze(t);
   }
   function Qx(e, t) {
-    const s = qC(e.paramsHolder), r = XC(e.varsOwner), a = e.actor ? Fs(e.actor, t) : void 0;
+    const s = YC(e.paramsHolder), r = qC(e.varsOwner), a = e.actor ? Fs(e.actor, t) : void 0;
     return new Proxy(e.raw, {
       get(o, i) {
         return i === "vars" ? r : i === "params" ? s : i === "actor" ? a : Reflect.get(o, i);
@@ -13256,13 +13257,13 @@ void main(){
   }
   function tv(e, t, s) {
     return {
-      action: (r, a) => s.run(() => YC(r, a ?? {}, e, t)),
+      action: (r, a) => s.run(() => KC(r, a ?? {}, e, t)),
       campaign: () => V.getActiveCampaign(e),
       context: e,
       facadeCache: /* @__PURE__ */ new WeakMap()
     };
   }
-  async function YC(e, t, s, r) {
+  async function KC(e, t, s, r) {
     const a = Ln[e];
     if (!a || !Ho(e)) throw new Error(`Action "${e}" is not allowed in scripts.`);
     if (r.actionCount >= Aa.MAX_TOTAL_ACTIONS) throw new Error(`Script action budget exceeded (${Aa.MAX_TOTAL_ACTIONS}); cascade halted.`);
@@ -13326,7 +13327,7 @@ void main(){
   }
   async function nv(e, t, s, r, a) {
     const { script: o } = e;
-    if (e.actor && !WC(r, e.actor)) return;
+    if (e.actor && !XC(r, e.actor)) return;
     const i = Vo(o.Code);
     if (!i.ok) {
       ff(s, o, i.error);
@@ -13368,10 +13369,10 @@ void main(){
       o.cascadeDepth--;
     }
   }
-  function KC(e, t) {
+  function QC(e, t) {
     return t === "Statuses" ? e.StatusTemplates : t === "Skills" ? e.SkillTemplates : e.ItemTemplates;
   }
-  function QC(e, t) {
+  function ZC(e, t) {
     var _a2;
     if (t.kind === "campaign") return {
       raw: e,
@@ -13388,7 +13389,7 @@ void main(){
     };
     const a = (_a2 = s[t.collection]) == null ? void 0 : _a2[t.index];
     if (!a) return null;
-    const o = KC(e, t.collection).find((i) => i.Id === a.Id);
+    const o = QC(e, t.collection).find((i) => i.Id === a.Id);
     return o ? {
       raw: o,
       actor: s,
@@ -13430,7 +13431,7 @@ void main(){
       Pl(r) || await sv(e, t, s, r, a, _l());
     },
     async runForTest(e) {
-      const { context: t, host: s, code: r, triggerKey: a, params: o, phase: i = "after" } = e, c = V.getActiveCampaign(t), l = QC(c, s);
+      const { context: t, host: s, code: r, triggerKey: a, params: o, phase: i = "after" } = e, c = V.getActiveCampaign(t), l = ZC(c, s);
       if (!l) return {
         ok: false,
         error: "Selected host not found in campaign."
@@ -13460,8 +13461,8 @@ void main(){
         };
       }
     }
-  }, ZC = 3e3, JC = 2500, pf = 3, ej = 2e3;
-  class tj {
+  }, JC = 3e3, ej = 2500, pf = 3, tj = 2e3;
+  class nj {
     constructor(t, s) {
       __publicField(this, "context");
       __publicField(this, "room");
@@ -13482,7 +13483,7 @@ void main(){
       __publicField(this, "peerReconcileInterval");
       __publicField(this, "lastBroadcastUserJson", "");
       __publicField(this, "mutationChain", Promise.resolve());
-      this.context = t, this.room = s, this.mutationRecorder = t.User.Role === "dm" ? new YN(t) : void 0, this.stateSync = new WN(s, this.execute.bind(this), this.mutationRecorder), this.imageService = new rC(s, t.User.Role === "dm", () => this.getDmPeerId(), this.execute.bind(this)), this.actorPoseService = new fC(t, s), this.terrainTransferService = new lc(s, t.User.Role === "dm", () => this.getDmPeerId(), () => this.context.ActiveCampaign), this.setupChannels(), this.setupStateSync(), this.setupPeerHandlers();
+      this.context = t, this.room = s, this.mutationRecorder = t.User.Role === "dm" ? new KN(t) : void 0, this.stateSync = new XN(s, this.execute.bind(this), this.mutationRecorder), this.imageService = new aC(s, t.User.Role === "dm", () => this.getDmPeerId(), this.execute.bind(this)), this.actorPoseService = new pC(t, s), this.terrainTransferService = new lc(s, t.User.Role === "dm", () => this.getDmPeerId(), () => this.context.ActiveCampaign), this.setupChannels(), this.setupStateSync(), this.setupPeerHandlers();
     }
     onFirstUpdate(t) {
       this.onFirstUpdateCallback = t;
@@ -13547,7 +13548,7 @@ void main(){
         }), s && sa();
       }, this.room.onPeerLeave = (t) => {
         this.forgetPeer(t);
-      }, this.peerReconcileInterval = setInterval(() => this.reconcilePeerConnections(), ej), this.reconcilePeerConnections();
+      }, this.peerReconcileInterval = setInterval(() => this.reconcilePeerConnections(), tj), this.reconcilePeerConnections();
     }
     setPeerUser(t, s) {
       const r = this.peerUsers.get(t);
@@ -13591,12 +13592,12 @@ void main(){
           }
         }
       };
-      r(), this.pingIntervals.set(t, setInterval(r, ZC));
+      r(), this.pingIntervals.set(t, setInterval(r, JC));
     }
     async pingWithTimeout(t) {
       let s;
       const r = new Promise((a, o) => {
-        s = setTimeout(() => o(new Error("ping timeout")), JC);
+        s = setTimeout(() => o(new Error("ping timeout")), ej);
       });
       try {
         return await Promise.race([
@@ -13812,7 +13813,7 @@ void main(){
       })
     });
   }
-  function nj() {
+  function sj() {
     const e = pe(), t = V.getActiveCampaign(e), s = (e.User.ImpersonatedActors ?? {})[t.RoomCode] ?? null, r = [
       ...t.GameState.Characters,
       ...t.GameState.Entities
@@ -13951,7 +13952,7 @@ void main(){
       })
     });
   }
-  const sj = {
+  const rj = {
     createDefault(e) {
       const s = V.getActiveCampaign(e).Settings;
       return {
@@ -13982,16 +13983,16 @@ void main(){
       };
     }
   }, uc = /* @__PURE__ */ new Set();
-  function rj(e, t) {
+  function aj(e, t) {
     t ? uc.add(e) : uc.delete(e);
   }
-  function aj(e) {
+  function oj(e) {
     uc.delete(e);
   }
-  function oj() {
+  function ij() {
     return uc.size > 0;
   }
-  const ij = {
+  const cj = {
     neutral: "btn-neutral",
     primary: "btn-primary",
     error: "btn-error"
@@ -13999,7 +14000,7 @@ void main(){
   function pi({ variant: e = "neutral", className: t, children: s, ...r }) {
     return n.jsx("button", {
       type: "button",
-      className: `btn btn-circle ${ij[e]} shadow-lg opacity-70 transition-transform hover:scale-105 tooltip tooltip-left ${t ?? ""}`,
+      className: `btn btn-circle ${cj[e]} shadow-lg opacity-70 transition-transform hover:scale-105 tooltip tooltip-left ${t ?? ""}`,
       ...r,
       children: s
     });
@@ -14031,7 +14032,7 @@ void main(){
       t
     ]), t ? s : false;
   }
-  function cj({ show: e, children: t }) {
+  function lj({ show: e, children: t }) {
     return e ? Nc.createPortal(n.jsx("div", {
       className: "fixed bottom-4 right-4 z-[60] flex gap-2",
       children: t
@@ -14039,7 +14040,7 @@ void main(){
   }
   function bs({ domain: e, mutationDomain: t, entityId: s, initialData: r, onSave: a, onClose: o, onClone: i, onDelete: c, createTitle: l, editTitle: d, viewTitle: u, children: f, buttonConfig: m = {}, fullWidth: h = false }) {
     const g = pe(), { showTopCancel: b = true, showTopSave: x = true, showBottomButtons: v = true, keepButtonsVisible: y = false } = m, w = t ?? e, N = io(g.User, `${e}:create`), C = io(g.User, `${w}:edit`), T = s && c && io(g.User, `${w}:delete`), R = !s && N ? "create" : s && C ? "edit" : "view", j = R === "view", [E, S] = p.useState(r), [I, A] = p.useState(R === "create"), [k, P] = p.useState(null), M = p.useRef(r), D = p.useRef(null), _ = p.useRef(/* @__PURE__ */ new Set()), O = p.useId();
-    p.useEffect(() => (rj(O, I && !j), () => aj(O)), [
+    p.useEffect(() => (aj(O, I && !j), () => oj(O)), [
       O,
       I,
       j
@@ -14112,7 +14113,7 @@ void main(){
         n.jsxs("div", {
           className: `space-y-6 ${h ? "w-full" : "max-w-4xl"}`,
           children: [
-            n.jsx(lj, {
+            n.jsx(dj, {
               createTitle: l,
               editTitle: d,
               viewTitle: u,
@@ -14167,7 +14168,7 @@ void main(){
             })
           ]
         }),
-        n.jsxs(cj, {
+        n.jsxs(lj, {
           show: W,
           children: [
             T && n.jsx(pi, {
@@ -14210,7 +14211,7 @@ void main(){
       ]
     });
   }
-  function lj({ createTitle: e, editTitle: t, viewTitle: s, onSave: r, onClose: a, onClone: o, showClone: i, showCancel: c, showSave: l, buttonsRef: d }) {
+  function dj({ createTitle: e, editTitle: t, viewTitle: s, onSave: r, onClose: a, onClone: o, showClone: i, showCancel: c, showSave: l, buttonsRef: d }) {
     const { mode: u, readOnly: f, isDirty: m } = Go(), h = u === "create" ? e : u === "edit" ? t : s;
     return n.jsxs("div", {
       className: "flex justify-between items-center",
@@ -14665,7 +14666,7 @@ void main(){
       ]
     });
   }
-  function dj({ contextInfo: e, onSelectImage: t }) {
+  function uj({ contextInfo: e, onSelectImage: t }) {
     var _a2, _b2;
     const s = pe(), { actionService: r } = De(), a = ge.getImageService(s), o = ge.getProviderApiKey(s, a), i = ge.getProviderApiSecret(s, a), c = ge.getImagePromptTemplate(s), l = Qg(a), [d, u] = p.useState("idle"), [f, m] = p.useState(null), [h, g] = p.useState(null), [b, x] = p.useState(null), [v, y] = p.useState(null), w = s.User.Role === "dm";
     if (p.useEffect(() => () => {
@@ -14914,7 +14915,7 @@ void main(){
             "Upload New Image"
           ]
         }),
-        n.jsx(dj, {
+        n.jsx(uj, {
           contextInfo: r,
           onSelectImage: M
         }),
@@ -15135,7 +15136,7 @@ void main(){
       }, d.Id))
     });
   }
-  function uj({ scripts: e, onChange: t, readOnly: s }) {
+  function mj({ scripts: e, onChange: t, readOnly: s }) {
     const r = p.useMemo(() => Object.keys(Ln).sort(), []), a = (d, u) => {
       t(e.map((f, m) => m === d ? {
         ...f,
@@ -15314,13 +15315,13 @@ void main(){
     "statRef",
     "color"
   ], rm = /^[A-Za-z_$][A-Za-z0-9_$]*$/;
-  function mj(e) {
+  function hj(e) {
     const t = new Set(e.map((r) => r.Key));
     let s = e.length + 1;
     for (; t.has(`param${s}`); ) s++;
     return `param${s}`;
   }
-  function hj(e, t) {
+  function fj(e, t) {
     const s = e.Key, r = s.trim();
     return r ? s !== r ? "Remove leading or trailing spaces." : rm.test(s) ? (t.get(r) ?? 0) > 1 ? "Key must be unique." : null : "Use a JavaScript identifier, e.g. potency or saveDC." : "Key is required.";
   }
@@ -15396,7 +15397,7 @@ void main(){
         });
     }
   }
-  function fj({ parameters: e, onChange: t, readOnly: s, statRefOptions: r }) {
+  function pj({ parameters: e, onChange: t, readOnly: s, statRefOptions: r }) {
     const a = (d, u) => {
       t(e.map((f, m) => m === d ? {
         ...f,
@@ -15408,7 +15409,7 @@ void main(){
         Default: u === "number" ? 0 : u === "boolean" ? false : u === "color" ? "#ffffff" : ""
       });
     }, i = () => {
-      const d = mj(e);
+      const d = hj(e);
       t([
         ...e,
         {
@@ -15440,7 +15441,7 @@ void main(){
           ]
         }),
         e.map((d, u) => {
-          const f = hj(d, l);
+          const f = fj(d, l);
           return n.jsxs("div", {
             className: "rounded-lg border-2 border-base-300 p-3 space-y-3",
             children: [
@@ -15595,14 +15596,14 @@ void main(){
       ]
     });
   }
-  const pj = [
+  const gj = [
     "campaign",
     "actor",
     "item",
     "status",
     "skill"
   ];
-  function gj(e, t) {
+  function xj(e, t) {
     var _a2, _b2;
     return ((_a2 = e.Name) == null ? void 0 : _a2.trim()) || ((_b2 = e.Trigger) == null ? void 0 : _b2.trim()) || `Script ${t + 1}`;
   }
@@ -15612,16 +15613,16 @@ void main(){
   function lv(e) {
     return e === null || typeof e == "string" || typeof e == "number" || typeof e == "boolean";
   }
-  function xj(e) {
+  function vj(e) {
     const t = e.trim(), s = t.match(/```json\s*([\s\S]*?)```/i);
     if (s) return s[1].trim();
     const r = t.match(/```\s*([\s\S]*?)```/);
     return r ? r[1].trim() : t;
   }
-  function vj(e) {
+  function bj(e) {
     if (!Ea(e)) throw new Error("Clipboard JSON is missing host.");
     const t = e.type;
-    if (typeof t != "string" || !pj.includes(t)) throw new Error("Clipboard host.type is not a supported script host.");
+    if (typeof t != "string" || !gj.includes(t)) throw new Error("Clipboard host.type is not a supported script host.");
     const s = e.name;
     if (t !== "campaign" && typeof s != "string") throw new Error("Clipboard host.name is required for this host type.");
     if (s !== void 0 && typeof s != "string") throw new Error("Clipboard host.name must be a string.");
@@ -15630,7 +15631,7 @@ void main(){
       name: s
     };
   }
-  function bj(e, t) {
+  function yj(e, t) {
     if (!Ea(e)) throw new Error(`Parameter ${t + 1} must be an object.`);
     const s = e.Key, r = e.Label, a = e.Type, o = e.Default, i = e.Min, c = e.Max, l = e.Options;
     if (typeof s != "string" || !rm.test(s)) throw new Error(`Parameter ${t + 1} has an invalid Key.`);
@@ -15659,7 +15660,7 @@ void main(){
       Options: d
     };
   }
-  function yj(e, t) {
+  function wj(e, t) {
     if (!Ea(e)) throw new Error(`Script ${t + 1} must be an object.`);
     const s = e.Trigger, r = e.Code;
     if (typeof s != "string" || s.trim() === "") throw new Error(`Script ${t + 1} has an invalid Trigger.`);
@@ -15677,7 +15678,7 @@ void main(){
       Code: r
     };
   }
-  function wj(e) {
+  function Sj(e) {
     if (e === void 0) return;
     if (!Ea(e)) throw new Error("Clipboard vars must be an object.");
     const t = {};
@@ -15687,30 +15688,30 @@ void main(){
     }
     return t;
   }
-  function Sj(e) {
+  function Ij(e) {
     let t;
     try {
-      t = JSON.parse(xj(e));
+      t = JSON.parse(vj(e));
     } catch {
       throw new Error("Clipboard does not contain valid JSON or a json code block.");
     }
     if (!Ea(t) || t.questNetScript !== 1) throw new Error("Clipboard must contain a questNetScript v1 JSON envelope.");
     const s = t.scripts;
     if (!Array.isArray(s) || s.length === 0) throw new Error("Clipboard envelope must contain at least one script.");
-    const r = Array.isArray(t.parameters) ? t.parameters.map(bj) : [], a = /* @__PURE__ */ new Set();
+    const r = Array.isArray(t.parameters) ? t.parameters.map(yj) : [], a = /* @__PURE__ */ new Set();
     for (const o of r) {
       if (a.has(o.Key)) throw new Error(`Clipboard parameter key "${o.Key}" is duplicated.`);
       a.add(o.Key);
     }
     return {
-      host: vj(t.host),
+      host: bj(t.host),
       description: typeof t.description == "string" ? t.description : void 0,
       parameters: r,
-      scripts: s.map(yj),
-      vars: wj(t.vars)
+      scripts: s.map(wj),
+      vars: Sj(t.vars)
     };
   }
-  function Ij(e, t) {
+  function Nj(e, t) {
     if (t.length === 0) return e;
     const s = new Map(t.map((o) => [
       o.Key,
@@ -15719,13 +15720,13 @@ void main(){
     for (const o of t) a.has(o.Key) || r.push(o);
     return r;
   }
-  function Nj(e) {
+  function Cj(e) {
     return e.ScriptVars !== void 0 || "GameState" in e || "Stats" in e;
   }
   function gi(e, t, s = `${t}s`) {
     return `${e} ${e === 1 ? t : s}`;
   }
-  function Cj(e, t) {
+  function jj(e, t) {
     var _a2;
     const s = /* @__PURE__ */ new Map();
     for (const r of t) {
@@ -15741,7 +15742,7 @@ void main(){
     }
     for (const [r, a] of e.entries()) {
       const o = Vo(a.Code);
-      if (!o.ok) return `Fix scripting before saving: ${gj(a, r)} has invalid code. ${o.error}`;
+      if (!o.ok) return `Fix scripting before saving: ${xj(a, r)} has invalid code. ${o.error}`;
     }
     return null;
   }
@@ -15764,14 +15765,14 @@ void main(){
       u(true), l(null);
       try {
         if (!((_a3 = navigator.clipboard) == null ? void 0 : _a3.readText)) throw new Error("Clipboard text access is not available in this browser.");
-        const v = await navigator.clipboard.readText(), y = Sj(v), w = [
+        const v = await navigator.clipboard.readText(), y = Ij(v), w = [
           ...o,
           ...y.scripts
-        ], N = Ij(i, y.parameters), C = {
+        ], N = Nj(i, y.parameters), C = {
           ...e,
           Scripts: w.length ? w : void 0,
           Parameters: N.length ? N : void 0
-        }, T = y.vars ? Object.keys(y.vars).length : 0, R = T > 0 && Nj(e);
+        }, T = y.vars ? Object.keys(y.vars).length : 0, R = T > 0 && Cj(e);
         R && (C.ScriptVars = {
           ...e.ScriptVars ?? {},
           ...y.vars
@@ -15797,7 +15798,7 @@ void main(){
       v.preventDefault(), v.stopPropagation(), b();
     };
     return p.useEffect(() => {
-      if (!s) return r(() => Cj(o, i));
+      if (!s) return r(() => jj(o, i));
     }, [
       i,
       s,
@@ -15905,7 +15906,7 @@ void main(){
                           className: "mb-2 text-sm font-semibold opacity-80",
                           children: "Parameters"
                         }),
-                        n.jsx(fj, {
+                        n.jsx(pj, {
                           parameters: i,
                           onChange: h,
                           readOnly: s,
@@ -15919,7 +15920,7 @@ void main(){
                           className: "mb-2 text-sm font-semibold opacity-80",
                           children: "Scripts"
                         }),
-                        n.jsx(uj, {
+                        n.jsx(mj, {
                           scripts: o,
                           onChange: m,
                           readOnly: s
@@ -15947,7 +15948,7 @@ void main(){
     });
   }
   function dv({ character: e, initialTags: t, onClose: s }) {
-    const r = pe(), { actionService: a } = De(), o = sj.createDefault(r);
+    const r = pe(), { actionService: a } = De(), o = rj.createDefault(r);
     t && !e && (o.Tags = t);
     const i = e || o, c = (u) => {
       if (!a) return;
@@ -15998,10 +15999,10 @@ void main(){
       buttonConfig: {
         keepButtonsVisible: true
       },
-      children: n.jsx(jj, {})
+      children: n.jsx(Aj, {})
     });
   }
-  function jj({ data: e, onChange: t }) {
+  function Aj({ data: e, onChange: t }) {
     if (!e || !t) return null;
     const s = pe(), r = V.getActiveCampaign(s), a = (o, i) => {
       t({
@@ -16312,9 +16313,9 @@ void main(){
       F,
       l
     ]);
-    const G = x.trim().length > 0, $ = G ? e.filter((Q) => Q.label.toLowerCase().includes(x.toLowerCase())) : mN(e, T), J = F === "newest" ? [
+    const G = x.trim().length > 0, $ = G ? e.filter((Q) => Q.label.toLowerCase().includes(x.toLowerCase())) : hN(e, T), J = F === "newest" ? [
       ...$
-    ].reverse() : $, X = G ? [] : uN(e, T), z = Array.from(new Set(e.flatMap((Q) => Pr(Q.tags).map((ae) => ae)))).sort(), ee = Array.from(new Set(e.flatMap((Q) => (Q.tags || []).filter((ae) => !ae.startsWith("path:"))))).sort(), W = [
+    ].reverse() : $, X = G ? [] : mN(e, T), z = Array.from(new Set(e.flatMap((Q) => Pr(Q.tags).map((ae) => ae)))).sort(), ee = Array.from(new Set(e.flatMap((Q) => (Q.tags || []).filter((ae) => !ae.startsWith("path:"))))).sort(), W = [
       ...X.map((Q) => ({
         type: "folder",
         data: Q
@@ -16362,7 +16363,7 @@ void main(){
         if (!Ae) return null;
         const Re = P.trim();
         let Ee;
-        if (Re === "") Ee = hN(Ae.tags);
+        if (Re === "") Ee = fN(Ae.tags);
         else {
           const je = Re.split("/");
           Ee = qs(Ae.tags, je);
@@ -16749,10 +16750,10 @@ void main(){
                   n.jsxs("div", {
                     className: "flex flex-wrap gap-4 justify-between",
                     children: [
-                      oe.map((Q) => Q.type === "folder" ? n.jsx(Aj, {
+                      oe.map((Q) => Q.type === "folder" ? n.jsx(Ej, {
                         folder: Q.data,
                         onClick: () => re(Q.data)
-                      }, Q.data.fullPath) : n.jsx(Ej, {
+                      }, Q.data.fullPath) : n.jsx(Tj, {
                         item: Q.data,
                         onCardClick: () => B(Q.data),
                         isSelectionMode: S,
@@ -16830,7 +16831,7 @@ void main(){
       ]
     });
   }
-  function Aj({ folder: e, onClick: t }) {
+  function Ej({ folder: e, onClick: t }) {
     return n.jsxs("div", {
       onClick: t,
       className: "card bg-base-100 border-2 border-base-300 hover:border-primary transition-colors w-64 cursor-pointer",
@@ -16863,7 +16864,7 @@ void main(){
       ]
     });
   }
-  function Ej({ item: e, onCardClick: t, isSelectionMode: s, isSelected: r, onToggleSelection: a }) {
+  function Tj({ item: e, onCardClick: t, isSelectionMode: s, isSelected: r, onToggleSelection: a }) {
     const o = () => {
       s ? a() : t();
     };
@@ -17171,8 +17172,8 @@ void main(){
       ]
     }) : null;
   }
-  const Tj = 10;
-  function kj(e) {
+  const kj = 10;
+  function Rj(e) {
     var _a2;
     const t = (r) => !!r && e.VoxelTerrains.some((a) => a.Id === r), s = (r) => {
       var _a3;
@@ -17189,7 +17190,7 @@ void main(){
   }
   function ls() {
     var _a2;
-    const e = pe(), t = V.getActiveCampaign(e), s = ((_a2 = e.ViewedTerrains) == null ? void 0 : _a2[t.Id]) ?? [], r = /* @__PURE__ */ new Set(), a = s.filter((d) => r.has(d) || !t.VoxelTerrains.some((u) => u.Id === d) ? false : (r.add(d), true)), o = a[0] ?? kj(t), i = (d) => {
+    const e = pe(), t = V.getActiveCampaign(e), s = ((_a2 = e.ViewedTerrains) == null ? void 0 : _a2[t.Id]) ?? [], r = /* @__PURE__ */ new Set(), a = s.filter((d) => r.has(d) || !t.VoxelTerrains.some((u) => u.Id === d) ? false : (r.add(d), true)), o = a[0] ?? Rj(t), i = (d) => {
       he.ViewedTerrains || (he.ViewedTerrains = {}), he.ViewedTerrains[t.Id] = d;
     };
     return {
@@ -17200,7 +17201,7 @@ void main(){
         const u = [
           d,
           ...a.filter((f) => f !== d)
-        ].slice(0, Tj);
+        ].slice(0, kj);
         i(u);
       },
       clearViewedTerrain: (d) => {
@@ -17208,7 +17209,7 @@ void main(){
       }
     };
   }
-  function Rj() {
+  function Mj() {
     const e = pe(), { actionService: t } = De(), s = V.getActiveCampaign(e), { viewedTerrainId: r } = ls(), [a, o] = p.useState(0), [i, c] = p.useState(false), [l, d] = p.useState([]), u = (v) => {
       t && t.execute("character:spawn", {
         characterId: v,
@@ -17313,10 +17314,10 @@ void main(){
     longRest: "Long Rest",
     combatEnd: "Combat End"
   };
-  function Mj(e) {
+  function Pj(e) {
     return e === "max" ? "max" : typeof e == "object" && e !== null && "setTo" in e ? "setTo" : "restoreBy";
   }
-  function Pj(e) {
+  function _j(e) {
     return typeof e == "number" ? e : typeof e == "object" && e !== null && "setTo" in e ? e.setTo : 1;
   }
   function Uc({ value: e, onChange: t, readOnly: s }) {
@@ -17346,7 +17347,7 @@ void main(){
         "longRest",
         "combatEnd"
       ].map((d) => {
-        const u = l(d), f = e == null ? void 0 : e[d], m = Mj(f), h = Pj(f);
+        const u = l(d), f = e == null ? void 0 : e[d], m = Pj(f), h = _j(f);
         return n.jsxs("div", {
           className: "flex items-center gap-3 p-3 rounded-lg border",
           children: [
@@ -17405,7 +17406,7 @@ void main(){
       })
     });
   }
-  function _j({ stats: e, onChange: t, readOnly: s }) {
+  function Dj({ stats: e, onChange: t, readOnly: s }) {
     const r = Un(), a = s ?? r, [o, i] = p.useState(null), c = () => {
       const f = {
         Id: crypto.randomUUID(),
@@ -17584,7 +17585,7 @@ void main(){
       ]
     });
   }
-  function Dj({ actions: e, onChange: t, readOnly: s }) {
+  function Lj({ actions: e, onChange: t, readOnly: s }) {
     const r = Un(), a = s ?? r, o = () => {
       const l = {
         Id: crypto.randomUUID(),
@@ -17708,7 +17709,7 @@ void main(){
       ]
     });
   }
-  function Lj({ attributes: e, onChange: t, readOnly: s }) {
+  function Oj({ attributes: e, onChange: t, readOnly: s }) {
     const r = Un(), a = s ?? r, o = () => {
       const l = {
         Id: crypto.randomUUID(),
@@ -17768,7 +17769,7 @@ void main(){
       ]
     });
   }
-  function Oj({ inventories: e, onChange: t, readOnly: s }) {
+  function Fj({ inventories: e, onChange: t, readOnly: s }) {
     const r = Un(), a = s ?? r, o = pe(), c = V.getActiveCampaign(o).Settings.StatDefinitions || [], [l, d] = p.useState(null), u = () => {
       const g = {
         Id: crypto.randomUUID(),
@@ -18117,7 +18118,7 @@ void main(){
       ]
     });
   }
-  function Fj({ value: e, onChange: t, readOnly: s }) {
+  function Uj({ value: e, onChange: t, readOnly: s }) {
     const r = Un(), a = s ?? r, o = e;
     if (o == null) return n.jsx("div", {
       children: "Error: No config found"
@@ -18394,7 +18395,7 @@ ${b}: 1`;
     "min(2^h, 100)": "Exponential (capped at 100)",
     custom: "Custom formula..."
   };
-  function Uj({ formula: e, lookup: t, onChange: s, readOnly: r }) {
+  function $j({ formula: e, lookup: t, onChange: s, readOnly: r }) {
     const a = Un(), o = r ?? a, [i, c] = p.useState(() => !Object.keys(Ol).includes(e)), [l, d] = p.useState(null), u = p.useMemo(() => i ? "custom" : Object.keys(Ol).includes(e) ? e : "custom", [
       e,
       i
@@ -18563,7 +18564,7 @@ ${b}: 1`;
       children: a
     });
   }
-  function $j(e) {
+  function Bj(e) {
     switch (e.kind) {
       case "moveSpeed":
         return "moveSpeed";
@@ -18573,7 +18574,7 @@ ${b}: 1`;
         return `attribute:${e.attributeId}`;
     }
   }
-  function Bj(e) {
+  function Hj(e) {
     return e === "moveSpeed" ? {
       kind: "moveSpeed"
     } : e.startsWith("stat:") ? {
@@ -18599,7 +18600,7 @@ ${b}: 1`;
         label: `${v.Name} (attribute)`
       }))
     ], m = (v, y) => {
-      const w = Bj(y);
+      const w = Hj(y);
       if (!w) return;
       const N = [
         ...d
@@ -18734,7 +18735,7 @@ ${b}: 1`;
                 children: w ? "Primary" : `Tiebreaker ${y}`
               }),
               n.jsx("select", {
-                value: $j(v),
+                value: Bj(v),
                 onChange: (N) => m(y, N.target.value),
                 disabled: c,
                 className: "select select-bordered select-sm flex-1",
@@ -19093,7 +19094,7 @@ ${b}: 1`;
       whenFires: "Tags are batch-edited across scenarios."
     }
   };
-  function Hj() {
+  function Vj() {
     const e = new Set(Object.keys(Ln)), t = new Set(Object.keys(am)), s = [
       ...e
     ].filter((a) => !t.has(a)).sort(), r = [
@@ -19104,8 +19105,8 @@ ${b}: 1`;
       stale: r
     };
   }
-  function Vj() {
-    const { missing: e, stale: t } = Hj();
+  function zj() {
+    const { missing: e, stale: t } = Vj();
     e.length === 0 && t.length === 0 || console.warn(`[scriptingApiModel] ACTION_DOCS is out of sync with ACTION_REGISTRY.
 ` + (e.length ? `  Missing docs for: ${e.join(", ")}
 ` : "") + (t.length ? `  Stale docs (no such action): ${t.join(", ")}
@@ -19434,7 +19435,7 @@ ${b}: 1`;
     "Scripts run ONLY on the DM (the authority). Never branch on randomness expecting players to recompute it; players receive the broadcast result.",
     "There is no wall-clock loop guard. while(true) hangs the tab \u2014 never write an unbounded loop. Cascade depth and total actions per mutation ARE bounded (see budgets).",
     "There is no scheduling, no cross-campaign access, and no direct file/image/terrain binary manipulation from scripts."
-  ], zj = "Reply with a single JSON object in the shape below (the `questNetScript` envelope), inside a ```json code block. It maps 1:1 onto the host's Scripts / Parameters / ScriptVars, so it can be pasted back into Quest-Net wholesale. Put a human summary in `description`; keep `Code` to the script body (no function wrapper).", Gj = `{
+  ], Gj = "Reply with a single JSON object in the shape below (the `questNetScript` envelope), inside a ```json code block. It maps 1:1 onto the host's Scripts / Parameters / ScriptVars, so it can be pasted back into Quest-Net wholesale. Put a human summary in `description`; keep `Code` to the script body (no function wrapper).", Wj = `{
   "questNetScript": 1,
   "host": { "type": "status", "name": "Poison" },
   "description": "Deals 'potency' damage to the bearer at the start of each combat round.",
@@ -19451,7 +19452,7 @@ ${b}: 1`;
     }
   ],
   "vars": {}
-}`, Wj = [
+}`, Xj = [
     {
       field: "questNetScript",
       type: "number",
@@ -19507,7 +19508,7 @@ ${b}: 1`;
       type: "object",
       notes: "Optional initial per-instance scratch (this.vars). Usually {}."
     }
-  ], gv = 10, Xj = /* @__PURE__ */ new Set([
+  ], gv = 10, qj = /* @__PURE__ */ new Set([
     "Images",
     "VoxelTerrains",
     "Log",
@@ -19516,13 +19517,13 @@ ${b}: 1`;
   function Vs(e) {
     return e.replace(/\\/g, "\\\\").replace(/\|/g, "\\|").replace(/\n/g, " ");
   }
-  function qj(e) {
+  function Yj(e) {
     const t = Ur(e), s = {};
-    for (const [a, o] of Object.entries(t)) Xj.has(a) || (s[a] = o);
+    for (const [a, o] of Object.entries(t)) qj.has(a) || (s[a] = o);
     const r = Dn.getChronologicalLog(e).slice(-gv);
     return s.RecentLog = Ur(r), s;
   }
-  function Yj(e) {
+  function Kj(e) {
     return [
       "# Quest-Net Scripting Brief",
       "",
@@ -19536,7 +19537,7 @@ ${b}: 1`;
     ].join(`
 `);
   }
-  function Kj() {
+  function Qj() {
     return [
       "## How scripting works",
       "",
@@ -19565,7 +19566,7 @@ ${b}: 1`;
     ].join(`
 `);
   }
-  function Qj() {
+  function Zj() {
     const e = [
       "## Triggers \u2014 every action and when it fires",
       "",
@@ -19591,7 +19592,7 @@ ${b}: 1`;
     return e.join(`
 `);
   }
-  function Zj() {
+  function Jj() {
     const e = [
       "## API & helpers",
       "",
@@ -19610,7 +19611,7 @@ ${b}: 1`;
 `), "```"), e.join(`
 `);
   }
-  function Jj() {
+  function eA() {
     const e = [
       "## Limits \u2014 what the API cannot do",
       ""
@@ -19619,20 +19620,20 @@ ${b}: 1`;
     return e.push("", "**Cascade budgets (per top-level mutation):**", `- Max cascade depth (action \u2192 reacting script \u2192 action \u2192 \u2026): \`${Aa.MAX_CASCADE_DEPTH}\``, `- Max total \`game.action()\` calls: \`${Aa.MAX_TOTAL_ACTIONS}\``, "", "**Forbidden tokens (the validator rejects a script containing any of these):**", "", "```", Wx.join(" "), "```"), e.join(`
 `);
   }
-  function eA() {
+  function tA() {
     const e = [
       "## How to reply \u2014 the script format",
       "",
-      zj,
+      Gj,
       ""
     ];
     e.push("| Field | Type | Notes |"), e.push("| --- | --- | --- |");
-    for (const t of Wj) e.push(`| \`${Vs(t.field)}\` | \`${Vs(t.type)}\` | ${Vs(t.notes)} |`);
-    return e.push("", "Example:", "", "```json", Gj, "```"), e.join(`
+    for (const t of Xj) e.push(`| \`${Vs(t.field)}\` | \`${Vs(t.type)}\` | ${Vs(t.notes)} |`);
+    return e.push("", "Example:", "", "```json", Wj, "```"), e.join(`
 `);
   }
-  function tA(e) {
-    const t = qj(e);
+  function nA(e) {
+    const t = Yj(e);
     return [
       "## Your campaign",
       "",
@@ -19645,21 +19646,21 @@ ${b}: 1`;
     ].join(`
 `);
   }
-  function nA(e) {
-    return Vj(), [
-      Yj(e),
-      Kj(),
+  function sA(e) {
+    return zj(), [
+      Kj(e),
       Qj(),
       Zj(),
       Jj(),
       eA(),
-      tA(e)
+      tA(),
+      nA(e)
     ].join(`
 
 `);
   }
-  function sA(e) {
-    const t = nA(e), s = new Blob([
+  function rA(e) {
+    const t = sA(e), s = new Blob([
       t
     ], {
       type: "text/markdown"
@@ -19718,7 +19719,7 @@ ${b}: 1`;
         icon: "icon-[mdi--text-box-outline]",
         count: e.Log.length
       }
-    ], r = rA(e.CreatedAt), a = aA(e.CreatedAt);
+    ], r = aA(e.CreatedAt), a = oA(e.CreatedAt);
     if (t === "large") return n.jsx("div", {
       className: "card bg-base-100 border-2 border-base-300",
       children: n.jsxs("div", {
@@ -19863,14 +19864,14 @@ ${b}: 1`;
   function Fl(e) {
     return e > 999 ? "999+" : String(e);
   }
-  function rA(e) {
+  function aA(e) {
     return e ? new Date(e).toLocaleDateString(void 0, {
       year: "numeric",
       month: "short",
       day: "numeric"
     }) : null;
   }
-  function aA(e) {
+  function oA(e) {
     if (!e) return null;
     const t = Math.floor((Date.now() - e) / (1e3 * 60 * 60 * 24));
     if (t < 1) return "today";
@@ -19924,7 +19925,7 @@ ${b}: 1`;
       icon: "icon-[mdi--script-text]"
     }
   ];
-  function oA() {
+  function iA() {
     const e = pe(), { actionService: t } = De(), s = V.getActiveCampaign(e), [r, a] = p.useState(null), [o, i] = p.useState(false), c = (d) => {
       t && (t.execute("campaign:edit", {
         campaignId: s.Id,
@@ -19970,7 +19971,7 @@ ${b}: 1`;
           showBottomButtons: false,
           keepButtonsVisible: true
         },
-        children: n.jsx(iA, {
+        children: n.jsx(cA, {
           combatActive: s.GameState.CombatState.isActive,
           exportProgress: r,
           isExporting: o,
@@ -19979,7 +19980,7 @@ ${b}: 1`;
       })
     });
   }
-  function iA({ data: e, onChange: t, combatActive: s = false, exportProgress: r, isExporting: a, onExport: o }) {
+  function cA({ data: e, onChange: t, combatActive: s = false, exportProgress: r, isExporting: a, onExport: o }) {
     const i = Xs(), [c, l] = p.useState(() => {
       const x = localStorage.getItem(xf);
       return Ul.some((v) => v.id === x) ? x : "general";
@@ -20009,7 +20010,7 @@ ${b}: 1`;
       });
     }, g = n.jsx("div", {
       className: "flex-1 min-w-0 space-y-6",
-      children: cA(c, {
+      children: lA(c, {
         data: e,
         onChange: t,
         settings: d,
@@ -20027,7 +20028,7 @@ ${b}: 1`;
         n.jsx(rv, {
           variant: "panel"
         }),
-        n.jsx(lA, {
+        n.jsx(dA, {
           exportProgress: r,
           isExporting: a,
           onExport: o
@@ -20096,7 +20097,7 @@ ${b}: 1`;
       ]
     });
   }
-  function cA(e, t) {
+  function lA(e, t) {
     const { data: s, onChange: r, settings: a, combatActive: o, updateSettings: i, handleSettingChange: c, handleCampaignChange: l } = t;
     switch (e) {
       case "general":
@@ -20129,7 +20130,7 @@ ${b}: 1`;
             n.jsx(Le, {
               title: "Stat Definitions",
               description: "Define custom stats for characters (HP, Mana, Stamina, etc.)",
-              children: n.jsx(_j, {
+              children: n.jsx(Dj, {
                 stats: a.StatDefinitions,
                 onChange: (d) => i({
                   StatDefinitions: d
@@ -20142,7 +20143,7 @@ ${b}: 1`;
                 n.jsx(Le, {
                   title: "Action Definitions",
                   description: "Define types of actions and their default counts per turn",
-                  children: n.jsx(Dj, {
+                  children: n.jsx(Lj, {
                     actions: a.ActionDefinitions,
                     onChange: (d) => i({
                       ActionDefinitions: d
@@ -20152,7 +20153,7 @@ ${b}: 1`;
                 n.jsx(Le, {
                   title: "Attribute Definitions",
                   description: "Define custom attributes for characters (Class, Level, Alignment, etc.). Attributes only appear on a character sheet if they have a value.",
-                  children: n.jsx(Lj, {
+                  children: n.jsx(Oj, {
                     attributes: a.AttributeDefinitions ?? [],
                     onChange: (d) => i({
                       AttributeDefinitions: d
@@ -20167,7 +20168,7 @@ ${b}: 1`;
         return n.jsx(Le, {
           title: "Shared Inventories",
           description: "Define shared inventories for the party to pool resources/stats (e.g., Medkit, Party SP)",
-          children: n.jsx(Oj, {
+          children: n.jsx(Fj, {
             inventories: a.SharedInventories ?? [],
             onChange: (d) => i({
               SharedInventories: d
@@ -20195,7 +20196,7 @@ ${b}: 1`;
               title: "Movement & Height",
               description: "Configure how terrain height affects movement cost",
               children: [
-                n.jsx(Uj, {
+                n.jsx($j, {
                   formula: a.MovementSettings.heightCostFormula,
                   lookup: a.MovementSettings.heightCostLookup,
                   onChange: (d, u) => i({
@@ -20255,7 +20256,7 @@ ${b}: 1`;
                     className: "toggle toggle-primary"
                   })
                 }),
-                n.jsx(Fj, {
+                n.jsx(Uj, {
                   value: a.CalendarSettings,
                   onChange: (d) => i({
                     CalendarSettings: d
@@ -20356,7 +20357,7 @@ ${b}: 1`;
         return n.jsx(Le, {
           title: "Terrain Environments",
           description: "Saved lighting and background presets for terrain maps.",
-          children: n.jsx(dA, {
+          children: n.jsx(uA, {
             presets: a.TerrainEnvironmentPresets,
             onChange: (d) => i({
               TerrainEnvironmentPresets: d
@@ -20389,7 +20390,7 @@ ${b}: 1`;
               description: "Download a self-contained markdown document (API reference + triggers + limits + this campaign's data) to hand an AI agent so it can write a script for you. Paste its reply into a script's code.",
               children: n.jsxs("button", {
                 type: "button",
-                onClick: () => sA(s),
+                onClick: () => rA(s),
                 className: "btn btn-primary gap-2 self-start",
                 children: [
                   n.jsx("span", {
@@ -20407,7 +20408,7 @@ ${b}: 1`;
         });
     }
   }
-  function lA({ exportProgress: e, isExporting: t, onExport: s }) {
+  function dA({ exportProgress: e, isExporting: t, onExport: s }) {
     return n.jsx("div", {
       className: "card bg-base-100 shadow-xl border-2 border-base-300",
       children: n.jsxs("div", {
@@ -20470,7 +20471,7 @@ ${b}: 1`;
       })
     });
   }
-  function dA({ presets: e, onChange: t }) {
+  function uA({ presets: e, onChange: t }) {
     const s = Un(), [r, a] = p.useState(null), o = mv({
       TerrainEnvironmentPresets: e
     }), i = (c) => {
@@ -20602,7 +20603,7 @@ ${b}: 1`;
     CHARACTER_HIGH_RES_SIZE: 1024,
     TEXT_FILL: "#ffffff"
   };
-  function uA(e, t) {
+  function mA(e, t) {
     return e === "entity" || t ? mc.BASE_SIZE : mc.CHARACTER_HIGH_RES_SIZE;
   }
   const Jt = {
@@ -20632,7 +20633,7 @@ ${b}: 1`;
     NORMAL: 101,
     PICK: 102,
     X_RAY: 110
-  }, mA = 0.5, tn = {
+  }, hA = 0.5, tn = {
     BASE_Y_OFFSET: 0.01,
     STANDEE_BASE_GAP: 0.05,
     CUTOUT_STANDEE_BASE_GAP: 0.01,
@@ -20749,7 +20750,7 @@ ${b}: 1`;
     });
     return r;
   }
-  function hA(e) {
+  function fA(e) {
     return /^#[0-9a-f]{6}$/i.test(e ?? "");
   }
   function fr(e, t = false) {
@@ -20762,7 +20763,7 @@ ${b}: 1`;
   function va(e, t) {
     return e * (t / mc.BASE_SIZE);
   }
-  async function fA(e) {
+  async function pA(e) {
     const t = URL.createObjectURL(e), s = new Image();
     try {
       return await new Promise((r, a) => {
@@ -20772,18 +20773,18 @@ ${b}: 1`;
       URL.revokeObjectURL(t);
     }
   }
-  function pA(e, t, s) {
+  function gA(e, t, s) {
     const r = Math.min(s / t.width, s / t.height), a = t.width * r, o = t.height * r, i = (s - a) / 2, c = (s - o) / 2;
     e.drawImage(t, i, c, a, o);
   }
-  function gA(e, t, s) {
-    const r = hA(t.color) ? t.color : t.kind === "character" ? Jt.CHARACTER_FILL : Jt.ENTITY_FILL, a = e.createLinearGradient(0, 0, s, s);
+  function xA(e, t, s) {
+    const r = fA(t.color) ? t.color : t.kind === "character" ? Jt.CHARACTER_FILL : Jt.ENTITY_FILL, a = e.createLinearGradient(0, 0, s, s);
     return a.addColorStop(0, r), a.addColorStop(1, Jt.FILL), a;
   }
   function bu(e) {
     return `700 ${e}px Inter, system-ui, sans-serif`;
   }
-  function xA(e, t, s) {
+  function vA(e, t, s) {
     if (e.measureText(t).width <= s) return t;
     let r = t;
     for (; r.length > 1 && e.measureText(`${r}...`).width > s; ) r = r.slice(0, -1);
@@ -20797,7 +20798,7 @@ ${b}: 1`;
     const a = [];
     let o = "";
     for (const i of r) {
-      const c = xA(e, i, s), l = o ? `${o} ${c}` : c;
+      const c = vA(e, i, s), l = o ? `${o} ${c}` : c;
       if (e.measureText(l).width <= s) {
         o = l;
         continue;
@@ -20806,14 +20807,14 @@ ${b}: 1`;
     }
     return o && a.push(o), a;
   }
-  function vA(e, t, s) {
+  function bA(e, t, s) {
     if (t.length <= Jt.TEXT_MAX_LINES) return t;
     const r = t.slice(0, Jt.TEXT_MAX_LINES);
     let a = r[r.length - 1];
     for (; a.length > 1 && e.measureText(`${a}...`).width > s; ) a = a.slice(0, -1);
     return r[r.length - 1] = `${a}...`, r;
   }
-  function bA(e, t, s) {
+  function yA(e, t, s) {
     const r = s * Jt.TEXT_MAX_WIDTH_RATIO, a = va(Jt.TEXT_MIN_FONT_SIZE, s), o = va(2, s);
     for (let c = va(Jt.TEXT_MAX_FONT_SIZE, s); c >= a; c -= o) {
       e.font = bu(c);
@@ -20826,14 +20827,14 @@ ${b}: 1`;
     }
     const i = a;
     return e.font = bu(i), {
-      lines: vA(e, bf(e, t, r), r),
+      lines: bA(e, bf(e, t, r), r),
       fontSize: i,
       lineHeight: i * Jt.TEXT_LINE_HEIGHT_MULTIPLIER
     };
   }
-  function yA(e, t, s) {
-    e.fillStyle = gA(e, t, s), e.fillRect(0, 0, s, s);
-    const { lines: r, fontSize: a, lineHeight: o } = bA(e, t.name, s), i = (r.length - 1) * o, c = s / 2 - i / 2;
+  function wA(e, t, s) {
+    e.fillStyle = xA(e, t, s), e.fillRect(0, 0, s, s);
+    const { lines: r, fontSize: a, lineHeight: o } = yA(e, t.name, s), i = (r.length - 1) * o, c = s / 2 - i / 2;
     e.font = bu(a), e.textAlign = "center", e.textBaseline = "middle", e.fillStyle = mc.TEXT_FILL, e.shadowColor = Jt.TEXT_SHADOW_COLOR, e.shadowBlur = va(Jt.TEXT_SHADOW_BLUR, s), e.shadowOffsetY = va(Jt.TEXT_SHADOW_OFFSET_Y, s), r.forEach((l, d) => {
       e.fillText(l, s / 2, c + d * o);
     }), e.shadowColor = "transparent", e.shadowBlur = 0, e.shadowOffsetY = 0;
@@ -20845,7 +20846,7 @@ ${b}: 1`;
   function xi(e) {
     return Math.max(0, Math.min(1, e));
   }
-  function wA(e, t) {
+  function SA(e, t) {
     const { data: s } = e.getImageData(0, 0, t, t);
     let r = t, a = t, o = -1, i = -1;
     for (let l = 0; l < t; l++) for (let d = 0; d < t; d++) s[(l * t + d) * 4 + 3] <= zs.ALPHA_THRESHOLD || (r = Math.min(r, d), a = Math.min(a, l), o = Math.max(o, d), i = Math.max(i, l));
@@ -20858,24 +20859,24 @@ ${b}: 1`;
       maxV: xi(1 - (a - c) / t)
     };
   }
-  async function SA(e, t) {
-    const s = uA(e.kind, t.performanceMode ?? false), r = document.createElement("canvas");
+  async function IA(e, t) {
+    const s = mA(e.kind, t.performanceMode ?? false), r = document.createElement("canvas");
     r.width = s, r.height = s;
     const a = r.getContext("2d");
     if (!a) throw new Error("Unable to create actor token canvas");
     let o = null;
     if (e.imageId) try {
       const i = await nm(e.imageId, t);
-      o = i ? await fA(i) : null;
+      o = i ? await pA(i) : null;
     } catch (i) {
       console.warn(`[3DMap] Failed to load actor token image ${e.imageId}`, i), o = null;
     }
     if (a.clearRect(0, 0, s, s), o) {
-      pA(a, o, s);
+      gA(a, o, s);
       const i = yf(r);
-      return e.cutout && (i.userData.actorPickBounds = wA(a, s)), i;
+      return e.cutout && (i.userData.actorPickBounds = SA(a, s)), i;
     }
-    return yA(a, e, s), yf(r);
+    return wA(a, e, s), yf(r);
   }
   function Bc(e, t) {
     const s = e.position.h ?? 0, r = Ct(t), a = `${e.position.x},${e.position.y}`, o = r.allSurfaces.get(a) ?? [], i = r.allSurfaceHeights.get(a) ?? [];
@@ -20894,12 +20895,12 @@ ${b}: 1`;
     const s = Number(e.position.h), r = Bc(e, t);
     return Number.isFinite(s) ? Math.max(s, r) : r;
   }
-  function IA(e, t) {
+  function NA(e, t) {
     const s = Bc(e, t);
     return om(e, t) - s;
   }
   function Iv(e, t) {
-    return IA(e, t) > tn.AIRBORNE_THRESHOLD;
+    return NA(e, t) > tn.AIRBORNE_THRESHOLD;
   }
   function Hc(e) {
     return e + tn.TERRAIN_WORLD_Y_OFFSET;
@@ -20911,23 +20912,23 @@ ${b}: 1`;
   function im(e, t) {
     return t ? tn.AIRBORNE_HALO_HEIGHT + (e.cutout ? tn.CUTOUT_AIRBORNE_STANDEE_HALO_GAP : tn.AIRBORNE_STANDEE_HALO_GAP) : xn.HEIGHT + (e.cutout ? tn.CUTOUT_STANDEE_BASE_GAP : tn.STANDEE_BASE_GAP);
   }
-  const NA = 8, yu = new Uint8Array(256);
+  const CA = 8, yu = new Uint8Array(256);
   for (let e = 0; e < yu.length; e++) {
     let t = e, s = 0;
     for (; t !== 0; ) t &= t - 1, s++;
     yu[e] = s;
   }
-  function CA(e) {
-    return new Uint8Array(Math.ceil(e / NA));
+  function jA(e) {
+    return new Uint8Array(Math.ceil(e / CA));
   }
   function hc(e, t) {
     return (e[t >> 3] & 1 << (t & 7)) !== 0;
   }
-  function jA(e, t, s) {
+  function AA(e, t, s) {
     const r = t >> 3, a = 1 << (t & 7);
     s ? e[r] |= a : e[r] &= ~a;
   }
-  function AA(e) {
+  function EA(e) {
     let t = 0;
     for (let s = 0; s < e.length; s++) t += yu[e[s]];
     return t;
@@ -20971,7 +20972,7 @@ ${b}: 1`;
     };
     return null;
   }
-  function EA(e, t, s, r, a, o, i, c) {
+  function TA(e, t, s, r, a, o, i, c) {
     const l = s * a;
     return Nv(e, {
       vW: s,
@@ -20983,7 +20984,7 @@ ${b}: 1`;
       hasVoxel: (d, u, f) => hc(t, d + f * s + u * l)
     });
   }
-  function TA(e, t, s) {
+  function kA(e, t, s) {
     return Nv(e, {
       vW: t.voxelWidth,
       vH: t.voxelHeight,
@@ -21006,7 +21007,7 @@ ${b}: 1`;
     DISTANCE_MULTIPLIER: 2.5,
     PERSPECTIVE_FOV: 75,
     PERSPECTIVE_DISTANCE_MULTIPLIER: 1.3
-  }, kA = {
+  }, RA = {
     MOVE_SPEED: 10
   }, Qa = {
     HEMISPHERE_SKY_COLOR: 16777215,
@@ -21083,13 +21084,13 @@ ${b}: 1`;
     ACTOR_MARGIN: 0.6,
     TORSO_OFFSET_Y: 0.9,
     CUT_PLANE_EPSILON: 0.15
-  }, RA = 0.1, ar = {
+  }, MA = 0.1, ar = {
     FOV: 58,
     INITIAL_DISTANCE: 9,
     MIN_DISTANCE: 3,
     MAX_DISTANCE: 30,
     ANCHOR_HEIGHT_Y: Gs.TORSO_OFFSET_Y,
-    UPWARD_CAMERA_FLOOR_OFFSET_FROM_ANCHOR: RA - Gs.TORSO_OFFSET_Y,
+    UPWARD_CAMERA_FLOOR_OFFSET_FROM_ANCHOR: MA - Gs.TORSO_OFFSET_Y,
     MIN_POLAR_ANGLE: 0.08,
     MAX_POLAR_ANGLE: Math.PI - 0.08
   }, Cv = {
@@ -21174,7 +21175,7 @@ ${b}: 1`;
       }
     };
   }
-  function MA(e, t, s, r) {
+  function PA(e, t, s, r) {
     if ((t - r.cutY) * r.cutSign < 0) return false;
     const a = r.actorX - r.camX, o = r.actorY - r.camY, i = r.actorZ - r.camZ, c = Math.hypot(a, o, i);
     if (c < 1e-4) return false;
@@ -21184,7 +21185,7 @@ ${b}: 1`;
     return y <= w;
   }
   let Bl = null;
-  function PA() {
+  function _A() {
     return Bl || (Bl = jv()), Bl;
   }
   const $n = [
@@ -21223,11 +21224,11 @@ ${b}: 1`;
     "if (uHeroEnabled > 0.5 && heroOccluded(vHeroWorldPos)) discard;"
   ];
   function zn(e, t) {
-    const s = t ?? PA();
+    const s = t ?? _A();
     e.uniforms.uHeroEnabled = s.enabled, e.uniforms.uHeroActorPos = s.actorPos, e.uniforms.uHeroCamPos = s.camPos, e.uniforms.uHeroRadius = s.radius, e.uniforms.uHeroConeScale = s.coneScale, e.uniforms.uHeroFeather = s.feather, e.uniforms.uHeroCutY = s.cutY, e.uniforms.uHeroCutSign = s.cutSign;
   }
   function Fa(e, t, s) {
-    const r = TA(e, t, s);
+    const r = kA(e, t, s);
     if (!r) return null;
     const { vx: a, vy: o, vz: i, nx: c, ny: l, nz: d } = r, u = t.resolution, f = 0.5 / u, m = Lg(t, a, o, i), h = new Ne(m.x + c * f, m.y + l * f, m.z + d * f), g = e.origin.distanceTo(h), b = new Ne(c, l, d), x = Math.floor(a / u), v = Math.floor(i / u), y = Math.floor((o + 1) / u);
     return {
@@ -21252,7 +21253,7 @@ ${b}: 1`;
       h: e.tacticalHeight
     };
   }
-  function _A(e, t, s, r) {
+  function DA(e, t, s, r) {
     const a = e.intersectObjects(t, true);
     if (a.length === 0) return null;
     const o = (r == null ? void 0 : r.ignoreOcclusion) ? null : Fa(e.ray, s, r == null ? void 0 : r.skipVoxel);
@@ -21282,7 +21283,7 @@ ${b}: 1`;
     };
     return (r, a, o) => {
       const i = Lg(e, r, a, o);
-      return MA(i.x, i.y, i.z, s);
+      return PA(i.x, i.y, i.z, s);
     };
   }
   function _r(e) {
@@ -21299,9 +21300,9 @@ ${b}: 1`;
     const a = s.domElement.getBoundingClientRect();
     return r.x = (t.clientX - a.left) / a.width * 2 - 1, r.y = -((t.clientY - a.top) / a.height) * 2 + 1, e.setFromCamera(r, s.camera), a;
   }
-  const DA = new Tt(0, 0);
-  function LA(e, t) {
-    e.setFromCamera(DA, t.camera);
+  const LA = new Tt(0, 0);
+  function OA(e, t) {
+    e.setFromCamera(LA, t.camera);
   }
   const yn = Do({
     request: null,
@@ -21328,21 +21329,21 @@ ${b}: 1`;
       }
     };
   }
-  const OA = 1e-6, FA = 0.1;
+  const FA = 1e-6, UA = 0.1;
   function Jn(e, t) {
     return `${e}:${t}`;
   }
-  function UA(e) {
+  function $A(e) {
     return e < 0.5 ? 4 * e * e * e : 1 - Math.pow(-2 * e + 2, 3) / 2;
   }
   function Vl(e, t) {
     const s = e.distanceTo(t);
     return rs.clamp(s * co.MS_PER_WORLD_UNIT, co.MIN_DURATION_MS, co.MAX_DURATION_MS);
   }
-  function $A(e, t, s) {
+  function BA(e, t, s) {
     return Math.max(t, Math.min(s, e));
   }
-  function BA(e, t) {
+  function HA(e, t) {
     const s = e.domElement.getBoundingClientRect(), r = t.clone().project(e.camera), a = t.clone().add(new Ne(0, 1, 0)).project(e.camera), o = (a.x - r.x) * s.width / 2, i = -(a.y - r.y) * s.height / 2, c = Math.hypot(o, i);
     return !Number.isFinite(c) || c <= 0 ? {
       pixelsPerHeight: ha.FALLBACK_PIXELS_PER_HEIGHT,
@@ -21396,14 +21397,14 @@ ${b}: 1`;
     const s = t ? Jn(t.kind, t.id) : null;
     for (const [r, a] of e) lm(a, r === s);
   }
-  function HA(e, t) {
+  function VA(e, t) {
     e && e.traverse((s) => {
       s instanceof it && (Array.isArray(s.material) ? s.material.forEach(t) : t(s.material));
     });
   }
   function If(e, t) {
     e && e.traverse((s) => {
-      s instanceof it && (s.userData.actorXRayRenderOrder === void 0 && (s.userData.actorXRayRenderOrder = s.renderOrder), s.renderOrder = t ? $c.X_RAY : s.userData.actorXRayRenderOrder, HA(s, (r) => {
+      s instanceof it && (s.userData.actorXRayRenderOrder === void 0 && (s.userData.actorXRayRenderOrder = s.renderOrder), s.renderOrder = t ? $c.X_RAY : s.userData.actorXRayRenderOrder, VA(s, (r) => {
         const a = r.userData[Mv];
         a ? (r.userData.actorXRayDepthFunc === void 0 && (r.userData.actorXRayDepthFunc = r.depthFunc), r.depthFunc = t ? qy : r.userData.actorXRayDepthFunc, a.value = t ? 1 : 0) : (r.userData.actorXRayDepthTest === void 0 && (r.userData.actorXRayDepthTest = r.depthTest), r.userData.actorXRayDepthWrite === void 0 && (r.userData.actorXRayDepthWrite = r.depthWrite), r.depthTest = t ? false : r.userData.actorXRayDepthTest, r.depthWrite = t ? false : r.userData.actorXRayDepthWrite);
       }));
@@ -21412,21 +21413,21 @@ ${b}: 1`;
   function Za(e, t) {
     If(e.supportGroup, t), If(e.standee, t);
   }
-  function VA(e) {
+  function zA(e) {
     const t = Math.max(0, e), s = Math.max(pt.GROUNDED_MIN_SCALE, 1 / (1 + pt.GROUNDED_FALLOFF * t)), r = Math.max(pt.MIN_OPACITY, pt.BASE_OPACITY * s);
     return {
       scale: s,
       opacity: r
     };
   }
-  function zA(e) {
+  function GA(e) {
     const t = Math.max(0, e), s = Math.max(pt.AIRBORNE_MIN_SCALE, 1 / (1 + pt.AIRBORNE_FALLOFF * t)), r = Math.max(pt.AIRBORNE_MIN_OPACITY, pt.AIRBORNE_BASE_OPACITY * s);
     return {
       scale: s,
       opacity: r
     };
   }
-  function GA() {
+  function WA() {
     const e = document.createElement("canvas");
     e.width = pt.TEXTURE_SIZE, e.height = pt.TEXTURE_SIZE;
     const t = e.getContext("2d");
@@ -21450,20 +21451,20 @@ ${b}: 1`;
 	gl_FragDepth = uFogDepthOverride > 0.5 ? 0.0 : gl_FragCoord.z;`);
     };
   }
-  function WA(e, t, s, r, a) {
+  function XA(e, t, s, r, a) {
     const { width: o, height: i } = fr(t.size, t.cutout), c = new Hr(o, i), l = new Ht({
       map: e,
       transparent: true,
       depthTest: true,
       depthWrite: true,
-      alphaTest: mA,
+      alphaTest: hA,
       side: go
     });
     Ao(l);
     const d = new it(c, l);
     return d.position.y = a + i / 2, d.renderOrder = $c.NORMAL, ba(d, t), d.onBeforeRender = () => Rv(d, s.camera, r), d;
   }
-  function XA(e) {
+  function qA(e) {
     const t = zs.SCALE_MULTIPLIER, s = (t - 1) / (2 * t), r = 1 / t;
     return {
       minU: s + e.minU * r,
@@ -21472,22 +21473,22 @@ ${b}: 1`;
       maxV: s + e.maxV * r
     };
   }
-  function qA(e, t) {
+  function YA(e, t) {
     if (!e.uv) return false;
     const { x: s, y: r } = e.uv;
     return s >= t.minU && s <= t.maxU && r >= t.minV && r <= t.maxV ? true : s >= zs.SUPPORT_U_MIN && s <= zs.SUPPORT_U_MAX && r <= zs.SUPPORT_BAND_MAX_V;
   }
-  function YA(e, t, s) {
+  function KA(e, t, s) {
     const r = t.userData.actorPickBounds;
     if (!s.cutout || !r) return;
-    const a = XA(r), o = e.raycast.bind(e);
+    const a = qA(r), o = e.raycast.bind(e);
     e.raycast = (i, c) => {
       const l = c.length;
       o(i, c);
-      for (let d = c.length - 1; d >= l; d--) qA(c[d], a) || c.splice(d, 1);
+      for (let d = c.length - 1; d >= l; d--) YA(c[d], a) || c.splice(d, 1);
     };
   }
-  function KA(e, t, s, r, a) {
+  function QA(e, t, s, r, a) {
     const { width: o, height: i } = fr(e.size, e.cutout), c = new Hr(o * zs.SCALE_MULTIPLIER, i * zs.SCALE_MULTIPLIER), l = new Ht({
       transparent: true,
       opacity: 0,
@@ -21495,9 +21496,9 @@ ${b}: 1`;
       depthWrite: false,
       side: go
     }), d = new it(c, l);
-    return d.position.y = a + i / 2, d.renderOrder = $c.PICK, ba(d, e), YA(d, t, e), d.onBeforeRender = () => Rv(d, s.camera, r), d;
+    return d.position.y = a + i / 2, d.renderOrder = $c.PICK, ba(d, e), KA(d, t, e), d.onBeforeRender = () => Rv(d, s.camera, r), d;
   }
-  function QA(e) {
+  function ZA(e) {
     const t = new Ft(), { width: s } = fr(e.size), r = s * xn.RADIUS_SCALE, a = kv(e), o = new Wd(r, r, xn.HEIGHT, xn.RADIAL_SEGMENTS), i = new rn({
       color: jo.BASE,
       roughness: xn.ROUGHNESS,
@@ -21518,7 +21519,7 @@ ${b}: 1`;
       accentDefaultHex: a
     };
   }
-  function ZA(e) {
+  function JA(e) {
     const t = new Ft(), { width: s } = fr(e.size), r = s * Zt.RADIUS_SCALE, a = kv(e), o = new Gd(r, Zt.OUTER_TUBE_RADIUS, Zt.TUBE_SEGMENTS, Zt.OUTER_RADIAL_SEGMENTS), i = new Ht({
       color: a,
       transparent: true,
@@ -21544,7 +21545,7 @@ ${b}: 1`;
     };
   }
   function Pv(e, t, s) {
-    const { width: r } = fr(e.size), a = Bc(e, t), o = om(e, t), i = o - a, c = i > tn.AIRBORNE_THRESHOLD, { scale: l, opacity: d } = c ? zA(i) : VA(i), u = c ? pt.AIRBORNE_Z_SCALE : pt.GROUNDED_Z_SCALE, f = new Hr(r * pt.WIDTH_SCALE * l, r * u * l), m = new Ht({
+    const { width: r } = fr(e.size), a = Bc(e, t), o = om(e, t), i = o - a, c = i > tn.AIRBORNE_THRESHOLD, { scale: l, opacity: d } = c ? GA(i) : zA(i), u = c ? pt.AIRBORNE_Z_SCALE : pt.GROUNDED_Z_SCALE, f = new Hr(r * pt.WIDTH_SCALE * l, r * u * l), m = new Ht({
       map: s,
       transparent: true,
       opacity: d,
@@ -21555,7 +21556,7 @@ ${b}: 1`;
   function _v(e, t) {
     const s = [], r = [];
     if (t) {
-      const o = ZA(e);
+      const o = JA(e);
       return s.push({
         material: o.outerMaterial,
         defaultHex: o.defaultHex
@@ -21576,7 +21577,7 @@ ${b}: 1`;
         haloOpacities: r
       };
     }
-    const a = QA(e);
+    const a = ZA(e);
     return s.push({
       material: a.baseMaterial,
       defaultHex: jo.BASE
@@ -21609,14 +21610,14 @@ ${b}: 1`;
     const l = im(t, i);
     return Cf(e.standee, t, l), Cf(e.pickMesh, t, l), ba(e.group, t), ba(e.standee, t), ba(e.pickMesh, t), e.actor = t, c && lm(c, a), c;
   }
-  function JA(e, t, s) {
+  function eE(e, t, s) {
     const a = (s.allSurfaces.get(dn(e.position.x, e.position.y)) ?? [])[0] ?? 0, o = $o(t, s);
     return {
       min: a,
       max: Math.max(a, o)
     };
   }
-  function eE(e, t, s) {
+  function tE(e, t, s) {
     const r = (t.Width - 1) / 2, a = (t.Length - 1) / 2, o = Bc(e, t), i = e.position.x - r, c = e.position.y - a, l = o + tn.TERRAIN_WORLD_Y_OFFSET + ha.GUIDE_Y_OFFSET, d = s.y, u = new Vr().setFromPoints([
       new Ne(i, l, c),
       new Ne(i, d, c)
@@ -21628,7 +21629,7 @@ ${b}: 1`;
     }), m = new gg(u, f);
     return m.renderOrder = ha.GUIDE_RENDER_ORDER, m;
   }
-  function tE({ resources: e, characters: t, entities: s, cutoutImageIds: r, selectedActor: a, terrain: o, terrainIndex: i, isDM: c, performanceMode: l, xRayActors: d = false, imageService: u, onActorClick: f, onActorSelect: m, interactionMode: h, canControlActor: g, onActorDragEnd: b, trackedActor: x, onTrackedActorVisualChange: v, draggableHeightRange: y }) {
+  function nE({ resources: e, characters: t, entities: s, cutoutImageIds: r, selectedActor: a, terrain: o, terrainIndex: i, isDM: c, performanceMode: l, xRayActors: d = false, imageService: u, onActorClick: f, onActorSelect: m, interactionMode: h, canControlActor: g, onActorDragEnd: b, trackedActor: x, onTrackedActorVisualChange: v, draggableHeightRange: y }) {
     const w = p.useRef(u), N = p.useRef(f), C = p.useRef(m), T = p.useRef(h), R = p.useRef(g), j = p.useRef(b), E = p.useRef(x ? Jn(x.kind, x.id) : null), S = p.useRef(v), I = p.useRef(null), A = p.useRef(y), k = p.useRef(a), P = p.useRef(d), M = p.useRef(o), D = p.useRef(i), _ = p.useRef(/* @__PURE__ */ new Map()), O = p.useRef(0), L = p.useRef(/* @__PURE__ */ new Map()), F = p.useRef(/* @__PURE__ */ new Map()), U = p.useRef(/* @__PURE__ */ new Map()), G = p.useRef(/* @__PURE__ */ new Map()), $ = p.useRef(0), J = p.useRef(/* @__PURE__ */ new Map()), X = p.useRef(/* @__PURE__ */ new Map()), z = p.useRef(null), ee = p.useRef(null), W = p.useRef(/* @__PURE__ */ new Map()), ne = p.useRef(/* @__PURE__ */ new Map()), K = p.useRef(null), oe = p.useRef(null), Y = p.useRef(wf(t, s, r)), { actionService: de } = De();
     E.current = x ? Jn(x.kind, x.id) : null, S.current = v, Y.current = wf(t, s, r), p.useEffect(() => {
       w.current = u;
@@ -21680,16 +21681,16 @@ ${b}: 1`;
       $.current = 0;
       for (const [fe, Q] of Array.from(G.current)) {
         const ae = (te - Q.startedAt) / Q.durationMs, Ae = Math.min(1, Math.max(0, ae));
-        Q.group.position.lerpVectors(Q.from, Q.to, UA(Ae)), Ae >= 1 && (Q.group.position.copy(Q.to), G.current.delete(fe));
+        Q.group.position.lerpVectors(Q.from, Q.to, $A(Ae)), Ae >= 1 && (Q.group.position.copy(Q.to), G.current.delete(fe));
       }
       const ue = _.current;
       if (ue.size > 0) {
-        const fe = O.current > 0 ? Math.min(FA, (te - O.current) / 1e3) : 0;
+        const fe = O.current > 0 ? Math.min(UA, (te - O.current) / 1e3) : 0;
         if (fe > 0) {
           const Q = 1 - Math.exp(-14 * fe);
           for (const [ae, Ae] of ue) {
             const Re = F.current.get(ae);
-            Re && (Re.position.lerp(Ae, Q), Re.position.distanceToSquared(Ae) < OA && Re.position.copy(Ae));
+            Re && (Re.position.lerp(Ae, Q), Re.position.distanceToSquared(Ae) < FA && Re.position.copy(Ae));
           }
         }
       }
@@ -21781,7 +21782,7 @@ ${b}: 1`;
       const fe = {
         ...te,
         position: ue
-      }, Q = M.current, ae = ir(fe, Q), Ae = eE(fe, Q, ae);
+      }, Q = M.current, ae = ir(fe, Q), Ae = tE(fe, Q, ae);
       e.scene.add(Ae), oe.current = Ae;
     }, rt = (te) => {
       const ue = (W.current.get(te) ?? 0) + 1;
@@ -21800,7 +21801,7 @@ ${b}: 1`;
       if (!fe || !Q) return;
       const ae = rt(te);
       ne.current.set(te, ae);
-      const Ae = zl(ue, c, l), Re = await SA(ue, {
+      const Ae = zl(ue, c, l), Re = await IA(ue, {
         isDM: c,
         imageService: w.current,
         performanceMode: l
@@ -21815,7 +21816,7 @@ ${b}: 1`;
       J.current.delete(te);
       const lt = new Ft();
       lt.position.copy(_t ?? mt), ba(lt, Ee);
-      const bt = Tv(Ee, Ye), yt = bt === "airborne", Nn = Pv(Ee, Ye, Q), mn = im(Ee, yt), ye = _v(Ee, yt), le = WA(Re, Ee, e, lt, mn), Oe = KA(Ee, Re, e, lt, mn);
+      const bt = Tv(Ee, Ye), yt = bt === "airborne", Nn = Pv(Ee, Ye, Q), mn = im(Ee, yt), ye = _v(Ee, yt), le = XA(Re, Ee, e, lt, mn), Oe = QA(Ee, Re, e, lt, mn);
       lt.add(Nn, ye.group, le, Oe), fe.add(lt), e.actorPickTargets.push(Oe);
       const ze = {
         colors: ye.colors,
@@ -21848,7 +21849,7 @@ ${b}: 1`;
     ]), p.useEffect(() => {
       const te = new Ft();
       e.actorPickTargets.length = 0;
-      const ue = new Ma(), fe = GA();
+      const ue = new Ma(), fe = WA();
       z.current = te, ee.current = fe;
       const Q = L.current, ae = F.current, Ae = U.current, Re = X.current;
       W.current.clear(), ne.current.clear(), Q.clear(), ae.clear(), Ae.clear(), Re.clear(), G.current.clear(), e.scene.add(te);
@@ -21896,7 +21897,7 @@ ${b}: 1`;
       }, lt = (ye) => {
         const le = K.current;
         if (!le || ye.pointerId !== le.pointerId || (_t(le, ye), !le.hasDragged || !le.canDragHeight)) return;
-        const Oe = ye.clientX - le.startClientX, ze = ye.clientY - le.startClientY, nt = (Oe * le.projectedUpX + ze * le.projectedUpY) / (le.pixelsPerHeight * le.pixelsPerHeight), Ze = JA(le.descriptor, M.current, D.current), at = A.current, wt = at ? Math.max(Ze.min, at.min) : Ze.min, an = at ? Math.min(Ze.max, at.max) : Ze.max, Cn = $A(Math.round(le.startPosition.h + nt), wt, Math.max(wt, an)), Dt = le.descriptor.canFly ?? false, Cs = ja(M.current, D.current, le.candidatePosition.x, le.candidatePosition.y, Cn, Dt) ? Cn : le.candidatePosition.h;
+        const Oe = ye.clientX - le.startClientX, ze = ye.clientY - le.startClientY, nt = (Oe * le.projectedUpX + ze * le.projectedUpY) / (le.pixelsPerHeight * le.pixelsPerHeight), Ze = eE(le.descriptor, M.current, D.current), at = A.current, wt = at ? Math.max(Ze.min, at.min) : Ze.min, an = at ? Math.min(Ze.max, at.max) : Ze.max, Cn = BA(Math.round(le.startPosition.h + nt), wt, Math.max(wt, an)), Dt = le.descriptor.canFly ?? false, Cs = ja(M.current, D.current, le.candidatePosition.x, le.candidatePosition.y, Cn, Dt) ? Cn : le.candidatePosition.h;
         Cs !== le.candidatePosition.h && (le.candidatePosition = {
           ...le.startPosition,
           h: Cs
@@ -21947,7 +21948,7 @@ ${b}: 1`;
           id: Oe.id,
           kind: Oe.kind,
           moveSpeed: Oe.moveSpeed ?? zs.FALLBACK_MOVE_SPEED
-        }, Ze = Oe.canFly && (((_a2 = R.current) == null ? void 0 : _a2.call(R, nt)) ?? false), at = ir(Oe, M.current), wt = BA(e, at);
+        }, Ze = Oe.canFly && (((_a2 = R.current) == null ? void 0 : _a2.call(R, nt)) ?? false), at = ir(Oe, M.current), wt = HA(e, at);
         ye.preventDefault(), ye.stopPropagation(), ye.stopImmediatePropagation(), K.current = {
           pointerId: ye.pointerId,
           actor: nt,
@@ -22028,13 +22029,13 @@ ${b}: 1`;
       a
     ]), null;
   }
-  const jf = 1e-3, nE = 5, Dv = -0.5;
+  const jf = 1e-3, sE = 5, Dv = -0.5;
   function Af(e) {
     const t = /* @__PURE__ */ new Map();
     for (const s of e) t.set(vn(s.x, s.y, s.h), s);
     return t;
   }
-  function sE(e, t, s, r, a, o, i) {
+  function rE(e, t, s, r, a, o, i) {
     var _a2, _b2, _c2;
     Dr(a, e, t, o);
     const c = a.intersectObjects(t.actorPickTargets, true), l = a.intersectObjects(t.linkPickTargets, true).filter((y) => {
@@ -22063,7 +22064,7 @@ ${b}: 1`;
     const a = Math.round(t.Position.h);
     return (s.allSurfaces.get(dn(e.x, e.y)) ?? []).some((c) => c >= a) ? e.h : a;
   }
-  function rE(e, t) {
+  function aE(e, t) {
     return e.h !== 0 ? false : !(t.allSurfaces.get(dn(e.x, e.y)) ?? []).includes(0);
   }
   function Wl(e, t, s, r, a) {
@@ -22083,7 +22084,7 @@ ${b}: 1`;
     }
     return c.renderOrder = a, c.instanceMatrix.needsUpdate = true, c;
   }
-  function aE({ resources: e, terrain: t, terrainIndex: s, characters: r, entities: a, selectedActor: o, selectedActorObject: i, canControlSelected: c, movementRange: l, remainingMovementRange: d, hoveredTile: u, restrictMovementToRange: f, preserveFlyingHeightOnTileMove: m, isCombatActive: h, interactionMode: g, onHoveredTileChange: b, onMoveSelectedActor: x }) {
+  function oE({ resources: e, terrain: t, terrainIndex: s, characters: r, entities: a, selectedActor: o, selectedActorObject: i, canControlSelected: c, movementRange: l, remainingMovementRange: d, hoveredTile: u, restrictMovementToRange: f, preserveFlyingHeightOnTileMove: m, isCombatActive: h, interactionMode: g, onHoveredTileChange: b, onMoveSelectedActor: x }) {
     const v = p.useMemo(() => Af(l), [
       l
     ]), y = p.useMemo(() => d ? Af(d) : null, [
@@ -22131,7 +22132,7 @@ ${b}: 1`;
     ]), p.useEffect(() => {
       if (!(i == null ? void 0 : i.CanFly)) return;
       const _ = [], O = [], L = [], F = (ee, W, ne) => {
-        if (!rE(ne, s)) return;
+        if (!aE(ne, s)) return;
         const K = `${ne.x},${ne.y}`;
         W.has(K) || (W.add(K), ee.push({
           x: ne.x,
@@ -22162,7 +22163,7 @@ ${b}: 1`;
       }, F = (K) => {
         const oe = T.current, Y = R.current;
         if (!oe || !Y || !j.current) return null;
-        const de = sE(K, e, t, s, _, O, Y.CanFly ?? false);
+        const de = rE(K, e, t, s, _, O, Y.CanFly ?? false);
         if (!de) return null;
         const B = Ef(de, Y, s, S.current), se = {
           ...de,
@@ -22226,7 +22227,7 @@ ${b}: 1`;
         const oe = z;
         if (z = null, !oe || oe.pointerId !== K.pointerId) return;
         const Y = K.clientX - oe.startX, de = K.clientY - oe.startY;
-        if (Math.hypot(Y, de) > nE) return;
+        if (Math.hypot(Y, de) > sE) return;
         const B = T.current, se = R.current;
         if (!B || !se || !j.current) return;
         const re = F(K) ?? oe.startedAtTile;
@@ -22257,7 +22258,7 @@ ${b}: 1`;
       s
     ]), null;
   }
-  function oE(e) {
+  function iE(e) {
     const t = document.createElement("canvas");
     t.width = pn.SIZE, t.height = pn.SIZE;
     const s = t.getContext("2d");
@@ -22267,21 +22268,21 @@ ${b}: 1`;
     const o = new Lo(t);
     return o.colorSpace = os, o.needsUpdate = true, o;
   }
-  function iE(e, t) {
+  function cE(e, t) {
     const s = ir(e, t), r = Iv(e, t), a = im(e, r), { height: o } = fr(e.size, e.cutout);
     return s.y += a + o + ns.BASE_Y_GAP, s;
   }
-  function cE(e) {
+  function lE(e) {
     const { width: t } = fr(e.size, e.cutout);
     return rs.clamp(t * ns.WORLD_SIZE_MULTIPLIER, ns.MIN_WORLD_SIZE, ns.MAX_WORLD_SIZE);
   }
-  function lE(e) {
+  function dE(e) {
     return Array.from(e.entries()).sort(([t], [s]) => t.localeCompare(s)).map(([t, s]) => `${t}:${s}`).join("|");
   }
-  function dE(e) {
+  function uE(e) {
     return 1 + 2.70158 * Math.pow(e - 1, 3) + 1.70158 * Math.pow(e - 1, 2);
   }
-  function uE({ resources: e, terrain: t, characters: s, entities: r, cutoutImageIds: a, activeStickers: o }) {
+  function mE({ resources: e, terrain: t, characters: s, entities: r, cutoutImageIds: a, activeStickers: o }) {
     const i = p.useMemo(() => {
       const d = Sv(s, r, a), u = /* @__PURE__ */ new Map();
       for (const f of d) u.set(f.id, f);
@@ -22290,7 +22291,7 @@ ${b}: 1`;
       s,
       r,
       a
-    ]), c = p.useMemo(() => lE(o), [
+    ]), c = p.useMemo(() => dE(o), [
       o
     ]), l = p.useMemo(() => Array.from(o.entries()), [
       c
@@ -22302,12 +22303,12 @@ ${b}: 1`;
       for (const [g, b] of l) {
         const x = i.get(g);
         if (!x) continue;
-        const v = oE(b), y = new vg({
+        const v = iE(b), y = new vg({
           map: v,
           transparent: true,
           depthTest: true,
           depthWrite: false
-        }), w = new bg(y), N = iE(x, t), C = cE(x);
+        }), w = new bg(y), N = cE(x, t), C = lE(x);
         w.position.copy(N), w.scale.setScalar(C * ns.POP_START_SCALE), w.renderOrder = ns.RENDER_ORDER, u.push(v), f.push(y), m.push({
           sprite: w,
           baseY: N.y,
@@ -22317,7 +22318,7 @@ ${b}: 1`;
       }
       const h = (g) => {
         for (const b of m) {
-          const x = g - b.startedAt, v = Math.min(1, x / ns.POP_DURATION_MS), y = ns.POP_START_SCALE + (1 - ns.POP_START_SCALE) * dE(v), w = Math.sin(x / 1e3 * ns.BOB_SPEED) * ns.BOB_HEIGHT, N = b.worldSize * y;
+          const x = g - b.startedAt, v = Math.min(1, x / ns.POP_DURATION_MS), y = ns.POP_START_SCALE + (1 - ns.POP_START_SCALE) * uE(v), w = Math.sin(x / 1e3 * ns.BOB_SPEED) * ns.BOB_HEIGHT, N = b.worldSize * y;
           b.sprite.position.y = b.baseY + w, b.sprite.scale.set(N, N, 1);
         }
       };
@@ -22334,15 +22335,15 @@ ${b}: 1`;
       c
     ]), null;
   }
-  function mE(e) {
+  function hE(e) {
     return e.map((t) => `${t.id}:${t.x},${t.y},${t.h},${t.timestamp}`).sort().join("|");
   }
-  function hE(e, t, s, r) {
+  function fE(e, t, s, r) {
     if (t < 0 || t >= e.Width || s < 0 || s >= e.Length) return null;
     const a = (e.Width - 1) / 2, o = (e.Length - 1) / 2, i = rs.clamp(r, 0, e.Height);
     return new Ne(t - a, Hc(i) + Ge.TILE_Y_OFFSET, s - o);
   }
-  function fE() {
+  function pE() {
     const t = 0.5 - Ge.OUTLINE_WIDTH, s = new Ky([
       new Tt(-0.5, -0.5),
       new Tt(0.5, -0.5),
@@ -22358,7 +22359,7 @@ ${b}: 1`;
     const a = new Zy(s);
     return a.rotateX(-Math.PI / 2), a;
   }
-  function pE() {
+  function gE() {
     const e = document.createElement("canvas");
     e.width = Ge.ARROW_TEXTURE_SIZE, e.height = Ge.ARROW_TEXTURE_SIZE;
     const t = e.getContext("2d");
@@ -22368,8 +22369,8 @@ ${b}: 1`;
     const r = new Lo(e);
     return r.colorSpace = os, r.needsUpdate = true, r;
   }
-  function gE(e, t, s) {
-    const r = hE(t, e.x, e.y, e.h);
+  function xE(e, t, s) {
+    const r = fE(t, e.x, e.y, e.h);
     if (!r) return null;
     const a = new Ft();
     a.position.copy(r), a.renderOrder = Ge.RENDER_ORDER;
@@ -22391,7 +22392,7 @@ ${b}: 1`;
       depthTest: true,
       depthWrite: false,
       side: go
-    }), d = new it(fE(), l);
+    }), d = new it(pE(), l);
     d.renderOrder = Ge.RENDER_ORDER + 0.1;
     const u = new Ft();
     u.add(c, d), a.add(u);
@@ -22413,10 +22414,10 @@ ${b}: 1`;
       timestamp: e.timestamp
     };
   }
-  function xE(e) {
+  function vE(e) {
     _r(e.group), e.arrowMaterial.dispose();
   }
-  function vE(e, t, s, r, a) {
+  function bE(e, t, s, r, a) {
     Dr(r, e, t, a);
     const o = Vc(s, t.heroOcclusion), i = Fa(r.ray, s, o);
     return i ? {
@@ -22425,11 +22426,11 @@ ${b}: 1`;
       h: (i.vy + 1) / s.resolution
     } : null;
   }
-  function bE(e) {
+  function yE(e) {
     return e.button === 1 || e.button === 0 && e.altKey;
   }
-  function yE({ resources: e, terrain: t, terrainIndex: s, activePings: r, onPingTile: a, interactionMode: o }) {
-    const i = p.useMemo(() => mE(r), [
+  function wE({ resources: e, terrain: t, terrainIndex: s, activePings: r, onPingTile: a, interactionMode: o }) {
+    const i = p.useMemo(() => hE(r), [
       r
     ]), c = p.useMemo(() => r.slice(), [
       i
@@ -22444,10 +22445,10 @@ ${b}: 1`;
       o
     ]), p.useEffect(() => {
       if (c.length === 0) return;
-      const u = new Ft(), f = pE(), m = [];
+      const u = new Ft(), f = gE(), m = [];
       e.scene.add(u);
       for (const g of c) {
-        const b = gE(g, t, f);
+        const b = xE(g, t, f);
         b && (m.push(b), u.add(b.group));
       }
       const h = () => {
@@ -22459,7 +22460,7 @@ ${b}: 1`;
       };
       return h(), e.animationCallbacks.add(h), () => {
         e.animationCallbacks.delete(h), e.scene.remove(u), u.clear();
-        for (const g of m) xE(g);
+        for (const g of m) vE(g);
         f.dispose();
       };
     }, [
@@ -22471,7 +22472,7 @@ ${b}: 1`;
       const u = new Ma(), f = new Tt();
       let m = null;
       const h = (v) => {
-        d.current === "world-pointer" && bE(v) && (e.dragState.active || (v.preventDefault(), v.stopPropagation(), v.stopImmediatePropagation(), m = {
+        d.current === "world-pointer" && yE(v) && (e.dragState.active || (v.preventDefault(), v.stopPropagation(), v.stopImmediatePropagation(), m = {
           pointerId: v.pointerId,
           startX: v.clientX,
           startY: v.clientY
@@ -22482,7 +22483,7 @@ ${b}: 1`;
         m = null, v.preventDefault(), v.stopPropagation(), v.stopImmediatePropagation();
         const w = v.clientX - y.startX, N = v.clientY - y.startY;
         if (Math.hypot(w, N) > wu.CLICK_DRAG_THRESHOLD_PX) return;
-        const C = vE(v, e, s, u, f);
+        const C = bE(v, e, s, u, f);
         C && l.current(C);
       }, b = (v) => {
         (m == null ? void 0 : m.pointerId) === v.pointerId && (m = null);
@@ -22500,7 +22501,7 @@ ${b}: 1`;
   function Lv(e, t) {
     return `url("data:image/svg+xml,${encodeURIComponent(e)}") 16 16, ${t}`;
   }
-  const wE = `
+  const SE = `
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
   <g fill="none" stroke="#000" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
     <path d="M7 12V7h5M20 7h5v5M25 20v5h-5M12 25H7v-5"/>
@@ -22508,7 +22509,7 @@ ${b}: 1`;
   <g fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M7 12V7h5M20 7h5v5M25 20v5h-5M12 25H7v-5"/>
   </g>
-</svg>`, SE = `
+</svg>`, IE = `
 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
   <g fill="none" stroke="#000" stroke-width="4.5" stroke-linecap="round">
     <circle cx="16" cy="16" r="8.5"/>
@@ -22519,8 +22520,8 @@ ${b}: 1`;
     <path d="M16 2v5M16 25v5M2 16h5M25 16h5"/>
   </g>
   <circle cx="16" cy="16" r="1.5" fill="#fff" stroke="#000" stroke-width="1"/>
-</svg>`, IE = Lv(wE, "crosshair"), NE = Lv(SE, "crosshair");
-  function CE({ resources: e, terrainIndex: t, terrainId: s, interactionMode: r, cancelWithRightClick: a }) {
+</svg>`, NE = Lv(SE, "crosshair"), CE = Lv(IE, "crosshair");
+  function jE({ resources: e, terrainIndex: t, terrainId: s, interactionMode: r, cancelWithRightClick: a }) {
     const o = r === "world-pointer", { request: i } = mr(yn), c = i !== null;
     return p.useEffect(() => {
       if (!c) return;
@@ -22532,10 +22533,10 @@ ${b}: 1`;
         if (o) {
           if (!P) return null;
           Dr(u, P, e, f);
-        } else LA(u, e);
+        } else OA(u, e);
         const D = Vc(t, e.heroOcclusion);
         if (M.allowActor) {
-          const _ = _A(u, e.actorPickTargets, t, {
+          const _ = DA(u, e.actorPickTargets, t, {
             skipVoxel: D
           });
           if (_ && _.actorId !== M.excludeActorId) return {
@@ -22558,7 +22559,7 @@ ${b}: 1`;
         }
         return null;
       }, w = (P) => {
-        l.style.cursor = (P == null ? void 0 : P.kind) === "actor" ? NE : IE;
+        l.style.cursor = (P == null ? void 0 : P.kind) === "actor" ? CE : NE;
       }, N = (P) => {
         const M = P ? P.kind === "actor" ? `a:${P.actorId}` : `p:${P.x},${P.y},${P.h}` : "";
         M !== x && (x = M, Hl(P));
@@ -22625,7 +22626,7 @@ ${b}: 1`;
     locked: 14753096,
     selected: 6333946
   };
-  function jE(e, t = false) {
+  function AE(e, t = false) {
     return t ? Xl.selected : e ? Xl.locked : Xl.unlocked;
   }
   function Eo() {
@@ -22636,7 +22637,7 @@ ${b}: 1`;
   }
   function To({ terrain: e, geometry: t, anchor: s, locked: r, selected: a = false, opacity: o, depthTest: i = false, colorWrite: c = true, renderOrder: l = 0 }) {
     const d = new Ht({
-      color: jE(r, a),
+      color: AE(r, a),
       transparent: true,
       opacity: o,
       depthTest: i,
@@ -22657,14 +22658,14 @@ ${b}: 1`;
     for (const r of t) r.dispose();
     for (const r of s) r.dispose();
   }
-  const AE = 0.34, EE = 1e-3, TE = 5;
-  function kE(e, t) {
+  const EE = 0.34, TE = 1e-3, kE = 5;
+  function RE(e, t) {
     return ac(e, t).map(({ link: s, anchor: r, destination: a }) => `${s.Id}:${r.x},${r.y},${r.h}->${a.terrainId},${a.x},${a.y},${a.h}:${s.Locked ? 1 : 0}`).sort().join("|");
   }
   function Tf(e) {
     return e ? `${e.linkId}:${e.usable ? 1 : 0}:${e.locked ? 1 : 0}:${e.authoring ? 1 : 0}:${e.destinationName ?? ""}` : "";
   }
-  function RE({ resources: e, interactionMode: t, terrain: s, terrainIndex: r, links: a, terrainNamesById: o, controlledActor: i, getControlledActorPosition: c, isDM: l, showLinkMarkers: d, onTraverse: u, onToggleLinkLocked: f, onFocusChange: m }) {
+  function ME({ resources: e, interactionMode: t, terrain: s, terrainIndex: r, links: a, terrainNamesById: o, controlledActor: i, getControlledActorPosition: c, isDM: l, showLinkMarkers: d, onTraverse: u, onToggleLinkLocked: f, onFocusChange: m }) {
     const h = t === "world-pointer", g = p.useRef(i), b = p.useRef(o), x = p.useRef(l), v = p.useRef(d), y = p.useRef(c), w = p.useRef(u), N = p.useRef(f), C = p.useRef(m), T = p.useRef([]);
     p.useEffect(() => {
       g.current = i, b.current = o, x.current = l, v.current = d, y.current = c, w.current = u, N.current = f, C.current = m;
@@ -22683,7 +22684,7 @@ ${b}: 1`;
       d,
       m
     ]);
-    const R = kE(a, s.Id);
+    const R = RE(a, s.Id);
     return p.useEffect(() => {
       const j = ac(a, s.Id), E = new Ft(), S = [], I = l && d, A = Eo();
       for (const { link: k, anchor: P, destination: M } of j) {
@@ -22692,7 +22693,7 @@ ${b}: 1`;
           geometry: A,
           anchor: P,
           locked: k.Locked,
-          opacity: I ? AE : 0,
+          opacity: I ? EE : 0,
           depthTest: !I,
           colorWrite: I,
           renderOrder: I ? 42 : 0
@@ -22729,7 +22730,7 @@ ${b}: 1`;
           authoring: true,
           screen: ee
         };
-        const K = g.current, oe = K ? y.current() ?? K.position : null, Y = XI(W.anchor, oe, W.locked);
+        const K = g.current, oe = K ? y.current() ?? K.position : null, Y = qI(W.anchor, oe, W.locked);
         return !Y || Y.locked ? null : {
           linkId: W.linkId,
           destinationName: b.current.get(W.destination.terrainId) ?? "another area",
@@ -22752,7 +22753,7 @@ ${b}: 1`;
         const ee = z[0];
         if (!(h && x.current && v.current)) {
           const W = Fa(j.ray, r);
-          if (W && W.distance + EE < ee.distance) return null;
+          if (W && W.distance + TE < ee.distance) return null;
         }
         return ee.object;
       }, D = () => {
@@ -22830,7 +22831,7 @@ ${b}: 1`;
           const re = oe;
           if (oe = null, !re || re.pointerId !== se.pointerId || e.dragState.active) return;
           const Se = se.clientX - re.startX, Me = se.clientY - re.startY;
-          if (Math.hypot(Se, Me) > TE) return;
+          if (Math.hypot(Se, Me) > kE) return;
           Dr(j, se, e, E);
           const Ce = D();
           if (se.preventDefault(), se.stopPropagation(), se.stopImmediatePropagation(), Ce == null ? void 0 : Ce.focus.authoring) {
@@ -22880,7 +22881,7 @@ ${b}: 1`;
       r
     ]), null;
   }
-  function ME() {
+  function PE() {
     const e = pe(), t = V.getActiveCampaign(e), [s, r] = p.useState(Date.now()), a = p.useRef(/* @__PURE__ */ new Set()), o = p.useMemo(() => {
       const c = /* @__PURE__ */ new Map(), l = Dn.getChronologicalLog(t);
       for (let d = l.length - 1; d >= 0; d--) {
@@ -22915,15 +22916,15 @@ ${b}: 1`;
       i
     ]), o;
   }
-  const PE = 250;
-  function _E() {
+  const _E = 250;
+  function DE() {
     const e = pe(), t = V.getActiveCampaign(e), [s, r] = p.useState(() => Date.now()), a = p.useRef(/* @__PURE__ */ new Set()), o = p.useMemo(() => {
       const c = [], l = Dn.getChronologicalLog(t);
       for (let d = l.length - 1; d >= 0; d--) {
         const u = l[d];
         if (s - u.Timestamp > No) break;
         if (u.Category !== "ping") continue;
-        const f = PN(u.Details);
+        const f = _N(u.Details);
         f && (c.push({
           id: u.Id,
           terrainId: f.terrainId,
@@ -22949,7 +22950,7 @@ ${b}: 1`;
       if (!i) return;
       const c = window.setInterval(() => {
         r(Date.now());
-      }, PE);
+      }, _E);
       return () => window.clearInterval(c);
     }, [
       i
@@ -23035,7 +23036,7 @@ ${b}: 1`;
       medium: 0.3,
       large: 0.38
     }
-  }, DE = [
+  }, LE = [
     "KeyW",
     "KeyA",
     "KeyS",
@@ -23043,7 +23044,7 @@ ${b}: 1`;
     "Space",
     "ShiftLeft",
     "ShiftRight"
-  ], LE = 120;
+  ], OE = 120;
   function um(e, t, s, r, a, o) {
     const i = e === "player" ? s[t] : r == null ? void 0 : r[t];
     if (!i) return null;
@@ -23061,16 +23062,16 @@ ${b}: 1`;
     } : null;
   }
   function Uv(e, t, s) {
-    return ir(FE(e, s), t);
+    return ir(UE(e, s), t);
   }
-  function OE(e, t) {
+  function FE(e, t) {
     return Uv(e, t, e.actor.Position);
   }
   function Su(e) {
     const t = e.Size ?? Xt.SIZE;
     return ss.HEIGHT_BY_SIZE[t];
   }
-  function FE(e, t) {
+  function UE(e, t) {
     return {
       id: e.id,
       kind: e.kind,
@@ -23102,13 +23103,13 @@ ${b}: 1`;
       z: t + i * l
     };
   }
-  function UE(e, t, s, r) {
+  function $E(e, t, s, r) {
     return t < s ? s - t : r < e ? e - r : 0;
   }
   function kf(e, t, s) {
     return e < t ? t - e : e > s ? e - s : 0;
   }
-  function $E(e) {
+  function BE(e) {
     const t = e.actor.Size ?? Xt.SIZE, s = Ue.RADIUS_BY_SIZE[t], r = Math.max(s * 2 + 0.05, Su(e.actor) + Ue.CAPSULE_HEAD_CLEARANCE);
     return {
       radius: s,
@@ -23124,15 +23125,15 @@ ${b}: 1`;
       maxZ: e.Length / 2 - s
     };
   }
-  function BE(e) {
+  function HE(e) {
     return Math.min(Ue.STEP_HEIGHT, e.voxelSize + Ue.STEP_HEIGHT_MARGIN);
   }
   function Rf(e, t, s) {
     const r = Bv(e, t), a = ko(s.x, r.minX, r.maxX), o = ko(s.z, r.minZ, r.maxZ), i = Math.abs(a - s.x) > Ue.COLLISION_EPSILON || Math.abs(o - s.z) > Ue.COLLISION_EPSILON;
     return s.x = a, s.z = o, s.y < Ue.MIN_WORLD_Y ? (s.y = Ue.MIN_WORLD_Y, true) : i;
   }
-  function HE(e, t, s, r, a, o, i, c) {
-    const l = t.radius, d = e.y + l, u = Math.max(d, e.y + t.height - l), f = kf(e.x, s, r), m = UE(d, u, a, o), h = kf(e.z, i, c);
+  function VE(e, t, s, r, a, o, i, c) {
+    const l = t.radius, d = e.y + l, u = Math.max(d, e.y + t.height - l), f = kf(e.x, s, r), m = $E(d, u, a, o), h = kf(e.z, i, c);
     return f * f + m * m + h * h < l * l - Ue.COLLISION_EPSILON;
   }
   function wn(e, t, s, r) {
@@ -23141,11 +23142,11 @@ ${b}: 1`;
     for (let v = h; v <= g; v++) for (let y = b; y <= x; y++) for (let w = f; w <= m; w++) {
       if (!t.hasVoxel(w, v, y)) continue;
       const N = w / t.resolution - e.Width / 2, C = N + t.voxelSize, T = v / t.resolution - 0.5, R = T + t.voxelSize, j = y / t.resolution - e.Length / 2, E = j + t.voxelSize;
-      if (HE(r, s, N, C, T, R, j, E)) return true;
+      if (VE(r, s, N, C, T, R, j, E)) return true;
     }
     return false;
   }
-  function VE(e, t, s, r) {
+  function zE(e, t, s, r) {
     if (wn(e, t, s, r.position)) {
       for (let a = 0; a < 48; a++) if (r.position.y += 0.05, !wn(e, t, s, r.position)) {
         r.velocity.y = Math.max(0, r.velocity.y), r.grounded = false;
@@ -23194,11 +23195,11 @@ ${b}: 1`;
     }
     return l;
   }
-  function zE(e, t, s, r, a) {
+  function GE(e, t, s, r, a) {
     const o = Hv(e, t, s, r.position, a);
     return o === null ? false : (r.position.y = o, r.velocity.y = 0, true);
   }
-  function GE(e, t, s, r, a) {
+  function WE(e, t, s, r, a) {
     const o = r.clone();
     if (!wn(e, t, s, o)) return null;
     const i = r.y, c = i + a, l = Math.max(t.voxelSize / 4, Ue.COLLISION_EPSILON * 4), d = Math.max(1, Math.ceil(a / l));
@@ -23221,15 +23222,15 @@ ${b}: 1`;
     const a = Math.hypot(s, r);
     return a <= Ue.COLLISION_EPSILON ? 0 : ((t.x - e.x) * s + (t.z - e.z) * r) / a;
   }
-  function WE(e, t, s, r, a, o, i) {
+  function XE(e, t, s, r, a, o, i) {
     const c = r.position.clone();
     c.x += a, c.z += o;
-    const l = GE(e, t, s, c, i);
+    const l = WE(e, t, s, c, i);
     if (l === null) return false;
     const d = l - r.position.y;
     return d > i + Ue.COLLISION_EPSILON || d < -0.68 || (c.y = l, wn(e, t, s, c)) ? false : (r.position.copy(c), r.velocity.y = 0, r.grounded = true, true);
   }
-  function XE(e, t, s, r, a, o) {
+  function qE(e, t, s, r, a, o) {
     const i = r.position.clone(), c = r.velocity.clone(), l = {
       position: i.clone(),
       velocity: c.clone(),
@@ -23239,8 +23240,8 @@ ${b}: 1`;
       r.position.copy(l.position), r.velocity.copy(l.velocity);
       return;
     }
-    const u = BE(t);
-    if (WE(e, t, s, r, a, o, u)) return;
+    const u = HE(t);
+    if (XE(e, t, s, r, a, o, u)) return;
     const f = {
       position: i.clone().add(new Ne(0, u, 0)),
       velocity: c.clone()
@@ -23266,7 +23267,7 @@ ${b}: 1`;
     }
     r.position.copy(f.position), r.velocity.copy(f.velocity), r.velocity.y = 0, r.grounded = true;
   }
-  function qE(e, t, s, r, a) {
+  function YE(e, t, s, r, a) {
     const o = t * Ws.MOVE_UNITS_PER_SECOND, i = s * Ws.MOVE_UNITS_PER_SECOND, c = Math.hypot(t, s) > Ue.COLLISION_EPSILON;
     if (e.grounded && r && (e.velocity.y = Math.sqrt(2 * Ue.GRAVITY * Ue.JUMP_HEIGHT), e.grounded = false), c) {
       const l = e.grounded ? Ue.GROUND_ACCELERATION : Ue.AIR_ACCELERATION, d = $v(e.velocity.x, e.velocity.z, o, i, l * a);
@@ -23280,7 +23281,7 @@ ${b}: 1`;
     }
     e.velocity.y -= Ue.GRAVITY * a;
   }
-  function YE(e, t, s, r, a) {
+  function KE(e, t, s, r, a) {
     const o = t * Ws.MOVE_UNITS_PER_SECOND, i = s * Ws.MOVE_UNITS_PER_SECOND, c = r * Ws.FLY_UNITS_PER_SECOND, l = $v(e.velocity.x, e.velocity.z, o, i, Ue.FLY_ACCELERATION * a);
     if (e.velocity.x = l.x, e.velocity.z = l.z, e.velocity.y = Iu(e.velocity.y, c, Ue.FLY_ACCELERATION * a), Math.hypot(t, s) <= Ue.COLLISION_EPSILON && r === 0) {
       const d = Math.max(0, 1 - Ue.FLY_DAMPING * a);
@@ -23288,24 +23289,24 @@ ${b}: 1`;
     }
     e.grounded = false;
   }
-  function KE(e) {
+  function QE(e) {
     const t = new Ne(-Math.sin(e.yaw), 0, -Math.cos(e.yaw)), s = new Ne(Math.cos(e.yaw), 0, -Math.sin(e.yaw)), r = t.multiplyScalar(e.forwardInput).add(s.multiplyScalar(e.rightInput));
     return r.lengthSq() > 1 && r.normalize(), r;
   }
   function ql(e, t) {
     return {
-      position: OE(e, t),
+      position: FE(e, t),
       velocity: new Ne(),
       grounded: !(e.actor.CanFly ?? false)
     };
   }
-  function QE(e, t, s, r, a) {
+  function ZE(e, t, s, r, a) {
     const o = Math.max(0, a.dt);
     if (o <= 0) return;
-    const i = $E(s);
-    Rf(e, i, r.position), VE(e, t, i, r);
-    const c = KE(a), l = s.actor.CanFly ?? false;
-    l ? YE(r, c.x, c.z, a.verticalInput, o) : qE(r, c.x, c.z, a.jumpPressed, o);
+    const i = BE(s);
+    Rf(e, i, r.position), zE(e, t, i, r);
+    const c = QE(a), l = s.actor.CanFly ?? false;
+    l ? KE(r, c.x, c.z, a.verticalInput, o) : YE(r, c.x, c.z, a.jumpPressed, o);
     const d = Math.max(Math.abs(r.velocity.x), Math.abs(r.velocity.y), Math.abs(r.velocity.z)) * o, u = Math.max(1, Math.min(Ue.MAX_SUBSTEPS, Math.ceil(d / Ue.MAX_SUBSTEP_DISTANCE))), f = o / u;
     for (let m = 0; m < u; m++) {
       const h = r.velocity.x * f, g = r.velocity.y * f, b = r.velocity.z * f;
@@ -23313,11 +23314,11 @@ ${b}: 1`;
         Nu(e, t, i, r, h, b), fc(e, t, i, r, "y", g);
         continue;
       }
-      XE(e, t, i, r, h, b);
+      qE(e, t, i, r, h, b);
       const x = g <= 0;
       if (fc(e, t, i, r, "y", g).blocked ? r.grounded = x : g > Ue.COLLISION_EPSILON && (r.grounded = false), r.velocity.y <= 0) {
         const y = r.grounded ? Ue.STEP_DOWN_SNAP_DISTANCE : Ue.GROUND_SNAP_DISTANCE;
-        r.grounded = zE(e, t, i, r, y);
+        r.grounded = GE(e, t, i, r, y);
       }
     }
     Rf(e, i, r.position);
@@ -23347,18 +23348,18 @@ ${b}: 1`;
     const s = e.velocity.lengthSq(), r = Ue.SETTLED_SPEED * Ue.SETTLED_SPEED;
     return (t || e.grounded) && s <= r;
   }
-  function ZE(e, t, s, r, a) {
+  function JE(e, t, s, r, a) {
     const o = t - e.position.x, i = a ? s - e.position.y : 0, c = r - e.position.z, l = o * o + i * i + c * c;
     if (l <= Ue.COLLISION_EPSILON) return;
     const d = Math.sqrt(l), u = o / d, f = i / d, m = c / d, h = e.velocity.x * u + (a ? e.velocity.y * f : 0) + e.velocity.z * m, b = Math.max(h, Ue.RANGE_RETURN_SPEED) - h;
     b <= 0 || (e.velocity.x += u * b, a && (e.velocity.y += f * b), e.velocity.z += m * b);
   }
-  const JE = 4;
-  function eT(e) {
-    return e + JE;
+  const eT = 4;
+  function tT(e) {
+    return e + eT;
   }
-  function tT(e, t, s, r) {
-    const a = t.actor.MoveSpeed ?? Xt.MOVE_SPEED, o = t.actor.CanFly ?? false, i = s && t.actor.TurnStartPosition ? t.actor.TurnStartPosition : t.actor.Position, c = eT(a);
+  function nT(e, t, s, r) {
+    const a = t.actor.MoveSpeed ?? Xt.MOVE_SPEED, o = t.actor.CanFly ?? false, i = s && t.actor.TurnStartPosition ? t.actor.TurnStartPosition : t.actor.Position, c = tT(a);
     return yo(e, i, c, o, r).costs;
   }
   function Yl(e) {
@@ -23376,7 +23377,7 @@ ${b}: 1`;
     ortho: "icon-[iconoir--orthogonal-view]",
     perspective: "icon-[iconoir--perspective-view]",
     freecam: "icon-[mdi--camera-iris]"
-  }, nT = {
+  }, sT = {
     "first-person": "Camera: First person \u2014 hold Right to look and move.",
     follow: "Camera: Follow \u2014 orbits your actor. Hold Right to look and move.",
     ortho: "Camera: Isometric (F toggles freecam)",
@@ -23394,7 +23395,7 @@ ${b}: 1`;
         var _a2;
         (_a2 = document.activeElement) == null ? void 0 : _a2.blur();
       });
-    }, l = e === "freecam" && a !== void 0 ? `Free camera \u2014 hold Right to look + WASD to fly, Space/Shift up/down, scroll to change speed (${a.toFixed(2)}\xD7). F to toggle.` : nT[e];
+    }, l = e === "freecam" && a !== void 0 ? `Free camera \u2014 hold Right to look + WASD to fly, Space/Shift up/down, scroll to change speed (${a.toFixed(2)}\xD7). F to toggle.` : sT[e];
     return n.jsxs("div", {
       className: `dropdown dropdown-bottom${i ? " dropdown-end" : ""}`,
       children: [
@@ -23439,7 +23440,7 @@ ${b}: 1`;
       ]
     });
   }
-  function sT({ movementOverlay: e }) {
+  function rT({ movementOverlay: e }) {
     const t = e.overageUnbounded === true, s = e.overage && e.overage > 0 ? e.overage : 0, r = t ? n.jsx("span", {
       className: "text-error",
       children: " (+ a lot)"
@@ -23468,7 +23469,7 @@ ${b}: 1`;
       ]
     });
   }
-  function rT({ cameraMode: e, isPointerLocked: t, movementOverlay: s, canFly: r, linkFocus: a }) {
+  function aT({ cameraMode: e, isPointerLocked: t, movementOverlay: s, canFly: r, linkFocus: a }) {
     const o = e === "follow", i = o ? lo.below : lo.beside;
     return n.jsxs(n.Fragment, {
       children: [
@@ -23570,7 +23571,7 @@ ${b}: 1`;
           className: `absolute left-1/2 -translate-x-1/2 z-20 ${o ? lo.belowTop : "top-3"}`,
           children: n.jsx("div", {
             className: "rounded bg-base-100/90 border border-base-300 px-3 py-1 shadow text-sm font-semibold",
-            children: n.jsx(sT, {
+            children: n.jsx(rT, {
               movementOverlay: s
             })
           })
@@ -23594,7 +23595,7 @@ ${b}: 1`;
       ]
     });
   }
-  function aT({ onLeaveActorCamera: e }) {
+  function oT({ onLeaveActorCamera: e }) {
     return n.jsx("div", {
       className: "w-full h-full grid place-items-center bg-base-200/60 text-base-content",
       children: n.jsxs("div", {
@@ -23624,7 +23625,7 @@ ${b}: 1`;
       })
     });
   }
-  const Pf = 2e3, oT = 80, iT = 4e-4, cT = 300, lT = /* @__PURE__ */ new Set(), _f = 1e-4;
+  const Pf = 2e3, iT = 80, cT = 4e-4, lT = 300, dT = /* @__PURE__ */ new Set(), _f = 1e-4;
   function Df(e) {
     return e.actor.MoveSpeed ?? Xt.MOVE_SPEED;
   }
@@ -23641,7 +23642,7 @@ ${b}: 1`;
     }
     return o;
   }
-  function dT({ controller: e, cameraMode: t, terrain: s, terrainIndex: r, onUnavailable: a, onLiveRulesPositionChange: o, linkFocus: i }) {
+  function uT({ controller: e, cameraMode: t, terrain: s, terrainIndex: r, onUnavailable: a, onLiveRulesPositionChange: o, linkFocus: i }) {
     var _a2, _b2, _c2, _d2;
     const c = p.useRef(t);
     c.current = t;
@@ -23663,7 +23664,7 @@ ${b}: 1`;
       M.User.ImpersonatedActors,
       $.GameState.Characters,
       $.GameState.Entities
-    ]), z = X == null ? void 0 : X.actor.Position.x, ee = X == null ? void 0 : X.actor.Position.y, W = X == null ? void 0 : X.actor.Position.h, ne = (_a2 = X == null ? void 0 : X.actor.TurnStartPosition) == null ? void 0 : _a2.x, K = (_b2 = X == null ? void 0 : X.actor.TurnStartPosition) == null ? void 0 : _b2.y, oe = (_c2 = X == null ? void 0 : X.actor.TurnStartPosition) == null ? void 0 : _c2.h, Y = ((_d2 = $.GameState.CombatState) == null ? void 0 : _d2.isActive) ?? false, de = X ? _(X.id) : false, B = !!s && !!X && X.actor.Position.terrainId === s.Id, se = r, re = ox(M.User.Role, Y, $.Settings.MovementSettings), Se = p.useMemo(() => !s || !X || !B || !de ? null : tT(s, X, Y, $.Settings.MovementSettings), [
+    ]), z = X == null ? void 0 : X.actor.Position.x, ee = X == null ? void 0 : X.actor.Position.y, W = X == null ? void 0 : X.actor.Position.h, ne = (_a2 = X == null ? void 0 : X.actor.TurnStartPosition) == null ? void 0 : _a2.x, K = (_b2 = X == null ? void 0 : X.actor.TurnStartPosition) == null ? void 0 : _b2.y, oe = (_c2 = X == null ? void 0 : X.actor.TurnStartPosition) == null ? void 0 : _c2.h, Y = ((_d2 = $.GameState.CombatState) == null ? void 0 : _d2.isActive) ?? false, de = X ? _(X.id) : false, B = !!s && !!X && X.actor.Position.terrainId === s.Id, se = r, re = ox(M.User.Role, Y, $.Settings.MovementSettings), Se = p.useMemo(() => !s || !X || !B || !de ? null : nT(s, X, Y, $.Settings.MovementSettings), [
       s,
       X == null ? void 0 : X.id,
       B,
@@ -23754,9 +23755,9 @@ ${b}: 1`;
       }), u.current = fe, b.current = ue, x.current = Date.now()), true;
     }, []), Ce = p.useCallback((me, Pe, te = false) => {
       const ue = C.current, fe = R.current, Q = T.current;
-      if (!ue || !fe || !Q || !S.current || me - v.current < oT) return;
+      if (!ue || !fe || !Q || !S.current || me - v.current < iT) return;
       const ae = y.current;
-      !te && ae && ae.distanceToSquared(Pe) < iT || (Q.actorPoseService.sendActorPose({
+      !te && ae && ae.distanceToSquared(Pe) < cT || (Q.actorPoseService.sendActorPose({
         actorId: ue.id,
         terrainId: fe.Id,
         position: [
@@ -23781,7 +23782,7 @@ ${b}: 1`;
         F((je) => je === null ? je : null);
         return;
       }
-      if (me - N.current < LE) return;
+      if (me - N.current < OE) return;
       N.current = me;
       const Q = Df(te), ae = Lf(fe, ue, Pe);
       if (ae === void 0) {
@@ -23820,7 +23821,7 @@ ${b}: 1`;
       }
       if (ue && Q && fe && ae && S.current) {
         l.current || (l.current = ql(fe, ue), d.current = true);
-        const je = te.pointerLocked ? te.keys : lT, Ye = (je.has("KeyW") ? 1 : 0) - (je.has("KeyS") ? 1 : 0), mt = (je.has("KeyD") ? 1 : 0) - (je.has("KeyA") ? 1 : 0), _t = fe.actor.CanFly ? (je.has("Space") ? 1 : 0) - (je.has("ShiftLeft") || je.has("ShiftRight") ? 1 : 0) : 0, lt = Ye !== 0 || mt !== 0 || _t !== 0;
+        const je = te.pointerLocked ? te.keys : dT, Ye = (je.has("KeyW") ? 1 : 0) - (je.has("KeyS") ? 1 : 0), mt = (je.has("KeyD") ? 1 : 0) - (je.has("KeyA") ? 1 : 0), _t = fe.actor.CanFly ? (je.has("Space") ? 1 : 0) - (je.has("ShiftLeft") || je.has("ShiftRight") ? 1 : 0) : 0, lt = Ye !== 0 || mt !== 0 || _t !== 0;
         let bt = false;
         if (fe.actor.CanFly) m.current = false;
         else {
@@ -23829,7 +23830,7 @@ ${b}: 1`;
         }
         const yt = l.current, Nn = yt.position.clone(), mn = yi(yt, fe.actor.CanFly ?? false);
         if (te.pointerLocked || lt || bt || !mn || h.current !== null) {
-          Ae = ss.ACTIVE_POSITION_SMOOTHING, QE(ue, Q, fe, yt, {
+          Ae = ss.ACTIVE_POSITION_SMOOTHING, ZE(ue, Q, fe, yt, {
             forwardInput: Ye,
             rightInput: mt,
             verticalInput: _t,
@@ -23842,7 +23843,7 @@ ${b}: 1`;
             const nt = E.current, Ze = k.current;
             if (nt && Ze) {
               const at = Df(fe), wt = Lf(nt, Q, le);
-              (wt === void 0 || wt > at + _f) && (ZE(yt, Ze.x, Ze.y, Ze.z, fe.actor.CanFly ?? false), le = bi(ue, yt, Q, fe.actor.CanFly ?? false));
+              (wt === void 0 || wt > at + _f) && (JE(yt, Ze.x, Ze.y, Ze.z, fe.actor.CanFly ?? false), le = bi(ue, yt, Q, fe.actor.CanFly ?? false));
             }
           }
           (_a3 = g.current) == null ? void 0 : _a3.call(g, le);
@@ -23852,7 +23853,7 @@ ${b}: 1`;
       }
       {
         const je = l.current;
-        je && ae && S.current && (h.current !== null || b.current !== null) && me - v.current >= cT && Ce(me, je.position, true);
+        je && ae && S.current && (h.current !== null || b.current !== null) && me - v.current >= lT && Ce(me, je.position, true);
       }
       const Re = l.current, Ee = c.current === "follow" && !!fe && !!Re && (te.pointerLocked || !yi(Re, fe.actor.CanFly ?? false) || h.current !== null || b.current !== null);
       e.setControlledActorPose((Re == null ? void 0 : Re.position) ?? null, {
@@ -23930,11 +23931,11 @@ ${b}: 1`;
       children: [
         !X && n.jsx("div", {
           className: "absolute inset-0 z-30",
-          children: n.jsx(aT, {
+          children: n.jsx(oT, {
             onLeaveActorCamera: a
           })
         }),
-        X && n.jsx(rT, {
+        X && n.jsx(aT, {
           cameraMode: t,
           isPointerLocked: U,
           movementOverlay: L,
@@ -23944,23 +23945,23 @@ ${b}: 1`;
       ]
     });
   }
-  function uT(e) {
+  function mT(e) {
     const t = new Vr();
     return t.setAttribute("position", new ct(e.positions, 3)), t.setAttribute("normal", new ct(e.normals, 3)), e.colors && t.setAttribute("color", new ct(e.colors, 3)), e.surfaceDeformStrength && t.setAttribute("surfaceDeformStrength", new ct(e.surfaceDeformStrength, 1)), t.setAttribute("tileHeight", new ct(e.tileHeights, 1)), t.setAttribute("highlightStrength", new ct(e.highlightStrengths, 1)), t.setIndex(new ct(e.indices, 1)), t.computeBoundingBox(), t.computeBoundingSphere(), t;
   }
-  const mT = 4, Tr = /* @__PURE__ */ new Map(), hT = Ls;
-  function fT(e) {
+  const hT = 4, Tr = /* @__PURE__ */ new Map(), fT = Ls;
+  function pT(e) {
     const t = Tr.get(e);
     return t ? (Tr.delete(e), Tr.set(e, t), t) : null;
   }
-  function pT(e, t) {
-    for (Tr.set(e, t); Tr.size > mT; ) {
+  function gT(e, t) {
+    for (Tr.set(e, t); Tr.size > hT; ) {
       const s = Tr.keys().next().value;
       if (s === void 0) break;
       Tr.delete(s);
     }
   }
-  function gT(e) {
+  function xT(e) {
     const t = /* @__PURE__ */ new Map();
     for (const s of e.buckets) {
       const { key: r, ...a } = s;
@@ -23974,25 +23975,25 @@ ${b}: 1`;
   }
   function Of(e) {
     const t = /* @__PURE__ */ new Map();
-    for (const [s, r] of e.buckets) t.set(s, uT(r));
+    for (const [s, r] of e.buckets) t.set(s, mT(r));
     return t;
   }
   let uo = null;
   const dr = /* @__PURE__ */ new Map();
-  let xT = 1;
+  let vT = 1;
   function Ff(e) {
     return e instanceof Error ? e.message : String(e);
   }
-  function vT(e) {
+  function bT(e) {
     for (const [t, s] of dr) dr.delete(t), s({
       buildId: t,
       error: e
     });
   }
   function Uf(e, t) {
-    uo === e && (uo = null, e.terminate(), vT(t));
+    uo === e && (uo = null, e.terminate(), bT(t));
   }
-  function bT() {
+  function yT() {
     if (uo) return uo;
     const e = new Worker(new URL("/assets/voxelGeometryWorker-CYLQgKqA.js", import.meta.url), {
       type: "module"
@@ -24006,7 +24007,7 @@ ${b}: 1`;
       console.error("[voxel-build] WORKER MESSAGE ERROR (structured-clone failed):", t), Uf(e, "The terrain geometry worker returned an unreadable response.");
     }), uo = e, e;
   }
-  function yT(e, t, s) {
+  function wT(e, t, s) {
     const [r, a] = p.useState(null), [o, i] = p.useState(null), [c, l] = p.useState(0), d = p.useCallback(() => {
       i(null), l((u) => u + 1);
     }, []);
@@ -24020,7 +24021,7 @@ ${b}: 1`;
         a(null), i(null);
         return;
       }
-      const f = e.Width, m = e.Length, h = e.Height, g = fT(t);
+      const f = e.Width, m = e.Length, h = e.Height, g = pT(t);
       if (g) {
         a({
           buckets: Of(g),
@@ -24032,7 +24033,7 @@ ${b}: 1`;
         }), i(null);
         return;
       }
-      const b = bT(), x = xT++;
+      const b = yT(), x = vT++;
       let v = false;
       i(null), dr.set(x, (y) => {
         if (!v) {
@@ -24041,8 +24042,8 @@ ${b}: 1`;
             return;
           }
           try {
-            const w = gT(y);
-            pT(t, w), a({
+            const w = xT(y);
+            gT(t, w), a({
               buckets: Of(w),
               occupancy: w.occupancy,
               fogVolume: w.fogVolume,
@@ -24082,13 +24083,13 @@ ${b}: 1`;
       retry: d
     };
   }
-  const wT = `
+  const ST = `
 out vec2 vUv;
 void main() {
 	vUv = uv;
 	gl_Position = vec4(position.xy, 0.0, 1.0);
 }
-`, ST = `
+`, IT = `
 precision highp float;
 
 in vec2 vUv;
@@ -24140,8 +24141,8 @@ void main() {
 	// Premultiplied-over composite.
 	fragColor = vec4(scene * (1.0 - fog.a) + fog.rgb, 1.0);
 }
-`, IT = 2;
-  function NT() {
+`, NT = 2;
+  function CT() {
     return new jc({
       name: "VolumetricFogCompositorMaterial",
       glslVersion: Uu,
@@ -24153,17 +24154,17 @@ void main() {
         tDepth: new Qe(null),
         uProjectionInverse: new Qe(new xo()),
         uResolution: new Qe(new Tt(1, 1)),
-        uEdgeStrength: new Qe(IT)
+        uEdgeStrength: new Qe(NT)
       },
-      vertexShader: wT,
-      fragmentShader: ST
+      vertexShader: ST,
+      fragmentShader: IT
     });
   }
-  const CT = 32, jT = 16, AT = new Yt(0.9, 0.92, 0.96), ET = new Yt(0.58, 0.62, 0.7), TT = 0.35, kT = 1.8, RT = 0.7, MT = 64, PT = 0.12, _T = 1.8, DT = new Ne(0.015, 4e-3, 0.01), LT = 4, OT = "/materials/fog_251/blueNoise64.png";
+  const jT = 32, AT = 16, ET = new Yt(0.9, 0.92, 0.96), TT = new Yt(0.58, 0.62, 0.7), kT = 0.35, RT = 1.8, MT = 0.7, PT = 64, _T = 0.12, DT = 1.8, LT = new Ne(0.015, 4e-3, 0.01), OT = 4, FT = "/materials/fog_251/blueNoise64.png";
   function zv(e) {
     e.format = Bu, e.type = Oo, e.magFilter = $t, e.minFilter = $t, e.wrapS = Pn, e.wrapT = Pn, e.wrapR = Pn, e.generateMipmaps = false, e.needsUpdate = true;
   }
-  function FT(e) {
+  function UT(e) {
     const t = new zr(e.data, e.voxelWidth, e.voxelHeight, e.voxelLength);
     return zv(t), {
       texture: t,
@@ -24171,17 +24172,17 @@ void main() {
       size: new Ne(e.worldSizeX, e.worldSizeY, e.worldSizeZ)
     };
   }
-  function UT() {
+  function $T() {
     const e = new zr(new Uint8Array(1), 1, 1, 1);
     return zv(e), e;
   }
-  function $T(e) {
+  function BT(e) {
     const t = new Uint8Array(e * e * e);
     for (let r = 0; r < t.length; r++) t[r] = Math.random() * 256 | 0;
     const s = new zr(t, e, e, e);
     return s.format = Bu, s.type = Oo, s.wrapS = nn, s.wrapT = nn, s.wrapR = nn, s.minFilter = $t, s.magFilter = $t, s.generateMipmaps = false, s.needsUpdate = true, s;
   }
-  function BT() {
+  function HT() {
     const e = new n0(new Uint8Array([
       128,
       128,
@@ -24190,19 +24191,19 @@ void main() {
     ]), 1, 1, Ec);
     return e.needsUpdate = true, e;
   }
-  function HT(e) {
-    new Sn().load(OT, (t) => {
+  function VT(e) {
+    new Sn().load(FT, (t) => {
       t.magFilter = Lr, t.minFilter = Lr, t.wrapS = nn, t.wrapT = nn, t.generateMipmaps = false, t.colorSpace = s0, t.needsUpdate = true, e(t);
     });
   }
-  const VT = `
+  const zT = `
 out vec2 vUv;
 void main() {
 	vUv = uv;
 	gl_Position = vec4(position.xy, 0.0, 1.0);
 }
 `;
-  function zT(e) {
+  function GT(e) {
     return `
 	precision highp float;
 	precision highp sampler3D;
@@ -24266,7 +24267,7 @@ void main() {
 		float sum = 0.0;
 		float amp = 1.0;
 		float total = 0.0;
-		for (int i = 0; i < ${LT}; i++) {
+		for (int i = 0; i < ${OT}; i++) {
 			sum += textureLod(uNoiseTexture, p, 0.0).r * amp;
 			total += amp;
 			p *= 2.02;
@@ -24337,7 +24338,7 @@ void main() {
 	}
 	`;
   }
-  function GT(e) {
+  function WT(e) {
     return new jc({
       name: "VolumetricFogMarchMaterial",
       glslVersion: Uu,
@@ -24353,22 +24354,22 @@ void main() {
         uCameraMatrixWorld: new Qe(new xo()),
         uFogOrigin: new Qe(new Ne()),
         uFogSize: new Qe(new Ne(1, 1, 1)),
-        uFogColorLow: new Qe(AT.clone()),
-        uFogColorHigh: new Qe(ET.clone()),
-        uAmbient: new Qe(TT),
-        uDensityScale: new Qe(kT),
-        uAbsorption: new Qe(RT),
-        uNoiseFrequency: new Qe(PT),
-        uNoiseContrast: new Qe(_T),
-        uNoiseWind: new Qe(DT.clone()),
+        uFogColorLow: new Qe(ET.clone()),
+        uFogColorHigh: new Qe(TT.clone()),
+        uAmbient: new Qe(kT),
+        uDensityScale: new Qe(RT),
+        uAbsorption: new Qe(MT),
+        uNoiseFrequency: new Qe(_T),
+        uNoiseContrast: new Qe(DT),
+        uNoiseWind: new Qe(LT.clone()),
         uTime: new Qe(0),
         uEnabled: new Qe(0)
       },
-      vertexShader: VT,
-      fragmentShader: zT(e)
+      vertexShader: zT,
+      fragmentShader: GT(e)
     });
   }
-  class WT extends e0 {
+  class XT extends e0 {
     constructor(t, s) {
       super("VolumetricFogPass");
       __publicField(this, "fogCamera");
@@ -24379,12 +24380,12 @@ void main() {
       __publicField(this, "placeholderFogTexture");
       __publicField(this, "placeholderBlueNoise");
       __publicField(this, "noiseTexture");
-      this.needsDepthTexture = true, this.needsSwap = true, this.enabled = false, this.fogCamera = t, this.placeholderFogTexture = UT(), this.placeholderBlueNoise = BT(), this.noiseTexture = $T(MT), this.marchMaterial = GT(s), this.marchMaterial.uniforms.uFogTexture.value = this.placeholderFogTexture, this.marchMaterial.uniforms.uBlueNoise.value = this.placeholderBlueNoise, this.marchMaterial.uniforms.uNoiseTexture.value = this.noiseTexture, this.compositorMaterial = NT(), this.fogRenderTarget = new t0(1, 1, {
+      this.needsDepthTexture = true, this.needsSwap = true, this.enabled = false, this.fogCamera = t, this.placeholderFogTexture = $T(), this.placeholderBlueNoise = HT(), this.noiseTexture = BT(PT), this.marchMaterial = WT(s), this.marchMaterial.uniforms.uFogTexture.value = this.placeholderFogTexture, this.marchMaterial.uniforms.uBlueNoise.value = this.placeholderBlueNoise, this.marchMaterial.uniforms.uNoiseTexture.value = this.noiseTexture, this.compositorMaterial = CT(), this.fogRenderTarget = new t0(1, 1, {
         type: yg,
         format: Ec,
         depthBuffer: false,
         stencilBuffer: false
-      }), HT((r) => {
+      }), VT((r) => {
         this.marchMaterial.uniforms.uBlueNoise.value = r, this.marchMaterial.uniforms.uBlueNoiseRes.value = r.image.width;
       });
     }
@@ -24419,11 +24420,11 @@ void main() {
       this.marchMaterial.dispose(), this.compositorMaterial.dispose(), this.fogRenderTarget.dispose(), this.placeholderFogTexture.dispose(), this.placeholderBlueNoise.dispose(), this.noiseTexture.dispose(), super.dispose();
     }
   }
-  const XT = 0.25;
+  const qT = 0.25;
   function Gv(e, t = false) {
     e.format = Bu, e.type = Oo, e.magFilter = $t, e.minFilter = $t, e.wrapS = Pn, e.wrapT = Pn, e.wrapR = Pn, e.generateMipmaps = false, e.needsUpdate = true;
   }
-  function qT(e, t = {}) {
+  function YT(e, t = {}) {
     const s = new zr(e.data, e.voxelWidth, e.voxelHeight, e.voxelLength);
     return Gv(s, t.performanceMode ?? false), {
       texture: s,
@@ -24447,7 +24448,7 @@ void main() {
   ], us = [
     "vVoxelAoWorldPosition = (modelMatrix * vec4(transformed, 1.0)).xyz;",
     "vVoxelAoWorldNormal = normalize(mat3(modelMatrix) * normal);"
-  ], YT = [
+  ], KT = [
     "uniform highp sampler3D voxelAoOccupancy;",
     "uniform vec3 voxelAoOrigin;",
     "uniform vec3 voxelAoSize;",
@@ -24476,7 +24477,7 @@ void main() {
     "	float occ = sides / 4.0;",
     "	return mix(0.45, 1.0, 1.0 - occ);",
     "}"
-  ], KT = [
+  ], QT = [
     "uniform highp sampler3D voxelAoOccupancy;",
     "uniform vec3 voxelAoOrigin;",
     "uniform vec3 voxelAoSize;",
@@ -24507,7 +24508,7 @@ void main() {
     "}"
   ];
   function On(e = false) {
-    return e ? KT : YT;
+    return e ? QT : KT;
   }
   const jt = "computeVoxelAo(vVoxelAoWorldPosition, vVoxelAoWorldNormal)";
   function ms(e, t) {
@@ -24518,13 +24519,13 @@ void main() {
     }, e.uniforms.voxelAoSize = {
       value: t.size
     }, e.uniforms.voxelAoRadius = {
-      value: XT
+      value: qT
     }, e.uniforms.voxelAoVoxelSize = {
       value: t.voxelSize
     };
   }
   let wi = null;
-  function QT() {
+  function ZT() {
     if (wi) return wi;
     const e = new Uint8Array(4), t = new zr(e, 1, 1, 1);
     return t.format = Ec, t.type = Oo, t.magFilter = Lr, t.minFilter = Lr, t.wrapS = Pn, t.wrapT = Pn, t.wrapR = Pn, t.generateMipmaps = false, t.needsUpdate = true, wi = {
@@ -24583,7 +24584,7 @@ void main() {
     "#include <dithering_fragment>"
   ];
   function Ns(e, t) {
-    const s = t ?? QT();
+    const s = t ?? ZT();
     e.uniforms.movementHighlightMap = {
       value: s.texture
     }, e.uniforms.movementHighlightSize = {
@@ -24594,7 +24595,7 @@ void main() {
       value: t ? 1 : 0
     };
   }
-  function ZT(e, t, s, r, a) {
+  function JT(e, t, s, r, a) {
     e.onBeforeCompile = (o) => {
       ms(o, t), Ns(o, s), zn(o, r), o.vertexShader = o.vertexShader.replace("#include <common>", [
         "#include <common>",
@@ -24620,13 +24621,13 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
 `));
     };
   }
-  const JT = (e) => {
+  const ek = (e) => {
     const { movementHighlight: t, voxelAo: s, heroOcclusion: r, performanceMode: a = false } = e, o = new rn({
       roughness: Br.ROUGHNESS,
       metalness: Br.METALNESS,
       vertexColors: true
     });
-    return ZT(o, s, t, r, a), {
+    return JT(o, s, t, r, a), {
       material: o,
       castShadow: true,
       receiveShadow: true
@@ -24635,17 +24636,17 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     bucketKey: "default",
     occlusionGroup: "solid",
     shaderVersion: 4,
-    factory: JT
-  }, ek = "/materials/flesh_250/flesh_noise_64x64.png", tk = "#cc2244", nk = 0.45, sk = 0.7, rk = 0, ak = 0.4, $f = 0.5, ok = 0.25, ik = 1.2;
+    factory: ek
+  }, tk = "/materials/flesh_250/flesh_noise_64x64.png", nk = "#cc2244", sk = 0.45, rk = 0.7, ak = 0, ok = 0.4, $f = 0.5, ik = 0.25, ck = 1.2;
   let Kl = null;
-  function ck() {
+  function lk() {
     if (!Kl) {
-      const e = new Sn().load(ek);
+      const e = new Sn().load(tk);
       e.colorSpace = r0, e.wrapS = nn, e.wrapT = nn, e.magFilter = $t, e.minFilter = $t, e.generateMipmaps = false, Kl = e;
     }
     return Kl;
   }
-  const lk = [
+  const dk = [
     "mat2 fleshRM2D(float a) {",
     "    return mat2(cos(a), sin(a), -sin(a), cos(a));",
     "}",
@@ -24665,7 +24666,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     "        if (i >= iters) break;",
     "        u = matrix * u;",
     "        n = matrix * n;",
-    `        q = u * frequency + t * ${ak.toFixed(4)}`,
+    `        q = u * frequency + t * ${ok.toFixed(4)}`,
     `          + fleshAperiodicSin(t * ${$f.toFixed(4)} - centeredDot * 1.2) * 0.4 * ${$f.toFixed(4)}`,
     "          + i + n;",
     "        result += dot(cos(q) / frequency, vec2(2.0, 2.0));",
@@ -24685,18 +24686,18 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     "}"
   ].join(`
 `);
-  function dk() {
+  function uk() {
     return [
       ...ds,
       "uniform float uFleshTime;"
     ];
   }
-  function uk() {
+  function mk() {
     return [
       ...us
     ];
   }
-  function mk(e) {
+  function hk(e) {
     return [
       ...On(e),
       "uniform float uFleshTime;",
@@ -24707,19 +24708,19 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       "    if (n.x >= n.z) return worldPos.zy;",
       "    return worldPos.xy;",
       "}",
-      lk
+      dk
     ];
   }
-  function hk(e) {
+  function fk(e) {
     return [
       "#include <color_fragment>",
-      `vec2 fleshUvWorld = getFleshUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${nk.toFixed(4)};`,
+      `vec2 fleshUvWorld = getFleshUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${sk.toFixed(4)};`,
       `float fleshOriginalNoise = fleshFBM(fleshUvWorld, uFleshTime, ${e ? "false" : "true"});`,
       "float fleshNoise = clamp(fleshOriginalNoise, 0.0, 1.0);",
-      `float fleshFluidNoiseAngle = fleshOriginalNoise * 13.05 + uFleshTime * ${ok.toFixed(4)};`,
+      `float fleshFluidNoiseAngle = fleshOriginalNoise * 13.05 + uFleshTime * ${ik.toFixed(4)};`,
       "vec2 fleshFluidOffset = vec2(",
       "    cos(fleshFluidNoiseAngle) + fleshOriginalNoise * 14.0,",
-      `    sin(fleshFluidNoiseAngle) + uFleshTime * ${ik.toFixed(4)}`,
+      `    sin(fleshFluidNoiseAngle) + uFleshTime * ${ck.toFixed(4)}`,
       ") / 681.72;",
       "float fleshFluidSample = texture2D(uFleshNoise, fleshUvWorld * 0.12 + fleshFluidOffset).x;",
       "float fleshFluidNoise = pow(fleshFluidSample, 5.5 * 0.5) * 0.27;",
@@ -24735,7 +24736,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       "diffuseColor = vec4(clamp(fleshBaseColor, 0.0, 1.0), 1.0);"
     ];
   }
-  const fk = [
+  const pk = [
     "gl_FragColor.rgb += vec3(1.0, 0.35, 0.2) * fleshBrightness;",
     "float fleshSpecVal = fleshSpecular(fleshNormalVec, fleshLightDir, fleshPos3);",
     "float fleshSpecBase = 1.0 - clamp(dot(normalize(vec3(0.9, 0.1, 1.0) - fleshPos3), reflect(-fleshLightDir, fleshNormalVec)), 0.0, 1.0);",
@@ -24750,49 +24751,49 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     "gl_FragColor.rgb += vec3(1.0, 0.05, 0.2) * 0.02;"
   ].join(`
 `);
-  function pk() {
-    return fk + `
+  function gk() {
+    return pk + `
 ` + Is.join(`
 `);
   }
-  function gk(e, t, s, r, a, o, i) {
+  function xk(e, t, s, r, a, o, i) {
     e.onBeforeCompile = (c) => {
       ms(c, r), c.uniforms.uFleshTime = s, c.uniforms.uFleshNoise = {
         value: t
       }, Ns(c, a), zn(c, o), c.vertexShader = c.vertexShader.replace("#include <common>", [
         "#include <common>",
-        ...dk(),
+        ...uk(),
         ...ys,
         ...$n
       ].join(`
 `)), c.vertexShader = c.vertexShader.replace("#include <begin_vertex>", [
         "#include <begin_vertex>",
-        ...uk(),
+        ...mk(),
         ...ws,
         ...Bn
       ].join(`
 `)), c.fragmentShader = c.fragmentShader.replace("#include <common>", [
         "#include <common>",
-        ...mk(i),
+        ...hk(i),
         ...Ss,
         ...Hn
       ].join(`
 `)), c.fragmentShader = c.fragmentShader.replace("#include <clipping_planes_fragment>", Vn.join(`
-`)), c.fragmentShader = c.fragmentShader.replace("#include <color_fragment>", hk(i).join(`
-`)), c.fragmentShader = c.fragmentShader.replace("#include <dithering_fragment>", pk());
+`)), c.fragmentShader = c.fragmentShader.replace("#include <color_fragment>", fk(i).join(`
+`)), c.fragmentShader = c.fragmentShader.replace("#include <dithering_fragment>", gk());
     };
   }
-  const xk = (e) => {
-    const { movementHighlight: t, voxelAo: s, heroOcclusion: r, performanceMode: a = false } = e, o = ck(), i = {
+  const vk = (e) => {
+    const { movementHighlight: t, voxelAo: s, heroOcclusion: r, performanceMode: a = false } = e, o = lk(), i = {
       value: 0
     }, c = new rn({
-      roughness: sk,
-      metalness: rk,
+      roughness: rk,
+      metalness: ak,
       vertexColors: false,
       transparent: false,
       depthWrite: true
     });
-    return gk(c, o, i, s, t, r, a), {
+    return xk(c, o, i, s, t, r, a), {
       material: c,
       onAnimationFrame: (d) => {
         i.value = d * 1e-3;
@@ -24801,20 +24802,20 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       receiveShadow: true,
       renderOrder: 0
     };
-  }, vk = {
+  }, bk = {
     bucketKey: "flesh_250",
     occlusionGroup: "flesh_250",
     shaderVersion: 6,
     geometry: {
       vertexColors: false
     },
-    factory: xk,
+    factory: vk,
     special: {
       paletteIndex: 250,
       label: "Flesh",
-      swatchColor: tk
+      swatchColor: nk
     }
-  }, bk = "#cfd4dc", yk = {
+  }, yk = "#cfd4dc", wk = {
     bucketKey: "fog_251",
     occlusionGroup: "fog_251",
     shaderVersion: 1,
@@ -24823,10 +24824,10 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     special: {
       paletteIndex: 251,
       label: "Fog",
-      swatchColor: bk
+      swatchColor: yk
     }
-  }, wk = "#a8d8f0", Sk = "#cce8ff", Ik = 0.05, Nk = 0, Ck = 0.22;
-  function jk(e, t) {
+  }, Sk = "#a8d8f0", Ik = "#cce8ff", Nk = 0.05, Ck = 0, jk = 0.22;
+  function Ak(e, t) {
     e.onBeforeCompile = (s) => {
       zn(s, t), s.vertexShader = s.vertexShader.replace("#include <common>", [
         "#include <common>",
@@ -24844,34 +24845,34 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
 `));
     };
   }
-  const Ak = (e) => {
+  const Ek = (e) => {
     const { heroOcclusion: t } = e, s = new rn({
-      color: Sk,
-      roughness: Ik,
-      metalness: Nk,
+      color: Ik,
+      roughness: Nk,
+      metalness: Ck,
       vertexColors: false,
       transparent: true,
-      opacity: Ck,
+      opacity: jk,
       depthWrite: false
     });
-    return jk(s, t), {
+    return Ak(s, t), {
       material: s,
       castShadow: false,
       receiveShadow: true,
       renderOrder: 2
     };
-  }, Ek = {
+  }, Tk = {
     bucketKey: "glass_246",
     occlusionGroup: "glass_246",
     shaderVersion: 3,
     geometry: {
       vertexColors: false
     },
-    factory: Ak,
+    factory: Ek,
     special: {
       paletteIndex: 246,
       label: "Glass",
-      swatchColor: wk,
+      swatchColor: Sk,
       category: "buildings"
     }
   }, Xv = "#CFB53B", Ql = 0.6, Zl = [
@@ -24882,7 +24883,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     0.6,
     0.32,
     0.04
-  ], Tk = 0.5, kk = 0, Rk = "#aa4400", Mk = 0.25, Pk = [
+  ], kk = 0.5, Rk = 0, Mk = "#aa4400", Pk = 0.25, _k = [
     "mat2 goldRot(float a) { return mat2(sin(a), cos(a), -cos(a), sin(a)); }",
     "float goldNoise(in vec2 x) { return smoothstep(0.,1.,sin(1.5*x.x)*sin(1.5*x.y)); }",
     "float goldFbm(vec2 p) {",
@@ -24917,25 +24918,25 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     "}"
   ].join(`
 `);
-  function _k() {
+  function Dk() {
     return [
       ...ds
     ];
   }
-  function Dk() {
+  function Lk() {
     return [
       ...us
     ];
   }
-  function Lk(e) {
+  function Ok(e) {
     return [
       ...On(e),
-      Pk,
+      _k,
       `const vec3 G_COL1 = vec3(${Zl[0].toFixed(3)}, ${Zl[1].toFixed(3)}, ${Zl[2].toFixed(3)});`,
       `const vec3 G_COL2 = vec3(${Jl[0].toFixed(3)}, ${Jl[1].toFixed(3)}, ${Jl[2].toFixed(3)});`
     ];
   }
-  function Ok(e) {
+  function Fk(e) {
     const t = [
       "vec3 gNrm = normalize(vVoxelAoWorldNormal);",
       "bool gIsBottom = gNrm.y < -0.5;",
@@ -24968,50 +24969,50 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       "}"
     ];
   }
-  function Fk(e, t, s, r, a) {
+  function Uk(e, t, s, r, a) {
     e.onBeforeCompile = (o) => {
       ms(o, t), Ns(o, s), zn(o, r), o.vertexShader = o.vertexShader.replace("#include <common>", [
         "#include <common>",
-        ..._k(),
+        ...Dk(),
         ...ys,
         ...$n
       ].join(`
 `)), o.vertexShader = o.vertexShader.replace("#include <begin_vertex>", [
         "#include <begin_vertex>",
-        ...Dk(),
+        ...Lk(),
         ...ws,
         ...Bn
       ].join(`
 `)), o.fragmentShader = o.fragmentShader.replace("#include <common>", [
         "#include <common>",
-        ...Lk(a),
+        ...Ok(a),
         ...Ss,
         ...Hn
       ].join(`
-`)), o.fragmentShader = o.fragmentShader.replace("#include <color_fragment>", Ok(a).join(`
+`)), o.fragmentShader = o.fragmentShader.replace("#include <color_fragment>", Fk(a).join(`
 `)), o.fragmentShader = o.fragmentShader.replace("#include <clipping_planes_fragment>", Vn.join(`
 `)), o.fragmentShader = o.fragmentShader.replace("#include <dithering_fragment>", Is.join(`
 `));
     };
   }
-  const Uk = (e) => {
+  const $k = (e) => {
     const { movementHighlight: t, voxelAo: s, heroOcclusion: r, performanceMode: a = false } = e, o = new rn({
       color: Xv,
-      emissive: new Yt(Rk),
-      emissiveIntensity: Mk,
-      roughness: Tk,
-      metalness: kk,
+      emissive: new Yt(Mk),
+      emissiveIntensity: Pk,
+      roughness: kk,
+      metalness: Rk,
       vertexColors: false,
       transparent: false,
       depthWrite: true
     });
-    return Fk(o, s, t, r, a), {
+    return Uk(o, s, t, r, a), {
       material: o,
       castShadow: true,
       receiveShadow: true,
       renderOrder: 0
     };
-  }, $k = {
+  }, Bk = {
     bucketKey: "gold_247",
     occlusionGroup: "solid",
     shaderVersion: 5,
@@ -25020,19 +25021,19 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       preserveVoxelFaces: false,
       deformSurface: false
     },
-    factory: Uk,
+    factory: $k,
     special: {
       paletteIndex: 247,
       label: "Gold",
       swatchColor: Xv,
       category: "metals"
     }
-  }, Bf = "/materials/grass_242/grass_02_base_1k.png", Bk = "/materials/grass_242/grass_02_normal_gl_1k.png", Hk = "/materials/grass_242/grass_02_roughness_1k.png", Vk = "/materials/grass_242/grass_02_amibent_occlusion_1k.png", zk = "#4f8f37", mm = 0.75, Gk = 1.45, Wk = 0.45, Hf = 0.86, ju = 1, Xk = 8, qk = 1;
+  }, Bf = "/materials/grass_242/grass_02_base_1k.png", Hk = "/materials/grass_242/grass_02_normal_gl_1k.png", Vk = "/materials/grass_242/grass_02_roughness_1k.png", zk = "/materials/grass_242/grass_02_amibent_occlusion_1k.png", Gk = "#4f8f37", mm = 0.75, Wk = 1.45, Xk = 0.45, Hf = 0.86, ju = 1, qk = 8, Yk = 1;
   let ed = null, td = null, nd = null, sd = null, rd = null;
   function Ro(e, t = false) {
-    return e.wrapS = nn, e.wrapT = nn, e.magFilter = $t, e.minFilter = t ? $t : Tc, e.anisotropy = t ? qk : Xk, e.generateMipmaps = !t, e;
+    return e.wrapS = nn, e.wrapT = nn, e.magFilter = $t, e.minFilter = t ? $t : Tc, e.anisotropy = t ? Yk : qk, e.generateMipmaps = !t, e;
   }
-  function Yk(e) {
+  function Kk(e) {
     if (e) {
       if (!td) {
         const s = Ro(new Sn().load(Bf), true);
@@ -25044,32 +25045,32 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     const t = Ro(new Sn().load(Bf), false);
     return t.colorSpace = os, ed = t, t;
   }
-  function Kk() {
+  function Qk() {
     if (nd) return nd;
-    const e = Ro(new Sn().load(Bk), false);
+    const e = Ro(new Sn().load(Hk), false);
     return nd = e, e;
   }
-  function Qk() {
+  function Zk() {
     if (sd) return sd;
-    const e = Ro(new Sn().load(Hk), false);
+    const e = Ro(new Sn().load(Vk), false);
     return sd = e, e;
   }
-  function Zk() {
+  function Jk() {
     if (rd) return rd;
-    const e = Ro(new Sn().load(Vk), false);
+    const e = Ro(new Sn().load(zk), false);
     return rd = e, e;
   }
-  function Jk() {
+  function e1() {
     return [
       ...ds
     ];
   }
-  function e1() {
+  function t1() {
     return [
       ...us
     ];
   }
-  function t1(e) {
+  function n1(e) {
     const t = [
       ...On(false),
       "uniform sampler2D grassMap;"
@@ -25109,7 +25110,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       "}"
     ];
   }
-  function n1(e) {
+  function s1(e) {
     const t = [
       "#include <color_fragment>",
       `vec2 grassUv = getGrassUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${mm.toFixed(2)};`,
@@ -25118,9 +25119,9 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       "diffuseColor.a *= grassTexel.a;",
       `diffuseColor.rgb *= ${jt};`
     ];
-    return e || t.splice(3, 0, "float grassMicroAo = mix(1.0, texture2D(grassAoMap, grassUv).r, " + Wk.toFixed(2) + ");", "diffuseColor.rgb *= grassMicroAo;"), t;
+    return e || t.splice(3, 0, "float grassMicroAo = mix(1.0, texture2D(grassAoMap, grassUv).r, " + Xk.toFixed(2) + ");", "diffuseColor.rgb *= grassMicroAo;"), t;
   }
-  function s1() {
+  function r1() {
     return [
       "#include <roughnessmap_fragment>",
       `vec2 grassRoughnessUv = getGrassUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${mm.toFixed(2)};`,
@@ -25128,15 +25129,15 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       `roughnessFactor = clamp(mix(${Hf.toFixed(2)}, ${ju.toFixed(2)}, grassRoughnessSample), ${Hf.toFixed(2)}, ${ju.toFixed(2)});`
     ];
   }
-  function r1() {
+  function a1() {
     return [
       `vec2 grassNormalUv = getGrassUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${mm.toFixed(2)};`,
       "vec3 grassMapNormal = texture2D(grassNormalMap, grassNormalUv).xyz * 2.0 - 1.0;",
-      `grassMapNormal.xy *= ${Gk.toFixed(2)};`,
+      `grassMapNormal.xy *= ${Wk.toFixed(2)};`,
       "normal = normalize(grassGetTangentFrame(-vViewPosition, normal, grassNormalUv) * normalize(grassMapNormal));"
     ];
   }
-  function a1(e, t, s, r, a, o, i, c, l) {
+  function o1(e, t, s, r, a, o, i, c, l) {
     e.onBeforeCompile = (d) => {
       ms(d, o), d.uniforms.grassMap = {
         value: t
@@ -25148,74 +25149,74 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
         value: a
       }), Ns(d, i), zn(d, c), d.vertexShader = d.vertexShader.replace("#include <common>", [
         "#include <common>",
-        ...Jk(),
+        ...e1(),
         ...ys,
         ...$n
       ].join(`
 `)), d.vertexShader = d.vertexShader.replace("#include <begin_vertex>", [
         "#include <begin_vertex>",
-        ...e1(),
+        ...t1(),
         ...ws,
         ...Bn
       ].join(`
 `)), d.fragmentShader = d.fragmentShader.replace("#include <common>", [
         "#include <common>",
-        ...t1(l),
+        ...n1(l),
         ...Ss,
         ...Hn
       ].join(`
-`)), d.fragmentShader = d.fragmentShader.replace("#include <color_fragment>", n1(l).join(`
-`)), l || (d.fragmentShader = d.fragmentShader.replace("#include <roughnessmap_fragment>", s1().join(`
-`)), d.fragmentShader = d.fragmentShader.replace("#include <normal_fragment_maps>", r1().join(`
+`)), d.fragmentShader = d.fragmentShader.replace("#include <color_fragment>", s1(l).join(`
+`)), l || (d.fragmentShader = d.fragmentShader.replace("#include <roughnessmap_fragment>", r1().join(`
+`)), d.fragmentShader = d.fragmentShader.replace("#include <normal_fragment_maps>", a1().join(`
 `))), d.fragmentShader = d.fragmentShader.replace("#include <clipping_planes_fragment>", Vn.join(`
 `)), d.fragmentShader = d.fragmentShader.replace("#include <dithering_fragment>", Is.join(`
 `));
     };
   }
-  const o1 = (e) => {
-    const { movementHighlight: t, voxelAo: s, heroOcclusion: r, performanceMode: a = false } = e, o = Yk(a), i = a ? null : Kk(), c = a ? null : Qk(), l = a ? null : Zk(), d = new rn({
+  const i1 = (e) => {
+    const { movementHighlight: t, voxelAo: s, heroOcclusion: r, performanceMode: a = false } = e, o = Kk(a), i = a ? null : Qk(), c = a ? null : Zk(), l = a ? null : Jk(), d = new rn({
       roughness: ju,
       metalness: Br.METALNESS,
       vertexColors: false
     });
-    return a1(d, o, i, c, l, s, t, r, a), {
+    return o1(d, o, i, c, l, s, t, r, a), {
       material: d,
       castShadow: true,
       receiveShadow: true
     };
-  }, i1 = {
+  }, c1 = {
     bucketKey: "grass_242",
     occlusionGroup: "solid",
     shaderVersion: 6,
     geometry: {
       vertexColors: false
     },
-    factory: o1,
+    factory: i1,
     special: {
       paletteIndex: 242,
       label: "Grass",
-      swatchColor: zk,
+      swatchColor: Gk,
       category: "nature"
     }
-  }, Vf = "/materials/iron_bars_249/iron_bars_256x256.png", c1 = "#6b6b6b", l1 = 1, d1 = 8, u1 = 1, m1 = 0.55, h1 = 0.45, f1 = 0.5;
+  }, Vf = "/materials/iron_bars_249/iron_bars_256x256.png", l1 = "#6b6b6b", d1 = 1, u1 = 8, m1 = 1, h1 = 0.55, f1 = 0.45, p1 = 0.5;
   let ad = null, od = null;
   function zf(e, t) {
-    return e.colorSpace = os, e.wrapS = nn, e.wrapT = nn, e.magFilter = $t, e.minFilter = t ? $t : Tc, e.anisotropy = t ? u1 : d1, e.generateMipmaps = !t, e;
+    return e.colorSpace = os, e.wrapS = nn, e.wrapT = nn, e.magFilter = $t, e.minFilter = t ? $t : Tc, e.anisotropy = t ? m1 : u1, e.generateMipmaps = !t, e;
   }
-  function p1(e) {
+  function g1(e) {
     return e ? (od || (od = zf(new Sn().load(Vf), true)), od) : (ad || (ad = zf(new Sn().load(Vf), false)), ad);
   }
-  function g1() {
+  function x1() {
     return [
       ...ds
     ];
   }
-  function x1() {
+  function v1() {
     return [
       ...us
     ];
   }
-  function v1(e) {
+  function b1(e) {
     return [
       ...On(e),
       "uniform sampler2D ironBarsMap;",
@@ -25227,72 +25228,72 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       "}"
     ];
   }
-  function b1() {
+  function y1() {
     return [
       "#include <color_fragment>",
-      `vec2 ironBarsUv = getIronBarsUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${l1.toFixed(1)};`,
+      `vec2 ironBarsUv = getIronBarsUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${d1.toFixed(1)};`,
       "vec4 ironBarsTexel = texture2D(ironBarsMap, ironBarsUv);",
       "diffuseColor.rgb *= ironBarsTexel.rgb;",
       "diffuseColor.a *= ironBarsTexel.a;",
       `diffuseColor.rgb *= ${jt};`
     ];
   }
-  function y1(e, t, s, r, a, o) {
+  function w1(e, t, s, r, a, o) {
     e.onBeforeCompile = (i) => {
       ms(i, s), i.uniforms.ironBarsMap = {
         value: t
       }, Ns(i, r), zn(i, a), i.vertexShader = i.vertexShader.replace("#include <common>", [
         "#include <common>",
-        ...g1(),
+        ...x1(),
         ...ys,
         ...$n
       ].join(`
 `)), i.vertexShader = i.vertexShader.replace("#include <begin_vertex>", [
         "#include <begin_vertex>",
-        ...x1(),
+        ...v1(),
         ...ws,
         ...Bn
       ].join(`
 `)), i.fragmentShader = i.fragmentShader.replace("#include <common>", [
         "#include <common>",
-        ...v1(o),
+        ...b1(o),
         ...Ss,
         ...Hn
       ].join(`
-`)), i.fragmentShader = i.fragmentShader.replace("#include <color_fragment>", b1().join(`
+`)), i.fragmentShader = i.fragmentShader.replace("#include <color_fragment>", y1().join(`
 `)), i.fragmentShader = i.fragmentShader.replace("#include <clipping_planes_fragment>", Vn.join(`
 `)), i.fragmentShader = i.fragmentShader.replace("#include <dithering_fragment>", Is.join(`
 `));
     };
   }
-  const w1 = (e) => {
-    const { movementHighlight: t, voxelAo: s, heroOcclusion: r, performanceMode: a = false } = e, o = p1(a), i = new rn({
-      roughness: m1,
-      metalness: h1,
+  const S1 = (e) => {
+    const { movementHighlight: t, voxelAo: s, heroOcclusion: r, performanceMode: a = false } = e, o = g1(a), i = new rn({
+      roughness: h1,
+      metalness: f1,
       vertexColors: false,
-      alphaTest: f1
+      alphaTest: p1
     });
-    return y1(i, o, s, t, r, a), {
+    return w1(i, o, s, t, r, a), {
       material: i,
       castShadow: false,
       receiveShadow: true,
       renderOrder: 2
     };
-  }, S1 = {
+  }, I1 = {
     bucketKey: "ironbars_249",
     occlusionGroup: "ironbars_249",
     shaderVersion: 4,
     geometry: {
       vertexColors: false
     },
-    factory: w1,
+    factory: S1,
     special: {
       paletteIndex: 249,
       label: "Iron Bars",
-      swatchColor: c1,
+      swatchColor: l1,
       category: "buildings"
     }
-  }, qv = "#cc3300", I1 = 1.6, N1 = 0.85, id = [
+  }, qv = "#cc3300", N1 = 1.6, C1 = 0.85, id = [
     0.02,
     0,
     0
@@ -25304,7 +25305,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     1,
     0.9,
     0.25
-  ], Gf = 0.97, Wf = 0.9, C1 = 0.055, j1 = 0.018, Xf = 1.8, qf = 0.35, Yf = 1, Kf = 1.5, Qf = 0.4, A1 = 0.45, E1 = 0, T1 = "#ff3300", k1 = 3.2, R1 = [
+  ], Gf = 0.97, Wf = 0.9, j1 = 0.055, A1 = 0.018, Xf = 1.8, qf = 0.35, Yf = 1, Kf = 1.5, Qf = 0.4, E1 = 0.45, T1 = 0, k1 = "#ff3300", R1 = 3.2, M1 = [
     "float lavaVoronoi(vec2 uv) {",
     "	vec2 i = floor(uv);",
     "	vec2 f = fract(uv);",
@@ -25326,15 +25327,15 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     "}"
   ].join(`
 `);
-  function M1() {
+  function P1() {
     return [
       "attribute float surfaceDeformStrength;",
       ...ds,
       "uniform float uLavaTime;"
     ];
   }
-  function P1(e) {
-    const t = e ? j1 : C1;
+  function _1(e) {
+    const t = e ? A1 : j1;
     return [
       "vec3 lavaWorld = (modelMatrix * vec4(transformed, 1.0)).xyz;",
       `float lavaRippleA = sin(lavaWorld.x * ${Xf.toFixed(3)} + uLavaTime * ${qf.toFixed(3)});`,
@@ -25344,7 +25345,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       ...us
     ];
   }
-  function _1(e) {
+  function D1(e) {
     const t = [
       ...On(e),
       "uniform float uLavaTime;",
@@ -25352,9 +25353,9 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       `const vec3 L_MID    = vec3(${cd[0].toFixed(3)}, ${cd[1].toFixed(3)}, ${cd[2].toFixed(3)});`,
       `const vec3 L_BRIGHT = vec3(${ld[0].toFixed(3)}, ${ld[1].toFixed(3)}, ${ld[2].toFixed(3)});`
     ];
-    return e || t.push(R1), t;
+    return e || t.push(M1), t;
   }
-  function D1(e) {
+  function L1(e) {
     return e ? [
       "vec3 lNrm = normalize(vVoxelAoWorldNormal);",
       "bool lIsTop    = lNrm.y >  0.5;",
@@ -25387,8 +25388,8 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       `	diffuseColor = vec4(L_CRUST * ${jt}, ${Wf.toFixed(3)});`,
       "} else {",
       "if (lIsTop) {",
-      `	vec2 lUvCrust = vVoxelAoWorldPosition.xz / ${I1.toFixed(3)};`,
-      `	vec2 lUvGlow  = vVoxelAoWorldPosition.xz / ${N1.toFixed(3)};`,
+      `	vec2 lUvCrust = vVoxelAoWorldPosition.xz / ${N1.toFixed(3)};`,
+      `	vec2 lUvGlow  = vVoxelAoWorldPosition.xz / ${C1.toFixed(3)};`,
       "	vec2 lUvCrustW = lUvCrust + vec2(",
       "		sin(uLavaTime * 0.28 + lUvCrust.y * 3.1) * 0.11,",
       "		cos(uLavaTime * 0.23 + lUvCrust.x * 2.8) * 0.11",
@@ -25422,53 +25423,53 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       "}"
     ];
   }
-  function L1() {
+  function O1() {
     return [
       "float lavaEmissivePulse = 0.78 + 0.22 * sin(uLavaTime * 1.05);",
       "totalEmissiveRadiance *= lavaEmissivePulse;"
     ];
   }
-  function O1(e, t, s, r, a, o) {
+  function F1(e, t, s, r, a, o) {
     e.onBeforeCompile = (i) => {
       ms(i, s), i.uniforms.uLavaTime = t, Ns(i, r), zn(i, a), i.vertexShader = i.vertexShader.replace("#include <common>", [
         "#include <common>",
-        ...M1(),
+        ...P1(),
         ...ys,
         ...$n
       ].join(`
 `)), i.vertexShader = i.vertexShader.replace("#include <begin_vertex>", [
         "#include <begin_vertex>",
-        ...P1(o),
+        ..._1(o),
         ...ws,
         ...Bn
       ].join(`
 `)), i.fragmentShader = i.fragmentShader.replace("#include <common>", [
         "#include <common>",
-        ..._1(o),
+        ...D1(o),
         ...Ss,
         ...Hn
       ].join(`
-`)), i.fragmentShader = i.fragmentShader.replace("#include <color_fragment>", D1(o).join(`
-`)), i.fragmentShader = i.fragmentShader.replace("#include <emissivemap_fragment>", L1().join(`
+`)), i.fragmentShader = i.fragmentShader.replace("#include <color_fragment>", L1(o).join(`
+`)), i.fragmentShader = i.fragmentShader.replace("#include <emissivemap_fragment>", O1().join(`
 `)), i.fragmentShader = i.fragmentShader.replace("#include <clipping_planes_fragment>", Vn.join(`
 `)), i.fragmentShader = i.fragmentShader.replace("#include <dithering_fragment>", Is.join(`
 `));
     };
   }
-  const F1 = (e) => {
+  const U1 = (e) => {
     const { movementHighlight: t, voxelAo: s, heroOcclusion: r, performanceMode: a = false } = e, o = {
       value: 0
     }, i = new rn({
       color: qv,
-      emissive: new Yt(T1),
-      emissiveIntensity: k1,
-      roughness: A1,
-      metalness: E1,
+      emissive: new Yt(k1),
+      emissiveIntensity: R1,
+      roughness: E1,
+      metalness: T1,
       vertexColors: false,
       transparent: true,
       depthWrite: true
     });
-    return O1(i, o, s, t, r, a), {
+    return F1(i, o, s, t, r, a), {
       material: i,
       onAnimationFrame: (l) => {
         o.value = l * 1e-3;
@@ -25477,7 +25478,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       receiveShadow: true,
       renderOrder: 1
     };
-  }, U1 = {
+  }, $1 = {
     bucketKey: "lava_245",
     occlusionGroup: "lava_245",
     shaderVersion: 4,
@@ -25487,15 +25488,15 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       deformSurface: true
     },
     passable: true,
-    factory: F1,
+    factory: U1,
     special: {
       paletteIndex: 245,
       label: "Lava",
       swatchColor: qv,
       category: "liquids"
     }
-  }, Au = "#ffd166", $1 = 0.35, B1 = 0, H1 = 3.5;
-  function V1(e, t) {
+  }, Au = "#ffd166", B1 = 0.35, H1 = 0, V1 = 3.5;
+  function z1(e, t) {
     e.onBeforeCompile = (s) => {
       zn(s, t), s.vertexShader = s.vertexShader.replace("#include <common>", [
         "#include <common>",
@@ -25513,21 +25514,21 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
 `));
     };
   }
-  const z1 = (e) => {
+  const G1 = (e) => {
     const { heroOcclusion: t } = e, s = new rn({
       color: Au,
       emissive: Au,
-      emissiveIntensity: H1,
-      roughness: $1,
-      metalness: B1,
+      emissiveIntensity: V1,
+      roughness: B1,
+      metalness: H1,
       vertexColors: false
     });
-    return V1(s, t), {
+    return z1(s, t), {
       material: s,
       castShadow: false,
       receiveShadow: false
     };
-  }, G1 = {
+  }, W1 = {
     bucketKey: "light_243",
     occlusionGroup: "solid",
     shaderVersion: 3,
@@ -25535,7 +25536,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       vertexColors: false
     },
     passable: true,
-    factory: z1,
+    factory: G1,
     special: {
       paletteIndex: 243,
       label: "Light",
@@ -25549,7 +25550,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     0.22,
     0.3,
     0.45
-  ], W1 = 0.35, X1 = 0, q1 = [
+  ], X1 = 0.35, q1 = 0, Y1 = [
     "mat2 silverRot(float a) { return mat2(sin(a), cos(a), -cos(a), sin(a)); }",
     "float silverNoise(in vec2 x) { return smoothstep(0.,1.,sin(1.5*x.x)*sin(1.5*x.y)); }",
     "float silverFbm(vec2 p) {",
@@ -25584,25 +25585,25 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     "}"
   ].join(`
 `);
-  function Y1() {
+  function K1() {
     return [
       ...ds
     ];
   }
-  function K1() {
+  function Q1() {
     return [
       ...us
     ];
   }
-  function Q1(e) {
+  function Z1(e) {
     return [
       ...On(e),
-      q1,
+      Y1,
       `const vec3 S_COL1 = vec3(${ud[0].toFixed(3)}, ${ud[1].toFixed(3)}, ${ud[2].toFixed(3)});`,
       `const vec3 S_COL2 = vec3(${md[0].toFixed(3)}, ${md[1].toFixed(3)}, ${md[2].toFixed(3)});`
     ];
   }
-  function Z1(e) {
+  function J1(e) {
     const t = [
       "vec3 sNrm = normalize(vVoxelAoWorldNormal);",
       "bool sIsBottom = sNrm.y < -0.5;",
@@ -25635,48 +25636,48 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       "}"
     ];
   }
-  function J1(e, t, s, r, a) {
+  function eR(e, t, s, r, a) {
     e.onBeforeCompile = (o) => {
       ms(o, t), Ns(o, s), zn(o, r), o.vertexShader = o.vertexShader.replace("#include <common>", [
         "#include <common>",
-        ...Y1(),
+        ...K1(),
         ...ys,
         ...$n
       ].join(`
 `)), o.vertexShader = o.vertexShader.replace("#include <begin_vertex>", [
         "#include <begin_vertex>",
-        ...K1(),
+        ...Q1(),
         ...ws,
         ...Bn
       ].join(`
 `)), o.fragmentShader = o.fragmentShader.replace("#include <common>", [
         "#include <common>",
-        ...Q1(a),
+        ...Z1(a),
         ...Ss,
         ...Hn
       ].join(`
-`)), o.fragmentShader = o.fragmentShader.replace("#include <color_fragment>", Z1(a).join(`
+`)), o.fragmentShader = o.fragmentShader.replace("#include <color_fragment>", J1(a).join(`
 `)), o.fragmentShader = o.fragmentShader.replace("#include <clipping_planes_fragment>", Vn.join(`
 `)), o.fragmentShader = o.fragmentShader.replace("#include <dithering_fragment>", Is.join(`
 `));
     };
   }
-  const eR = (e) => {
+  const tR = (e) => {
     const { movementHighlight: t, voxelAo: s, heroOcclusion: r, performanceMode: a = false } = e, o = new rn({
       color: Yv,
-      roughness: W1,
-      metalness: X1,
+      roughness: X1,
+      metalness: q1,
       vertexColors: false,
       transparent: false,
       depthWrite: true
     });
-    return J1(o, s, t, r, a), {
+    return eR(o, s, t, r, a), {
       material: o,
       castShadow: true,
       receiveShadow: true,
       renderOrder: 0
     };
-  }, tR = {
+  }, nR = {
     bucketKey: "silver_248",
     occlusionGroup: "solid",
     shaderVersion: 5,
@@ -25685,32 +25686,32 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       preserveVoxelFaces: false,
       deformSurface: false
     },
-    factory: eR,
+    factory: tR,
     special: {
       paletteIndex: 248,
       label: "Silver",
       swatchColor: Yv,
       category: "metals"
     }
-  }, Zf = "/materials/bricks_240/bricks_256x256.png", nR = "#8f8f8f", sR = 1, rR = 8, aR = 1;
+  }, Zf = "/materials/bricks_240/bricks_256x256.png", sR = "#8f8f8f", rR = 1, aR = 8, oR = 1;
   let hd = null, fd = null;
   function Jf(e, t) {
-    return e.colorSpace = os, e.wrapS = nn, e.wrapT = nn, e.magFilter = $t, e.minFilter = t ? $t : Tc, e.anisotropy = t ? aR : rR, e.generateMipmaps = !t, e;
+    return e.colorSpace = os, e.wrapS = nn, e.wrapT = nn, e.magFilter = $t, e.minFilter = t ? $t : Tc, e.anisotropy = t ? oR : aR, e.generateMipmaps = !t, e;
   }
-  function oR(e) {
+  function iR(e) {
     return e ? (fd || (fd = Jf(new Sn().load(Zf), true)), fd) : (hd || (hd = Jf(new Sn().load(Zf), false)), hd);
   }
-  function iR() {
+  function cR() {
     return [
       ...ds
     ];
   }
-  function cR() {
+  function lR() {
     return [
       ...us
     ];
   }
-  function lR(e) {
+  function dR(e) {
     return [
       ...On(e),
       "uniform sampler2D stoneBricksMap;",
@@ -25722,70 +25723,70 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       "}"
     ];
   }
-  function dR() {
+  function uR() {
     return [
       "#include <color_fragment>",
-      `vec2 stoneBricksUv = getStoneBricksUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${sR.toFixed(1)};`,
+      `vec2 stoneBricksUv = getStoneBricksUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${rR.toFixed(1)};`,
       "vec4 stoneBricksTexel = texture2D(stoneBricksMap, stoneBricksUv);",
       "diffuseColor.rgb *= stoneBricksTexel.rgb;",
       "diffuseColor.a *= stoneBricksTexel.a;",
       `diffuseColor.rgb *= ${jt};`
     ];
   }
-  function uR(e, t, s, r, a, o) {
+  function mR(e, t, s, r, a, o) {
     e.onBeforeCompile = (i) => {
       ms(i, s), i.uniforms.stoneBricksMap = {
         value: t
       }, Ns(i, r), zn(i, a), i.vertexShader = i.vertexShader.replace("#include <common>", [
         "#include <common>",
-        ...iR(),
+        ...cR(),
         ...ys,
         ...$n
       ].join(`
 `)), i.vertexShader = i.vertexShader.replace("#include <begin_vertex>", [
         "#include <begin_vertex>",
-        ...cR(),
+        ...lR(),
         ...ws,
         ...Bn
       ].join(`
 `)), i.fragmentShader = i.fragmentShader.replace("#include <common>", [
         "#include <common>",
-        ...lR(o),
+        ...dR(o),
         ...Ss,
         ...Hn
       ].join(`
 `)), i.fragmentShader = i.fragmentShader.replace("#include <clipping_planes_fragment>", Vn.join(`
-`)), i.fragmentShader = i.fragmentShader.replace("#include <color_fragment>", dR().join(`
+`)), i.fragmentShader = i.fragmentShader.replace("#include <color_fragment>", uR().join(`
 `)), i.fragmentShader = i.fragmentShader.replace("#include <dithering_fragment>", Is.join(`
 `));
     };
   }
-  const mR = (e) => {
-    const { movementHighlight: t, voxelAo: s, heroOcclusion: r, performanceMode: a = false } = e, o = oR(a), i = new rn({
+  const hR = (e) => {
+    const { movementHighlight: t, voxelAo: s, heroOcclusion: r, performanceMode: a = false } = e, o = iR(a), i = new rn({
       roughness: Br.ROUGHNESS,
       metalness: Br.METALNESS,
       vertexColors: false
     });
-    return uR(i, o, s, t, r, a), {
+    return mR(i, o, s, t, r, a), {
       material: i,
       castShadow: true,
       receiveShadow: true
     };
-  }, hR = {
+  }, fR = {
     bucketKey: "stonebricks_240",
     occlusionGroup: "solid",
     shaderVersion: 5,
     geometry: {
       vertexColors: false
     },
-    factory: mR,
+    factory: hR,
     special: {
       paletteIndex: 240,
       label: "Stone Bricks",
-      swatchColor: nR,
+      swatchColor: sR,
       category: "buildings"
     }
-  }, fR = "#1a6699", pR = 2, gR = 1.1, pd = [
+  }, pR = "#1a6699", gR = 2, xR = 1.1, pd = [
     0.9,
     0.9,
     0.95
@@ -25797,7 +25798,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     0,
     0.2,
     0.4
-  ], ep = 0.86, tp = 0.75, np = 0.48, xR = 0.115, vR = 0.045, sp = 2.4, rp = 1.6, ap = 0.8, op = 1.2, ip = 1.4, bR = 0.2, yR = 0, wR = [
+  ], ep = 0.86, tp = 0.75, np = 0.48, vR = 0.115, bR = 0.045, sp = 2.4, rp = 1.6, ap = 0.8, op = 1.2, ip = 1.4, yR = 0.2, wR = 0, SR = [
     "float waterVoronoi(vec2 uv) {",
     "	vec2 i = floor(uv);",
     "	vec2 f = fract(uv);",
@@ -25819,15 +25820,15 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     "}"
   ].join(`
 `);
-  function SR() {
+  function IR() {
     return [
       "attribute float surfaceDeformStrength;",
       ...ds,
       "uniform float uWaterTime;"
     ];
   }
-  function IR(e) {
-    const t = e ? vR : xR;
+  function NR(e) {
+    const t = e ? bR : vR;
     return [
       "vec3 waterWorld = (modelMatrix * vec4(transformed, 1.0)).xyz;",
       `float waterRippleA = sin(waterWorld.x * ${sp.toFixed(3)} + uWaterTime * ${rp.toFixed(3)});`,
@@ -25837,7 +25838,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       ...us
     ];
   }
-  function NR(e) {
+  function CR(e) {
     const t = [
       ...On(e),
       "uniform float uWaterTime;",
@@ -25845,9 +25846,9 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       `const vec3 W_MAIN = vec3(${gd[0].toFixed(3)}, ${gd[1].toFixed(3)}, ${gd[2].toFixed(3)});`,
       `const vec3 W_DARK = vec3(${xd[0].toFixed(3)}, ${xd[1].toFixed(3)}, ${xd[2].toFixed(3)});`
     ];
-    return e || t.push(wR), t;
+    return e || t.push(SR), t;
   }
-  function CR(e) {
+  function jR(e) {
     return e ? [
       "vec3 wNrm = normalize(vVoxelAoWorldNormal);",
       "bool wIsTopSurface = wNrm.y > 0.5;",
@@ -25887,8 +25888,8 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       `	diffuseColor = vec4(W_MAIN * ${jt}, ${np.toFixed(3)});`,
       "} else {",
       "if (wIsTopSurface) {",
-      `	vec2 wUvFoam   = vVoxelAoWorldPosition.xz / ${pR.toFixed(3)};`,
-      `	vec2 wUvRipple = vVoxelAoWorldPosition.xz / ${gR.toFixed(3)};`,
+      `	vec2 wUvFoam   = vVoxelAoWorldPosition.xz / ${gR.toFixed(3)};`,
+      `	vec2 wUvRipple = vVoxelAoWorldPosition.xz / ${xR.toFixed(3)};`,
       "	vec2 wUvFoamD = wUvFoam + vec2(",
       "		sin(uWaterTime * 2.0 + wUvFoam.y * 5.0) * 0.10,",
       "		cos(uWaterTime * 2.0 + wUvFoam.x * 5.0) * 0.10",
@@ -25922,43 +25923,43 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       "}"
     ];
   }
-  function jR(e, t, s, r, a, o) {
+  function AR(e, t, s, r, a, o) {
     e.onBeforeCompile = (i) => {
       ms(i, s), i.uniforms.uWaterTime = t, Ns(i, r), zn(i, a), i.vertexShader = i.vertexShader.replace("#include <common>", [
         "#include <common>",
-        ...SR(),
+        ...IR(),
         ...ys,
         ...$n
       ].join(`
 `)), i.vertexShader = i.vertexShader.replace("#include <begin_vertex>", [
         "#include <begin_vertex>",
-        ...IR(o),
+        ...NR(o),
         ...ws,
         ...Bn
       ].join(`
 `)), i.fragmentShader = i.fragmentShader.replace("#include <common>", [
         "#include <common>",
-        ...NR(o),
+        ...CR(o),
         ...Ss,
         ...Hn
       ].join(`
-`)), i.fragmentShader = i.fragmentShader.replace("#include <color_fragment>", CR(o).join(`
+`)), i.fragmentShader = i.fragmentShader.replace("#include <color_fragment>", jR(o).join(`
 `)), i.fragmentShader = i.fragmentShader.replace("#include <clipping_planes_fragment>", Vn.join(`
 `)), i.fragmentShader = i.fragmentShader.replace("#include <dithering_fragment>", Is.join(`
 `));
     };
   }
-  const AR = (e) => {
+  const ER = (e) => {
     const { movementHighlight: t, voxelAo: s, heroOcclusion: r, performanceMode: a = false } = e, o = {
       value: 0
     }, i = new rn({
-      roughness: bR,
-      metalness: yR,
+      roughness: yR,
+      metalness: wR,
       vertexColors: false,
       transparent: true,
       depthWrite: true
     });
-    return jR(i, o, s, t, r, a), {
+    return AR(i, o, s, t, r, a), {
       material: i,
       onAnimationFrame: (l) => {
         o.value = l * 1e-3;
@@ -25967,7 +25968,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       receiveShadow: true,
       renderOrder: 1
     };
-  }, ER = {
+  }, TR = {
     bucketKey: "water_241",
     occlusionGroup: "water_241",
     shaderVersion: 10,
@@ -25977,32 +25978,32 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       deformSurface: true
     },
     passable: true,
-    factory: AR,
+    factory: ER,
     special: {
       paletteIndex: 241,
       label: "Water",
-      swatchColor: fR,
+      swatchColor: pR,
       category: "liquids"
     }
-  }, cp = "/materials/wood_244/wood_256x256.png", TR = "#8b5a2b", kR = 1, RR = 8, MR = 1;
+  }, cp = "/materials/wood_244/wood_256x256.png", kR = "#8b5a2b", RR = 1, MR = 8, PR = 1;
   let vd = null, bd = null;
   function lp(e, t) {
-    return e.colorSpace = os, e.wrapS = nn, e.wrapT = nn, e.magFilter = $t, e.minFilter = t ? $t : Tc, e.anisotropy = t ? MR : RR, e.generateMipmaps = !t, e;
+    return e.colorSpace = os, e.wrapS = nn, e.wrapT = nn, e.magFilter = $t, e.minFilter = t ? $t : Tc, e.anisotropy = t ? PR : MR, e.generateMipmaps = !t, e;
   }
-  function PR(e) {
+  function _R(e) {
     return e ? (bd || (bd = lp(new Sn().load(cp), true)), bd) : (vd || (vd = lp(new Sn().load(cp), false)), vd);
   }
-  function _R() {
+  function DR() {
     return [
       ...ds
     ];
   }
-  function DR() {
+  function LR() {
     return [
       ...us
     ];
   }
-  function LR(e) {
+  function OR(e) {
     return [
       ...On(e),
       "uniform sampler2D woodMap;",
@@ -26014,144 +26015,144 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       "}"
     ];
   }
-  function OR() {
+  function FR() {
     return [
       "#include <color_fragment>",
-      `vec2 woodUv = getWoodUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${kR.toFixed(1)};`,
+      `vec2 woodUv = getWoodUv(vVoxelAoWorldPosition, vVoxelAoWorldNormal) * ${RR.toFixed(1)};`,
       "vec4 woodTexel = texture2D(woodMap, woodUv);",
       "diffuseColor.rgb *= woodTexel.rgb;",
       "diffuseColor.a *= woodTexel.a;",
       `diffuseColor.rgb *= ${jt};`
     ];
   }
-  function FR(e, t, s, r, a, o) {
+  function UR(e, t, s, r, a, o) {
     e.onBeforeCompile = (i) => {
       ms(i, s), i.uniforms.woodMap = {
         value: t
       }, Ns(i, r), zn(i, a), i.vertexShader = i.vertexShader.replace("#include <common>", [
         "#include <common>",
-        ..._R(),
+        ...DR(),
         ...ys,
         ...$n
       ].join(`
 `)), i.vertexShader = i.vertexShader.replace("#include <begin_vertex>", [
         "#include <begin_vertex>",
-        ...DR(),
+        ...LR(),
         ...ws,
         ...Bn
       ].join(`
 `)), i.fragmentShader = i.fragmentShader.replace("#include <common>", [
         "#include <common>",
-        ...LR(o),
+        ...OR(o),
         ...Ss,
         ...Hn
       ].join(`
-`)), i.fragmentShader = i.fragmentShader.replace("#include <color_fragment>", OR().join(`
+`)), i.fragmentShader = i.fragmentShader.replace("#include <color_fragment>", FR().join(`
 `)), i.fragmentShader = i.fragmentShader.replace("#include <clipping_planes_fragment>", Vn.join(`
 `)), i.fragmentShader = i.fragmentShader.replace("#include <dithering_fragment>", Is.join(`
 `));
     };
   }
-  const UR = (e) => {
-    const { movementHighlight: t, voxelAo: s, heroOcclusion: r, performanceMode: a = false } = e, o = PR(a), i = new rn({
+  const $R = (e) => {
+    const { movementHighlight: t, voxelAo: s, heroOcclusion: r, performanceMode: a = false } = e, o = _R(a), i = new rn({
       roughness: Br.ROUGHNESS,
       metalness: Br.METALNESS,
       vertexColors: false
     });
-    return FR(i, o, s, t, r, a), {
+    return UR(i, o, s, t, r, a), {
       material: i,
       castShadow: true,
       receiveShadow: true
     };
-  }, $R = {
+  }, BR = {
     bucketKey: "wood_244",
     occlusionGroup: "solid",
     shaderVersion: 4,
     geometry: {
       vertexColors: false
     },
-    factory: UR,
+    factory: $R,
     special: {
       paletteIndex: 244,
       label: "Wood",
-      swatchColor: TR,
+      swatchColor: kR,
       category: "nature"
     }
   }, Qs = [
     gc,
-    hR,
-    ER,
-    i1,
-    G1,
-    $R,
-    U1,
-    Ek,
-    $k,
-    tR,
-    S1,
-    vk,
-    yk
-  ], BR = Qs.filter((e) => e.special !== void 0).map((e) => ({
+    fR,
+    TR,
+    c1,
+    W1,
+    BR,
+    $1,
+    Tk,
+    Bk,
+    nR,
+    I1,
+    bk,
+    wk
+  ], HR = Qs.filter((e) => e.special !== void 0).map((e) => ({
     index: e.special.paletteIndex,
     label: e.special.label,
     color: e.special.swatchColor,
     category: e.special.category ?? "miscellaneous"
-  })), HR = [
+  })), VR = [
     "buildings",
     "liquids",
     "nature",
     "metals",
     "miscellaneous"
-  ], VR = {
+  ], zR = {
     buildings: "Buildings",
     liquids: "Liquids",
     nature: "Nature",
     metals: "Metals",
     miscellaneous: "Miscellaneous"
   };
-  function zR() {
-    return HR.map((e) => ({
+  function GR() {
+    return VR.map((e) => ({
       category: e,
-      label: VR[e],
-      swatches: BR.filter((t) => t.category === e)
+      label: zR[e],
+      swatches: HR.filter((t) => t.category === e)
     })).filter((e) => e.swatches.length > 0);
   }
-  const GR = new Map(Qs.filter((e) => e.special !== void 0).map((e) => [
+  const WR = new Map(Qs.filter((e) => e.special !== void 0).map((e) => [
     e.special.paletteIndex,
     e.bucketKey
-  ])), WR = gc.occlusionGroup ?? gc.bucketKey, XR = new Map(Qs.filter((e) => e.special !== void 0).map((e) => [
+  ])), XR = gc.occlusionGroup ?? gc.bucketKey, qR = new Map(Qs.filter((e) => e.special !== void 0).map((e) => [
     e.special.paletteIndex,
     e.occlusionGroup ?? e.bucketKey
   ])), hm = new Map(Qs.filter((e) => e.special !== void 0).map((e) => [
     e.special.paletteIndex,
     e.geometry
   ])), fm = gc.geometry, Kv = new Set(Qs.filter((e) => e.special !== void 0).filter((e) => e.passable === true).map((e) => e.special.paletteIndex));
-  function qR(e) {
+  function YR(e) {
     return Kv.has(e);
   }
-  const YR = new Set(Qs.filter((e) => e.special !== void 0).filter((e) => e.volumetric === true).map((e) => e.special.paletteIndex));
+  const KR = new Set(Qs.filter((e) => e.special !== void 0).filter((e) => e.volumetric === true).map((e) => e.special.paletteIndex));
   function Eu(e) {
-    return YR.has(e);
+    return KR.has(e);
   }
   function Qv(e) {
-    return GR.get(e) ?? "default";
+    return WR.get(e) ?? "default";
   }
-  function KR(e) {
-    return XR.get(e) ?? WR;
+  function QR(e) {
+    return qR.get(e) ?? XR;
   }
   function Zv(e) {
     var _a2;
     return ((_a2 = hm.get(e) ?? fm) == null ? void 0 : _a2.deformSurface) === true;
   }
-  function QR(e) {
+  function ZR(e) {
     var _a2;
     return ((_a2 = hm.get(e) ?? fm) == null ? void 0 : _a2.vertexColors) !== false;
   }
-  function ZR(e) {
+  function JR(e) {
     var _a2;
     return ((_a2 = hm.get(e) ?? fm) == null ? void 0 : _a2.preserveVoxelFaces) === true;
   }
-  function JR() {
+  function eM() {
     const e = /* @__PURE__ */ new Map(), t = [], s = (m) => {
       let h = e.get(m);
       return h === void 0 && (h = t.length, e.set(m, h), t.push(m)), h;
@@ -26159,7 +26160,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       let h = r.get(m);
       return h === void 0 && (h = r.size, r.set(m, h)), h;
     }, o = new Int32Array(256), i = new Int32Array(256), c = new Uint8Array(256), l = new Uint8Array(256), d = new Uint8Array(256), u = new Uint8Array(256), f = new Uint8Array(256);
-    for (let m = 0; m < 256; m++) o[m] = s(Qv(m)), i[m] = a(KR(m)), c[m] = QR(m) ? 1 : 0, l[m] = Zv(m) ? 1 : 0, d[m] = ZR(m) ? 1 : 0, u[m] = Eu(m) ? 1 : 0, f[m] = qR(m) ? 1 : 0;
+    for (let m = 0; m < 256; m++) o[m] = s(Qv(m)), i[m] = a(QR(m)), c[m] = ZR(m) ? 1 : 0, l[m] = Zv(m) ? 1 : 0, d[m] = JR(m) ? 1 : 0, u[m] = Eu(m) ? 1 : 0, f[m] = YR(m) ? 1 : 0;
     return {
       bucketId: o,
       occlusionId: i,
@@ -26171,7 +26172,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       bucketKeyById: t
     };
   }
-  JR();
+  eM();
   const Jv = new Map(Qs.filter((e) => e.special !== void 0).map((e) => [
     e.special.paletteIndex,
     parseInt(e.special.swatchColor.slice(1), 16)
@@ -26180,10 +26181,10 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     passableIndices: Kv,
     editorColors: Jv
   });
-  function eM(e) {
+  function tM(e) {
     return Jv.has(e);
   }
-  function tM(e) {
+  function nM(e) {
     const { bucketKey: t, shaderVersion: s, factory: r } = e;
     return (a) => {
       const o = r(a), i = [
@@ -26209,7 +26210,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
   }
   const Mo = new Map(Qs.filter((e) => e.factory !== void 0).map((e) => [
     e.bucketKey,
-    tM(e)
+    nM(e)
   ]));
   function xc(e, t, s) {
     const r = new Uint8Array(e * t * s * 4), a = new zr(r, e, t, s);
@@ -26221,7 +26222,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       length: s
     };
   }
-  function nM() {
+  function sM() {
     const e = new Vr(), t = 4;
     return e.setAttribute("position", new ct(new Float32Array(t * 3), 3)), e.setAttribute("normal", new ct(new Float32Array(t * 3), 3)), e.setAttribute("color", new ct(new Float32Array(t * 3), 3)), e.setAttribute("surfaceDeformStrength", new ct(new Float32Array(t), 1)), e.setAttribute("tileHeight", new ct(new Float32Array(t), 1)), e.setAttribute("highlightStrength", new ct(new Float32Array(t), 1)), e.setIndex(new ct(new Uint32Array([
       0,
@@ -26238,7 +26239,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     for (const t of e.materials) t.dispose();
     e.voxelAo.texture.dispose(), (_a2 = e.fogTexture) == null ? void 0 : _a2.texture.dispose(), (_b2 = e.movementHighlight) == null ? void 0 : _b2.texture.dispose();
   }
-  function sM(e, t, s) {
+  function rM(e, t, s) {
     const r = p.useRef(null), a = p.useRef(s);
     a.current = s;
     const o = p.useRef(null);
@@ -26268,9 +26269,9 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
         (_a2 = e.setFogVolume) == null ? void 0 : _a2.call(e, null), yd(v), r.current = null, e.occlusionTargets.length = 0, i && (e.movementHighlight = xc(1, 1, 1)), e.requestShadowUpdate();
         return;
       }
-      const d = i ? xc(t.width, t.height + 1, t.length) : null, u = qT(t.occupancy, {
+      const d = i ? xc(t.width, t.height + 1, t.length) : null, u = YT(t.occupancy, {
         performanceMode: l
-      }), f = t.fogVolume ? FT(t.fogVolume) : null;
+      }), f = t.fogVolume ? UT(t.fogVolume) : null;
       (_b2 = e.setFogVolume) == null ? void 0 : _b2.call(e, f);
       const m = [], h = [], g = [], b = [];
       for (const [v, y] of t.buckets) {
@@ -26307,7 +26308,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       t
     ]);
   }
-  function rM(e, t, s) {
+  function aM(e, t, s) {
     const r = Math.sqrt(e * e + t * t), a = Math.max(ts.MIN_CAMERA_HALF_SIZE, r / 2 + s + ts.CAMERA_HALF_SIZE_PADDING), o = Math.max(ts.MIN_CAMERA_DEPTH, Math.max(e, t) * ts.CAMERA_DEPTH_EXTENT_MULTIPLIER + s * ts.CAMERA_DEPTH_ELEVATION_MULTIPLIER + ts.CAMERA_DEPTH_PADDING);
     return {
       left: -a,
@@ -26318,18 +26319,18 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       far: o
     };
   }
-  const aM = 1.65;
-  function oM(e, t) {
+  const oM = 1.65;
+  function iM(e, t) {
     e.background = (t == null ? void 0 : t.Background.Color) ? new Yt(t.Background.Color) : null;
   }
-  function iM(e, t, s, r) {
-    const a = t.Lighting, o = rs.degToRad(a.Rotation), i = rs.degToRad(rs.clamp(a.Elevation, 0, 90)), c = Math.max(t.Width, t.Length, s), l = Math.max(c * aM, 8), d = Math.cos(i) * l;
+  function cM(e, t, s, r) {
+    const a = t.Lighting, o = rs.degToRad(a.Rotation), i = rs.degToRad(rs.clamp(a.Elevation, 0, 90)), c = Math.max(t.Width, t.Length, s), l = Math.max(c * oM, 8), d = Math.cos(i) * l;
     e.color.set(a.Color), e.intensity = Math.PI * Math.max(0, a.Intensity), e.position.set(Math.sin(o) * d, r + Math.sin(i) * l, Math.cos(o) * d), e.target.position.set(0, r, 0);
   }
-  function cM(e, t, s, r) {
+  function lM(e, t, s, r) {
     const a = t == null ? void 0 : t.Lighting, o = t == null ? void 0 : t.Background.Color;
     p.useEffect(() => {
-      e && oM(e.scene, t);
+      e && iM(e.scene, t);
     }, [
       e,
       t,
@@ -26339,8 +26340,8 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       const i = r.current;
       if (!e || !i || !t || kr(Uo(t)) === 0) return;
       const c = tx(t), l = (c - 1) / 2;
-      iM(i, t, c, l);
-      const d = rM(t.Width, t.Length, c);
+      cM(i, t, c, l);
+      const d = aM(t.Width, t.Length, c);
       i.shadow.camera.left = d.left, i.shadow.camera.right = d.right, i.shadow.camera.top = d.top, i.shadow.camera.bottom = d.bottom, i.shadow.camera.near = d.near, i.shadow.camera.far = d.far, i.shadow.camera.updateProjectionMatrix(), e.requestShadowUpdate(), (_a2 = e.setDepthOfFieldFocus) == null ? void 0 : _a2.call(e, new Ne(0, l, 0), Math.max(fa.MIN_FOCUS_RANGE, Math.max(t.Width, t.Length, c) * fa.FOCUS_RANGE_MULTIPLIER));
     }, [
       e,
@@ -26353,10 +26354,10 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       a == null ? void 0 : a.Elevation
     ]);
   }
-  const lM = 2, eb = 16, dp = [
+  const dM = 2, eb = 16, dp = [
     0.02,
     9e-3
-  ], dM = 0.7, tb = 0.6, Tu = 0.34, ku = 0.88, wd = [
+  ], uM = 0.7, tb = 0.6, Tu = 0.34, ku = 0.88, wd = [
     0.97,
     0.97,
     1
@@ -26364,7 +26365,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     0.58,
     0.63,
     0.76
-  ], uM = 0.8, mM = 0.72, hM = 0.3, fM = 0.52, nb = 1.25, pM = 1.6, up = 0.06, gM = 1, xM = 0, vM = 5, bM = 3, yM = 3;
+  ], mM = 0.8, hM = 0.72, fM = 0.3, pM = 0.52, nb = 1.25, gM = 1.6, up = 0.06, xM = 1, vM = 0, bM = 5, yM = 3, wM = 3;
   function sb(e) {
     return [
       "float cloudHash(vec2 p) {",
@@ -26389,7 +26390,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       "	vec2 q = p + drift;",
       `	for (int i = 0; i < ${e}; i++) {`,
       "		v += amp * cloudBillow(q);",
-      `		q = q * 2.03 + vec2(17.3, 9.1) + drift * ${dM.toFixed(3)};`,
+      `		q = q * 2.03 + vec2(17.3, 9.1) + drift * ${uM.toFixed(3)};`,
       "		amp *= 0.5;",
       "	}",
       "	return v;",
@@ -26403,17 +26404,17 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       `vec2 ${t}Drift = vec2(uCloudTime * ${dp[0].toFixed(4)}, uCloudTime * ${dp[1].toFixed(4)});`
     ];
   }
-  function wM() {
+  function SM() {
     return [
       "attribute float surfaceDeformStrength;",
       ...ds,
       "varying vec3 vCloudWorldPosition;",
       "varying vec3 vCloudWorldNormal;",
       "uniform float uCloudTime;",
-      sb(yM)
+      sb(wM)
     ];
   }
-  function SM() {
+  function IM() {
     return [
       "vCloudWorldNormal = normalize(mat3(modelMatrix) * normal);",
       "vec3 cloudWorld = (modelMatrix * vec4(transformed, 1.0)).xyz;",
@@ -26427,8 +26428,8 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       ...us
     ];
   }
-  function IM(e) {
-    const t = e ? bM : vM;
+  function NM(e) {
+    const t = e ? yM : bM;
     return [
       ...On(e),
       "varying vec3 vCloudWorldPosition;",
@@ -26440,8 +26441,8 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       sb(t)
     ];
   }
-  function NM(e) {
-    const t = Tu.toFixed(3), s = ku.toFixed(3), r = `float cAlpha = mix(${mM.toFixed(3)}, ${uM.toFixed(3)}, smoothstep(${hM.toFixed(3)}, ${fM.toFixed(3)}, cDensity));`;
+  function CM(e) {
+    const t = Tu.toFixed(3), s = ku.toFixed(3), r = `float cAlpha = mix(${hM.toFixed(3)}, ${mM.toFixed(3)}, smoothstep(${fM.toFixed(3)}, ${pM.toFixed(3)}, cDensity));`;
     if (e) return [
       ...Ru("vCloudWorldPosition", "c"),
       "float cDensity = cloudFbm(cUv, cDrift);",
@@ -26451,7 +26452,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       r,
       "diffuseColor = vec4(cColor, cAlpha);"
     ];
-    const a = up.toFixed(4), o = (nb * pM / (up * eb)).toFixed(4), i = (6 / (ku - Tu)).toFixed(4);
+    const a = up.toFixed(4), o = (nb * gM / (up * eb)).toFixed(4), i = (6 / (ku - Tu)).toFixed(4);
     return [
       ...Ru("vCloudWorldPosition", "c"),
       "float cWarp = cloudFbm(cUv * 0.5, cDrift * 0.6);",
@@ -26469,18 +26470,18 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       "diffuseColor = vec4(cColor, cAlpha);"
     ];
   }
-  const CM = [
+  const jM = [
     "#include <normal_fragment_begin>",
     "if (vCloudWorldNormal.y > 0.5) {",
     "	vec3 cWorldN = normalize(vec3(-cCloudGrad.x, 1.0, -cCloudGrad.y));",
     "	normal = normalize((viewMatrix * vec4(cWorldN, 0.0)).xyz);",
     "}"
-  ], jM = (e) => {
+  ], AM = (e) => {
     const { voxelAo: t, performanceMode: s = false } = e, r = {
       value: 0
     }, a = new rn({
-      roughness: gM,
-      metalness: xM,
+      roughness: xM,
+      metalness: vM,
       vertexColors: false,
       transparent: true,
       depthWrite: true
@@ -26488,23 +26489,23 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     a.onBeforeCompile = (c) => {
       ms(c, t), c.uniforms.uCloudTime = r, c.vertexShader = c.vertexShader.replace("#include <common>", [
         "#include <common>",
-        ...wM()
+        ...SM()
       ].join(`
 `)), c.vertexShader = c.vertexShader.replace("#include <begin_vertex>", [
         "#include <begin_vertex>",
-        ...SM()
+        ...IM()
       ].join(`
 `)), c.fragmentShader = c.fragmentShader.replace("#include <common>", [
         "#include <common>",
-        ...IM(s)
+        ...NM(s)
       ].join(`
-`)), c.fragmentShader = c.fragmentShader.replace("#include <color_fragment>", NM(s).join(`
-`)), s || (c.fragmentShader = c.fragmentShader.replace("#include <normal_fragment_begin>", CM.join(`
+`)), c.fragmentShader = c.fragmentShader.replace("#include <color_fragment>", CM(s).join(`
+`)), s || (c.fragmentShader = c.fragmentShader.replace("#include <normal_fragment_begin>", jM.join(`
 `)));
     };
     const o = [
       "surroundings-clouds",
-      `v${lM}`,
+      `v${dM}`,
       "nh",
       s ? "perf" : "full"
     ].join("-");
@@ -26522,7 +26523,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     const s = t.current;
     return s ? (e.scene.remove(s.mesh), s.onAnimationFrame && e.animationCallbacks.delete(s.onAnimationFrame), s.geometry.dispose(), s.material.dispose(), s.voxelAo.texture.dispose(), t.current = null, true) : false;
   }
-  function AM(e, t) {
+  function EM(e, t) {
     const { data: s, voxelWidth: r, voxelHeight: a, voxelLength: o } = e, i = a / e.worldSizeY, c = Math.round(t * i), l = c - 1, d = r * o, u = r * a, f = new Uint8Array(d), m = l >= 0 && l < a, h = c >= 0 && c < a;
     for (let y = 0; y < o; y++) {
       const w = y * u, N = y * r;
@@ -26565,14 +26566,14 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     0,
     0
   ];
-  function EM(e, t, s) {
+  function TM(e, t, s) {
     const { covered: r, voxelWidth: a, voxelLength: o, stepX: i, stepZ: c, originX: l, originZ: d } = e, u = 1e-4, f = (m, h) => {
       const g = Math.floor((m - l) / i), b = Math.floor((h - d) / c);
       return g < 0 || g >= a || b < 0 || b >= o ? true : r[b * a + g] === 1;
     };
     return (m, h) => m <= -t + u || m >= t - u || h <= -s + u || h >= s - u ? 0 : f(m - u, h - u) && f(m + u, h - u) && f(m - u, h + u) && f(m + u, h + u) ? 1 : 0;
   }
-  function TM(e, t, s, r, a, o) {
+  function kM(e, t, s, r, a, o) {
     const i = e / 2, c = t / 2, l = -0.5, d = s - 0.5, u = Math.max(Math.max(e, t) * oa.EXTENT_MULTIPLIER, oa.MIN_EXTENT), f = oa.SKIRT_EPSILON, m = [], h = [], g = [], b = [], x = [], v = (A, k, P = hp) => {
       const M = m.length / 3;
       for (let D = 0; D < A.length; D++) {
@@ -26626,7 +26627,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
           D(U, $)
         ]);
       }
-    }, T = a !== null && o, R = Math.min(i + oa.DETAIL_MARGIN, u), j = Math.min(c + oa.DETAIL_MARGIN, u), E = T ? EM(a, R, j) : null;
+    }, T = a !== null && o, R = Math.min(i + oa.DETAIL_MARGIN, u), j = Math.min(c + oa.DETAIL_MARGIN, u), E = T ? TM(a, R, j) : null;
     if (E ? (C(-R, R, -j, -c, E), C(-R, R, c, j, E), C(-R, -i, -c, c, E), C(i, R, -c, c, E), j < u && (y(-u, u, -u, -j), y(-u, u, j, u)), R < u && (y(-u, -R, -j, j), y(R, u, -j, j))) : (y(-u, u, -u, -c), y(-u, u, c, u), y(-u, -i, -c, c), y(i, u, -c, c)), a) {
       const { covered: A, voxelWidth: k, voxelLength: P, stepX: M, stepZ: D, originX: _, originZ: O } = a, L = new Uint8Array(A.length);
       for (let F = 0; F < P; F++) for (let U = 0; U < k; U++) {
@@ -26774,7 +26775,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     const S = m.length / 3, I = new Vr();
     return I.setAttribute("position", new ct(new Float32Array(m), 3)), I.setAttribute("normal", new ct(new Float32Array(h), 3)), I.setAttribute("color", new ct(new Float32Array(g), 3)), I.setAttribute("surfaceDeformStrength", new ct(new Float32Array(b), 1)), I.setAttribute("tileHeight", new ct(new Float32Array(S), 1)), I.setAttribute("highlightStrength", new ct(new Float32Array(S), 1)), I.setIndex(new ct(new Uint32Array(x), 1)), I;
   }
-  function kM(e, t, s, r) {
+  function RM(e, t, s, r) {
     var _a2, _b2;
     const a = p.useRef(null), o = p.useRef(null);
     p.useEffect(() => {
@@ -26793,7 +26794,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
         f && e.requestShadowUpdate();
         return;
       }
-      const m = Math.max(0, Math.min(l, d)), h = new Yt(Pa(u)), g = s && s.worldSizeX === i && s.worldSizeZ === c && s.worldSizeY === l ? s : null, b = g ? AM(g, m) : null, x = Eu(u) || Zv(u), v = TM(i, c, m, h, b, x), y = Eu(u) ? jM : Mo.get(Qv(u)) ?? Mo.get("default"), w = Wv(), N = y({
+      const m = Math.max(0, Math.min(l, d)), h = new Yt(Pa(u)), g = s && s.worldSizeX === i && s.worldSizeZ === c && s.worldSizeY === l ? s : null, b = g ? EM(g, m) : null, x = Eu(u) || Zv(u), v = kM(i, c, m, h, b, x), y = Eu(u) ? AM : Mo.get(Qv(u)) ?? Mo.get("default"), w = Wv(), N = y({
         performanceMode: r,
         voxelAo: w
       }), C = new it(v, N.material);
@@ -26815,7 +26816,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       r
     ]);
   }
-  function RM(e, t, s, r = {}) {
+  function MM(e, t, s, r = {}) {
     const a = r.performanceMode ? {
       intensity: Tn.PERFORMANCE_INTENSITY,
       luminanceThreshold: Tn.PERFORMANCE_LUMINANCE_THRESHOLD,
@@ -26835,7 +26836,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     }, o = new Hd(e, {
       frameBufferType: yg,
       multisampling: e.capabilities.isWebGL2 ? a.multisampling : 0
-    }), i = new Vd(t, s), c = new WT(s, r.performanceMode ? jT : CT), l = r.performanceMode ? null : new a0(s, {
+    }), i = new Vd(t, s), c = new XT(s, r.performanceMode ? AT : jT), l = r.performanceMode ? null : new a0(s, {
       worldFocusRange: fa.UNFOCUSED_RANGE,
       bokehScale: fa.BOKEH_SCALE,
       resolutionScale: fa.RESOLUTION_SCALE
@@ -26864,7 +26865,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       }
     };
   }
-  const MM = 0.1, PM = "110px";
+  const PM = 0.1, _M = "110px";
   function fp(e) {
     var _a2;
     const t = e.render.triangles.toLocaleString(), s = e.render.calls.toLocaleString(), r = e.memory.geometries.toLocaleString(), a = e.memory.textures.toLocaleString(), o = (((_a2 = e.programs) == null ? void 0 : _a2.length) ?? 0).toLocaleString();
@@ -26874,7 +26875,7 @@ GEOM ${r}
 TEX  ${a}
 PROG ${o}`;
   }
-  function _M(e, t) {
+  function DM(e, t) {
     const s = p.useRef(t);
     s.current = t;
     const r = p.useRef(null), a = p.useRef(null), o = p.useRef(null), i = p.useRef(null), c = p.useRef([]), l = p.useRef(null), [d, u] = p.useState(null), f = p.useCallback(() => {
@@ -26892,7 +26893,7 @@ PROG ${o}`;
       const v = new c0();
       v.showPanel(0), v.dom.style.position = "absolute", v.dom.style.top = "0px", v.dom.style.left = "0px", v.dom.style.display = "none", m.appendChild(v.dom), r.current = v;
       const y = document.createElement("div");
-      y.style.position = "absolute", y.style.top = "48px", y.style.left = "0px", y.style.width = PM, y.style.boxSizing = "border-box", y.style.padding = "2px 3px", y.style.background = "rgba(0, 0, 0, 0.8)", y.style.color = "#0ff", y.style.font = "bold 9px Helvetica, Arial, sans-serif", y.style.lineHeight = "11px", y.style.whiteSpace = "pre", y.style.pointerEvents = "none", y.style.display = "none", y.textContent = fp(x.info), m.appendChild(y), a.current = y;
+      y.style.position = "absolute", y.style.top = "48px", y.style.left = "0px", y.style.width = _M, y.style.boxSizing = "border-box", y.style.padding = "2px 3px", y.style.background = "rgba(0, 0, 0, 0.8)", y.style.color = "#0ff", y.style.font = "bold 9px Helvetica, Arial, sans-serif", y.style.lineHeight = "11px", y.style.whiteSpace = "pre", y.style.pointerEvents = "none", y.style.display = "none", y.textContent = fp(x.info), m.appendChild(y), a.current = y;
       const w = new Cc();
       w.background = null;
       const N = new wg(Qa.HEMISPHERE_SKY_COLOR, Qa.HEMISPHERE_GROUND_COLOR, Math.PI * Qa.HEMISPHERE_INTENSITY_MULTIPLIER);
@@ -26910,7 +26911,7 @@ PROG ${o}`;
           var _a2;
           o.current && (o.current.camera = L), (_a2 = i.current) == null ? void 0 : _a2.setCamera(L);
         }
-      }), E = j.camera, S = RM(x, w, E, {
+      }), E = j.camera, S = MM(x, w, E, {
         performanceMode: h
       });
       i.current = S;
@@ -26935,7 +26936,7 @@ PROG ${o}`;
       };
       let k = false;
       (async () => {
-        const L = nM(), F = xc(1, 1, 1), U = Wv(), G = [];
+        const L = sM(), F = xc(1, 1, 1), U = Wv(), G = [];
         for (const [, $] of Mo) {
           const J = $({
             performanceMode: h,
@@ -26955,7 +26956,7 @@ PROG ${o}`;
       let P = 0, M = performance.now();
       const D = () => {
         P = requestAnimationFrame(D);
-        const L = performance.now(), F = Math.min(MM, Math.max(0, (L - M) / 1e3));
+        const L = performance.now(), F = Math.min(PM, Math.max(0, (L - M) / 1e3));
         if (M = L, !s.current.paused) {
           j.onFrame(L, F);
           for (const U of A.animationCallbacks) U(L);
@@ -26989,7 +26990,7 @@ PROG ${o}`;
       requestResize: f
     };
   }
-  function DM(e, t) {
+  function LM(e, t) {
     const s = e * t.maxSpeed;
     return Math.max(t.minSpeed, Math.min(t.maxSpeed, s));
   }
@@ -27020,8 +27021,8 @@ PROG ${o}`;
   function Id(e, t, s) {
     return Math.max(t, Math.min(s, e));
   }
-  const LM = 0.12, OM = 4, FM = 0.25, UM = 1;
-  function $M(e) {
+  const OM = 0.12, FM = 4, UM = 0.25, $M = 1;
+  function BM(e) {
     return Math.max(4, (e.width + e.length) / Math.SQRT2 / 2 * 0.85, e.height * 0.8);
   }
   class rb {
@@ -27100,7 +27101,7 @@ PROG ${o}`;
         var _a2, _b2;
         this._pointerLocked = false, this.resetKeys(), (_b2 = (_a2 = this.callbacks).onPointerLockChange) == null ? void 0 : _b2.call(_a2, false);
       });
-      this.domElement = t, this.config = r, this.callbacks = a, this.perspMinDistanceMult = r.perspective.minDistanceMultiplier ?? LM, this.perspMaxDistanceMult = r.perspective.maxDistanceMultiplier ?? OM, this.minRotateSpeed = r.controls.minRotateSpeed ?? FM, this.maxRotateSpeed = r.controls.maxRotateSpeed ?? UM, this.followCfg = r.follow;
+      this.domElement = t, this.config = r, this.callbacks = a, this.perspMinDistanceMult = r.perspective.minDistanceMultiplier ?? OM, this.perspMaxDistanceMult = r.perspective.maxDistanceMultiplier ?? FM, this.minRotateSpeed = r.controls.minRotateSpeed ?? UM, this.maxRotateSpeed = r.controls.maxRotateSpeed ?? $M, this.followCfg = r.follow;
       const o = r.ortho.initialHalfSize;
       this.orthoCamera = new fg(-o * s, o * s, o, -o, r.ortho.near, r.ortho.far);
       const i = o * r.ortho.distanceMultiplier;
@@ -27201,7 +27202,7 @@ PROG ${o}`;
     positionPerspectiveEntry(t) {
       const s = this._tmpDir.subVectors(this.orthoCamera.position, t).normalize();
       s.lengthSq() === 0 && s.set(1, 1, 1).normalize();
-      const a = (this._terrain ? $M(this._terrain) : this.orthoCamera.top) * this.config.freecam.initialDistanceMultiplier;
+      const a = (this._terrain ? BM(this._terrain) : this.orthoCamera.top) * this.config.freecam.initialDistanceMultiplier;
       this.perspectiveCamera.position.copy(t).addScaledVector(s, a), this.perspectiveCamera.lookAt(t), this._perspectiveReferenceDistance = a, this.applyPerspectiveDollyClamp();
     }
     applyPerspectiveDollyClamp() {
@@ -27241,7 +27242,7 @@ PROG ${o}`;
     }
     applyAdaptiveRotateSpeed() {
       const s = this._mode === "perspective" || this._mode === "follow" ? this.controls.getDistance() / (this._perspectiveReferenceDistance || 1) : 1 / (this.orthoCamera.zoom || 1);
-      this.controls.rotateSpeed = DM(s, {
+      this.controls.rotateSpeed = LM(s, {
         minSpeed: this.minRotateSpeed,
         maxSpeed: this.maxRotateSpeed
       });
@@ -27259,11 +27260,11 @@ PROG ${o}`;
       this._speedMult = Id(this._speedMult * s, this.config.freecam.minSpeedMult, this.config.freecam.maxSpeedMult), (_b2 = (_a2 = this.callbacks).onFreecamSpeedChange) == null ? void 0 : _b2.call(_a2, this._speedMult);
     }
   }
-  const BM = 400;
+  const HM = 400;
   function xp(e) {
-    return DE.includes(e);
+    return LE.includes(e);
   }
-  function HM(e) {
+  function VM(e) {
     return e < 0.5 ? 4 * e * e * e : 1 - Math.pow(-2 * e + 2, 3) / 2;
   }
   function ia(e) {
@@ -27276,12 +27277,12 @@ PROG ${o}`;
   function vp(e, t) {
     e.position.copy(t.position), e.quaternion.copy(t.quaternion), e.fov !== t.fov && (e.fov = t.fov, e.updateProjectionMatrix());
   }
-  function VM(e, t, s, r) {
+  function zM(e, t, s, r) {
     e.position.lerpVectors(t.position, s.position, r), e.quaternion.copy(t.quaternion).slerp(s.quaternion, r);
     const a = t.fov + (s.fov - t.fov) * r;
     e.fov = a, e.updateProjectionMatrix();
   }
-  class zM {
+  class GM {
     constructor(t, s, r, a) {
       __publicField(this, "rig");
       __publicField(this, "firstPersonCamera");
@@ -27458,8 +27459,8 @@ PROG ${o}`;
     advanceTween(t) {
       const s = this.tween;
       if (!s) return;
-      const r = Math.min(1, (t - s.startTime) / BM), a = HM(r), o = s.kind === "to-fp" ? ia(this.firstPersonCamera) : s.mode === "follow" ? ia(this.rig.followEntryCamera(this.followEntryViewDirection)) : s.endPose;
-      VM(this.transitionCamera, s.startPose, o, a), !(r < 1) && (this.tween = null, s.kind === "to-fp" ? this.activate(this.firstPersonCamera) : (this.rig.controls.enabled = true, this.applyRigMode(s.mode)));
+      const r = Math.min(1, (t - s.startTime) / HM), a = VM(r), o = s.kind === "to-fp" ? ia(this.firstPersonCamera) : s.mode === "follow" ? ia(this.rig.followEntryCamera(this.followEntryViewDirection)) : s.endPose;
+      zM(this.transitionCamera, s.startPose, o, a), !(r < 1) && (this.tween = null, s.kind === "to-fp" ? this.activate(this.firstPersonCamera) : (this.rig.controls.enabled = true, this.applyRigMode(s.mode)));
     }
     currentWorldPose() {
       return this.rig.mode === "ortho" ? this.matchedOrthoPose() : ia(this.rig.perspectiveCamera);
@@ -27519,7 +27520,7 @@ PROG ${o}`;
       this.actorLookButtonHeld = false, this.keys.clear(), document.pointerLockElement === this.domElement && document.exitPointerLock(), (_a2 = this.actorLocomotionHandlers) == null ? void 0 : _a2.onControlReleased();
     }
   }
-  function GM({ resources: e, terrain: t, focusedActorPosition: s, focusedActorSize: r, isWorld: a, enabled: o, radius: i }) {
+  function WM({ resources: e, terrain: t, focusedActorPosition: s, focusedActorSize: r, isWorld: a, enabled: o, radius: i }) {
     const c = p.useRef({
       terrain: t,
       focusedActorPosition: s,
@@ -27566,7 +27567,7 @@ PROG ${o}`;
       e
     ]);
   }
-  const WM = {
+  const XM = {
     ortho: {
       near: Er.ORTHO_CAMERA_NEAR,
       far: Er.CAMERA_FAR,
@@ -27593,7 +27594,7 @@ PROG ${o}`;
       maxRotateSpeed: Rn.ADAPTIVE_ROTATE_MAX_SPEED
     },
     freecam: {
-      baseMoveSpeed: kA.MOVE_SPEED,
+      baseMoveSpeed: RA.MOVE_SPEED,
       minSpeedMult: 0.15,
       maxSpeedMult: 6,
       speedStep: 1.15,
@@ -27601,11 +27602,11 @@ PROG ${o}`;
     },
     follow: Cv
   };
-  function XM(e, t, s) {
+  function qM(e, t, s) {
     const r = Math.sqrt(e * e + t * t) / 2;
     return Math.max(Rn.MIN_PAN_LIMIT_RADIUS, r + s * Rn.PAN_LIMIT_ELEVATION_SCALE + Rn.PAN_LIMIT_PADDING);
   }
-  function qM(e, t, s) {
+  function YM(e, t, s) {
     return e ? e.kind === "character" ? t.find((r) => r.Id === e.id) ?? null : s.find((r) => r.Id === e.id) ?? null : null;
   }
   function ab({ terrain: e, characters: t = [], entities: s = [], xRayActors: r = false, showTerrainLinks: a = false, cameraMode: o = "ortho", paused: i = false, onReady: c, onLeaveActorCamera: l }) {
@@ -27614,16 +27615,16 @@ PROG ${o}`;
     p.useEffect(() => {
       g.current = c;
     });
-    const b = pe(), { actionService: x } = De(), { canAccessActor: v } = Xo(), { selectedActor: y, hoveredTile: w, selectActor: N, toggleActorSelection: C, clearSelection: T, updateHoveredTile: R } = qr(), j = ME(), { pings: E } = _E(), S = p.useMemo(() => e ? E.filter((ke) => ke.terrainId === e.Id) : [], [
+    const b = pe(), { actionService: x } = De(), { canAccessActor: v } = Xo(), { selectedActor: y, hoveredTile: w, selectActor: N, toggleActorSelection: C, clearSelection: T, updateHoveredTile: R } = qr(), j = PE(), { pings: E } = DE(), S = p.useMemo(() => e ? E.filter((ke) => ke.terrainId === e.Id) : [], [
       E,
       e
     ]), I = p.useRef(0), k = p.useRef(ge.getPerformanceMode(b)).current, [P, M] = p.useState(false), D = o !== "first-person", _ = Mc(o), O = o === "first-person" || o === "follow" && P ? "actor-look" : "world-pointer", L = O === "world-pointer", F = p.useCallback((ke) => {
       var _a3;
       (_a3 = u.current) == null ? void 0 : _a3.setFollowActorVisual(ke, ar.ANCHOR_HEIGHT_Y);
     }, []), U = (ke) => {
-      const { renderer: Be, container: xt, setActiveCamera: jn } = ke, hs = (xt.clientWidth || 1) / (xt.clientHeight || 1), hn = new zM(Be.domElement, hs, WM, jn);
+      const { renderer: Be, container: xt, setActiveCamera: jn } = ke, hs = (xt.clientWidth || 1) / (xt.clientHeight || 1), hn = new GM(Be.domElement, hs, XM, jn);
       return u.current = hn, hn.rig.setOrthoPanLimit(Rn.MIN_PAN_LIMIT_RADIUS), hn.onResize(xt.clientWidth || 1, xt.clientHeight || 1), hn;
-    }, { sceneResources: G, requestResize: $ } = _M(d, {
+    }, { sceneResources: G, requestResize: $ } = DM(d, {
       performanceMode: k,
       directionalLightRef: f,
       createController: U,
@@ -27635,7 +27636,7 @@ PROG ${o}`;
     }, [
       G
     ]);
-    const J = b.User.Role === "dm", X = (x == null ? void 0 : x.imageService) ?? null, z = V.getActiveCampaign(b), { setViewedTerrain: ee } = ls(), W = p.useMemo(() => qM(y, t, s), [
+    const J = b.User.Role === "dm", X = (x == null ? void 0 : x.imageService) ?? null, z = V.getActiveCampaign(b), { setViewedTerrain: ee } = ls(), W = p.useMemo(() => YM(y, t, s), [
       y,
       t,
       s
@@ -27677,7 +27678,7 @@ PROG ${o}`;
       z.GameState.Characters,
       z.GameState.Entities
     ]);
-    GM({
+    WM({
       resources: G,
       terrain: e ?? null,
       focusedActorPosition: (re == null ? void 0 : re.position) ?? null,
@@ -27730,14 +27731,14 @@ PROG ${o}`;
       e.Length,
       e.Height,
       e.Resolution ?? 1
-    ].join(":") : "", ae = e ? `${Q}:${e.ContentHash ?? ""}` : "", Ae = p.useMemo(() => hT(e), [
+    ].join(":") : "", ae = e ? `${Q}:${e.ContentHash ?? ""}` : "", Ae = p.useMemo(() => fT(e), [
       e,
       ae
     ]), Re = Q, Ee = p.useMemo(() => e ? Uo(e) : new Uint8Array(0), [
       Ae
     ]), je = p.useMemo(() => e ? Ct(e) : null, [
       Ae
-    ]), { geometry: Ye, error: mt, retry: _t } = yT(e, Ae, G !== null), lt = W == null ? void 0 : W.Position.x, bt = W == null ? void 0 : W.Position.y, yt = W == null ? void 0 : W.Position.h, Nn = (_d2 = W == null ? void 0 : W.TurnStartPosition) == null ? void 0 : _d2.x, mn = (_e2 = W == null ? void 0 : W.TurnStartPosition) == null ? void 0 : _e2.y, ye = (_f2 = W == null ? void 0 : W.TurnStartPosition) == null ? void 0 : _f2.h, le = W == null ? void 0 : W.MoveSpeed, Oe = W == null ? void 0 : W.CanFly, ze = p.useMemo(() => !D || !e || !W || !ne ? [] : yo(e, W.Position, le ?? Xt.MOVE_SPEED, Oe ?? false, z.Settings.MovementSettings).tiles, [
+    ]), { geometry: Ye, error: mt, retry: _t } = wT(e, Ae, G !== null), lt = W == null ? void 0 : W.Position.x, bt = W == null ? void 0 : W.Position.y, yt = W == null ? void 0 : W.Position.h, Nn = (_d2 = W == null ? void 0 : W.TurnStartPosition) == null ? void 0 : _d2.x, mn = (_e2 = W == null ? void 0 : W.TurnStartPosition) == null ? void 0 : _e2.y, ye = (_f2 = W == null ? void 0 : W.TurnStartPosition) == null ? void 0 : _f2.h, le = W == null ? void 0 : W.MoveSpeed, Oe = W == null ? void 0 : W.CanFly, ze = p.useMemo(() => !D || !e || !W || !ne ? [] : yo(e, W.Position, le ?? Xt.MOVE_SPEED, Oe ?? false, z.Settings.MovementSettings).tiles, [
       D,
       e,
       ne,
@@ -27859,7 +27860,7 @@ PROG ${o}`;
         length: e.Length,
         height: Be
       }, jn = {
-        maxTargetRadius: XM(e.Width, e.Length, Be)
+        maxTargetRadius: qM(e.Width, e.Length, Be)
       };
       m.current ? ke.rig.updateOrthoExtents(xt, jn) : (ke.rig.frameOrtho(xt, jn), m.current = true);
     }, [
@@ -27874,14 +27875,14 @@ PROG ${o}`;
       G,
       o,
       $
-    ]), sM(G, Ye, {
+    ]), rM(G, Ye, {
       movementHighlight: true,
       onReady: () => {
         var _a3;
         return (_a3 = g.current) == null ? void 0 : _a3.call(g);
       },
       performanceMode: k
-    }), cM(G, e, Ae, f), kM(G, e, (Ye == null ? void 0 : Ye.occupancy) ?? null, k), p.useEffect(() => {
+    }), lM(G, e, Ae, f), RM(G, e, (Ye == null ? void 0 : Ye.occupancy) ?? null, k), p.useEffect(() => {
       var _a3;
       G && (e && kr(Ee) > 0 || ((_a3 = g.current) == null ? void 0 : _a3.call(g)));
     }, [
@@ -27904,7 +27905,7 @@ PROG ${o}`;
         }),
         Zs && n.jsxs(n.Fragment, {
           children: [
-            n.jsx(tE, {
+            n.jsx(nE, {
               resources: G,
               characters: te,
               entities: ue,
@@ -27928,7 +27929,7 @@ PROG ${o}`;
               onTrackedActorVisualChange: F,
               draggableHeightRange: Ze
             }),
-            D && n.jsx(aE, {
+            D && n.jsx(oE, {
               resources: G,
               terrain: e,
               terrainIndex: je,
@@ -27947,7 +27948,7 @@ PROG ${o}`;
               onHoveredTileChange: R,
               onMoveSelectedActor: an
             }),
-            n.jsx(uE, {
+            n.jsx(mE, {
               resources: G,
               terrain: e,
               characters: te,
@@ -27955,7 +27956,7 @@ PROG ${o}`;
               cutoutImageIds: fe,
               activeStickers: j
             }),
-            n.jsx(yE, {
+            n.jsx(wE, {
               resources: G,
               terrain: e,
               terrainIndex: je,
@@ -27963,14 +27964,14 @@ PROG ${o}`;
               onPingTile: Cs,
               interactionMode: O
             }),
-            n.jsx(CE, {
+            n.jsx(jE, {
               resources: G,
               terrainIndex: je,
               terrainId: e.Id,
               interactionMode: O,
               cancelWithRightClick: !_
             }),
-            n.jsx(RE, {
+            n.jsx(ME, {
               resources: G,
               interactionMode: O,
               terrain: e,
@@ -28062,7 +28063,7 @@ PROG ${o}`;
             ]
           })
         }),
-        G && _ && qo && n.jsx(dT, {
+        G && _ && qo && n.jsx(uT, {
           controller: qo,
           cameraMode: o,
           terrain: e ?? null,
@@ -28118,18 +28119,18 @@ PROG ${o}`;
   function zc(e) {
     return {
       colors: new Uint8Array(e),
-      occupied: CA(e),
+      occupied: jA(e),
       length: e
     };
   }
-  function YM(e, t) {
+  function KM(e, t) {
     e.colors.set(t.colors), e.occupied.set(t.occupied), e.length = t.length;
   }
   function Ut(e, t) {
     return hc(e.occupied, t);
   }
   function as(e, t, s) {
-    jA(e.occupied, t, s);
+    AA(e.occupied, t, s);
   }
   function Mu(e, t, s, r, a, o, i) {
     return Ua(t, s, r, a, o, i) ? Ut(e, un(t, s, r, a, i)) : false;
@@ -28167,8 +28168,8 @@ PROG ${o}`;
     }
     return o;
   }
-  function KM(e, t, s, r) {
-    const a = AA(e.occupied);
+  function QM(e, t, s, r) {
+    const a = EA(e.occupied);
     if (a === 0) return new Uint8Array(0);
     const o = new Uint32Array(a), i = new Uint8Array(a);
     let c = 0;
@@ -28241,7 +28242,7 @@ PROG ${o}`;
       endZ: Math.min(i + et, r.vL)
     };
   }
-  function QM(e) {
+  function ZM(e) {
     const t = oo(e.resolution), s = Na(t);
     return {
       width: ut(Math.floor(e.width) || 1, 1, s),
@@ -28250,8 +28251,8 @@ PROG ${o}`;
       resolution: t
     };
   }
-  function ZM(e, t, s) {
-    const r = QM(s), a = gm(r.width, r.length, r.height, r.resolution), o = zc(a.vW * a.vH * a.vL);
+  function JM(e, t, s) {
+    const r = ZM(s), a = gm(r.width, r.length, r.height, r.resolution), o = zc(a.vW * a.vH * a.vL);
     for (let i = 0; i < t.vH; i++) for (let c = 0; c < t.vL; c++) for (let l = 0; l < t.vW; l++) {
       const d = un(l, i, c, t.vW, t.vL);
       if (!Ut(e, d)) continue;
@@ -28306,7 +28307,7 @@ PROG ${o}`;
   function lb(e) {
     return e ? e.bounds : null;
   }
-  function JM(e) {
+  function e2(e) {
     if (e.kind === "mask") return e.selectedCount;
     const { min: t, max: s } = e.bounds;
     return (s.x - t.x + 1) * (s.y - t.y + 1) * (s.z - t.z + 1);
@@ -28319,7 +28320,7 @@ PROG ${o}`;
       z: o
     };
   }
-  function e2(e, t, s, r) {
+  function t2(e, t, s, r) {
     let a = 0;
     for (let d = 0; d < e.length; d++) hc(e.occupied, d) && e.colors[d] === s && a++;
     const o = new Uint32Array(a);
@@ -28347,7 +28348,7 @@ PROG ${o}`;
       colorIndex: s
     };
   }
-  function* t2(e, t) {
+  function* n2(e, t) {
     if (e.kind === "box") {
       const { min: s, max: r } = e.bounds;
       for (let a = s.y; a <= r.y; a++) for (let o = s.z; o <= r.z; o++) for (let i = s.x; i <= r.x; i++) yield {
@@ -28377,7 +28378,7 @@ PROG ${o}`;
       h: i
     };
   }
-  function n2(e, t) {
+  function s2(e, t) {
     return {
       x: Math.floor((e.x + t.width / 2) * t.resolution),
       y: Math.floor((e.y + 0.5) * t.resolution),
@@ -28390,7 +28391,7 @@ PROG ${o}`;
       length: t
     }, (r, a) => s + a);
   }
-  function s2(e, t, s) {
+  function r2(e, t, s) {
     const r = ub(s), a = [];
     for (const o of r) for (const i of r) t.y !== 0 ? a.push({
       x: e.x + o,
@@ -28407,7 +28408,7 @@ PROG ${o}`;
     });
     return a;
   }
-  function r2(e, t, s, r) {
+  function a2(e, t, s, r) {
     const a = ub(s), o = [];
     for (const i of a) for (const c of a) {
       let l;
@@ -28434,7 +28435,7 @@ PROG ${o}`;
       z: Math.floor(e.z / t.resolution)
     };
   }
-  function a2(e, t) {
+  function o2(e, t) {
     const s = [], r = e.x * t.resolution, a = e.y * t.resolution, o = e.z * t.resolution;
     for (let i = o; i < o + t.resolution; i++) for (let c = a; c < a + t.resolution; c++) for (let l = r; l < r + t.resolution; l++) {
       const d = {
@@ -28469,7 +28470,7 @@ PROG ${o}`;
         x: 0,
         y: 1
       } : t.normal;
-      return s2(d, u, a).filter((f) => e.inVoxelBounds(f.x, f.y, f.z));
+      return r2(d, u, a).filter((f) => e.inVoxelBounds(f.x, f.y, f.z));
     }
     const o = mb(t.voxel, e), i = s === "place" && !t.ground ? {
       x: o.x + t.normal.x,
@@ -28479,9 +28480,9 @@ PROG ${o}`;
       x: 0,
       y: 1
     } : t.normal;
-    return r2(i, c, a, e).flatMap((d) => a2(d, e));
+    return a2(i, c, a, e).flatMap((d) => o2(d, e));
   }
-  function o2(e, t, s, r, a, o, i) {
+  function i2(e, t, s, r, a, o, i) {
     const { vW: c, vH: l, vL: d, resolution: u } = s;
     let f = false;
     for (const m of cx(a, u, o)) {
@@ -28494,7 +28495,7 @@ PROG ${o}`;
       changed: f
     };
   }
-  function i2(e, t, s, r, a, o, i, c, l, d) {
+  function c2(e, t, s, r, a, o, i, c, l, d) {
     const { vW: u, vH: f, vL: m } = r;
     if (o === "sample") return {
       changed: false,
@@ -28534,7 +28535,7 @@ PROG ${o}`;
         z: v
       }) : (b < m.x && (m.x = b), x < m.y && (m.y = x), v < m.z && (m.z = v), b > h.x && (h.x = b), x > h.y && (h.y = x), v > h.z && (h.z = v));
     };
-    for (const { x: b, y: x, z: v } of t2(r, s)) {
+    for (const { x: b, y: x, z: v } of n2(r, s)) {
       if (!Ua(b, x, v, c, l, d)) continue;
       const y = un(b, x, v, c, d), w = Ut(e, y), N = e.colors[y];
       if (a === "erase") {
@@ -28561,11 +28562,11 @@ PROG ${o}`;
       changed: f
     };
   }
-  const fb = 1, c2 = 6, l2 = 2;
+  const fb = 1, l2 = 6, d2 = 2;
   function pa(e, t, s, r) {
     return e - s.min.x + (t - s.min.z) * r;
   }
-  function d2(e, t, s, r, a, o, i, c) {
+  function u2(e, t, s, r, a, o, i, c) {
     const l = pa(i, c, s, o);
     if (a[l] !== 0) return r[l];
     for (let d = 1; d <= 4; d++) for (let u = Math.max(s.min.z, c - d); u <= Math.min(s.max.z, c + d); u++) for (let f = Math.max(s.min.x, i - d); f <= Math.min(s.max.x, i + d); f++) {
@@ -28580,7 +28581,7 @@ PROG ${o}`;
     }
     return is;
   }
-  function u2(e, t, s, r, a, o) {
+  function m2(e, t, s, r, a, o) {
     const { vW: i, vH: c, vL: l } = s, d = ut(r.min.x, 0, Math.max(0, i - 1)), u = ut(r.max.x, d, Math.max(0, i - 1)), f = ut(r.min.y, 0, Math.max(0, c - 1)), m = ut(r.max.y, f, Math.max(0, c - 1)), h = ut(r.min.z, 0, Math.max(0, l - 1)), g = ut(r.max.z, h, Math.max(0, l - 1)), b = {
       min: {
         x: d,
@@ -28599,7 +28600,7 @@ PROG ${o}`;
       const A = pa(I, S, b, x), k = Pu(e, s, I, S, f, m);
       w[A] = k.height, k.color !== null && (C[A] = In(k.color), T[A] = 1);
     }
-    const R = ut(Math.floor(a) || l2, fb, c2), j = (S, I) => S < 0 || S >= i || I < 0 || I >= l ? null : S >= d && S <= u && I >= h && I <= g ? w[pa(S, I, b, x)] : Pu(e, s, S, I, f, m).height;
+    const R = ut(Math.floor(a) || d2, fb, l2), j = (S, I) => S < 0 || S >= i || I < 0 || I >= l ? null : S >= d && S <= u && I >= h && I <= g ? w[pa(S, I, b, x)] : Pu(e, s, S, I, f, m).height;
     for (let S = 0; S < R; S++) {
       for (let A = h; A <= g; A++) for (let k = d; k <= u; k++) {
         let P = 0, M = 0;
@@ -28617,7 +28618,7 @@ PROG ${o}`;
     }
     let E = false;
     for (let S = h; S <= g; S++) for (let I = d; I <= u; I++) {
-      const A = pa(I, S, b, x), k = w[A], P = d2(e, s, b, C, T, x, I, S);
+      const A = pa(I, S, b, x), k = w[A], P = u2(e, s, b, C, T, x, I, S);
       for (let M = f; M <= m; M++) {
         const D = un(I, M, S, i, l), _ = Ut(e, D);
         if (M <= k) {
@@ -28888,11 +28889,11 @@ PROG ${o}`;
     4282664004,
     4280427042,
     4279308561
-  ], m2 = 542658390;
-  function h2(e) {
+  ], h2 = 542658390;
+  function f2(e) {
     const t = new DataView(e);
     if (t.byteLength < 12) throw new Error("File is too small to be a valid .vox file.");
-    if (t.getUint32(0, true) !== m2) throw new Error("Not a valid .vox file (magic bytes mismatch).");
+    if (t.getUint32(0, true) !== h2) throw new Error("Not a valid .vox file (magic bytes mismatch).");
     let s = 8;
     const r = Np(t, s);
     if (s += 4, r !== "MAIN") throw new Error(".vox file is missing the expected MAIN chunk.");
@@ -28944,7 +28945,7 @@ PROG ${o}`;
   function Np(e, t) {
     return String.fromCharCode(e.getUint8(t)) + String.fromCharCode(e.getUint8(t + 1)) + String.fromCharCode(e.getUint8(t + 2)) + String.fromCharCode(e.getUint8(t + 3));
   }
-  function f2(e) {
+  function p2(e) {
     const t = [];
     for (let s = Mi; s <= Og; s++) {
       const r = Math.ceil(e.voxWidth / s), a = Math.ceil(e.voxLength / s), o = Math.ceil(e.voxHeight / s), i = Na(s);
@@ -28958,8 +28959,8 @@ PROG ${o}`;
     }
     return t;
   }
-  function p2(e, t) {
-    const s = g2(e.palette), { rawData: r } = e, a = [];
+  function g2(e, t) {
+    const s = x2(e.palette), { rawData: r } = e, a = [];
     for (let o = 0; o < r.length; o += 4) {
       const i = r[o + 3];
       i !== 0 && a.push({
@@ -28977,7 +28978,7 @@ PROG ${o}`;
       Voxels: kc(a)
     };
   }
-  function g2(e) {
+  function x2(e) {
     const t = new Uint8Array(256);
     t[0] = is;
     for (let s = 1; s <= 255; s++) {
@@ -28991,7 +28992,7 @@ PROG ${o}`;
     }
     return t;
   }
-  function x2(e) {
+  function v2(e) {
     e.onBeforeCompile = (t) => {
       t.vertexShader = t.vertexShader.replace("#include <common>", [
         "#include <common>",
@@ -29020,7 +29021,7 @@ PROG ${o}`;
 `));
     }, e.customProgramCacheKey = () => "voxel-editor-terrain-v1", e.needsUpdate = true;
   }
-  const v2 = 1, b2 = {
+  const b2 = 1, y2 = {
     ortho: {
       near: -100,
       far: 1e3,
@@ -29062,10 +29063,10 @@ PROG ${o}`;
       alpha: true,
       powerPreference: "high-performance"
     });
-    s.setPixelRatio(v2), s.setSize(e.clientWidth || 1, e.clientHeight || 1), s.outputColorSpace = os, s.domElement.style.touchAction = "none", s.domElement.style.cursor = t ? "default" : "crosshair", e.appendChild(s.domElement);
+    s.setPixelRatio(b2), s.setSize(e.clientWidth || 1, e.clientHeight || 1), s.outputColorSpace = os, s.domElement.style.touchAction = "none", s.domElement.style.cursor = t ? "default" : "crosshair", e.appendChild(s.domElement);
     const r = new Cc();
     r.background = null;
-    const a = e.clientWidth || 1, o = e.clientHeight || 1, i = a / o, c = new rb(s.domElement, i, b2);
+    const a = e.clientWidth || 1, o = e.clientHeight || 1, i = a / o, c = new rb(s.domElement, i, y2);
     c.resize(a, o), r.add(new wg(16777215, 9741240, Math.PI * 0.75));
     const l = new Sg(16777215, Math.PI * 1.6);
     l.position.set(18, 32, 22), r.add(l);
@@ -29076,7 +29077,7 @@ PROG ${o}`;
       metalness: 0,
       vertexColors: true
     });
-    return x2(h), {
+    return v2(h), {
       scene: r,
       renderer: s,
       rig: c,
@@ -29103,7 +29104,7 @@ PROG ${o}`;
       height: t.Height
     });
   }
-  function y2(e) {
+  function w2(e) {
     if (Array.isArray(e)) {
       for (const t of e) t.dispose();
       return;
@@ -29113,7 +29114,7 @@ PROG ${o}`;
   function zi(e) {
     e.traverse((t) => {
       const s = t;
-      s.geometry && s.geometry.dispose(), s.material && y2(s.material);
+      s.geometry && s.geometry.dispose(), s.material && w2(s.material);
     });
   }
   function Qt(e) {
@@ -29327,22 +29328,22 @@ PROG ${o}`;
   ], Gi = new Float32Array(256 * 3), gb = new Uint8Array(256);
   {
     const e = new Yt();
-    for (let t = 0; t < 256; t++) e.set(Pa(In(t))), Gi[t * 3] = e.r, Gi[t * 3 + 1] = e.g, Gi[t * 3 + 2] = e.b, gb[t] = eM(t) ? 1 : 0;
+    for (let t = 0; t < 256; t++) e.set(Pa(In(t))), Gi[t * 3] = e.r, Gi[t * 3 + 1] = e.g, Gi[t * 3 + 2] = e.b, gb[t] = tM(t) ? 1 : 0;
   }
-  const Cd = Gi, w2 = gb, Yr = $a.length, wa = new Float32Array(Yr * 3), Ds = new Int8Array(Yr * 3), Sa = new Float32Array(Yr * 4 * 3);
+  const Cd = Gi, S2 = gb, Yr = $a.length, wa = new Float32Array(Yr * 3), Ds = new Int8Array(Yr * 3), Sa = new Float32Array(Yr * 4 * 3);
   for (let e = 0; e < Yr; e++) {
     const t = $a[e];
     wa[e * 3] = t.normal[0], wa[e * 3 + 1] = t.normal[1], wa[e * 3 + 2] = t.normal[2], Ds[e * 3] = t.neighborOffset[0], Ds[e * 3 + 1] = t.neighborOffset[1], Ds[e * 3 + 2] = t.neighborOffset[2];
     for (let s = 0; s < 4; s++) Sa[(e * 4 + s) * 3] = t.corners[s][0], Sa[(e * 4 + s) * 3 + 1] = t.corners[s][1], Sa[(e * 4 + s) * 3 + 2] = t.corners[s][2];
   }
-  const Wc = et * et * et * Yr * 4, S2 = et * et * et * Yr * 6, Ii = new Float32Array(Wc * 3), Ni = new Float32Array(Wc * 3), Ci = new Float32Array(Wc * 3), Cp = new Float32Array(Wc), yr = new Uint32Array(S2);
-  function I2(e, t, s, r, a) {
+  const Wc = et * et * et * Yr * 4, I2 = et * et * et * Yr * 6, Ii = new Float32Array(Wc * 3), Ni = new Float32Array(Wc * 3), Ci = new Float32Array(Wc * 3), Cp = new Float32Array(Wc), yr = new Uint32Array(I2);
+  function N2(e, t, s, r, a) {
     const { vW: o, vH: i, vL: c, resolution: l, tW: d, tL: u } = t, f = d / 2, m = u / 2, h = 1 / l, g = h / 2, b = o * c, { startX: x, startY: v, startZ: y, endX: w, endY: N, endZ: C } = cb(s, r, a, t);
     let T = 0, R = 0;
     for (let E = v; E < N; E++) for (let S = y; S < C; S++) for (let I = x; I < w; I++) {
       const A = un(I, E, S, o, c);
       if (!Ut(e, A)) continue;
-      const k = e.colors[A], P = k * 3, M = Cd[P], D = Cd[P + 1], _ = Cd[P + 2], O = w2[k], L = I / l - f + g, F = (E + 0.5) / l - 0.5, U = S / l - m + g;
+      const k = e.colors[A], P = k * 3, M = Cd[P], D = Cd[P + 1], _ = Cd[P + 2], O = S2[k], L = I / l - f + g, F = (E + 0.5) / l - 0.5, U = S / l - m + g;
       for (let G = 0; G < Yr; G++) {
         const $ = G * 3, J = I + Ds[$], X = E + Ds[$ + 1], z = S + Ds[$ + 2];
         if (J >= 0 && J < o && X >= 0 && X < i && z >= 0 && z < c && Ut(e, A + Ds[$] + Ds[$ + 2] * o + Ds[$ + 1] * b)) continue;
@@ -29361,7 +29362,7 @@ PROG ${o}`;
   function xb(e, t, s, r, a, o, i, c, l) {
     const d = l.get(e);
     d && (i.remove(d), d.geometry.dispose());
-    const u = I2(a, o, t, s, r);
+    const u = N2(a, o, t, s, r);
     if (!u) {
       l.set(e, null);
       return;
@@ -29373,8 +29374,8 @@ PROG ${o}`;
     for (const s of t.values()) s && (e.remove(s), s.geometry.dispose());
     t.clear();
   }
-  const jp = 8e-3, N2 = 16096779, C2 = 0.38, j2 = 1357990, A2 = 0.68, E2 = 15067115, T2 = 0.32;
-  function k2(e) {
+  const jp = 8e-3, C2 = 16096779, j2 = 0.38, A2 = 1357990, E2 = 0.68, T2 = 15067115, k2 = 0.32;
+  function R2(e) {
     return {
       root: e,
       tacticalChunkLines: /* @__PURE__ */ new Map(),
@@ -29453,7 +29454,7 @@ PROG ${o}`;
     ];
     for (const [r, a] of s) e.push(...t[r], ...t[a]);
   }
-  function R2(e, t, s) {
+  function M2(e, t, s) {
     const r = -e / 2, a = e / 2, o = -0.5, i = t - 0.5, c = -s / 2, l = s / 2, d = [
       [
         r,
@@ -29496,9 +29497,9 @@ PROG ${o}`;
         l
       ]
     ], u = [];
-    return vb(u, d), bc(u, E2, T2);
+    return vb(u, d), bc(u, T2, k2);
   }
-  function M2(e, t, s, r) {
+  function P2(e, t, s, r) {
     const { resolution: a, tW: o, tL: i } = t, c = e.min.x / a - o / 2, l = (e.max.x + 1) / a - o / 2, d = e.min.y / a - 0.5, u = (e.max.y + 1) / a - 0.5, f = e.min.z / a - i / 2, m = (e.max.z + 1) / a - i / 2, h = [
       [
         c,
@@ -29545,10 +29546,10 @@ PROG ${o}`;
     const b = bc(g, s, r);
     return b.renderOrder = 35, b;
   }
-  function P2(e, t, s, r, a, o) {
+  function _2(e, t, s, r, a, o) {
     e.push(t, r, a, s, r, a), e.push(s, r, a, s, r, o), e.push(s, r, o, t, r, o), e.push(t, r, o, t, r, a);
   }
-  function _2(e, t, s, r, a, o, i, c) {
+  function D2(e, t, s, r, a, o, i, c) {
     const { vW: l, vH: d, vL: u, resolution: f, tW: m, tL: h } = t, g = m / 2, b = h / 2, { startX: x, startY: v, startZ: y, endX: w, endY: N, endZ: C } = cb(s, r, a, t);
     for (let T = v; T < N; T++) for (let R = y; R < C; R++) for (let j = x; j < w; j++) {
       const E = un(j, T, R, l, u);
@@ -29556,7 +29557,7 @@ PROG ${o}`;
       const I = j / f - g, A = (j + 1) / f - g, k = R / f - b, P = (R + 1) / f - b;
       if (i) {
         const M = (T + 1) / f - 0.5 + jp;
-        P2(o.voxelPoints, I, A, M, k, P);
+        _2(o.voxelPoints, I, A, M, k, P);
       }
       if (c) {
         const M = (T + 1) / f - 0.5 + jp * 2;
@@ -29576,18 +29577,18 @@ PROG ${o}`;
       voxelPoints: [],
       tacticalPoints: []
     };
-    if (_2(t, s, a, o, i, h, u, d), u && h.voxelPoints.length > 0) {
-      const g = bc(h.voxelPoints, N2, C2);
+    if (D2(t, s, a, o, i, h, u, d), u && h.voxelPoints.length > 0) {
+      const g = bc(h.voxelPoints, C2, j2);
       e.root.add(g), e.voxelChunkLines.set(r, g);
     } else e.voxelChunkLines.set(r, null);
     if (d && h.tacticalPoints.length > 0) {
-      const g = bc(h.tacticalPoints, j2, A2);
+      const g = bc(h.tacticalPoints, A2, E2);
       e.root.add(g), e.tacticalChunkLines.set(r, g);
     } else e.tacticalChunkLines.set(r, null);
   }
   function jd(e, t) {
     e.boundsFrame && (e.root.remove(e.boundsFrame), Po(e.boundsFrame));
-    const s = t.vH / t.resolution, r = R2(t.tW, s, t.tL);
+    const s = t.vH / t.resolution, r = M2(t.tW, s, t.tL);
     e.root.add(r), e.boundsFrame = r;
   }
   function Ad(e) {
@@ -29595,12 +29596,12 @@ PROG ${o}`;
     for (const t of e.voxelChunkLines.values()) t && (e.root.remove(t), Po(t));
     e.tacticalChunkLines.clear(), e.voxelChunkLines.clear();
   }
-  const bb = 0.014, yb = 15680580, D2 = 16436245;
+  const bb = 0.014, yb = 15680580, L2 = 16436245;
   function Xc(e, t) {
     const s = e.voxelSize / 2;
     return new Ne(t.x / e.resolution - e.width / 2 + s, (t.y + 0.5) / e.resolution - 0.5, t.z / e.resolution - e.length / 2 + s);
   }
-  function L2(e) {
+  function O2(e) {
     const t = new Yt(Pa(In(e)));
     return 0.2126 * t.r + 0.7152 * t.g + 0.0722 * t.b > 0.62 ? t.multiplyScalar(0.48) : t.lerp(new Yt(16777215), 0.5);
   }
@@ -29623,7 +29624,7 @@ PROG ${o}`;
         x: m,
         y: h,
         z: g
-      }), v = L2(b);
+      }), v = O2(b);
       for (const y of $a) {
         const [w, N, C] = y.neighborOffset;
         Mu(e, m + w, h + N, g + C, a, o, i) || qc(c, l, d, x, s.voxelSize, y, v, bb);
@@ -29631,7 +29632,7 @@ PROG ${o}`;
     }
     return Yc(c, l, d);
   }
-  function O2(e, t, s, r) {
+  function F2(e, t, s, r) {
     const { vW: a, vH: o, vL: i } = t, c = [], l = [], d = [], u = /* @__PURE__ */ new Set();
     for (const m of r) s.inVoxelBounds(m.x, m.y, m.z) && (Mu(e, m.x, m.y, m.z, a, o, i) || u.add(Fr(m.x, m.y, m.z)));
     const f = new Yt(16777215);
@@ -29648,7 +29649,7 @@ PROG ${o}`;
     }
     return Yc(c, l, d);
   }
-  function F2(e, t, s) {
+  function U2(e, t, s) {
     const r = [], a = [], o = [], i = /* @__PURE__ */ new Set();
     for (let l = s.min.y; l <= s.max.y; l++) for (let d = s.min.z; d <= s.max.z; d++) for (let u = s.min.x; u <= s.max.x; u++) u < 0 || u >= e.vW || l < 0 || l >= e.vH || d < 0 || d >= e.vL || i.add(Fr(u, l, d));
     if (i.size === 0) return null;
@@ -29666,7 +29667,7 @@ PROG ${o}`;
     }
     return Yc(r, a, o);
   }
-  function U2(e, t, s, r, a) {
+  function $2(e, t, s, r, a) {
     const { vW: o, vH: i, vL: c } = r, l = /* @__PURE__ */ new Map();
     for (const h of cx(e, r.resolution, t)) {
       const g = s.x + h.x, b = s.y + h.y, x = s.z + h.z;
@@ -29688,12 +29689,12 @@ PROG ${o}`;
     }
     return Yc(d, u, f);
   }
-  function $2(e, t) {
+  function B2(e, t) {
     Qt(e.hoverGroup);
     const { pick: s, tool: r, granularity: a, brushSize: o, colorIndex: i, grid: c, dims: l, index: d } = t;
     if (!s || r === "fill") return;
     if (r === "boxSelect") {
-      const g = Ou(d, s, a, l), b = F2(l, d, g);
+      const g = Ou(d, s, a, l), b = U2(l, d, g);
       if (!b) return;
       const x = new Ht({
         color: yb,
@@ -29727,7 +29728,7 @@ PROG ${o}`;
         x: s.voxel.x + s.normal.x,
         y: s.voxel.y + s.normal.y,
         z: s.voxel.z + s.normal.z
-      }, b = U2(t.stampSource, t.stampTransform, g, l, d);
+      }, b = $2(t.stampSource, t.stampTransform, g, l, d);
       if (!b) return;
       const x = new Ht({
         transparent: true,
@@ -29756,7 +29757,7 @@ PROG ${o}`;
     }
     const u = r === "sample" ? [
       s.voxel
-    ] : hb(d, s, r, a, o), f = r === "place" ? O2(c, l, d, u) : Ep(c, l, d, u);
+    ] : hb(d, s, r, a, o), f = r === "place" ? F2(c, l, d, u) : Ep(c, l, d, u);
     if (!f) return;
     const m = r === "place" ? new Ht({
       color: Pa(i),
@@ -29772,12 +29773,12 @@ PROG ${o}`;
     }), h = new it(f, m);
     h.renderOrder = 30, e.hoverGroup.add(h);
   }
-  function B2(e, t, s, r) {
+  function H2(e, t, s, r) {
     Qt(e.selectionGroup);
     const a = r ?? ((s == null ? void 0 : s.kind) === "box" ? lb(s) : null);
-    a && e.selectionGroup.add(M2(a, t, r ? D2 : yb, r ? 0.95 : 0.86));
+    a && e.selectionGroup.add(P2(a, t, r ? L2 : yb, r ? 0.95 : 0.86));
   }
-  const Tp = new Tt(), Ja = new Ma(), Ed = new Ne(), eo = new Ne(), Td = new $u(), ji = new Ne(), H2 = new Ne(), kd = new $u(new Ne(0, 1, 0), 0.5);
+  const Tp = new Tt(), Ja = new Ma(), Ed = new Ne(), eo = new Ne(), Td = new $u(), ji = new Ne(), V2 = new Ne(), kd = new $u(new Ne(0, 1, 0), 0.5);
   function wb(e) {
     const t = (i) => {
       const c = e.resourcesRef.current;
@@ -29790,7 +29791,7 @@ PROG ${o}`;
         if (!t(i)) return null;
         const c = e.dimsRef.current;
         if (!c) return null;
-        const l = EA(Ja.ray, e.editGridRef.current.occupied, c.vW, c.vH, c.vL, c.resolution, c.tW, c.tL);
+        const l = TA(Ja.ray, e.editGridRef.current.occupied, c.vW, c.vH, c.vL, c.resolution, c.tW, c.tL);
         if (l) {
           const { vx: f, vy: m, vz: h, nx: g, ny: b, nz: x } = l;
           return Ed.set(g, b, x), s({
@@ -29836,7 +29837,7 @@ PROG ${o}`;
           x: Math.floor((ji.x + l.width / 2) * l.resolution),
           y: 0,
           z: Math.floor((ji.z + l.length / 2) * l.resolution)
-        } : n2(H2.set(c.normal.x, c.normal.y, c.normal.z).normalize().multiplyScalar(-1e-4).add(ji), l);
+        } : s2(V2.set(c.normal.x, c.normal.y, c.normal.z).normalize().multiplyScalar(-1e-4).add(ji), l);
         return l.inVoxelBounds(d.x, d.y, d.z) ? {
           voxel: d,
           normal: {
@@ -29854,7 +29855,7 @@ PROG ${o}`;
     x: 15680580,
     y: 2278750,
     z: 3900150
-  }, V2 = new Yt(16777215), z2 = 45, G2 = 0.18, W2 = 56, Sb = [
+  }, z2 = new Yt(16777215), G2 = 45, W2 = 0.18, X2 = 56, Sb = [
     {
       face: "+x",
       axis: "x",
@@ -29906,14 +29907,14 @@ PROG ${o}`;
   function Nb(e, t, s) {
     return s.set((t.minX + t.maxX) / 2, (t.minY + t.maxY) / 2, (t.minZ + t.maxZ) / 2), e.axis === "x" ? s.x = e.sign === 1 ? t.maxX : t.minX : e.axis === "y" ? s.y = e.sign === 1 ? t.maxY : t.minY : s.z = e.sign === 1 ? t.maxZ : t.minZ, s;
   }
-  function X2(e, t) {
+  function q2(e, t) {
     return e === "x" ? t.tW / 2 : e === "z" ? t.tL / 2 : 0.5;
   }
-  function q2(e, t) {
+  function Y2(e, t) {
     return e === "x" ? t.vW - 1 : e === "y" ? t.vH - 1 : t.vL - 1;
   }
   function Cb(e, t, s) {
-    return (e + X2(t, s)) * s.resolution;
+    return (e + q2(t, s)) * s.resolution;
   }
   function Rd(e, t, s) {
     return Math.max(t, Math.min(s, e));
@@ -29926,7 +29927,7 @@ PROG ${o}`;
     const u = r.x * o + r.y * i + r.z * c, m = (to.x * o + to.y * i + to.z * c - l * u) / d;
     return (s === "x" ? t.x : s === "y" ? t.y : t.z) + m;
   }
-  function Y2(e, t, s, r) {
+  function K2(e, t, s, r) {
     const a = Sb.find((l) => l.face === e);
     if (!a) return null;
     const o = Ib(t, s), i = Nb(a, o, new Ne()), c = jb(r, i, a.axis);
@@ -29946,10 +29947,10 @@ PROG ${o}`;
       }
     };
   }
-  function K2(e, t, s, r) {
+  function Q2(e, t, s, r) {
     const a = jb(t, e.linePoint, e.axis);
     if (a === null) return null;
-    const o = Cb(a, e.axis, s), i = Math.round(o - e.startFloat), c = e.axis, l = e.startBounds.min[c], d = e.startBounds.max[c], u = q2(c, s);
+    const o = Cb(a, e.axis, s), i = Math.round(o - e.startFloat), c = e.axis, l = e.startBounds.min[c], d = e.startBounds.max[c], u = Y2(c, s);
     let f = l, m = d;
     if (r) {
       const g = d - l;
@@ -29965,8 +29966,8 @@ PROG ${o}`;
     };
     return h.min[c] = f, h.max[c] = m, h;
   }
-  const Q2 = new Ne(0, 1, 0);
-  function Z2() {
+  const Z2 = new Ne(0, 1, 0);
+  function J2() {
     const e = new Ft();
     e.visible = false;
     const t = new Wd(0.045, 0.045, 0.62, 10);
@@ -29989,13 +29990,13 @@ PROG ${o}`;
         depthTest: false,
         depthWrite: false
       }), g = new Ft();
-      g.quaternion.setFromUnitVectors(Q2, m.dir), g.userData.gizmoFace = m.face;
+      g.quaternion.setFromUnitVectors(Z2, m.dir), g.userData.gizmoFace = m.face;
       const b = new it(t, h), x = new it(s, h), v = new it(r, a);
       for (const y of [
         b,
         x,
         v
-      ]) y.renderOrder = z2, y.userData.gizmoFace = m.face;
+      ]) y.renderOrder = G2, y.userData.gizmoFace = m.face;
       g.add(b, x, v), e.add(g), o.push({
         def: m,
         root: g,
@@ -30014,15 +30015,15 @@ PROG ${o}`;
         if (!e.visible || h <= 0) return;
         const g = m, b = m, x = g.isOrthographicCamera ? (g.top - g.bottom) / g.zoom / h : 0, v = b.isPerspectiveCamera ? Math.tan(b.fov * rs.DEG2RAD / 2) : 0;
         for (const y of o) {
-          const w = g.isOrthographicCamera ? x : 2 * v * b.position.distanceTo(y.center) / h, N = W2 * w;
-          y.root.scale.setScalar(N), y.root.position.copy(y.center).addScaledVector(y.def.dir, N * G2);
+          const w = g.isOrthographicCamera ? x : 2 * v * b.position.distanceTo(y.center) / h, N = X2 * w;
+          y.root.scale.setScalar(N), y.root.position.copy(y.center).addScaledVector(y.def.dir, N * W2);
         }
       },
       setVisible: (m) => {
         e.visible = m;
       },
       setHighlight: (m) => {
-        for (const h of o) h.def.face === m ? (h.material.color.copy(h.baseColor).lerp(V2, 0.55), h.material.opacity = 1) : (h.material.color.copy(h.baseColor), h.material.opacity = 0.95);
+        for (const h of o) h.def.face === m ? (h.material.color.copy(h.baseColor).lerp(z2, 0.55), h.material.opacity = 1) : (h.material.color.copy(h.baseColor), h.material.opacity = 0.95);
       },
       pickFace: (m) => {
         if (!e.visible) return null;
@@ -30040,8 +30041,8 @@ PROG ${o}`;
       }
     };
   }
-  const J2 = 0.2, Ai = new Ne();
-  function eP(e, t) {
+  const eP = 0.2, Ai = new Ne();
+  function tP(e, t) {
     for (; e.firstChild; ) e.removeChild(e.firstChild);
     const s = /* @__PURE__ */ new Map();
     for (const r of t) {
@@ -30052,7 +30053,7 @@ PROG ${o}`;
     }
     return s;
   }
-  function tP(e, t, s, r, a, o) {
+  function nP(e, t, s, r, a, o) {
     if (!o) {
       a.forEach((l) => {
         l.style.display = "none";
@@ -30063,7 +30064,7 @@ PROG ${o}`;
     for (const l of r) {
       const d = a.get(l.id);
       if (!d) continue;
-      const u = l.position.x + 0.5 - s.Width / 2, f = l.position.y + 0.5 - s.Length / 2, m = Hc(l.position.h) + J2;
+      const u = l.position.x + 0.5 - s.Width / 2, f = l.position.y + 0.5 - s.Length / 2, m = Hc(l.position.h) + eP;
       if (Ai.set(u, m, f).project(t), Ai.z > 1) {
         d.style.display = "none";
         continue;
@@ -30072,7 +30073,7 @@ PROG ${o}`;
       d.style.display = "", d.style.transform = `translate(calc(${h}px - 50%), calc(${g}px - 50%))`;
     }
   }
-  function nP(e, t, s) {
+  function sP(e, t, s) {
     const r = new Ft(), a = [], o = Eo();
     for (const i of t) {
       const c = i.linkId === s, l = To({
@@ -30288,8 +30289,8 @@ PROG ${o}`;
       ]
     }) : null;
   }
-  const sP = 5;
-  function rP({ terrain: e, onPick: t, existingAnchors: s }) {
+  const rP = 5;
+  function aP({ terrain: e, onPick: t, existingAnchors: s }) {
     const r = p.useRef(null), a = p.useRef(t);
     p.useEffect(() => {
       a.current = t;
@@ -30363,7 +30364,7 @@ PROG ${o}`;
         const M = j;
         if (j = null, !M || M.pointerId !== P.pointerId) return;
         const D = P.clientX - M.startX, _ = P.clientY - M.startY;
-        if (Math.hypot(D, _) > sP) return;
+        if (Math.hypot(D, _) > rP) return;
         R(P);
         const O = f.current;
         O && a.current(O);
@@ -30413,7 +30414,7 @@ PROG ${o}`;
       className: "absolute inset-0"
     });
   }
-  const aP = [
+  const oP = [
     {
       id: "place",
       label: "Place",
@@ -30438,7 +30439,7 @@ PROG ${o}`;
       icon: "icon-[mdi--eyedropper]",
       shortcut: "I"
     }
-  ], oP = [
+  ], iP = [
     {
       id: "colorSelect",
       label: "Color Select",
@@ -30458,7 +30459,7 @@ PROG ${o}`;
       "aria-hidden": "true"
     });
   }
-  function iP(e) {
+  function cP(e) {
     const { tool: t, activeSelectionTool: s, onToolClick: r, onFillSelection: a, onSmoothSelection: o, canFillSelection: i, canSmoothSelection: c, brushSize: l, onBrushSizeChange: d, granularity: u, onGranularityChange: f, readOnly: m, stampSources: h, loadStampVoxels: g, stampLoadingId: b, onSelectStamp: x, onExitStampMode: v, canPlaceLinks: y, undoDepth: w, redoDepth: N, onUndo: C, onRedo: T, modKeyLabel: R, activeView: j, onShowEdit: E, onShowPreview: S, onVoxFileSelected: I, voxFileInputRef: A, cameraMode: k, onSelectCameraMode: P, freecamSpeedMult: M } = e, D = A, _ = (O) => {
       const L = "btn btn-square btn-sm join-item", F = O === "boxSelect" || O === "colorSelect";
       return s === O ? `${L} btn-primary hover:bg-error hover:border-error hover:text-error-content` : F && t === O ? `${L} btn-primary` : `${L} ${t === O ? "btn-neutral" : ""}`;
@@ -30471,7 +30472,7 @@ PROG ${o}`;
           children: [
             n.jsx("div", {
               className: "join",
-              children: aP.map((O) => n.jsx("button", {
+              children: oP.map((O) => n.jsx("button", {
                 type: "button",
                 className: _(O.id),
                 onClick: () => r(O.id),
@@ -30484,7 +30485,7 @@ PROG ${o}`;
             }),
             n.jsx("div", {
               className: "join",
-              children: oP.map((O) => n.jsx("button", {
+              children: iP.map((O) => n.jsx("button", {
                 type: "button",
                 className: _(O.id),
                 onClick: () => r(O.id),
@@ -30713,7 +30714,7 @@ PROG ${o}`;
                 })
               ]
             }),
-            n.jsx(cP, {
+            n.jsx(lP, {
               modKeyLabel: R
             })
           ]
@@ -30780,7 +30781,7 @@ PROG ${o}`;
       ]
     });
   }
-  function cP({ modKeyLabel: e }) {
+  function lP({ modKeyLabel: e }) {
     return n.jsxs("div", {
       className: "dropdown dropdown-bottom dropdown-end",
       children: [
@@ -31311,7 +31312,7 @@ PROG ${o}`;
       ]
     });
   }
-  const lP = zR();
+  const dP = GR();
   function Ab({ value: e, onChange: t, disabled: s, excludeIndices: r, compact: a }) {
     const o = a ? "text-xs font-semibold mb-1" : "text-sm font-semibold mb-2";
     return n.jsxs(n.Fragment, {
@@ -31349,7 +31350,7 @@ PROG ${o}`;
             }),
             n.jsx("div", {
               className: "flex flex-col gap-2",
-              children: lP.map((i) => {
+              children: dP.map((i) => {
                 const c = r ? i.swatches.filter((l) => !r.includes(l.index)) : i.swatches;
                 return c.length === 0 ? null : n.jsxs("div", {
                   children: [
@@ -31380,7 +31381,7 @@ PROG ${o}`;
       ]
     });
   }
-  function dP(e) {
+  function uP(e) {
     const { tool: t, selection: s, boxSelectionAnchor: r, selectionSummary: a, selectedColorIndex: o, onChooseColorIndex: i, actors: c, showActors: l, onShowActorsChange: d, linkCount: u, links: f, selectedLinkId: m, showLinks: h, onShowLinksChange: g, onSelectLink: b, onToggleLinkLocked: x, onDeleteLink: v } = e, y = !!s || !!r || t === "boxSelect" || t === "colorSelect", w = (s == null ? void 0 : s.kind) === "mask" ? s.colorIndex ?? o : o, N = `#${Pa(w).toString(16).padStart(6, "0")}`;
     return n.jsxs(n.Fragment, {
       children: [
@@ -31588,11 +31589,11 @@ PROG ${o}`;
       ]
     });
   }
-  const uP = 0, mP = 3, hP = 0.05, fP = 0, pP = 360, gP = 0, xP = 90;
-  function vP(e, t, s) {
+  const mP = 0, hP = 3, fP = 0.05, pP = 0, gP = 360, xP = 0, vP = 90;
+  function bP(e, t, s) {
     return Math.max(t, Math.min(s, e));
   }
-  function bP(e, t) {
+  function yP(e, t) {
     const s = Number(e);
     return Number.isFinite(s) ? s : t;
   }
@@ -31620,7 +31621,7 @@ PROG ${o}`;
           max: r,
           step: a,
           value: o,
-          onChange: (l) => c(vP(bP(l.target.value, o), s, r)),
+          onChange: (l) => c(bP(yP(l.target.value, o), s, r)),
           disabled: i
         })
       ]
@@ -31644,7 +31645,7 @@ PROG ${o}`;
       ]
     });
   }
-  function yP({ lighting: e, background: t, surroundings: s, maxSurroundingsHeight: r, surroundingsResolution: a, readOnly: o, onLightingChange: i, onBackgroundChange: c, onSurroundingsChange: l }) {
+  function wP({ lighting: e, background: t, surroundings: s, maxSurroundingsHeight: r, surroundingsResolution: a, readOnly: o, onLightingChange: i, onBackgroundChange: c, onSurroundingsChange: l }) {
     const d = t.Color ?? jg;
     return n.jsxs("div", {
       className: "divide-y divide-base-300",
@@ -31677,9 +31678,9 @@ PROG ${o}`;
             n.jsx(Ti, {
               label: "Intensity",
               valueText: e.Intensity.toFixed(2),
-              min: uP,
-              max: mP,
-              step: hP,
+              min: mP,
+              max: hP,
+              step: fP,
               value: e.Intensity,
               disabled: o,
               onChange: (u) => i({
@@ -31689,8 +31690,8 @@ PROG ${o}`;
             n.jsx(Ti, {
               label: "Rotation",
               valueText: `${Math.round(e.Rotation)} deg`,
-              min: fP,
-              max: pP,
+              min: pP,
+              max: gP,
               step: 1,
               value: e.Rotation,
               disabled: o,
@@ -31701,8 +31702,8 @@ PROG ${o}`;
             n.jsx(Ti, {
               label: "Elevation",
               valueText: `${Math.round(e.Elevation)} deg`,
-              min: gP,
-              max: xP,
+              min: xP,
+              max: vP,
               step: 1,
               value: e.Elevation,
               disabled: o,
@@ -31785,13 +31786,13 @@ PROG ${o}`;
       ]
     });
   }
-  const wP = {
+  const SP = {
     1: "Basic",
     2: "Detailed",
     3: "Very Detailed",
     4: "Extreme"
   };
-  function SP({ state: e, onSelectResolution: t, onConfirm: s, onClose: r }) {
+  function IP({ state: e, onSelectResolution: t, onConfirm: s, onClose: r }) {
     return n.jsx(Fn, {
       title: e.kind === "error" ? "Import .vox \u2014 Error" : "Import .vox",
       onClose: r,
@@ -31854,7 +31855,7 @@ PROG ${o}`;
               children: [
                 n.jsx("span", {
                   className: "font-semibold",
-                  children: wP[a.resolution] ?? `Resolution ${a.resolution}`
+                  children: SP[a.resolution] ?? `Resolution ${a.resolution}`
                 }),
                 n.jsx("span", {
                   className: "text-xs opacity-70",
@@ -31874,19 +31875,19 @@ PROG ${o}`;
   function Pd(e) {
     return e === "place" || e === "fill" || e === "erase" || e === "paint";
   }
-  const _d = 50, IP = 2e6, NP = 5, CP = typeof navigator < "u" && /Mac|iPhone|iPad|iPod/i.test(navigator.platform), jP = CP ? "\u2318" : "Ctrl";
-  function AP(e, t, s) {
+  const _d = 50, NP = 2e6, CP = 5, jP = typeof navigator < "u" && /Mac|iPhone|iPad|iPod/i.test(navigator.platform), AP = jP ? "\u2318" : "Ctrl";
+  function EP(e, t, s) {
     return Math.max(t, Math.min(s, e));
   }
-  function EP(e, t) {
+  function TP(e, t) {
     return e.min.x === t.min.x && e.min.y === t.min.y && e.min.z === t.min.z && e.max.x === t.max.x && e.max.y === t.max.y && e.max.z === t.max.z;
   }
-  function TP(e) {
+  function kP(e) {
     if (!(e instanceof HTMLElement)) return false;
     const t = e.tagName.toLowerCase();
     return t === "input" || t === "textarea" || t === "select" || e.isContentEditable;
   }
-  const kP = p.forwardRef(function({ terrain: t, onChange: s, readOnly: r = false, actors: a, stampSources: o, loadStampVoxels: i, links: c, terrainNamesById: l, loadTerrainVoxels: d, onCreateLink: u, onDeleteLink: f, onEditLink: m, canPlaceLinks: h = false }, g) {
+  const RP = p.forwardRef(function({ terrain: t, onChange: s, readOnly: r = false, actors: a, stampSources: o, loadStampVoxels: i, links: c, terrainNamesById: l, loadTerrainVoxels: d, onCreateLink: u, onDeleteLink: f, onEditLink: m, canPlaceLinks: h = false }, g) {
     const { setDirty: b } = Go(), x = p.useRef(null), v = p.useRef(null), y = p.useRef(null), w = p.useRef(t), N = p.useRef(zc(0)), C = p.useRef(/* @__PURE__ */ new Map()), T = p.useRef(/* @__PURE__ */ new Set()), R = p.useRef(null), j = p.useRef([]), E = p.useRef([]), S = p.useRef("place"), I = p.useRef("tactical"), A = p.useRef(1), k = p.useRef(is), P = p.useRef(r), M = p.useRef(a ?? []), D = p.useRef(true), _ = p.useRef("edit"), O = p.useRef(/* @__PURE__ */ new Map()), L = p.useRef(null), F = p.useRef(false), U = p.useRef(null), G = p.useRef([]), $ = p.useRef(null), J = p.useRef(false), X = p.useRef(null), z = p.useRef(false), ee = p.useRef(null), W = p.useRef(null), ne = p.useRef(Ls(t)), K = p.useRef(s), oe = p.useRef(null), Y = p.useRef(ci), de = p.useRef(i), B = p.useRef(d), se = p.useRef("place"), re = p.useRef(c ?? []), Se = p.useRef(u), Me = p.useRef(m), Ce = p.useRef(f), $e = p.useRef(null), tt = p.useRef(null), qe = p.useRef(null), rt = p.useRef(null), xe = p.useRef(1), me = p.useRef(null), Pe = p.useRef(null), te = p.useRef(null), ue = p.useRef("ortho"), fe = p.useRef("ortho"), Q = p.useRef(false), [ae, Ae] = p.useState("edit"), [Re, Ee] = p.useState("place"), [je, Ye] = p.useState("tactical"), [mt, _t] = p.useState(1), [lt, bt] = p.useState(is), yt = je === "tactical", Nn = je === "voxel", [mn, ye] = p.useState(true), [le, Oe] = p.useState(false), [ze, nt] = p.useState(null), [Ze, at] = p.useState(false), [wt, an] = p.useState(null), [Cn, Dt] = p.useState(0), [Cs, Gn] = p.useState(0), [js, Zs] = p.useState("ortho"), [qo, Kr] = p.useState(1), [Wn, Xn] = p.useState(null), ke = p.useRef(null), [Be, xt] = p.useState(null), [jn, hs] = p.useState(ci), [hn, Qr] = p.useState(null), [As, cy] = p.useState(null), [Em, ly] = p.useState(null), [dy, Tm] = p.useState(null), [uy, my] = p.useState(0), [hy, fy] = p.useState(0), Js = p.useCallback(() => fy((H) => H + 1), []), Zr = p.useCallback(() => {
       P.current || b(true);
     }, [
@@ -31899,14 +31900,14 @@ PROG ${o}`;
       rt.current = H, ly(H), (_a2 = te.current) == null ? void 0 : _a2.call(te);
     }, []), Yo = p.useCallback(() => xe.current++, []), km = t.Lighting, py = t.Background, gy = p.useMemo(() => As ? {
       bounds: lb(As),
-      spaceCount: JM(As)
+      spaceCount: e2(As)
     } : null, [
       As
     ]), Jr = p.useCallback(() => {
       const H = R.current;
       return H ? {
         ...w.current,
-        Voxels: KM(N.current, H.vW, H.vH, H.vL)
+        Voxels: QM(N.current, H.vW, H.vH, H.vL)
       } : w.current;
     }, []), ea = p.useCallback(() => {
       Tm(Jr());
@@ -32006,7 +32007,7 @@ PROG ${o}`;
       }));
     }, Ko = p.useCallback((H) => {
       const q = R.current;
-      q && (Yn(null), qn(e2(N.current, q, In(H), Yo())));
+      q && (Yn(null), qn(t2(N.current, q, In(H), Yo())));
     }, [
       Yo,
       Yn,
@@ -32114,7 +32115,7 @@ PROG ${o}`;
       const q = Ct(t), ce = Du(q), be = R.current, Ke = !be || be.vW !== ce.vW || be.vH !== ce.vH || be.vL !== ce.vL;
       R.current = ce, qn(null), Yn(null);
       const dt = _u(t.Voxels, q);
-      N.current.length === dt.length ? YM(N.current, dt) : N.current = dt;
+      N.current.length === dt.length ? KM(N.current, dt) : N.current = dt;
       const ot = v.current, Je = y.current;
       if (Ke && ot && Je && (mo(ot.chunkGroup, C.current), Ad(Je), jd(Je, ce), Qt(ot.hoverGroup), Qt(ot.selectionGroup), ue.current === "ortho")) {
         const It = x.current;
@@ -32144,7 +32145,7 @@ PROG ${o}`;
     }, [
       Jr
     ]), Pm = p.useCallback((H) => {
-      const q = R.current ?? gm(w.current.Width, w.current.Length, w.current.Height, vo(w.current)), ce = ZM(N.current, q, H);
+      const q = R.current ?? gm(w.current.Width, w.current.Length, w.current.Height, vo(w.current)), ce = JM(N.current, q, H);
       N.current = ce.grid, R.current = ce.dims, j.current.length = 0, E.current.length = 0, Dt(0), Gn(0), on();
       const be = {
         ...w.current,
@@ -32213,7 +32214,7 @@ PROG ${o}`;
     ]), er = p.useCallback((H) => {
       let q = X.current;
       if (q === null && (X.current = /* @__PURE__ */ new Map(), q = X.current, z.current = false), z.current || q.has(H)) return;
-      if (q.size >= IP) {
+      if (q.size >= NP) {
         z.current = true;
         return;
       }
@@ -32249,11 +32250,11 @@ PROG ${o}`;
           y: H.voxel.y + H.normal.y,
           z: H.voxel.z + H.normal.z
         };
-        return o2(N.current, T.current, ce, It, Je, Y.current, er).changed ? (J.current || (J.current = true), true) : false;
+        return i2(N.current, T.current, ce, It, Je, Y.current, er).changed ? (J.current || (J.current = true), true) : false;
       }
       if (be === "link") return tl(Rm(H, w.current)), false;
       if (be === "fill") return false;
-      const dt = be, ot = i2(N.current, q, T.current, ce, H, dt, I.current, A.current, k.current, er);
+      const dt = be, ot = c2(N.current, q, T.current, ce, H, dt, I.current, A.current, k.current, er);
       return ot.sampledColor !== null ? (k.current = ot.sampledColor, bt(ot.sampledColor), S.current = "paint", Ee("paint"), false) : ot.changed ? (J.current || (J.current = true), true) : false;
     }, [
       er,
@@ -32270,7 +32271,7 @@ PROG ${o}`;
       if (!H || H.kind !== "box") return;
       const q = R.current;
       if (!q) return;
-      if (X.current = null, !u2(N.current, T.current, q, H.bounds, fb, er).changed) {
+      if (X.current = null, !m2(N.current, T.current, q, H.bounds, fb, er).changed) {
         X.current = null;
         return;
       }
@@ -32342,7 +32343,7 @@ PROG ${o}`;
     }, []);
     p.useEffect(() => {
       const H = L.current;
-      H && (O.current = eP(H, a ?? []));
+      H && (O.current = tP(H, a ?? []));
     }, [
       a
     ]);
@@ -32369,7 +32370,7 @@ PROG ${o}`;
     ]), p.useEffect(() => {
       const H = v.current;
       if (!H || (U.current && (H.scene.remove(U.current), Rp(U.current), U.current = null, G.current = []), pr.length === 0)) return;
-      const { group: q, pickTargets: ce } = nP(t, pr, ze);
+      const { group: q, pickTargets: ce } = sP(t, pr, ze);
       return q.visible = F.current, H.scene.add(q), U.current = q, G.current = ce, () => {
         H.scene.remove(q), Rp(q), U.current === q && (U.current = null, G.current = []);
       };
@@ -32383,9 +32384,9 @@ PROG ${o}`;
       if (!H) return;
       const q = pb(H, P.current);
       v.current = q, my((Ie) => Ie + 1);
-      const ce = k2(q.gridGroup);
+      const ce = R2(q.gridGroup);
       y.current = ce;
-      const be = Z2();
+      const be = J2();
       q.scene.add(be.group);
       const Ke = w.current, dt = Ct(Ke), ot = Du(dt);
       R.current = ot, N.current = _u(Ke.Voxels, dt), Hi(T.current, ot), jd(ce, ot), ro(q, Ke, H), W.current = `${dt.width}:${dt.length}:${dt.height}:${dt.resolution}`;
@@ -32412,7 +32413,7 @@ PROG ${o}`;
             Nt.clear();
           }
         }
-        q.rig.update(We), be.group.visible && be.updateScreenScale(q.camera, q.renderer.domElement.clientHeight), q.renderer.render(q.scene, q.camera), L.current && O.current.size > 0 && tP(q.renderer.domElement, q.camera, w.current, M.current, O.current, D.current);
+        q.rig.update(We), be.group.visible && be.updateScreenScale(q.camera, q.renderer.domElement.clientHeight), q.renderer.render(q.scene, q.camera), L.current && O.current.size > 0 && nP(q.renderer.domElement, q.camera, w.current, M.current, O.current, D.current);
       };
       It = requestAnimationFrame(Zo);
       const Jo = new ResizeObserver(() => {
@@ -32428,7 +32429,7 @@ PROG ${o}`;
           return;
         }
         const Nt = S.current === "boxSelect" && rt.current && Ie ? wp(rt.current, Ou(Ct(w.current), Ie, I.current, We), We) : null;
-        B2(q, We, qe.current, Nt);
+        H2(q, We, qe.current, Nt);
         const Bt = qe.current;
         (Bt == null ? void 0 : Bt.kind) === "box" && !Nt && !rt.current && !P.current ? (be.update(Bt.bounds, We), be.setVisible(true), be.updateScreenScale(q.camera, q.renderer.domElement.clientHeight)) : (be.setVisible(false), be.setHighlight(null));
       }, Ha = (Ie) => {
@@ -32443,7 +32444,7 @@ PROG ${o}`;
             Qt(q.hoverGroup), ei(Ie);
             return;
           }
-          $2(q, {
+          B2(q, {
             grid: N.current,
             dims: We,
             index: Ct(w.current),
@@ -32460,7 +32461,7 @@ PROG ${o}`;
       Pe.current = () => Ha(na), te.current = () => ei(na);
       const dl = (Ie, We) => We && !Ie.shiftKey ? Je.getLockedPlanePickInfo(Ie, We.lockedPlane) : Je.getPickInfo(Ie), Ey = (Ie, We) => {
         const Nt = Ie.clientX - We.startClientX, Bt = Ie.clientY - We.startClientY;
-        return Nt * Nt + Bt * Bt >= NP ** 2;
+        return Nt * Nt + Bt * Bt >= CP ** 2;
       }, ul = () => {
         $.current = null, J.current = false, X.current = null, ee.current = null;
       }, Lm = (Ie) => {
@@ -32471,8 +32472,8 @@ PROG ${o}`;
           if (We.pointerId !== Ie.pointerId) return;
           const fs = R.current, fn = Je.getEventRaycaster(Ie);
           if (fs && fn && ((_a2 = qe.current) == null ? void 0 : _a2.kind) === "box") {
-            const Qn = K2(We, fn.ray, fs, Ie.shiftKey);
-            Qn && !EP(qe.current.bounds, Qn) && qn({
+            const Qn = Q2(We, fn.ray, fs, Ie.shiftKey);
+            Qn && !TP(qe.current.bounds, Qn) && qn({
               kind: "box",
               id: We.selectionId,
               bounds: Qn
@@ -32514,7 +32515,7 @@ PROG ${o}`;
         if (Ie.preventDefault(), ((_a2 = qe.current) == null ? void 0 : _a2.kind) === "box" && !rt.current) {
           const fs = R.current, fn = Je.getEventRaycaster(Ie), Qn = fn ? be.pickFace(fn) : null;
           if (Qn && fn && fs) {
-            const Va = Y2(Qn, qe.current.bounds, fs, fn.ray);
+            const Va = K2(Qn, qe.current.bounds, fs, fn.ray);
             if (Va) {
               me.current = {
                 ...Va,
@@ -32638,7 +32639,7 @@ PROG ${o}`;
     p.useEffect(() => {
       const H = (q) => {
         var _a2, _b2;
-        if (TP(q.target)) return;
+        if (kP(q.target)) return;
         if ((q.ctrlKey || q.metaKey) && q.key.toLowerCase() === "z") {
           q.preventDefault(), q.shiftKey ? Qo() : sl();
           return;
@@ -32729,7 +32730,7 @@ PROG ${o}`;
       sl
     ]);
     const ll = p.useCallback((H, q) => {
-      const ce = p2(H, q), be = {
+      const ce = g2(H, q), be = {
         ...w.current,
         ...ce
       };
@@ -32738,7 +32739,7 @@ PROG ${o}`;
       on
     ]), Ny = p.useCallback(async (H) => {
       try {
-        const q = await H.arrayBuffer(), ce = h2(q), be = f2(ce), Ke = be.filter((dt) => dt.fits);
+        const q = await H.arrayBuffer(), ce = f2(q), be = p2(ce), Ke = be.filter((dt) => dt.fits);
         if (Ke.length === 0) {
           Xn({
             kind: "error",
@@ -32801,7 +32802,7 @@ PROG ${o}`;
       on,
       ta
     ]), Ay = p.useCallback((H) => {
-      _t(AP(Math.floor(H) || Ta, Ta, vc));
+      _t(EP(Math.floor(H) || Ta, Ta, vc));
     }, []);
     return n.jsxs(n.Fragment, {
       children: [
@@ -32811,7 +32812,7 @@ PROG ${o}`;
             n.jsxs("div", {
               className: "flex-1 min-w-0 flex flex-col",
               children: [
-                n.jsx(iP, {
+                n.jsx(cP, {
                   tool: Re,
                   activeSelectionTool: Ba,
                   onToolClick: jy,
@@ -32833,7 +32834,7 @@ PROG ${o}`;
                   redoDepth: Cs,
                   onUndo: sl,
                   onRedo: Qo,
-                  modKeyLabel: jP,
+                  modKeyLabel: AP,
                   activeView: ae,
                   onShowEdit: () => Ae("edit"),
                   onShowPreview: Cy,
@@ -32870,7 +32871,7 @@ PROG ${o}`;
                     }),
                     wt && n.jsx("div", {
                       className: "absolute inset-0 z-30 bg-base-200",
-                      children: n.jsx(rP, {
+                      children: n.jsx(aP, {
                         terrain: wt,
                         existingAnchors: ac(c ?? [], wt.Id).map((H) => H.anchor),
                         onPick: tl
@@ -32892,7 +32893,7 @@ PROG ${o}`;
               className: "w-64 shrink-0 border-l-2 bg-base-100 p-3 overflow-y-auto",
               children: n.jsx("div", {
                 className: "space-y-5",
-                children: ae === "preview" ? n.jsx(yP, {
+                children: ae === "preview" ? n.jsx(wP, {
                   lighting: km,
                   background: py,
                   surroundings: t.Surroundings,
@@ -32902,7 +32903,7 @@ PROG ${o}`;
                   onLightingChange: vy,
                   onBackgroundChange: by,
                   onSurroundingsChange: yy
-                }) : n.jsx(dP, {
+                }) : n.jsx(uP, {
                   tool: Re,
                   selection: As,
                   boxSelectionAnchor: Em,
@@ -32935,7 +32936,7 @@ PROG ${o}`;
             })
           ]
         }),
-        Wn && n.jsx(SP, {
+        Wn && n.jsx(IP, {
           state: Wn,
           onSelectResolution: (H) => Xn((q) => (q == null ? void 0 : q.kind) === "pick" ? {
             ...q,
@@ -32946,7 +32947,7 @@ PROG ${o}`;
         })
       ]
     });
-  }), RP = [
+  }), MP = [
     {
       value: 1,
       label: "Basic"
@@ -32963,8 +32964,8 @@ PROG ${o}`;
       value: 4,
       label: "Extreme"
     }
-  ], MP = 300;
-  function PP({ terrain: e, isDeleteProtected: t, initialTags: s, onClose: r }) {
+  ], PP = 300;
+  function _P({ terrain: e, isDeleteProtected: t, initialTags: s, onClose: r }) {
     const { actionService: a } = De(), i = pe().ActiveCampaign, [c, l] = p.useState(() => e && Ve.isHydrated(e) ? {
       ...e,
       Voxels: gs(e.Id)
@@ -33123,18 +33124,18 @@ PROG ${o}`;
       editTitle: "Edit Terrain",
       viewTitle: "View Terrain",
       fullWidth: true,
-      children: n.jsx(_P, {})
+      children: n.jsx(DP, {})
     });
   }
-  function _P({ data: e, onChange: t }) {
+  function DP({ data: e, onChange: t }) {
     const s = Un();
-    return !e || !t ? null : n.jsx(DP, {
+    return !e || !t ? null : n.jsx(LP, {
       data: e,
       onChange: t,
       readOnly: s
     });
   }
-  function DP({ data: e, onChange: t, readOnly: s }) {
+  function LP({ data: e, onChange: t, readOnly: s }) {
     const r = pe(), { actionService: a } = De(), { registerSaveResolver: o } = Go(), i = r.ActiveCampaign, c = p.useRef(null), l = !!(i == null ? void 0 : i.VoxelTerrains.some((S) => S.Id === e.Id)), d = p.useMemo(() => {
       const S = /* @__PURE__ */ new Map();
       for (const I of (i == null ? void 0 : i.VoxelTerrains) ?? []) S.set(I.Id, I.Name);
@@ -33223,7 +33224,7 @@ PROG ${o}`;
     ]), T = p.useCallback((S) => {
       y(S), w.current && clearTimeout(w.current), w.current = setTimeout(() => {
         w.current = null, C(S);
-      }, MP);
+      }, PP);
     }, [
       C
     ]), R = p.useCallback(() => {
@@ -33384,7 +33385,7 @@ PROG ${o}`;
                       onBlur: R,
                       className: "select select-bordered w-full",
                       disabled: s,
-                      children: RP.map((S) => n.jsx("option", {
+                      children: MP.map((S) => n.jsx("option", {
                         value: S.value,
                         children: S.label
                       }, S.value))
@@ -33395,7 +33396,7 @@ PROG ${o}`;
             })
           })
         }),
-        n.jsx(kP, {
+        n.jsx(RP, {
           ref: c,
           terrain: e,
           onChange: t,
@@ -33433,7 +33434,7 @@ PROG ${o}`;
       ]
     });
   }
-  function LP({ onViewTerrain: e } = {}) {
+  function OP({ onViewTerrain: e } = {}) {
     const t = pe(), { actionService: s } = De(), r = V.getActiveCampaign(t), { viewedTerrainId: a, setViewedTerrain: o } = ls(), i = a ?? void 0, [c, l] = p.useState(0), d = (m) => {
       s && s.execute("terrain:bulkEditTags", {
         updates: m.map((h) => ({
@@ -33473,7 +33474,7 @@ PROG ${o}`;
       editFormFullWidth: true,
       renderEditForm: (m, { currentPath: h, closeDrawer: g }) => {
         const b = m ? r.VoxelTerrains.find((v) => v.Id === m.id) : void 0, x = h.length > 0 ? qs([], h) : void 0;
-        return n.jsx(PP, {
+        return n.jsx(_P, {
           terrain: b,
           isDeleteProtected: b ? zt.isDeleteProtected(r, b.Id) : false,
           initialTags: x,
@@ -33542,7 +33543,7 @@ PROG ${o}`;
       ]
     });
   }
-  function OP({ users: e, onSelect: t, currentId: s, buttonLabel: r = "Change Owner", buttonClassName: a = "btn btn-sm", align: o = "end", title: i, disabled: c }) {
+  function FP({ users: e, onSelect: t, currentId: s, buttonLabel: r = "Change Owner", buttonClassName: a = "btn btn-sm", align: o = "end", title: i, disabled: c }) {
     if (c) return n.jsx("button", {
       type: "button",
       className: a,
@@ -33588,7 +33589,7 @@ PROG ${o}`;
       return o((_a3 = i.user) == null ? void 0 : _a3.Id, (_b3 = i.user) == null ? void 0 : _b3.Name, ((_c3 = i.user) == null ? void 0 : _c3.Role) === "dm" ? "DM" : "Connected");
     }), r;
   }
-  function FP({ image: e, onClose: t }) {
+  function UP({ image: e, onClose: t }) {
     const { actionService: s } = De(), r = (o) => {
       s && s.execute("image:edit", {
         imageId: o.Id,
@@ -33614,10 +33615,10 @@ PROG ${o}`;
       editTitle: "Edit Image",
       viewTitle: "View Image",
       createTitle: "Create Image",
-      children: n.jsx(UP, {})
+      children: n.jsx($P, {})
     });
   }
-  function UP({ data: e, onChange: t }) {
+  function $P({ data: e, onChange: t }) {
     var _a2;
     const s = Tb({
       excludeSelf: true
@@ -33775,7 +33776,7 @@ PROG ${o}`;
                   })
                 ]
               }),
-              n.jsx(OP, {
+              n.jsx(FP, {
                 users: a,
                 currentId: e.UploadedBy ?? ho,
                 onSelect: i,
@@ -33796,7 +33797,7 @@ PROG ${o}`;
       ]
     });
   }
-  function $P() {
+  function BP() {
     const e = pe(), { actionService: t } = De(), s = V.getActiveCampaign(e), [r, a] = p.useState(void 0), o = Tb({
       excludeSelf: true
     }), i = () => {
@@ -33882,7 +33883,7 @@ PROG ${o}`;
           selectionActions: d,
           renderEditForm: (g, { closeDrawer: b }) => {
             const x = g ? s.Images.find((v) => v.Id === g.id) : null;
-            return x ? n.jsx(FP, {
+            return x ? n.jsx(UP, {
               image: x,
               onClose: () => b == null ? void 0 : b()
             }, x.Id) : n.jsx(st, {
@@ -33893,8 +33894,8 @@ PROG ${o}`;
       ]
     });
   }
-  const BP = " (save over this scenario?)";
-  function HP({ isOpen: e, onClose: t }) {
+  const HP = " (save over this scenario?)";
+  function VP({ isOpen: e, onClose: t }) {
     const s = pe(), { actionService: r } = De(), a = V.getActiveCampaign(s), [o, i] = p.useState(""), c = p.useRef(null), l = Ux(a), d = Pc(l), u = (T) => {
       var _a2;
       return ((_a2 = a.VoxelTerrains.find((R) => R.Id === T)) == null ? void 0 : _a2.Name) ?? "Unknown terrain";
@@ -34080,7 +34081,7 @@ PROG ${o}`;
                       className: "opacity-70",
                       children: [
                         v,
-                        BP
+                        HP
                       ]
                     })
                   ]
@@ -34121,7 +34122,7 @@ PROG ${o}`;
       ]
     });
   }
-  const VP = 44, Pp = 4, Dd = 5, _p = "inline-flex h-10 w-36 items-center gap-1.5 px-3 text-sm font-medium whitespace-nowrap transition-colors", zP = "bg-primary border-base-300 text-primary-content shadow-sm", Dp = "border-base-300 bg-base-100 text-base-content hover:bg-base-200";
+  const zP = 44, Pp = 4, Dd = 5, _p = "inline-flex h-10 w-36 items-center gap-1.5 px-3 text-sm font-medium whitespace-nowrap transition-colors", GP = "bg-primary border-base-300 text-primary-content shadow-sm", Dp = "border-base-300 bg-base-100 text-base-content hover:bg-base-200";
   function Lp({ name: e }) {
     return n.jsxs(n.Fragment, {
       children: [
@@ -34135,7 +34136,7 @@ PROG ${o}`;
       ]
     });
   }
-  function GP({ campaign: e, cameraMode: t, onCameraModeChange: s, cameraModes: r, getCameraModeDisabledReason: a, xRayActors: o, onToggleXRay: i, showTerrainLinks: c, onToggleTerrainLinks: l }) {
+  function WP({ campaign: e, cameraMode: t, onCameraModeChange: s, cameraModes: r, getCameraModeDisabledReason: a, xRayActors: o, onToggleXRay: i, showTerrainLinks: c, onToggleTerrainLinks: l }) {
     const { viewedTerrainId: d, viewedTerrainIds: u, setViewedTerrain: f, clearViewedTerrain: m } = ls(), [h, g] = p.useState(false), { actionService: b } = De(), x = e.GameState.Characters, v = e.GameState.Entities, y = d ? e.VoxelTerrains.find((_) => _.Id === d) : void 0, w = d ? x.filter((_) => _.Position.terrainId !== d) : [], N = () => {
       !b || !d || w.length === 0 || b.execute("terrain:moveActors", {
         actorIds: w.map((_) => _.Id),
@@ -34191,7 +34192,7 @@ PROG ${o}`;
           k(G);
           return;
         }
-        const X = $ - VP;
+        const X = $ - zP;
         let z = 0, ee = 0;
         for (let W = 0; W < G; W++) {
           const ne = z + (ee > 0 ? Pp : 0) + U[W];
@@ -34307,7 +34308,7 @@ PROG ${o}`;
                     }),
                     n.jsx("button", {
                       role: "tab",
-                      className: `${_p} ${O ? zP : Dp} ${L ? "" : "border-r"}`,
+                      className: `${_p} ${O ? GP : Dp} ${L ? "" : "border-r"}`,
                       onClick: () => f(_.Id),
                       "aria-selected": O,
                       children: n.jsx(Lp, {
@@ -34383,15 +34384,15 @@ PROG ${o}`;
             })
           ]
         }),
-        n.jsx(HP, {
+        n.jsx(VP, {
           isOpen: h,
           onClose: () => g(false)
         })
       ]
     });
   }
-  const WP = 500, XP = 150;
-  function en(e, t = WP, s = {}) {
+  const XP = 500, qP = 150;
+  function en(e, t = XP, s = {}) {
     const { flushOnUnmount: r = true } = s, a = p.useRef(e);
     a.current = e;
     const o = p.useRef(t);
@@ -34692,7 +34693,7 @@ PROG ${o}`;
         }) : v === "grid" ? n.jsxs("div", {
           className: "flex flex-wrap gap-4 justify-between",
           children: [
-            x.map((w) => n.jsx(qP, {
+            x.map((w) => n.jsx(YP, {
               item: w
             }, w.id)),
             [
@@ -34704,7 +34705,7 @@ PROG ${o}`;
           ]
         }) : n.jsx("div", {
           className: "space-y-2",
-          children: x.map((w) => n.jsx(YP, {
+          children: x.map((w) => n.jsx(KP, {
             item: w
           }, w.id))
         })
@@ -34724,7 +34725,7 @@ PROG ${o}`;
       })
     });
   }
-  function qP({ item: e }) {
+  function YP({ item: e }) {
     const t = (s) => {
       var _a2;
       s.target.closest("button") || ((_a2 = e.onClick) == null ? void 0 : _a2.call(e));
@@ -34806,7 +34807,7 @@ PROG ${o}`;
       ]
     });
   }
-  function YP({ item: e }) {
+  function KP({ item: e }) {
     const t = (s) => {
       var _a2;
       s.target.closest("button") || ((_a2 = e.onClick) == null ? void 0 : _a2.call(e));
@@ -34955,7 +34956,7 @@ PROG ${o}`;
       }
     });
   }
-  function KP({ isOpen: e, onClose: t, title: s, children: r }) {
+  function QP({ isOpen: e, onClose: t, title: s, children: r }) {
     return n.jsxs("div", {
       className: "drawer drawer-start z-50",
       children: [
@@ -35015,7 +35016,7 @@ PROG ${o}`;
       })
     });
   }
-  function QP({ label: e, valueClassName: t, children: s }) {
+  function ZP({ label: e, valueClassName: t, children: s }) {
     return n.jsxs("div", {
       className: "flex justify-between items-center py-2 border-b border-base-300 last:border-b-0",
       children: [
@@ -35030,13 +35031,13 @@ PROG ${o}`;
       ]
     });
   }
-  function ZP({ className: e, children: t }) {
+  function JP({ className: e, children: t }) {
     return n.jsx("div", {
       className: `bg-base-300 rounded-lg overflow-hidden flex items-center justify-center ${e ?? ""}`,
       children: t
     });
   }
-  function JP({ kind: e, name: t, current: s, required: r }) {
+  function e_({ kind: e, name: t, current: s, required: r }) {
     return n.jsxs("div", {
       className: "alert alert-warning text-sm py-2",
       children: [
@@ -35120,7 +35121,7 @@ PROG ${o}`;
     }, j = !r.imageId;
     return n.jsxs(n.Fragment, {
       children: [
-        n.jsxs(KP, {
+        n.jsxs(QP, {
           isOpen: e,
           onClose: t,
           title: s.title,
@@ -35133,7 +35134,7 @@ PROG ${o}`;
                   children: j ? n.jsx(vs, {
                     value: r.imageId,
                     onChange: r.onChange
-                  }) : n.jsx(ZP, {
+                  }) : n.jsx(JP, {
                     className: "w-full aspect-square",
                     children: n.jsx(Pt, {
                       imageId: r.imageId,
@@ -35150,7 +35151,7 @@ PROG ${o}`;
                       children: "Actions"
                     }),
                     N.map(v),
-                    (_a2 = s.costWarnings) == null ? void 0 : _a2.map((E, S) => n.jsx(JP, {
+                    (_a2 = s.costWarnings) == null ? void 0 : _a2.map((E, S) => n.jsx(e_, {
                       kind: E.kind,
                       name: E.name,
                       current: E.current,
@@ -35200,7 +35201,7 @@ PROG ${o}`;
             n.jsxs(Ld, {
               title: "Properties",
               children: [
-                s.properties.map((E, S) => n.jsx(QP, {
+                s.properties.map((E, S) => n.jsx(ZP, {
                   label: E.label,
                   valueClassName: E.valueClassName,
                   children: E.value
@@ -35698,10 +35699,10 @@ PROG ${o}`;
       createTitle: "Create Item",
       editTitle: "Edit Item",
       viewTitle: "View Item",
-      children: n.jsx(e_, {})
+      children: n.jsx(t_, {})
     });
   }
-  function e_({ data: e, onChange: t }) {
+  function t_({ data: e, onChange: t }) {
     if (!e || !t) return null;
     const s = (r, a) => {
       t({
@@ -35959,7 +35960,7 @@ PROG ${o}`;
       ]
     });
   }
-  function t_({ isOpen: e, onClose: t, slot: s, actor: r }) {
+  function n_({ isOpen: e, onClose: t, slot: s, actor: r }) {
     const a = pe(), { actionService: o } = De(), i = V.getActiveCampaign(a), c = i.SkillTemplates.find((y) => y.Id === s.Id);
     if (!c) return null;
     const l = s.UsesLeft === void 0 || s.UsesLeft > 0, d = !!c.CanTargetActor || !!c.CanTargetPosition, u = s.UsesLeft !== void 0 ? `${s.UsesLeft} / ${c.MaxUses || "\u221E"} uses` : "Unlimited uses", f = Qc(c.StatCost, i.Settings), m = Zc(c.ActionCost, i.Settings), h = Rb(r, c.StatCost, i.Settings), g = Mb(r, c.ActionCost, i.Settings), b = [];
@@ -36100,10 +36101,10 @@ PROG ${o}`;
       createTitle: "Create Skill",
       editTitle: "Edit Skill",
       viewTitle: "View Skill",
-      children: n.jsx(n_, {})
+      children: n.jsx(s_, {})
     });
   }
-  function n_({ data: e, onChange: t }) {
+  function s_({ data: e, onChange: t }) {
     if (!e || !t) return null;
     const s = (r, a) => {
       t({
@@ -36287,7 +36288,7 @@ PROG ${o}`;
           searchEnabled: true,
           searchPlaceholder: "Search skills..."
         }),
-        a.value && n.jsx(t_, {
+        a.value && n.jsx(n_, {
           isOpen: a.isOpen,
           onClose: a.close,
           slot: a.value,
@@ -36304,7 +36305,7 @@ PROG ${o}`;
       ]
     });
   }
-  function s_({ isOpen: e, onClose: t, slot: s, actor: r }) {
+  function r_({ isOpen: e, onClose: t, slot: s, actor: r }) {
     const a = pe(), { actionService: o } = De(), c = V.getActiveCampaign(a).StatusTemplates.find((h) => h.Id === s.Id);
     if (!c) return null;
     const l = s.expiration, d = l.type === "turns" || l.type === "days", u = l.type === "turns" ? "turns" : "days", f = l.type === "turns" ? l.turnsLeft : l.type === "days" ? l.daysLeft : 0, m = {
@@ -36416,10 +36417,10 @@ PROG ${o}`;
       createTitle: "Create Status",
       editTitle: "Edit Status",
       viewTitle: "View Status",
-      children: n.jsx(r_, {})
+      children: n.jsx(a_, {})
     });
   }
-  function r_({ data: e, onChange: t }) {
+  function a_({ data: e, onChange: t }) {
     if (!e || !t) return null;
     const s = (l, d) => {
       t({
@@ -36630,7 +36631,7 @@ PROG ${o}`;
           searchEnabled: true,
           searchPlaceholder: "Search statuses..."
         }),
-        a.value && n.jsx(s_, {
+        a.value && n.jsx(r_, {
           isOpen: a.isOpen,
           onClose: a.close,
           slot: a.value,
@@ -36765,7 +36766,7 @@ PROG ${o}`;
       ]
     });
   }
-  function a_(e) {
+  function o_(e) {
     const t = e.trim();
     if (t === "") return null;
     const s = Number(t);
@@ -36808,7 +36809,7 @@ PROG ${o}`;
         }) : n.jsx("div", {
           className: "grid grid-cols-2 gap-x-3 gap-y-2",
           children: u.map((f) => {
-            const m = (s == null ? void 0 : s.get(f.Id)) ?? f.Value, h = o ? a_(m) : null;
+            const m = (s == null ? void 0 : s.get(f.Id)) ?? f.Value, h = o ? o_(m) : null;
             return n.jsxs("div", {
               className: "flex gap-2 items-center text-sm",
               children: [
@@ -36847,7 +36848,7 @@ PROG ${o}`;
     requestRoll: Fp,
     registerHandler: Fp
   });
-  function o_({ children: e }) {
+  function i_({ children: e }) {
     const t = p.useRef(null), s = p.useCallback((a) => {
       t.current = a;
     }, []), r = p.useCallback((a) => {
@@ -36865,7 +36866,7 @@ PROG ${o}`;
   function Im() {
     return p.useContext(Hb);
   }
-  function i_({ actor: e }) {
+  function c_({ actor: e }) {
     var _a2;
     const t = pe(), { actionService: s } = De(), r = V.getActiveCampaign(t), a = t.User.Role === "player", o = t.User.SelectedCharacters[r.RoomCode], i = (t.User.ImpersonatedActors ?? {})[r.RoomCode], c = a ? o : i, l = c ? r.GameState.Characters.find((u) => u.Id === c) ?? r.GameState.Entities.find((u) => u.Id === c) : null, d = [];
     if (Gt(e)) {
@@ -36893,13 +36894,13 @@ PROG ${o}`;
       children: d
     });
   }
-  function c_() {
+  function l_() {
     const { selectedActor: e } = qr(), t = pe(), { actionService: s } = De(), r = V.getActiveCampaign(t), a = t.User.SelectedCharacters[r.RoomCode], o = t.User.Role === "dm";
     if (!e) return n.jsx(st, {
       children: "Select an actor on the map to inspect"
     });
     const i = e.kind === "character" ? r.GameState.Characters.find((c) => c.Id === e.id) : r.GameState.Entities.find((c) => c.Id === e.id);
-    return i ? n.jsx(l_, {
+    return i ? n.jsx(d_, {
       actor: i,
       kind: e.kind,
       isDM: o,
@@ -36910,7 +36911,7 @@ PROG ${o}`;
       children: "Actor not found"
     });
   }
-  function l_({ actor: e, kind: t, isDM: s, isMyCharacter: r, actionService: a, playersSeeEntityHealth: o }) {
+  function d_({ actor: e, kind: t, isDM: s, isMyCharacter: r, actionService: a, playersSeeEntityHealth: o }) {
     const i = pe(), c = V.getActiveCampaign(i), [l, d] = p.useState("info"), [u, f] = p.useState(false), [m, h] = p.useState(e.Name), [g, b] = p.useState(e.Description || ""), [x, v] = p.useState(e.MoveSpeed), [y, w] = p.useState(e.Color ?? (t === "character" ? Mt.CHARACTER : Mt.ENTITY)), [N, C] = p.useState(new Map(e.Attributes.map((W) => [
       W.Id,
       W.Value
@@ -37063,7 +37064,7 @@ PROG ${o}`;
             n.jsxs("div", {
               className: "flex-1 overflow-y-auto",
               children: [
-                l === "info" && n.jsx(d_, {
+                l === "info" && n.jsx(u_, {
                   actor: e,
                   kind: t,
                   isDM: s,
@@ -37127,7 +37128,7 @@ PROG ${o}`;
       ]
     });
   }
-  function d_({ actor: e, kind: t, isDM: s, campaign: r, isMyCharacter: a, localName: o, localDescription: i, localMoveSpeed: c, localColor: l, localAttributes: d, playersSeeEntityHealth: u, editingMaxStats: f, setEditingMaxStats: m, handleNameChange: h, handleDescriptionChange: g, handleMoveSpeedChange: b, handleColorChange: x, handleAttributeChange: v, handleFieldChange: y, handleStatChange: w, handleActionsChange: N, handleDespawn: C, setShowObjectPicker: T, setShowTerrainPicker: R, actionService: j }) {
+  function u_({ actor: e, kind: t, isDM: s, campaign: r, isMyCharacter: a, localName: o, localDescription: i, localMoveSpeed: c, localColor: l, localAttributes: d, playersSeeEntityHealth: u, editingMaxStats: f, setEditingMaxStats: m, handleNameChange: h, handleDescriptionChange: g, handleMoveSpeedChange: b, handleColorChange: x, handleAttributeChange: v, handleFieldChange: y, handleStatChange: w, handleActionsChange: N, handleDespawn: C, setShowObjectPicker: T, setShowTerrainPicker: R, actionService: j }) {
     const { requestRoll: E } = Im(), S = r.Settings.VisibilitySettings, I = !s && t === "entity", A = !I || S.playersSeeEntityDescriptions !== false, k = !I || S.playersSeeEntityAttributes !== false, P = !I || S.playersSeeEntityActions !== false;
     return n.jsxs("div", {
       className: "space-y-3",
@@ -37188,7 +37189,7 @@ PROG ${o}`;
             })
           ]
         }),
-        n.jsx(i_, {
+        n.jsx(c_, {
           actor: e
         }),
         s ? n.jsx("div", {
@@ -37429,8 +37430,8 @@ PROG ${o}`;
       ]
     });
   }
-  function u_() {
-    const e = pe(), { actionService: t } = De(), s = V.getActiveCampaign(e), a = e.User.Role === "dm" && !!t, o = iN.getConfig(e), i = o.enabled !== false, c = s.GameState.CalendarDay ?? 0, [l, d] = p.useState(c);
+  function m_() {
+    const e = pe(), { actionService: t } = De(), s = V.getActiveCampaign(e), a = e.User.Role === "dm" && !!t, o = cN.getConfig(e), i = o.enabled !== false, c = s.GameState.CalendarDay ?? 0, [l, d] = p.useState(c);
     p.useEffect(() => {
       d(c);
     }, [
@@ -37442,7 +37443,7 @@ PROG ${o}`;
           CalendarDay: D
         }
       });
-    }), { parts: f, monthName: m, dayName: h } = p.useMemo(() => dN(l, o), [
+    }), { parts: f, monthName: m, dayName: h } = p.useMemo(() => uN(l, o), [
       l,
       o
     ]), g = o.daysPerWeek > 0, b = (o.weekLabel ?? "").trim() || "week", x = (o.monthLabel ?? "").trim(), v = (o.yearLabel ?? "").trim() || "Year", y = p.useMemo(() => x ? false : !o.monthNames || o.monthNames.length === 0 ? true : o.monthNames.every((D) => !D || !D.trim()), [
@@ -37508,7 +37509,7 @@ PROG ${o}`;
                   onClick: () => a && k(A === "day" ? null : "day"),
                   disabled: !a,
                   title: a ? "Edit day of month" : void 0,
-                  children: lN(f.day)
+                  children: dN(f.day)
                 }),
                 !y && n.jsxs(n.Fragment, {
                   children: [
@@ -37605,7 +37606,7 @@ PROG ${o}`;
             ]
           })
         }),
-        A && a && n.jsxs(m_, {
+        A && a && n.jsxs(h_, {
           anchorEl: P.current,
           onClose: () => k(null),
           children: [
@@ -37715,7 +37716,7 @@ PROG ${o}`;
       ]
     });
   }
-  function m_({ anchorEl: e, onClose: t, children: s }) {
+  function h_({ anchorEl: e, onClose: t, children: s }) {
     const r = p.useRef(null), [a, o] = p.useState({
       top: 0,
       left: 0
@@ -37762,7 +37763,7 @@ PROG ${o}`;
       ]
     }), document.body);
   }
-  const h_ = 300, Up = 0, $p = 3, f_ = 0.05, Bp = 0, Hp = 360, Vp = 0, zp = 90, p_ = {
+  const f_ = 300, Up = 0, $p = 3, p_ = 0.05, Bp = 0, Hp = 360, Vp = 0, zp = 90, g_ = {
     neutral: "icon-[mdi--weather-cloudy]",
     nighttime: "icon-[mdi--weather-night]",
     daytime: "icon-[mdi--weather-sunny]",
@@ -37771,14 +37772,14 @@ PROG ${o}`;
   function Od(e, t, s) {
     return Math.max(t, Math.min(s, e));
   }
-  function g_(e, t) {
+  function x_(e, t) {
     const s = Number(e);
     return Number.isFinite(s) ? s : t;
   }
   function wc(e) {
     return (e == null ? void 0 : e.trim().toLowerCase()) ?? "";
   }
-  function x_(e) {
+  function v_(e) {
     return {
       ...Hu,
       ...e ?? {}
@@ -37798,10 +37799,10 @@ PROG ${o}`;
   function Gp(e, t, s) {
     return Vb(e, s.Lighting) && zb(t, s.Background);
   }
-  function v_(e) {
-    return p_[e] ?? "icon-[mdi--palette-outline]";
+  function b_(e) {
+    return g_[e] ?? "icon-[mdi--palette-outline]";
   }
-  function b_({ color: e }) {
+  function y_({ color: e }) {
     return n.jsx("span", {
       className: "h-4 w-4 shrink-0 rounded-full border border-base-300",
       style: {
@@ -37833,13 +37834,13 @@ PROG ${o}`;
           max: r,
           step: a,
           value: t,
-          onChange: (l) => c(g_(l.target.value, t)),
+          onChange: (l) => c(x_(l.target.value, t)),
           disabled: i
         })
       ]
     });
   }
-  function y_({ terrainId: e }) {
+  function w_({ terrainId: e }) {
     var _a2, _b2, _c2, _d2, _e2;
     const t = pe(), { actionService: s } = De(), r = V.getActiveCampaign(t), a = t.User.Role === "dm", o = r.VoxelTerrains.find((F) => F.Id === e), i = a && !!s && !!o, c = (o == null ? void 0 : o.Name) ?? "Unknown Terrain", l = Ve.isHydrated(o), d = a || !l, [u, f] = p.useState(false), [m, h] = p.useState(null), [g, b] = p.useState(null), [x, v] = p.useState(""), y = p.useRef(null), w = p.useRef(null), N = p.useRef(null), C = p.useRef(s);
     p.useEffect(() => {
@@ -37853,7 +37854,7 @@ PROG ${o}`;
     ]), p.useEffect(() => () => {
       y.current && clearTimeout(y.current);
     }, []);
-    const T = p.useMemo(() => x_(o == null ? void 0 : o.Lighting), [
+    const T = p.useMemo(() => v_(o == null ? void 0 : o.Lighting), [
       (_a2 = o == null ? void 0 : o.Lighting) == null ? void 0 : _a2.Color,
       (_b2 = o == null ? void 0 : o.Lighting) == null ? void 0 : _b2.Intensity,
       (_c2 = o == null ? void 0 : o.Lighting) == null ? void 0 : _c2.Rotation,
@@ -37891,7 +37892,7 @@ PROG ${o}`;
       }, y.current && clearTimeout(y.current), y.current = setTimeout(() => {
         const U = N.current, G = w.current;
         P(), !(!U || !G) && k(U, G);
-      }, h_));
+      }, f_));
     }, D = (F) => {
       if (!o || !i) return;
       const U = {
@@ -38086,7 +38087,7 @@ PROG ${o}`;
                       value: j.Intensity,
                       min: Up,
                       max: $p,
-                      step: f_,
+                      step: p_,
                       display: j.Intensity.toFixed(2),
                       disabled: !i,
                       onChange: (F) => O({
@@ -38137,12 +38138,12 @@ PROG ${o}`;
                     title: `${F.Name} environment`,
                     children: [
                       n.jsx("span", {
-                        className: `${v_(F.Id)} h-4 w-4`
+                        className: `${b_(F.Id)} h-4 w-4`
                       }),
                       n.jsx("span", {
                         children: F.Name
                       }),
-                      n.jsx(b_, {
+                      n.jsx(y_, {
                         color: F.Background.Color
                       })
                     ]
@@ -38167,7 +38168,7 @@ PROG ${o}`;
       ]
     });
   }
-  function w_() {
+  function S_() {
     const [e, t] = p.useState(false);
     return p.useEffect(() => {
       var _a2;
@@ -38179,8 +38180,8 @@ PROG ${o}`;
       };
     }, []), e;
   }
-  function S_({ level: e, bars: t = 24, height: s = 64, className: r = "" }) {
-    const a = w_(), [o, i] = p.useState(() => Array.from({
+  function I_({ level: e, bars: t = 24, height: s = 64, className: r = "" }) {
+    const a = S_(), [o, i] = p.useState(() => Array.from({
       length: t
     }, () => 0)), c = p.useRef(null), l = Math.max(0, Math.min(1, e));
     return p.useEffect(() => {
@@ -38260,7 +38261,7 @@ PROG ${o}`;
     if (!e) throw new Error("useAudioState must be used within AudioStateProvider");
     return e;
   }
-  function I_() {
+  function N_() {
     const e = pe(), { actionService: t } = De(), s = V.getActiveCampaign(e), r = Ca(), o = s.GameState.Audio.map((k) => s.Audios.find((P) => P.Id === k)).filter(Boolean), i = o.length > 1, { currentTrackIndex: c } = Xb(), l = i ? o[c] : o[0], d = p.useMemo(() => Array.from(new Set(s.Audios.flatMap((k) => Pr(k.Tags).map((P) => P)))).sort(), [
       s.Audios
     ]), u = s.GameState.Volume, f = ge.getPlayerVolume(e), m = r ? u : f, [h, g] = p.useState(m * 100), [b, x] = p.useState(false), [v, y] = p.useState(""), w = p.useRef(null), N = p.useRef(null);
@@ -38306,7 +38307,7 @@ PROG ${o}`;
       t == null ? void 0 : t.execute("audio:setVolume", {
         volume: k
       });
-    }, XP), R = (k) => {
+    }, qP), R = (k) => {
       g(k);
       const P = k / 100;
       r ? T(P) : ge.setPlayerVolume({
@@ -38446,7 +38447,7 @@ PROG ${o}`;
             }),
             n.jsx("div", {
               className: "px-10",
-              children: n.jsx(S_, {
+              children: n.jsx(I_, {
                 level: h / 100,
                 bars: 40,
                 height: 56,
@@ -38524,7 +38525,7 @@ PROG ${o}`;
       ]
     });
   }
-  function N_({ dmToolbar: e = false } = {}) {
+  function C_({ dmToolbar: e = false } = {}) {
     const t = pe(), s = V.getActiveCampaign(t), r = s.GameState.Scene, a = Xs(), o = e ? "top-12" : "top-2", [i, c] = p.useState(() => {
       try {
         return localStorage.getItem("questnet.sceneMode") || "fixed";
@@ -38822,7 +38823,7 @@ PROG ${o}`;
     });
     return Nc.createPortal(k, document.body);
   }
-  function C_() {
+  function j_() {
     const e = pe(), { actionService: t } = De(), r = V.getActiveCampaign(e).GameState.Scene, a = !!r.EnvironmentImageId, o = !!r.FocusImageId, i = (l) => {
       t && t.execute("scene:setEnvironmentImage", {
         imageId: l || ""
@@ -38975,7 +38976,7 @@ PROG ${o}`;
       name: "d100"
     }
   ];
-  function j_() {
+  function A_() {
     return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
   }
   const Wp = [
@@ -38991,7 +38992,7 @@ PROG ${o}`;
     "#991b1b",
     "#b91c1c",
     "#1f2937"
-  ], A_ = Array.from({
+  ], E_ = Array.from({
     length: 18
   }, (e, t) => ({
     angle: t * 20,
@@ -38999,7 +39000,7 @@ PROG ${o}`;
     distance: 44 + t % 3 * 9,
     size: 4 + t % 4,
     color: Wp[t % Wp.length]
-  })), E_ = Array.from({
+  })), T_ = Array.from({
     length: 14
   }, (e, t) => ({
     angle: t * 25.7 + t % 2 * 8,
@@ -39009,7 +39010,7 @@ PROG ${o}`;
     color: Xp[t % Xp.length]
   }));
   function qp({ tone: e }) {
-    const t = e === "crit" ? A_ : E_;
+    const t = e === "crit" ? E_ : T_;
     return n.jsxs("div", {
       className: `dice-effect-burst dice-effect-burst-${e}`,
       "aria-hidden": "true",
@@ -39059,7 +39060,7 @@ PROG ${o}`;
     }
     return o;
   }
-  function T_({ sides: e, value: t, isCrit: s, isFumble: r, rainbowPhase: a, className: o = "" }) {
+  function k_({ sides: e, value: t, isCrit: s, isFumble: r, rainbowPhase: a, className: o = "" }) {
     const i = qb.find((h) => h.sides === e), c = `gradient-${e}-${Math.random().toString(36).slice(2, 7)}`;
     let l, d;
     if (s && (e === 20 || e === 100) && a !== void 0) {
@@ -39268,7 +39269,7 @@ PROG ${o}`;
       ]
     });
   }
-  function k_() {
+  function R_() {
     const e = pe(), { actionService: t } = De(), { registerHandler: s } = Im(), r = V.getActiveCampaign(e), a = e.User.Role, o = Xs(), i = p.useRef(null), [c, l] = p.useState(() => {
       try {
         return (localStorage.getItem("questnet.dice.open") ?? "0") === "1";
@@ -39287,7 +39288,7 @@ PROG ${o}`;
         error: null
       };
       try {
-        const $ = JI(d);
+        const $ = eN(d);
         return {
           canRoll: $,
           error: $ ? null : "Invalid formula"
@@ -39316,7 +39317,7 @@ PROG ${o}`;
       E.current && (window.clearInterval(E.current), E.current = null), N(0);
     }, _ = ($, J) => {
       const X = Date.now(), z = $.dice.map((ee) => ({
-        id: j_(),
+        id: A_(),
         sides: ee.sides,
         kept: ee.kept,
         isMax: ee.isMax,
@@ -39384,7 +39385,7 @@ PROG ${o}`;
             "dm",
             "owner"
           ], t.execute("log:create", {
-            action: `${X} ${eN(J)}`,
+            action: `${X} ${tN(J)}`,
             details: `Breakdown: ${J.breakdown}`,
             category: "dice",
             level: "important",
@@ -39433,7 +39434,7 @@ PROG ${o}`;
     const L = ($) => {
       u((J) => {
         try {
-          return F(ZI(J, $));
+          return F(JI(J, $));
         } catch {
           return `1d${$}`;
         }
@@ -39602,7 +39603,7 @@ PROG ${o}`;
                           !$.spinning && z && X && n.jsx(qp, {
                             tone: "fumble"
                           }),
-                          n.jsx(T_, {
+                          n.jsx(k_, {
                             sides: $.sides,
                             value: $.displayValue,
                             isCrit: !$.spinning && J,
@@ -39805,11 +39806,11 @@ PROG ${o}`;
       ]
     });
   }
-  const Yb = "DM", R_ = {
+  const Yb = "DM", M_ = {
     mentionedActorIds: [],
     matches: []
   };
-  function M_(e) {
+  function P_(e) {
     const t = e.GameState.Characters.map((s) => ({
       id: s.Id,
       name: s.Name
@@ -39819,18 +39820,18 @@ PROG ${o}`;
       name: "DM"
     }), t.filter((s) => s.name && s.name.trim().length > 0).sort((s, r) => r.name.length - s.name.length);
   }
-  function P_(e) {
+  function __(e) {
     return !!e && /[A-Za-z0-9]/.test(e);
   }
   function Kp(e, t) {
-    if (!e || t.length === 0) return R_;
+    if (!e || t.length === 0) return M_;
     const s = [], r = /* @__PURE__ */ new Set(), a = e.toLowerCase();
     for (let o = 0; o < e.length; o++) {
       if (e[o] !== "@" || o > 0 && !/\s/.test(e[o - 1])) continue;
       const i = o + 1;
       for (const c of t) {
         const l = c.name;
-        if (a.substr(i, l.length) === l.toLowerCase() && !P_(e[i + l.length])) {
+        if (a.substr(i, l.length) === l.toLowerCase() && !__(e[i + l.length])) {
           s.push({
             start: o,
             end: i + l.length,
@@ -39846,7 +39847,7 @@ PROG ${o}`;
       matches: s
     };
   }
-  const __ = {
+  const D_ = {
     combat: "#b91c1c",
     character: "#1d4ed8",
     item: "#a16207",
@@ -39858,7 +39859,7 @@ PROG ${o}`;
     sticker: "#334155",
     ping: "#0e7490",
     system: "#334155"
-  }, D_ = {
+  }, L_ = {
     combat: "#f87171",
     character: "#60a5fa",
     item: "#fbbf24",
@@ -39874,7 +39875,7 @@ PROG ${o}`;
   function Qp(e) {
     return `color-mix(in oklab, ${e} 12%, transparent)`;
   }
-  function L_() {
+  function O_() {
     const [e, t] = p.useState(() => document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light");
     return p.useEffect(() => {
       const s = () => {
@@ -39889,9 +39890,9 @@ PROG ${o}`;
       }), () => r.disconnect();
     }, []), e;
   }
-  const Zp = "quest-net-log-filters", Jp = 50, Ud = 50, O_ = 100, F_ = 100;
-  function U_({ isFloating: e = false, onClose: t }) {
-    const s = pe(), { actionService: r } = De(), o = L_() === "dark" ? D_ : __, [i, c] = p.useState(""), [l, d] = p.useState(""), [u, f] = p.useState(false), [m, h] = p.useState(Jp), [g, b] = p.useState(false), x = p.useRef(null), v = p.useRef(null), y = p.useRef(null), w = p.useRef(true), N = p.useRef(null), C = p.useRef(0), T = p.useRef(void 0), R = V.getActiveCampaign(s), j = s.User.Role, E = s.User.SelectedCharacters[R.RoomCode], S = p.useMemo(() => M_(R), [
+  const Zp = "quest-net-log-filters", Jp = 50, Ud = 50, F_ = 100, U_ = 100;
+  function $_({ isFloating: e = false, onClose: t }) {
+    const s = pe(), { actionService: r } = De(), o = O_() === "dark" ? L_ : D_, [i, c] = p.useState(""), [l, d] = p.useState(""), [u, f] = p.useState(false), [m, h] = p.useState(Jp), [g, b] = p.useState(false), x = p.useRef(null), v = p.useRef(null), y = p.useRef(null), w = p.useRef(true), N = p.useRef(null), C = p.useRef(0), T = p.useRef(void 0), R = V.getActiveCampaign(s), j = s.User.Role, E = s.User.SelectedCharacters[R.RoomCode], S = p.useMemo(() => P_(R), [
       R.GameState.Characters
     ]), [I, A] = p.useState(() => {
       try {
@@ -39943,12 +39944,12 @@ PROG ${o}`;
     const U = () => {
       const Y = v.current;
       if (!Y) return;
-      const B = Y.scrollHeight - Y.scrollTop - Y.clientHeight < O_;
+      const B = Y.scrollHeight - Y.scrollTop - Y.clientHeight < F_;
       w.current = B, b(!B);
     }, G = () => {
       U();
       const Y = v.current;
-      Y && Y.scrollTop < F_ && L && (N.current = Y.scrollHeight, h((de) => de + Ud));
+      Y && Y.scrollTop < U_ && L && (N.current = Y.scrollHeight, h((de) => de + Ud));
     };
     p.useLayoutEffect(() => {
       const Y = v.current;
@@ -40228,7 +40229,7 @@ PROG ${o}`;
       ]
     });
   }
-  function $_() {
+  function B_() {
     const e = pe(), { actionService: t } = De(), s = V.getActiveCampaign(e), [r, a] = p.useState(""), [o, i] = p.useState(null), [c, l] = p.useState(""), [d, u] = p.useState(""), [f, m] = p.useState(null), [h, g] = p.useState(false), b = e.User.SelectedCharacters[s.RoomCode], x = b ? s.GameState.Characters.find((k) => k.Id === b) : null;
     if (p.useEffect(() => {
       if (f) {
@@ -40467,7 +40468,7 @@ PROG ${o}`;
       ]
     });
   }
-  function B_() {
+  function H_() {
     const e = pe(), { actionService: t } = De(), { requestRoll: s } = Im(), r = V.getActiveCampaign(e), [a, o] = p.useState(false), [i, c] = p.useState(null), l = e.User.SelectedCharacters[r.RoomCode], d = r.GameState.Characters.find((U) => U.Id === l), [u, f] = p.useState(""), [m, h] = p.useState(""), [g, b] = p.useState(""), [x, v] = p.useState(Mt.CHARACTER), [y, w] = p.useState(/* @__PURE__ */ new Map()), [N, C] = p.useState(0);
     p.useEffect(() => {
       d && (f(d.Name), h(d.Description || ""), b(d.CritMessage || ""), v(d.Color ?? Mt.CHARACTER), C(d.MoveSpeed), w(new Map(d.Attributes.map((U) => [
@@ -40717,7 +40718,7 @@ PROG ${o}`;
       ]
     });
   }
-  function H_(e, t) {
+  function V_(e, t) {
     return t.StatDefinitions.map((s) => {
       let r = 0, a = 0;
       for (const o of e) {
@@ -40737,7 +40738,7 @@ PROG ${o}`;
     }).filter((s) => s !== null);
   }
   function Kb({ title: e, actors: t, settings: s }) {
-    const r = H_(t, s), a = `aggregateStatsSummary:expanded:${e}`, [o, i] = p.useState(() => St.load(a) ?? false), c = () => {
+    const r = V_(t, s), a = `aggregateStatsSummary:expanded:${e}`, [o, i] = p.useState(() => St.load(a) ?? false), c = () => {
       i((l) => {
         const d = !l;
         return St.save(a, d), d;
@@ -40814,7 +40815,7 @@ PROG ${o}`;
     const r = e.closest("[role='button']");
     return !!(r && r !== t);
   }
-  function V_({ onInspectActor: e }) {
+  function z_({ onInspectActor: e }) {
     const t = pe(), { actionService: s } = De(), { selectActor: r } = qr(), a = V.getActiveCampaign(t), o = t.User.SelectedCharacters[a.RoomCode], i = a.GameState.Characters, c = (j, E) => {
       if (!s) return;
       const S = E.map((I) => ({
@@ -40979,7 +40980,7 @@ PROG ${o}`;
       ]
     });
   }
-  function z_({ onInspectActor: e }) {
+  function G_({ onInspectActor: e }) {
     const t = pe(), { actionService: s } = De(), { selectActor: r } = qr(), { viewedTerrainId: a } = ls(), o = V.getActiveCampaign(t), [i, c] = p.useState("all"), [l, d] = p.useState("viewed"), [u, f] = p.useState(""), [m, h] = p.useState([]), [g, b] = p.useState(false), [x, v] = p.useState(false), y = o.GameState.CombatState, w = o.Settings.InitiativeSettings, C = ((w == null ? void 0 : w.Mode) ?? "party") === "individual", T = [
       ...o.GameState.Characters.map((B) => ({
         actor: B,
@@ -41000,7 +41001,7 @@ PROG ${o}`;
     ].sort((se, re) => {
       const Se = S.get(se.actor.Id), Me = S.get(re.actor.Id);
       return Se !== void 0 && Me !== void 0 && Se !== Me ? Se - Me : Se !== void 0 && Me === void 0 ? -1 : Se === void 0 && Me !== void 0 ? 1 : (A.get(se.actor.Id) ?? 0) - (A.get(re.actor.Id) ?? 0);
-    }) : B, P = u.trim().toLowerCase(), M = k(G_(i, T).filter((B) => !(l === "viewed" && a && B.actor.Position.terrainId !== a || P && !B.actor.Name.toLowerCase().includes(P)))), D = new Set(M.map((B) => B.actor.Id)), _ = m.filter((B) => D.has(B)).length, O = M.length > 0 && _ === M.length, L = [
+    }) : B, P = u.trim().toLowerCase(), M = k(W_(i, T).filter((B) => !(l === "viewed" && a && B.actor.Position.terrainId !== a || P && !B.actor.Name.toLowerCase().includes(P)))), D = new Set(M.map((B) => B.actor.Id)), _ = m.filter((B) => D.has(B)).length, O = M.length > 0 && _ === M.length, L = [
       {
         label: "Items",
         items: o.ItemTemplates,
@@ -41119,7 +41120,7 @@ PROG ${o}`;
                 active: i === B,
                 onClick: () => F(B),
                 className: "btn-sm join-item",
-                children: W_(B)
+                children: X_(B)
               }, B))
             }),
             n.jsx("div", {
@@ -41349,7 +41350,7 @@ PROG ${o}`;
       ]
     });
   }
-  function G_(e, t) {
+  function W_(e, t) {
     const s = (r) => r.kind === "entity" && Gt(r.actor);
     switch (e) {
       case "party":
@@ -41363,7 +41364,7 @@ PROG ${o}`;
         return t.filter((r) => !s(r));
     }
   }
-  function W_(e) {
+  function X_(e) {
     switch (e) {
       case "all":
         return "All";
@@ -41375,11 +41376,11 @@ PROG ${o}`;
         return "Items";
     }
   }
-  function X_() {
+  function q_() {
     const e = pe(), { actionService: t } = De(), s = V.getActiveCampaign(e), r = e.User.Role === "dm", a = r && !!t, [o, i] = p.useState(false), c = s.GameState.CombatState, l = s.Settings.InitiativeSettings, u = ((l == null ? void 0 : l.Mode) ?? "party") === "individual", m = (u ? [
       ...s.GameState.Characters,
       ...s.GameState.Entities
-    ] : c.initiativeSide === "enemies" ? s.GameState.Entities : s.GameState.Characters).filter((E) => !Gt(E) && Oc(E, l, s.Settings)), h = c.isActive ? Fc(m, l, s.Settings) : [], g = IN(h, c.RoundCompleted), b = [
+    ] : c.initiativeSide === "enemies" ? s.GameState.Entities : s.GameState.Characters).filter((E) => !Gt(E) && Oc(E, l, s.Settings)), h = c.isActive ? Fc(m, l, s.Settings) : [], g = NN(h, c.RoundCompleted), b = [
       ...s.GameState.Characters,
       ...s.GameState.Entities
     ], x = g !== null ? h.filter((E) => E.Order === g).map((E) => {
@@ -41620,7 +41621,7 @@ PROG ${o}`;
       })
     });
   }
-  function q_() {
+  function Y_() {
     const e = pe(), { actionService: t } = De(), [s, r] = p.useState(false), [a, o] = p.useState(0), [i, c] = p.useState(0), l = p.useRef(null), d = V.getActiveCampaign(e), u = e.User.Role === "player", f = e.User.SelectedCharacters[d.RoomCode], m = (e.User.ImpersonatedActors ?? {})[d.RoomCode], h = u ? f : m, g = !h;
     p.useEffect(() => {
       function v(y) {
@@ -41669,7 +41670,7 @@ PROG ${o}`;
       ]
     });
   }
-  function Y_({ inventory: e }) {
+  function K_({ inventory: e }) {
     const t = pe(), { actionService: s } = De(), r = V.getActiveCampaign(t), [a, o] = p.useState(false), [i, c] = p.useState(false), [l, d] = p.useState(null), [u, f] = p.useState(false), [m, h] = p.useState(null), g = (x, v, y) => {
       s && s.execute("sharedInventory:editStat", {
         inventoryId: e.Id,
@@ -41873,7 +41874,7 @@ PROG ${o}`;
       ]
     });
   }
-  function K_({ active: e, onClick: t, title: s, icon: r }) {
+  function Q_({ active: e, onClick: t, title: s, icon: r }) {
     return n.jsx(gt, {
       active: e,
       onClick: t,
@@ -42093,11 +42094,11 @@ PROG ${o}`;
           return "Combat";
       }
     };
-    return n.jsx(o_, {
+    return n.jsx(i_, {
       children: n.jsxs(bv, {
         children: [
-          n.jsx(Q_, {}),
-          n.jsx(Z_, {
+          n.jsx(Z_, {}),
+          n.jsx(J_, {
             onSelectionChange: tt
           }),
           n.jsxs("div", {
@@ -42106,7 +42107,7 @@ PROG ${o}`;
               n.jsxs("div", {
                 className: "flex-1 overflow-hidden relative isolate",
                 children: [
-                  n.jsx(N_, {
+                  n.jsx(C_, {
                     dmToolbar: r && !U
                   }),
                   n.jsx(ab, {
@@ -42136,7 +42137,7 @@ PROG ${o}`;
                       })
                     ]
                   }),
-                  !U && r && n.jsx(GP, {
+                  !U && r && n.jsx(WP, {
                     campaign: s,
                     cameraMode: h,
                     onCameraModeChange: g,
@@ -42168,10 +42169,10 @@ PROG ${o}`;
                       getDisabledReason: X
                     })
                   }),
-                  n.jsx(k_, {}),
+                  n.jsx(R_, {}),
                   n.jsx("div", {
                     className: "absolute right-14 lg:right-2 bottom-2 z-20",
-                    children: n.jsx(q_, {})
+                    children: n.jsx(Y_, {})
                   })
                 ]
               }),
@@ -42203,7 +42204,7 @@ PROG ${o}`;
                       n.jsx("div", {
                         className: `flex-1 min-h-0 overflow-y-auto flex flex-col items-center py-1 gap-1 ${o ? "border-t-2" : ""} lg:border-t-2`,
                         children: Se.map((xe) => {
-                          const me = n.jsx(K_, {
+                          const me = n.jsx(Q_, {
                             active: w === xe.key,
                             onClick: () => Ce(xe.key),
                             title: xe.title,
@@ -42278,12 +42279,12 @@ PROG ${o}`;
                           !c && n.jsxs("div", {
                             className: "flex-1 overflow-auto p-4 bg-base-100",
                             children: [
-                              v === "music" && n.jsx(I_, {}),
-                              v === "calendar" && n.jsx(u_, {}),
-                              v === "terrain" && n.jsx(y_, {
+                              v === "music" && n.jsx(N_, {}),
+                              v === "calendar" && n.jsx(m_, {}),
+                              v === "terrain" && n.jsx(w_, {
                                 terrainId: A ?? void 0
                               }),
-                              v === "combat" && n.jsx(X_, {})
+                              v === "combat" && n.jsx(q_, {})
                             ]
                           })
                         ]
@@ -42291,7 +42292,7 @@ PROG ${o}`;
                       n.jsxs("div", {
                         className: `flex-1 overflow-auto p-4 bg-base-100 ${c ? "" : "border-t-2"}`,
                         children: [
-                          w === "character" && n.jsx(B_, {}),
+                          w === "character" && n.jsx(H_, {}),
                           w === "equipment" && E && n.jsx(yc, {
                             actor: E,
                             mode: "equipment"
@@ -42306,19 +42307,19 @@ PROG ${o}`;
                           w === "statuses" && E && n.jsx($b, {
                             actor: E
                           }),
-                          !r && w === "party" && n.jsx(V_, {
+                          !r && w === "party" && n.jsx(z_, {
                             onInspectActor: $e
                           }),
-                          r && w === "overview" && n.jsx(z_, {
+                          r && w === "overview" && n.jsx(G_, {
                             onInspectActor: $e
                           }),
-                          w === "notes" && n.jsx($_, {}),
-                          w === "inspector" && n.jsx(c_, {}),
-                          w === "scene" && n.jsx(C_, {}),
-                          w === "log" && n.jsx(U_, {}),
+                          w === "notes" && n.jsx(B_, {}),
+                          w === "inspector" && n.jsx(l_, {}),
+                          w === "scene" && n.jsx(j_, {}),
+                          w === "log" && n.jsx($_, {}),
                           w === "shared-inventories" && n.jsx("div", {
                             className: "space-y-4",
-                            children: (_b2 = s.Settings.SharedInventories) == null ? void 0 : _b2.map((xe) => n.jsx(Y_, {
+                            children: (_b2 = s.Settings.SharedInventories) == null ? void 0 : _b2.map((xe) => n.jsx(K_, {
                               inventory: xe
                             }, xe.Id))
                           })
@@ -42334,7 +42335,7 @@ PROG ${o}`;
       })
     });
   }
-  function Q_() {
+  function Z_() {
     const e = pe(), t = V.getActiveCampaign(e), s = Ca(), { selectedActor: r } = qr(), { setViewedTerrain: a } = ls(), o = (r == null ? void 0 : r.id) ?? null;
     return p.useEffect(() => {
       if (!s || !o) return;
@@ -42345,7 +42346,7 @@ PROG ${o}`;
       s
     ]), null;
   }
-  function Z_({ onSelectionChange: e }) {
+  function J_({ onSelectionChange: e }) {
     const { selectedActor: t } = qr(), s = (t == null ? void 0 : t.id) ?? null;
     return p.useEffect(() => {
       e(s);
@@ -42354,12 +42355,12 @@ PROG ${o}`;
       e
     ]), null;
   }
-  const J_ = 5e3, eD = 1e4;
+  const eD = 5e3, tD = 1e4;
   function Zb() {
     const e = pe(), t = V.getActiveCampaign(e), [s, r] = p.useState([]), [a, o] = p.useState(/* @__PURE__ */ new Set()), i = e.User.Role, c = e.User.SelectedCharacters[t.RoomCode], l = ge.getCritSplashEnabled(e), d = (h) => !h.MentionedActorIds || h.MentionedActorIds.length === 0 ? false : !!(c && h.MentionedActorIds.includes(c) || i === "dm" && h.MentionedActorIds.includes(Yb));
     p.useEffect(() => {
       const h = Date.now(), b = Dn.getChronologicalLog(t).filter((v) => {
-        const y = v.Level === "important" || v.Level === "critical", w = h - v.Timestamp < eD, N = Dn.canUserSeeEntry(v, i, c);
+        const y = v.Level === "important" || v.Level === "critical", w = h - v.Timestamp < tD, N = Dn.canUserSeeEntry(v, i, c);
         return (y || d(v)) && (!mu(v) || !l) && w && !a.has(v.Id) && N;
       });
       if (b.length === 0) return;
@@ -42376,7 +42377,7 @@ PROG ${o}`;
       ])), x.forEach((v) => {
         setTimeout(() => {
           r((y) => y.filter((w) => w.id !== v.id));
-        }, J_);
+        }, eD);
       });
     }, [
       t.Log,
@@ -42401,7 +42402,7 @@ PROG ${o}`;
       className: "fixed top-4 left-1/2 transform -translate-x-1/2 z-50 space-y-2 pointer-events-none",
       children: [
         s.map((h) => {
-          const g = Lc(h.entry), b = mu(h.entry), x = tN(h.entry), v = d(h.entry), y = b ? f(h.entry) : "CRITICAL!";
+          const g = Lc(h.entry), b = mu(h.entry), x = nN(h.entry), v = d(h.entry), y = b ? f(h.entry) : "CRITICAL!";
           let w = "icon-[mdi--information]";
           v ? w = "icon-[mdi--at]" : b ? w = "icon-[game-icons--trophy]" : x ? w = "icon-[game-icons--broken-skull]" : g && (w = "icon-[game-icons--dice-twenty-faces-one]");
           let N = "alert-info", C = "animate-slide-in";
@@ -42456,7 +42457,7 @@ PROG ${o}`;
       ]
     });
   }
-  const tD = 1e4, ht = {
+  const nD = 1e4, ht = {
     skew: -15,
     portrait: {
       dur: 0.55,
@@ -42485,7 +42486,7 @@ PROG ${o}`;
       opacity: 0.6
     },
     exit: 0.4
-  }, eg = "#ffffff", nD = "#000000", Ic = 280, sD = [
+  }, eg = "#ffffff", sD = "#000000", Ic = 280, rD = [
     [
       44,
       58,
@@ -42529,11 +42530,11 @@ PROG ${o}`;
       0.55
     ]
   ];
-  function rD(e) {
-    const t = sD.map(([r, a, o, i]) => `<text x='${r}' y='${a}' font-size='${o}' text-anchor='middle' dominant-baseline='central' fill='${e}' fill-opacity='${i}'>\u2726</text>`).join(""), s = `<svg xmlns='http://www.w3.org/2000/svg' width='${Ic}' height='${Ic}'>${t}</svg>`;
+  function aD(e) {
+    const t = rD.map(([r, a, o, i]) => `<text x='${r}' y='${a}' font-size='${o}' text-anchor='middle' dominant-baseline='central' fill='${e}' fill-opacity='${i}'>\u2726</text>`).join(""), s = `<svg xmlns='http://www.w3.org/2000/svg' width='${Ic}' height='${Ic}'>${t}</svg>`;
     return 'url("data:image/svg+xml;utf8,' + encodeURIComponent(s) + '")';
   }
-  function aD(e, t) {
+  function oD(e, t) {
     const s = [
       e.GameState.Characters,
       e.GameState.Entities,
@@ -42546,21 +42547,21 @@ PROG ${o}`;
     }
     return null;
   }
-  function oD(e, t) {
-    const s = e.ActorId ? aD(t, e.ActorId) : null, r = (s == null ? void 0 : s.CritMessage) || "CRITICAL!";
+  function iD(e, t) {
+    const s = e.ActorId ? oD(t, e.ActorId) : null, r = (s == null ? void 0 : s.CritMessage) || "CRITICAL!";
     return {
       id: e.Id,
       message: r,
       name: (s == null ? void 0 : s.Name) || "",
       imageId: s == null ? void 0 : s.Image,
       color: (s == null ? void 0 : s.Color) || "#38468a",
-      rollValue: nN(e) ?? 20
+      rollValue: sN(e) ?? 20
     };
   }
-  function iD(e, t, s, r, a) {
+  function cD(e, t, s, r, a) {
     const o = ft.utils.selector(e), i = o(".crit-message")[0], c = o(".crit-name")[0], l = o(".crit-portrait-wrap")[0], d = o(".crit-band")[0], u = o(".crit-flash")[0], f = o(".crit-scrim")[0], m = o(".crit-halftone")[0], h = o(".crit-vignette")[0], g = o(".crit-stars.far")[0], b = o(".crit-stars.near")[0], x = o(".crit-stamp-num")[0];
-    e.style.setProperty("--crit-accent", t.color), e.style.setProperty("--crit-ink", eg), e.style.setProperty("--crit-stroke", nD), e.style.setProperty("--crit-skew", ht.skew + "deg");
-    const v = rD(eg);
+    e.style.setProperty("--crit-accent", t.color), e.style.setProperty("--crit-ink", eg), e.style.setProperty("--crit-stroke", sD), e.style.setProperty("--crit-skew", ht.skew + "deg");
+    const v = aD(eg);
     g.style.backgroundImage = v, b.style.backgroundImage = v, c.style.display = t.name ? "inline-block" : "none", l.style.display = s ? "flex" : "none", e.style.visibility = "visible", ft.set(e, {
       x: 0,
       y: 0,
@@ -42774,10 +42775,10 @@ PROG ${o}`;
   function Jb() {
     const e = pe(), { actionService: t } = De(), s = V.getActiveCampaign(e), r = e.User.Role, a = r === "dm", o = ge.getCritSplashEnabled(e), i = p.useRef(null), c = p.useRef(/* @__PURE__ */ new Set()), [l, d] = p.useState([]), [u, f] = p.useState(null);
     return p.useEffect(() => {
-      const m = Date.now(), g = Dn.getChronologicalLog(s).filter((b) => mu(b) && b.ActorId && m - b.Timestamp < tD && !c.current.has(b.Id) && Dn.canUserSeeEntry(b, r));
+      const m = Date.now(), g = Dn.getChronologicalLog(s).filter((b) => mu(b) && b.ActorId && m - b.Timestamp < nD && !c.current.has(b.Id) && Dn.canUserSeeEntry(b, r));
       g.length !== 0 && (g.forEach((b) => c.current.add(b.Id)), o && d((b) => [
         ...b,
-        ...g.map((x) => oD(x, s))
+        ...g.map((x) => iD(x, s))
       ]));
     }, [
       s.Log,
@@ -42813,7 +42814,7 @@ PROG ${o}`;
         }
         if (g) return;
         const N = m.querySelector(".crit-portrait");
-        N && (N.src = y || "", N.classList.toggle("crop-tall", w)), x = iD(m, u, !!y, !!h, () => {
+        N && (N.src = y || "", N.classList.toggle("crop-tall", w)), x = cD(m, u, !!y, !!h, () => {
           g || f(null);
         });
       })(), () => {
@@ -42883,7 +42884,7 @@ PROG ${o}`;
       ]
     });
   }
-  const cD = {
+  const lD = {
     online: "Searching",
     partial: "No host",
     connected: "Connected"
@@ -43128,7 +43129,7 @@ PROG ${o}`;
                         " ",
                         n.jsx("span", {
                           className: "font-semibold",
-                          children: cD[e]
+                          children: lD[e]
                         })
                       ]
                     })
@@ -43141,7 +43142,7 @@ PROG ${o}`;
       ]
     });
   }
-  function lD(e) {
+  function dD(e) {
     let t = 0, s = 1 / 0;
     for (let r = 0; r < es.PRESETS.length; r++) {
       const a = Math.abs(es.PRESETS[r].value - e);
@@ -43153,7 +43154,7 @@ PROG ${o}`;
     return Number.isInteger(e) ? e.toString() : e.toFixed(2).replace(/0+$/, "").replace(/\.$/, "");
   }
   function ty({ value: e, disabled: t = false, compact: s = false, onChange: r }) {
-    const a = es.PRESETS, o = lD(e), i = a.find((l) => Math.abs(l.value - e) < 1e-4), c = i ? `${i.label}, ${tg(e)} tiles` : `Custom, ${tg(e)} tiles`;
+    const a = es.PRESETS, o = dD(e), i = a.find((l) => Math.abs(l.value - e) < 1e-4), c = i ? `${i.label}, ${tg(e)} tiles` : `Custom, ${tg(e)} tiles`;
     return n.jsxs("label", {
       className: `flex items-center gap-3 ${t ? "opacity-50" : ""}`,
       children: [
@@ -43561,7 +43562,7 @@ PROG ${o}`;
       ]
     });
   }
-  function dD() {
+  function uD() {
     const e = pe(), { actionService: t } = De(), s = V.getActiveCampaign(e), { viewedTerrainId: r } = ls(), [a, o] = p.useState(0), i = (f) => {
       t && t.execute("item:bulkEditTags", {
         updates: f.map((m) => ({
@@ -43614,7 +43615,7 @@ PROG ${o}`;
       }
     });
   }
-  function uD({ audio: e, initialTags: t, onClose: s }) {
+  function mD({ audio: e, initialTags: t, onClose: s }) {
     const { actionService: r } = De(), o = e || {
       ...{
         Name: "",
@@ -43661,10 +43662,10 @@ PROG ${o}`;
       createTitle: "Add Audio Track",
       editTitle: "Edit Audio Track",
       viewTitle: "View Audio Track",
-      children: n.jsx(mD, {})
+      children: n.jsx(hD, {})
     });
   }
-  function mD({ data: e, onChange: t }) {
+  function hD({ data: e, onChange: t }) {
     if (!e || !t) return null;
     const s = (r, a) => {
       t({
@@ -43714,7 +43715,7 @@ PROG ${o}`;
       ]
     });
   }
-  function hD({ isOpen: e, onClose: t, onImport: s }) {
+  function fD({ isOpen: e, onClose: t, onImport: s }) {
     const [r, a] = p.useState(""), [o, i] = p.useState(false), c = async () => {
       if (!r.trim()) return;
       i(true);
@@ -43874,7 +43875,7 @@ PROG ${o}`;
       ]
     }) : null;
   }
-  function fD() {
+  function pD() {
     const e = pe(), { actionService: t } = De(), s = V.getActiveCampaign(e), [r, a] = p.useState(0), [o, i] = p.useState(false), c = (f) => {
       t && t.execute("audio:setTrack", {
         audioId: f
@@ -43929,14 +43930,14 @@ PROG ${o}`;
           onBulkUpdateItemTags: l,
           renderEditForm: (f, { currentPath: m, closeDrawer: h }) => {
             const g = f ? s.Audios.find((x) => x.Id === f.id) : void 0, b = m.length > 0 ? qs([], m) : void 0;
-            return n.jsx(uD, {
+            return n.jsx(mD, {
               audio: g,
               initialTags: b,
               onClose: () => h == null ? void 0 : h()
             }, (f == null ? void 0 : f.id) || `create-${r}`);
           }
         }),
-        n.jsx(hD, {
+        n.jsx(fD, {
           isOpen: o,
           onClose: () => i(false),
           onImport: d
@@ -44064,7 +44065,7 @@ PROG ${o}`;
       }
     });
   }
-  function pD() {
+  function gD() {
     const e = pe(), { actionService: t } = De(), s = V.getActiveCampaign(e), [r, a] = p.useState(0), o = (l) => {
       t && t.execute("skill:bulkEditTags", {
         updates: l.map((d) => ({
@@ -44105,7 +44106,7 @@ PROG ${o}`;
       }
     });
   }
-  function gD({ entity: e, initialTags: t, onClose: s }) {
+  function xD({ entity: e, initialTags: t, onClose: s }) {
     const r = pe(), { actionService: a } = De(), o = Ar.createDefault(r);
     t && !e && (o.Tags = t);
     const i = e || o, c = (u) => {
@@ -44155,10 +44156,10 @@ PROG ${o}`;
       buttonConfig: {
         keepButtonsVisible: true
       },
-      children: n.jsx(xD, {})
+      children: n.jsx(vD, {})
     });
   }
-  function xD({ data: e, onChange: t }) {
+  function vD({ data: e, onChange: t }) {
     if (!e || !t) return null;
     const s = pe(), r = V.getActiveCampaign(s), a = (o, i) => {
       t({
@@ -44421,7 +44422,7 @@ PROG ${o}`;
       ]
     });
   }
-  function vD() {
+  function bD() {
     const e = pe(), { actionService: t } = De(), s = V.getActiveCampaign(e), { viewedTerrainId: r } = ls(), [a, o] = p.useState(0), [i, c] = p.useState(false), [l, d] = p.useState([]), u = (y) => {
       t && t.execute("entity:spawn", {
         entityId: y,
@@ -44502,7 +44503,7 @@ PROG ${o}`;
           selectionActions: b,
           renderEditForm: (y, { currentPath: w, closeDrawer: N }) => {
             const C = y ? s.EntityTemplates.find((R) => R.Id === y.id) : void 0, T = w.length > 0 ? qs([], w) : void 0;
-            return n.jsx(gD, {
+            return n.jsx(xD, {
               entity: C,
               initialTags: T,
               onClose: () => N == null ? void 0 : N()
@@ -44523,7 +44524,7 @@ PROG ${o}`;
       ]
     });
   }
-  function bD() {
+  function yD() {
     const e = pe(), { actionService: t } = De(), s = V.getActiveCampaign(e), [r, a] = p.useState(0), o = (l) => {
       t && t.execute("status:bulkEditTags", {
         updates: l.map((d) => ({
@@ -44564,7 +44565,7 @@ PROG ${o}`;
       }
     });
   }
-  function yD({ scenario: e, initialTags: t, onClose: s }) {
+  function wD({ scenario: e, initialTags: t, onClose: s }) {
     const { actionService: r } = De();
     if (!e) return n.jsx(st, {
       className: "text-error",
@@ -44596,10 +44597,10 @@ PROG ${o}`;
       createTitle: "Create Scenario",
       editTitle: "Edit Scenario",
       viewTitle: "Scenario Details",
-      children: n.jsx(wD, {})
+      children: n.jsx(SD, {})
     });
   }
-  function wD({ data: e, onChange: t }) {
+  function SD({ data: e, onChange: t }) {
     if (!e || !t) return null;
     const s = Pc(e.ActorPlacements ?? []), r = (a, o) => {
       t({
@@ -44726,7 +44727,7 @@ PROG ${o}`;
       ]
     });
   }
-  function SD() {
+  function ID() {
     const e = pe(), { actionService: t } = De(), s = V.getActiveCampaign(e), { setViewedTerrain: r } = ls(), a = (c) => {
       var _a2;
       if (!t) return;
@@ -44770,7 +44771,7 @@ PROG ${o}`;
         onBulkUpdateItemTags: o,
         renderEditForm: (c, { currentPath: l, closeDrawer: d }) => {
           const u = c ? s.Scenarios.find((m) => m.Id === c.id) : void 0, f = l.length > 0 ? qs([], l) : void 0;
-          return n.jsx(yD, {
+          return n.jsx(wD, {
             scenario: u,
             initialTags: f,
             onClose: () => d == null ? void 0 : d()
@@ -44779,7 +44780,7 @@ PROG ${o}`;
       })
     });
   }
-  const ID = [
+  const ND = [
     {
       id: "main",
       label: "Main",
@@ -44836,7 +44837,7 @@ PROG ${o}`;
       icon: "icon-[mdi--cog]"
     }
   ];
-  function ND() {
+  function CD() {
     const e = pe(), t = hr(), s = Xs(), [r, a] = p.useState("main"), { peers: o, selfPeer: i, totalInRoom: c, connectionStatus: l, isDmConnected: d } = Xo(), u = e.ActiveCampaign;
     return u ? n.jsx(Wb, {
       children: n.jsxs("div", {
@@ -44877,7 +44878,7 @@ PROG ${o}`;
                 className: "flex items-center gap-2",
                 children: [
                   n.jsx(rv, {}),
-                  n.jsx(nj, {}),
+                  n.jsx(sj, {}),
                   n.jsx("button", {
                     className: "btn btn-neutral",
                     onClick: () => t("/campaigns"),
@@ -44894,7 +44895,7 @@ PROG ${o}`;
                 className: "border-r-2 bg-base-200",
                 children: n.jsx("ul", {
                   className: "menu gap-1 p-1",
-                  children: ID.map((f) => n.jsx("li", {
+                  children: ND.map((f) => n.jsx("li", {
                     children: n.jsx("button", {
                       className: `tooltip tooltip-right z-50 ${r === f.id ? "menu-active" : ""}`,
                       "data-tip": f.label,
@@ -44915,18 +44916,18 @@ PROG ${o}`;
                       active: r === "main"
                     })
                   }),
-                  r === "characters" && n.jsx(Rj, {}),
-                  r === "entities" && n.jsx(vD, {}),
-                  r === "items" && n.jsx(dD, {}),
-                  r === "skills" && n.jsx(pD, {}),
-                  r === "statuses" && n.jsx(bD, {}),
-                  r === "images" && n.jsx($P, {}),
-                  r === "audios" && n.jsx(fD, {}),
-                  r === "terrains" && n.jsx(LP, {
+                  r === "characters" && n.jsx(Mj, {}),
+                  r === "entities" && n.jsx(bD, {}),
+                  r === "items" && n.jsx(uD, {}),
+                  r === "skills" && n.jsx(gD, {}),
+                  r === "statuses" && n.jsx(yD, {}),
+                  r === "images" && n.jsx(BP, {}),
+                  r === "audios" && n.jsx(pD, {}),
+                  r === "terrains" && n.jsx(OP, {
                     onViewTerrain: () => a("main")
                   }),
-                  r === "scenarios" && n.jsx(SD, {}),
-                  r === "settings" && n.jsx(oA, {})
+                  r === "scenarios" && n.jsx(ID, {}),
+                  r === "settings" && n.jsx(iA, {})
                 ]
               })
             ]
@@ -44937,7 +44938,7 @@ PROG ${o}`;
       })
     }) : null;
   }
-  function CD({ peers: e }) {
+  function jD({ peers: e }) {
     const t = pe(), s = V.getActiveCampaign(t), [r, a] = p.useState(false), [o, i] = p.useState(0), c = /* @__PURE__ */ new Set();
     e.forEach((m) => {
       var _a2;
@@ -45080,7 +45081,7 @@ PROG ${o}`;
       ]
     });
   }
-  function jD({ hasSelectedCharacter: e, onChangeCharacter: t, onExit: s }) {
+  function AD({ hasSelectedCharacter: e, onChangeCharacter: t, onExit: s }) {
     const r = pe(), a = ge.getCameraMode(r), o = {
       isDM: false,
       hasControlledActor: e,
@@ -45161,7 +45162,7 @@ PROG ${o}`;
       ]
     });
   }
-  function AD() {
+  function ED() {
     const e = pe(), t = hr(), s = Xs(), { peers: r, selfPeer: a, totalInRoom: o, connectionStatus: i, isDmConnected: c } = Xo(), l = e.ActiveCampaign;
     if (!l) return null;
     const d = e.User.SelectedCharacters[l.RoomCode], u = !!d, f = u ? l.GameState.Characters.find((h) => h.Id === d) : null, m = () => {
@@ -45197,7 +45198,7 @@ PROG ${o}`;
               }),
               n.jsx("div", {
                 className: "flex items-center gap-2",
-                children: s ? n.jsx(jD, {
+                children: s ? n.jsx(AD, {
                   hasSelectedCharacter: u,
                   onChangeCharacter: m,
                   onExit: () => t("/campaigns")
@@ -45232,7 +45233,7 @@ PROG ${o}`;
             })
           }) : n.jsx("main", {
             className: "flex-1 overflow-auto p-6",
-            children: n.jsx(CD, {
+            children: n.jsx(jD, {
               peers: r
             })
           }),
@@ -45242,7 +45243,7 @@ PROG ${o}`;
       })
     });
   }
-  const ED = {
+  const TD = {
     connecting: {
       title: "Connecting to campaign\u2026",
       body: "Establishing a peer-to-peer connection."
@@ -45257,7 +45258,7 @@ PROG ${o}`;
     }
   };
   function $d({ phase: e, roomCode: t, message: s }) {
-    const r = hr(), a = ED[e], o = e === "retrying";
+    const r = hr(), a = TD[e], o = e === "retrying";
     return n.jsxs("div", {
       className: "relative h-screen w-screen overflow-hidden bg-base-200",
       children: [
@@ -45312,8 +45313,8 @@ PROG ${o}`;
       ]
     });
   }
-  const TD = 2e4;
-  function kD() {
+  const kD = 2e4;
+  function RD() {
     const { identifier: e } = Ry(), t = hr(), s = he, { setActionService: r } = De(), [a, o] = p.useState(0), i = !!e && ur(e), c = p.useRef(false), [l, d] = p.useState({
       status: "loading"
     });
@@ -45395,7 +45396,7 @@ PROG ${o}`;
               });
             }
           };
-          h = du.join(C, T), g = new tj(s, h), r(g), !m && !s.ActiveCampaign ? (d({
+          h = du.join(C, T), g = new nj(s, h), r(g), !m && !s.ActiveCampaign ? (d({
             status: "waiting-for-dm"
           }), g == null ? void 0 : g.onFirstUpdate(() => {
             b && d({
@@ -45407,7 +45408,7 @@ PROG ${o}`;
               retryable: true,
               errorMessage: "Still trying to reach the DM. Make sure the room code is correct and the DM is online \u2014 we'll keep retrying automatically."
             } : R);
-          }, TD)) : d({
+          }, kD)) : d({
             status: "ready"
           });
         } catch (y) {
@@ -45452,9 +45453,9 @@ PROG ${o}`;
     }) : l.status === "waiting-for-dm" ? n.jsx($d, {
       phase: "waiting",
       roomCode: e
-    }) : ur(e) ? n.jsx(ND, {}) : n.jsx(AD, {});
+    }) : ur(e) ? n.jsx(CD, {}) : n.jsx(ED, {});
   }
-  function RD() {
+  function MD() {
     const e = pe(), t = hr(), s = ge.getTheme(e), r = Math.round(ge.getPlayerVolume(e) * 100), a = Math.round(ge.getSfxVolume(e) * 100), o = ge.getPreserveFlyingHeightOnTileMove(e), i = ge.getPerformanceMode(e), c = ge.getCritSplashEnabled(e), l = ge.getHeroOcclusionEnabled(e), d = ge.getHeroOcclusionRadius(e), u = ge.getImageService(e), [f, m] = p.useState(false), [h, g] = p.useState(ge.getImagePromptTemplate(e)), b = Li.find((x) => x.id === u) ?? Li.find((x) => x.id === Kg);
     return n.jsx("div", {
       className: "min-h-screen bg-base-200",
@@ -45890,7 +45891,7 @@ PROG ${o}`;
       })
     });
   }
-  const ry = "quest-net:wiki:recent-pages", MD = "Pack the notes. Light the torches.", PD = "Guides for running the table, shaping strange places, and peeking behind the curtain.", Fu = [
+  const ry = "quest-net:wiki:recent-pages", PD = "Pack the notes. Light the torches.", _D = "Guides for running the table, shaping strange places, and peeking behind the curtain.", Fu = [
     "Start Here",
     "Run The Game",
     "Worldbuilding",
@@ -45935,7 +45936,7 @@ PROG ${o}`;
   function Nm(e) {
     return e.slug ? `/wiki/${e.slug}/` : "/wiki/";
   }
-  function _D(e) {
+  function DD(e) {
     return e.slug ? `/#/wiki/${e.slug}/` : "/#/wiki/";
   }
   function ay(e) {
@@ -45945,13 +45946,13 @@ PROG ${o}`;
     const t = e.split("").reduce((s, r) => s + r.charCodeAt(0), 0);
     return ng[t % ng.length];
   }
-  function DD(e) {
+  function LD(e) {
     return Fu.map((t) => ({
       category: t,
       pages: e.filter((s) => s.category === t)
     })).filter((t) => t.pages.length > 0);
   }
-  function LD(e, t, s) {
+  function OD(e, t, s) {
     const r = t.trim().toLowerCase(), a = r.split(/\s+/).filter(Boolean);
     return e.filter((o) => {
       if (s !== "All" && o.category !== s) return false;
@@ -45968,7 +45969,7 @@ PROG ${o}`;
       return a.every((c) => i.includes(c));
     });
   }
-  function OD({ pageExists: e, visiblePage: t }) {
+  function FD({ pageExists: e, visiblePage: t }) {
     const s = Ra[t.category];
     return n.jsxs("article", {
       className: "overflow-hidden rounded-lg border border-base-300 bg-base-100 shadow-lg",
@@ -46073,7 +46074,7 @@ PROG ${o}`;
       ]
     });
   }
-  function FD({ visiblePage: e }) {
+  function UD({ visiblePage: e }) {
     const t = Ra[e.category];
     return n.jsxs("aside", {
       className: "hidden xl:block xl:sticky xl:top-20 xl:self-start",
@@ -46155,7 +46156,7 @@ PROG ${o}`;
                     }),
                     n.jsx("code", {
                       className: "block rounded-md bg-base-200 px-3 py-2 font-mono text-xs",
-                      children: _D(e)
+                      children: DD(e)
                     })
                   ]
                 }),
@@ -46181,7 +46182,7 @@ PROG ${o}`;
       ]
     });
   }
-  function UD({ size: e = "md" }) {
+  function $D({ size: e = "md" }) {
     const t = pe(), r = ge.getTheme(t) === "dark", a = r ? "light" : "dark", o = e === "sm" ? "h-10 w-20" : "h-12 w-24", i = e === "sm" ? "h-8 w-8" : "h-10 w-10", c = e === "sm" ? "translate-x-10" : "translate-x-12", l = () => {
       ge.setTheme({
         theme: a
@@ -46215,7 +46216,7 @@ PROG ${o}`;
       ]
     });
   }
-  function $D() {
+  function BD() {
     const e = hr();
     return n.jsx("header", {
       className: "sticky top-0 z-30 border-b border-base-300 bg-base-100/95 backdrop-blur",
@@ -46245,7 +46246,7 @@ PROG ${o}`;
           }),
           n.jsx("div", {
             className: "ml-auto",
-            children: n.jsx(UD, {
+            children: n.jsx($D, {
               size: "sm"
             })
           })
@@ -46254,10 +46255,10 @@ PROG ${o}`;
     });
   }
   const fo = 1040, po = 420, Ri = 12;
-  function BD(e, t, s) {
+  function HD(e, t, s) {
     return Math.max(t, Math.min(s, e));
   }
-  function HD(e, t) {
+  function VD(e, t) {
     const r = [
       {
         x: fo * 0.64,
@@ -46284,12 +46285,12 @@ PROG ${o}`;
       const l = (e - c.x) / c.sx, d = (t - c.y) / c.sy;
       return i + Math.exp(-(l * l + d * d)) * c.strength;
     }, 0), a = Math.sin(e * 0.018 + t * 0.011) * 0.14;
-    return 0.65 + BD(r + a, 0, 1) * 7.2;
+    return 0.65 + HD(r + a, 0, 1) * 7.2;
   }
-  function VD() {
+  function zD() {
     const e = [];
     for (let t = Ri / 2; t < po; t += Ri) for (let s = Ri / 2; s < fo; s += Ri) {
-      const r = HD(s, t);
+      const r = VD(s, t);
       e.push({
         cx: s,
         cy: t,
@@ -46298,8 +46299,8 @@ PROG ${o}`;
     }
     return e;
   }
-  function zD() {
-    const e = p.useMemo(VD, []);
+  function GD() {
+    const e = p.useMemo(zD, []);
     return n.jsx("svg", {
       "aria-hidden": "true",
       className: "pointer-events-none absolute inset-0 h-full w-full text-neutral-content mix-blend-normal",
@@ -46314,11 +46315,11 @@ PROG ${o}`;
       }, `${t.cx}-${t.cy}`))
     });
   }
-  function GD({ categoryFilter: e, groupedPages: t, pagesForRecentShelf: s, query: r, recentPages: a, onCategoryFilterChange: o, onQueryChange: i }) {
+  function WD({ categoryFilter: e, groupedPages: t, pagesForRecentShelf: s, query: r, recentPages: a, onCategoryFilterChange: o, onQueryChange: i }) {
     return n.jsxs("section", {
       className: "wiki-halftone border-b border-base-300 bg-neutral text-neutral-content",
       children: [
-        n.jsx(zD, {}),
+        n.jsx(GD, {}),
         n.jsxs("div", {
           className: "mx-auto grid max-w-[96rem] gap-6 px-4 py-8 lg:grid-cols-[minmax(0,1fr)_22rem] lg:py-10",
           children: [
@@ -46339,11 +46340,11 @@ PROG ${o}`;
                 }),
                 n.jsx("h1", {
                   className: "max-w-4xl text-4xl font-black sm:text-5xl",
-                  children: MD
+                  children: PD
                 }),
                 n.jsx("p", {
                   className: "mt-4 max-w-3xl text-lg text-neutral-content opacity-70",
-                  children: PD
+                  children: _D
                 }),
                 n.jsxs("div", {
                   className: "mt-7 max-w-4xl",
@@ -46469,7 +46470,7 @@ PROG ${o}`;
       ]
     });
   }
-  function WD({ groupedPages: e, visiblePage: t }) {
+  function XD({ groupedPages: e, visiblePage: t }) {
     return n.jsx("aside", {
       className: "xl:sticky xl:top-20 xl:self-start",
       children: n.jsxs("nav", {
@@ -46534,7 +46535,7 @@ PROG ${o}`;
       })
     });
   }
-  function XD({ categoryFilter: e, query: t, results: s, onClear: r }) {
+  function qD({ categoryFilter: e, query: t, results: s, onClear: r }) {
     return !t.trim() && e === "All" ? null : n.jsxs("section", {
       className: "rounded-lg border border-base-300 bg-base-100 p-4 shadow-md",
       children: [
@@ -46644,7 +46645,7 @@ PROG ${o}`;
     warning: "border-warning/50",
     error: "border-error/40",
     neutral: "border-neutral/30"
-  }, qD = {
+  }, YD = {
     primary: "border-l-primary",
     secondary: "border-l-secondary",
     accent: "border-l-accent",
@@ -46653,7 +46654,7 @@ PROG ${o}`;
     warning: "border-l-warning",
     error: "border-l-error",
     neutral: "border-l-neutral"
-  }, YD = {
+  }, KD = {
     primary: "bg-primary/10",
     secondary: "bg-secondary/10",
     accent: "bg-accent/10",
@@ -46703,7 +46704,7 @@ PROG ${o}`;
   }
   function we({ tone: e = "info", title: t, children: s }) {
     return n.jsxs("div", {
-      className: `my-4 rounded-lg border p-4 text-base-content ${Cm[e]} ${YD[e]}`,
+      className: `my-4 rounded-lg border p-4 text-base-content ${Cm[e]} ${KD[e]}`,
       children: [
         n.jsx("div", {
           className: `mb-1 text-sm font-black uppercase tracking-wide ${jm[e]}`,
@@ -46745,7 +46746,7 @@ PROG ${o}`;
       children: e.map((r) => {
         const a = r.tone ?? "neutral";
         return n.jsxs("div", {
-          className: `rounded-lg border border-base-300 bg-base-200/60 p-4 border-l-4 ${qD[a]}`,
+          className: `rounded-lg border border-base-300 bg-base-200/60 p-4 border-l-4 ${YD[a]}`,
           children: [
             n.jsx("div", {
               className: "mb-1 font-mono text-sm font-black",
@@ -46816,7 +46817,7 @@ PROG ${o}`;
       ]
     });
   }
-  const KD = {
+  const QD = {
     slug: "campaign-settings",
     title: "Campaign Settings",
     audience: "DM Guide",
@@ -47302,12 +47303,12 @@ PROG ${o}`;
       }
     ],
     searchText: "campaign settings stat definition action definition attribute definition shared inventory visibility rolls entity health calendar rest short long movement height formula flying initiative terrain environment preset"
-  }, QD = Object.freeze(Object.defineProperty({
+  }, ZD = Object.freeze(Object.defineProperty({
     __proto__: null,
-    default: KD
+    default: QD
   }, Symbol.toStringTag, {
     value: "Module"
-  })), ZD = {
+  })), JD = {
     slug: "characters-and-entities",
     title: "Characters & Entities",
     audience: "DM Guide",
@@ -47966,12 +47967,12 @@ PROG ${o}`;
       }
     ],
     searchText: "character entity actor roster template spawn remove field lifecycle stats actions attributes inventory equipment skills statuses position size move speed fly crit message notes item entity drop pickup StatSlot ActionSlot AttributeSlot StatusSlot TurnStartPosition CharacterRoster EntityTemplates GameState"
-  }, JD = Object.freeze(Object.defineProperty({
+  }, eL = Object.freeze(Object.defineProperty({
     __proto__: null,
-    default: ZD
+    default: JD
   }, Symbol.toStringTag, {
     value: "Module"
-  })), eL = {
+  })), tL = {
     slug: "combat",
     title: "Running Combat",
     audience: "DM Guide",
@@ -48432,9 +48433,9 @@ PROG ${o}`;
       }
     ],
     searchText: "combat start end round initiative party enemies individual mode turn done mark actor regen status expire clear restore movement TurnStartPosition CombatState incrementRound decrementRound RoundCompleted initiativeSide currentRound"
-  }, tL = Object.freeze(Object.defineProperty({
+  }, nL = Object.freeze(Object.defineProperty({
     __proto__: null,
-    default: eL
+    default: tL
   }, Symbol.toStringTag, {
     value: "Module"
   })), sg = {
@@ -49159,7 +49160,7 @@ location.reload();`
       }
     ],
     searchText: "context campaign state actions schema action registry dm authority player request localStorage indexeddb CampaignInfo ActiveCampaign GameState Actor StatSlot ActionSlot AttributeSlot VoxelTerrain TerrainStorageService CampaignLoadingService optimistic secret mode reset clear localStorage wipe fresh start beforeunload flush quest-net-db deleteDatabase console"
-  }, nL = Object.freeze(Object.defineProperty({
+  }, sL = Object.freeze(Object.defineProperty({
     __proto__: null,
     dataStructuresPage: sg,
     default: sg
@@ -49202,7 +49203,7 @@ location.reload();`
       }
     ],
     searchText: "getting started create campaign room code invite players dm route player route session"
-  }, sL = Object.freeze(Object.defineProperty({
+  }, rL = Object.freeze(Object.defineProperty({
     __proto__: null,
     default: rg,
     gettingStartedPage: rg
@@ -49768,7 +49769,7 @@ location.reload();`
       }
     ],
     searchText: "networking trystero webrtc nostr state sync delta patch full state action request user metadata relay room code dm authority actionReq stateSync imgFetch imgUpload terrainFetch actorPose userUpdate userReq request response compression version mismatch optimistic secret mode handshake reconnect"
-  }, rL = Object.freeze(Object.defineProperty({
+  }, aL = Object.freeze(Object.defineProperty({
     __proto__: null,
     default: ag,
     networkingPage: ag
@@ -49832,17 +49833,17 @@ location.reload();`
       }
     ],
     searchText: "wiki start home documentation dm guide developer technical routes navigation search pages"
-  }, aL = Object.freeze(Object.defineProperty({
+  }, oL = Object.freeze(Object.defineProperty({
     __proto__: null,
     default: og,
     overviewPage: og
   }, Symbol.toStringTag, {
     value: "Module"
-  })), oL = `// 'this' is the selected host; 'game' and 'event' are in scope.
+  })), iL = `// 'this' is the selected host; 'game' and 'event' are in scope.
 // Change the world only via await game.action(key, params).
 const actor = this.actor ?? game.actors()[0];
 if (actor) await game.log("Test harness ran on " + actor.Name);`;
-  function iL(e) {
+  function cL(e) {
     const t = [
       {
         label: "Campaign (world rules)",
@@ -49885,10 +49886,10 @@ if (actor) await game.log("Test harness ran on " + actor.Name);`;
       return JSON.parse(JSON.stringify(e));
     }
   }
-  function cL() {
-    const e = pe(), t = e.ActiveCampaign, s = p.useMemo(() => iL(t), [
+  function lL() {
+    const e = pe(), t = e.ActiveCampaign, s = p.useMemo(() => cL(t), [
       t
-    ]), [r, a] = p.useState(0), [o, i] = p.useState("combat:incrementRound"), [c, l] = p.useState("after"), [d, u] = p.useState("{}"), [f, m] = p.useState(oL), [h, g] = p.useState({
+    ]), [r, a] = p.useState(0), [o, i] = p.useState("combat:incrementRound"), [c, l] = p.useState("after"), [d, u] = p.useState("{}"), [f, m] = p.useState(iL), [h, g] = p.useState({
       ok: true,
       patch: "",
       ran: false
@@ -50115,8 +50116,8 @@ if (actor) await game.log("Test harness ran on " + actor.Name);`;
       })
     });
   }
-  const lL = Object.keys(Ln).filter(Ho).sort();
-  function dL({ group: e }) {
+  const dL = Object.keys(Ln).filter(Ho).sort();
+  function uL({ group: e }) {
     return n.jsxs("div", {
       className: "space-y-2",
       children: [
@@ -50160,7 +50161,7 @@ if (actor) await game.log("Test harness ran on " + actor.Name);`;
       ]
     });
   }
-  function uL() {
+  function mL() {
     const e = Object.keys(Ln).sort();
     return n.jsx("div", {
       className: "overflow-x-auto rounded-lg border border-base-300 bg-base-200",
@@ -50214,7 +50215,7 @@ if (actor) await game.log("Test harness ran on " + actor.Name);`;
       })
     });
   }
-  const mL = {
+  const hL = {
     slug: "scripting",
     title: "Scripting",
     audience: "Developer",
@@ -50345,7 +50346,7 @@ if (actor) await game.log("Test harness ran on " + actor.Name);`;
                 "):"
               ]
             }),
-            n.jsx(uL, {}),
+            n.jsx(mL, {}),
             n.jsx(we, {
               tone: "info",
               title: "Where a script lives vs. what it can reach",
@@ -50671,7 +50672,7 @@ await funds.transferItemTo("Hero", "Map");      // move an item out  \xB7  disca
                 "; mutation methods show their backing action."
               ]
             }),
-            fv.map((e) => n.jsx(dL, {
+            fv.map((e) => n.jsx(uL, {
               group: e
             }, e.title))
           ]
@@ -50802,7 +50803,7 @@ await game.action("status:give", { statusIds: [s.Id], actorIds: [this.actor.Id],
               children: "Script-ok actions (generated from the registry \u2014 anything not listed throws when called):"
             }),
             n.jsx(Et, {
-              children: lL.join(`
+              children: dL.join(`
 `)
             }),
             n.jsx("p", {
@@ -51055,15 +51056,15 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 ". Cascades through saved scripts run too, so you can test a whole reaction."
               ]
             }),
-            n.jsx(cL, {})
+            n.jsx(lL, {})
           ]
         })
       }
     ],
     searchText: "scripting script behavior automation eca event condition action trigger game.action this game event params vars parameters cascade dm authority actor entity status item skill campaign world rule facade changestat setstat givestatus giveitem useitem equip giveskill move roll distanceto spawnactor spawnitem ping shared inventory pool calendar long rest short rest advance day scene environment focus audio track volume combat round nextround markturndone stalker buff size spawn move log toast whisper private player alert visibility owner roll scriptable async destructive sandbox security test harness api reference before after when intercept interception cancel veto modify rewrite diceformula bless phase"
-  }, hL = Object.freeze(Object.defineProperty({
+  }, fL = Object.freeze(Object.defineProperty({
     __proto__: null,
-    default: mL
+    default: hL
   }, Symbol.toStringTag, {
     value: "Module"
   })), cg = {
@@ -51552,7 +51553,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
       }
     ],
     searchText: "terrain link links door doors stair stairs portal portals secret passage trapdoor cave mouth travel cross connect maps tiles anchor locked lock unlock invisible undirected two-way same terrain across terrains first person E to travel world view click move worldbuilding dm guide"
-  }, fL = Object.freeze(Object.defineProperty({
+  }, pL = Object.freeze(Object.defineProperty({
     __proto__: null,
     default: cg,
     terrainLinksPage: cg
@@ -52452,7 +52453,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
       }
     ],
     searchText: "terrain terrains map editor tile brush voxel brush place erase paint sample box selection color selection smoothing smooth passes right toolbar info selection panel color materials actors preview lighting background active map live editing clone tags folders stamps import vox worldbuilding dm guide"
-  }, pL = Object.freeze(Object.defineProperty({
+  }, gL = Object.freeze(Object.defineProperty({
     __proto__: null,
     default: lg,
     terrainsPage: lg
@@ -53110,48 +53111,48 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
       }
     ],
     searchText: "terrain voxel VoxelTerrain VoxelDataUtils voxelCodecWasm WASM Sparse Voxel Octree SVO TerrainStorageService OPFS OpfsUtilities IndexedDB hydration editor EditGrid stamps VOX import VoxelTerrainIndex movement actor validation rendering material buckets networking"
-  }, gL = Object.freeze(Object.defineProperty({
+  }, xL = Object.freeze(Object.defineProperty({
     __proto__: null,
     default: dg,
     terrainsAndVoxelsPage: dg
   }, Symbol.toStringTag, {
     value: "Module"
-  })), xL = Object.assign({
-    "./CampaignSettings.tsx": QD,
-    "./CharactersAndEntities.tsx": JD,
-    "./Combat.tsx": tL,
-    "./DataStructures.tsx": nL,
-    "./GettingStarted.tsx": sL,
-    "./Networking.tsx": rL,
-    "./Overview.tsx": aL,
-    "./Scripting.tsx": hL,
-    "./TerrainLinks.tsx": fL,
-    "./Terrains.tsx": pL,
-    "./TerrainsAndVoxels.tsx": gL
-  }), vL = Object.assign({});
+  })), vL = Object.assign({
+    "./CampaignSettings.tsx": ZD,
+    "./CharactersAndEntities.tsx": eL,
+    "./Combat.tsx": nL,
+    "./DataStructures.tsx": sL,
+    "./GettingStarted.tsx": rL,
+    "./Networking.tsx": aL,
+    "./Overview.tsx": oL,
+    "./Scripting.tsx": fL,
+    "./TerrainLinks.tsx": pL,
+    "./Terrains.tsx": gL,
+    "./TerrainsAndVoxels.tsx": xL
+  }), bL = Object.assign({});
   function Am(e) {
     return e.replace(/([a-z0-9])([A-Z])/g, "$1-$2").replace(/[\s_]+/g, "-").toLowerCase();
   }
-  function bL(e) {
+  function yL(e) {
     var _a2;
     const t = e.replace(/^\.\//, "").replace(/\.tsx$/, "").split("/"), s = (_a2 = t[t.length - 1]) == null ? void 0 : _a2.toLowerCase();
     return (s === "page" || s === "index") && t.pop(), t.length === 1 && t[0].toLowerCase() === "overview" ? "" : t.map(Am).join("/");
   }
-  function yL(e) {
+  function wL(e) {
     const t = e.replace(/^\.\//, "").split("/sections/")[0];
     return t.toLowerCase() === "overview" ? "" : t.split("/").map(Am).join("/");
   }
-  function wL(e) {
+  function SL(e) {
     var _a2;
     const t = ((_a2 = e.split("/").pop()) == null ? void 0 : _a2.replace(/\.tsx$/, "")) ?? "section";
     return Am(t);
   }
-  function SL(e) {
+  function IL(e) {
     return [
       ...e
     ].sort((t, s) => (t.order ?? 500) - (s.order ?? 500) || t.title.localeCompare(s.title));
   }
-  function IL(e) {
+  function NL(e) {
     return [
       ...e
     ].sort((t, s) => {
@@ -53159,9 +53160,9 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
       return r !== 0 ? r : (t.order ?? (t.slug === "" ? -100 : 500)) - (s.order ?? (s.slug === "" ? -100 : 500)) || t.title.localeCompare(s.title);
     });
   }
-  const NL = Object.entries(vL).reduce((e, [t, s]) => {
-    const r = yL(t), a = s.default, o = {
-      id: a.id ?? wL(t),
+  const CL = Object.entries(bL).reduce((e, [t, s]) => {
+    const r = wL(t), a = s.default, o = {
+      id: a.id ?? SL(t),
       title: a.title,
       body: a.body,
       order: a.order
@@ -53173,28 +53174,28 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
         o
       ]
     };
-  }, {}), ao = IL(Object.entries(xL).map(([e, t]) => {
-    const s = t.default, r = s.slug ?? bL(e), a = [
+  }, {}), ao = NL(Object.entries(vL).map(([e, t]) => {
+    const s = t.default, r = s.slug ?? yL(e), a = [
       ...(s.sections ?? []).map((o, i) => ({
         ...o,
         order: o.order ?? i
       })),
-      ...NL[r] ?? []
+      ...CL[r] ?? []
     ];
     return {
       ...s,
       slug: r,
-      sections: SL(a)
+      sections: IL(a)
     };
   }));
   function Bd(e) {
     const t = e.replace(/^\/+|\/+$/g, "");
     return ao.find((s) => s.slug === t);
   }
-  function CL(e) {
+  function jL(e) {
     return e.replace(/^\/wiki\/?/, "").replace(/\/+$/g, "");
   }
-  function jL() {
+  function AL() {
     try {
       const e = localStorage.getItem(ry);
       return e ? JSON.parse(e) : [];
@@ -53202,8 +53203,8 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
       return [];
     }
   }
-  function AL() {
-    const e = My(), t = CL(e.pathname), s = Bd(t) ?? null, r = s ?? Bd("") ?? ao[0], [a, o] = p.useState(""), [i, c] = p.useState("All"), [l, d] = p.useState(jL), u = p.useMemo(() => DD(ao), []), f = p.useMemo(() => LD(ao, a, i), [
+  function EL() {
+    const e = My(), t = jL(e.pathname), s = Bd(t) ?? null, r = s ?? Bd("") ?? ao[0], [a, o] = p.useState(""), [i, c] = p.useState("All"), [l, d] = p.useState(AL), u = p.useMemo(() => LD(ao), []), f = p.useMemo(() => OD(ao, a, i), [
       i,
       a
     ]), m = p.useMemo(() => l.map((b) => Bd(b)).filter((b) => !!b), [
@@ -53225,8 +53226,8 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
     ]), n.jsxs("div", {
       className: "min-h-screen bg-base-200 text-base-content",
       children: [
-        n.jsx($D, {}),
-        n.jsx(GD, {
+        n.jsx(BD, {}),
+        n.jsx(WD, {
           categoryFilter: i,
           groupedPages: u,
           pagesForRecentShelf: g,
@@ -53238,14 +53239,14 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
         n.jsxs("main", {
           className: "mx-auto grid max-w-[96rem] grid-cols-1 gap-5 px-4 py-5 xl:grid-cols-[20rem_minmax(0,1fr)_18rem]",
           children: [
-            n.jsx(WD, {
+            n.jsx(XD, {
               groupedPages: u,
               visiblePage: r
             }),
             n.jsxs("div", {
               className: "min-w-0 space-y-5",
               children: [
-                n.jsx(XD, {
+                n.jsx(qD, {
                   categoryFilter: i,
                   query: a,
                   results: f,
@@ -53253,13 +53254,13 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                     o(""), c("All");
                   }
                 }),
-                n.jsx(OD, {
+                n.jsx(FD, {
                   pageExists: !!s,
                   visiblePage: r
                 })
               ]
             }),
-            n.jsx(FD, {
+            n.jsx(UD, {
               visiblePage: r
             })
           ]
@@ -53267,12 +53268,12 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
       ]
     });
   }
-  const EL = 60;
-  function TL() {
+  const TL = 60;
+  function kL() {
     const e = Number(typeof window < "u" ? window.localStorage.getItem("idleRefreshMinutes") : NaN);
-    return (Number.isFinite(e) && e > 0 ? e : EL) * 60 * 1e3;
+    return (Number.isFinite(e) && e > 0 ? e : TL) * 60 * 1e3;
   }
-  function kL({ canRefresh: e } = {}) {
+  function RL({ canRefresh: e } = {}) {
     const t = p.useRef(null);
     p.useEffect(() => {
       const s = () => {
@@ -53281,7 +53282,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
           return;
         }
         const r = t.current;
-        t.current = null, !(r === null || Date.now() - r < TL()) && (e && !e() || window.location.reload());
+        t.current = null, !(r === null || Date.now() - r < kL()) && (e && !e() || window.location.reload());
       };
       return document.addEventListener("visibilitychange", s), () => document.removeEventListener("visibilitychange", s);
     }, [
@@ -53289,7 +53290,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
     ]);
   }
   const ug = "samy.guimez@gmail.com";
-  function RL() {
+  function ML() {
     const [e, t] = p.useState(false);
     return p.useEffect(() => w0(() => t(true)), []), e ? n.jsx(Fn, {
       title: n.jsxs("span", {
@@ -53341,7 +53342,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
       })
     }) : null;
   }
-  function ML({ pending: e }) {
+  function PL({ pending: e }) {
     const { backup: t, diff: s } = e, r = s.changes.filter((a) => a.after < a.before);
     return n.jsxs("div", {
       className: "space-y-3 text-sm",
@@ -53386,7 +53387,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
       ]
     });
   }
-  function PL() {
+  function _L() {
     const e = mr(Mn);
     p.useEffect(() => {
       vI();
@@ -53429,24 +53430,24 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
             })
           ]
         }),
-        children: n.jsx(ML, {
+        children: n.jsx(PL, {
           pending: t
         })
       })
     });
   }
-  function _L() {
-    return kL({
-      canRefresh: () => !oj()
+  function DL() {
+    return RL({
+      canRefresh: () => !ij()
     }), null;
   }
-  function DL() {
+  function LL() {
     return n.jsx(yS, {
       children: n.jsxs(PI, {
         children: [
-          n.jsx(RL, {}),
-          n.jsx(PL, {}),
+          n.jsx(ML, {}),
           n.jsx(_L, {}),
+          n.jsx(DL, {}),
           n.jsx(Py, {
             children: n.jsxs(_y, {
               children: [
@@ -53460,15 +53461,15 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 }),
                 n.jsx(za, {
                   path: "/settings",
-                  element: n.jsx(RD, {})
+                  element: n.jsx(MD, {})
                 }),
                 n.jsx(za, {
                   path: "/wiki/*",
-                  element: n.jsx(AL, {})
+                  element: n.jsx(EL, {})
                 }),
                 n.jsx(za, {
                   path: "/:identifier",
-                  element: n.jsx(kD, {})
+                  element: n.jsx(RD, {})
                 })
               ]
             })
@@ -53478,5 +53479,5 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
     });
   }
   await G0();
-  Dy.createRoot(document.getElementById("root")).render(n.jsx(DL, {}));
+  Dy.createRoot(document.getElementById("root")).render(n.jsx(LL, {}));
 });
