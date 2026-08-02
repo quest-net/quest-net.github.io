@@ -1,7 +1,7 @@
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-import { r as _e } from "./vendor-react-7vkcqmaY.js";
+import { r as _e } from "./vendor-react-BO4cS0Nd.js";
 function Br(e) {
   return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
 }
@@ -26,15 +26,15 @@ function oa(e) {
     } });
   }), n;
 }
-const Zi = Symbol(), Ir = Symbol(), Mt = "a", sa = "f", go = "p", aa = "c", ia = "t", $r = "h", Tt = "w", Hr = "o", zr = "k";
-let Qi = (e, t) => new Proxy(e, t);
-const dr = Object.getPrototypeOf, hr = /* @__PURE__ */ new WeakMap(), ca = (e) => e && (hr.has(e) ? hr.get(e) : dr(e) === Object.prototype || dr(e) === Array.prototype), pn = (e) => typeof e == "object" && e !== null, Vi = (e) => Object.values(Object.getOwnPropertyDescriptors(e)).some((t) => !t.configurable && !t.writable), ec = (e) => {
+const Ki = Symbol(), Ir = Symbol(), Mt = "a", sa = "f", go = "p", aa = "c", ia = "t", $r = "h", Tt = "w", Hr = "o", zr = "k";
+let Zi = (e, t) => new Proxy(e, t);
+const dr = Object.getPrototypeOf, hr = /* @__PURE__ */ new WeakMap(), ca = (e) => e && (hr.has(e) ? hr.get(e) : dr(e) === Object.prototype || dr(e) === Array.prototype), pn = (e) => typeof e == "object" && e !== null, Qi = (e) => Object.values(Object.getOwnPropertyDescriptors(e)).some((t) => !t.configurable && !t.writable), Vi = (e) => {
   if (Array.isArray(e)) return Array.from(e);
   const t = Object.getOwnPropertyDescriptors(e);
   return Object.values(t).forEach((n) => {
     n.configurable = true;
   }), Object.create(dr(e), t);
-}, tc = (e, t) => {
+}, ec = (e, t) => {
   const n = { [sa]: t };
   let r = false;
   const o = (c, i) => {
@@ -51,7 +51,7 @@ const dr = Object.getPrototypeOf, hr = /* @__PURE__ */ new WeakMap(), ca = (e) =
   }, a = { get(c, i) {
     return i === Ir ? e : (o(zr, i), fa(Reflect.get(c, i), n[Mt], n[aa], n[ia]));
   }, has(c, i) {
-    return i === Zi ? (s(), true) : (o($r, i), Reflect.has(c, i));
+    return i === Ki ? (s(), true) : (o($r, i), Reflect.has(c, i));
   }, getOwnPropertyDescriptor(c, i) {
     return o(Hr, i), Reflect.getOwnPropertyDescriptor(c, i);
   }, ownKeys(c) {
@@ -63,12 +63,12 @@ const dr = Object.getPrototypeOf, hr = /* @__PURE__ */ new WeakMap(), ca = (e) =
   let o = r && r.get(e);
   if (!o) {
     const i = qr(e);
-    Vi(i) ? o = [i, ec(i)] : o = [i], r == null ? void 0 : r.set(e, o);
+    Qi(i) ? o = [i, Vi(i)] : o = [i], r == null ? void 0 : r.set(e, o);
   }
   const [s, a] = o;
   let c = n && n.get(s);
-  return (!c || c[1][sa] !== !!a) && (c = tc(s, !!a), c[1][go] = Qi(a || s, c[0]), n && n.set(s, c)), c[1][Mt] = t, c[1][aa] = n, c[1][ia] = r, c[1][go];
-}, nc = (e, t) => {
+  return (!c || c[1][sa] !== !!a) && (c = ec(s, !!a), c[1][go] = Zi(a || s, c[0]), n && n.set(s, c)), c[1][Mt] = t, c[1][aa] = n, c[1][ia] = r, c[1][go];
+}, tc = (e, t) => {
   const n = Reflect.ownKeys(e), r = Reflect.ownKeys(t);
   return n.length !== r.length || n.some((o, s) => o !== r[s]);
 }, la = (e, t, n, r, o = Object.is) => {
@@ -83,7 +83,7 @@ const dr = Object.getPrototypeOf, hr = /* @__PURE__ */ new WeakMap(), ca = (e) =
   let a = null;
   for (const c of s[$r] || []) if (a = Reflect.has(e, c) !== Reflect.has(t, c), a) return a;
   if (s[Tt] === true) {
-    if (a = nc(e, t), a) return a;
+    if (a = tc(e, t), a) return a;
   } else for (const c of s[Hr] || []) {
     const i = !!Reflect.getOwnPropertyDescriptor(e, c), l = !!Reflect.getOwnPropertyDescriptor(t, c);
     if (a = i !== l, a) return a;
@@ -91,9 +91,9 @@ const dr = Object.getPrototypeOf, hr = /* @__PURE__ */ new WeakMap(), ca = (e) =
   for (const c of s[zr] || []) if (a = la(e[c], t[c], n, r, o), a) return a;
   if (a === null) throw new Error("invalid used");
   return a;
-}, rc = (e) => ca(e) && e[Ir] || null, mo = (e, t = true) => {
+}, nc = (e) => ca(e) && e[Ir] || null, mo = (e, t = true) => {
   hr.set(e, t);
-}, oc = (e, t, n) => {
+}, rc = (e, t, n) => {
   const r = [], o = /* @__PURE__ */ new WeakSet(), s = (a, c) => {
     var i, l, u;
     if (o.has(a)) return;
@@ -116,7 +116,7 @@ const dr = Object.getPrototypeOf, hr = /* @__PURE__ */ new WeakMap(), ca = (e) =
     } else c && r.push(c);
   };
   return s(e), r;
-}, gn = {}, jr = (e) => typeof e == "object" && e !== null, sc = (e) => jr(e) && !Fr.has(e) && (Array.isArray(e) || !(Symbol.iterator in e)) && !(e instanceof WeakMap) && !(e instanceof WeakSet) && !(e instanceof Error) && !(e instanceof Number) && !(e instanceof Date) && !(e instanceof String) && !(e instanceof RegExp) && !(e instanceof ArrayBuffer) && !(e instanceof Promise), ua = (e, t) => {
+}, gn = {}, jr = (e) => typeof e == "object" && e !== null, oc = (e) => jr(e) && !Fr.has(e) && (Array.isArray(e) || !(Symbol.iterator in e)) && !(e instanceof WeakMap) && !(e instanceof WeakSet) && !(e instanceof Error) && !(e instanceof Number) && !(e instanceof Date) && !(e instanceof String) && !(e instanceof RegExp) && !(e instanceof ArrayBuffer) && !(e instanceof Promise), ua = (e, t) => {
   const n = yo.get(e);
   if ((n == null ? void 0 : n[0]) === t) return n[1];
   const r = Array.isArray(e) ? [] : Object.create(Object.getPrototypeOf(e));
@@ -130,7 +130,7 @@ const dr = Object.getPrototypeOf, hr = /* @__PURE__ */ new WeakMap(), ca = (e) =
     }
     Object.defineProperty(r, o, c);
   }), r;
-}, ac = (e, t, n, r) => ({ deleteProperty(o, s) {
+}, sc = (e, t, n, r) => ({ deleteProperty(o, s) {
   const a = Reflect.get(o, s);
   n(s);
   const c = Reflect.deleteProperty(o, s);
@@ -138,12 +138,12 @@ const dr = Object.getPrototypeOf, hr = /* @__PURE__ */ new WeakMap(), ca = (e) =
 }, set(o, s, a, c) {
   const i = !e() && Reflect.has(o, s), l = Reflect.get(o, s, c);
   if (i && (wo(l, a) || mn.has(a) && wo(l, mn.get(a)))) return true;
-  n(s), jr(a) && (a = rc(a) || a);
-  const u = !Be.has(a) && fc(a) ? dc(a) : a;
+  n(s), jr(a) && (a = nc(a) || a);
+  const u = !Be.has(a) && cc(a) ? uc(a) : a;
   return t(s, u), Reflect.set(o, s, u, c), r(Je == null ? void 0 : Je("set", s, a, l)), true;
-} }), ic = (e, t, ...n) => [e, [t], ...n], Be = /* @__PURE__ */ new WeakMap(), Fr = /* @__PURE__ */ new WeakSet(), yo = /* @__PURE__ */ new WeakMap(), $n = [1], mn = /* @__PURE__ */ new WeakMap();
-let wo = Object.is, cc = (e, t) => new Proxy(e, t), fc = sc, lc = ua, uc = ac, Je;
-function dc(e = {}) {
+} }), ac = (e, t, ...n) => [e, [t], ...n], Be = /* @__PURE__ */ new WeakMap(), Fr = /* @__PURE__ */ new WeakSet(), yo = /* @__PURE__ */ new WeakMap(), $n = [1], mn = /* @__PURE__ */ new WeakMap();
+let wo = Object.is, ic = (e, t) => new Proxy(e, t), cc = oc, fc = ua, lc = sc, Je;
+function uc(e = {}) {
   if (!jr(e)) throw new Error("object required");
   const t = mn.get(e);
   if (t) return t;
@@ -181,7 +181,7 @@ function dc(e = {}) {
     });
   });
   let d = true;
-  const h = uc(() => d, l, u, o), p = cc(e, h);
+  const h = lc(() => d, l, u, o), p = ic(e, h);
   mn.set(e, p);
   const w = [e, a, f];
   return Be.set(p, w), Reflect.ownKeys(e).forEach((m) => {
@@ -193,7 +193,7 @@ function ld(e) {
   const t = Be.get(e);
   return t == null ? void 0 : t[1]();
 }
-function hc(e, t, n) {
+function dc(e, t, n) {
   const r = Be.get(e);
   (gn ? "production" : void 0) !== "production" && !r && console.warn("Please use proxy object");
   let o;
@@ -216,22 +216,22 @@ function vo(e) {
   const t = Be.get(e);
   (gn ? "production" : void 0) !== "production" && !t && console.warn("Please use proxy object");
   const [n, r] = t;
-  return lc(n, r());
+  return fc(n, r());
 }
 function ud(e = true) {
-  e === true ? Je = ic : e === false ? Je = void 0 : Je = e;
+  e === true ? Je = ac : e === false ? Je = void 0 : Je = e;
 }
-const pc = {}, gc = (e, t) => {
+const hc = {}, pc = (e, t) => {
   const n = _e.useRef(void 0);
   _e.useEffect(() => {
-    n.current = oc(e, t);
+    n.current = rc(e, t);
   }), _e.useDebugValue(n.current);
-}, mc = gc, yc = /* @__PURE__ */ new WeakMap();
+}, gc = pc, mc = /* @__PURE__ */ new WeakMap();
 function dd(e, t) {
   const r = _e.useMemo(() => e && /* @__PURE__ */ new WeakMap(), [e]), o = _e.useRef(void 0);
   let s = true;
   const a = _e.useSyncExternalStore(_e.useCallback((i) => {
-    const l = hc(e, i, void 0);
+    const l = dc(e, i, void 0);
     return i(), l;
   }, [e, void 0]), () => {
     const i = vo(e);
@@ -243,9 +243,9 @@ function dd(e, t) {
   }, () => vo(e));
   s = false, _e.useLayoutEffect(() => {
     o.current = a;
-  }), (pc ? "production" : void 0) !== "production" && mc(a, r);
+  }), (hc ? "production" : void 0) !== "production" && gc(a, r);
   const c = _e.useMemo(() => /* @__PURE__ */ new WeakMap(), []);
-  return fa(a, r, c, yc);
+  return fa(a, r, c, mc);
 }
 function Q(e, t) {
   let n = e.length;
@@ -283,7 +283,7 @@ function da(e, t) {
   const o = 10 ** (t - r);
   return Math.floor(e * o + 0.5) / o;
 }
-const wc = { deg: 1, grad: 0.9, rad: 180 / Math.PI, turn: 360 };
+const yc = { deg: 1, grad: 0.9, rad: 180 / Math.PI, turn: 360 };
 function ha(e) {
   if (!e) return;
   e = e.trim();
@@ -295,7 +295,7 @@ function ha(e) {
       let l = i.match(r), u = i;
       if (l) {
         let f = l[0], d = u.slice(0, -f.length);
-        f === "%" ? (u = new Number(d / 100), u.type = "<percentage>") : (u = new Number(d * wc[f]), u.type = "<angle>", u.unit = f);
+        f === "%" ? (u = new Number(d / 100), u.type = "<percentage>") : (u = new Number(d * yc[f]), u.type = "<angle>", u.unit = f);
       } else n.test(u) ? (u = new Number(u), u.type = "<number>") : u === "none" && (u = new Number(NaN), u.none = true);
       c.startsWith("/") && (u = u instanceof Number ? u : new Number(u), u.alpha = true), typeof u == "object" && u instanceof Number && (u.raw = i), a.push(u);
     }), { name: s[1].toLowerCase(), rawName: s[1], rawArgs: s[2], args: a };
@@ -343,8 +343,8 @@ function wa(e, t, n = 0, r = e.length) {
   }
   return n;
 }
-var vc = Object.freeze({ __proto__: null, bisectLeft: wa, clamp: ya, copySign: An, interpolate: _t, interpolateInv: ga, isNone: Ie, isString: jt, last: pa, mapRange: Yr, multiplyMatrices: Q, parseCoordGrammar: ma, parseFunction: ha, serializeNumber: yn, skipNone: ne, spow: Re, toPrecision: da, type: Le, zdiv: Xr });
-class bc {
+var wc = Object.freeze({ __proto__: null, bisectLeft: wa, clamp: ya, copySign: An, interpolate: _t, interpolateInv: ga, isNone: Ie, isString: jt, last: pa, mapRange: Yr, multiplyMatrices: Q, parseCoordGrammar: ma, parseFunction: ha, serializeNumber: yn, skipNone: ne, spow: Re, toPrecision: da, type: Le, zdiv: Xr });
+class vc {
   add(t, n, r) {
     if (typeof arguments[0] != "string") {
       for (var t in arguments[0]) this.add(t, arguments[0][t], arguments[1]);
@@ -360,7 +360,7 @@ class bc {
     });
   }
 }
-const $e = new bc();
+const $e = new vc();
 var me = { gamut_mapping: "css", precision: 5, deltaE: "76", verbose: "production".toLowerCase() !== "test", warn: function(t) {
   var _a2, _b;
   this.verbose && ((_b = (_a2 = globalThis == null ? void 0 : globalThis.console) == null ? void 0 : _a2.warn) == null ? void 0 : _b.call(_a2, t));
@@ -376,11 +376,11 @@ function wn(e, t, n, r = {}) {
   if ($e.run("chromatic-adaptation-start", o), o.M || (o.W1 === ie.D65 && o.W2 === ie.D50 ? o.M = [[1.0479297925449969, 0.022946870601609652, -0.05019226628920524], [0.02962780877005599, 0.9904344267538799, -0.017073799063418826], [-0.009243040646204504, 0.015055191490298152, 0.7518742814281371]] : o.W1 === ie.D50 && o.W2 === ie.D65 && (o.M = [[0.955473421488075, -0.02309845494876471, 0.06325924320057072], [-0.0283697093338637, 1.0099953980813041, 0.021041441191917323], [0.012314014864481998, -0.020507649298898964, 1.330365926242124]])), $e.run("chromatic-adaptation-end", o), o.M) return Q(o.M, o.XYZ);
   throw new TypeError("Only Bradford CAT with white points D50 and D65 supported for now.");
 }
-const Pc = /* @__PURE__ */ new Set(["<number>", "<percentage>", "<angle>"]);
+const bc = /* @__PURE__ */ new Set(["<number>", "<percentage>", "<angle>"]);
 function bo(e, t, n, r) {
   return Object.entries(e.coords).map(([s, a], c) => {
     let i = t.coordGrammar[c], l = r[c], u = l == null ? void 0 : l.type, f;
-    if (l.none ? f = i.find((p) => Pc.has(p)) : f = i.find((p) => p == u), !f) {
+    if (l.none ? f = i.find((p) => bc.has(p)) : f = i.find((p) => p == u), !f) {
       let p = a.name || s;
       throw new TypeError(`${u ?? l.raw} not allowed for ${p} in ${n}()`);
     }
@@ -436,7 +436,7 @@ function z(e) {
   let t = e.space || e.spaceId;
   return t instanceof O || (e.space = O.get(t)), e.alpha === void 0 && (e.alpha = 1), e;
 }
-const Mc = 75e-6;
+const Pc = 75e-6;
 const _O = class _O {
   constructor(t) {
     var _a2;
@@ -450,9 +450,9 @@ const _O = class _O {
       let s = this.formats[o];
       s.type || (s.type = "function"), s.name || (s.name = o);
     }
-    ((_a2 = this.formats.color) == null ? void 0 : _a2.id) || (this.formats.color = { ...this.formats.color ?? {}, id: t.cssId || this.id }), t.gamutSpace ? this.gamutSpace = t.gamutSpace === "self" ? this : _O.get(t.gamutSpace) : this.isPolar ? this.gamutSpace = this.base : this.gamutSpace = this, this.gamutSpace.isUnbounded && (this.inGamut = (o, s) => true), this.referred = t.referred, Object.defineProperty(this, "path", { value: Sc(this).reverse(), writable: false, enumerable: true, configurable: true }), $e.run("colorspace-init-end", this);
+    ((_a2 = this.formats.color) == null ? void 0 : _a2.id) || (this.formats.color = { ...this.formats.color ?? {}, id: t.cssId || this.id }), t.gamutSpace ? this.gamutSpace = t.gamutSpace === "self" ? this : _O.get(t.gamutSpace) : this.isPolar ? this.gamutSpace = this.base : this.gamutSpace = this, this.gamutSpace.isUnbounded && (this.inGamut = (o, s) => true), this.referred = t.referred, Object.defineProperty(this, "path", { value: Mc(this).reverse(), writable: false, enumerable: true, configurable: true }), $e.run("colorspace-init-end", this);
   }
-  inGamut(t, { epsilon: n = Mc } = {}) {
+  inGamut(t, { epsilon: n = Pc } = {}) {
     if (!this.equals(this.gamutSpace)) return t = this.to(this.gamutSpace, t), this.gamutSpace.inGamut(t, { epsilon: n });
     let r = Object.values(this.coords);
     return t.every((o, s) => {
@@ -555,7 +555,7 @@ const _O = class _O {
 __publicField(_O, "registry", {});
 __publicField(_O, "DEFAULT_FORMAT", { type: "functions", name: "color" });
 let O = _O;
-function Sc(e) {
+function Mc(e) {
   let t = [e];
   for (let n = e; n = n.base; ) t.push(n);
   return t;
@@ -608,10 +608,10 @@ function ke(e, t, n) {
 }
 ke.returns = "color";
 var Wr = new O({ id: "xyz-d50", name: "XYZ D50", white: "D50", base: se, fromBase: (e) => wn(se.white, "D50", e), toBase: (e) => wn("D50", se.white, e) });
-const Rc = 216 / 24389, Mo = 24 / 116, Wt = 24389 / 27;
+const Sc = 216 / 24389, Mo = 24 / 116, Wt = 24389 / 27;
 let Hn = ie.D50;
 var pe = new O({ id: "lab", name: "Lab", coords: { l: { refRange: [0, 100], name: "Lightness" }, a: { refRange: [-125, 125] }, b: { refRange: [-125, 125] } }, white: Hn, base: Wr, fromBase(e) {
-  let n = e.map((r, o) => r / Hn[o]).map((r) => r > Rc ? Math.cbrt(r) : (Wt * r + 16) / 116);
+  let n = e.map((r, o) => r / Hn[o]).map((r) => r > Sc ? Math.cbrt(r) : (Wt * r + 16) / 116);
   return [116 * n[1] - 16, 500 * (n[0] - n[1]), 200 * (n[1] - n[2])];
 }, toBase(e) {
   let t = [];
@@ -620,7 +620,7 @@ var pe = new O({ id: "lab", name: "Lab", coords: { l: { refRange: [0, 100], name
 function Ae(e) {
   return (e % 360 + 360) % 360;
 }
-function Tc(e, t) {
+function Rc(e, t) {
   if (e === "raw") return t;
   let [n, r] = t.map(Ae), o = r - n;
   return e === "increasing" ? o < 0 && (r += 360) : e === "decreasing" ? o > 0 && (n += 360) : e === "longer" ? -180 < o && o < 180 && (o > 0 ? n += 360 : r += 360) : e === "shorter" && (o > 180 ? n += 360 : o < -180 && (r += 360)), [n, r];
@@ -653,21 +653,21 @@ function ba(e, t, { kL: n = 1, kC: r = 1, kH: o = 1 } = {}) {
   let v = 1 + 0.015 * g * Y, k = 30 * Math.exp(-1 * ((A - 275) / 25) ** 2), $ = 2 * Math.sqrt(b / (b + So)), K = -1 * Math.sin(2 * k * ot) * $, ue = (_ / (n * x)) ** 2;
   return ue += (L / (r * F)) ** 2, ue += (j / (o * v)) ** 2, ue += K * (L / (r * F)) * (j / (o * v)), Math.sqrt(ue);
 }
-const Ac = [[0.819022437996703, 0.3619062600528904, -0.1288737815209879], [0.0329836539323885, 0.9292868615863434, 0.0361446663506424], [0.0481771893596242, 0.2642395317527308, 0.6335478284694309]], Ec = [[1.2268798758459243, -0.5578149944602171, 0.2813910456659647], [-0.0405757452148008, 1.112286803280317, -0.0717110580655164], [-0.0763729366746601, -0.4214933324022432, 1.5869240198367816]], _c = [[0.210454268309314, 0.7936177747023054, -0.0040720430116193], [1.9779985324311684, -2.42859224204858, 0.450593709617411], [0.0259040424655478, 0.7827717124575296, -0.8086757549230774]], kc = [[1, 0.3963377773761749, 0.2158037573099136], [1, -0.1055613458156586, -0.0638541728258133], [1, -0.0894841775298119, -1.2914855480194092]];
+const Tc = [[0.819022437996703, 0.3619062600528904, -0.1288737815209879], [0.0329836539323885, 0.9292868615863434, 0.0361446663506424], [0.0481771893596242, 0.2642395317527308, 0.6335478284694309]], Ac = [[1.2268798758459243, -0.5578149944602171, 0.2813910456659647], [-0.0405757452148008, 1.112286803280317, -0.0717110580655164], [-0.0763729366746601, -0.4214933324022432, 1.5869240198367816]], Ec = [[0.210454268309314, 0.7936177747023054, -0.0040720430116193], [1.9779985324311684, -2.42859224204858, 0.450593709617411], [0.0259040424655478, 0.7827717124575296, -0.8086757549230774]], _c = [[1, 0.3963377773761749, 0.2158037573099136], [1, -0.1055613458156586, -0.0638541728258133], [1, -0.0894841775298119, -1.2914855480194092]];
 var ut = new O({ id: "oklab", name: "Oklab", coords: { l: { refRange: [0, 1], name: "Lightness" }, a: { refRange: [-0.4, 0.4] }, b: { refRange: [-0.4, 0.4] } }, white: "D65", base: se, fromBase(e) {
-  let n = Q(Ac, e).map((r) => Math.cbrt(r));
-  return Q(_c, n);
-}, toBase(e) {
-  let n = Q(kc, e).map((r) => r ** 3);
+  let n = Q(Tc, e).map((r) => Math.cbrt(r));
   return Q(Ec, n);
+}, toBase(e) {
+  let n = Q(_c, e).map((r) => r ** 3);
+  return Q(Ac, n);
 }, formats: { oklab: { coords: ["<percentage> | <number>", "<number> | <percentage>[-1,1]", "<number> | <percentage>[-1,1]"] } } });
 function gr(e, t) {
   [e, t] = z([e, t]);
   let [n, r, o] = ut.from(e), [s, a, c] = ut.from(t), i = n - s, l = r - a, u = o - c;
   return Math.sqrt(i ** 2 + l ** 2 + u ** 2);
 }
-const Oc = 75e-6;
-function Ke(e, t, { epsilon: n = Oc } = {}) {
+const kc = 75e-6;
+function Ke(e, t, { epsilon: n = kc } = {}) {
   e = z(e), t || (t = e.space), t = O.get(t);
   let r = e.coords;
   return t !== e.space && (r = t.from(e)), t.inGamut(r, { epsilon: n });
@@ -683,11 +683,11 @@ function Pa(e, t, n = "lab") {
     return isNaN(a) || isNaN(i) ? s : s + (i - a) ** 2;
   }, 0));
 }
-function xc(e, t) {
+function Oc(e, t) {
   return Pa(e, t, "lab");
 }
-const Cc = Math.PI, Ao = Cc / 180;
-function Lc(e, t, { l: n = 2, c: r = 1 } = {}) {
+const xc = Math.PI, Ao = xc / 180;
+function Cc(e, t, { l: n = 2, c: r = 1 } = {}) {
   [e, t] = z([e, t]);
   let [o, s, a] = pe.from(e), [, c, i] = kt.from(pe, [o, s, a]), [l, u, f] = pe.from(t), d = kt.from(pe, [l, u, f])[1];
   c < 0 && (c = 0), d < 0 && (d = 0);
@@ -704,18 +704,18 @@ var Jr = new O({ id: "xyz-abs-d65", cssId: "--xyz-abs-d65", name: "Absolute XYZ 
 }, toBase(e) {
   return e.map((t) => Math.max(t / Eo, 0));
 } });
-const Jt = 1.15, Gt = 0.66, _o = 2610 / 2 ** 14, Dc = 2 ** 14 / 2610, ko = 3424 / 2 ** 12, Oo = 2413 / 2 ** 7, xo = 2392 / 2 ** 7, Nc = 1.7 * 2523 / 2 ** 5, Co = 2 ** 5 / (1.7 * 2523), Kt = -0.56, zn = 16295499532821565e-27, Bc = [[0.41478972, 0.579999, 0.014648], [-0.20151, 1.120649, 0.0531008], [-0.0166008, 0.2648, 0.6684799]], Ic = [[1.9242264357876067, -1.0047923125953657, 0.037651404030618], [0.35031676209499907, 0.7264811939316552, -0.06538442294808501], [-0.09098281098284752, -0.3127282905230739, 1.5227665613052603]], $c = [[0.5, 0.5, 0], [3.524, -4.066708, 0.542708], [0.199076, 1.096799, -1.295875]], Hc = [[1, 0.1386050432715393, 0.05804731615611886], [0.9999999999999999, -0.1386050432715393, -0.05804731615611886], [0.9999999999999998, -0.09601924202631895, -0.8118918960560388]];
+const Jt = 1.15, Gt = 0.66, _o = 2610 / 2 ** 14, Lc = 2 ** 14 / 2610, ko = 3424 / 2 ** 12, Oo = 2413 / 2 ** 7, xo = 2392 / 2 ** 7, Dc = 1.7 * 2523 / 2 ** 5, Co = 2 ** 5 / (1.7 * 2523), Kt = -0.56, zn = 16295499532821565e-27, Nc = [[0.41478972, 0.579999, 0.014648], [-0.20151, 1.120649, 0.0531008], [-0.0166008, 0.2648, 0.6684799]], Bc = [[1.9242264357876067, -1.0047923125953657, 0.037651404030618], [0.35031676209499907, 0.7264811939316552, -0.06538442294808501], [-0.09098281098284752, -0.3127282905230739, 1.5227665613052603]], Ic = [[0.5, 0.5, 0], [3.524, -4.066708, 0.542708], [0.199076, 1.096799, -1.295875]], $c = [[1, 0.1386050432715393, 0.05804731615611886], [0.9999999999999999, -0.1386050432715393, -0.05804731615611886], [0.9999999999999998, -0.09601924202631895, -0.8118918960560388]];
 var Ma = new O({ id: "jzazbz", name: "Jzazbz", coords: { jz: { refRange: [0, 1], name: "Jz" }, az: { refRange: [-0.5, 0.5] }, bz: { refRange: [-0.5, 0.5] } }, base: Jr, fromBase(e) {
-  let [t, n, r] = e, o = Jt * t - (Jt - 1) * r, s = Gt * n - (Gt - 1) * t, c = Q(Bc, [o, s, r]).map(function(d) {
+  let [t, n, r] = e, o = Jt * t - (Jt - 1) * r, s = Gt * n - (Gt - 1) * t, c = Q(Nc, [o, s, r]).map(function(d) {
     let h = ko + Oo * (d / 1e4) ** _o, p = 1 + xo * (d / 1e4) ** _o;
-    return (h / p) ** Nc;
-  }), [i, l, u] = Q($c, c);
+    return (h / p) ** Dc;
+  }), [i, l, u] = Q(Ic, c);
   return [(1 + Kt) * i / (1 + Kt * i) - zn, l, u];
 }, toBase(e) {
-  let [t, n, r] = e, o = (t + zn) / (1 + Kt - Kt * (t + zn)), a = Q(Hc, [o, n, r]).map(function(d) {
+  let [t, n, r] = e, o = (t + zn) / (1 + Kt - Kt * (t + zn)), a = Q($c, [o, n, r]).map(function(d) {
     let h = ko - d ** Co, p = xo * d ** Co - Oo;
-    return 1e4 * (h / p) ** Dc;
-  }), [c, i, l] = Q(Ic, a), u = (c + (Jt - 1) * l) / Jt, f = (i + (Gt - 1) * u) / Gt;
+    return 1e4 * (h / p) ** Lc;
+  }), [c, i, l] = Q(Bc, a), u = (c + (Jt - 1) * l) / Jt, f = (i + (Gt - 1) * u) / Gt;
   return [u, f, l];
 }, formats: { color: { coords: ["<number> | <percentage>", "<number> | <percentage>[-1,1]", "<number> | <percentage>[-1,1]"] } } }), mr = new O({ id: "jzczhz", name: "JzCzHz", coords: { jz: { refRange: [0, 1], name: "Jz" }, cz: { refRange: [0, 1], name: "Chroma" }, hz: { refRange: [0, 360], type: "angle", name: "Hue" } }, base: Ma, fromBase(e) {
   let [t, n, r] = e, o;
@@ -724,60 +724,60 @@ var Ma = new O({ id: "jzazbz", name: "Jzazbz", coords: { jz: { refRange: [0, 1],
 }, toBase(e) {
   return [e[0], e[1] * Math.cos(e[2] * Math.PI / 180), e[1] * Math.sin(e[2] * Math.PI / 180)];
 } });
-function zc(e, t) {
+function Hc(e, t) {
   [e, t] = z([e, t]);
   let [n, r, o] = mr.from(e), [s, a, c] = mr.from(t), i = n - s, l = r - a;
   Number.isNaN(o) && Number.isNaN(c) ? (o = 0, c = 0) : Number.isNaN(o) ? o = c : Number.isNaN(c) && (c = o);
   let u = o - c, f = 2 * Math.sqrt(r * a) * Math.sin(u / 2 * (Math.PI / 180));
   return Math.sqrt(i ** 2 + l ** 2 + f ** 2);
 }
-const Sa = 3424 / 4096, Ra = 2413 / 128, Ta = 2392 / 128, Lo = 2610 / 16384, qc = 2523 / 32, jc = 16384 / 2610, Do = 32 / 2523, Fc = [[0.3592832590121217, 0.6976051147779502, -0.035891593232029], [-0.1920808463704993, 1.100476797037432, 0.0753748658519118], [0.0070797844607479, 0.0748396662186362, 0.8433265453898765]], Yc = [[2048 / 4096, 2048 / 4096, 0], [6610 / 4096, -13613 / 4096, 7003 / 4096], [17933 / 4096, -17390 / 4096, -543 / 4096]], Xc = [[0.9999999999999998, 0.0086090370379328, 0.111029625003026], [0.9999999999999998, -0.0086090370379328, -0.1110296250030259], [0.9999999999999998, 0.5600313357106791, -0.3206271749873188]], Uc = [[2.0701522183894223, -1.3263473389671563, 0.2066510476294053], [0.3647385209748072, 0.6805660249472273, -0.0453045459220347], [-0.0497472075358123, -0.0492609666966131, 1.1880659249923042]];
+const Sa = 3424 / 4096, Ra = 2413 / 128, Ta = 2392 / 128, Lo = 2610 / 16384, zc = 2523 / 32, qc = 16384 / 2610, Do = 32 / 2523, jc = [[0.3592832590121217, 0.6976051147779502, -0.035891593232029], [-0.1920808463704993, 1.100476797037432, 0.0753748658519118], [0.0070797844607479, 0.0748396662186362, 0.8433265453898765]], Fc = [[2048 / 4096, 2048 / 4096, 0], [6610 / 4096, -13613 / 4096, 7003 / 4096], [17933 / 4096, -17390 / 4096, -543 / 4096]], Yc = [[0.9999999999999998, 0.0086090370379328, 0.111029625003026], [0.9999999999999998, -0.0086090370379328, -0.1110296250030259], [0.9999999999999998, 0.5600313357106791, -0.3206271749873188]], Xc = [[2.0701522183894223, -1.3263473389671563, 0.2066510476294053], [0.3647385209748072, 0.6805660249472273, -0.0453045459220347], [-0.0497472075358123, -0.0492609666966131, 1.1880659249923042]];
 var yr = new O({ id: "ictcp", name: "ICTCP", coords: { i: { refRange: [0, 1], name: "I" }, ct: { refRange: [-0.5, 0.5], name: "CT" }, cp: { refRange: [-0.5, 0.5], name: "CP" } }, base: Jr, fromBase(e) {
-  let t = Q(Fc, e);
-  return Wc(t);
+  let t = Q(jc, e);
+  return Uc(t);
 }, toBase(e) {
-  let t = Jc(e);
-  return Q(Uc, t);
+  let t = Wc(e);
+  return Q(Xc, t);
 } });
-function Wc(e) {
+function Uc(e) {
   let t = e.map(function(n) {
     let r = Sa + Ra * (n / 1e4) ** Lo, o = 1 + Ta * (n / 1e4) ** Lo;
-    return (r / o) ** qc;
+    return (r / o) ** zc;
   });
-  return Q(Yc, t);
+  return Q(Fc, t);
 }
-function Jc(e) {
-  return Q(Xc, e).map(function(r) {
+function Wc(e) {
+  return Q(Yc, e).map(function(r) {
     let o = Math.max(r ** Do - Sa, 0), s = Ra - Ta * r ** Do;
-    return 1e4 * (o / s) ** jc;
+    return 1e4 * (o / s) ** qc;
   });
 }
-function Gc(e, t) {
+function Jc(e, t) {
   [e, t] = z([e, t]);
   let [n, r, o] = yr.from(e), [s, a, c] = yr.from(t);
   return 720 * Math.sqrt((n - s) ** 2 + 0.25 * (r - a) ** 2 + (o - c) ** 2);
 }
-const Kc = ie.D65, Aa = 0.42, No = 1 / Aa, qn = 2 * Math.PI, Ea = [[0.401288, 0.650173, -0.051461], [-0.250268, 1.204414, 0.045854], [-2079e-6, 0.048952, 0.953127]], Zc = [[1.8620678550872327, -1.0112546305316843, 0.14918677544445175], [0.38752654323613717, 0.6214474419314753, -0.008973985167612518], [-0.015841498849333856, -0.03412293802851557, 1.0499644368778496]], Qc = [[460, 451, 288], [460, -891, -261], [460, -220, -6300]], Vc = { dark: [0.8, 0.525, 0.8], dim: [0.9, 0.59, 0.9], average: [1, 0.69, 1] }, Ue = { h: [20.14, 90, 164.25, 237.53, 380.14], e: [0.8, 0.7, 1, 1.2, 0.8], H: [0, 100, 200, 300, 400] }, ef = 180 / Math.PI, Bo = Math.PI / 180;
+const Gc = ie.D65, Aa = 0.42, No = 1 / Aa, qn = 2 * Math.PI, Ea = [[0.401288, 0.650173, -0.051461], [-0.250268, 1.204414, 0.045854], [-2079e-6, 0.048952, 0.953127]], Kc = [[1.8620678550872327, -1.0112546305316843, 0.14918677544445175], [0.38752654323613717, 0.6214474419314753, -0.008973985167612518], [-0.015841498849333856, -0.03412293802851557, 1.0499644368778496]], Zc = [[460, 451, 288], [460, -891, -261], [460, -220, -6300]], Qc = { dark: [0.8, 0.525, 0.8], dim: [0.9, 0.59, 0.9], average: [1, 0.69, 1] }, Ue = { h: [20.14, 90, 164.25, 237.53, 380.14], e: [0.8, 0.7, 1, 1.2, 0.8], H: [0, 100, 200, 300, 400] }, Vc = 180 / Math.PI, Bo = Math.PI / 180;
 function _a(e, t) {
   return e.map((r) => {
     const o = Re(t * Math.abs(r) * 0.01, Aa);
     return 400 * An(o, r) / (o + 27.13);
   });
 }
-function tf(e, t) {
+function ef(e, t) {
   const n = 100 / t * 27.13 ** No;
   return e.map((r) => {
     const o = Math.abs(r);
     return An(n * Re(o / (400 - o), No), r);
   });
 }
-function nf(e) {
+function tf(e) {
   let t = Ae(e);
   t <= Ue.h[0] && (t += 360);
   const n = wa(Ue.h, t) - 1, [r, o] = Ue.h.slice(n, n + 2), [s, a] = Ue.e.slice(n, n + 2), c = Ue.H[n], i = (t - r) / s;
   return c + 100 * i / (i + (o - t) / a);
 }
-function rf(e) {
+function nf(e) {
   let t = (e % 400 + 400) % 400;
   const n = Math.floor(0.01 * t);
   t = t % 100;
@@ -790,7 +790,7 @@ function ka(e, t, n, r, o) {
   const a = e.map((w) => w * 100);
   s.la = t, s.yb = n;
   const c = a[1], i = Q(Ea, a);
-  r = Vc[s.surround];
+  r = Qc[s.surround];
   const l = r[0];
   s.c = r[1], s.nc = r[2];
   const f = (1 / (5 * s.la + 1)) ** 4;
@@ -800,40 +800,40 @@ function ka(e, t, n, r, o) {
   const h = i.map((w, m) => w * s.dRgb[m]), p = _a(h, s.fl);
   return s.aW = s.nbb * (2 * p[0] + p[1] + 0.05 * p[2]), s;
 }
-const Io = ka(Kc, 64 / Math.PI * 0.2, 20, "average", false);
+const Io = ka(Gc, 64 / Math.PI * 0.2, 20, "average", false);
 function wr(e, t) {
   if (!(e.J !== void 0 ^ e.Q !== void 0)) throw new Error("Conversion requires one and only one: 'J' or 'Q'");
   if (!(e.C !== void 0 ^ e.M !== void 0 ^ e.s !== void 0)) throw new Error("Conversion requires one and only one: 'C', 'M' or 's'");
   if (!(e.h !== void 0 ^ e.H !== void 0)) throw new Error("Conversion requires one and only one: 'h' or 'H'");
   if (e.J === 0 || e.Q === 0) return [0, 0, 0];
   let n = 0;
-  e.h !== void 0 ? n = Ae(e.h) * Bo : n = rf(e.H) * Bo;
+  e.h !== void 0 ? n = Ae(e.h) * Bo : n = nf(e.H) * Bo;
   const r = Math.cos(n), o = Math.sin(n);
   let s = 0;
   e.J !== void 0 ? s = Re(e.J, 1 / 2) * 0.1 : e.Q !== void 0 && (s = 0.25 * t.c * e.Q / ((t.aW + 4) * t.flRoot));
   let a = 0;
   e.C !== void 0 ? a = e.C / s : e.M !== void 0 ? a = e.M / t.flRoot / s : e.s !== void 0 && (a = 4e-4 * e.s ** 2 * (t.aW + 4) / t.c);
-  const c = Re(a * Math.pow(1.64 - Math.pow(0.29, t.n), -0.73), 10 / 9), i = 0.25 * (Math.cos(n + 2) + 3.8), l = t.aW * Re(s, 2 / t.c / t.z), u = 5e4 / 13 * t.nc * t.ncb * i, f = l / t.nbb, d = 23 * (f + 0.305) * Xr(c, 23 * u + c * (11 * r + 108 * o)), h = d * r, p = d * o, w = tf(Q(Qc, [f, h, p]).map((m) => m * 1 / 1403), t.fl);
-  return Q(Zc, w.map((m, P) => m * t.dRgbInv[P])).map((m) => m / 100);
+  const c = Re(a * Math.pow(1.64 - Math.pow(0.29, t.n), -0.73), 10 / 9), i = 0.25 * (Math.cos(n + 2) + 3.8), l = t.aW * Re(s, 2 / t.c / t.z), u = 5e4 / 13 * t.nc * t.ncb * i, f = l / t.nbb, d = 23 * (f + 0.305) * Xr(c, 23 * u + c * (11 * r + 108 * o)), h = d * r, p = d * o, w = ef(Q(Zc, [f, h, p]).map((m) => m * 1 / 1403), t.fl);
+  return Q(Kc, w.map((m, P) => m * t.dRgbInv[P])).map((m) => m / 100);
 }
 function Oa(e, t) {
-  const n = e.map((R) => R * 100), r = _a(Q(Ea, n).map((R, T) => R * t.dRgb[T]), t.fl), o = r[0] + (-12 * r[1] + r[2]) / 11, s = (r[0] + r[1] - 2 * r[2]) / 9, a = (Math.atan2(s, o) % qn + qn) % qn, c = 0.25 * (Math.cos(a + 2) + 3.8), i = 5e4 / 13 * t.nc * t.ncb * Xr(c * Math.sqrt(o ** 2 + s ** 2), r[0] + r[1] + 1.05 * r[2] + 0.305), l = Re(i, 0.9) * Math.pow(1.64 - Math.pow(0.29, t.n), 0.73), u = t.nbb * (2 * r[0] + r[1] + 0.05 * r[2]), f = Re(u / t.aW, 0.5 * t.c * t.z), d = 100 * Re(f, 2), h = 4 / t.c * f * (t.aW + 4) * t.flRoot, p = l * f, w = p * t.flRoot, m = Ae(a * ef), P = nf(m), y = 50 * Re(t.c * l / (t.aW + 4), 1 / 2);
+  const n = e.map((R) => R * 100), r = _a(Q(Ea, n).map((R, T) => R * t.dRgb[T]), t.fl), o = r[0] + (-12 * r[1] + r[2]) / 11, s = (r[0] + r[1] - 2 * r[2]) / 9, a = (Math.atan2(s, o) % qn + qn) % qn, c = 0.25 * (Math.cos(a + 2) + 3.8), i = 5e4 / 13 * t.nc * t.ncb * Xr(c * Math.sqrt(o ** 2 + s ** 2), r[0] + r[1] + 1.05 * r[2] + 0.305), l = Re(i, 0.9) * Math.pow(1.64 - Math.pow(0.29, t.n), 0.73), u = t.nbb * (2 * r[0] + r[1] + 0.05 * r[2]), f = Re(u / t.aW, 0.5 * t.c * t.z), d = 100 * Re(f, 2), h = 4 / t.c * f * (t.aW + 4) * t.flRoot, p = l * f, w = p * t.flRoot, m = Ae(a * Vc), P = tf(m), y = 50 * Re(t.c * l / (t.aW + 4), 1 / 2);
   return { J: d, C: p, h: m, s: y, Q: h, M: w, H: P };
 }
-var of = new O({ id: "cam16-jmh", cssId: "--cam16-jmh", name: "CAM16-JMh", coords: { j: { refRange: [0, 100], name: "J" }, m: { refRange: [0, 105], name: "Colorfulness" }, h: { refRange: [0, 360], type: "angle", name: "Hue" } }, base: se, fromBase(e) {
+var rf = new O({ id: "cam16-jmh", cssId: "--cam16-jmh", name: "CAM16-JMh", coords: { j: { refRange: [0, 100], name: "J" }, m: { refRange: [0, 105], name: "Colorfulness" }, h: { refRange: [0, 360], type: "angle", name: "Hue" } }, base: se, fromBase(e) {
   const t = Oa(e, Io);
   return [t.J, t.M, t.h];
 }, toBase(e) {
   return wr({ J: e[0], M: e[1], h: e[2] }, Io);
 } });
-const sf = ie.D65, af = 216 / 24389, xa = 24389 / 27;
-function cf(e) {
-  return 116 * (e > af ? Math.cbrt(e) : (xa * e + 16) / 116) - 16;
+const of = ie.D65, sf = 216 / 24389, xa = 24389 / 27;
+function af(e) {
+  return 116 * (e > sf ? Math.cbrt(e) : (xa * e + 16) / 116) - 16;
 }
 function vr(e) {
   return e > 8 ? Math.pow((e + 16) / 116, 3) : e / xa;
 }
-function ff(e, t) {
+function cf(e, t) {
   let [n, r, o] = e, s = [], a = 0;
   if (o === 0) return [0, 0, 0];
   let c = vr(o);
@@ -851,31 +851,31 @@ function ff(e, t) {
   }
   return wr({ J: a, C: r, h: n }, t);
 }
-function lf(e, t) {
-  const n = cf(e[1]);
+function ff(e, t) {
+  const n = af(e[1]);
   if (n === 0) return [0, 0, 0];
   const r = Oa(e, Gr);
   return [Ae(r.h), r.C, n];
 }
-const Gr = ka(sf, 200 / Math.PI * vr(50), vr(50) * 100, "average", false);
+const Gr = ka(of, 200 / Math.PI * vr(50), vr(50) * 100, "average", false);
 var Ot = new O({ id: "hct", name: "HCT", coords: { h: { refRange: [0, 360], type: "angle", name: "Hue" }, c: { refRange: [0, 145], name: "Colorfulness" }, t: { refRange: [0, 100], name: "Tone" } }, base: se, fromBase(e) {
-  return lf(e);
+  return ff(e);
 }, toBase(e) {
-  return ff(e, Gr);
+  return cf(e, Gr);
 }, formats: { color: { id: "--hct", coords: ["<number> | <angle>", "<percentage> | <number>", "<percentage> | <number>"] } } });
-const uf = Math.PI / 180, $o = [1, 7e-3, 0.0228];
+const lf = Math.PI / 180, $o = [1, 7e-3, 0.0228];
 function Ho(e) {
   e[1] < 0 && (e = Ot.fromBase(Ot.toBase(e)));
-  const t = Math.log(Math.max(1 + $o[2] * e[1] * Gr.flRoot, 1)) / $o[2], n = e[0] * uf, r = t * Math.cos(n), o = t * Math.sin(n);
+  const t = Math.log(Math.max(1 + $o[2] * e[1] * Gr.flRoot, 1)) / $o[2], n = e[0] * lf, r = t * Math.cos(n), o = t * Math.sin(n);
   return [e[2], r, o];
 }
-function df(e, t) {
+function uf(e, t) {
   [e, t] = z([e, t]);
   let [n, r, o] = Ho(Ot.from(e)), [s, a, c] = Ho(Ot.from(t));
   return Math.sqrt((n - s) ** 2 + (r - a) ** 2 + (o - c) ** 2);
 }
-var ht = { deltaE76: xc, deltaECMC: Lc, deltaE2000: ba, deltaEJz: zc, deltaEITP: Gc, deltaEOK: gr, deltaEHCT: df };
-function hf(e) {
+var ht = { deltaE76: Oc, deltaECMC: Cc, deltaE2000: ba, deltaEJz: Hc, deltaEITP: Jc, deltaEOK: gr, deltaEHCT: uf };
+function df(e) {
   const t = e ? Math.floor(Math.log10(Math.abs(e))) : 0;
   return Math.max(parseFloat(`1e${t - 2}`), 1e-6);
 }
@@ -883,7 +883,7 @@ const zo = { hct: { method: "hct.c", jnd: 2, deltaEMethod: "hct", blackWhiteClam
 function He(e, { method: t = me.gamut_mapping, space: n = void 0, deltaEMethod: r = "", jnd: o = 2, blackWhiteClamp: s = {} } = {}) {
   if (e = z(e), jt(arguments[1]) ? n = arguments[1] : n || (n = e.space), n = O.get(n), Ke(e, n, { epsilon: 0 })) return e;
   let a;
-  if (t === "css") a = pf(e, { space: n });
+  if (t === "css") a = hf(e, { space: n });
   else {
     if (t !== "clip" && !Ke(e, n)) {
       Object.prototype.hasOwnProperty.call(zo, t) && ({ method: t, jnd: o, deltaEMethod: r, blackWhiteClamp: s } = zo[t]);
@@ -905,7 +905,7 @@ function He(e, { method: t = me.gamut_mapping, space: n = void 0, deltaEMethod: 
         d.coords.forEach((y, R) => {
           Ie(y) && (d.coords[R] = 0);
         });
-        let p = (l.range || l.refRange)[0], w = hf(o), m = p, P = he(d, f);
+        let p = (l.range || l.refRange)[0], w = df(o), m = p, P = he(d, f);
         for (; P - m > w; ) {
           let y = dt(d);
           y = He(y, { space: n, method: "clip" }), c(d, y) - o < w ? m = he(d, f) : P = he(d, f), ke(d, f, (m + P) / 2);
@@ -925,7 +925,7 @@ function He(e, { method: t = me.gamut_mapping, space: n = void 0, deltaEMethod: 
 }
 He.returns = "color";
 const qo = { WHITE: { space: ut, coords: [1, 0, 0] }, BLACK: { space: ut, coords: [0, 0, 0] } };
-function pf(e, { space: t } = {}) {
+function hf(e, { space: t } = {}) {
   e = z(e), t || (t = e.space), t = O.get(t);
   const o = O.get("oklch");
   if (t.isUnbounded) return Z(e, t);
@@ -992,8 +992,8 @@ function At(e, { precision: t = me.precision, format: n = "default", inGamut: r 
   }
   return s;
 }
-const gf = [[0.6369580483012914, 0.14461690358620832, 0.1688809751641721], [0.2627002120112671, 0.6779980715188708, 0.05930171646986196], [0, 0.028072693049087428, 1.060985057710791]], mf = [[1.716651187971268, -0.355670783776392, -0.25336628137366], [-0.666684351832489, 1.616481236634939, 0.0157685458139111], [0.017639857445311, -0.042770613257809, 0.942103121235474]];
-var En = new le({ id: "rec2020-linear", cssId: "--rec2020-linear", name: "Linear REC.2020", white: "D65", toXYZ_M: gf, fromXYZ_M: mf });
+const pf = [[0.6369580483012914, 0.14461690358620832, 0.1688809751641721], [0.2627002120112671, 0.6779980715188708, 0.05930171646986196], [0, 0.028072693049087428, 1.060985057710791]], gf = [[1.716651187971268, -0.355670783776392, -0.25336628137366], [-0.666684351832489, 1.616481236634939, 0.0157685458139111], [0.017639857445311, -0.042770613257809, 0.942103121235474]];
+var En = new le({ id: "rec2020-linear", cssId: "--rec2020-linear", name: "Linear REC.2020", white: "D65", toXYZ_M: pf, fromXYZ_M: gf });
 const Zt = 1.09929682680944, jo = 0.018053968510807;
 var Ca = new le({ id: "rec2020", name: "REC.2020", base: En, toBase(e) {
   return e.map(function(t) {
@@ -1004,10 +1004,10 @@ var Ca = new le({ id: "rec2020", name: "REC.2020", base: En, toBase(e) {
     return t >= jo ? Zt * Math.pow(t, 0.45) - (Zt - 1) : 4.5 * t;
   });
 } });
-const yf = [[0.4865709486482162, 0.26566769316909306, 0.1982172852343625], [0.2289745640697488, 0.6917385218365064, 0.079286914093745], [0, 0.04511338185890264, 1.043944368900976]], wf = [[2.493496911941425, -0.9313836179191239, -0.40271078445071684], [-0.8294889695615747, 1.7626640603183463, 0.023624685841943577], [0.03584583024378447, -0.07617238926804182, 0.9568845240076872]];
-var La = new le({ id: "p3-linear", cssId: "--display-p3-linear", name: "Linear P3", white: "D65", toXYZ_M: yf, fromXYZ_M: wf });
-const vf = [[0.41239079926595934, 0.357584339383878, 0.1804807884018343], [0.21263900587151027, 0.715168678767756, 0.07219231536073371], [0.01933081871559182, 0.11919477979462598, 0.9505321522496607]], re = [[3.2409699419045226, -1.537383177570094, -0.4986107602930034], [-0.9692436362808796, 1.8759675015077202, 0.04155505740717559], [0.05563007969699366, -0.20397695888897652, 1.0569715142428786]];
-var Da = new le({ id: "srgb-linear", name: "Linear sRGB", white: "D65", toXYZ_M: vf, fromXYZ_M: re }), Fo = { aliceblue: [240 / 255, 248 / 255, 1], antiquewhite: [250 / 255, 235 / 255, 215 / 255], aqua: [0, 1, 1], aquamarine: [127 / 255, 1, 212 / 255], azure: [240 / 255, 1, 1], beige: [245 / 255, 245 / 255, 220 / 255], bisque: [1, 228 / 255, 196 / 255], black: [0, 0, 0], blanchedalmond: [1, 235 / 255, 205 / 255], blue: [0, 0, 1], blueviolet: [138 / 255, 43 / 255, 226 / 255], brown: [165 / 255, 42 / 255, 42 / 255], burlywood: [222 / 255, 184 / 255, 135 / 255], cadetblue: [95 / 255, 158 / 255, 160 / 255], chartreuse: [127 / 255, 1, 0], chocolate: [210 / 255, 105 / 255, 30 / 255], coral: [1, 127 / 255, 80 / 255], cornflowerblue: [100 / 255, 149 / 255, 237 / 255], cornsilk: [1, 248 / 255, 220 / 255], crimson: [220 / 255, 20 / 255, 60 / 255], cyan: [0, 1, 1], darkblue: [0, 0, 139 / 255], darkcyan: [0, 139 / 255, 139 / 255], darkgoldenrod: [184 / 255, 134 / 255, 11 / 255], darkgray: [169 / 255, 169 / 255, 169 / 255], darkgreen: [0, 100 / 255, 0], darkgrey: [169 / 255, 169 / 255, 169 / 255], darkkhaki: [189 / 255, 183 / 255, 107 / 255], darkmagenta: [139 / 255, 0, 139 / 255], darkolivegreen: [85 / 255, 107 / 255, 47 / 255], darkorange: [1, 140 / 255, 0], darkorchid: [153 / 255, 50 / 255, 204 / 255], darkred: [139 / 255, 0, 0], darksalmon: [233 / 255, 150 / 255, 122 / 255], darkseagreen: [143 / 255, 188 / 255, 143 / 255], darkslateblue: [72 / 255, 61 / 255, 139 / 255], darkslategray: [47 / 255, 79 / 255, 79 / 255], darkslategrey: [47 / 255, 79 / 255, 79 / 255], darkturquoise: [0, 206 / 255, 209 / 255], darkviolet: [148 / 255, 0, 211 / 255], deeppink: [1, 20 / 255, 147 / 255], deepskyblue: [0, 191 / 255, 1], dimgray: [105 / 255, 105 / 255, 105 / 255], dimgrey: [105 / 255, 105 / 255, 105 / 255], dodgerblue: [30 / 255, 144 / 255, 1], firebrick: [178 / 255, 34 / 255, 34 / 255], floralwhite: [1, 250 / 255, 240 / 255], forestgreen: [34 / 255, 139 / 255, 34 / 255], fuchsia: [1, 0, 1], gainsboro: [220 / 255, 220 / 255, 220 / 255], ghostwhite: [248 / 255, 248 / 255, 1], gold: [1, 215 / 255, 0], goldenrod: [218 / 255, 165 / 255, 32 / 255], gray: [128 / 255, 128 / 255, 128 / 255], green: [0, 128 / 255, 0], greenyellow: [173 / 255, 1, 47 / 255], grey: [128 / 255, 128 / 255, 128 / 255], honeydew: [240 / 255, 1, 240 / 255], hotpink: [1, 105 / 255, 180 / 255], indianred: [205 / 255, 92 / 255, 92 / 255], indigo: [75 / 255, 0, 130 / 255], ivory: [1, 1, 240 / 255], khaki: [240 / 255, 230 / 255, 140 / 255], lavender: [230 / 255, 230 / 255, 250 / 255], lavenderblush: [1, 240 / 255, 245 / 255], lawngreen: [124 / 255, 252 / 255, 0], lemonchiffon: [1, 250 / 255, 205 / 255], lightblue: [173 / 255, 216 / 255, 230 / 255], lightcoral: [240 / 255, 128 / 255, 128 / 255], lightcyan: [224 / 255, 1, 1], lightgoldenrodyellow: [250 / 255, 250 / 255, 210 / 255], lightgray: [211 / 255, 211 / 255, 211 / 255], lightgreen: [144 / 255, 238 / 255, 144 / 255], lightgrey: [211 / 255, 211 / 255, 211 / 255], lightpink: [1, 182 / 255, 193 / 255], lightsalmon: [1, 160 / 255, 122 / 255], lightseagreen: [32 / 255, 178 / 255, 170 / 255], lightskyblue: [135 / 255, 206 / 255, 250 / 255], lightslategray: [119 / 255, 136 / 255, 153 / 255], lightslategrey: [119 / 255, 136 / 255, 153 / 255], lightsteelblue: [176 / 255, 196 / 255, 222 / 255], lightyellow: [1, 1, 224 / 255], lime: [0, 1, 0], limegreen: [50 / 255, 205 / 255, 50 / 255], linen: [250 / 255, 240 / 255, 230 / 255], magenta: [1, 0, 1], maroon: [128 / 255, 0, 0], mediumaquamarine: [102 / 255, 205 / 255, 170 / 255], mediumblue: [0, 0, 205 / 255], mediumorchid: [186 / 255, 85 / 255, 211 / 255], mediumpurple: [147 / 255, 112 / 255, 219 / 255], mediumseagreen: [60 / 255, 179 / 255, 113 / 255], mediumslateblue: [123 / 255, 104 / 255, 238 / 255], mediumspringgreen: [0, 250 / 255, 154 / 255], mediumturquoise: [72 / 255, 209 / 255, 204 / 255], mediumvioletred: [199 / 255, 21 / 255, 133 / 255], midnightblue: [25 / 255, 25 / 255, 112 / 255], mintcream: [245 / 255, 1, 250 / 255], mistyrose: [1, 228 / 255, 225 / 255], moccasin: [1, 228 / 255, 181 / 255], navajowhite: [1, 222 / 255, 173 / 255], navy: [0, 0, 128 / 255], oldlace: [253 / 255, 245 / 255, 230 / 255], olive: [128 / 255, 128 / 255, 0], olivedrab: [107 / 255, 142 / 255, 35 / 255], orange: [1, 165 / 255, 0], orangered: [1, 69 / 255, 0], orchid: [218 / 255, 112 / 255, 214 / 255], palegoldenrod: [238 / 255, 232 / 255, 170 / 255], palegreen: [152 / 255, 251 / 255, 152 / 255], paleturquoise: [175 / 255, 238 / 255, 238 / 255], palevioletred: [219 / 255, 112 / 255, 147 / 255], papayawhip: [1, 239 / 255, 213 / 255], peachpuff: [1, 218 / 255, 185 / 255], peru: [205 / 255, 133 / 255, 63 / 255], pink: [1, 192 / 255, 203 / 255], plum: [221 / 255, 160 / 255, 221 / 255], powderblue: [176 / 255, 224 / 255, 230 / 255], purple: [128 / 255, 0, 128 / 255], rebeccapurple: [102 / 255, 51 / 255, 153 / 255], red: [1, 0, 0], rosybrown: [188 / 255, 143 / 255, 143 / 255], royalblue: [65 / 255, 105 / 255, 225 / 255], saddlebrown: [139 / 255, 69 / 255, 19 / 255], salmon: [250 / 255, 128 / 255, 114 / 255], sandybrown: [244 / 255, 164 / 255, 96 / 255], seagreen: [46 / 255, 139 / 255, 87 / 255], seashell: [1, 245 / 255, 238 / 255], sienna: [160 / 255, 82 / 255, 45 / 255], silver: [192 / 255, 192 / 255, 192 / 255], skyblue: [135 / 255, 206 / 255, 235 / 255], slateblue: [106 / 255, 90 / 255, 205 / 255], slategray: [112 / 255, 128 / 255, 144 / 255], slategrey: [112 / 255, 128 / 255, 144 / 255], snow: [1, 250 / 255, 250 / 255], springgreen: [0, 1, 127 / 255], steelblue: [70 / 255, 130 / 255, 180 / 255], tan: [210 / 255, 180 / 255, 140 / 255], teal: [0, 128 / 255, 128 / 255], thistle: [216 / 255, 191 / 255, 216 / 255], tomato: [1, 99 / 255, 71 / 255], turquoise: [64 / 255, 224 / 255, 208 / 255], violet: [238 / 255, 130 / 255, 238 / 255], wheat: [245 / 255, 222 / 255, 179 / 255], white: [1, 1, 1], whitesmoke: [245 / 255, 245 / 255, 245 / 255], yellow: [1, 1, 0], yellowgreen: [154 / 255, 205 / 255, 50 / 255] };
+const mf = [[0.4865709486482162, 0.26566769316909306, 0.1982172852343625], [0.2289745640697488, 0.6917385218365064, 0.079286914093745], [0, 0.04511338185890264, 1.043944368900976]], yf = [[2.493496911941425, -0.9313836179191239, -0.40271078445071684], [-0.8294889695615747, 1.7626640603183463, 0.023624685841943577], [0.03584583024378447, -0.07617238926804182, 0.9568845240076872]];
+var La = new le({ id: "p3-linear", cssId: "--display-p3-linear", name: "Linear P3", white: "D65", toXYZ_M: mf, fromXYZ_M: yf });
+const wf = [[0.41239079926595934, 0.357584339383878, 0.1804807884018343], [0.21263900587151027, 0.715168678767756, 0.07219231536073371], [0.01933081871559182, 0.11919477979462598, 0.9505321522496607]], re = [[3.2409699419045226, -1.537383177570094, -0.4986107602930034], [-0.9692436362808796, 1.8759675015077202, 0.04155505740717559], [0.05563007969699366, -0.20397695888897652, 1.0569715142428786]];
+var Da = new le({ id: "srgb-linear", name: "Linear sRGB", white: "D65", toXYZ_M: wf, fromXYZ_M: re }), Fo = { aliceblue: [240 / 255, 248 / 255, 1], antiquewhite: [250 / 255, 235 / 255, 215 / 255], aqua: [0, 1, 1], aquamarine: [127 / 255, 1, 212 / 255], azure: [240 / 255, 1, 1], beige: [245 / 255, 245 / 255, 220 / 255], bisque: [1, 228 / 255, 196 / 255], black: [0, 0, 0], blanchedalmond: [1, 235 / 255, 205 / 255], blue: [0, 0, 1], blueviolet: [138 / 255, 43 / 255, 226 / 255], brown: [165 / 255, 42 / 255, 42 / 255], burlywood: [222 / 255, 184 / 255, 135 / 255], cadetblue: [95 / 255, 158 / 255, 160 / 255], chartreuse: [127 / 255, 1, 0], chocolate: [210 / 255, 105 / 255, 30 / 255], coral: [1, 127 / 255, 80 / 255], cornflowerblue: [100 / 255, 149 / 255, 237 / 255], cornsilk: [1, 248 / 255, 220 / 255], crimson: [220 / 255, 20 / 255, 60 / 255], cyan: [0, 1, 1], darkblue: [0, 0, 139 / 255], darkcyan: [0, 139 / 255, 139 / 255], darkgoldenrod: [184 / 255, 134 / 255, 11 / 255], darkgray: [169 / 255, 169 / 255, 169 / 255], darkgreen: [0, 100 / 255, 0], darkgrey: [169 / 255, 169 / 255, 169 / 255], darkkhaki: [189 / 255, 183 / 255, 107 / 255], darkmagenta: [139 / 255, 0, 139 / 255], darkolivegreen: [85 / 255, 107 / 255, 47 / 255], darkorange: [1, 140 / 255, 0], darkorchid: [153 / 255, 50 / 255, 204 / 255], darkred: [139 / 255, 0, 0], darksalmon: [233 / 255, 150 / 255, 122 / 255], darkseagreen: [143 / 255, 188 / 255, 143 / 255], darkslateblue: [72 / 255, 61 / 255, 139 / 255], darkslategray: [47 / 255, 79 / 255, 79 / 255], darkslategrey: [47 / 255, 79 / 255, 79 / 255], darkturquoise: [0, 206 / 255, 209 / 255], darkviolet: [148 / 255, 0, 211 / 255], deeppink: [1, 20 / 255, 147 / 255], deepskyblue: [0, 191 / 255, 1], dimgray: [105 / 255, 105 / 255, 105 / 255], dimgrey: [105 / 255, 105 / 255, 105 / 255], dodgerblue: [30 / 255, 144 / 255, 1], firebrick: [178 / 255, 34 / 255, 34 / 255], floralwhite: [1, 250 / 255, 240 / 255], forestgreen: [34 / 255, 139 / 255, 34 / 255], fuchsia: [1, 0, 1], gainsboro: [220 / 255, 220 / 255, 220 / 255], ghostwhite: [248 / 255, 248 / 255, 1], gold: [1, 215 / 255, 0], goldenrod: [218 / 255, 165 / 255, 32 / 255], gray: [128 / 255, 128 / 255, 128 / 255], green: [0, 128 / 255, 0], greenyellow: [173 / 255, 1, 47 / 255], grey: [128 / 255, 128 / 255, 128 / 255], honeydew: [240 / 255, 1, 240 / 255], hotpink: [1, 105 / 255, 180 / 255], indianred: [205 / 255, 92 / 255, 92 / 255], indigo: [75 / 255, 0, 130 / 255], ivory: [1, 1, 240 / 255], khaki: [240 / 255, 230 / 255, 140 / 255], lavender: [230 / 255, 230 / 255, 250 / 255], lavenderblush: [1, 240 / 255, 245 / 255], lawngreen: [124 / 255, 252 / 255, 0], lemonchiffon: [1, 250 / 255, 205 / 255], lightblue: [173 / 255, 216 / 255, 230 / 255], lightcoral: [240 / 255, 128 / 255, 128 / 255], lightcyan: [224 / 255, 1, 1], lightgoldenrodyellow: [250 / 255, 250 / 255, 210 / 255], lightgray: [211 / 255, 211 / 255, 211 / 255], lightgreen: [144 / 255, 238 / 255, 144 / 255], lightgrey: [211 / 255, 211 / 255, 211 / 255], lightpink: [1, 182 / 255, 193 / 255], lightsalmon: [1, 160 / 255, 122 / 255], lightseagreen: [32 / 255, 178 / 255, 170 / 255], lightskyblue: [135 / 255, 206 / 255, 250 / 255], lightslategray: [119 / 255, 136 / 255, 153 / 255], lightslategrey: [119 / 255, 136 / 255, 153 / 255], lightsteelblue: [176 / 255, 196 / 255, 222 / 255], lightyellow: [1, 1, 224 / 255], lime: [0, 1, 0], limegreen: [50 / 255, 205 / 255, 50 / 255], linen: [250 / 255, 240 / 255, 230 / 255], magenta: [1, 0, 1], maroon: [128 / 255, 0, 0], mediumaquamarine: [102 / 255, 205 / 255, 170 / 255], mediumblue: [0, 0, 205 / 255], mediumorchid: [186 / 255, 85 / 255, 211 / 255], mediumpurple: [147 / 255, 112 / 255, 219 / 255], mediumseagreen: [60 / 255, 179 / 255, 113 / 255], mediumslateblue: [123 / 255, 104 / 255, 238 / 255], mediumspringgreen: [0, 250 / 255, 154 / 255], mediumturquoise: [72 / 255, 209 / 255, 204 / 255], mediumvioletred: [199 / 255, 21 / 255, 133 / 255], midnightblue: [25 / 255, 25 / 255, 112 / 255], mintcream: [245 / 255, 1, 250 / 255], mistyrose: [1, 228 / 255, 225 / 255], moccasin: [1, 228 / 255, 181 / 255], navajowhite: [1, 222 / 255, 173 / 255], navy: [0, 0, 128 / 255], oldlace: [253 / 255, 245 / 255, 230 / 255], olive: [128 / 255, 128 / 255, 0], olivedrab: [107 / 255, 142 / 255, 35 / 255], orange: [1, 165 / 255, 0], orangered: [1, 69 / 255, 0], orchid: [218 / 255, 112 / 255, 214 / 255], palegoldenrod: [238 / 255, 232 / 255, 170 / 255], palegreen: [152 / 255, 251 / 255, 152 / 255], paleturquoise: [175 / 255, 238 / 255, 238 / 255], palevioletred: [219 / 255, 112 / 255, 147 / 255], papayawhip: [1, 239 / 255, 213 / 255], peachpuff: [1, 218 / 255, 185 / 255], peru: [205 / 255, 133 / 255, 63 / 255], pink: [1, 192 / 255, 203 / 255], plum: [221 / 255, 160 / 255, 221 / 255], powderblue: [176 / 255, 224 / 255, 230 / 255], purple: [128 / 255, 0, 128 / 255], rebeccapurple: [102 / 255, 51 / 255, 153 / 255], red: [1, 0, 0], rosybrown: [188 / 255, 143 / 255, 143 / 255], royalblue: [65 / 255, 105 / 255, 225 / 255], saddlebrown: [139 / 255, 69 / 255, 19 / 255], salmon: [250 / 255, 128 / 255, 114 / 255], sandybrown: [244 / 255, 164 / 255, 96 / 255], seagreen: [46 / 255, 139 / 255, 87 / 255], seashell: [1, 245 / 255, 238 / 255], sienna: [160 / 255, 82 / 255, 45 / 255], silver: [192 / 255, 192 / 255, 192 / 255], skyblue: [135 / 255, 206 / 255, 235 / 255], slateblue: [106 / 255, 90 / 255, 205 / 255], slategray: [112 / 255, 128 / 255, 144 / 255], slategrey: [112 / 255, 128 / 255, 144 / 255], snow: [1, 250 / 255, 250 / 255], springgreen: [0, 1, 127 / 255], steelblue: [70 / 255, 130 / 255, 180 / 255], tan: [210 / 255, 180 / 255, 140 / 255], teal: [0, 128 / 255, 128 / 255], thistle: [216 / 255, 191 / 255, 216 / 255], tomato: [1, 99 / 255, 71 / 255], turquoise: [64 / 255, 224 / 255, 208 / 255], violet: [238 / 255, 130 / 255, 238 / 255], wheat: [245 / 255, 222 / 255, 179 / 255], white: [1, 1, 1], whitesmoke: [245 / 255, 245 / 255, 245 / 255], yellow: [1, 1, 0], yellowgreen: [154 / 255, 205 / 255, 50 / 255] };
 let Yo = Array(3).fill("<percentage> | <number>[0, 255]"), Xo = Array(3).fill("<number>[0, 255]");
 var pt = new le({ id: "srgb", name: "sRGB", base: Da, fromBase: (e) => e.map((t) => {
   let n = t < 0 ? -1 : 1, r = t * n;
@@ -1031,7 +1031,7 @@ var pt = new le({ id: "srgb", name: "sRGB", base: Da, fromBase: (e) => e.map((t)
   if (e === "transparent" ? (t.coords = Fo.black, t.alpha = 0) : t.coords = Fo[e], t.coords) return t;
 } } } }), Na = new le({ id: "p3", cssId: "display-p3", name: "P3", base: La, fromBase: pt.fromBase, toBase: pt.toBase });
 me.display_space = pt;
-let bf;
+let vf;
 if (typeof CSS < "u" && CSS.supports) for (let e of [pe, Ca, Na]) {
   let t = e.getMinCoords(), r = At({ space: e, coords: t, alpha: 1 });
   if (CSS.supports("color", r)) {
@@ -1039,17 +1039,17 @@ if (typeof CSS < "u" && CSS.supports) for (let e of [pe, Ca, Na]) {
     break;
   }
 }
-function Pf(e, { space: t = me.display_space, ...n } = {}) {
+function bf(e, { space: t = me.display_space, ...n } = {}) {
   let r = At(e, n);
   if (typeof CSS > "u" || CSS.supports("color", r) || !me.display_space) r = new String(r), r.color = e;
   else {
     let o = e;
-    if ((e.coords.some(Ie) || Ie(e.alpha)) && !(bf ?? (bf = CSS.supports("color", "hsl(none 50% 50%)"))) && (o = dt(e), o.coords = o.coords.map(ne), o.alpha = ne(o.alpha), r = At(o, n), CSS.supports("color", r))) return r = new String(r), r.color = o, r;
+    if ((e.coords.some(Ie) || Ie(e.alpha)) && !(vf ?? (vf = CSS.supports("color", "hsl(none 50% 50%)"))) && (o = dt(e), o.coords = o.coords.map(ne), o.alpha = ne(o.alpha), r = At(o, n), CSS.supports("color", r))) return r = new String(r), r.color = o, r;
     o = Z(o, t), r = new String(At(o, n)), r.color = o;
   }
   return r;
 }
-function Mf(e, t) {
+function Pf(e, t) {
   return e = z(e), t = z(t), e.space === t.space && e.alpha === t.alpha && e.coords.every((n, r) => n === t.coords[r]);
 }
 function ze(e) {
@@ -1058,71 +1058,71 @@ function ze(e) {
 function Ba(e, t) {
   ke(e, [se, "y"], t);
 }
-function Sf(e) {
+function Mf(e) {
   Object.defineProperty(e.prototype, "luminance", { get() {
     return ze(this);
   }, set(t) {
     Ba(this, t);
   } });
 }
-var Rf = Object.freeze({ __proto__: null, getLuminance: ze, register: Sf, setLuminance: Ba });
-function Tf(e, t) {
+var Sf = Object.freeze({ __proto__: null, getLuminance: ze, register: Mf, setLuminance: Ba });
+function Rf(e, t) {
   e = z(e), t = z(t);
   let n = Math.max(ze(e), 0), r = Math.max(ze(t), 0);
   return r > n && ([n, r] = [r, n]), (n + 0.05) / (r + 0.05);
 }
-const Af = 0.56, Ef = 0.57, _f = 0.62, kf = 0.65, Uo = 0.022, Of = 1.414, xf = 0.1, Cf = 5e-4, Lf = 1.14, Wo = 0.027, Df = 1.14;
+const Tf = 0.56, Af = 0.57, Ef = 0.62, _f = 0.65, Uo = 0.022, kf = 1.414, Of = 0.1, xf = 5e-4, Cf = 1.14, Wo = 0.027, Lf = 1.14;
 function Jo(e) {
-  return e >= Uo ? e : e + (Uo - e) ** Of;
+  return e >= Uo ? e : e + (Uo - e) ** kf;
 }
 function st(e) {
   let t = e < 0 ? -1 : 1, n = Math.abs(e);
   return t * Math.pow(n, 2.4);
 }
-function Nf(e, t) {
+function Df(e, t) {
   t = z(t), e = z(e);
   let n, r, o, s, a, c;
   t = Z(t, "srgb"), [s, a, c] = t.coords;
   let i = st(s) * 0.2126729 + st(a) * 0.7151522 + st(c) * 0.072175;
   e = Z(e, "srgb"), [s, a, c] = e.coords;
   let l = st(s) * 0.2126729 + st(a) * 0.7151522 + st(c) * 0.072175, u = Jo(i), f = Jo(l), d = f > u;
-  return Math.abs(f - u) < Cf ? r = 0 : d ? (n = f ** Af - u ** Ef, r = n * Lf) : (n = f ** kf - u ** _f, r = n * Df), Math.abs(r) < xf ? o = 0 : r > 0 ? o = r - Wo : o = r + Wo, o * 100;
+  return Math.abs(f - u) < xf ? r = 0 : d ? (n = f ** Tf - u ** Af, r = n * Cf) : (n = f ** _f - u ** Ef, r = n * Lf), Math.abs(r) < Of ? o = 0 : r > 0 ? o = r - Wo : o = r + Wo, o * 100;
 }
-function Bf(e, t) {
+function Nf(e, t) {
   e = z(e), t = z(t);
   let n = Math.max(ze(e), 0), r = Math.max(ze(t), 0);
   r > n && ([n, r] = [r, n]);
   let o = n + r;
   return o === 0 ? 0 : (n - r) / o;
 }
-const If = 5e4;
-function $f(e, t) {
+const Bf = 5e4;
+function If(e, t) {
   e = z(e), t = z(t);
   let n = Math.max(ze(e), 0), r = Math.max(ze(t), 0);
-  return r > n && ([n, r] = [r, n]), r === 0 ? If : (n - r) / r;
+  return r > n && ([n, r] = [r, n]), r === 0 ? Bf : (n - r) / r;
 }
-function Hf(e, t) {
+function $f(e, t) {
   e = z(e), t = z(t);
   let n = he(e, [pe, "l"]), r = he(t, [pe, "l"]);
   return Math.abs(n - r);
 }
-const zf = 216 / 24389, Go = 24 / 116, Qt = 24389 / 27;
+const Hf = 216 / 24389, Go = 24 / 116, Qt = 24389 / 27;
 let jn = ie.D65;
 var br = new O({ id: "lab-d65", name: "Lab D65", coords: { l: { refRange: [0, 100], name: "Lightness" }, a: { refRange: [-125, 125] }, b: { refRange: [-125, 125] } }, white: jn, base: se, fromBase(e) {
-  let n = e.map((r, o) => r / jn[o]).map((r) => r > zf ? Math.cbrt(r) : (Qt * r + 16) / 116);
+  let n = e.map((r, o) => r / jn[o]).map((r) => r > Hf ? Math.cbrt(r) : (Qt * r + 16) / 116);
   return [116 * n[1] - 16, 500 * (n[0] - n[1]), 200 * (n[1] - n[2])];
 }, toBase(e) {
   let t = [];
   return t[1] = (e[0] + 16) / 116, t[0] = e[1] / 500 + t[1], t[2] = t[1] - e[2] / 200, [t[0] > Go ? Math.pow(t[0], 3) : (116 * t[0] - 16) / Qt, e[0] > 8 ? Math.pow((e[0] + 16) / 116, 3) : e[0] / Qt, t[2] > Go ? Math.pow(t[2], 3) : (116 * t[2] - 16) / Qt].map((r, o) => r * jn[o]);
 }, formats: { "lab-d65": { coords: ["<number> | <percentage>", "<number> | <percentage>[-1,1]", "<number> | <percentage>[-1,1]"] } } });
 const Fn = Math.pow(5, 0.5) * 0.5 + 0.5;
-function qf(e, t) {
+function zf(e, t) {
   e = z(e), t = z(t);
   let n = he(e, [br, "l"]), r = he(t, [br, "l"]), o = Math.abs(Math.pow(n, Fn) - Math.pow(r, Fn)), s = Math.pow(o, 1 / Fn) * Math.SQRT2 - 40;
   return s < 7.5 ? 0 : s;
 }
-var nn = Object.freeze({ __proto__: null, contrastAPCA: Nf, contrastDeltaPhi: qf, contrastLstar: Hf, contrastMichelson: Bf, contrastWCAG21: Tf, contrastWeber: $f });
-function jf(e, t, n = {}) {
+var nn = Object.freeze({ __proto__: null, contrastAPCA: Df, contrastDeltaPhi: zf, contrastLstar: $f, contrastMichelson: Nf, contrastWCAG21: Rf, contrastWeber: If });
+function qf(e, t, n = {}) {
   jt(n) && (n = { algorithm: n });
   let { algorithm: r, ...o } = n;
   if (!r) {
@@ -1141,29 +1141,29 @@ function Ia(e) {
   let [t, n, r] = Ft(e, se), o = t + n + r;
   return [t / o, n / o];
 }
-function Ff(e) {
+function jf(e) {
   Object.defineProperty(e.prototype, "uv", { get() {
     return _n(this);
   } }), Object.defineProperty(e.prototype, "xy", { get() {
     return Ia(this);
   } });
 }
-var Yf = Object.freeze({ __proto__: null, register: Ff, uv: _n, xy: Ia });
+var Ff = Object.freeze({ __proto__: null, register: jf, uv: _n, xy: Ia });
 function St(e, t, n = {}) {
   jt(n) && (n = { method: n });
   let { method: r = me.deltaE, ...o } = n;
   for (let s in ht) if ("deltae" + r.toLowerCase() === s.toLowerCase()) return ht[s](e, t, o);
   throw new TypeError(`Unknown deltaE method: ${r}`);
 }
-function Xf(e, t = 0.25) {
+function Yf(e, t = 0.25) {
   let r = [O.get("oklch", "lch"), "l"];
   return ke(e, r, (o) => o * (1 + t));
 }
-function Uf(e, t = 0.25) {
+function Xf(e, t = 0.25) {
   let r = [O.get("oklch", "lch"), "l"];
   return ke(e, r, (o) => o * (1 - t));
 }
-var Wf = Object.freeze({ __proto__: null, darken: Uf, lighten: Xf });
+var Uf = Object.freeze({ __proto__: null, darken: Xf, lighten: Yf });
 function $a(e, t, n = 0.5, r = {}) {
   return [e, t] = [z(e), z(t)], Le(n) === "object" && ([n, r] = [0.5, n]), Yt(e, t, r)(n);
 }
@@ -1207,7 +1207,7 @@ function Yt(e, t, n = {}) {
   let c = { colors: [e, t], options: n };
   if (r ? r = O.get(r) : r = O.registry[me.interpolationSpace] || e.space, o = o ? O.get(o) : r, e = Z(e, r), t = Z(t, r), e = He(e), t = He(t), r.coords.h && r.coords.h.type === "angle") {
     let i = n.hue = n.hue || "shorter", l = [r, "h"], [u, f] = [he(e, l), he(t, l)];
-    isNaN(u) && !isNaN(f) ? u = f : isNaN(f) && !isNaN(u) && (f = u), [u, f] = Tc(i, [u, f]), ke(e, l, u), ke(t, l, f);
+    isNaN(u) && !isNaN(f) ? u = f : isNaN(f) && !isNaN(u) && (f = u), [u, f] = Rc(i, [u, f]), ke(e, l, u), ke(t, l, f);
   }
   return a && (e.coords = e.coords.map((i) => i * e.alpha), t.coords = t.coords.map((i) => i * t.alpha)), Object.assign((i) => {
     i = s ? s(i) : i;
@@ -1222,10 +1222,10 @@ function Kr(e) {
   return Le(e) === "function" && !!e.rangeArgs;
 }
 me.interpolationSpace = "lab";
-function Jf(e) {
+function Wf(e) {
   e.defineFunction("mix", $a, { returns: "color" }), e.defineFunction("range", Yt, { returns: "function<color>" }), e.defineFunction("steps", Ha, { returns: "array<color>" });
 }
-var Gf = Object.freeze({ __proto__: null, isRange: Kr, mix: $a, range: Yt, register: Jf, steps: Ha }), za = new O({ id: "hsl", name: "HSL", coords: { h: { refRange: [0, 360], type: "angle", name: "Hue" }, s: { range: [0, 100], name: "Saturation" }, l: { range: [0, 100], name: "Lightness" } }, base: pt, fromBase: (e) => {
+var Jf = Object.freeze({ __proto__: null, isRange: Kr, mix: $a, range: Yt, register: Wf, steps: Ha }), za = new O({ id: "hsl", name: "HSL", coords: { h: { refRange: [0, 360], type: "angle", name: "Hue" }, s: { range: [0, 100], name: "Saturation" }, l: { range: [0, 100], name: "Lightness" } }, base: pt, fromBase: (e) => {
   let t = Math.max(...e), n = Math.min(...e), [r, o, s] = e, [a, c, i] = [NaN, 0, (n + t) / 2], l = t - n;
   if (l !== 0) {
     switch (c = i === 0 || i === 1 ? 0 : (t - i) / Math.min(i, 1 - i), t) {
@@ -1259,7 +1259,7 @@ var Gf = Object.freeze({ __proto__: null, isRange: Kr, mix: $a, range: Yt, regis
   n /= 100, r /= 100;
   let o = r * (1 - n / 2);
   return [t, o === 0 || o === 1 ? 0 : (r - o) / Math.min(o, 1 - o) * 100, o * 100];
-}, formats: { color: { id: "--hsv", coords: ["<number> | <angle>", "<percentage> | <number>", "<percentage> | <number>"] } } }), Kf = new O({ id: "hwb", name: "HWB", coords: { h: { refRange: [0, 360], type: "angle", name: "Hue" }, w: { range: [0, 100], name: "Whiteness" }, b: { range: [0, 100], name: "Blackness" } }, base: qa, fromBase(e) {
+}, formats: { color: { id: "--hsv", coords: ["<number> | <angle>", "<percentage> | <number>", "<percentage> | <number>"] } } }), Gf = new O({ id: "hwb", name: "HWB", coords: { h: { refRange: [0, 360], type: "angle", name: "Hue" }, w: { range: [0, 100], name: "Whiteness" }, b: { range: [0, 100], name: "Blackness" } }, base: qa, fromBase(e) {
   let [t, n, r] = e;
   return [t, r * (100 - n) / 100, 100 - r];
 }, toBase(e) {
@@ -1273,16 +1273,16 @@ var Gf = Object.freeze({ __proto__: null, isRange: Kr, mix: $a, range: Yt, regis
   let s = 1 - r, a = s === 0 ? 0 : 1 - n / s;
   return [t, a * 100, s * 100];
 }, formats: { hwb: { coords: ["<number> | <angle>", "<percentage> | <number>", "<percentage> | <number>"] } } });
-const Zf = [[0.5766690429101305, 0.1855582379065463, 0.1882286462349947], [0.29734497525053605, 0.6273635662554661, 0.07529145849399788], [0.02703136138641234, 0.07068885253582723, 0.9913375368376388]], Qf = [[2.0415879038107465, -0.5650069742788596, -0.34473135077832956], [-0.9692436362808795, 1.8759675015077202, 0.04155505740717557], [0.013444280632031142, -0.11836239223101838, 1.0151749943912054]];
-var ja = new le({ id: "a98rgb-linear", cssId: "--a98-rgb-linear", name: "Linear Adobe\xAE 98 RGB compatible", white: "D65", toXYZ_M: Zf, fromXYZ_M: Qf }), Vf = new le({ id: "a98rgb", cssId: "a98-rgb", name: "Adobe\xAE 98 RGB compatible", base: ja, toBase: (e) => e.map((t) => Math.pow(Math.abs(t), 563 / 256) * Math.sign(t)), fromBase: (e) => e.map((t) => Math.pow(Math.abs(t), 256 / 563) * Math.sign(t)) });
-const el = [[0.7977666449006423, 0.13518129740053308, 0.0313477341283922], [0.2880748288194013, 0.711835234241873, 8993693872564e-17], [0, 0, 0.8251046025104602]], tl = [[1.3457868816471583, -0.25557208737979464, -0.05110186497554526], [-0.5446307051249019, 1.5082477428451468, 0.02052744743642139], [0, 0, 1.2119675456389452]];
-var Fa = new le({ id: "prophoto-linear", cssId: "--prophoto-rgb-linear", name: "Linear ProPhoto", white: "D50", base: Wr, toXYZ_M: el, fromXYZ_M: tl });
-const nl = 1 / 512, rl = 16 / 512;
-var ol = new le({ id: "prophoto", cssId: "prophoto-rgb", name: "ProPhoto", base: Fa, toBase(e) {
-  return e.map((t) => t < rl ? t / 16 : t ** 1.8);
+const Kf = [[0.5766690429101305, 0.1855582379065463, 0.1882286462349947], [0.29734497525053605, 0.6273635662554661, 0.07529145849399788], [0.02703136138641234, 0.07068885253582723, 0.9913375368376388]], Zf = [[2.0415879038107465, -0.5650069742788596, -0.34473135077832956], [-0.9692436362808795, 1.8759675015077202, 0.04155505740717557], [0.013444280632031142, -0.11836239223101838, 1.0151749943912054]];
+var ja = new le({ id: "a98rgb-linear", cssId: "--a98-rgb-linear", name: "Linear Adobe\xAE 98 RGB compatible", white: "D65", toXYZ_M: Kf, fromXYZ_M: Zf }), Qf = new le({ id: "a98rgb", cssId: "a98-rgb", name: "Adobe\xAE 98 RGB compatible", base: ja, toBase: (e) => e.map((t) => Math.pow(Math.abs(t), 563 / 256) * Math.sign(t)), fromBase: (e) => e.map((t) => Math.pow(Math.abs(t), 256 / 563) * Math.sign(t)) });
+const Vf = [[0.7977666449006423, 0.13518129740053308, 0.0313477341283922], [0.2880748288194013, 0.711835234241873, 8993693872564e-17], [0, 0, 0.8251046025104602]], el = [[1.3457868816471583, -0.25557208737979464, -0.05110186497554526], [-0.5446307051249019, 1.5082477428451468, 0.02052744743642139], [0, 0, 1.2119675456389452]];
+var Fa = new le({ id: "prophoto-linear", cssId: "--prophoto-rgb-linear", name: "Linear ProPhoto", white: "D50", base: Wr, toXYZ_M: Vf, fromXYZ_M: el });
+const tl = 1 / 512, nl = 16 / 512;
+var rl = new le({ id: "prophoto", cssId: "prophoto-rgb", name: "ProPhoto", base: Fa, toBase(e) {
+  return e.map((t) => t < nl ? t / 16 : t ** 1.8);
 }, fromBase(e) {
-  return e.map((t) => t >= nl ? t ** (1 / 1.8) : 16 * t);
-} }), sl = new O({ id: "oklch", name: "Oklch", coords: { l: { refRange: [0, 1], name: "Lightness" }, c: { refRange: [0, 0.4], name: "Chroma" }, h: { refRange: [0, 360], type: "angle", name: "Hue" } }, white: "D65", base: ut, fromBase(e) {
+  return e.map((t) => t >= tl ? t ** (1 / 1.8) : 16 * t);
+} }), ol = new O({ id: "oklch", name: "Oklch", coords: { l: { refRange: [0, 1], name: "Lightness" }, c: { refRange: [0, 0.4], name: "Chroma" }, h: { refRange: [0, 360], type: "angle", name: "Hue" } }, white: "D65", base: ut, fromBase(e) {
   let [t, n, r] = e, o;
   const s = 2e-4;
   return Math.abs(n) < s && Math.abs(r) < s ? o = NaN : o = Math.atan2(r, n) * 180 / Math.PI, [t, Math.sqrt(n ** 2 + r ** 2), Ae(o)];
@@ -1291,11 +1291,11 @@ var ol = new le({ id: "prophoto", cssId: "prophoto-rgb", name: "ProPhoto", base:
   return isNaN(r) ? (o = 0, s = 0) : (o = n * Math.cos(r * Math.PI / 180), s = n * Math.sin(r * Math.PI / 180)), [t, o, s];
 }, formats: { oklch: { coords: ["<percentage> | <number>", "<number> | <percentage>[0,1]", "<number> | <angle>"] } } });
 let Ya = ie.D65;
-const al = 216 / 24389, Ko = 24389 / 27, [Zo, Qo] = _n({ space: se, coords: Ya });
+const sl = 216 / 24389, Ko = 24389 / 27, [Zo, Qo] = _n({ space: se, coords: Ya });
 var Xa = new O({ id: "luv", name: "Luv", coords: { l: { refRange: [0, 100], name: "Lightness" }, u: { refRange: [-215, 215] }, v: { refRange: [-215, 215] } }, white: Ya, base: se, fromBase(e) {
   let t = [ne(e[0]), ne(e[1]), ne(e[2])], n = t[1], [r, o] = _n({ space: se, coords: t });
   if (!Number.isFinite(r) || !Number.isFinite(o)) return [0, 0, 0];
-  let s = n <= al ? Ko * n : 116 * Math.cbrt(n) - 16;
+  let s = n <= sl ? Ko * n : 116 * Math.cbrt(n) - 16;
   return [s, 13 * s * (r - Zo), 13 * s * (o - Qo)];
 }, toBase(e) {
   let [t, n, r] = e;
@@ -1311,20 +1311,20 @@ var Xa = new O({ id: "luv", name: "Luv", coords: { l: { refRange: [0, 100], name
   let [t, n, r] = e;
   return n < 0 && (n = 0), isNaN(r) && (r = 0), [t, n * Math.cos(r * Math.PI / 180), n * Math.sin(r * Math.PI / 180)];
 }, formats: { color: { id: "--lchuv", coords: ["<number> | <percentage>", "<number> | <percentage>", "<number> | <angle>"] } } });
-const il = 216 / 24389, cl = 24389 / 27, Vo = re[0][0], es = re[0][1], Yn = re[0][2], ts = re[1][0], ns = re[1][1], Xn = re[1][2], rs = re[2][0], os = re[2][1], Un = re[2][2];
+const al = 216 / 24389, il = 24389 / 27, Vo = re[0][0], es = re[0][1], Yn = re[0][2], ts = re[1][0], ns = re[1][1], Xn = re[1][2], rs = re[2][0], os = re[2][1], Un = re[2][2];
 function at(e, t, n) {
   const r = t / (Math.sin(n) - e * Math.cos(n));
   return r < 0 ? 1 / 0 : r;
 }
 function bn(e) {
-  const t = Math.pow(e + 16, 3) / 1560896, n = t > il ? t : e / cl, r = n * (284517 * Vo - 94839 * Yn), o = n * (838422 * Yn + 769860 * es + 731718 * Vo), s = n * (632260 * Yn - 126452 * es), a = n * (284517 * ts - 94839 * Xn), c = n * (838422 * Xn + 769860 * ns + 731718 * ts), i = n * (632260 * Xn - 126452 * ns), l = n * (284517 * rs - 94839 * Un), u = n * (838422 * Un + 769860 * os + 731718 * rs), f = n * (632260 * Un - 126452 * os);
+  const t = Math.pow(e + 16, 3) / 1560896, n = t > al ? t : e / il, r = n * (284517 * Vo - 94839 * Yn), o = n * (838422 * Yn + 769860 * es + 731718 * Vo), s = n * (632260 * Yn - 126452 * es), a = n * (284517 * ts - 94839 * Xn), c = n * (838422 * Xn + 769860 * ns + 731718 * ts), i = n * (632260 * Xn - 126452 * ns), l = n * (284517 * rs - 94839 * Un), u = n * (838422 * Un + 769860 * os + 731718 * rs), f = n * (632260 * Un - 126452 * os);
   return { r0s: r / s, r0i: o * e / s, r1s: r / (s + 126452), r1i: (o - 769860) * e / (s + 126452), g0s: a / i, g0i: c * e / i, g1s: a / (i + 126452), g1i: (c - 769860) * e / (i + 126452), b0s: l / f, b0i: u * e / f, b1s: l / (f + 126452), b1i: (u - 769860) * e / (f + 126452) };
 }
 function ss(e, t) {
   const n = t / 360 * Math.PI * 2, r = at(e.r0s, e.r0i, n), o = at(e.r1s, e.r1i, n), s = at(e.g0s, e.g0i, n), a = at(e.g1s, e.g1i, n), c = at(e.b0s, e.b0i, n), i = at(e.b1s, e.b1i, n);
   return Math.min(r, o, s, a, c, i);
 }
-var fl = new O({ id: "hsluv", name: "HSLuv", coords: { h: { refRange: [0, 360], type: "angle", name: "Hue" }, s: { range: [0, 100], name: "Saturation" }, l: { range: [0, 100], name: "Lightness" } }, base: Zr, gamutSpace: pt, fromBase(e) {
+var cl = new O({ id: "hsluv", name: "HSLuv", coords: { h: { refRange: [0, 360], type: "angle", name: "Hue" }, s: { range: [0, 100], name: "Saturation" }, l: { range: [0, 100], name: "Lightness" } }, base: Zr, gamutSpace: pt, fromBase(e) {
   let [t, n, r] = [ne(e[0]), ne(e[1]), ne(e[2])], o;
   if (t > 99.9999999) o = 0, t = 100;
   else if (t < 1e-8) o = 0, t = 0;
@@ -1359,7 +1359,7 @@ function as(e) {
   let t = it(e.r0s, e.r0i), n = it(e.r1s, e.r1i), r = it(e.g0s, e.g0i), o = it(e.g1s, e.g1i), s = it(e.b0s, e.b0i), a = it(e.b1s, e.b1i);
   return Math.min(t, n, r, o, s, a);
 }
-var ll = new O({ id: "hpluv", name: "HPLuv", coords: { h: { refRange: [0, 360], type: "angle", name: "Hue" }, s: { range: [0, 100], name: "Saturation" }, l: { range: [0, 100], name: "Lightness" } }, base: Zr, gamutSpace: "self", fromBase(e) {
+var fl = new O({ id: "hpluv", name: "HPLuv", coords: { h: { refRange: [0, 360], type: "angle", name: "Hue" }, s: { range: [0, 100], name: "Saturation" }, l: { range: [0, 100], name: "Lightness" } }, base: Zr, gamutSpace: "self", fromBase(e) {
   let [t, n, r] = [ne(e[0]), ne(e[1]), ne(e[2])], o;
   if (t > 99.9999999) o = 0, t = 100;
   else if (t < 1e-8) o = 0, t = 0;
@@ -1378,19 +1378,19 @@ var ll = new O({ id: "hpluv", name: "HPLuv", coords: { h: { refRange: [0, 360], 
   }
   return [r, o, t];
 }, formats: { color: { id: "--hpluv", coords: ["<number> | <angle>", "<percentage> | <number>", "<percentage> | <number>"] } } });
-const is = 203, cs = 2610 / 2 ** 14, ul = 2 ** 14 / 2610, dl = 2523 / 2 ** 5, fs = 2 ** 5 / 2523, ls = 3424 / 2 ** 12, us = 2413 / 2 ** 7, ds = 2392 / 2 ** 7;
-var hl = new le({ id: "rec2100pq", cssId: "rec2100-pq", name: "REC.2100-PQ", base: En, toBase(e) {
+const is = 203, cs = 2610 / 2 ** 14, ll = 2 ** 14 / 2610, ul = 2523 / 2 ** 5, fs = 2 ** 5 / 2523, ls = 3424 / 2 ** 12, us = 2413 / 2 ** 7, ds = 2392 / 2 ** 7;
+var dl = new le({ id: "rec2100pq", cssId: "rec2100-pq", name: "REC.2100-PQ", base: En, toBase(e) {
   return e.map(function(t) {
-    return (Math.max(t ** fs - ls, 0) / (us - ds * t ** fs)) ** ul * 1e4 / is;
+    return (Math.max(t ** fs - ls, 0) / (us - ds * t ** fs)) ** ll * 1e4 / is;
   });
 }, fromBase(e) {
   return e.map(function(t) {
     let n = Math.max(t * is / 1e4, 0), r = ls + us * n ** cs, o = 1 + ds * n ** cs;
-    return (r / o) ** dl;
+    return (r / o) ** ul;
   });
 } });
 const hs = 0.17883277, ps = 0.28466892, gs = 0.55991073, Wn = 3.7743;
-var pl = new le({ id: "rec2100hlg", cssId: "rec2100-hlg", name: "REC.2100-HLG", referred: "scene", base: En, toBase(e) {
+var hl = new le({ id: "rec2100hlg", cssId: "rec2100-hlg", name: "REC.2100-HLG", referred: "scene", base: En, toBase(e) {
   return e.map(function(t) {
     return t <= 0.5 ? t ** 2 / 3 * Wn : (Math.exp((t - gs) / hs) + ps) / 12 * Wn;
   });
@@ -1419,10 +1419,10 @@ kn({ id: "CAT02", toCone_M: [[0.7328, 0.4296, -0.1624], [-0.7036, 1.6975, 61e-4]
 kn({ id: "CAT16", toCone_M: [[0.401288, 0.650173, -0.051461], [-0.250268, 1.204414, 0.045854], [-2079e-6, 0.048952, 0.953127]], fromCone_M: [[1.862067855087233, -1.0112546305316845, 0.14918677544445172], [0.3875265432361372, 0.6214474419314753, -0.008973985167612521], [-0.01584149884933386, -0.03412293802851557, 1.0499644368778496]] });
 Object.assign(ie, { A: [1.0985, 1, 0.35585], C: [0.98074, 1, 1.18232], D55: [0.95682, 1, 0.92149], D75: [0.94972, 1, 1.22638], E: [1, 1, 1], F2: [0.99186, 1, 0.67393], F7: [0.95041, 1, 1.08747], F11: [1.00962, 1, 0.6435] });
 ie.ACES = [0.32168 / 0.33767, 1, (1 - 0.32168 - 0.33767) / 0.33767];
-const gl = [[0.6624541811085053, 0.13400420645643313, 0.1561876870049078], [0.27222871678091454, 0.6740817658111484, 0.05368951740793705], [-0.005574649490394108, 0.004060733528982826, 1.0103391003129971]], ml = [[1.6410233796943257, -0.32480329418479, -0.23642469523761225], [-0.6636628587229829, 1.6153315916573379, 0.016756347685530137], [0.011721894328375376, -0.008284441996237409, 0.9883948585390215]];
-var Ja = new le({ id: "acescg", cssId: "--acescg", name: "ACEScg", coords: { r: { range: [0, 65504], name: "Red" }, g: { range: [0, 65504], name: "Green" }, b: { range: [0, 65504], name: "Blue" } }, referred: "scene", white: ie.ACES, toXYZ_M: gl, fromXYZ_M: ml });
+const pl = [[0.6624541811085053, 0.13400420645643313, 0.1561876870049078], [0.27222871678091454, 0.6740817658111484, 0.05368951740793705], [-0.005574649490394108, 0.004060733528982826, 1.0103391003129971]], gl = [[1.6410233796943257, -0.32480329418479, -0.23642469523761225], [-0.6636628587229829, 1.6153315916573379, 0.016756347685530137], [0.011721894328375376, -0.008284441996237409, 0.9883948585390215]];
+var Ja = new le({ id: "acescg", cssId: "--acescg", name: "ACEScg", coords: { r: { range: [0, 65504], name: "Red" }, g: { range: [0, 65504], name: "Green" }, b: { range: [0, 65504], name: "Blue" } }, referred: "scene", white: ie.ACES, toXYZ_M: pl, fromXYZ_M: gl });
 const Vt = 2 ** -16, Jn = -0.35828683, en = (Math.log2(65504) + 9.72) / 17.52;
-var yl = new le({ id: "acescc", cssId: "--acescc", name: "ACEScc", coords: { r: { range: [Jn, en], name: "Red" }, g: { range: [Jn, en], name: "Green" }, b: { range: [Jn, en], name: "Blue" } }, referred: "scene", base: Ja, toBase(e) {
+var ml = new le({ id: "acescc", cssId: "--acescc", name: "ACEScc", coords: { r: { range: [Jn, en], name: "Red" }, g: { range: [Jn, en], name: "Green" }, b: { range: [Jn, en], name: "Blue" } }, referred: "scene", base: Ja, toBase(e) {
   const t = -0.3013698630136986;
   return e.map(function(n) {
     return n <= t ? (2 ** (n * 17.52 - 9.72) - Vt) * 2 : n < en ? 2 ** (n * 17.52 - 9.72) : 65504;
@@ -1431,7 +1431,7 @@ var yl = new le({ id: "acescc", cssId: "--acescc", name: "ACEScc", coords: { r: 
   return e.map(function(t) {
     return t <= 0 ? (Math.log2(Vt) + 9.72) / 17.52 : t < Vt ? (Math.log2(Vt + t * 0.5) + 9.72) / 17.52 : (Math.log2(t) + 9.72) / 17.52;
   });
-} }), ms = Object.freeze({ __proto__: null, A98RGB: Vf, A98RGB_Linear: ja, ACEScc: yl, ACEScg: Ja, CAM16_JMh: of, HCT: Ot, HPLuv: ll, HSL: za, HSLuv: fl, HSV: qa, HWB: Kf, ICTCP: yr, JzCzHz: mr, Jzazbz: Ma, LCH: kt, LCHuv: Zr, Lab: pe, Lab_D65: br, Luv: Xa, OKLCH: sl, OKLab: ut, P3: Na, P3_Linear: La, ProPhoto: ol, ProPhoto_Linear: Fa, REC_2020: Ca, REC_2020_Linear: En, REC_2100_HLG: pl, REC_2100_PQ: hl, XYZ_ABS_D65: Jr, XYZ_D50: Wr, XYZ_D65: se, sRGB: pt, sRGB_Linear: Da });
+} }), ms = Object.freeze({ __proto__: null, A98RGB: Qf, A98RGB_Linear: ja, ACEScc: ml, ACEScg: Ja, CAM16_JMh: rf, HCT: Ot, HPLuv: fl, HSL: za, HSLuv: cl, HSV: qa, HWB: Gf, ICTCP: yr, JzCzHz: mr, Jzazbz: Ma, LCH: kt, LCHuv: Zr, Lab: pe, Lab_D65: br, Luv: Xa, OKLCH: ol, OKLab: ut, P3: Na, P3_Linear: La, ProPhoto: rl, ProPhoto_Linear: Fa, REC_2020: Ca, REC_2020_Linear: En, REC_2100_HLG: hl, REC_2100_PQ: dl, XYZ_ABS_D65: Jr, XYZ_D50: Wr, XYZ_D65: se, sRGB: pt, sRGB_Linear: Da });
 class G {
   constructor(...t) {
     let n;
@@ -1451,7 +1451,7 @@ class G {
     return { spaceId: this.spaceId, coords: this.coords, alpha: this.alpha };
   }
   display(...t) {
-    let n = Pf(this, ...t);
+    let n = bf(this, ...t);
     return n.color = new G(n.color), n;
   }
   static get(t, ...n) {
@@ -1482,8 +1482,8 @@ class G {
     else for (let n in t) G.defineFunction(n, t[n]);
   }
 }
-G.defineFunctions({ get: he, getAll: Ft, set: ke, setAll: Ur, to: Z, equals: Mf, inGamut: Ke, toGamut: He, distance: Pa, toString: At });
-Object.assign(G, { util: vc, hooks: $e, WHITES: ie, Space: O, spaces: O.registry, parse: va, defaults: me });
+G.defineFunctions({ get: he, getAll: Ft, set: ke, setAll: Ur, to: Z, equals: Pf, inGamut: Ke, toGamut: He, distance: Pa, toString: At });
+Object.assign(G, { util: wc, hooks: $e, WHITES: ie, Space: O, spaces: O.registry, parse: va, defaults: me });
 for (let e of Object.keys(ms)) O.register(ms[e]);
 for (let e in O.registry) Pr(e, O.registry[e]);
 $e.add("colorspace-init-end", (e) => {
@@ -1522,11 +1522,11 @@ function Pr(e, t) {
 G.extend(ht);
 G.extend({ deltaE: St });
 Object.assign(G, { deltaEMethods: ht });
-G.extend(Wf);
-G.extend({ contrast: jf });
-G.extend(Yf);
-G.extend(Rf);
-G.extend(Gf);
+G.extend(Uf);
+G.extend({ contrast: qf });
+G.extend(Ff);
+G.extend(Sf);
+G.extend(Jf);
 G.extend(nn);
 function ys() {
   return ys = Object.assign ? Object.assign.bind() : function(e) {
@@ -1545,7 +1545,7 @@ function xt(e) {
     return t && typeof Symbol == "function" && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t;
   }, xt(e);
 }
-function wl(e, t) {
+function yl(e, t) {
   if (xt(e) != "object" || !e) return e;
   var n = e[Symbol.toPrimitive];
   if (n !== void 0) {
@@ -1555,15 +1555,15 @@ function wl(e, t) {
   }
   return (t === "string" ? String : Number)(e);
 }
-function vl(e) {
-  var t = wl(e, "string");
+function wl(e) {
+  var t = yl(e, "string");
   return xt(t) == "symbol" ? t : t + "";
 }
 function hd(e, t, n) {
-  return (t = vl(t)) in e ? Object.defineProperty(e, t, { value: n, enumerable: true, configurable: true, writable: true }) : e[t] = n, e;
+  return (t = wl(t)) in e ? Object.defineProperty(e, t, { value: n, enumerable: true, configurable: true, writable: true }) : e[t] = n, e;
 }
 var Gn, ws;
-function bl() {
+function vl() {
   if (ws) return Gn;
   ws = 1;
   var e = Object.assign || function(o) {
@@ -1585,10 +1585,10 @@ function bl() {
     return f;
   }, Gn;
 }
-var Pl = bl();
-const pd = Br(Pl);
-var rn = { exports: {} }, Ml = rn.exports, vs;
-function Sl() {
+var bl = vl();
+const pd = Br(bl);
+var rn = { exports: {} }, Pl = rn.exports, vs;
+function Ml() {
   return vs || (vs = 1, (function(e) {
     (function(t, n, r) {
       function o(i) {
@@ -1624,11 +1624,11 @@ function Sl() {
         return l;
       }
       n && n.exports ? n.exports = a : this.alea = a;
-    })(Ml, e);
+    })(Pl, e);
   })(rn)), rn.exports;
 }
-var on = { exports: {} }, Rl = on.exports, bs;
-function Tl() {
+var on = { exports: {} }, Sl = on.exports, bs;
+function Rl() {
   return bs || (bs = 1, (function(e) {
     (function(t, n, r) {
       function o(c) {
@@ -1656,11 +1656,11 @@ function Tl() {
         }), f;
       }
       n && n.exports ? n.exports = a : this.xor128 = a;
-    })(Rl, e);
+    })(Sl, e);
   })(on)), on.exports;
 }
-var sn = { exports: {} }, Al = sn.exports, Ps;
-function El() {
+var sn = { exports: {} }, Tl = sn.exports, Ps;
+function Al() {
   return Ps || (Ps = 1, (function(e) {
     (function(t, n, r) {
       function o(c) {
@@ -1688,11 +1688,11 @@ function El() {
         }), f;
       }
       n && n.exports ? n.exports = a : this.xorwow = a;
-    })(Al, e);
+    })(Tl, e);
   })(sn)), sn.exports;
 }
-var an = { exports: {} }, _l = an.exports, Ms;
-function kl() {
+var an = { exports: {} }, El = an.exports, Ms;
+function _l() {
   return Ms || (Ms = 1, (function(e) {
     (function(t, n, r) {
       function o(c) {
@@ -1729,11 +1729,11 @@ function kl() {
         }), f;
       }
       n && n.exports ? n.exports = a : this.xorshift7 = a;
-    })(_l, e);
+    })(El, e);
   })(an)), an.exports;
 }
-var cn = { exports: {} }, Ol = cn.exports, Ss;
-function xl() {
+var cn = { exports: {} }, kl = cn.exports, Ss;
+function Ol() {
   return Ss || (Ss = 1, (function(e) {
     (function(t, n, r) {
       function o(c) {
@@ -1768,11 +1768,11 @@ function xl() {
         }), f;
       }
       n && n.exports ? n.exports = a : this.xor4096 = a;
-    })(Ol, e);
+    })(kl, e);
   })(cn)), cn.exports;
 }
-var fn = { exports: {} }, Cl = fn.exports, Rs;
-function Ll() {
+var fn = { exports: {} }, xl = fn.exports, Rs;
+function Cl() {
   return Rs || (Rs = 1, (function(e) {
     (function(t, n, r) {
       function o(c) {
@@ -1800,13 +1800,13 @@ function Ll() {
         }), f;
       }
       n && n.exports ? n.exports = a : this.tychei = a;
-    })(Cl, e);
+    })(xl, e);
   })(fn)), fn.exports;
 }
 var ln = { exports: {} };
-const Dl = {}, Nl = Object.freeze(Object.defineProperty({ __proto__: null, default: Dl }, Symbol.toStringTag, { value: "Module" })), Bl = oa(Nl);
-var Il = ln.exports, Ts;
-function $l() {
+const Ll = {}, Dl = Object.freeze(Object.defineProperty({ __proto__: null, default: Ll }, Symbol.toStringTag, { value: "Module" })), Nl = oa(Dl);
+var Bl = ln.exports, Ts;
+function Il() {
   return Ts || (Ts = 1, (function(e) {
     (function(t, n, r) {
       var o = 256, s = 6, a = 52, c = "random", i = r.pow(o, s), l = r.pow(2, a), u = l * 2, f = o - 1, d;
@@ -1867,24 +1867,24 @@ function $l() {
       if (P(r.random(), n), e.exports) {
         e.exports = h;
         try {
-          d = Bl;
+          d = Nl;
         } catch {
         }
       } else r["seed" + c] = h;
-    })(typeof self < "u" ? self : Il, [], Math);
+    })(typeof self < "u" ? self : Bl, [], Math);
   })(ln)), ln.exports;
 }
 var Kn, As;
-function Hl() {
+function $l() {
   if (As) return Kn;
   As = 1;
-  var e = Sl(), t = Tl(), n = El(), r = kl(), o = xl(), s = Ll(), a = $l();
+  var e = Ml(), t = Rl(), n = Al(), r = _l(), o = Ol(), s = Cl(), a = Il();
   return a.alea = e, a.xor128 = t, a.xorwow = n, a.xorshift7 = r, a.xor4096 = o, a.tychei = s, Kn = a, Kn;
 }
-var zl = Hl();
-const gd = Br(zl);
+var Hl = $l();
+const gd = Br(Hl);
 var Zn, Es;
-function ql() {
+function zl() {
   return Es || (Es = 1, Zn = function e(t, n) {
     var r = /(^([+\-]?(?:0|[1-9]\d*)(?:\.\d*)?(?:[eE][+\-]?\d+)?)?$|^0x[0-9a-f]+$|\d+)/gi, o = /(^[ ]*|[ ]*$)/g, s = /(^([\w ]+,?[\w ]+)?[\w ]+,?[\w ]+\d+:\d+(:\d+)?[\w ]?|^\d{1,4}[\/\-]\d{1,4}[\/\-]\d{1,4}|^\w+, \w+ \d+, \d{4})/, a = /^0x[0-9a-f]+$/i, c = /^0/, i = function(R) {
       return e.insensitive && ("" + R).toLowerCase() || "" + R;
@@ -1901,14 +1901,14 @@ function ql() {
     return 0;
   }), Zn;
 }
-var jl = ql();
-const md = Br(jl);
+var ql = zl();
+const md = Br(ql);
 /*! noble-secp256k1 - MIT License (c) 2019 Paul Miller (paulmillr.com) */
-const Ga = Object.freeze({ p: 0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2fn, n: 0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141n, h: 1n, a: 0n, b: 7n, Gx: 0x79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798n, Gy: 0x483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8n }), { p: De, n: Xt, Gx: Fl, Gy: Yl, b: Ka } = Ga, ce = 32, Ct = 64, Mr = { publicKey: ce + 1, publicKeyUncompressed: Ct + 1, seed: ce + ce / 2 }, ee = (e = "", t = Error) => {
+const Ga = Object.freeze({ p: 0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffefffffc2fn, n: 0xfffffffffffffffffffffffffffffffebaaedce6af48a03bbfd25e8cd0364141n, h: 1n, a: 0n, b: 7n, Gx: 0x79be667ef9dcbbac55a06295ce870b07029bfcdb2dce28d959f2815b16f81798n, Gy: 0x483ada7726a3c4655da4fbfc0e1108a8fd17b448a68554199c47d08ffb10d4b8n }), { p: De, n: Xt, Gx: jl, Gy: Fl, b: Ka } = Ga, ce = 32, Ct = 64, Mr = { publicKey: ce + 1, publicKeyUncompressed: Ct + 1, seed: ce + ce / 2 }, ee = (e = "", t = Error) => {
   const n = new t(e), { captureStackTrace: r } = Error;
   throw typeof r == "function" && r(n, ee), n;
-}, Xl = (e) => e instanceof Uint8Array || ArrayBuffer.isView(e) && e.constructor.name === "Uint8Array" && e.BYTES_PER_ELEMENT === 1, Pe = (e, t, n = "") => {
-  const r = Xl(e), o = e == null ? void 0 : e.length, s = t !== void 0;
+}, Yl = (e) => e instanceof Uint8Array || ArrayBuffer.isView(e) && e.constructor.name === "Uint8Array" && e.BYTES_PER_ELEMENT === 1, Pe = (e, t, n = "") => {
+  const r = Yl(e), o = e == null ? void 0 : e.length, s = t !== void 0;
   if (!r || s && o !== t) {
     const a = n && `"${n}" `, c = s ? ` of length ${t}` : "", i = r ? `length=${o}` : `type=${typeof e}`, l = a + "expected Uint8Array" + c + ", got " + i;
     return r ? ee(l, RangeError) : ee(l, TypeError);
@@ -1943,7 +1943,7 @@ const Ga = Object.freeze({ p: 0xffffffffffffffffffffffffffffffffffffffffffffffff
 }, Qr = (e = ce) => (globalThis == null ? void 0 : globalThis.crypto).getRandomValues(Lt(e)), Sr = BigInt, Ve = (e, t, n, r = "bad number: out of range") => typeof e != "bigint" ? ee(r, TypeError) : t <= e && e < n ? e : ee(r, RangeError), C = (e, t = De) => {
   const n = e % t;
   return n >= 0n ? n : t + n;
-}, On = (e) => C(e, Xt), Ul = (e, t) => {
+}, On = (e) => C(e, Xt), Xl = (e, t) => {
   (e === 0n || t <= 0n) && ee("no inverse n=" + e + " mod=" + t);
   let n = C(e, t), r = t, o = 0n, s = 1n;
   for (; n !== 0n; ) {
@@ -1952,9 +1952,9 @@ const Ga = Object.freeze({ p: 0xffffffffffffffffffffffffffffffffffffffffffffffff
   }
   return r === 1n ? C(o, t) : ee("no inverse");
 }, ei = (e) => {
-  const t = Ql[e];
+  const t = Zl[e];
   return typeof t != "function" && ee("hashes." + e + " not set"), t;
-}, Os = (e, t, n) => Pe(ei(e)(t, n), ce, "digest"), xs = (e, t, n) => Promise.resolve(ei(e)(t, n)).then((r) => Pe(r, ce, "digest")), Qn = (e) => e instanceof de ? e : ee("Point expected"), ti = (e) => C(C(e * e) * e + Ka), Cs = (e) => Ve(e, 0n, De), un = (e) => Ve(e, 1n, De), Wl = (e) => Ve(e, 1n, Xt), xn = (e) => !(e & 1n), ni = (e) => Uint8Array.of(e), Jl = (e) => ni(xn(e) ? 2 : 3), ri = (e) => {
+}, Os = (e, t, n) => Pe(ei(e)(t, n), ce, "digest"), xs = (e, t, n) => Promise.resolve(ei(e)(t, n)).then((r) => Pe(r, ce, "digest")), Qn = (e) => e instanceof de ? e : ee("Point expected"), ti = (e) => C(C(e * e) * e + Ka), Cs = (e) => Ve(e, 0n, De), un = (e) => Ve(e, 1n, De), Ul = (e) => Ve(e, 1n, Xt), xn = (e) => !(e & 1n), ni = (e) => Uint8Array.of(e), Wl = (e) => ni(xn(e) ? 2 : 3), ri = (e) => {
   const t = ti(un(e));
   let n = 1n;
   for (let r = t, o = (De + 1n) / 4n; o > 0n; o >>= 1n) o & 1n && (n = n * r % De), r = r * r % De;
@@ -2021,8 +2021,8 @@ const _de = class _de {
   }
   multiply(t, n = true) {
     if (!n && t === 0n) return We;
-    if (Wl(t), t === 1n) return this;
-    if (this.equals(et)) return iu(t).p;
+    if (Ul(t), t === 1n) return this;
+    if (this.equals(et)) return au(t).p;
     let r = We, o = et;
     for (let s = this; t > 0n; s = s.double(), t >>= 1n) t & 1n ? r = r.add(s) : n && (o = o.add(s));
     return r;
@@ -2034,7 +2034,7 @@ const _de = class _de {
     const { X: t, Y: n, Z: r } = this;
     if (this.equals(We)) return { x: 0n, y: 0n };
     if (r === 1n) return { x: t, y: n };
-    const o = Ul(r, De);
+    const o = Xl(r, De);
     return C(r * o) !== 1n && ee("inverse invalid"), { x: C(t * o), y: C(n * o) };
   }
   assertValidity() {
@@ -2043,7 +2043,7 @@ const _de = class _de {
   }
   toBytes(t = true) {
     const { x: n, y: r } = this.assertValidity().toAffine(), o = Te(n);
-    return t ? gt(Jl(r), o) : gt(ni(4), o, Te(r));
+    return t ? gt(Wl(r), o) : gt(ni(4), o, Te(r));
   }
   toHex(t) {
     return Qa(this.toBytes(t));
@@ -2052,29 +2052,29 @@ const _de = class _de {
 __publicField(_de, "BASE");
 __publicField(_de, "ZERO");
 let de = _de;
-const et = new de(Fl, Yl, 1n), We = new de(0n, 1n, 0n);
+const et = new de(jl, Fl, 1n), We = new de(0n, 1n, 0n);
 de.BASE = et;
 de.ZERO = We;
-const Gl = (e, t, n) => et.multiply(t, false).add(e.multiply(n, false)).assertValidity(), tt = (e) => Sr("0x" + (Qa(e) || "0")), Pn = (e, t, n) => tt(e.subarray(t, n)), Kl = 2n ** 256n, Te = (e) => Va(Za(Ve(e, 0n, Kl), Ct)), Zl = (e) => {
+const Jl = (e, t, n) => et.multiply(t, false).add(e.multiply(n, false)).assertValidity(), tt = (e) => Sr("0x" + (Qa(e) || "0")), Pn = (e, t, n) => tt(e.subarray(t, n)), Gl = 2n ** 256n, Te = (e) => Va(Za(Ve(e, 0n, Gl), Ct)), Kl = (e) => {
   const t = tt(Pe(e, ce, "secret key"));
   return Ve(t, 1n, Xt, "invalid secret key: outside of range");
-}, Ls = "SHA-256", Ql = { hmacSha256Async: async (e, t) => {
+}, Ls = "SHA-256", Zl = { hmacSha256Async: async (e, t) => {
   const n = ks(), r = "HMAC", o = await n.importKey("raw", e, { name: r, hash: { name: Ls } }, false, ["sign"]);
   return Lt(await n.sign(r, o, t));
-}, hmacSha256: void 0, sha256Async: async (e) => Lt(await ks().digest(Ls, e)), sha256: void 0 }, Vl = (e) => {
+}, hmacSha256: void 0, sha256Async: async (e) => Lt(await ks().digest(Ls, e)), sha256: void 0 }, Ql = (e) => {
   if (e = e === void 0 ? Qr(Mr.seed) : e, Pe(e), e.length < Mr.seed || e.length > 1024) return ee("expected 48-1024b", RangeError);
   const t = C(tt(e), Xt - 1n);
   return Te(t + 1n);
-}, eu = (e) => (t) => {
-  const n = Vl(t);
+}, Vl = (e) => (t) => {
+  const n = Ql(t);
   return { secretKey: n, publicKey: e(n) };
 }, oi = (e) => Uint8Array.from("BIP0340/" + e, (t) => t.charCodeAt(0)), si = "aux", ai = "nonce", ii = "challenge", Rr = (e, ...t) => {
   const n = Os("sha256", oi(e));
   return Os("sha256", gt(n, n, ...t));
 }, Tr = (e, ...t) => xs("sha256Async", oi(e)).then((n) => xs("sha256Async", gt(n, n, ...t))), Vr = (e) => {
-  const t = Zl(e), n = et.multiply(t), { x: r, y: o } = n.assertValidity().toAffine(), s = xn(o) ? t : On(-t), a = Te(r);
+  const t = Kl(e), n = et.multiply(t), { x: r, y: o } = n.assertValidity().toAffine(), s = xn(o) ? t : On(-t), a = Te(r);
   return { d: s, px: a };
-}, eo = (e) => On(tt(e)), ci = (...e) => eo(Rr(ii, ...e)), fi = async (...e) => eo(await Tr(ii, ...e)), li = (e) => Vr(e).px, tu = eu(li), ui = (e, t, n) => {
+}, eo = (e) => On(tt(e)), ci = (...e) => eo(Rr(ii, ...e)), fi = async (...e) => eo(await Tr(ii, ...e)), li = (e) => Vr(e).px, eu = Vl(li), ui = (e, t, n) => {
   const { px: r, d: o } = Vr(t);
   return { m: Pe(e), px: r, d: o, a: Pe(n, ce) };
 }, di = (e) => {
@@ -2082,13 +2082,13 @@ const Gl = (e, t, n) => et.multiply(t, false).add(e.multiply(n, false)).assertVa
   t === 0n && ee("sign failed: k is zero");
   const { px: n, d: r } = Vr(Te(t));
   return { rx: n, k: r };
-}, hi = (e, t, n, r) => gt(t, Te(On(e + n * r))), pi = "invalid signature produced", nu = (e, t, n = Qr(ce)) => {
+}, hi = (e, t, n, r) => gt(t, Te(On(e + n * r))), pi = "invalid signature produced", tu = (e, t, n = Qr(ce)) => {
   const { m: r, px: o, d: s, a } = ui(e, t, n), c = Rr(si, a), i = Te(s ^ tt(c)), l = Rr(ai, i, o, r), { rx: u, k: f } = di(l), d = ci(u, o, r), h = hi(f, u, d, s);
   return mi(h, r, o) || ee(pi), h;
-}, ru = async (e, t, n = Qr(ce)) => {
+}, nu = async (e, t, n = Qr(ce)) => {
   const { m: r, px: o, d: s, a } = ui(e, t, n), c = await Tr(si, a), i = Te(s ^ tt(c)), l = await Tr(ai, i, o, r), { rx: u, k: f } = di(l), d = await fi(u, o, r), h = hi(f, u, d, s);
   return await yi(h, r, o) || ee(pi), h;
-}, ou = (e, t) => e instanceof Promise ? e.then(t) : t(e), gi = (e, t, n, r) => {
+}, ru = (e, t) => e instanceof Promise ? e.then(t) : t(e), gi = (e, t, n, r) => {
   const o = Pe(e, Ct, "signature"), s = Pe(t, void 0, "message"), a = Pe(n, ce, "publicKey");
   try {
     const c = tt(a), i = ri(c), l = new de(c, i, 1n).assertValidity(), u = Te(l.toAffine().x), f = Pn(o, 0, ce);
@@ -2096,14 +2096,14 @@ const Gl = (e, t, n) => et.multiply(t, false).add(e.multiply(n, false)).assertVa
     const d = Pn(o, ce, Ct);
     Ve(d, 1n, Xt);
     const h = gt(Te(f), u, s);
-    return ou(r(h), (p) => {
-      const { x: w, y: m } = Gl(l, d, On(-p)).toAffine();
+    return ru(r(h), (p) => {
+      const { x: w, y: m } = Jl(l, d, On(-p)).toAffine();
       return !(!xn(m) || w !== f);
     });
   } catch {
     return false;
   }
-}, mi = (e, t, n) => gi(e, t, n, ci), yi = async (e, t, n) => gi(e, t, n, fi), wi = Object.freeze({ keygen: tu, getPublicKey: li, sign: nu, verify: mi, signAsync: ru, verifyAsync: yi }), Mn = 8, su = 256, vi = Math.ceil(su / Mn) + 1, Ar = 2 ** (Mn - 1), au = () => {
+}, mi = (e, t, n) => gi(e, t, n, ci), yi = async (e, t, n) => gi(e, t, n, fi), wi = Object.freeze({ keygen: eu, getPublicKey: li, sign: tu, verify: mi, signAsync: nu, verifyAsync: yi }), Mn = 8, ou = 256, vi = Math.ceil(ou / Mn) + 1, Ar = 2 ** (Mn - 1), su = () => {
   const e = [];
   let t = et, n = t;
   for (let r = 0; r < vi; r++) {
@@ -2117,8 +2117,8 @@ let Ds;
 const Ns = (e, t) => {
   const n = t.negate();
   return e ? n : t;
-}, iu = (e) => {
-  const t = Ds || (Ds = au());
+}, au = (e) => {
+  const t = Ds || (Ds = su());
   let n = We, r = et;
   const o = 2 ** Mn, s = o, a = Sr(o - 1), c = Sr(Mn);
   for (let i = 0; i < vi; i++) {
@@ -2128,10 +2128,10 @@ const Ns = (e, t) => {
     l === 0 ? r = r.add(Ns(h, t[f])) : n = n.add(Ns(p, t[d]));
   }
   return e !== 0n && ee("invalid wnaf"), { p: n, f: r };
-}, { floor: Er, min: cu, sin: fu } = Math, Se = "Trystero", Dt = (e, t) => Array(e).fill(void 0).map(t), lu = "0123456789AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz", wt = (e) => Dt(e, () => lu[Er(Math.random() * 62)] ?? "").join(""), Me = wt(20), nt = Promise.all.bind(Promise), bi = typeof window < "u", { entries: Ze, fromEntries: Pi, keys: ve, values: lt } = Object, ae = () => {
-}, Mi = "candidate", W = (e) => (e !== null && clearTimeout(e), null), U = (e) => new Error(`${Se}: ${e}`), mt = (e, t) => e instanceof Error && e.message ? e.message : typeof e == "string" && e ? e : ye(e ?? t), Ce = (e, t) => e instanceof Error ? e : U(mt(e, t)), uu = new TextEncoder(), du = new TextDecoder(), Ne = (e) => uu.encode(e), Ge = (e) => du.decode(e), Nt = (e) => e.reduce((t, n) => t + n.toString(16).padStart(2, "0"), ""), Bt = (...e) => e.join("@"), hu = (e, t) => {
+}, { floor: Er, min: iu, sin: cu } = Math, Se = "Trystero", Dt = (e, t) => Array(e).fill(void 0).map(t), fu = "0123456789AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz", wt = (e) => Dt(e, () => fu[Er(Math.random() * 62)] ?? "").join(""), Me = wt(20), nt = Promise.all.bind(Promise), bi = typeof window < "u", { entries: Ze, fromEntries: Pi, keys: ve, values: lt } = Object, ae = () => {
+}, Mi = "candidate", W = (e) => (e !== null && clearTimeout(e), null), U = (e) => new Error(`${Se}: ${e}`), mt = (e, t) => e instanceof Error && e.message ? e.message : typeof e == "string" && e ? e : ye(e ?? t), Ce = (e, t) => e instanceof Error ? e : U(mt(e, t)), lu = new TextEncoder(), uu = new TextDecoder(), Ne = (e) => lu.encode(e), Ge = (e) => uu.decode(e), Nt = (e) => e.reduce((t, n) => t + n.toString(16).padStart(2, "0"), ""), Bt = (...e) => e.join("@"), du = (e, t) => {
   const n = [...e], r = () => {
-    const s = fu(t++) * 1e4;
+    const s = cu(t++) * 1e4;
     return s - Er(s);
   };
   let o = n.length;
@@ -2140,26 +2140,26 @@ const Ns = (e, t) => {
     n[o] = n[s], n[s] = a;
   }
   return n;
-}, pu = (e, t, n, r = false) => {
+}, hu = (e, t, n, r = false) => {
   var _a2, _b;
-  return ((_a2 = e.relayConfig) == null ? void 0 : _a2.urls) || (r ? hu(t, Si(e.appId)) : t).slice(0, ((_b = e.relayConfig) == null ? void 0 : _b.redundancy) ?? n);
+  return ((_a2 = e.relayConfig) == null ? void 0 : _a2.urls) || (r ? du(t, Si(e.appId)) : t).slice(0, ((_b = e.relayConfig) == null ? void 0 : _b.redundancy) ?? n);
 }, ye = JSON.stringify, It = (e) => {
   try {
     return JSON.parse(e);
   } catch {
     throw U(`failed to parse JSON: ${e}`);
   }
-}, Si = (e, t = Number.MAX_SAFE_INTEGER) => e.split("").reduce((n, r) => n + r.charCodeAt(0), 0) % t, Bs = 3333, gu = 6e4, Vn = {};
+}, Si = (e, t = Number.MAX_SAFE_INTEGER) => e.split("").reduce((n, r) => n + r.charCodeAt(0), 0) % t, Bs = 3333, pu = 6e4, Vn = {};
 let Et = null, _r = null;
-const mu = () => {
+const gu = () => {
   Et || (Et = new Promise((e) => {
     _r = e;
   }).finally(() => {
     _r = null, Et = null;
   }));
-}, yu = () => {
+}, mu = () => {
   _r == null ? void 0 : _r();
-}, wu = (e, t, n) => {
+}, yu = (e, t, n) => {
   const r = {};
   let o = false, s = false, a = ae;
   r.ready = new Promise((i) => a = i);
@@ -2173,7 +2173,7 @@ const mu = () => {
         return;
       }
       const l = Vn[e] ?? (Vn[e] = Bs);
-      setTimeout(c, Math.random() * l), Vn[e] = cu(l * 2, gu);
+      setTimeout(c, Math.random() * l), Vn[e] = iu(l * 2, pu);
     }, i.onmessage = (l) => t(String(l.data)), r.socket = i, r.url = i.url, i.onopen = () => {
       const l = o;
       o = true, a(r), Vn[e] = Bs, l && (n == null ? void 0 : n());
@@ -2182,7 +2182,7 @@ const mu = () => {
     };
   };
   return c(), r;
-}, vu = (e) => {
+}, wu = (e) => {
   const t = {}, n = /* @__PURE__ */ new WeakMap(), r = (a) => {
     const c = n.get(a);
     if (!c) throw U("relay bookkeeping missing registration for relay client");
@@ -2198,23 +2198,23 @@ const mu = () => {
     const i = e(c);
     return i ? [[a, i]] : [];
   })) };
-}, bu = () => {
+}, vu = () => {
   if (bi) {
     const e = new AbortController();
-    return addEventListener("online", yu, { signal: e.signal }), addEventListener("offline", mu, { signal: e.signal }), () => e.abort();
+    return addEventListener("online", mu, { signal: e.signal }), addEventListener("offline", gu, { signal: e.signal }), () => e.abort();
   }
   return ae;
-}, to = "AES-GCM", Pu = {}, Mu = (e) => btoa(String.fromCharCode.apply(null, Array.from(new Uint8Array(e)))), Su = (e) => {
+}, to = "AES-GCM", bu = {}, Pu = (e) => btoa(String.fromCharCode.apply(null, Array.from(new Uint8Array(e)))), Mu = (e) => {
   const t = atob(e);
   return new Uint8Array(t.length).map((n, r) => t.charCodeAt(r)).buffer;
-}, Cn = async (e, t) => new Uint8Array(await crypto.subtle.digest(e, Ne(t))), $t = async (e) => Pu[e] ?? (Pu[e] = Array.from(await Cn("SHA-1", e)).map((t) => t.toString(36)).join("")), Ru = async (e, t, n) => crypto.subtle.importKey("raw", await crypto.subtle.digest({ name: "SHA-256" }, Ne(`${e}:${t}:${n}`)), { name: to }, false, ["encrypt", "decrypt"]), Tu = async (e, t) => Nt(await Cn("SHA-256", `${Se}:${e}:${t}`)), Ri = "$", Ti = ",", Au = async (e, t) => {
+}, Cn = async (e, t) => new Uint8Array(await crypto.subtle.digest(e, Ne(t))), $t = async (e) => bu[e] ?? (bu[e] = Array.from(await Cn("SHA-1", e)).map((t) => t.toString(36)).join("")), Su = async (e, t, n) => crypto.subtle.importKey("raw", await crypto.subtle.digest({ name: "SHA-256" }, Ne(`${e}:${t}:${n}`)), { name: to }, false, ["encrypt", "decrypt"]), Ru = async (e, t) => Nt(await Cn("SHA-256", `${Se}:${e}:${t}`)), Ri = "$", Ti = ",", Tu = async (e, t) => {
   const n = crypto.getRandomValues(new Uint8Array(16));
-  return n.join(Ti) + Ri + Mu(await crypto.subtle.encrypt({ name: to, iv: n }, await e, Ne(t)));
-}, Eu = async (e, t) => {
+  return n.join(Ti) + Ri + Pu(await crypto.subtle.encrypt({ name: to, iv: n }, await e, Ne(t)));
+}, Au = async (e, t) => {
   const [n, r] = t.split(Ri);
-  return Ge(await crypto.subtle.decrypt({ name: to, iv: new Uint8Array((n == null ? void 0 : n.split(Ti).map(Number)) ?? []) }, await e, Su(r ?? "")));
-}, no = 57333, _u = 18e4, ku = 20;
-var Ou = class {
+  return Ge(await crypto.subtle.decrypt({ name: to, iv: new Uint8Array((n == null ? void 0 : n.split(Ti).map(Number)) ?? []) }, await e, Mu(r ?? "")));
+}, no = 57333, Eu = 18e4, _u = 20;
+var ku = class {
   constructor(e) {
     __publicField(this, "makeOffer");
     __publicField(this, "pool", []);
@@ -2229,7 +2229,7 @@ var Ou = class {
     return this.active;
   }
   warmup() {
-    this.pool = [], this.pooled.clear(), Dt(ku, this.makeOffer).forEach((e) => this.push(e)), this.active = true, this.cleanupTimer = setInterval(() => {
+    this.pool = [], this.pooled.clear(), Dt(_u, this.makeOffer).forEach((e) => this.push(e)), this.active = true, this.cleanupTimer = setInterval(() => {
       this.pool = this.pool.filter((e) => e.isDead ? (this.pooled.delete(e), false) : true);
     }, no);
   }
@@ -2275,7 +2275,7 @@ var Ou = class {
   lease(e) {
     this.claimLeased(e), this.leased.set(e, setTimeout(() => {
       this.leased.delete(e), this.recycle(e);
-    }, _u));
+    }, Eu));
   }
   checkout(e, t, n) {
     const r = this.shift(e), o = Math.max(0, e - r.length);
@@ -2300,7 +2300,7 @@ var Ou = class {
     }), this.leased.clear(), this.recycling.forEach((e) => e.destroy()), this.recycling.clear();
   }
 };
-const er = U("incorrect password for overlapping room"), xu = (e, t, n) => {
+const er = U("incorrect password for overlapping room"), Ou = (e, t, n) => {
   const r = (a) => Cn("SHA-256", `${a}:${e}:${t}:${n}`).then(Nt), o = async (a, c, i) => {
     if (!e) return;
     if (i) {
@@ -2319,17 +2319,17 @@ const er = U("incorrect password for overlapping room"), xu = (e, t, n) => {
   return { run: o, compose: (a) => e || a ? async (c, i, l, u) => {
     await o(i, l, u), await (a == null ? void 0 : a(c, i, l, u));
   } : void 0 };
-}, Cu = (e) => {
+}, xu = (e) => {
   const t = mt(e, "unknown error");
   return t.startsWith("handshake ") ? t : `handshake failed: ${t}`;
-}, Lu = ({ onPeerHandshake: e, onHandshakeError: t, handshakeTimeoutMs: n, sendHandshakeData: r, sendHandshakeReady: o, onActivate: s, onFailure: a }) => {
+}, Cu = ({ onPeerHandshake: e, onHandshakeError: t, handshakeTimeoutMs: n, sendHandshakeData: r, sendHandshakeReady: o, onActivate: s, onFailure: a }) => {
   const c = {}, i = (f, d) => {
     const h = c[f];
     !h || d && h.peer !== d || h.isActive || !h.didLocalHandshakePass || !h.didReceiveRemoteReady || (h.isActive = true, h.handshakeTimer = W(h.handshakeTimer), s(f, h.peer));
   }, l = (f, d, h) => {
     const p = c[f];
     if (!p || p.peer !== d) return;
-    const w = Cu(h);
+    const w = xu(h);
     t == null ? void 0 : t(f, w), a(f, d, U(w));
   }, u = (f, d) => {
     const h = c[f];
@@ -2376,9 +2376,9 @@ const er = U("incorrect password for overlapping room"), xu = (e, t, n) => {
     const d = c[f];
     !d || d.isActive || (d.didReceiveRemoteReady = true, i(f));
   } };
-}, Du = 15e3, Nu = 5e3, Is = "icegatheringstatechange", Bu = "iceconnectionstatechange", vt = "offer", Iu = "answer", $u = /out of range/i, $s = (e) => e.replace(/ (\S+\.local) (\d+) typ host/g, " 127.0.0.1 $2 typ host");
+}, Lu = 15e3, Du = 5e3, Is = "icegatheringstatechange", Nu = "iceconnectionstatechange", vt = "offer", Bu = "answer", Iu = /out of range/i, $s = (e) => e.replace(/ (\S+\.local) (\d+) typ host/g, " 127.0.0.1 $2 typ host");
 var Hs = (e, { trickleIce: t, rtcConfig: n, rtcPolyfill: r, turnConfig: o, _test_only_mdnsHostFallbackToLoopback: s }) => {
-  const a = new (r ?? RTCPeerConnection)({ iceServers: Hu.concat(o ?? []), ...n }), c = {}, i = [], l = [], u = t !== false, f = [], d = [];
+  const a = new (r ?? RTCPeerConnection)({ iceServers: $u.concat(o ?? []), ...n }), c = {}, i = [], l = [], u = t !== false, f = [], d = [];
   let h = false, p = false, w = null, m = null, P = false;
   const y = () => m = W(m), R = () => {
     var _a2;
@@ -2417,7 +2417,7 @@ var Hs = (e, { trickleIce: t, rtcConfig: n, rtcPolyfill: r, turnConfig: o, _test
     try {
       return await a.addIceCandidate(v), true;
     } catch (k) {
-      if (k instanceof Error && $u.test(k.message) && typeof v.sdpMLineIndex == "number") return false;
+      if (k instanceof Error && Iu.test(k.message) && typeof v.sdpMLineIndex == "number") return false;
       throw k;
     }
   }, J = async () => {
@@ -2457,7 +2457,7 @@ var Hs = (e, { trickleIce: t, rtcConfig: n, rtcPolyfill: r, turnConfig: o, _test
         };
         v.addEventListener(Is, K), K();
       }), new Promise(($) => {
-        k = setTimeout($, Du);
+        k = setTimeout($, Lu);
       })]);
     } finally {
       W(k);
@@ -2497,11 +2497,11 @@ var Hs = (e, { trickleIce: t, rtcConfig: n, rtcPolyfill: r, turnConfig: o, _test
     if (a.connectionState === "disconnected" || a.iceConnectionState === "disconnected") {
       m || (m = setTimeout(() => {
         m = null, (a.connectionState === "disconnected" || a.iceConnectionState === "disconnected") && R();
-      }, Nu));
+      }, Du));
       return;
     }
   };
-  a.onconnectionstatechange = F, a.addEventListener(Bu, F), a.ontrack = (v) => {
+  a.onconnectionstatechange = F, a.addEventListener(Nu, F), a.ontrack = (v) => {
     var _a2, _b;
     const k = v.streams[0];
     if (k) {
@@ -2548,7 +2548,7 @@ var Hs = (e, { trickleIce: t, rtcConfig: n, rtcPolyfill: r, turnConfig: o, _test
         } else await a.setRemoteDescription(k);
         return await J(), await a.setLocalDescription(), await E();
       }
-      if (v.type === Iu) {
+      if (v.type === Bu) {
         p = true;
         try {
           await a.setRemoteDescription(k), await J();
@@ -2578,7 +2578,7 @@ var Hs = (e, { trickleIce: t, rtcConfig: n, rtcPolyfill: r, turnConfig: o, _test
     if ($) return $.replaceTrack(k);
   } };
 };
-const Hu = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:stun.cloudflare.com:3478"].map((e) => ({ urls: e })), zu = Object.getPrototypeOf(Uint8Array), tr = 32, qu = 0, nr = 32, zs = 34, rr = 35, dn = 36, Ye = 16 * 2 ** 10 - dn, bt = 255, ju = 65535, qs = "bufferedamountlow", js = "close", Fs = "error", Fu = 1e4, Yu = (e) => e instanceof ArrayBuffer ? new Uint8Array(e) : new Uint8Array(e.buffer, e.byteOffset, e.byteLength), Xu = (e, t = Fu) => e.readyState !== "open" || e.bufferedAmount <= e.bufferedAmountLowThreshold ? Promise.resolve(e.readyState === "open") : new Promise((n) => {
+const $u = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:stun.cloudflare.com:3478"].map((e) => ({ urls: e })), Hu = Object.getPrototypeOf(Uint8Array), tr = 32, zu = 0, nr = 32, zs = 34, rr = 35, dn = 36, Ye = 16 * 2 ** 10 - dn, bt = 255, qu = 65535, qs = "bufferedamountlow", js = "close", Fs = "error", ju = 1e4, Fu = (e) => e instanceof ArrayBuffer ? new Uint8Array(e) : new Uint8Array(e.buffer, e.byteOffset, e.byteLength), Yu = (e, t = ju) => e.readyState !== "open" || e.bufferedAmount <= e.bufferedAmountLowThreshold ? Promise.resolve(e.readyState === "open") : new Promise((n) => {
   let r = false, o = null;
   const s = (i) => {
     r || (r = true, e.removeEventListener(qs, a), e.removeEventListener(js, c), e.removeEventListener(Fs, c), W(o), n(i));
@@ -2588,7 +2588,7 @@ const Hu = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:
     return;
   }
   e.bufferedAmount <= e.bufferedAmountLowThreshold && s(true);
-}), Uu = ({ getPeer: e, getPeerIds: t, canReceiveFromPeer: n, throwIfAborted: r }) => {
+}), Xu = ({ getPeer: e, getPeerIds: t, canReceiveFromPeer: n, throwIfAborted: r }) => {
   const o = {}, s = {}, a = {}, c = {}, i = (f, d, { includePending: h = false } = {}) => (f ? Array.isArray(f) ? f : [f] : t(h)).flatMap((p) => {
     const w = e(p, h);
     return w ? [Promise.resolve(d(p, w))] : (console.warn(`${Se}: no peer with id ${p} found`), []);
@@ -2616,11 +2616,11 @@ const Hu = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:
       r(_);
       const L = typeof y;
       if (L === "undefined") throw U("action data cannot be undefined");
-      const M = L !== "string", B = y instanceof Blob, q = B || y instanceof ArrayBuffer || y instanceof zu, D = T !== void 0, j = q ? Yu(B ? await y.arrayBuffer() : y) : Ne(M ? ye(y) : y), J = D ? Ne(ye(T)) : null, g = Math.ceil(j.byteLength / Ye) + (D ? 1 : 0) || 1, b = Dt(g, (A, E) => {
+      const M = L !== "string", B = y instanceof Blob, q = B || y instanceof ArrayBuffer || y instanceof Hu, D = T !== void 0, j = q ? Fu(B ? await y.arrayBuffer() : y) : Ne(M ? ye(y) : y), J = D ? Ne(ye(T)) : null, g = Math.ceil(j.byteLength / Ye) + (D ? 1 : 0) || 1, b = Dt(g, (A, E) => {
         const x = E === g - 1, F = !!(D && E === 0), Y = new Uint8Array(dn + (F ? (J == null ? void 0 : J.byteLength) ?? 0 : x ? j.byteLength - Ye * (g - (D ? 2 : 1)) : Ye));
         return Y.set(m), Y.set([P >> 8, P & bt], nr), Y.set([Number(x) | Number(F) << 1 | Number(q) << 2 | Number(M) << 3], zs), Y.set([Math.round((E + 1) / g * bt)], rr), Y.set(D ? F ? J ?? new Uint8Array() : j.subarray((E - 1) * Ye, E * Ye) : j.subarray(E * Ye, (E + 1) * Ye), dn), Y;
       });
-      return P = P + 1 & ju, await nt(i(R, async (A, E) => {
+      return P = P + 1 & qu, await nt(i(R, async (A, E) => {
         const { channel: x } = E;
         let F = 0;
         for (; F < g; ) {
@@ -2628,7 +2628,7 @@ const Hu = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:
           const Y = b[F];
           if (!Y) break;
           if (x && x.bufferedAmount > x.bufferedAmountLowThreshold) {
-            const $ = await Xu(x);
+            const $ = await Yu(x);
             if (r(_), !$) break;
           }
           const v = e(A, w.sendToPending);
@@ -2641,7 +2641,7 @@ const Hu = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:
     }, options: w }, s[f] = { send: o[f].send, onMessage: o[f].setOnComplete, onProgress: o[f].setOnProgress };
   }, handleData: (f, d) => {
     var _a2, _b;
-    const h = new Uint8Array(d), p = Ge(h.subarray(qu, nr)).replaceAll("\0", ""), w = o[p];
+    const h = new Uint8Array(d), p = Ge(h.subarray(zu, nr)).replaceAll("\0", ""), w = o[p];
     if (!n(f, !!(w == null ? void 0 : w.options.receiveWhilePending))) return;
     const m = (h[nr] ?? 0) << 8 | (h[33] ?? 0), P = h[zs] ?? 0, y = h[rr] ?? 0, R = h.subarray(dn), T = !!(P & 1), S = !!(P & 2), _ = !!(P & 4), L = !!(P & 8);
     a[f] ?? (a[f] = {}), (_a2 = a[f])[p] ?? (_a2[p] = {});
@@ -2658,13 +2658,13 @@ const Hu = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:
   }, clearPeer: (f) => {
     delete a[f];
   } };
-}, Wu = 500, ct = (e, t) => {
+}, Uu = 500, ct = (e, t) => {
   const n = U(t);
   return n.kind = e, n.name = e === "aborted" ? "AbortError" : n.name, n;
 }, or = (e) => {
   if (e == null ? void 0 : e.aborted) throw ct("aborted", "operation aborted");
-}, Ys = (e) => e && typeof e == "object" && !Array.isArray(e) && typeof e.r == "string" ? { r: e.r, ...Object.hasOwn(e, "m") ? { m: e.m } : {} } : null, Ju = (e) => e && typeof e == "object" && !Array.isArray(e) && typeof e.r == "string" ? { r: e.r, ...typeof e.e == "string" ? { e: e.e } : {} } : null, tn = (e, t) => t === void 0 ? e : { ...e, metadata: t }, Gu = ({ getPeer: e, getPeerIds: t, canReceiveFromPeer: n }) => {
-  const r = {}, o = {}, s = Uu({ getPeer: e, getPeerIds: t, canReceiveFromPeer: n, throwIfAborted: or }), a = s.makeInternalAction, c = s.handleData, i = (h) => {
+}, Ys = (e) => e && typeof e == "object" && !Array.isArray(e) && typeof e.r == "string" ? { r: e.r, ...Object.hasOwn(e, "m") ? { m: e.m } : {} } : null, Wu = (e) => e && typeof e == "object" && !Array.isArray(e) && typeof e.r == "string" ? { r: e.r, ...typeof e.e == "string" ? { e: e.e } : {} } : null, tn = (e, t) => t === void 0 ? e : { ...e, metadata: t }, Ju = ({ getPeer: e, getPeerIds: t, canReceiveFromPeer: n }) => {
+  const r = {}, o = {}, s = Xu({ getPeer: e, getPeerIds: t, canReceiveFromPeer: n, throwIfAborted: or }), a = s.makeInternalAction, c = s.handleData, i = (h) => {
     const p = o[h];
     p && (W(p.timer), p.signal && p.abortHandler && p.signal.removeEventListener("abort", p.abortHandler), delete o[h]);
   }, l = (h, p) => {
@@ -2675,7 +2675,7 @@ const Hu = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:
     s.clearPeer(h), l(h, ct("disconnected", mt(p, "peer disconnected")));
   }, f = a("@_response");
   return f.onMessage((h, p, w) => {
-    const m = Ju(w);
+    const m = Wu(w);
     if (!m) return;
     const P = o[m.r];
     if (!(!P || P.peerId !== p)) {
@@ -2748,7 +2748,7 @@ const Hu = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:
       }
       const x = { payload: g, peerId: b, ...A === void 0 ? {} : { metadata: A }, requestId: E, controller: new AbortController(), timer: setTimeout(() => {
         L(x), x.controller.abort(), M(b, E, "request handler unavailable");
-      }, Wu) };
+      }, Uu) };
       y.pendingRequests.push(x);
     }, j = async (g, b) => {
       const { target: A, metadata: E, onProgress: x, signal: F, timeoutMs: Y } = b;
@@ -2808,7 +2808,7 @@ const Hu = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:
   }, getRemoteTrack: (a, c) => o.get(a) ?? (c ? s.get(c) : void 0), clearRemote: () => {
     n.clear(), r.clear(), o.clear(), s.clear();
   } };
-}, Ku = ({ iterate: e, isActive: t, getSharedMediaPeer: n }) => {
+}, Gu = ({ iterate: e, isActive: t, getSharedMediaPeer: n }) => {
   const r = {}, o = {}, s = Ai(), a = { onPeerStream: null, onPeerTrack: null }, c = (u, f, d, h) => {
     var _a2, _b, _c2;
     t(u) && ((_b = (_a2 = n(u)) == null ? void 0 : _a2.__trysteroMedia) == null ? void 0 : _b.rememberRemoteStream(f, d, typeof d.id == "string" ? d.id : void 0), (_c2 = a.onPeerStream) == null ? void 0 : _c2.call(a, d, u, h));
@@ -2868,16 +2868,16 @@ const Hu = [...Dt(3, (e, t) => `stun:stun${t || ""}.l.google.com:19302`), "stun:
   }, set onPeerTrack(u) {
     a.onPeerTrack = u;
   } };
-}, Ws = "beforeunload", Zu = 1e4, xe = (e) => "@_" + e, Rt = /* @__PURE__ */ new Set(), Js = () => Rt.forEach((e) => e()), Qu = (e) => (Rt.add(e), Rt.size === 1 && addEventListener(Ws, Js), () => {
+}, Ws = "beforeunload", Ku = 1e4, xe = (e) => "@_" + e, Rt = /* @__PURE__ */ new Set(), Js = () => Rt.forEach((e) => e()), Zu = (e) => (Rt.add(e), Rt.size === 1 && addEventListener(Ws, Js), () => {
   Rt.delete(e), Rt.size || removeEventListener(Ws, Js);
 });
-var Vu = (e, t, n, { onPeerHandshake: r, onHandshakeError: o, handshakeTimeoutMs: s = Zu, isPassive: a = false } = {}) => {
+var Qu = (e, t, n, { onPeerHandshake: r, onHandshakeError: o, handshakeTimeoutMs: s = Ku, isPassive: a = false } = {}) => {
   const c = {}, i = {}, l = {}, u = { onPeerJoin: null, onPeerLeave: null };
   let f = ae, d = null;
   const h = (g, b, { includePending: A = false } = {}) => (g ? Array.isArray(g) ? g : [g] : ve(A ? c : i)).flatMap((E) => {
     const x = A ? c[E] : i[E];
     return x ? [Promise.resolve(b(E, x))] : (console.warn(`${Se}: no peer with id ${E} found`), []);
-  }), p = Ku({ iterate: (g, b) => h(g, (A, E) => b(A, E)), isActive: (g) => !!i[g], getSharedMediaPeer: (g) => c[g] ?? null }), w = Gu({ getPeer: (g, b) => (b ? c : i)[g], getPeerIds: (g) => ve(g ? c : i), canReceiveFromPeer: (g, b) => !!(d == null ? void 0 : d.canReceiveFromPeer(g, b)) }), m = w.makeInternalAction, P = w.handleData, y = w.makeAction, R = (g, b = U("peer disconnected")) => {
+  }), p = Gu({ iterate: (g, b) => h(g, (A, E) => b(A, E)), isActive: (g) => !!i[g], getSharedMediaPeer: (g) => c[g] ?? null }), w = Ju({ getPeer: (g, b) => (b ? c : i)[g], getPeerIds: (g) => ve(g ? c : i), canReceiveFromPeer: (g, b) => !!(d == null ? void 0 : d.canReceiveFromPeer(g, b)) }), m = w.makeInternalAction, P = w.handleData, y = w.makeAction, R = (g, b = U("peer disconnected")) => {
     var _a2;
     const A = Ce(b, "peer disconnected");
     d == null ? void 0 : d.clearPeer(g, A), delete c[g], delete i[g], w.clearPeer(g, A), (_a2 = l[g]) == null ? void 0 : _a2.splice(0).forEach((E) => E.reject(A)), delete l[g], p.clearPeer(g);
@@ -2892,7 +2892,7 @@ var Vu = (e, t, n, { onPeerHandshake: r, onHandshakeError: o, handshakeTimeoutMs
       b.destroy(), R(g, U("room left"));
     }), f(), n();
   }, _ = m(xe("ping")), L = m(xe("pong")), M = m(xe("signal")), B = m(xe("stream")), q = m(xe("track")), D = m(xe("leave"), { sendToPending: true, receiveWhilePending: true }), j = m(xe("hsdata"), { sendToPending: true, receiveWhilePending: true }), J = m(xe("hsready"), { sendToPending: true, receiveWhilePending: true });
-  return d = Lu({ ...r === void 0 ? {} : { onPeerHandshake: r }, ...o === void 0 ? {} : { onHandshakeError: o }, handshakeTimeoutMs: s, sendHandshakeData: j.send, sendHandshakeReady: J.send, onActivate: (g, b) => {
+  return d = Cu({ ...r === void 0 ? {} : { onPeerHandshake: r }, ...o === void 0 ? {} : { onHandshakeError: o }, handshakeTimeoutMs: s, sendHandshakeData: j.send, sendHandshakeReady: J.send, onActivate: (g, b) => {
     var _a2;
     i[g] = b, (_a2 = u.onPeerJoin) == null ? void 0 : _a2.call(u, g);
   }, onFailure: (g, b, A) => T(g, b, A) }), _.onMessage((g, b) => L.send("", b)), L.onMessage((g, b) => {
@@ -2913,7 +2913,7 @@ var Vu = (e, t, n, { onPeerHandshake: r, onHandshakeError: o, handshakeTimeoutMs
     }, close: () => T(b, g, U("peer disconnected")), error: (E) => {
       console.error(`${Se} peer error:`, E), T(b, g, E);
     } }), d == null ? void 0 : d.start(b, g);
-  }), bi && (f = Qu(() => S().catch(ae))), { makeAction: y, leave: S, ping: async (g) => {
+  }), bi && (f = Zu(() => S().catch(ae))), { makeAction: y, leave: S, ping: async (g) => {
     if (!i[g]) throw U(`no active peer with id ${g}`);
     const b = Date.now();
     return await new Promise((A, E) => {
@@ -2954,10 +2954,10 @@ var Vu = (e, t, n, { onPeerHandshake: r, onHandshakeError: o, handshakeTimeoutMs
 const Ei = 1, _i = 2, Gs = (e, t) => {
   const n = Ne(e), r = new Uint8Array(3 + n.byteLength + t.byteLength);
   return r[0] = Ei, r[1] = n.byteLength >>> 8 & 255, r[2] = n.byteLength & 255, r.set(n, 3), r.set(t, 3 + n.byteLength), r;
-}, e0 = (e, t) => {
+}, Vu = (e, t) => {
   const n = Ne(e), r = new Uint8Array(4 + n.byteLength);
   return r[0] = _i, r[1] = Number(t), r[2] = n.byteLength >>> 8 & 255, r[3] = n.byteLength & 255, r.set(n, 4), r;
-}, t0 = (e) => {
+}, e0 = (e) => {
   const t = new Uint8Array(e);
   if (t.byteLength < 3) return null;
   if (t[0] === Ei) {
@@ -2970,12 +2970,12 @@ const Ei = 1, _i = 2, Gs = (e, t) => {
 }, ki = (e) => {
   const { connection: t, channel: n } = e;
   return e.isDead || t.connectionState === "closed" || t.connectionState === "failed" || t.iceConnectionState === "closed" || t.iceConnectionState === "failed" || (n == null ? void 0 : n.readyState) === "closing" || (n == null ? void 0 : n.readyState) === "closed";
-}, n0 = (e) => {
+}, t0 = (e) => {
   if (ki(e)) return "stale";
   const { channel: t } = e;
   return !t || t.readyState !== "open" ? "transient" : "live";
 };
-var r0 = class {
+var n0 = class {
   constructor() {
     __publicField(this, "byApp", {});
     __publicField(this, "roomPresenceHandlers", {});
@@ -3000,7 +3000,7 @@ var r0 = class {
     };
   }
   sendRoomPresence(e, t, n) {
-    e.isClosing || e.peer.isDead || e.peer.sendData(e0(t, n));
+    e.isClosing || e.peer.isDead || e.peer.sendData(Vu(t, n));
   }
   clear(e, t, { destroyPeer: n }) {
     const r = this.byApp[e], o = r == null ? void 0 : r[t];
@@ -3105,7 +3105,7 @@ var r0 = class {
   }
   dispatchData(e, t) {
     var _a2, _b;
-    const n = t0(t);
+    const n = e0(t);
     if (!n) return;
     if (n.type === "presence") {
       n.isPresent ? e.remoteRoomTokens.add(n.roomToken) : e.remoteRoomTokens.delete(n.roomToken), (_b = (_a2 = this.roomPresenceHandlers)[e.appId]) == null ? void 0 : _b.call(_a2, e.peerId, n.roomToken, n.isPresent);
@@ -3134,7 +3134,7 @@ var r0 = class {
     });
   }
 };
-const o0 = 23333, s0 = 12, a0 = 7533, i0 = 23333, kr = "__legacy__", Sn = "offer-placeholder", c0 = ["offer", "answer", "candidate"], f0 = (e) => {
+const r0 = 23333, o0 = 12, s0 = 7533, a0 = 23333, kr = "__legacy__", Sn = "offer-placeholder", i0 = ["offer", "answer", "candidate"], c0 = (e) => {
   if (typeof e == "string") try {
     const t = It(e);
     return t && typeof t == "object" ? t : null;
@@ -3142,17 +3142,17 @@ const o0 = 23333, s0 = 12, a0 = 7533, i0 = 23333, kr = "__legacy__", Sn = "offer
     return null;
   }
   return e && typeof e == "object" ? e : null;
-}, Pt = (e, t) => typeof e[t] == "string" && e[t] ? e[t] : void 0, l0 = (e) => c0.some((t) => t in e && (typeof e[t] != "string" || e[t] === "")), Oi = (e, t, n, r, o, s) => {
+}, Pt = (e, t) => typeof e[t] == "string" && e[t] ? e[t] : void 0, f0 = (e) => i0.some((t) => t in e && (typeof e[t] != "string" || e[t] === "")), Oi = (e, t, n, r, o, s) => {
   e.toCipher(t).then((a) => {
     e.isLeaving() || !s() || r(n, ye(o(a.sdp)));
   });
-}, u0 = () => ({ status: "idle", offerPeer: null, offerId: null, offerSdp: null, offerInitPromise: null, offerAnswered: false, offerRelays: [], offerSignalRelays: [], offerSignalBacklog: [], offerRelayTimers: [], offerExpiryTimer: null, connectedPeer: null, connectedPeerUnhealthySinceMs: null, answeringExpiryTimer: null, answeringPeer: null, answerSent: false, connectionErrorReported: false, pendingCandidates: {} }), d0 = (e) => {
+}, l0 = () => ({ status: "idle", offerPeer: null, offerId: null, offerSdp: null, offerInitPromise: null, offerAnswered: false, offerRelays: [], offerSignalRelays: [], offerSignalBacklog: [], offerRelayTimers: [], offerExpiryTimer: null, connectedPeer: null, connectedPeerUnhealthySinceMs: null, answeringExpiryTimer: null, answeringPeer: null, answerSent: false, connectionErrorReported: false, pendingCandidates: {} }), u0 = (e) => {
   var _a2;
   return [...e.turnConfig ?? [], ...((_a2 = e.rtcConfig) == null ? void 0 : _a2.iceServers) ?? []].some(({ urls: t }) => (Array.isArray(t) ? t : [t]).some((n) => /^turns?:/i.test(n)));
-}, h0 = (e, t) => `could not connect to peer ${e} after exchanging SDP; ${d0(t) ? "check that your TURN server URLs and credentials are reachable by both peers" : "configure TURN servers with turnConfig or rtcConfig.iceServers"}`, Ln = (e, t, n) => {
+}, d0 = (e, t) => `could not connect to peer ${e} after exchanging SDP; ${u0(t) ? "check that your TURN server URLs and credentials are reachable by both peers" : "configure TURN servers with turnConfig or rtcConfig.iceServers"}`, Ln = (e, t, n) => {
   var _a2;
-  e.isLeaving() || t.connectedPeer || t.connectionErrorReported || (t.connectionErrorReported = true, (_a2 = e.onJoinError) == null ? void 0 : _a2.call(e, { error: h0(n, e.config), appId: e.appId, peerId: n, roomId: e.roomId }));
-}, Ht = (e, t) => e[t] ?? (e[t] = u0()), be = (e) => {
+  e.isLeaving() || t.connectedPeer || t.connectionErrorReported || (t.connectionErrorReported = true, (_a2 = e.onJoinError) == null ? void 0 : _a2.call(e, { error: d0(n, e.config), appId: e.appId, peerId: n, roomId: e.roomId }));
+}, Ht = (e, t) => e[t] ?? (e[t] = l0()), be = (e) => {
   e.connectedPeer ? e.status = "connected" : e.answeringPeer ? e.status = "answering" : e.offerPeer || e.offerRelays.some(Boolean) ? e.status = "offering" : e.status = "idle";
 }, hn = (e, t) => {
   e.answeringPeer === t && (e.answeringExpiryTimer = W(e.answeringExpiryTimer), e.answeringPeer = null, e.answerSent = false, be(e));
@@ -3162,7 +3162,7 @@ const o0 = 23333, s0 = 12, a0 = 7533, i0 = 23333, kr = "__legacy__", Sn = "offer
   e.offerRelayTimers[t] = W(e.offerRelayTimers[t]), e.offerRelays[t] && (e.offerRelays[t] = void 0, be(e));
 }, Ks = (e, t) => {
   (e == null ? void 0 : e.offerRelays[t]) === Sn && ro(e, t);
-}, p0 = (e) => {
+}, h0 = (e) => {
   if (e.isDead || e.connection.connectionState === "closed") return true;
   try {
     return !!e.connection.remoteDescription;
@@ -3171,13 +3171,13 @@ const o0 = 23333, s0 = 12, a0 = 7533, i0 = 23333, kr = "__legacy__", Sn = "offer
   }
 }, zt = (e, t) => {
   const n = e.offerAnswered;
-  e.offerExpiryTimer = W(e.offerExpiryTimer), e.offerInitPromise = null, e.offerRelays.forEach((r, o) => ro(e, o)), e.offerRelays = [], e.offerSignalRelays = [], e.offerRelayTimers = [], e.offerSignalBacklog = [], e.offerPeer && e.offerPeer !== e.connectedPeer && (n || p0(e.offerPeer) ? e.offerPeer.isDead || e.offerPeer.destroy() : t.recycle(e.offerPeer)), e.offerPeer = null, e.offerId = null, e.offerSdp = null, e.offerAnswered = false, e.connectionErrorReported = false, be(e);
-}, g0 = (e, t, n, r) => {
+  e.offerExpiryTimer = W(e.offerExpiryTimer), e.offerInitPromise = null, e.offerRelays.forEach((r, o) => ro(e, o)), e.offerRelays = [], e.offerSignalRelays = [], e.offerRelayTimers = [], e.offerSignalBacklog = [], e.offerPeer && e.offerPeer !== e.connectedPeer && (n || h0(e.offerPeer) ? e.offerPeer.isDead || e.offerPeer.destroy() : t.recycle(e.offerPeer)), e.offerPeer = null, e.offerId = null, e.offerSdp = null, e.offerAnswered = false, e.connectionErrorReported = false, be(e);
+}, p0 = (e, t, n, r) => {
   W(t.answeringExpiryTimer), t.answeringExpiryTimer = setTimeout(() => {
     const o = e.peerStates[n];
     !o || o.connectedPeer || o.answeringPeer !== r || (o.answerSent && Ln(e, o, n), r.destroy(), hn(o, r), e.checkDeactivate());
-  }, i0);
-}, m0 = async (e, t, n) => {
+  }, a0);
+}, g0 = async (e, t, n) => {
   const r = n ? [n, kr] : [kr];
   for (const o of r) {
     const s = e.pendingCandidates[o];
@@ -3193,18 +3193,18 @@ const o0 = 23333, s0 = 12, a0 = 7533, i0 = 23333, kr = "__legacy__", Sn = "offer
     const s = e.peerStates[n];
     !s || s.connectedPeer || s.offerId !== o || (s.offerAnswered && Ln(e, s, n), zt(s, e.offerPool), e.checkDeactivate());
   }, r);
-}, y0 = (e, t, n, r) => t.offerPeer && t.offerId && t.offerSdp ? Promise.resolve({ peer: t.offerPeer, offer: t.offerSdp, offerId: t.offerId }) : (t.offerInitPromise || (t.offerInitPromise = (async () => {
+}, m0 = (e, t, n, r) => t.offerPeer && t.offerId && t.offerSdp ? Promise.resolve({ peer: t.offerPeer, offer: t.offerSdp, offerId: t.offerId }) : (t.offerInitPromise || (t.offerInitPromise = (async () => {
   const o = (await e.offerPool.checkout(1, false, e.encryptOffer))[0];
   if (!o) throw U("failed to allocate offer peer");
   const { peer: s, offer: a } = o;
-  t.offerPeer = s, t.offerId = wt(s0), t.offerSdp = a, t.offerAnswered = false, t.connectionErrorReported = false, t.offerSignalBacklog = [], be(t);
+  t.offerPeer = s, t.offerId = wt(o0), t.offerSdp = a, t.offerAnswered = false, t.connectionErrorReported = false, t.offerSignalBacklog = [], be(t);
   const c = () => {
     t.offerPeer === s && !t.connectedPeer && (t.offerAnswered && Ln(e, t, n), zt(t, e.offerPool)), e.disconnectPeer(s, n), e.checkDeactivate();
   };
   return s.setHandlers({ connect: () => e.connectPeer(s, n, r), signal: (i) => {
     t.offerPeer === s && (t.offerSignalBacklog.push(i), t.offerSignalRelays.forEach((l) => l == null ? void 0 : l(i)));
   }, close: c, error: c }), xi(e, t, n), { peer: s, offer: a, offerId: t.offerId };
-})().finally(() => t.offerInitPromise = null)), t.offerInitPromise), w0 = async (e, t, n, r, o) => {
+})().finally(() => t.offerInitPromise = null)), t.offerInitPromise), y0 = async (e, t, n, r, o) => {
   if (r) {
     e.attachSharedPeerToRoom(n, r);
     return;
@@ -3215,13 +3215,13 @@ const o0 = 23333, s0 = 12, a0 = 7533, i0 = 23333, kr = "__legacy__", Sn = "offer
     return;
   }
   if (s.offerRelays[t] !== Sn) return;
-  const [a, c] = await nt([$t(Bt(e.rootTopicPlaintext, n)), y0(e, s, n, t)]);
+  const [a, c] = await nt([$t(Bt(e.rootTopicPlaintext, n)), m0(e, s, n, t)]);
   if (e.isLeaving()) return;
   if (s.connectedPeer || s.answeringPeer || s.offerAnswered || s.offerRelays[t] !== Sn) {
     Ks(s, t);
     return;
   }
-  s.offerRelayTimers[t] = W(s.offerRelayTimers[t]), s.offerRelays[t] = true, be(s), s.offerRelayTimers[t] = setTimeout(() => M0(e, n, t), (e.announceIntervals[t] ?? e.announceIntervalMs) * 0.9);
+  s.offerRelayTimers[t] = W(s.offerRelayTimers[t]), s.offerRelays[t] = true, be(s), s.offerRelayTimers[t] = setTimeout(() => P0(e, n, t), (e.announceIntervals[t] ?? e.announceIntervalMs) * 0.9);
   let i = false;
   s.offerSignalRelays[t] = (l) => {
     i && (e.isLeaving() || s.connectedPeer || s.offerPeer !== c.peer || s.offerId !== c.offerId || l.type !== "candidate" || Oi(e, l, a, o, (u) => ({ peerId: Me, offerId: c.offerId, candidate: u, ...e.isPassive ? { passive: true } : {} }), () => !s.connectedPeer && s.offerPeer === c.peer && s.offerId === c.offerId));
@@ -3229,7 +3229,7 @@ const o0 = 23333, s0 = 12, a0 = 7533, i0 = 23333, kr = "__legacy__", Sn = "offer
     var _a2, _b;
     return (_b = (_a2 = s.offerSignalRelays)[t]) == null ? void 0 : _b.call(_a2, l);
   });
-}, v0 = async (e, t, n, r, o, s, a) => {
+}, w0 = async (e, t, n, r, o, s, a) => {
   var _a2;
   const c = Ht(e.peerStates, n);
   if (c.answeringPeer || c.offerAnswered) return;
@@ -3237,7 +3237,7 @@ const o0 = 23333, s0 = 12, a0 = 7533, i0 = 23333, kr = "__legacy__", Sn = "offer
   if ((i || s) && Me < n) return;
   i && zt(c, e.offerPool);
   const l = e.initPeer(false, e.config);
-  c.answeringPeer = l, c.answerSent = false, c.connectionErrorReported = false, g0(e, c, n, l), be(c);
+  c.answeringPeer = l, c.answerSent = false, c.connectionErrorReported = false, p0(e, c, n, l), be(c);
   const u = () => {
     c.answeringPeer === l && !c.connectedPeer && c.answerSent && Ln(e, c, n), hn(c, l), e.disconnectPeer(l, n), e.checkDeactivate();
   };
@@ -3259,8 +3259,8 @@ const o0 = 23333, s0 = 12, a0 = 7533, i0 = 23333, kr = "__legacy__", Sn = "offer
       const w = { peerId: Me };
       return h.type === "answer" ? (c.answerSent = true, w.answer = p) : w.candidate = p, o && (w.offerId = o), e.isPassive && (w.passive = true), w;
     }, () => c.answeringPeer === l && !l.isDead);
-  } }), await l.signal(f), await m0(c, l, o));
-}, b0 = async (e, t, n, r, o) => {
+  } }), await l.signal(f), await g0(c, l, o));
+}, v0 = async (e, t, n, r, o) => {
   var _a2;
   let s;
   try {
@@ -3275,7 +3275,7 @@ const o0 = 23333, s0 = 12, a0 = 7533, i0 = 23333, kr = "__legacy__", Sn = "offer
     return;
   }
   u.signal(s);
-}, P0 = async (e, t, n, r, o, s) => {
+}, b0 = async (e, t, n, r, o, s) => {
   var _a2;
   let a;
   try {
@@ -3288,23 +3288,23 @@ const o0 = 23333, s0 = 12, a0 = 7533, i0 = 23333, kr = "__legacy__", Sn = "offer
   else {
     const c = e.peerStates[n];
     if (!c || !c.offerPeer || c.offerAnswered || o && c.offerId && o !== c.offerId || c.offerPeer.isDead) return;
-    c.offerAnswered = true, xi(e, c, n, o0), c.offerPeer.signal(a);
+    c.offerAnswered = true, xi(e, c, n, r0), c.offerPeer.signal(a);
   }
-}, M0 = (e, t, n) => {
+}, P0 = (e, t, n) => {
   const r = e.peerStates[t];
   !r || r.connectedPeer || r.offerRelays[n] && (ro(r, n), e.checkDeactivate());
-}, S0 = (e) => (t) => async (n, r, o) => {
+}, M0 = (e) => (t) => async (n, r, o) => {
   var _a2;
   if (e.isLeaving()) return;
-  const s = f0(r);
-  if (!s || l0(s)) return;
+  const s = c0(r);
+  if (!s || f0(s)) return;
   const a = Pt(s, "peerId") ?? "", c = Pt(s, "offer"), i = Pt(s, "answer"), l = Pt(s, "candidate"), u = Pt(s, "offerId"), f = s.peer, d = s.hasOutgoingOffer === true, h = s.passive === true;
   if (!a || a === Me) return;
   const [p, w] = await nt([e.rootTopicP, e.selfTopicP]);
   if (e.isLeaving() || n !== p && n !== w || e.isPassive && h || (e.isPassive && !e.isActive && !i && !l && (e.isActive = true, (_a2 = e.requeueAnnounce) == null ? void 0 : _a2.call(e)), e.isPassive && !e.isActive)) return;
   const m = e.peerStates[a], P = m == null ? void 0 : m.connectedPeer;
   if (P && m) {
-    const T = n0(P);
+    const T = t0(P);
     if (T === "live") {
       m.connectedPeerUnhealthySinceMs = null;
       return;
@@ -3312,7 +3312,7 @@ const o0 = 23333, s0 = 12, a0 = 7533, i0 = 23333, kr = "__legacy__", Sn = "offer
     if (T === "stale") Or(m);
     else {
       const S = Date.now(), _ = m.connectedPeerUnhealthySinceMs ?? S;
-      if (m.connectedPeerUnhealthySinceMs = _, S - _ < a0) return;
+      if (m.connectedPeerUnhealthySinceMs = _, S - _ < s0) return;
       Or(m);
     }
   }
@@ -3335,13 +3335,13 @@ const o0 = 23333, s0 = 12, a0 = 7533, i0 = 23333, kr = "__legacy__", Sn = "offer
     e.attachSharedPeerToRoom(a, y);
     return;
   }
-  if (R) return w0(e, t, a, y, o);
-  if (c) return v0(e, t, a, c, u, d, o);
-  if (l) return b0(e, a, l, u, f);
-  if (i) return P0(e, t, a, i, u, f);
-}, sr = 5333, R0 = [233, 533, 1333], T0 = 7533, A0 = 123333;
-var E0 = ({ init: e, subscribe: t, announce: n, deactivate: r }) => {
-  const o = {}, s = {}, a = {}, c = {}, i = new r0(), l = () => lt(o).some((S) => ve(S).length > 0), u = (S) => s[S] ?? (s[S] = {}), f = (S) => a[S] ?? (a[S] = {}), d = (S, _, L) => {
+  if (R) return y0(e, t, a, y, o);
+  if (c) return w0(e, t, a, c, u, d, o);
+  if (l) return v0(e, a, l, u, f);
+  if (i) return b0(e, t, a, i, u, f);
+}, sr = 5333, S0 = [233, 533, 1333], R0 = 7533, T0 = 123333;
+var A0 = ({ init: e, subscribe: t, announce: n, deactivate: r }) => {
+  const o = {}, s = {}, a = {}, c = {}, i = new n0(), l = () => lt(o).some((S) => ve(S).length > 0), u = (S) => s[S] ?? (s[S] = {}), f = (S) => a[S] ?? (a[S] = {}), d = (S, _, L) => {
     i.getHealth(S.peer) === "live" && i.sendRoomPresence(S, _, L);
   }, h = (S, _) => {
     Ze(s[S] ?? {}).forEach(([L, M]) => {
@@ -3378,10 +3378,10 @@ var E0 = ({ init: e, subscribe: t, announce: n, deactivate: r }) => {
     if (D !== void 0 && (!Number.isFinite(D) || D <= 0)) throw U("handshakeTimeoutMs must be a positive number");
     if ((_a2 = o[M]) == null ? void 0 : _a2[_]) return o[M][_];
     w(M);
-    const j = Bt(Se, M, _), J = $t(j), g = $t(Bt(j, Me)), b = Ru(S.password ?? "", M, _), A = Tu(M, _), E = S._test_only_sharedPeerIdleMs ?? A0;
+    const j = Bt(Se, M, _), J = $t(j), g = $t(Bt(j, Me)), b = Su(S.password ?? "", M, _), A = Ru(M, _), E = S._test_only_sharedPeerIdleMs ?? T0;
     let x = false;
-    const F = (N) => async (I) => ({ type: I.type, sdp: await N(b, I.sdp) }), Y = F(Eu), v = F(Au), k = i.getMap(M), $ = () => Hs(true, S);
-    R || (R = new Ou($));
+    const F = (N) => async (I) => ({ type: I.type, sdp: await N(b, I.sdp) }), Y = F(Au), v = F(Tu), k = i.getMap(M), $ = () => Hs(true, S);
+    R || (R = new ku($));
     const K = R, ue = async (N) => {
       const I = await N.getOffer(Date.now() - N.created > no);
       if (!I || I.type !== "offer") throw U("failed to get offer for peer");
@@ -3394,7 +3394,7 @@ var E0 = ({ init: e, subscribe: t, announce: n, deactivate: r }) => {
         (fe == null ? void 0 : fe.connectedPeer) === I.peer && (fe.connectedPeer = null, fe.connectedPeerUnhealthySinceMs = null, be(fe));
       } });
       H.connectedPeer = I.peer, H.connectedPeerUnhealthySinceMs = null, be(H), X && In(oe, N), zt(H, K);
-    }, Fi = (N, I, H) => {
+    }, ji = (N, I, H) => {
       if (x) {
         N.destroy();
         return;
@@ -3413,7 +3413,7 @@ var E0 = ({ init: e, subscribe: t, announce: n, deactivate: r }) => {
       }
       const fe = !X;
       X || (X = i.register(M, I, N, E)), Oe(I, X), fe && h(M, X);
-    }, Yi = (N, I) => {
+    }, Fi = (N, I) => {
       if (x) return;
       const H = te.peerStates[I];
       (H == null ? void 0 : H.connectedPeer) === N && (Or(H), Ut());
@@ -3425,13 +3425,13 @@ var E0 = ({ init: e, subscribe: t, announce: n, deactivate: r }) => {
       Ze(te.peerStates).forEach(([I, H]) => {
         H.connectedPeer || H.answeringPeer || H.offerInitPromise || H.offerPeer || H.offerRelays.some(Boolean) ? N = true : H.status === "idle" && delete te.peerStates[I];
       }), N || (te.isActive = false, je = W(je), rt.forEach(W), rt.length = 0, io(), (qe == null ? void 0 : qe.roomToken) && p(M, qe.roomToken, false));
-    }, te = { appId: M, roomId: _, config: S, peerStates: {}, rootTopicPlaintext: j, rootTopicP: J, selfTopicP: g, toPlain: Y, toCipher: v, isLeaving: () => x, isPassive: we, isActive: !we, onJoinError: B, sharedPeers: i, offerPool: K, encryptOffer: ue, initPeer: Hs, connectPeer: Fi, disconnectPeer: Yi, attachSharedPeerToRoom: Oe, checkDeactivate: Ut, announceIntervals: [], announceIntervalMs: sr }, Dn = { config: S, appId: M, roomId: _, isPassive: we }, Xi = S0(te);
+    }, te = { appId: M, roomId: _, config: S, peerStates: {}, rootTopicPlaintext: j, rootTopicP: J, selfTopicP: g, toPlain: Y, toCipher: v, isLeaving: () => x, isPassive: we, isActive: !we, onJoinError: B, sharedPeers: i, offerPool: K, encryptOffer: ue, initPeer: Hs, connectPeer: ji, disconnectPeer: Fi, attachSharedPeerToRoom: Oe, checkDeactivate: Ut, announceIntervals: [], announceIntervalMs: sr }, Dn = { config: S, appId: M, roomId: _, isPassive: we }, Yi = M0(te);
     if (!P) {
       const N = e(S);
-      y = (Array.isArray(N) ? N : [N]).map((I) => Promise.resolve(I)), P = true, T = ((_b = S.relayConfig) == null ? void 0 : _b.manualReconnection) ? ae : bu();
+      y = (Array.isArray(N) ? N : [N]).map((I) => Promise.resolve(I)), P = true, T = ((_b = S.relayConfig) == null ? void 0 : _b.manualReconnection) ? ae : vu();
     }
     !we && !K.isActive && K.warmup(), te.announceIntervals = y.map(() => sr);
-    const Nn = y.map(() => 0), Bn = y.map(() => 0), rt = [], co = y.map(async (N, I) => t(await N, await J, await g, Xi(I), (H) => K.getOffers(H, ue), Dn));
+    const Nn = y.map(() => 0), Bn = y.map(() => 0), rt = [], co = y.map(async (N, I) => t(await N, await J, await g, Yi(I), (H) => K.getOffers(H, ue), Dn));
     nt([J, g]).then(([N, I]) => {
       if (x) return;
       const H = async (oe, X) => {
@@ -3441,15 +3441,15 @@ var E0 = ({ init: e, subscribe: t, announce: n, deactivate: r }) => {
         let Fe;
         try {
           Fe = await n(oe, N, I, fe, Dn), Bn[X] = 0;
-        } catch (Ki) {
+        } catch (Gi) {
           const po = Bn[X] ?? 0;
-          po === 0 && ((_a3 = S.relayConfig) == null ? void 0 : _a3.warnOnRelayFailure) !== false && console.warn(`${Se}: announce failed - ${mt(Ki, "")}`), Bn[X] = po + 1;
+          po === 0 && ((_a3 = S.relayConfig) == null ? void 0 : _a3.warnOnRelayFailure) !== false && console.warn(`${Se}: announce failed - ${mt(Gi, "")}`), Bn[X] = po + 1;
         }
         if (x || we && !te.isActive) return;
         typeof Fe == "number" && (te.announceIntervals[X] = Fe);
         const lo = Nn[X] ?? 0;
         Nn[X] = lo + 1;
-        const uo = te.announceIntervals[X] ?? sr, ho = R0[lo];
+        const uo = te.announceIntervals[X] ?? sr, ho = S0[lo];
         rt[X] = setTimeout(() => {
           H(oe, X);
         }, typeof ho == "number" ? Math.min(uo, ho) : uo);
@@ -3460,7 +3460,7 @@ var E0 = ({ init: e, subscribe: t, announce: n, deactivate: r }) => {
           x || r(X, N, I, Dn);
         });
       }, te.requeueAnnounce = () => {
-        rt.forEach(W), rt.length = 0, je = W(je), K.isActive || K.warmup(), (qe == null ? void 0 : qe.roomToken) && p(M, qe.roomToken, true), je = setTimeout(Ut, T0), y.forEach(async (oe, X) => {
+        rt.forEach(W), rt.length = 0, je = W(je), K.isActive || K.warmup(), (qe == null ? void 0 : qe.roomToken) && p(M, qe.roomToken, true), je = setTimeout(Ut, R0), y.forEach(async (oe, X) => {
           const fe = await oe;
           fe && !x && (Nn[X] = 0, H(fe, X));
         });
@@ -3471,9 +3471,9 @@ var E0 = ({ init: e, subscribe: t, announce: n, deactivate: r }) => {
       });
     });
     let In = ae;
-    const { compose: Ui } = xu(S.password ?? "", M, _), fo = Ui(q), Wi = { ...fo ? { onPeerHandshake: fo } : {}, ...D === void 0 ? {} : { handshakeTimeoutMs: D }, isPassive: we, onHandshakeError: (N, I) => B == null ? void 0 : B({ error: I.replace(/^handshake failed: /, ""), appId: M, peerId: N, roomId: _ }) };
+    const { compose: Xi } = Ou(S.password ?? "", M, _), fo = Xi(q), Ui = { ...fo ? { onPeerHandshake: fo } : {}, ...D === void 0 ? {} : { handshakeTimeoutMs: D }, isPassive: we, onHandshakeError: (N, I) => B == null ? void 0 : B({ error: I.replace(/^handshake failed: /, ""), appId: M, peerId: N, roomId: _ }) };
     o[M] ?? (o[M] = {});
-    const Ji = u(M), Gi = Vu((N) => In = N, (N) => {
+    const Wi = u(M), Ji = Qu((N) => In = N, (N) => {
       if (x) return;
       const I = te.peerStates[N];
       (I == null ? void 0 : I.connectedPeer) && (I.connectedPeer = null, be(I), Ut());
@@ -3490,17 +3490,17 @@ var E0 = ({ init: e, subscribe: t, announce: n, deactivate: r }) => {
       }), o[M] && (delete o[M][_], ve(o[M]).length === 0 && delete o[M]), rt.forEach(W), je = W(je), co.forEach(async (I) => {
         (await I)();
       }), !l() && (P = false, K.destroy(), R = null, T(), m(M));
-    }, Wi);
-    return qe = { roomToken: null, roomTokenPromise: A, attachSharedPeerToRoom: Oe, shouldAdvertise: () => !we || te.isActive }, Ji[_] = qe, A.then((N) => {
+    }, Ui);
+    return qe = { roomToken: null, roomTokenPromise: A, attachSharedPeerToRoom: Oe, shouldAdvertise: () => !we || te.isActive }, Wi[_] = qe, A.then((N) => {
       var _a3;
       const I = qe;
       !I || x || ((_a3 = s[M]) == null ? void 0 : _a3[_]) !== I || (I.roomToken = N, f(M)[N] = _, lt(k).forEach((H) => {
         H.remoteRoomTokens.has(N) && Oe(H.peerId, H);
       }), (!we || te.isActive) && p(M, N, true));
-    }), o[M][_] = Gi;
+    }), o[M][_] = Ji;
   };
 };
-const _0 = ["offer", "answer", "candidate"], k0 = (e) => {
+const E0 = ["offer", "answer", "candidate"], _0 = (e) => {
   if (typeof e == "string") try {
     const t = It(e);
     return t && typeof t == "object" ? t : null;
@@ -3508,16 +3508,16 @@ const _0 = ["offer", "answer", "candidate"], k0 = (e) => {
     return null;
   }
   return e;
-}, ar = (e, t) => typeof e[t] == "string" && e[t] ? e[t] : void 0, O0 = (e) => _0.some((t) => t in e && (typeof e[t] != "string" || e[t] === "")), x0 = (e) => {
-  const t = k0(e);
-  if (!t || O0(t)) return false;
+}, ar = (e, t) => typeof e[t] == "string" && e[t] ? e[t] : void 0, k0 = (e) => E0.some((t) => t in e && (typeof e[t] != "string" || e[t] === "")), O0 = (e) => {
+  const t = _0(e);
+  if (!t || k0(t)) return false;
   const n = ar(t, "peerId");
   return !!(n && n !== Me && t.passive !== true && !ar(t, "answer") && !ar(t, "candidate"));
 }, ir = (e) => {
   if (!e) throw U("topic strategy missing room context");
   return e;
 }, Zs = (e, t, n, r) => ({ kind: t, appId: e.appId, roomId: e.roomId, rootTopic: n, selfTopic: r }), cr = (e, t, n, r) => ({ kind: t, appId: e.appId, roomId: e.roomId, rootTopic: n, selfTopic: r });
-var C0 = ({ init: e, subscribeTopic: t, publishTopic: n, unpublishTopic: r }) => E0({ init: e, subscribe: async (o, s, a, c, i, l) => {
+var x0 = ({ init: e, subscribeTopic: t, publishTopic: n, unpublishTopic: r }) => A0({ init: e, subscribe: async (o, s, a, c, i, l) => {
   const u = ir(l), f = (R, T) => n(o, R, T, cr(u, "signal", s, a));
   let d = null, h = false, p = null, w = false;
   const m = (R) => {
@@ -3529,7 +3529,7 @@ var C0 = ({ init: e, subscribeTopic: t, publishTopic: n, unpublishTopic: r }) =>
   })), p);
   u.isPassive || await P();
   const y = await t(o, s, async (R, T) => {
-    w || (u.isPassive && x0(T) && await P(), w || await c(R, T, f));
+    w || (u.isPassive && O0(T) && await P(), w || await c(R, T, f));
   }, Zs(u, "root", s, a));
   return () => {
     w = true, d && m(d), y();
@@ -3538,24 +3538,24 @@ var C0 = ({ init: e, subscribeTopic: t, publishTopic: n, unpublishTopic: r }) =>
   const l = ir(i);
   return n(o, s, ye({ peerId: Me, ...c }), cr(l, "announce", s, a));
 }, ...r ? { deactivate: (o, s, a, c) => r(o, s, cr(ir(c), "announce", s, a)) } : {} });
-const Ci = vu((e) => e.socket), L0 = 5, Li = "x", Di = "EVENT", { secretKey: D0, publicKey: N0 } = wi.keygen(), B0 = Nt(N0), I0 = {}, $0 = {}, H0 = {}, Qs = 250, Ni = () => Math.floor(Date.now() / 1e3), Bi = (e) => H0[e] ?? (H0[e] = Si(e, 1e4) + 2e4), z0 = async (e, t) => {
-  const n = { kind: Bi(e), tags: [[Li, e]], created_at: Ni(), content: t, pubkey: B0 }, r = await Cn("SHA-256", ye([0, n.pubkey, n.created_at, n.kind, n.tags, n.content]));
-  return ye([Di, { ...n, id: Nt(r), sig: Nt(await wi.signAsync(r, D0)) }]);
+const C0 = wu((e) => e.socket), L0 = 5, Ci = "x", Li = "EVENT", { secretKey: D0, publicKey: N0 } = wi.keygen(), B0 = Nt(N0), I0 = {}, $0 = {}, H0 = {}, Qs = 250, Di = () => Math.floor(Date.now() / 1e3), Ni = (e) => H0[e] ?? (H0[e] = Si(e, 1e4) + 2e4), z0 = async (e, t) => {
+  const n = { kind: Ni(e), tags: [[Ci, e]], created_at: Di(), content: t, pubkey: B0 }, r = await Cn("SHA-256", ye([0, n.pubkey, n.created_at, n.kind, n.tags, n.content]));
+  return ye([Li, { ...n, id: Nt(r), sig: Nt(await wi.signAsync(r, D0)) }]);
 }, yt = {}, q0 = (e, t, n) => {
   var _a2;
   const r = yt[_a2 = e.url] ?? (yt[_a2] = { subIds: [], topics: /* @__PURE__ */ new Map(), updateTimer: null });
-  r.topics.set(t, n), Ii(e, r);
+  r.topics.set(t, n), Bi(e, r);
 }, j0 = (e, t) => {
   const n = yt[e.url];
-  n && (n.topics.delete(t), n.topics.size === 0 ? (n.updateTimer !== null && (clearTimeout(n.updateTimer), n.updateTimer = null), n.subIds.forEach((r) => e.send(ye(["CLOSE", r]))), delete yt[e.url]) : Ii(e, n));
-}, Ii = (e, t) => {
+  n && (n.topics.delete(t), n.topics.size === 0 ? (n.updateTimer !== null && (clearTimeout(n.updateTimer), n.updateTimer = null), n.subIds.forEach((r) => e.send(ye(["CLOSE", r]))), delete yt[e.url]) : Bi(e, n));
+}, Bi = (e, t) => {
   t.updateTimer === null && (t.updateTimer = setTimeout(() => {
-    t.updateTimer = null, $i(e);
+    t.updateTimer = null, Ii(e);
   }, 0));
-}, $i = (e) => {
+}, Ii = (e) => {
   const t = yt[e.url];
   if (!t || t.topics.size === 0) return;
-  const n = [...t.topics.keys()], r = [], o = Ni();
+  const n = [...t.topics.keys()], r = [], o = Di();
   for (let s = 0; s < n.length; s += Qs) r.push(n.slice(s, s + Qs));
   for (; t.subIds.length > r.length; ) {
     const s = t.subIds.pop();
@@ -3564,16 +3564,16 @@ const Ci = vu((e) => e.socket), L0 = 5, Li = "x", Di = "EVENT", { secretKey: D0,
   r.forEach((s, a) => {
     var _a2;
     const c = (_a2 = t.subIds)[a] ?? (_a2[a] = wt(64));
-    e.send(ye(["REQ", c, { kinds: [...new Set(s.map(Bi))], since: o, "#x": s }]));
+    e.send(ye(["REQ", c, { kinds: [...new Set(s.map(Ni))], since: o, "#x": s }]));
   });
 }, F0 = (e) => {
   const t = yt[e.url];
-  t && t.topics.size > 0 && $i(e);
-}, yd = C0({ init: (e) => pu(e, Y0, L0, true).map((t) => {
-  const n = Ci.register(t, () => wu(t, (r) => {
+  t && t.topics.size > 0 && Ii(e);
+}, yd = x0({ init: (e) => hu(e, Y0, L0, true).map((t) => {
+  const n = C0.register(t, () => yu(t, (r) => {
     var _a2, _b;
     const [o, s, a, c] = It(r);
-    if (o !== Di) {
+    if (o !== Li) {
       const i = `${Se}: relay failure from ${n.url} - `;
       ((_a2 = e.relayConfig) == null ? void 0 : _a2.warnOnRelayFailure) !== false && (o === "NOTICE" ? console.warn(i + s) : o === "OK" && !a && console.warn(i + c));
       return;
@@ -3586,7 +3586,7 @@ const Ci = vu((e) => e.socket), L0 = 5, Li = "x", Di = "EVENT", { secretKey: D0,
       }
       const u = yt[n.url];
       if ((u == null ? void 0 : u.subIds.includes(s)) && a.tags) {
-        const f = a.tags.find((d) => d[0] === Li);
+        const f = a.tags.find((d) => d[0] === Ci);
         (f == null ? void 0 : f[1]) && ((_b = u.topics.get(f[1])) == null ? void 0 : _b(f[1], i));
       }
     }
@@ -3594,7 +3594,7 @@ const Ci = vu((e) => e.socket), L0 = 5, Li = "x", Di = "EVENT", { secretKey: D0,
   return n.ready;
 }), subscribeTopic: (e, t, n) => (q0(e, t, (o, s) => void n(o, s)), () => {
   j0(e, t);
-}), publishTopic: async (e, t, n) => e.send(await z0(t, typeof n == "string" ? n : ye(n))) }), wd = Ci.getSockets, Y0 = ["basspistol.org", "bucket.coracle.social", "chorus.almostmachines.dev", "chorus.pjv.me", "communities.nos.social", "ftp.halifax.rwth-aachen.de/nostr", "hol.is", "hornetstorage.net/relay", "koru.bitcointxoko.org", "nos.lol", "nostr-01.uid.ovh", "nostr-01.yakihonne.com", "nostr-relay.corb.net", "nostr.data.haus", "nostr.islandarea.net", "nostr.sathoarder.com", "nostr.self-determined.de", "nostr.tegila.com.br", "nostr.vulpem.com", "purplerelay.com", "relay-can.zombi.cloudrodion.com", "relay-rpi.edufeed.org", "relay.agorist.space", "relay.angor.io", "relay.artio.inf.unibe.ch", "relay.binaryrobot.com", "relay.damus.io", "relay.froth.zone", "relay.libernet.app", "relay.mostr.pub", "relay.mostro.network", "relay.nostr.place", "relay.nostrdice.com", "relay.notoshi.win", "relay.sigit.io", "relay02.lnfi.network", "relay2.angor.io", "schnorr.me", "slick.mjex.me", "social.amanah.eblessing.co", "staging.yabu.me", "strfry.openhoofd.nl", "strfry.shock.network", "testnet-relay.samt.st", "top.testrelay.top", "x.kojira.io", "yabu.me/v2"].map((e) => "wss://" + e);
+}), publishTopic: async (e, t, n) => e.send(await z0(t, typeof n == "string" ? n : ye(n))) }), Y0 = ["basspistol.org", "bucket.coracle.social", "chorus.almostmachines.dev", "chorus.pjv.me", "communities.nos.social", "ftp.halifax.rwth-aachen.de/nostr", "hol.is", "hornetstorage.net/relay", "koru.bitcointxoko.org", "nos.lol", "nostr-01.uid.ovh", "nostr-01.yakihonne.com", "nostr-relay.corb.net", "nostr.data.haus", "nostr.islandarea.net", "nostr.sathoarder.com", "nostr.self-determined.de", "nostr.tegila.com.br", "nostr.vulpem.com", "purplerelay.com", "relay-can.zombi.cloudrodion.com", "relay-rpi.edufeed.org", "relay.agorist.space", "relay.angor.io", "relay.artio.inf.unibe.ch", "relay.binaryrobot.com", "relay.damus.io", "relay.froth.zone", "relay.libernet.app", "relay.mostr.pub", "relay.mostro.network", "relay.nostr.place", "relay.nostrdice.com", "relay.notoshi.win", "relay.sigit.io", "relay02.lnfi.network", "relay2.angor.io", "schnorr.me", "slick.mjex.me", "social.amanah.eblessing.co", "staging.yabu.me", "strfry.openhoofd.nl", "strfry.shock.network", "testnet-relay.samt.st", "top.testrelay.top", "x.kojira.io", "yabu.me/v2"].map((e) => "wss://" + e);
 /*!
 * https://github.com/Starcounter-Jack/JSON-Patch
 * (c) 2017-2022 Joachim Wester
@@ -3652,7 +3652,7 @@ function Lr(e) {
 function Xe(e) {
   return e.indexOf("/") === -1 && e.indexOf("~") === -1 ? e : e.replace(/~/g, "~0").replace(/\//g, "~1");
 }
-function Hi(e) {
+function $i(e) {
   return e.replace(/~1/g, "/").replace(/~0/g, "~");
 }
 function Dr(e) {
@@ -3675,14 +3675,14 @@ function Vs(e, t) {
   return n.join(`
 `);
 }
-var zi = (function(e) {
+var Hi = (function(e) {
   X0(t, e);
   function t(n, r, o, s, a) {
     var c = this.constructor, i = e.call(this, Vs(n, { name: r, index: o, operation: s, tree: a })) || this;
     return i.name = r, i.index = o, i.operation = s, i.tree = a, Object.setPrototypeOf(i, c.prototype), i.message = Vs(n, { name: r, index: o, operation: s, tree: a }), i;
   }
   return t;
-})(Error), V = zi, W0 = ge, ft = { add: function(e, t, n) {
+})(Error), V = Hi, W0 = ge, ft = { add: function(e, t, n) {
   return e[t] = this.value, { newDocument: n };
 }, remove: function(e, t, n) {
   var r = e[t];
@@ -3735,7 +3735,7 @@ function Qe(e, t, n, r, o, s) {
     r || (e = ge(e));
     var c = t.path || "", i = c.split("/"), l = e, u = 1, f = i.length, d = void 0, h = void 0, p = void 0;
     for (typeof n == "function" ? p = n : p = Tn; ; ) {
-      if (h = i[u], h && h.indexOf("~") != -1 && (h = Hi(h)), o && (h == "__proto__" || h == "prototype" && u > 0 && i[u - 1] == "constructor")) throw new TypeError("JSON-Patch: modifying `__proto__` or `constructor/prototype` prop is banned for security reasons, if this was on purpose, please set `banPrototypeModifications` flag false and pass it to this function. More info in fast-json-patch README");
+      if (h = i[u], h && h.indexOf("~") != -1 && (h = $i(h)), o && (h == "__proto__" || h == "prototype" && u > 0 && i[u - 1] == "constructor")) throw new TypeError("JSON-Patch: modifying `__proto__` or `constructor/prototype` prop is banned for security reasons, if this was on purpose, please set `banPrototypeModifications` flag false and pass it to this function. More info in fast-json-patch README");
       if (n && d === void 0 && (l[h] === void 0 ? d = i.slice(0, u).join("/") : u == f - 1 && (d = t.path), d !== void 0 && p(t, 0, e, d)), u++, Array.isArray(l)) {
         if (h === "-") h = l.length;
         else {
@@ -3783,13 +3783,13 @@ function Tn(e, t, n, r) {
       } else if (e.op === "replace" || e.op === "remove" || e.op === "_get") {
         if (e.path !== r) throw new V("Cannot perform the operation at a path that does not exist", "OPERATION_PATH_UNRESOLVABLE", t, e, n);
       } else if (e.op === "move" || e.op === "copy") {
-        var a = { op: "_get", path: e.from, value: void 0 }, c = qi([a], n);
+        var a = { op: "_get", path: e.from, value: void 0 }, c = zi([a], n);
         if (c && c.name === "OPERATION_PATH_UNRESOLVABLE") throw new V("Cannot perform the operation from a path that does not exist", "OPERATION_FROM_UNRESOLVABLE", t, e, n);
       }
     }
   } else throw new V("Operation `op` property is not one of operations defined in RFC-6902", "OPERATION_OP_INVALID", t, e, n);
 }
-function qi(e, t, n) {
+function zi(e, t, n) {
   try {
     if (!Array.isArray(e)) throw new V("Patch sequence must be an array", "SEQUENCE_NOT_AN_ARRAY");
     if (t) oo(ge(t), ge(e), n || true);
@@ -3820,7 +3820,7 @@ function qt(e, t) {
   }
   return e !== e && t !== t;
 }
-const K0 = Object.freeze(Object.defineProperty({ __proto__: null, JsonPatchError: V, _areEquals: qt, applyOperation: Qe, applyPatch: oo, applyReducer: G0, deepClone: W0, getValueByPointer: Rn, validate: qi, validator: Tn }, Symbol.toStringTag, { value: "Module" }));
+const K0 = Object.freeze(Object.defineProperty({ __proto__: null, JsonPatchError: V, _areEquals: qt, applyOperation: Qe, applyPatch: oo, applyReducer: G0, deepClone: W0, getValueByPointer: Rn, validate: zi, validator: Tn }, Symbol.toStringTag, { value: "Module" }));
 /*!
 * https://github.com/Starcounter-Jack/JSON-Patch
 * (c) 2017-2021 Joachim Wester
@@ -3899,7 +3899,7 @@ function od(e, t, n) {
   return ao(e, t, r, "", n), r;
 }
 const sd = Object.freeze(Object.defineProperty({ __proto__: null, compare: od, generate: Nr, observe: rd, unobserve: nd }, Symbol.toStringTag, { value: "Module" }));
-Object.assign({}, K0, sd, { JsonPatchError: zi, deepClone: ge, escapePathComponent: Xe, unescapePathComponent: Hi });
+Object.assign({}, K0, sd, { JsonPatchError: Hi, deepClone: ge, escapePathComponent: Xe, unescapePathComponent: $i });
 var fr = { exports: {} }, lr, ea;
 function ad() {
   if (ea) return lr;
@@ -3932,41 +3932,40 @@ function id() {
   }, ur;
 }
 var na;
-function vd() {
+function wd() {
   return na || (na = 1, fr.exports = id()()), fr.exports;
 }
-function ji(e) {
+function qi(e) {
   var t, n, r = "";
   if (typeof e == "string" || typeof e == "number") r += e;
-  else if (typeof e == "object") if (Array.isArray(e)) for (t = 0; t < e.length; t++) e[t] && (n = ji(e[t])) && (r && (r += " "), r += n);
+  else if (typeof e == "object") if (Array.isArray(e)) for (t = 0; t < e.length; t++) e[t] && (n = qi(e[t])) && (r && (r += " "), r += n);
   else for (t in e) e[t] && (r && (r += " "), r += t);
   return r;
 }
 function ra() {
-  for (var e, t, n = 0, r = ""; n < arguments.length; ) (e = arguments[n++]) && (t = ji(e)) && (r && (r += " "), r += t);
+  for (var e, t, n = 0, r = ""; n < arguments.length; ) (e = arguments[n++]) && (t = qi(e)) && (r && (r += " "), r += t);
   return r;
 }
-const cd = Object.freeze(Object.defineProperty({ __proto__: null, clsx: ra, default: ra }, Symbol.toStringTag, { value: "Module" })), bd = oa(cd);
+const cd = Object.freeze(Object.defineProperty({ __proto__: null, clsx: ra, default: ra }, Symbol.toStringTag, { value: "Module" })), vd = oa(cd);
 export {
   G as C,
   ys as _,
   hd as a,
-  bd as b,
-  rc as c,
+  vd as b,
+  nc as c,
   ld as d,
   pd as e,
   vo as f,
   Br as g,
-  hc as h,
-  wd as i,
+  dc as h,
+  oo as i,
   yd as j,
-  oo as k,
-  ud as l,
-  Me as m,
+  ud as k,
+  Me as l,
+  od as m,
   md as n,
-  od as o,
-  dc as p,
-  vd as r,
+  uc as p,
+  wd as r,
   gd as s,
   dd as u
 };
