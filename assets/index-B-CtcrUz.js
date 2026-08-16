@@ -5371,10 +5371,11 @@ void main() {
       return JSON.parse(a);
     },
     async listRevisions(e) {
-      return ((await (await wn(`${ms}/files/${e}/revisions?fields=revisions(id,modifiedTime,size)&pageSize=1000`)).json()).revisions ?? []).map((r) => ({
+      return ((await (await wn(`${ms}/files/${e}/revisions?fields=revisions(id,modifiedTime,size,keepForever)&pageSize=1000`)).json()).revisions ?? []).map((r) => ({
         revisionId: r.id,
         modifiedTime: r.modifiedTime ?? "",
-        size: Number(r.size ?? 0)
+        size: Number(r.size ?? 0),
+        keepForever: r.keepForever === true
       })).reverse();
     },
     async uploadBackup(e, t, s) {
@@ -5397,7 +5398,7 @@ void main() {
         body: JSON.stringify(o)
       })).headers.get("Location") || "" : (o.parents = [
         r
-      ], i = (await wn(`${Il}/files?uploadType=resumable&fields=id`, {
+      ], i = (await wn(`${Il}/files?uploadType=resumable&keepRevisionForever=true&fields=id`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=UTF-8"
@@ -5459,7 +5460,7 @@ void main() {
       }
       return (await c.json()).id;
     }
-  }, tI = 10;
+  }, tI = 15;
   function Eh(e, t) {
     var _a3;
     return ((_a3 = e.LastUpdated) == null ? void 0 : _a3[t]) ?? 0;
@@ -5588,16 +5589,28 @@ void main() {
       if (ui(r)) return s;
       console.warn(`[CloudBackup] "${e.Name}" is missing ${r.imageIds.length} image(s) and ${r.terrainIds.length} terrain(s) locally; searching Drive history.`);
       const a = await xn.listRevisions(t.fileId);
-      for (const o of a.slice(0, tI)) {
-        if (ui(r)) break;
+      let o = 0;
+      for (const i of a) {
+        if (ui(r) || o >= tI) break;
+        let c;
         try {
-          const i = await xn.downloadBackup(t.fileId, o.revisionId), c = await V.repairBinariesFromExportData(e, i, r);
-          (c.images || c.terrains) && (s.images += c.images, s.terrains += c.terrains, r = await V.findMissingBinaries(e));
-        } catch (i) {
-          console.error(`[CloudBackup] Repair failed against revision ${o.revisionId}:`, i);
+          c = await xn.downloadBackup(t.fileId, i.revisionId), o++;
+        } catch (l) {
+          if (l instanceof Error && l.message.includes("cannotDownloadRevision")) {
+            console.info(`[CloudBackup] Skipping purged revision from ${i.modifiedTime}.`);
+            continue;
+          }
+          console.error(`[CloudBackup] Repair failed against revision ${i.revisionId}:`, l);
+          continue;
+        }
+        try {
+          const l = await V.repairBinariesFromExportData(e, c, r);
+          (l.images || l.terrains) && (s.images += l.images, s.terrains += l.terrains, r = await V.findMissingBinaries(e), console.info(`[CloudBackup] Revision from ${i.modifiedTime} supplied ${l.images} image(s) and ${l.terrains} terrain(s).`));
+        } catch (l) {
+          console.error(`[CloudBackup] Could not apply revision ${i.revisionId}:`, l);
         }
       }
-      return ui(r) || console.warn(`[CloudBackup] ${r.imageIds.length} image(s) and ${r.terrainIds.length} terrain(s) were not in any searched backup revision (created after the last backup that had them).`), s;
+      return ui(r) || console.warn(`[CloudBackup] ${r.imageIds.length} image(s) and ${r.terrainIds.length} terrain(s) were not in any readable backup revision (created after the last backup that had them, or their revision has been purged by Drive).`), s;
     },
     async computeShrinkDiff(e, t) {
       const s = e.counts, r = await bt.loadCampaign(t.Id), a = r ? V.campaignCounts(r) : null;
