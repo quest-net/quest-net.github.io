@@ -11516,9 +11516,9 @@ void main(){
     }
     setupChannel() {
       const t = this.room.makeAction("stateSync");
-      this.sendState = t.send, t.onMessage = (s, { metadata: r }) => {
+      this.sendState = t.send, !this.recorder && (t.onMessage = (s, { metadata: r }) => {
         this.handleIncomingStateTransport(s, r);
-      };
+      });
     }
     triggerFullSyncRequest() {
       this.actionExecute("log:create", {
@@ -42276,23 +42276,17 @@ PROG ${o}`;
       return document.addEventListener("mousedown", v), () => document.removeEventListener("mousedown", v);
     }, [
       e
-    ]), s.User.Role !== "dm") return a ? n.jsxs("span", {
-      className: "badge badge-lg badge-success gap-2",
-      children: [
-        n.jsx("span", {
-          className: "icon-[mdi--access-point-network] w-4 h-4"
-        }),
-        "Connected"
-      ]
-    }) : n.jsxs("span", {
-      className: "badge badge-lg badge-warning gap-2",
-      children: [
-        n.jsx("span", {
-          className: "icon-[eos-icons--compass] w-4 h-4 motion-safe:animate-pulse"
-        }),
-        "Searching for host"
-      ]
-    });
+    ]), s.User.Role !== "dm") {
+      const v = a ? "Connected to host" : "Searching for host", x = a ? "icon-[mdi--access-point-network]" : "icon-[eos-icons--compass] motion-safe:animate-pulse";
+      return n.jsx("span", {
+        className: `badge badge-lg ${a ? "badge-success" : "badge-warning"}`,
+        "aria-label": v,
+        title: v,
+        children: n.jsx("span", {
+          className: `${x} w-4 h-4`
+        })
+      });
+    }
     const l = (v) => {
       var _a4;
       const x = (_a4 = v.user) == null ? void 0 : _a4.SelectedCharacters[c.RoomCode];
@@ -44721,6 +44715,7 @@ PROG ${o}`;
               } : C);
             }
           };
+          if (!h) return;
           d = uo.join(E, {
             callbacks: N,
             passive: !l
