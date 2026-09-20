@@ -1,9 +1,9 @@
 var __defProp = Object.defineProperty;
 var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-import { r as f, j as n, u as lr, a as Cc, R as Tb, b as Rb, L as Uo, c as Mb, H as Pb, d as _b, e as Wa, f as Db, __tla as __tla_0 } from "./vendor-react-BOkvO0Ie.js";
-import { p as $o, c as Lb, d as Ob, f as eg, u as _r, h as tg, j as Fb, i as Ub, k as $b, l as Bb, m as Hb } from "./vendor-Dwx9Xpfu.js";
-import { P as qi, S as jc, C as Pa, N as Dr, a as $r, b as Ac, M as ut, W as Ec, c as zt, V as Tt, d as Zt, O as ng, G as Mu, T as Vb, E as Dd, R as Ld, e as Od, f as sg, U as tt, L as hn, g as Hs, h as Ne, i as rg, j as Gb, k as Ut, l as _a, m as Vt, D as bo, n as Fd, o as Ud, p as an, B as Br, q as ag, A as zb, I as Wb, r as wo, s as Pu, t as og, u as ig, v as Xb, w as qb, x as Yb, y as Kb, z as mt, F as Hr, H as Qb, J as Zb, K as kc, Q as cg, X as _u, Y as Bo, Z as Mn, _ as Jb, $ as Zn, a0 as ir, a1 as e0, a2 as t0, a3 as lg, a4 as n0, a5 as s0, a6 as r0, a7 as a0, a8 as dg, a9 as ug, aa as o0, ab as i0, ac as c0, ad as l0, ae as d0, af as Um, ag as $d, ah as u0, ai as m0 } from "./vendor-three-Bi2n89rQ.js";
+import { r as f, j as n, u as dr, a as Cc, R as Tb, b as Rb, L as $o, c as Mb, H as Pb, d as _b, e as Wa, f as Db, __tla as __tla_0 } from "./vendor-react-BOkvO0Ie.js";
+import { p as Bo, c as Lb, d as Ob, f as eg, u as _r, h as tg, j as Fb, i as Ub, k as $b, l as Bb, m as Hb } from "./vendor-Dwx9Xpfu.js";
+import { P as qi, S as jc, C as Pa, N as Dr, a as $r, b as Ac, M as ut, W as Ec, c as zt, V as Tt, d as Zt, O as ng, G as Mu, T as Vb, E as Dd, R as Ld, e as Od, f as sg, U as tt, L as hn, g as Hs, h as Ne, i as rg, j as Gb, k as Ut, l as _a, m as Vt, D as wo, n as Fd, o as Ud, p as an, B as Br, q as ag, A as zb, I as Wb, r as So, s as Pu, t as og, u as ig, v as Xb, w as qb, x as Yb, y as Kb, z as mt, F as Hr, H as Qb, J as Zb, K as kc, Q as cg, X as _u, Y as Ho, Z as Mn, _ as Jb, $ as Zn, a0 as cr, a1 as e0, a2 as t0, a3 as lg, a4 as n0, a5 as s0, a6 as r0, a7 as a0, a8 as dg, a9 as ug, aa as o0, ab as i0, ac as c0, ad as l0, ae as d0, af as Um, ag as $d, ah as u0, ai as m0 } from "./vendor-three-Bi2n89rQ.js";
 import { g as gt, u as h0, a as p0, m as f0 } from "./vendor-motion-hTEWjo_f.js";
 import { e as g0 } from "./vendor-mathjs-DPsWDRWR.js";
 Promise.all([
@@ -139,7 +139,7 @@ Promise.all([
     Name: "",
     Role: void 0,
     SelectedCharacters: {}
-  }, oe = $o(Du(w0));
+  }, oe = Bo(Du(w0));
   function $m(e) {
     const t = mg(e), s = oe;
     for (const r of Object.keys(t)) s[r] = t[r];
@@ -178,16 +178,16 @@ Promise.all([
   function bn(e = Date.now()) {
     oe.ProfileUpdated = e;
   }
-  const gg = $o({
+  const gg = Bo({
     version: 0
   });
   function ta() {
     gg.version++;
   }
-  const xg = $o({
+  const xg = Bo({
     tick: 0
   });
-  function co() {
+  function lo() {
     xg.tick++;
   }
   const Hm = [
@@ -247,7 +247,7 @@ Promise.all([
     impersonate(e, t) {
       t.User.ImpersonatedActors || (t.User.ImpersonatedActors = {}), e.actorId ? t.User.ImpersonatedActors[e.campaignId] = e.actorId : delete t.User.ImpersonatedActors[e.campaignId];
     }
-  }, A0 = "quest-net-db", E0 = 5, na = "images", fa = "campaigns", Gm = "voxelTerrains", So = "contextBackups";
+  }, A0 = "quest-net-db", E0 = 5, na = "images", fa = "campaigns", Gm = "voxelTerrains", Io = "contextBackups";
   class dt {
     static getDB() {
       return this.dbPromise ? this.dbPromise : (this.dbPromise = new Promise((t, s) => {
@@ -262,7 +262,7 @@ Promise.all([
             keyPath: "Id"
           }), o.objectStoreNames.contains(Gm) || o.createObjectStore(Gm, {
             keyPath: "Key"
-          }), o.objectStoreNames.contains(So) || o.createObjectStore(So, {
+          }), o.objectStoreNames.contains(Io) || o.createObjectStore(Io, {
             keyPath: "Key"
           });
         };
@@ -464,7 +464,7 @@ Promise.all([
   function Hd() {
     return T0.map((e) => Ou(R0[e]));
   }
-  const Ho = 12, Xm = 0.22, M0 = 0.88, P0 = 0.18, qm = 0.34, _0 = 0.9, D0 = 0.98, L0 = [
+  const Vo = 12, Xm = 0.22, M0 = 0.88, P0 = 0.18, qm = 0.34, _0 = 0.9, D0 = 0.98, L0 = [
     [
       0,
       null
@@ -512,23 +512,23 @@ Promise.all([
     return s * D0;
   }
   function Ig(e) {
-    const t = e / (Ho - 1);
+    const t = e / (Vo - 1);
     return Xm + t * (M0 - Xm);
   }
   function $0(e, t, s) {
     if (t <= 0 || s === null) return 0;
-    const r = e / (Ho - 1), a = Math.pow(Math.sin(Math.PI * r), _0), o = t * (qm + (1 - qm) * a);
+    const r = e / (Vo - 1), a = Math.pow(Math.sin(Math.PI * r), _0), o = t * (qm + (1 - qm) * a);
     return Math.min(o, U0(Ig(e), s));
   }
   function B0() {
     const e = [];
-    for (const [t, s] of L0) for (let r = 0; r < Ho; r++) {
+    for (const [t, s] of L0) for (let r = 0; r < Vo; r++) {
       const a = Ig(r), o = $0(r, t, s);
       e.push(O0(a, o, s ?? 0));
     }
     return e;
   }
-  const Ia = B0(), es = Ho - 1;
+  const Ia = B0(), es = Vo - 1;
   function Ng(e) {
     return Ia[e] ?? Ia[es];
   }
@@ -539,7 +539,7 @@ Promise.all([
   function H0(e) {
     Fu = e;
   }
-  function oi(e) {
+  function ii(e) {
     return Fu.passableIndices.has(e);
   }
   function V0(e) {
@@ -672,7 +672,7 @@ Promise.all([
   function vr(e) {
     return Vr.has(e);
   }
-  function ii(e) {
+  function ci(e) {
     return Gd === e;
   }
   function sa(e, t, s = _n(t)) {
@@ -689,14 +689,14 @@ Promise.all([
     const t = Vr.get(e.Id);
     return t ? e.ContentHash ? t.contentHash === e.ContentHash : true : false;
   }
-  function Vo(e) {
+  function Go(e) {
     const t = e.Voxels;
     return t instanceof Uint8Array ? t : Ds(e.Id);
   }
   function Y0(e) {
     return Gd === e ? false : (Gd = e, Vr.clear(), true);
   }
-  function Io(e) {
+  function No(e) {
     return Math.max(zm, e.Resolution ?? zm);
   }
   function zd(e, t) {
@@ -718,13 +718,13 @@ Promise.all([
     const s = e.Voxels;
     return s instanceof Uint8Array ? _n(s) : Lr(e.Id) ?? _n(t);
   }
-  function Ps(e, t = e ? Vo(e) : new Uint8Array(0)) {
+  function Ps(e, t = e ? Go(e) : new Uint8Array(0)) {
     return e ? [
       e.Id,
       e.Width,
       e.Length,
       e.Height,
-      Io(e),
+      No(e),
       Z0(e, t)
     ].join(":") : Q0;
   }
@@ -747,7 +747,7 @@ Promise.all([
   }
   const Ts = 32, ew = Ts * Ts * Ts;
   function tw(e, t, s) {
-    const r = Io(e), a = e.Width * r, o = e.Length * r, i = e.Height * r, c = Ps(e, t), l = Math.ceil(a / Ts), d = Math.ceil(i / Ts), u = Math.ceil(o / Ts), h = new Array(l * d * u).fill(null);
+    const r = No(e), a = e.Width * r, o = e.Length * r, i = e.Height * r, c = Ps(e, t), l = Math.ceil(a / Ts), d = Math.ceil(i / Ts), u = Math.ceil(o / Ts), h = new Array(l * d * u).fill(null);
     let p = -1;
     const m = (N, S, C) => (N >> 5) + (C >> 5) * l + (S >> 5) * l * u, g = (N, S, C) => (N & 31) + (C & 31) * Ts + (S & 31) * Ts * Ts, y = (N, S, C) => {
       const T = h[m(N, S, C)];
@@ -760,9 +760,9 @@ Promise.all([
     for (const N of b) x(N.x, N.y, N.z) && (v(N.x, N.y, N.z, (N.color & 255) + 1), N.y > p && (p = N.y));
     const w = /* @__PURE__ */ new Map(), I = /* @__PURE__ */ new Map();
     for (const N of b) {
-      if (!x(N.x, N.y, N.z) || oi(N.color & 255)) continue;
+      if (!x(N.x, N.y, N.z) || ii(N.color & 255)) continue;
       const S = N.y + 1 < i ? y(N.x, N.y + 1, N.z) : 0;
-      if (S !== 0 && !oi(S - 1)) continue;
+      if (S !== 0 && !ii(S - 1)) continue;
       const C = pn(Math.floor(N.x / r), Math.floor(N.z / r));
       let T = w.get(C);
       T || w.set(C, T = /* @__PURE__ */ new Set()), T.add(K0(N.y, r));
@@ -795,7 +795,7 @@ Promise.all([
       hasVoxel(N, S, C) {
         if (!x(N, S, C)) return false;
         const T = y(N, S, C);
-        return T !== 0 && !oi(T - 1);
+        return T !== 0 && !ii(T - 1);
       },
       isVoxelOccupiedAtTile(N, S, C) {
         if (C < 0 || C >= i) return false;
@@ -803,21 +803,21 @@ Promise.all([
         if (T < 0 || _ < 0 || T >= a || _ >= o) return false;
         for (let M = _; M < D; M++) for (let O = T; O < P; O++) {
           const L = y(O, C, M);
-          if (L !== 0 && !oi(L - 1)) return true;
+          if (L !== 0 && !ii(L - 1)) return true;
         }
         return false;
       }
     };
   }
-  const nw = 2, hr = /* @__PURE__ */ new Map();
-  function Ct(e, t = Vo(e)) {
-    const s = Ps(e, t), r = hr.get(s);
-    if (r) return hr.delete(s), hr.set(s, r), r;
+  const nw = 2, pr = /* @__PURE__ */ new Map();
+  function Ct(e, t = Go(e)) {
+    const s = Ps(e, t), r = pr.get(s);
+    if (r) return pr.delete(s), pr.set(s, r), r;
     const a = tw(e, t);
-    for (hr.set(s, a); hr.size > nw; ) {
-      const o = hr.keys().next().value;
+    for (pr.set(s, a); pr.size > nw; ) {
+      const o = pr.keys().next().value;
       if (o === void 0) break;
-      hr.delete(o);
+      pr.delete(o);
     }
     return a;
   }
@@ -835,11 +835,11 @@ Promise.all([
     return new Promise((t) => setTimeout(t, e));
   }
   const sw = 256, Wd = 1, rw = 8, aw = 16, _i = 1, Pg = 4;
-  function lo(e) {
+  function uo(e) {
     return We(Math.floor(e ?? _i) || _i, _i, Pg);
   }
   function Na(e) {
-    return Math.floor(sw / lo(e));
+    return Math.floor(sw / uo(e));
   }
   function Di(e, t) {
     return We(Math.floor(e) || Wd, Wd, Na(t));
@@ -991,10 +991,10 @@ Promise.all([
       return a ? (sa(s, a.voxels, a.contentHash), r) : (console.warn(`[TerrainStorageService] Terrain payload unavailable: ${s}`), null);
     }
     static async hasStoredRecord(t, s) {
-      return ii(t.Id) && vr(s) ? true : la.exists(this.terrainPath(t.Id, s));
+      return ci(t.Id) && vr(s) ? true : la.exists(this.terrainPath(t.Id, s));
     }
     static async getPayloadForServing(t, s) {
-      if (ii(t.Id) && vr(s)) {
+      if (ci(t.Id) && vr(s)) {
         const a = Ds(s);
         return {
           voxels: a,
@@ -1041,10 +1041,10 @@ Promise.all([
       await this.packInactiveTerrains(t);
     }
     static async prepareCampaignForStorage(t) {
-      if (ii(t.Id)) for (const s of t.VoxelTerrains ?? []) vr(s.Id) && await this.saveTerrain(t, s);
+      if (ci(t.Id)) for (const s of t.VoxelTerrains ?? []) vr(s.Id) && await this.saveTerrain(t, s);
     }
     static async packInactiveTerrains(t) {
-      if (!ii(t.Id)) return;
+      if (!ci(t.Id)) return;
       const s = this.terrainsToKeepHydrated(t);
       for (const r of t.VoxelTerrains ?? []) s.has(r.Id) || vr(r.Id) && (await this.saveTerrain(t, r), pl(r.Id));
     }
@@ -1197,7 +1197,7 @@ Promise.all([
       return s;
     }
   }, nh = "#2563eb", sh = "#b45309";
-  function ci(e, t) {
+  function li(e, t) {
     !e || typeof e != "object" || (typeof e.Color != "string" || e.Color.trim() === "") && (e.Color = t);
   }
   const pw = {
@@ -1205,10 +1205,10 @@ Promise.all([
     migrate: (e) => {
       var _a3, _b3;
       const t = e;
-      for (const s of t.CharacterRoster ?? []) ci(s, nh);
-      for (const s of ((_a3 = t.GameState) == null ? void 0 : _a3.Characters) ?? []) ci(s, nh);
-      for (const s of t.EntityTemplates ?? []) ci(s, sh);
-      for (const s of ((_b3 = t.GameState) == null ? void 0 : _b3.Entities) ?? []) ci(s, sh);
+      for (const s of t.CharacterRoster ?? []) li(s, nh);
+      for (const s of ((_a3 = t.GameState) == null ? void 0 : _a3.Characters) ?? []) li(s, nh);
+      for (const s of t.EntityTemplates ?? []) li(s, sh);
+      for (const s of ((_b3 = t.GameState) == null ? void 0 : _b3.Entities) ?? []) li(s, sh);
       return t;
     }
   }, fw = {
@@ -1230,7 +1230,7 @@ Promise.all([
       const r = (_b3 = t.Settings) == null ? void 0 : _b3.InitiativeSettings;
       return r && typeof r == "object" && typeof r.Mode != "string" && (r.Mode = "party"), t;
     }
-  }, li = {
+  }, di = {
     Color: "#ffffff",
     Intensity: 1.15,
     Rotation: 321,
@@ -1250,10 +1250,10 @@ Promise.all([
     if (!e || typeof e != "object") return;
     const t = e.Lighting;
     e.Lighting = {
-      Color: gw(t == null ? void 0 : t.Color, li.Color),
-      Intensity: vl(t == null ? void 0 : t.Intensity, li.Intensity),
-      Rotation: vl(t == null ? void 0 : t.Rotation, li.Rotation),
-      Elevation: vl(t == null ? void 0 : t.Elevation, li.Elevation)
+      Color: gw(t == null ? void 0 : t.Color, di.Color),
+      Intensity: vl(t == null ? void 0 : t.Intensity, di.Intensity),
+      Rotation: vl(t == null ? void 0 : t.Rotation, di.Rotation),
+      Elevation: vl(t == null ? void 0 : t.Elevation, di.Elevation)
     };
     const s = xw((_a3 = e.Background) == null ? void 0 : _a3.Color);
     e.Background = s ? {
@@ -1277,14 +1277,14 @@ Promise.all([
     }
     return btoa(t);
   }
-  function cr(e) {
+  function lr(e) {
     if (!e) return new Uint8Array(0);
     const t = atob(e), s = new Uint8Array(t.length);
     for (let r = 0; r < t.length; r++) s[r] = t.charCodeAt(r);
     return s;
   }
   function Qi(e, t) {
-    const s = cr(e);
+    const s = lr(e);
     return new Blob([
       s.buffer
     ], {
@@ -1313,7 +1313,7 @@ Promise.all([
     return t.length < qa.length ? false : t.charCodeAt(0) === qa.charCodeAt(0) && t.charCodeAt(1) === qa.charCodeAt(1) && t.charCodeAt(2) === qa.charCodeAt(2) && t.charCodeAt(3) === qa.charCodeAt(3);
   }
   function* Sw(e) {
-    const t = cr(e);
+    const t = lr(e);
     if (t.length % 4 !== 0) throw new Error("Legacy voxel payload byte length is not divisible by 4.");
     const s = new Uint32Array(t.buffer, t.byteOffset, t.length / 4);
     for (let r = 0; r < s.length; r++) {
@@ -1332,7 +1332,7 @@ Promise.all([
   function Iw(e, t) {
     if (!e || typeof e != "object" || typeof e.Voxels != "string") return true;
     try {
-      return e.Voxels = Fg(e.Voxels), e.VoxelCount = Er(cr(e.Voxels)), true;
+      return e.Voxels = Fg(e.Voxels), e.VoxelCount = Er(lr(e.Voxels)), true;
     } catch (s) {
       return console.error(`[v2.3.0 migration] Failed to re-encode inline voxels for terrain "${e.Id ?? "(unknown)"}" in campaign "${t}". Clearing the payload to keep the campaign loadable. The pre-migration Context is backed up under IndexedDB key "pre-2.3.0" if recovery is needed. Original error:`, s), e.Voxels = "", e.VoxelCount = 0, false;
     }
@@ -1533,7 +1533,7 @@ Promise.all([
         }
         let h, p;
         try {
-          const m = cr(u);
+          const m = lr(u);
           h = _n(m), p = Er(m);
         } catch (m) {
           console.error(`[v2.7.0 migration] Invalid voxel payload for terrain "${i}" in campaign "${r}". Treating as empty.`, m), u = "", h = _n(new Uint8Array(0)), p = 0;
@@ -1599,7 +1599,7 @@ Promise.all([
         if (!i || i.CampaignId !== r) continue;
         let c;
         try {
-          if (c = typeof i.Voxels == "string" ? cr(i.Voxels) : i.Voxels, !(c instanceof Uint8Array)) continue;
+          if (c = typeof i.Voxels == "string" ? lr(i.Voxels) : i.Voxels, !(c instanceof Uint8Array)) continue;
         } catch (d) {
           console.error(`[v2.10.0 migration] Failed to decode voxel record "${i.Key ?? i.TerrainId ?? "(unknown)"}"; clearing it to keep the campaign loadable.`, d), c = new Uint8Array(0);
         }
@@ -1927,7 +1927,7 @@ Promise.all([
       Length: e.Length,
       Height: e.Height,
       Resolution: e.Resolution,
-      Voxels: cr(e.Voxels),
+      Voxels: lr(e.Voxels),
       Lighting: bg(),
       Background: wg(),
       Tags: [
@@ -2065,14 +2065,14 @@ Promise.all([
   ];
   async function Vw(e, t, s) {
     try {
-      if (await dt.op(So, "readonly", (o) => o.get(e))) return false;
+      if (await dt.op(Io, "readonly", (o) => o.get(e))) return false;
       const a = {
         Key: e,
         SourceVersion: t,
         SavedAt: Date.now(),
         Context: s
       };
-      return await dt.op(So, "readwrite", (o) => o.put(a)), console.log(`[ContextBackup] Snapshotted Context (source version "${t}") under IndexedDB key "${e}".`), true;
+      return await dt.op(Io, "readwrite", (o) => o.put(a)), console.log(`[ContextBackup] Snapshotted Context (source version "${t}") under IndexedDB key "${e}".`), true;
     } catch (r) {
       return console.error(`[ContextBackup] Failed to back up Context under key "${e}":`, r), false;
     }
@@ -2170,12 +2170,12 @@ Promise.all([
   function $g() {
     return window.location.hash.replace(/^#\/?/, "").split("/")[0] || "";
   }
-  function or(e) {
+  function ir(e) {
     return e.length === qw;
   }
   function ja() {
     const e = $g();
-    return or(e);
+    return ir(e);
   }
   const Hu = [
     "first-person",
@@ -2284,7 +2284,7 @@ Promise.all([
   function sS(e) {
     Vg = Math.max(0, Math.min(1, e));
   }
-  const di = {};
+  const ui = {};
   async function rS(e) {
     try {
       return (await fetch(e, {
@@ -2306,9 +2306,9 @@ Promise.all([
   }
   async function aS(e, t) {
     const s = Gu[e];
-    return s && ((di[s] === null || di[s] === void 0) && (di[s] = await rS(s)), di[s]) ? Jd(e) : Jd(t);
+    return s && ((ui[s] === null || ui[s] === void 0) && (ui[s] = await rS(s)), ui[s]) ? Jd(e) : Jd(t);
   }
-  const No = {
+  const Co = {
     play: Jd,
     playWithFallback: aS,
     getVolume: Gg,
@@ -2591,7 +2591,7 @@ Promise.all([
     "imageApiKeys",
     "imageApiSecrets"
   ];
-  function pr(e, t) {
+  function Qs(e, t) {
     const s = e.AppSettings[t];
     if (s) try {
       return JSON.parse(s);
@@ -2599,7 +2599,7 @@ Promise.all([
       return;
     }
   }
-  function ui(e, t, s) {
+  function Ya(e, t, s) {
     e.AppSettings[t] = JSON.stringify(s);
   }
   const fe = {
@@ -2667,21 +2667,21 @@ Promise.all([
     },
     getProviderApiKey(e, t) {
       var _a3;
-      return ((_a3 = pr(e, "imageApiKeys")) == null ? void 0 : _a3[t]) || void 0;
+      return ((_a3 = Qs(e, "imageApiKeys")) == null ? void 0 : _a3[t]) || void 0;
     },
     setProviderApiKey(e, t) {
       var _a3;
-      const s = pr(t, "imageApiKeys") ?? {};
-      ((_a3 = e.apiKey) == null ? void 0 : _a3.trim()) ? s[e.providerId] = e.apiKey.trim() : delete s[e.providerId], ui(t, "imageApiKeys", s), bn();
+      const s = Qs(t, "imageApiKeys") ?? {};
+      ((_a3 = e.apiKey) == null ? void 0 : _a3.trim()) ? s[e.providerId] = e.apiKey.trim() : delete s[e.providerId], Ya(t, "imageApiKeys", s), bn();
     },
     getProviderApiSecret(e, t) {
       var _a3;
-      return ((_a3 = pr(e, "imageApiSecrets")) == null ? void 0 : _a3[t]) || void 0;
+      return ((_a3 = Qs(e, "imageApiSecrets")) == null ? void 0 : _a3[t]) || void 0;
     },
     setProviderApiSecret(e, t) {
       var _a3;
-      const s = pr(t, "imageApiSecrets") ?? {};
-      ((_a3 = e.apiSecret) == null ? void 0 : _a3.trim()) ? s[e.providerId] = e.apiSecret.trim() : delete s[e.providerId], ui(t, "imageApiSecrets", s), bn();
+      const s = Qs(t, "imageApiSecrets") ?? {};
+      ((_a3 = e.apiSecret) == null ? void 0 : _a3.trim()) ? s[e.providerId] = e.apiSecret.trim() : delete s[e.providerId], Ya(t, "imageApiSecrets", s), bn();
     },
     getImagePromptTemplate(e) {
       return e.AppSettings.imagePromptTemplate || ph;
@@ -2691,23 +2691,23 @@ Promise.all([
       t.AppSettings.imagePromptTemplate = s || ph, bn();
     },
     getCloudBackup(e) {
-      return pr(e, "cloudBackup");
+      return Qs(e, "cloudBackup");
     },
     setCloudBackupConnected(e, t) {
-      const s = pr(t, "cloudBackup") ?? {
+      const s = Qs(t, "cloudBackup") ?? {
         connected: false
       };
-      ui(t, "cloudBackup", {
+      Ya(t, "cloudBackup", {
         ...s,
         connected: e.connected,
         email: e.email ?? s.email
       });
     },
     setCloudBackupStatus(e, t) {
-      const s = pr(t, "cloudBackup") ?? {
+      const s = Qs(t, "cloudBackup") ?? {
         connected: false
       };
-      ui(t, "cloudBackup", {
+      Ya(t, "cloudBackup", {
         ...s,
         lastStatus: {
           time: Date.now(),
@@ -2716,12 +2716,19 @@ Promise.all([
         }
       });
     },
+    dismissCloudBackupStatus(e) {
+      const t = Qs(e, "cloudBackup");
+      (t == null ? void 0 : t.lastStatus) && Ya(e, "cloudBackup", {
+        ...t,
+        dismissedStatusTime: t.lastStatus.time
+      });
+    },
     clearCloudBackup(e) {
       delete e.AppSettings.cloudBackup;
     },
     setSfxVolume(e, t) {
       const s = Math.max(0, Math.min(1, e.volume));
-      t.AppSettings.sfxVolume = s.toString(), No.setVolume(s), bn();
+      t.AppSettings.sfxVolume = s.toString(), Co.setVolume(s), bn();
     },
     getSfxVolume(e) {
       const t = Number(e.AppSettings.sfxVolume);
@@ -2731,7 +2738,7 @@ Promise.all([
   function wl() {
     document.documentElement.setAttribute("data-theme", fe.getTheme(oe));
     const e = fe.getSfxVolume(oe);
-    No.getVolume() !== e && No.setVolume(e);
+    Co.getVolume() !== e && Co.setVolume(e);
   }
   function vS({ children: e }) {
     const [t, s] = f.useState(false);
@@ -4351,7 +4358,7 @@ void main() {
     const r = fs(e, t);
     return r ? OS(r, s) : null;
   }
-  const sr = Object.freeze([
+  const rr = Object.freeze([
     {
       dx: 1,
       dy: 0
@@ -4368,7 +4375,7 @@ void main() {
       dx: 0,
       dy: -1
     }
-  ]), US = Object.freeze([]), $S = Object.freeze(sr.map(() => US));
+  ]), US = Object.freeze([]), $S = Object.freeze(rr.map(() => US));
   function eu(e, t, s, r) {
     if (r < 0) return false;
     const { resolution: a } = e, o = Math.max(0, Math.floor(r * a)), i = Math.max(o, Math.floor((r + 1) * a) - 1);
@@ -4389,11 +4396,11 @@ void main() {
       const c = t.allSurfaces.get(pn(a, o));
       if (!c || !c.includes(i)) return null;
       let l = null;
-      for (let d = 0; d < sr.length; d++) {
-        const { dx: u, dy: h } = sr[d], p = a + u, m = o + h;
+      for (let d = 0; d < rr.length; d++) {
+        const { dx: u, dy: h } = rr[d], p = a + u, m = o + h;
         if (p < 0 || p >= t.width || m < 0 || m >= t.length) continue;
         const g = t.allSurfaces.get(pn(p, m)) ?? [];
-        if (g.length !== 0) for (const y of g) BS(t, a, o, i, p, m, y) && (l || (l = sr.map(() => [])), l[d].push({
+        if (g.length !== 0) for (const y of g) BS(t, a, o, i, p, m, y) && (l || (l = rr.map(() => [])), l[d].push({
           x: p,
           y: m,
           h: y
@@ -4472,11 +4479,11 @@ void main() {
   function tu(e, t, s, r) {
     return eu(e, t, s, r) ? true : (e.allSurfaces.get(pn(t, s)) ?? []).includes(r);
   }
-  function Go(e, t) {
+  function zo(e, t) {
     return Math.ceil(Math.max(e.Height, t.maxSurfaceHeight));
   }
   function Aa(e, t, s, r, a, o) {
-    return !Tr(e, s, r) || a < 0 || a > Go(e, t) ? false : o ? tu(t, s, r, a) : (t.allSurfaces.get(pn(s, r)) ?? []).includes(a);
+    return !Tr(e, s, r) || a < 0 || a > zo(e, t) ? false : o ? tu(t, s, r, a) : (t.allSurfaces.get(pn(s, r)) ?? []).includes(a);
   }
   function WS(e, t, s, r, a, o) {
     for (const i of r) {
@@ -4504,13 +4511,13 @@ void main() {
     const t = Number(e);
     return Number.isFinite(t) ? Math.max(0, t) : 0;
   }
-  function Co(e, t, s, r, a) {
+  function jo(e, t, s, r, a) {
     const o = ps(t), i = rx(s), c = /* @__PURE__ */ new Map(), l = /* @__PURE__ */ new Map();
     if (!Tr(e, o.x, o.y)) return {
       tiles: [],
       costs: c
     };
-    const d = Ct(e), u = Go(e, d), h = r ? null : GS(e), p = (b, w, I, k) => {
+    const d = Ct(e), u = zo(e, d), h = r ? null : GS(e), p = (b, w, I, k) => {
       const j = In(b, w, I), R = l.get(j);
       (!R || k < R.cost) && (l.set(j, {
         x: b,
@@ -4546,8 +4553,8 @@ void main() {
     for (; !m.isEmpty(); ) {
       const b = m.dequeue(), w = g.get(In(b.x, b.y, b.h));
       if (r) {
-        for (let k = 0; k < sr.length; k++) {
-          const { dx: j, dy: R } = sr[k], A = b.x + j, E = b.y + R;
+        for (let k = 0; k < rr.length; k++) {
+          const { dx: j, dy: R } = rr[k], A = b.x + j, E = b.y + R;
           Tr(e, A, E) && tu(d, A, E, b.h) && v(A, E, b.h, w + 1);
         }
         for (const k of [
@@ -4563,8 +4570,8 @@ void main() {
         continue;
       }
       const I = h.getNeighborsByDirection(b.x, b.y, b.h);
-      for (let k = 0; k < sr.length; k++) {
-        const { dx: j, dy: R } = sr[k], A = b.x + j, E = b.y + R;
+      for (let k = 0; k < rr.length; k++) {
+        const { dx: j, dy: R } = rr[k], A = b.x + j, E = b.y + R;
         if (Tr(e, A, E)) for (const N of I[k]) {
           let S = 1;
           const C = N.h - b.h;
@@ -4579,7 +4586,7 @@ void main() {
   }
   function XS(e, t, s, r, a, o) {
     if (!s) return null;
-    const i = ps(t), l = Co(e, s, r, a, o).costs.get(In(i.x, i.y, i.h));
+    const i = ps(t), l = jo(e, s, r, a, o).costs.get(In(i.x, i.y, i.h));
     if (l === void 0) return null;
     const d = rx(r) - l;
     return d <= 0 ? {
@@ -4595,7 +4602,7 @@ void main() {
           0
         ]
       ])
-    } : Co(e, i, d, a, o);
+    } : jo(e, i, d, a, o);
   }
   const Th = "path:stamps", mi = {
     rotation: 0,
@@ -4613,13 +4620,13 @@ void main() {
       mirror: !e.mirror
     };
   }
-  function jo(e) {
+  function Ao(e) {
     if (!e.Tags) return false;
     for (const t of e.Tags) if (t === Th || t.startsWith(Th + "/")) return true;
     return false;
   }
   function KS(e, t) {
-    return e.filter((s) => s.Id !== t && jo(s));
+    return e.filter((s) => s.Id !== t && Ao(s));
   }
   function QS(e, t, s) {
     let r = s.mirror ? -e : e, a = t;
@@ -4633,7 +4640,7 @@ void main() {
     };
   }
   function* ZS(e, t) {
-    const s = Io(e);
+    const s = No(e);
     if (s === t) {
       for (const a of Yi(e.Voxels)) yield {
         x: a.x,
@@ -4723,7 +4730,7 @@ void main() {
       ok: true,
       position: o,
       mode: i ? "flying" : "standing"
-    } : o.h < 0 || o.h > Go(s, r) ? {
+    } : o.h < 0 || o.h > zo(s, r) ? {
       ok: false,
       position: o,
       reason: "height is outside the active terrain"
@@ -4798,7 +4805,7 @@ void main() {
     isDeleteProtected(e, t) {
       const s = e.VoxelTerrains.find((o) => o.Id === t);
       if (!s) return false;
-      const r = !jo(s) && e.VoxelTerrains.filter((o) => !jo(o)).length <= 1, a = e.Scenarios.some((o) => JS(o).has(t));
+      const r = !Ao(s) && e.VoxelTerrains.filter((o) => !Ao(o)).length <= 1, a = e.Scenarios.some((o) => JS(o).has(t));
       return r || a;
     },
     repairActors(e) {
@@ -4853,7 +4860,7 @@ void main() {
       return Ui(e, t, a, o, i);
     },
     findValidPosition(e, t, s, r = Ct(t)) {
-      const a = Go(t, r), o = qu(e.Position, t) ?? e.Position, i = (u, h, p) => {
+      const a = zo(t, r), o = qu(e.Position, t) ?? e.Position, i = (u, h, p) => {
         const m = Ui(e, {
           terrainId: t.Id,
           x: u,
@@ -5183,7 +5190,7 @@ void main() {
       for (const c of s.terrainIds) {
         const l = a[c];
         l && (i[c] = {
-          voxels: cr(l.voxels),
+          voxels: lr(l.voxels),
           contentHash: l.contentHash
         });
       }
@@ -5198,7 +5205,7 @@ void main() {
     },
     async snapshotBeforeRestore(e) {
       const t = await this.buildExportDataForCampaign(e);
-      await dt.op(So, "readwrite", (s) => s.put({
+      await dt.op(Io, "readwrite", (s) => s.put({
         Key: `pre-restore-${e.Id}`,
         SourceVersion: t.version,
         SavedAt: Date.now(),
@@ -5214,7 +5221,7 @@ void main() {
       (!a.BackupKey || !d) && (a.BackupKey = crypto.randomUUID()), s.mode === "replace" ? a.Id = s.targetCampaignId : a.Id = crypto.randomUUID();
       const u = {};
       for (const [x, b] of Object.entries(i)) u[x] = {
-        voxels: cr(b.voxels),
+        voxels: lr(b.voxels),
         contentHash: b.contentHash
       };
       await Be.importTerrainPayloads(a, u);
@@ -5306,7 +5313,7 @@ void main() {
       return null;
     }
   }
-  let su = null, Ir = null, rc = 0, yr = null, tr = null, Nr = null;
+  let su = null, Ir = null, rc = 0, yr = null, nr = null, Nr = null;
   async function ux() {
     if (!lx()) throw new Error("Cloud backup is not configured (missing client ID).");
     await oI(cI), !su && (su = google.accounts.oauth2.initTokenClient({
@@ -5401,9 +5408,9 @@ void main() {
     })).json()).id, yr);
   }
   async function mI() {
-    if (tr) return tr;
+    if (nr) return nr;
     const e = await $i(), t = encodeURIComponent(`'${e}' in parents and name='${sc}' and trashed=false`), r = await (await Rn(`${qn}/files?q=${t}&spaces=drive&fields=files(id)`)).json();
-    return r.files && r.files.length > 0 ? (tr = r.files[0].id, tr) : (tr = (await (await Rn(`${qn}/files?fields=id`, {
+    return r.files && r.files.length > 0 ? (nr = r.files[0].id, nr) : (nr = (await (await Rn(`${qn}/files?fields=id`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -5414,7 +5421,7 @@ void main() {
           e
         ]
       })
-    })).json()).id, tr);
+    })).json()).id, nr);
   }
   function hI(e, t) {
     const s = t || {};
@@ -5440,7 +5447,7 @@ void main() {
         google.accounts.oauth2.revoke(Ir);
       } catch {
       }
-      Ir = null, rc = 0, yr = null, tr = null;
+      Ir = null, rc = 0, yr = null, nr = null;
     },
     hasLiveToken() {
       return !!Ir && Date.now() < rc;
@@ -5499,7 +5506,7 @@ void main() {
     async getProfileMeta() {
       var _a3, _b3;
       const e = await $i(), t = encodeURIComponent(`'${e}' in parents and name='${sc}' and trashed=false`), a = (_a3 = (await (await Rn(`${qn}/files?q=${t}&spaces=drive&fields=files(id,appProperties)`)).json()).files) == null ? void 0 : _a3[0];
-      return a ? (tr = a.id, {
+      return a ? (nr = a.id, {
         fileId: a.id,
         lastUpdated: Number((_b3 = a.appProperties) == null ? void 0 : _b3.lastUpdated) || 0
       }) : null;
@@ -5572,7 +5579,7 @@ void main() {
       return ((_a3 = fe.getCloudBackup(e)) == null ? void 0 : _a3.connected) === true;
     },
     dmCampaigns(e) {
-      return e.Campaigns.filter((t) => or(t.Id));
+      return e.Campaigns.filter((t) => ir(t.Id));
     },
     async connect(e) {
       const { email: t } = await Jt.connect({
@@ -5673,7 +5680,7 @@ void main() {
         targetCampaignId: r
       }), Bm(r, e.backup.lastUpdated, e.backup.revision), t.ActiveCampaign && t.ActiveCampaign.Id === r) {
         const o = await xt.loadCampaign(r);
-        o && (oe.ActiveCampaign = o, co());
+        o && (oe.ActiveCampaign = o, lo());
       }
       return {
         applied: true
@@ -5722,7 +5729,7 @@ void main() {
       const t = await Jt.getProfileMeta(), s = e.ProfileUpdated ?? 0, r = (t == null ? void 0 : t.lastUpdated) ?? 0;
       if (t && r > s) {
         const a = await Jt.downloadProfile(t.fileId);
-        wI(a), oe.ProfileUpdated = r, co();
+        wI(a), oe.ProfileUpdated = r, lo();
         return;
       }
       if (s > 0 && s > r) {
@@ -5767,7 +5774,7 @@ void main() {
       }, c = /* @__PURE__ */ new Set(), l = e.ActiveCampaign, d = (l == null ? void 0 : l.BackupKey) ? t.find((u) => u.backupKey === l.BackupKey) : void 0;
       if (l && d) try {
         const u = await this.repairMissingBinaries(l, d);
-        i.images += u.images, i.terrains += u.terrains, c.add(l.Id), u.terrains > 0 && co();
+        i.images += u.images, i.terrains += u.terrains, c.add(l.Id), u.terrains > 0 && lo();
       } catch (u) {
         console.error("[CloudBackup] Binary repair failed:", u);
       }
@@ -5794,7 +5801,7 @@ void main() {
     async connectAndSync(e) {
       return await this.connect(true), this.runOnOpen(e);
     }
-  }, Ft = $o({
+  }, Ft = Bo({
     toast: null,
     queue: [],
     busy: false,
@@ -5938,7 +5945,7 @@ void main() {
     });
   }
   function AI() {
-    const e = pe(), t = lr(), [s, r] = f.useState(e.User.Name || "Traveler");
+    const e = pe(), t = dr(), [s, r] = f.useState(e.User.Name || "Traveler");
     f.useEffect(() => {
       r(e.User.Name || "Traveler");
     }, [
@@ -6793,7 +6800,7 @@ void main(){
     });
   }
   function DI() {
-    const e = pe(), t = lr(), s = Vs(), [r, a] = f.useState(""), [o, i] = f.useState(""), [c, l] = f.useState(""), [d, u] = f.useState(null), [h, p] = f.useState(false), m = f.useRef(null), g = Kg("neutral", "primary"), [y, v] = f.useState(null), [x, b] = f.useState("");
+    const e = pe(), t = dr(), s = Vs(), [r, a] = f.useState(""), [o, i] = f.useState(""), [c, l] = f.useState(""), [d, u] = f.useState(null), [h, p] = f.useState(false), m = f.useRef(null), g = Kg("neutral", "primary"), [y, v] = f.useState(null), [x, b] = f.useState("");
     f.useEffect(() => {
       const S = e.ActiveCampaign;
       if (!S) return;
@@ -7188,7 +7195,7 @@ void main(){
                                     S.RoomCode
                                   ]
                                 }),
-                                or(S.Id) ? n.jsxs("div", {
+                                ir(S.Id) ? n.jsxs("div", {
                                   className: "badge badge-primary gap-1",
                                   title: "You are the DM of this campaign",
                                   children: [
@@ -7220,7 +7227,7 @@ void main(){
                             n.jsxs("div", {
                               className: "card-actions justify-end mt-2",
                               children: [
-                                or(S.Id) && n.jsx("div", {
+                                ir(S.Id) && n.jsx("div", {
                                   className: "tooltip tooltip-bottom",
                                   "data-tip": "Start in secret mode to prepare without broadcasting updates",
                                   children: n.jsxs("button", {
@@ -7236,7 +7243,7 @@ void main(){
                                     ]
                                   })
                                 }),
-                                or(S.Id) && n.jsxs("button", {
+                                ir(S.Id) && n.jsxs("button", {
                                   onClick: (C) => {
                                     C.stopPropagation(), j(S.Id, S.RoomCode);
                                   },
@@ -7371,7 +7378,7 @@ void main(){
       }
     ];
   }
-  const Uh = $I(), BI = false, uo = {
+  const Uh = $I(), BI = false, mo = {
     join(e, { callbacks: t, passive: s = false } = {}) {
       return e || (e = "ROOMCODE"), Fb({
         appId: OI,
@@ -7657,7 +7664,7 @@ void main(){
       locked: s
     };
   }
-  const Ya = {
+  const Ka = {
     async create(e, t) {
       const s = V.getActiveCampaign(t), { Voxels: r, ...a } = e.terrain;
       Be.materialize(a, r), s.VoxelTerrains.push(a), await Be.saveTerrain(s, a), ie.create({
@@ -7867,7 +7874,7 @@ void main(){
       }
     ]), au(s);
   }
-  function zo(e, t) {
+  function Wo(e, t) {
     const s = YI(t), { items: r, canonical: a } = _c(e), o = [], i = [];
     let c = 0;
     const l = (x, b, w, I, k = 1) => {
@@ -8091,7 +8098,7 @@ void main(){
       if (!(e == null ? void 0 : e.Position) || !(t == null ? void 0 : t.Position) || e.Position.terrainId !== t.Position.terrainId) return 1 / 0;
       const r = fs(s, e.Position.terrainId);
       if (!r) return 1 / 0;
-      const a = ps(t.Position), { costs: o } = Co(r, e.Position, Number.MAX_SAFE_INTEGER, e.CanFly ?? false, s.Settings.MovementSettings);
+      const a = ps(t.Position), { costs: o } = jo(r, e.Position, Number.MAX_SAFE_INTEGER, e.CanFly ?? false, s.Settings.MovementSettings);
       return o.get(In(a.x, a.y, a.h)) ?? 1 / 0;
     },
     isAdjacentTo(e, t, s) {
@@ -8469,7 +8476,7 @@ void main(){
       ];
       const p = (e.diceFormula ?? o.DiceRoll ?? "").trim();
       if (p !== "") try {
-        const m = zo(p);
+        const m = Wo(p);
         ie.create({
           action: `${a.Name} used ${o.Name}${l} : ${m.total}`,
           details: `${m.formula} : ${m.breakdown}${c}`,
@@ -8743,7 +8750,7 @@ void main(){
     getLetterSuffix(e) {
       return String.fromCharCode(65 + e);
     }
-  }, Ao = {
+  }, Eo = {
     create(e, t) {
       const s = V.getActiveCampaign(t), r = {
         ...e.entity,
@@ -9053,9 +9060,9 @@ void main(){
         ]
       }, t);
     }
-  }, Eo = "path:", ic = "/";
+  }, ko = "path:", ic = "/";
   function Rr(e) {
-    return e ? e.filter((t) => t.startsWith(Eo)).map((t) => t.substring(Eo.length)) : [];
+    return e ? e.filter((t) => t.startsWith(ko)).map((t) => t.substring(ko.length)) : [];
   }
   function dN(e, t) {
     const s = /* @__PURE__ */ new Set();
@@ -9084,17 +9091,17 @@ void main(){
     }));
   }
   function Rx(e) {
-    return Eo + e.join(ic);
+    return ko + e.join(ic);
   }
   function Gs(e, t) {
-    const r = (e || []).filter((o) => !o.startsWith(Eo)), a = Rx(t);
+    const r = (e || []).filter((o) => !o.startsWith(ko)), a = Rx(t);
     return [
       ...r,
       a
     ];
   }
   function mN(e) {
-    return (e || []).filter((s) => !s.startsWith(Eo));
+    return (e || []).filter((s) => !s.startsWith(ko));
   }
   const hN = "https://www.youtube.com/oembed", pN = 5e3;
   function qh(e) {
@@ -9189,7 +9196,7 @@ void main(){
       }, 100);
     });
   }
-  const yN = "Untitled Audio Track", Qs = {
+  const yN = "Untitled Audio Track", Zs = {
     async create(e, t) {
       const s = V.getActiveCampaign(t), r = qh(e.audio.YoutubeId);
       if (!r) throw new Error("Invalid YouTube URL. Please provide a valid YouTube video link or ID.");
@@ -9523,7 +9530,7 @@ void main(){
       ];
       const p = (e.diceFormula ?? o.DiceRoll ?? "").trim();
       if (p !== "") try {
-        const m = zo(p);
+        const m = Wo(p);
         ie.create({
           action: `${a.Name} used ${o.Name}${l} : ${m.total}`,
           details: `${m.formula} : ${m.breakdown}${c}`,
@@ -9802,7 +9809,7 @@ void main(){
       });
     });
   }
-  function ao(e) {
+  function oo(e) {
     e.forEach((t) => {
       t.TurnStartPosition = {
         ...t.Position
@@ -9811,14 +9818,14 @@ void main(){
   }
   function CN(e, t) {
     const s = t === "party" ? e.GameState.Characters : e.GameState.Entities;
-    ao(s);
+    oo(s);
   }
   function jN(e) {
     e.forEach((t) => {
       delete t.TurnStartPosition;
     });
   }
-  const Ka = {
+  const Qa = {
     start(e, t) {
       const s = V.getActiveCampaign(t), r = Bi(s);
       s.GameState.CombatState = {
@@ -9826,7 +9833,7 @@ void main(){
         currentRound: 1,
         initiativeSide: e.startingSide,
         RoundCompleted: []
-      }, ao(s.GameState.Characters), ao(s.GameState.Entities);
+      }, oo(s.GameState.Characters), oo(s.GameState.Entities);
       const a = r === "individual" ? "All actors" : e.startingSide === "party" ? "Party" : "Enemies";
       ie.create({
         action: "Combat started",
@@ -9870,7 +9877,7 @@ void main(){
         console.warn("[Combat] Cannot increment round - combat is not active");
         return;
       }
-      r.currentRound++, a === "party" && (r.initiativeSide = r.initiativeSide === "party" ? "enemies" : "party"), Qh(r), a === "party" ? CN(s, r.initiativeSide) : (ao(s.GameState.Characters), ao(s.GameState.Entities)), Zh(s, 1), Jh(s, 1), Rl(s), NN(s);
+      r.currentRound++, a === "party" && (r.initiativeSide = r.initiativeSide === "party" ? "enemies" : "party"), Qh(r), a === "party" ? CN(s, r.initiativeSide) : (oo(s.GameState.Characters), oo(s.GameState.Entities)), Zh(s, 1), Jh(s, 1), Rl(s), NN(s);
       const o = a === "individual" ? "All actors" : r.initiativeSide === "party" ? "Party" : "Enemies";
       ie.create({
         action: "Round incremented",
@@ -10037,7 +10044,7 @@ void main(){
       const r = (_a3 = Fa.findTemplate(t, s)) == null ? void 0 : _a3.Id;
       return r ? e.Statuses.filter((a) => a.Id === r) : [];
     }
-  }, Zs = {
+  }, Js = {
     create(e, t) {
       V.getActiveCampaign(t).StatusTemplates.push(e.status), ie.create({
         action: "Status created",
@@ -10245,7 +10252,7 @@ void main(){
     }
     return r;
   }
-  const Qa = {
+  const Za = {
     capture(e, t) {
       const s = V.getActiveCampaign(t), r = s.GameState, a = Dx(s), o = {
         Id: crypto.randomUUID(),
@@ -10304,7 +10311,7 @@ void main(){
           const h = s.GameState.Entities.find((p) => p.Id === c.ActorId);
           h ? h.Position = {
             ...c.Position
-          } : s.EntityTemplates.some((p) => p.Id === c.TemplateId) && Ao.spawn({
+          } : s.EntityTemplates.some((p) => p.Id === c.TemplateId) && Eo.spawn({
             entityId: c.TemplateId,
             position: c.Position,
             instanceId: c.ActorId,
@@ -10490,7 +10497,7 @@ void main(){
       const a = r.Stats.find((o) => o.Id === e.statId);
       a && (e.updates.Current !== void 0 && (a.Current = e.updates.Current), e.updates.Max !== void 0 && (a.Max = e.updates.Max));
     }
-  }, Js = {
+  }, er = {
     move(e, t) {
       if (!ge.playerMayTarget(t.User, "actor:move", e, t)) {
         console.warn(`Player ${t.User.Id} cannot move actor: ${e.actorId}`);
@@ -10531,7 +10538,7 @@ void main(){
         characterId: e.actorId,
         terrainId: e.terrainId,
         position: e.position
-      }, t) : s === "entity" ? Ao.spawn({
+      }, t) : s === "entity" ? Eo.spawn({
         entityId: e.actorId,
         terrainId: e.terrainId,
         position: e.position
@@ -10541,7 +10548,7 @@ void main(){
       const s = ge.getActorKind(t, e.actorId);
       s === "character" ? xa.remove({
         characterId: e.actorId
-      }, t) : s === "entity" ? Ao.remove({
+      }, t) : s === "entity" ? Eo.remove({
         entityId: e.actorId
       }, t) : console.warn(`actor:despawn - actor not found: ${e.actorId}`);
     },
@@ -10635,7 +10642,7 @@ void main(){
         rollOutcome: e.rollOutcome
       }, t);
     }
-  }, ko = 4e3;
+  }, To = 4e3;
   function RN(e) {
     return JSON.stringify(e);
   }
@@ -10665,7 +10672,7 @@ void main(){
         a = Math.max(0, Math.min(i.Height, a));
       }
       if (e.actorId) {
-        const c = Date.now() - ko, l = Dn.getChronologicalLog(o);
+        const c = Date.now() - To, l = Dn.getChronologicalLog(o);
         for (let d = l.length - 1; d >= 0; d--) {
           const u = l[d];
           if (u.Timestamp < c) break;
@@ -10827,21 +10834,21 @@ void main(){
         "dm",
         "player"
       ],
-      handler: Js.move,
+      handler: er.move,
       scriptable: true
     },
     "actor:spawn": {
       roles: [
         "dm"
       ],
-      handler: Js.spawn,
+      handler: er.spawn,
       scriptable: true
     },
     "actor:despawn": {
       roles: [
         "dm"
       ],
-      handler: Js.despawn,
+      handler: er.despawn,
       scriptable: true
     },
     "actor:edit": {
@@ -10849,28 +10856,28 @@ void main(){
         "dm",
         "player"
       ],
-      handler: Js.edit,
+      handler: er.edit,
       scriptable: true
     },
     "actor:delete": {
       roles: [
         "dm"
       ],
-      handler: Js.delete,
+      handler: er.delete,
       scriptable: false
     },
     "actor:bulkEditTags": {
       roles: [
         "dm"
       ],
-      handler: Js.bulkEditTags,
+      handler: er.bulkEditTags,
       scriptable: true
     },
     "actor:bulkDelete": {
       roles: [
         "dm"
       ],
-      handler: Js.bulkDelete,
+      handler: er.bulkDelete,
       scriptable: false
     },
     "actor:transferStat": {
@@ -10878,7 +10885,7 @@ void main(){
         "dm",
         "player"
       ],
-      handler: Js.transferStat,
+      handler: er.transferStat,
       scriptable: true
     },
     "dice:roll": {
@@ -11106,42 +11113,42 @@ void main(){
       roles: [
         "dm"
       ],
-      handler: Ao.create,
+      handler: Eo.create,
       scriptable: true
     },
     "entity:spawn": {
       roles: [
         "dm"
       ],
-      handler: Ao.spawn,
+      handler: Eo.spawn,
       scriptable: true
     },
     "combat:start": {
       roles: [
         "dm"
       ],
-      handler: Ka.start,
+      handler: Qa.start,
       scriptable: true
     },
     "combat:end": {
       roles: [
         "dm"
       ],
-      handler: Ka.end,
+      handler: Qa.end,
       scriptable: true
     },
     "combat:incrementRound": {
       roles: [
         "dm"
       ],
-      handler: Ka.incrementRound,
+      handler: Qa.incrementRound,
       scriptable: true
     },
     "combat:decrementRound": {
       roles: [
         "dm"
       ],
-      handler: Ka.decrementRound,
+      handler: Qa.decrementRound,
       scriptable: true
     },
     "combat:markActorTurnDone": {
@@ -11149,63 +11156,63 @@ void main(){
         "dm",
         "player"
       ],
-      handler: Ka.markActorTurnDone,
+      handler: Qa.markActorTurnDone,
       scriptable: true
     },
     "audio:create": {
       roles: [
         "dm"
       ],
-      handler: Qs.create,
+      handler: Zs.create,
       scriptable: false
     },
     "audio:importPlaylistByIds": {
       roles: [
         "dm"
       ],
-      handler: Qs.importPlaylistByIds,
+      handler: Zs.importPlaylistByIds,
       scriptable: false
     },
     "audio:edit": {
       roles: [
         "dm"
       ],
-      handler: Qs.edit,
+      handler: Zs.edit,
       scriptable: true
     },
     "audio:delete": {
       roles: [
         "dm"
       ],
-      handler: Qs.delete,
+      handler: Zs.delete,
       scriptable: false
     },
     "audio:setTrack": {
       roles: [
         "dm"
       ],
-      handler: Qs.setTrack,
+      handler: Zs.setTrack,
       scriptable: true
     },
     "audio:setVolume": {
       roles: [
         "dm"
       ],
-      handler: Qs.setVolume,
+      handler: Zs.setVolume,
       scriptable: true
     },
     "audio:stopTrack": {
       roles: [
         "dm"
       ],
-      handler: Qs.stopTrack,
+      handler: Zs.stopTrack,
       scriptable: true
     },
     "audio:bulkEditTags": {
       roles: [
         "dm"
       ],
-      handler: Qs.bulkEditTags,
+      handler: Zs.bulkEditTags,
       scriptable: true
     },
     "scene:setEnvironmentImage": {
@@ -11277,21 +11284,21 @@ void main(){
       roles: [
         "dm"
       ],
-      handler: Zs.give,
+      handler: Js.give,
       scriptable: true
     },
     "status:remove": {
       roles: [
         "dm"
       ],
-      handler: Zs.remove,
+      handler: Js.remove,
       scriptable: true
     },
     "status:create": {
       roles: [
         "dm"
       ],
-      handler: Zs.create,
+      handler: Js.create,
       scriptable: true
     },
     "status:edit": {
@@ -11299,14 +11306,14 @@ void main(){
         "dm",
         "player"
       ],
-      handler: Zs.edit,
+      handler: Js.edit,
       scriptable: true
     },
     "status:delete": {
       roles: [
         "dm"
       ],
-      handler: Zs.delete,
+      handler: Js.delete,
       scriptable: false
     },
     "status:adjustDuration": {
@@ -11314,21 +11321,21 @@ void main(){
         "dm",
         "player"
       ],
-      handler: Zs.adjustDuration,
+      handler: Js.adjustDuration,
       scriptable: true
     },
     "status:bulkEditTags": {
       roles: [
         "dm"
       ],
-      handler: Zs.bulkEditTags,
+      handler: Js.bulkEditTags,
       scriptable: true
     },
     "status:bulkDelete": {
       roles: [
         "dm"
       ],
-      handler: Zs.bulkDelete,
+      handler: Js.bulkDelete,
       scriptable: false
     },
     "log:create": {
@@ -11416,35 +11423,35 @@ void main(){
       roles: [
         "dm"
       ],
-      handler: Ya.create,
+      handler: Ka.create,
       scriptable: false
     },
     "terrain:edit": {
       roles: [
         "dm"
       ],
-      handler: Ya.edit,
+      handler: Ka.edit,
       scriptable: true
     },
     "terrain:delete": {
       roles: [
         "dm"
       ],
-      handler: Ya.delete,
+      handler: Ka.delete,
       scriptable: false
     },
     "terrain:moveActors": {
       roles: [
         "dm"
       ],
-      handler: Ya.moveActors,
+      handler: Ka.moveActors,
       scriptable: true
     },
     "terrain:bulkEditTags": {
       roles: [
         "dm"
       ],
-      handler: Ya.bulkEditTags,
+      handler: Ka.bulkEditTags,
       scriptable: true
     },
     "terrainLink:create": {
@@ -11472,47 +11479,47 @@ void main(){
       roles: [
         "dm"
       ],
-      handler: Qa.capture,
+      handler: Za.capture,
       scriptable: true
     },
     "scenario:load": {
       roles: [
         "dm"
       ],
-      handler: Qa.load,
+      handler: Za.load,
       scriptable: true
     },
     "scenario:delete": {
       roles: [
         "dm"
       ],
-      handler: Qa.delete,
+      handler: Za.delete,
       scriptable: false
     },
     "scenario:edit": {
       roles: [
         "dm"
       ],
-      handler: Qa.edit,
+      handler: Za.edit,
       scriptable: true
     },
     "scenario:bulkEditTags": {
       roles: [
         "dm"
       ],
-      handler: Qa.bulkEditTags,
+      handler: Za.bulkEditTags,
       scriptable: true
     }
   };
   function cc(e) {
     return structuredClone(Ca(e));
   }
-  function mo(e, t) {
+  function ho(e, t) {
     if (e.Role == null) return false;
     const s = Ln[t];
     return s ? s.roles.includes(e.Role) : false;
   }
-  function Wo(e) {
+  function Xo(e) {
     var _a3;
     return ((_a3 = Ln[e]) == null ? void 0 : _a3.scriptable) === true;
   }
@@ -11522,7 +11529,7 @@ void main(){
   function Pl(e) {
     return e.length >= 1 && DN.includes(e[0]);
   }
-  function Za(e) {
+  function Ja(e) {
     const t = JSON.parse(JSON.stringify(e));
     return t.Id = e.RoomCode, t;
   }
@@ -11599,13 +11606,13 @@ void main(){
       });
     }
     broadcast(t, s = false) {
-      this.hasBaseline ? this.broadcastDelta(t, s) : this.sendFull(Za(t));
+      this.hasBaseline ? this.broadcastDelta(t, s) : this.sendFull(Ja(t));
     }
     broadcastFull(t) {
-      this.sendFull(Za(t));
+      this.sendFull(Ja(t));
     }
     sendFullToPeer(t, s) {
-      this.sendFull(Za(t), s);
+      this.sendFull(Ja(t), s);
     }
     sendFull(t, s) {
       var _a3, _b3;
@@ -11625,11 +11632,11 @@ void main(){
       var _a3;
       const r = ((_a3 = this.recorder) == null ? void 0 : _a3.flush(t)) ?? null;
       if (r === null) {
-        this.sendFull(Za(t));
+        this.sendFull(Ja(t));
         return;
       }
       if (r.length === 0) {
-        s && this.sendFull(Za(t));
+        s && this.sendFull(Ja(t));
         return;
       }
       const a = {
@@ -12026,7 +12033,7 @@ void main(){
       return s.data.arrayBuffer();
     }
   }
-  const eC = 0.5, To = 13, Ux = 1, rr = [
+  const eC = 0.5, Ro = 13, Ux = 1, ar = [
     81,
     86,
     68,
@@ -12048,7 +12055,7 @@ void main(){
     for (const [h, p] of a) r.get(h) !== p && (o.push(h), i.push(p));
     let c = 0;
     for (const h of r.keys()) a.has(h) || (o.push(h), i.push(-1), c++);
-    const l = o.length - c, d = To + l * 5 + c * 4, u = eC;
+    const l = o.length - c, d = Ro + l * 5 + c * 4, u = eC;
     return d >= t.byteLength * u ? null : {
       positions: Uint32Array.from(o),
       newColors: Int16Array.from(i)
@@ -12065,19 +12072,19 @@ void main(){
   function rC(e) {
     const { positions: t, newColors: s } = e, r = t.length, a = [], o = [], i = [];
     for (let g = 0; g < r; g++) s[g] < 0 ? i.push(t[g]) : (a.push(t[g]), o.push(s[g]));
-    const c = a.length, l = i.length, d = To + c * 5 + l * 4, u = new ArrayBuffer(d), h = new DataView(u), p = new Uint8Array(u);
-    p[0] = rr[0], p[1] = rr[1], p[2] = rr[2], p[3] = rr[3], p[4] = Ux, h.setUint32(5, c, true), h.setUint32(9, l, true);
-    let m = To;
+    const c = a.length, l = i.length, d = Ro + c * 5 + l * 4, u = new ArrayBuffer(d), h = new DataView(u), p = new Uint8Array(u);
+    p[0] = ar[0], p[1] = ar[1], p[2] = ar[2], p[3] = ar[3], p[4] = Ux, h.setUint32(5, c, true), h.setUint32(9, l, true);
+    let m = Ro;
     for (let g = 0; g < c; g++) h.setUint32(m, a[g], true), m += 4;
     for (let g = 0; g < c; g++) p[m] = o[g] & 255, m += 1;
     for (let g = 0; g < l; g++) h.setUint32(m, i[g], true), m += 4;
     return p;
   }
   function aC(e) {
-    if (e.length < To || e[0] !== rr[0] || e[1] !== rr[1] || e[2] !== rr[2] || e[3] !== rr[3]) throw new Error("Invalid voxel delta payload.");
+    if (e.length < Ro || e[0] !== ar[0] || e[1] !== ar[1] || e[2] !== ar[2] || e[3] !== ar[3]) throw new Error("Invalid voxel delta payload.");
     if (e[4] !== Ux) throw new Error(`Unsupported voxel delta version: ${e[4]}`);
     const t = new DataView(e.buffer, e.byteOffset, e.byteLength), s = t.getUint32(5, true), r = t.getUint32(9, true), a = s + r, o = new Uint32Array(a), i = new Int16Array(a);
-    let c = To;
+    let c = Ro;
     for (let d = 0; d < s; d++) o[d] = t.getUint32(c, true), c += 4;
     const l = c;
     for (let d = 0; d < s; d++) i[d] = e[l + d];
@@ -12234,7 +12241,7 @@ void main(){
         console.warn(`[TerrainTransferService] Delta hash mismatch for ${r}; ignoring (full fetch will correct).`);
         return;
       }
-      await Be.commitDeltaPayload(c, r, u, o), this.markApplied(r, o), l.ContentHash === o && co();
+      await Be.commitDeltaPayload(c, r, u, o), this.markApplied(r, o), l.ContentHash === o && lo();
     }
     cleanup() {
       this.pending.clear(), this.isDM ? Be.setDeltaBroadcaster(null) : (Be.setNetworkProvider(null), Be.setDeltaWaiter(null));
@@ -12381,7 +12388,7 @@ void main(){
     const t = e.replace(/\/\*[\s\S]*?\*\//g, " ").replace(/\/\/[^\n]*/g, " "), s = uC.exec(t);
     return s ? s[1] : null;
   }
-  function Xo(e) {
+  function qo(e) {
     if (typeof e != "string") return {
       ok: false,
       error: "Script code must be a string."
@@ -12662,7 +12669,7 @@ void main(){
         });
       },
       roll: async (r, a) => {
-        const o = zo(r);
+        const o = Wo(r);
         return await t.action("dice:roll", {
           actorId: e.Id,
           expr: r,
@@ -12973,7 +12980,7 @@ void main(){
       },
       sharedInventories: () => Yt.getInventories(e.campaign()).map((o) => lp(o, e)),
       template: (o, i) => dn(e.campaign()[o], i),
-      roll: (o) => zo(o).total,
+      roll: (o) => Wo(o).total,
       rng: () => Math.random(),
       log: (o, i) => e.action("log:create", {
         action: o,
@@ -13093,7 +13100,7 @@ void main(){
   }
   async function BC(e, t, s, r) {
     const a = Ln[e];
-    if (!a || !Wo(e)) throw new Error(`Action "${e}" is not allowed in scripts.`);
+    if (!a || !Xo(e)) throw new Error(`Action "${e}" is not allowed in scripts.`);
     if (r.actionCount >= Ea.MAX_TOTAL_ACTIONS) throw new Error(`Script action budget exceeded (${Ea.MAX_TOTAL_ACTIONS}); cascade halted.`);
     r.actionCount++;
     const o = uc(V.getActiveCampaign(s), e);
@@ -13156,7 +13163,7 @@ void main(){
   async function Qx(e, t, s, r, a) {
     const { script: o } = e;
     if (e.actor && !FC(r, e.actor)) return;
-    const i = Xo(o.Code);
+    const i = qo(o.Code);
     if (!i.ok) {
       dp(s, o, i.error);
       return;
@@ -13264,7 +13271,7 @@ void main(){
         ok: false,
         error: "Selected host not found in campaign."
       };
-      const d = Xo(r);
+      const d = qo(r);
       if (!d.ok) return {
         ok: false,
         error: d.error
@@ -13459,7 +13466,7 @@ void main(){
       });
     }
     async executeAndWait(t, s) {
-      if (!mo(this.context.User, t)) {
+      if (!ho(this.context.User, t)) {
         console.warn(`User ${this.context.User.Id} cannot perform action: ${t}`);
         return;
       }
@@ -13499,7 +13506,7 @@ void main(){
       ((_a3 = this.context.SecretModes) == null ? void 0 : _a3[r.Id]) || this.stateSync.broadcast(this.snapshotActiveCampaign()), this.actorPoseService.clearForAuthoritativeAction(t, s);
     }
     async executePlayer(t, s) {
-      if (!uo.hasConnectedPeers(this.room)) {
+      if (!mo.hasConnectedPeers(this.room)) {
         console.warn("[ActionService] No peers connected. Action blocked.");
         return;
       }
@@ -13526,7 +13533,7 @@ void main(){
       const r = V.getActiveCampaign(this.context);
       if ((_a3 = this.context.SecretModes) == null ? void 0 : _a3[r.Id]) return;
       const a = this.getRequestingPlayer(s, t == null ? void 0 : t.playerId);
-      if (!mo(a, t == null ? void 0 : t.actionKey)) {
+      if (!ho(a, t == null ? void 0 : t.actionKey)) {
         console.warn(`Player ${a.Id} cannot perform action: ${t == null ? void 0 : t.actionKey}`);
         return;
       }
@@ -13578,7 +13585,7 @@ void main(){
     }
     cleanup() {
       var _a3;
-      this.peerReconcileInterval && (clearInterval(this.peerReconcileInterval), this.peerReconcileInterval = void 0), (_a3 = this.mutationRecorder) == null ? void 0 : _a3.dispose(), this.actorPoseService.cleanup(), this.terrainTransferService.cleanup(), this.pingIntervals.forEach(clearInterval), this.pingIntervals.clear(), this.peerPings.clear(), this.peerUsers.clear(), this.connectedPeerIds.clear(), this.onDmConnectionLostCallback = void 0, this.room && uo.leave(this.room);
+      this.peerReconcileInterval && (clearInterval(this.peerReconcileInterval), this.peerReconcileInterval = void 0), (_a3 = this.mutationRecorder) == null ? void 0 : _a3.dispose(), this.actorPoseService.cleanup(), this.terrainTransferService.cleanup(), this.pingIntervals.forEach(clearInterval), this.pingIntervals.clear(), this.peerPings.clear(), this.peerUsers.clear(), this.connectedPeerIds.clear(), this.onDmConnectionLostCallback = void 0, this.room && mo.leave(this.room);
     }
   }
   function Pt({ imageId: e, alt: t, ...s }) {
@@ -13824,7 +13831,7 @@ void main(){
     });
   }
   const Ku = f.createContext(null);
-  function qo() {
+  function Yo() {
     const e = f.useContext(Ku);
     if (!e) throw new Error("Form components must be used within FormWrapper");
     return e;
@@ -13857,7 +13864,7 @@ void main(){
     }), document.body) : null;
   }
   function xs({ domain: e, mutationDomain: t, entityId: s, initialData: r, onSave: a, onClose: o, onClone: i, onDelete: c, createTitle: l, editTitle: d, viewTitle: u, children: h, buttonConfig: p = {}, fullWidth: m = false }) {
-    const g = pe(), { showTopCancel: y = true, showTopSave: v = true, showBottomButtons: x = true, keepButtonsVisible: b = false } = p, w = t ?? e, I = mo(g.User, `${e}:create`), k = mo(g.User, `${w}:edit`), j = s && c && mo(g.User, `${w}:delete`), R = !s && I ? "create" : s && k ? "edit" : "view", A = R === "view", [E, N] = f.useState(r), [S, C] = f.useState(R === "create"), [T, P] = f.useState(null), _ = f.useRef(r), D = f.useRef(null), M = f.useRef(/* @__PURE__ */ new Set()), O = f.useId();
+    const g = pe(), { showTopCancel: y = true, showTopSave: v = true, showBottomButtons: x = true, keepButtonsVisible: b = false } = p, w = t ?? e, I = ho(g.User, `${e}:create`), k = ho(g.User, `${w}:edit`), j = s && c && ho(g.User, `${w}:delete`), R = !s && I ? "create" : s && k ? "edit" : "view", A = R === "view", [E, N] = f.useState(r), [S, C] = f.useState(R === "create"), [T, P] = f.useState(null), _ = f.useRef(r), D = f.useRef(null), M = f.useRef(/* @__PURE__ */ new Set()), O = f.useId();
     f.useEffect(() => (KC(O, S && !A), () => QC(O)), [
       O,
       S,
@@ -14030,7 +14037,7 @@ void main(){
     });
   }
   function tj({ createTitle: e, editTitle: t, viewTitle: s, onSave: r, onClose: a, onClone: o, showClone: i, showCancel: c, showSave: l, buttonsRef: d }) {
-    const { mode: u, readOnly: h, isDirty: p } = qo(), m = u === "create" ? e : u === "edit" ? t : s;
+    const { mode: u, readOnly: h, isDirty: p } = Yo(), m = u === "create" ? e : u === "edit" ? t : s;
     return n.jsxs("div", {
       className: "flex justify-between items-center",
       children: [
@@ -14089,7 +14096,7 @@ void main(){
     });
   }
   function Pe({ label: e, hint: t, children: s, span: r = 1 }) {
-    const { readOnly: a } = qo(), o = f.cloneElement(s, {
+    const { readOnly: a } = Yo(), o = f.cloneElement(s, {
       disabled: a || s.props.disabled,
       readOnly: a || s.props.readOnly
     }), i = {
@@ -15020,7 +15027,7 @@ void main(){
           children: "No scripts. Add one to give this object a behavior that reacts to an action."
         }),
         e.map((d, u) => {
-          const h = Xo(d.Code), p = d.Enabled !== false;
+          const h = qo(d.Code), p = d.Enabled !== false;
           return n.jsxs("div", {
             className: "rounded-lg border-2 border-base-300 p-3 space-y-2",
             children: [
@@ -15486,7 +15493,7 @@ void main(){
     if (e.Name !== void 0 && typeof e.Name != "string") throw new Error(`Script ${t + 1} has an invalid Name.`);
     if (e.When !== void 0 && e.When !== "before" && e.When !== "after") throw new Error(`Script ${t + 1} has an invalid When value.`);
     if (e.Enabled !== void 0 && typeof e.Enabled != "boolean") throw new Error(`Script ${t + 1} has an invalid Enabled value.`);
-    const a = Xo(r);
+    const a = qo(r);
     if (!a.ok) throw new Error(`Script ${t + 1} failed validation. ${a.error}`);
     return {
       Name: typeof e.Name == "string" ? e.Name : void 0,
@@ -15559,14 +15566,14 @@ void main(){
       if ((s.get(i) ?? 0) > 1) return `Fix scripting before saving: parameter key "${i}" is duplicated.`;
     }
     for (const [r, a] of e.entries()) {
-      const o = Xo(a.Code);
+      const o = qo(a.Code);
       if (!o.ok) return `Fix scripting before saving: ${cj(a, r)} has invalid code. ${o.error}`;
     }
     return null;
   }
   function Ua({ data: e, onChange: t }) {
     var _a3;
-    const { readOnly: s, registerSaveBlocker: r } = qo(), a = pe(), o = e.Scripts ?? [], i = e.Parameters ?? [], [c, l] = f.useState(null), [d, u] = f.useState(false), h = (((_a3 = a.ActiveCampaign) == null ? void 0 : _a3.Settings.StatDefinitions) ?? []).map((x) => ({
+    const { readOnly: s, registerSaveBlocker: r } = Yo(), a = pe(), o = e.Scripts ?? [], i = e.Parameters ?? [], [c, l] = f.useState(null), [d, u] = f.useState(false), h = (((_a3 = a.ActiveCampaign) == null ? void 0 : _a3.Settings.StatDefinitions) ?? []).map((x) => ({
       value: x.Name,
       label: x.Name
     })), p = (x) => t({
@@ -16762,7 +16769,7 @@ void main(){
     });
   }
   const Ol = 12;
-  function Yo({ isOpen: e, types: t, defaultTypeIndex: s = 0, multiSelect: r = false, selectedIds: a = [], showCount: o = false, countLabel: i = "Count", countMax: c = 99, onConfirm: l, onCancel: d, title: u = "Select Objects", extraAction: h }) {
+  function Ko({ isOpen: e, types: t, defaultTypeIndex: s = 0, multiSelect: r = false, selectedIds: a = [], showCount: o = false, countLabel: i = "Count", countMax: c = 99, onConfirm: l, onCancel: d, title: u = "Select Objects", extraAction: h }) {
     const [p, m] = f.useState(s), [g, y] = f.useState(""), [v, x] = f.useState(0), [b, w] = f.useState(a), [I, k] = f.useState(1), j = t[p];
     if (!j) return console.error("No object types provided to ObjectPicker"), null;
     const R = f.useMemo(() => {
@@ -17110,7 +17117,7 @@ void main(){
             }, (x == null ? void 0 : x.id) || `create-${a}`);
           }
         }),
-        n.jsx(Yo, {
+        n.jsx(Ko, {
           isOpen: i,
           types: y,
           multiSelect: true,
@@ -19402,7 +19409,7 @@ ${y}: 1`;
     ].sort()) {
       e.push(`### ${r}`, ""), e.push("| Action | Roles | Scriptable | When it fires |"), e.push("| --- | --- | --- | --- |");
       for (const o of a) {
-        const c = Ln[o].roles.join(" / "), l = Wo(o) ? "yes" : "\u2014", d = Zu[o], u = d ? d.whenFires + (d.paramsNote ? ` _(${d.paramsNote})_` : "") : "_(undocumented \u2014 add to ACTION_DOCS)_";
+        const c = Ln[o].roles.join(" / "), l = Xo(o) ? "yes" : "\u2014", d = Zu[o], u = d ? d.whenFires + (d.paramsNote ? ` _(${d.paramsNote})_` : "") : "_(undocumented \u2014 add to ACTION_DOCS)_";
         e.push(`| \`${Fs(o)}\` | ${Fs(c)} | ${l} | ${Fs(u)} |`);
       }
       e.push("");
@@ -19424,7 +19431,7 @@ ${y}: 1`;
       for (const r of s.methods) e.push(`| \`${Fs(r.signature)}\` | ${Fs(r.description)} | ${r.backedBy ? Fs(r.backedBy) : ""} |`);
       e.push("");
     }
-    const t = Object.keys(Ln).filter(Wo).sort();
+    const t = Object.keys(Ln).filter(Xo).sort();
     return e.push("### Escape hatch \u2014 `game.action`", "", 'Anything the facades don\'t cover, dispatch directly: `await game.action("domain:verb", params)` runs the', "same validated handler the app uses. Pass plain ids/values (use `actor.Id`, `template.Id`) \u2014 never a live", "object as an id. Only these keys are callable (anything else throws):", "", "```", t.join(`
 `), "```"), e.join(`
 `);
@@ -20459,7 +20466,7 @@ ${y}: 1`;
     AIRBORNE_STANDEE_HALO_GAP: 0.02,
     CUTOUT_AIRBORNE_STANDEE_HALO_GAP: 0.01,
     TERRAIN_WORLD_Y_OFFSET: -0.5
-  }, Ro = {
+  }, Mo = {
     CHARACTER_BASE: 2450411,
     ENTITY_BASE: 11817737,
     SELECTED_RING: 6333946,
@@ -20518,7 +20525,7 @@ ${y}: 1`;
     INNER_SELECTED_OPACITY: 0.8
   }, gv = {
     EPSILON: 1e-3
-  }, ho = {
+  }, po = {
     MIN_DURATION_MS: 180,
     MAX_DURATION_MS: 520,
     MS_PER_WORLD_UNIT: 115,
@@ -20570,7 +20577,7 @@ ${y}: 1`;
   function aA(e) {
     return /^#[0-9a-f]{6}$/i.test(e ?? "");
   }
-  function dr(e, t = false) {
+  function ur(e, t = false) {
     const s = fv[e] * (t ? Hi.CUTOUT_SCALE_MULTIPLIER : 1);
     return {
       width: Hi.BASE_WIDTH * s,
@@ -20719,7 +20726,7 @@ ${y}: 1`;
   function Vc(e) {
     return e + Sn.TERRAIN_WORLD_Y_OFFSET;
   }
-  function nr(e, t) {
+  function sr(e, t) {
     const s = (t.Width - 1) / 2, r = (t.Length - 1) / 2, a = Ju(e, t);
     return new Ne(e.position.x - s, Vc(a), e.position.y - r);
   }
@@ -20823,7 +20830,7 @@ ${y}: 1`;
     PERSPECTIVE_DISTANCE_MULTIPLIER: 1.3
   }, SA = {
     MOVE_SPEED: 10
-  }, Ja = {
+  }, eo = {
     HEMISPHERE_SKY_COLOR: 16777215,
     HEMISPHERE_GROUND_COLOR: 8952234,
     HEMISPHERE_INTENSITY_MULTIPLIER: 0.6,
@@ -20898,7 +20905,7 @@ ${y}: 1`;
     ACTOR_MARGIN: 0.6,
     TORSO_OFFSET_Y: 0.9,
     CUT_PLANE_EPSILON: 0.15
-  }, IA = 0.1, er = {
+  }, IA = 0.1, tr = {
     FOV: 58,
     INITIAL_DISTANCE: 5,
     MIN_DISTANCE: 1.2,
@@ -20908,13 +20915,13 @@ ${y}: 1`;
     MIN_POLAR_ANGLE: 0.08,
     MAX_POLAR_ANGLE: Math.PI - 0.08
   }, bv = {
-    fov: er.FOV,
-    initialDistance: er.INITIAL_DISTANCE,
-    minDistance: er.MIN_DISTANCE,
-    maxDistance: er.MAX_DISTANCE,
-    minPolarAngle: er.MIN_POLAR_ANGLE,
-    maxPolarAngle: er.MAX_POLAR_ANGLE,
-    upwardCameraFloorOffsetFromAnchor: er.UPWARD_CAMERA_FLOOR_OFFSET_FROM_ANCHOR
+    fov: tr.FOV,
+    initialDistance: tr.INITIAL_DISTANCE,
+    minDistance: tr.MIN_DISTANCE,
+    maxDistance: tr.MAX_DISTANCE,
+    minPolarAngle: tr.MIN_POLAR_ANGLE,
+    maxPolarAngle: tr.MAX_POLAR_ANGLE,
+    upwardCameraFloorOffsetFromAnchor: tr.UPWARD_CAMERA_FLOOR_OFFSET_FROM_ANCHOR
   }, yn = {
     SIZE: 256,
     FONT_SIZE: 142,
@@ -21136,7 +21143,7 @@ ${y}: 1`;
   function EA(e, t) {
     e.setFromCamera(AA, t.camera);
   }
-  const Cn = $o({
+  const Cn = Bo({
     request: null,
     hover: null
   });
@@ -21167,7 +21174,7 @@ ${y}: 1`;
   }
   function zl(e, t) {
     const s = e.distanceTo(t);
-    return zt.clamp(s * ho.MS_PER_WORLD_UNIT, ho.MIN_DURATION_MS, ho.MAX_DURATION_MS);
+    return zt.clamp(s * po.MS_PER_WORLD_UNIT, po.MIN_DURATION_MS, po.MAX_DURATION_MS);
   }
   function RA(e, t, s) {
     return Math.max(t, Math.min(s, e));
@@ -21215,11 +21222,11 @@ ${y}: 1`;
     try {
       return new Zt(e.color).getHex();
     } catch {
-      return e.kind === "character" ? Ro.CHARACTER_BASE : Ro.ENTITY_BASE;
+      return e.kind === "character" ? Mo.CHARACTER_BASE : Mo.ENTITY_BASE;
     }
   }
   function nm(e, t) {
-    for (const s of e.colors) s.material.color.setHex(t ? Ro.SELECTED_RING : s.defaultHex);
+    for (const s of e.colors) s.material.color.setHex(t ? Mo.SELECTED_RING : s.defaultHex);
     for (const s of e.haloOpacities) s.material.opacity = t ? s.selectedOpacity : s.defaultOpacity;
   }
   function xp(e, t) {
@@ -21239,7 +21246,7 @@ ${y}: 1`;
       }));
     });
   }
-  function eo(e, t) {
+  function to(e, t) {
     vp(e.supportGroup, t), vp(e.standee, t);
   }
   function _A(e) {
@@ -21273,7 +21280,7 @@ ${y}: 1`;
   const Ev = "fogDepthOverride", yp = {
     value: 0
   };
-  function Mo(e) {
+  function Po(e) {
     e.userData[Ev] = yp, e.onBeforeCompile = (t) => {
       t.uniforms.uFogDepthOverride = yp, t.fragmentShader = `uniform float uFogDepthOverride;
 ` + t.fragmentShader.replace("#include <dithering_fragment>", `#include <dithering_fragment>
@@ -21281,15 +21288,15 @@ ${y}: 1`;
     };
   }
   function OA(e, t, s, r, a) {
-    const { width: o, height: i } = dr(t.size, t.cutout), c = new $r(o, i), l = new Vt({
+    const { width: o, height: i } = ur(t.size, t.cutout), c = new $r(o, i), l = new Vt({
       map: e,
       transparent: true,
       depthTest: true,
       depthWrite: true,
       alphaTest: rA,
-      side: bo
+      side: wo
     });
-    Mo(l);
+    Po(l);
     const d = new ut(c, l);
     return d.position.y = a + i / 2, d.renderOrder = Bc.NORMAL, ya(d, t), d.onBeforeRender = () => Av(d, s.camera, r), d;
   }
@@ -21318,28 +21325,28 @@ ${y}: 1`;
     };
   }
   function BA(e, t, s, r, a) {
-    const { width: o, height: i } = dr(e.size, e.cutout), c = new $r(o * Us.SCALE_MULTIPLIER, i * Us.SCALE_MULTIPLIER), l = new Vt({
+    const { width: o, height: i } = ur(e.size, e.cutout), c = new $r(o * Us.SCALE_MULTIPLIER, i * Us.SCALE_MULTIPLIER), l = new Vt({
       transparent: true,
       opacity: 0,
       depthTest: false,
       depthWrite: false,
-      side: bo
+      side: wo
     }), d = new ut(c, l);
     return d.position.y = a + i / 2, d.renderOrder = Bc.PICK, ya(d, e), $A(d, t, e), d.onBeforeRender = () => Av(d, s.camera, r), d;
   }
   function HA(e) {
-    const t = new Ut(), { width: s } = dr(e.size), r = s * wn.RADIUS_SCALE, a = jv(e), o = new Ud(r, r, wn.HEIGHT, wn.RADIAL_SEGMENTS), i = new an({
-      color: Ro.BASE,
+    const t = new Ut(), { width: s } = ur(e.size), r = s * wn.RADIUS_SCALE, a = jv(e), o = new Ud(r, r, wn.HEIGHT, wn.RADIAL_SEGMENTS), i = new an({
+      color: Mo.BASE,
       roughness: wn.ROUGHNESS,
       metalness: wn.METALNESS
     });
-    Mo(i);
+    Po(i);
     const c = new ut(o, i);
     c.position.y = wn.HEIGHT / 2, c.receiveShadow = true, t.add(c);
     const l = new Fd(r * wn.ACCENT_RADIUS_SCALE, wn.ACCENT_TUBE_RADIUS, wn.ACCENT_TUBE_SEGMENTS, wn.ACCENT_RADIAL_SEGMENTS), d = new Vt({
       color: a
     });
-    Mo(d);
+    Po(d);
     const u = new ut(l, d);
     return u.rotation.x = Math.PI / 2, u.position.y = wn.HEIGHT + wn.ACCENT_Y_OFFSET, t.add(u), {
       group: t,
@@ -21349,13 +21356,13 @@ ${y}: 1`;
     };
   }
   function VA(e) {
-    const t = new Ut(), { width: s } = dr(e.size), r = s * nn.RADIUS_SCALE, a = jv(e), o = new Fd(r, nn.OUTER_TUBE_RADIUS, nn.TUBE_SEGMENTS, nn.OUTER_RADIAL_SEGMENTS), i = new Vt({
+    const t = new Ut(), { width: s } = ur(e.size), r = s * nn.RADIUS_SCALE, a = jv(e), o = new Fd(r, nn.OUTER_TUBE_RADIUS, nn.TUBE_SEGMENTS, nn.OUTER_RADIAL_SEGMENTS), i = new Vt({
       color: a,
       transparent: true,
       opacity: nn.OUTER_DEFAULT_OPACITY,
       depthWrite: true
     });
-    Mo(i);
+    Po(i);
     const c = new ut(o, i);
     c.rotation.x = Math.PI / 2, c.position.y = Sn.AIRBORNE_HALO_HEIGHT, t.add(c);
     const l = new Fd(r * nn.INNER_RADIUS_SCALE, nn.INNER_TUBE_RADIUS, nn.TUBE_SEGMENTS, nn.INNER_RADIAL_SEGMENTS), d = new Vt({
@@ -21364,7 +21371,7 @@ ${y}: 1`;
       opacity: nn.INNER_DEFAULT_OPACITY,
       depthWrite: true
     });
-    Mo(d);
+    Po(d);
     const u = new ut(l, d);
     return u.rotation.x = Math.PI / 2, u.position.y = Sn.AIRBORNE_HALO_HEIGHT + nn.INNER_Y_OFFSET, t.add(u), {
       group: t,
@@ -21374,7 +21381,7 @@ ${y}: 1`;
     };
   }
   function kv(e, t, s) {
-    const { width: r } = dr(e.size), a = Hc(e, t), o = Ju(e, t), i = o - a, c = i > Sn.AIRBORNE_THRESHOLD, { scale: l, opacity: d } = c ? DA(i) : _A(i), u = c ? vt.AIRBORNE_Z_SCALE : vt.GROUNDED_Z_SCALE, h = new $r(r * vt.WIDTH_SCALE * l, r * u * l), p = new Vt({
+    const { width: r } = ur(e.size), a = Hc(e, t), o = Ju(e, t), i = o - a, c = i > Sn.AIRBORNE_THRESHOLD, { scale: l, opacity: d } = c ? DA(i) : _A(i), u = c ? vt.AIRBORNE_Z_SCALE : vt.GROUNDED_Z_SCALE, h = new $r(r * vt.WIDTH_SCALE * l, r * u * l), p = new Vt({
       map: s,
       transparent: true,
       opacity: d,
@@ -21409,7 +21416,7 @@ ${y}: 1`;
     const a = HA(e);
     return s.push({
       material: a.baseMaterial,
-      defaultHex: Ro.BASE
+      defaultHex: Mo.BASE
     }, {
       material: a.accentMaterial,
       defaultHex: a.accentDefaultHex
@@ -21421,7 +21428,7 @@ ${y}: 1`;
   }
   function bp(e, t, s) {
     if (!e) return;
-    const { height: r } = dr(t.size, t.cutout);
+    const { height: r } = ur(t.size, t.cutout);
     e.position.y = s + r / 2;
   }
   function Xl(e, t, s, r, a) {
@@ -21440,7 +21447,7 @@ ${y}: 1`;
     return bp(e.standee, t, l), bp(e.pickMesh, t, l), ya(e.group, t), ya(e.standee, t), ya(e.pickMesh, t), e.actor = t, c && nm(c, a), c;
   }
   function GA(e, t, s) {
-    const a = (s.allSurfaces.get(pn(e.position.x, e.position.y)) ?? [])[0] ?? 0, o = Go(t, s);
+    const a = (s.allSurfaces.get(pn(e.position.x, e.position.y)) ?? [])[0] ?? 0, o = zo(t, s);
     return {
       min: a,
       max: Math.max(a, o)
@@ -21494,7 +21501,7 @@ ${y}: 1`;
       a
     ]), f.useEffect(() => {
       P.current = d;
-      for (const te of J.current.values()) eo(te, d);
+      for (const te of J.current.values()) to(te, d);
     }, [
       d
     ]), f.useEffect(() => {
@@ -21532,7 +21539,7 @@ ${y}: 1`;
       const Ie = {
         ...he,
         position: me
-      }, Ee = nr(Ie, _.current);
+      }, Ee = sr(Ie, _.current);
       F.current.set(te, Ee.clone()), z.current.set(te, {
         group: re,
         from: re.position.clone(),
@@ -21542,9 +21549,9 @@ ${y}: 1`;
       }), ne();
     }, ye = (te, he, me) => {
       const W = M.current.get(te);
-      return W ? W.clone() : nr(he, me);
+      return W ? W.clone() : sr(he, me);
     }, Re = (te, he, me, W) => {
-      if (me.distanceToSquared(W) <= ho.POSITION_EPSILON) {
+      if (me.distanceToSquared(W) <= po.POSITION_EPSILON) {
         he.position.copy(W), z.current.delete(te);
         return;
       }
@@ -21611,7 +21618,7 @@ ${y}: 1`;
       const me = {
         ...te,
         position: he
-      }, W = _.current, re = nr(me, W), Ie = zA(me, W, re);
+      }, W = _.current, re = sr(me, W), Ie = zA(me, W, re);
       e.scene.add(Ie), ae.current = Ie;
     }, at = (te) => {
       const he = (Y.current.get(te) ?? 0) + 1;
@@ -21662,7 +21669,7 @@ ${y}: 1`;
         visualSignature: Ie
       });
       const qe = J.current.get(te);
-      qe && eo(qe, P.current), _t && Re(te, ct, _t, ot);
+      qe && to(qe, P.current), _t && Re(te, ct, _t, ot);
       const it = T.current, et = !!it && Xn(it.kind, it.id) === te;
       nm(ze, et);
     };
@@ -21715,7 +21722,7 @@ ${y}: 1`;
         }, qe = T.current ? Xn(T.current.kind, T.current.id) : null, it = _.current;
         if (de && _e) {
           const et = Xl(de, ze, it, _e, be.actorKey === qe);
-          et && L.current.set(be.actorKey, et), eo(de, P.current), de.shadow.visible = false;
+          et && L.current.set(be.actorKey, et), to(de, P.current), de.shadow.visible = false;
         }
         be.descriptor.canFly && Ze(ze, be.candidatePosition), ce(be.actorKey, be.descriptor, be.candidatePosition, Hl.FOLLOW_ANIMATION_DURATION_MS);
       }, _t = (be, de) => {
@@ -21737,7 +21744,7 @@ ${y}: 1`;
             ...be.descriptor,
             position: be.startPosition
           }, et = Xl(de, it, qe, _e, be.actorKey === ze);
-          et && L.current.set(be.actorKey, et), eo(de, P.current), de.shadow.visible = true;
+          et && L.current.set(be.actorKey, et), to(de, P.current), de.shadow.visible = true;
         }
         ce(be.actorKey, be.descriptor, be.startPosition, Hl.CANCEL_ANIMATION_DURATION_MS);
       }, Bt = (be) => {
@@ -21776,7 +21783,7 @@ ${y}: 1`;
           id: _e.id,
           kind: _e.kind,
           moveSpeed: _e.moveSpeed ?? Us.FALLBACK_MOVE_SPEED
-        }, it = _e.canFly && (((_a3 = R.current) == null ? void 0 : _a3.call(R, qe)) ?? false), et = nr(_e, _.current), St = MA(e, et);
+        }, it = _e.canFly && (((_a3 = R.current) == null ? void 0 : _a3.call(R, qe)) ?? false), et = sr(_e, _.current), St = MA(e, et);
         be.preventDefault(), be.stopPropagation(), be.stopImmediatePropagation(), Z.current = {
           pointerId: be.pointerId,
           actor: qe,
@@ -21830,11 +21837,11 @@ ${y}: 1`;
         if (!Fe) continue;
         if (W) {
           const _t = Xl(Ae, Ie, o, W, re === me);
-          _t && L.current.set(re, _t), eo(Ae, P.current);
+          _t && L.current.set(re, _t), to(Ae, P.current);
         }
         if (M.current.has(re)) continue;
-        const De = nr(Ie, o), ot = F.current.get(re);
-        ot && ot.distanceToSquared(De) <= ho.POSITION_EPSILON || (F.current.set(re, De.clone()), z.current.set(re, {
+        const De = sr(Ie, o), ot = F.current.get(re);
+        ot && ot.distanceToSquared(De) <= po.POSITION_EPSILON || (F.current.set(re, De.clone()), z.current.set(re, {
           group: Fe,
           from: Fe.position.clone(),
           to: De,
@@ -21904,8 +21911,8 @@ ${y}: 1`;
       transparent: true,
       opacity: r,
       depthWrite: false,
-      side: bo
-    }), c = new Wb(o, i, e.length), l = new wo(), d = (t.Width - 1) / 2, u = (t.Length - 1) / 2, h = Rv + Ot.Y_OFFSET;
+      side: wo
+    }), c = new Wb(o, i, e.length), l = new So(), d = (t.Width - 1) / 2, u = (t.Length - 1) / 2, h = Rv + Ot.Y_OFFSET;
     for (let p = 0; p < e.length; p++) {
       const m = e[p];
       l.makeTranslation(m.x - d, h, m.y - u), c.setMatrixAt(p, l);
@@ -22097,11 +22104,11 @@ ${y}: 1`;
     return o.colorSpace = Hs, o;
   }
   function ZA(e, t) {
-    const s = nr(e, t), r = vv(e, t), a = em(e, r), { height: o } = dr(e.size, e.cutout);
+    const s = sr(e, t), r = vv(e, t), a = em(e, r), { height: o } = ur(e.size, e.cutout);
     return s.y += a + o + Kn.BASE_Y_GAP, s;
   }
   function JA(e) {
-    const { width: t } = dr(e.size, e.cutout);
+    const { width: t } = ur(e.size, e.cutout);
     return zt.clamp(t * Kn.WORLD_SIZE_MULTIPLIER, Kn.MIN_WORLD_SIZE, Kn.MAX_WORLD_SIZE);
   }
   function eE(e) {
@@ -22210,7 +22217,7 @@ ${y}: 1`;
       opacity: Xe.FILL_OPACITY,
       depthTest: true,
       depthWrite: false,
-      side: bo
+      side: wo
     }), c = new ut(o, i);
     c.renderOrder = Xe.RENDER_ORDER;
     const l = new Vt({
@@ -22219,7 +22226,7 @@ ${y}: 1`;
       opacity: Xe.OUTLINE_OPACITY,
       depthTest: true,
       depthWrite: false,
-      side: bo
+      side: wo
     }), d = new ut(aE(), l);
     d.renderOrder = Xe.RENDER_ORDER + 0.1;
     const u = new Ut();
@@ -22282,7 +22289,7 @@ ${y}: 1`;
       const m = () => {
         const g = Date.now();
         for (const y of p) {
-          const v = Math.max(0, Math.min(ko, g - y.timestamp)), x = v / ko, b = x < Xe.FADE_HOLD_PROGRESS ? 1 : Math.max(0, 1 - (x - Xe.FADE_HOLD_PROGRESS) / (1 - Xe.FADE_HOLD_PROGRESS)), w = v % Xe.PULSE_PERIOD_MS / Xe.PULSE_PERIOD_MS, I = 1 + Xe.PULSE_SCALE_MULTIPLIER * (0.5 - 0.5 * Math.cos(w * Math.PI * 2)), k = v % Xe.ARROW_BOUNCE_PERIOD_MS / Xe.ARROW_BOUNCE_PERIOD_MS, j = Xe.ARROW_BOUNCE_HEIGHT * Math.abs(Math.sin(k * Math.PI));
+          const v = Math.max(0, Math.min(To, g - y.timestamp)), x = v / To, b = x < Xe.FADE_HOLD_PROGRESS ? 1 : Math.max(0, 1 - (x - Xe.FADE_HOLD_PROGRESS) / (1 - Xe.FADE_HOLD_PROGRESS)), w = v % Xe.PULSE_PERIOD_MS / Xe.PULSE_PERIOD_MS, I = 1 + Xe.PULSE_SCALE_MULTIPLIER * (0.5 - 0.5 * Math.cos(w * Math.PI * 2)), k = v % Xe.ARROW_BOUNCE_PERIOD_MS / Xe.ARROW_BOUNCE_PERIOD_MS, j = Xe.ARROW_BOUNCE_HEIGHT * Math.abs(Math.sin(k * Math.PI));
           y.tileGroup.scale.set(I, 1, I), y.fillMaterial.opacity = Xe.FILL_OPACITY * b, y.outlineMaterial.opacity = Xe.OUTLINE_OPACITY * b, y.arrowMaterial.opacity = b, y.arrow.position.y = y.baseArrowY + j;
         }
       };
@@ -22457,13 +22464,13 @@ ${y}: 1`;
   function xE(e, t = false) {
     return t ? Yl.selected : e ? Yl.locked : Yl.unlocked;
   }
-  function Po() {
+  function _o() {
     return new Kb(1, Pv, 1);
   }
   function _v(e, t, s) {
     e.position.set(s.x + 0.5 - t.Width / 2, Vc(s.h) + Pv / 2, s.y + 0.5 - t.Length / 2);
   }
-  function _o({ terrain: e, geometry: t, anchor: s, locked: r, selected: a = false, opacity: o, depthTest: i = false, colorWrite: c = true, renderOrder: l = 0 }) {
+  function Do({ terrain: e, geometry: t, anchor: s, locked: r, selected: a = false, opacity: o, depthTest: i = false, colorWrite: c = true, renderOrder: l = 0 }) {
     const d = new Vt({
       color: xE(r, a),
       transparent: true,
@@ -22514,9 +22521,9 @@ ${y}: 1`;
     ]);
     const R = wE(a, s.Id);
     return f.useEffect(() => {
-      const A = oc(a, s.Id), E = new Ut(), N = [], S = l && d, C = Po();
+      const A = oc(a, s.Id), E = new Ut(), N = [], S = l && d, C = _o();
       for (const { link: T, anchor: P, destination: _ } of A) {
-        const D = _o({
+        const D = Do({
           terrain: s,
           geometry: C,
           anchor: P,
@@ -22716,7 +22723,7 @@ ${y}: 1`;
         const u = l[d];
         if (u.Category === "sticker" && !(!u.ActorId || !u.Details)) {
           if (s - u.Timestamp > fh) break;
-          c.has(u.ActorId) || c.set(u.ActorId, u.Details), a.current.has(u.Id) || (a.current.add(u.Id), No.playWithFallback(tS(u.Details), "sticker:default"));
+          c.has(u.ActorId) || c.set(u.ActorId, u.Details), a.current.has(u.Id) || (a.current.add(u.Id), Co.playWithFallback(tS(u.Details), "sticker:default"));
         }
       }
       if (a.current.size > 100) {
@@ -22750,7 +22757,7 @@ ${y}: 1`;
       const c = [], l = Dn.getChronologicalLog(t);
       for (let d = l.length - 1; d >= 0; d--) {
         const u = l[d];
-        if (s - u.Timestamp > ko) break;
+        if (s - u.Timestamp > To) break;
         if (u.Category !== "ping") continue;
         const h = MN(u.Details);
         h && (c.push({
@@ -22761,7 +22768,7 @@ ${y}: 1`;
           h: h.h,
           actorId: u.ActorId,
           timestamp: u.Timestamp
-        }), a.current.has(u.Id) || (a.current.add(u.Id), No.play("ping:default")));
+        }), a.current.has(u.Id) || (a.current.add(u.Id), Co.play("ping:default")));
       }
       if (a.current.size > 200) {
         const d = /* @__PURE__ */ new Set();
@@ -22787,7 +22794,7 @@ ${y}: 1`;
       now: s
     };
   }
-  function Ko() {
+  function Qo() {
     var _a3;
     const { actionService: e } = Le(), t = pe(), r = (_a3 = t.ActiveCampaign) == null ? void 0 : _a3.RoomCode, { version: a } = _r(gg), o = JSON.stringify(t.User);
     f.useEffect(() => {
@@ -22887,7 +22894,7 @@ ${y}: 1`;
     } : null;
   }
   function Dv(e, t, s) {
-    return nr(EE(e, s), t);
+    return sr(EE(e, s), t);
   }
   function Lv(e, t) {
     return Dv(e, t, e.actor.Position);
@@ -22910,7 +22917,7 @@ ${y}: 1`;
       canFly: e.actor.CanFly ?? false
     };
   }
-  function Do(e, t, s) {
+  function Lo(e, t, s) {
     return t > s ? (t + s) / 2 : Math.max(t, Math.min(s, e));
   }
   function gu(e, t, s) {
@@ -22954,7 +22961,7 @@ ${y}: 1`;
     return Math.min($e.STEP_HEIGHT, e.voxelSize + $e.STEP_HEIGHT_MARGIN);
   }
   function jp(e, t, s) {
-    const r = Uv(e, t), a = Do(s.x, r.minX, r.maxX), o = Do(s.z, r.minZ, r.maxZ), i = Math.abs(a - s.x) > $e.COLLISION_EPSILON || Math.abs(o - s.z) > $e.COLLISION_EPSILON;
+    const r = Uv(e, t), a = Lo(s.x, r.minX, r.maxX), o = Lo(s.z, r.minZ, r.maxZ), i = Math.abs(a - s.x) > $e.COLLISION_EPSILON || Math.abs(o - s.z) > $e.COLLISION_EPSILON;
     return s.x = a, s.z = o, s.y < $e.MIN_WORLD_Y ? (s.y = $e.MIN_WORLD_Y, true) : i;
   }
   function RE(e, t, s, r, a, o, i, c) {
@@ -22986,7 +22993,7 @@ ${y}: 1`;
     const i = r.position[a];
     let c = i + o, l = false;
     if (a === "x" || a === "z") {
-      const p = Uv(e, s), m = a === "x" ? p.minX : p.minZ, g = a === "x" ? p.maxX : p.maxZ, y = Do(c, m, g);
+      const p = Uv(e, s), m = a === "x" ? p.minX : p.minZ, g = a === "x" ? p.maxX : p.maxZ, y = Lo(c, m, g);
       l = Math.abs(y - c) > $e.COLLISION_EPSILON, c = y;
     } else c < $e.MIN_WORLD_Y && (c = $e.MIN_WORLD_Y, l = true);
     const d = c - i;
@@ -23151,8 +23158,8 @@ ${y}: 1`;
     }
     jp(e, i, r.position);
   }
-  function to(e, t, s, r = false) {
-    const a = (e.Width - 1) / 2, o = (e.Length - 1) / 2, i = Math.round(Do(t.position.x + a, 0, e.Width - 1)), c = Math.round(Do(t.position.z + o, 0, e.Length - 1)), l = t.position.y - Sn.TERRAIN_WORLD_Y_OFFSET;
+  function no(e, t, s, r = false) {
+    const a = (e.Width - 1) / 2, o = (e.Length - 1) / 2, i = Math.round(Lo(t.position.x + a, 0, e.Width - 1)), c = Math.round(Lo(t.position.z + o, 0, e.Length - 1)), l = t.position.y - Sn.TERRAIN_WORLD_Y_OFFSET;
     let u = Math.floor(l + 0.1);
     if (s && !r) {
       const h = s.allSurfaceHeights.get(pn(i, c)) ?? [];
@@ -23188,7 +23195,7 @@ ${y}: 1`;
   }
   function zE(e, t, s, r) {
     const a = t.actor.MoveSpeed ?? Kt.MOVE_SPEED, o = t.actor.CanFly ?? false, i = s && t.actor.TurnStartPosition ? t.actor.TurnStartPosition : t.actor.Position, c = GE(a);
-    return Co(e, i, c, o, r).costs;
+    return jo(e, i, c, o, r).costs;
   }
   function Ql(e) {
     return Number.isInteger(e) ? String(e) : e.toFixed(1);
@@ -23211,7 +23218,7 @@ ${y}: 1`;
     ortho: "Camera: Isometric (F toggles freecam)",
     perspective: "Camera: Perspective (F toggles freecam)",
     freecam: "Camera: Free camera (F toggles freecam)"
-  }, po = {
+  }, fo = {
     anchor: "left-3 top-3",
     beside: "left-20 top-3",
     below: "left-3 top-14",
@@ -23298,7 +23305,7 @@ ${y}: 1`;
     });
   }
   function qE({ cameraMode: e, hasTopToolbar: t, isPointerLocked: s, movementOverlay: r, canFly: a, linkFocus: o }) {
-    const i = e === "follow", c = t ? po.below : po.beside;
+    const i = e === "follow", c = t ? fo.below : fo.beside;
     return n.jsxs(n.Fragment, {
       children: [
         n.jsxs("div", {
@@ -23396,7 +23403,7 @@ ${y}: 1`;
           ]
         }),
         r && n.jsx("div", {
-          className: `absolute left-1/2 -translate-x-1/2 z-20 ${t ? po.belowTop : "top-3"}`,
+          className: `absolute left-1/2 -translate-x-1/2 z-20 ${t ? fo.belowTop : "top-3"}`,
           children: n.jsx("div", {
             className: "rounded bg-base-100/90 border border-base-300 px-3 py-1 shadow text-sm font-semibold",
             children: n.jsx(XE, {
@@ -23485,7 +23492,7 @@ ${y}: 1`;
     }, []);
     const I = f.useRef(false), k = f.useRef(0), j = f.useRef(null), R = f.useRef(null), A = f.useRef(s), E = f.useRef(null), N = f.useRef(null), S = f.useRef(false), C = f.useRef(false), T = f.useRef(false), P = f.useRef(null), _ = f.useMemo(() => s ? `${s.Id}:${s.Width}:${s.Length}:${s.Height}:${s.Resolution ?? 1}` : "", [
       s
-    ]), D = pe(), { actionService: M } = Le(), { canAccessActor: O } = Ko(), { selectActor: L } = zr(), [U, F] = f.useState(null), [z, $] = f.useState(e.isPointerLocked), X = V.getActiveCampaign(D), J = D.User.Role === "dm" ? "dm" : "player", B = f.useMemo(() => rm(J, X.RoomCode, D.User.SelectedCharacters, D.User.ImpersonatedActors, X.GameState.Characters, X.GameState.Entities), [
+    ]), D = pe(), { actionService: M } = Le(), { canAccessActor: O } = Qo(), { selectActor: L } = zr(), [U, F] = f.useState(null), [z, $] = f.useState(e.isPointerLocked), X = V.getActiveCampaign(D), J = D.User.Role === "dm" ? "dm" : "player", B = f.useMemo(() => rm(J, X.RoomCode, D.User.SelectedCharacters, D.User.ImpersonatedActors, X.GameState.Characters, X.GameState.Entities), [
       J,
       X.RoomCode,
       D.User.SelectedCharacters,
@@ -23658,7 +23665,7 @@ ${y}: 1`;
         }
         const pt = l.current, on = Si(pt, W.actor.CanFly ?? false);
         if (c.current === "follow" && !w.current && he.pointerLocked && on && m.current === null && y.current === null) {
-          const de = ps(W.actor.Position), _e = to(me, pt, re, W.actor.CanFly ?? false);
+          const de = ps(W.actor.Position), _e = no(me, pt, re, W.actor.CanFly ?? false);
           if (_e.x === de.x && _e.y === de.y && _e.h === de.h) {
             const qe = Lv(W, me);
             qe.y = pt.position.y, $E(me, re, W, qe) && (pt.position.x = qe.x, pt.position.z = qe.z);
@@ -23674,12 +23681,12 @@ ${y}: 1`;
             yaw: he.yaw,
             dt: te
           });
-          let _e = to(me, pt, re, W.actor.CanFly ?? false);
+          let _e = no(me, pt, re, W.actor.CanFly ?? false);
           if (T.current) {
             const it = N.current, et = P.current;
             if (it && et) {
               const St = Tp(W), qt = Rp(it, re, _e);
-              (qt === void 0 || qt > St + kp) && (HE(pt, et.x, et.y, et.z, W.actor.CanFly ?? false), _e = to(me, pt, re, W.actor.CanFly ?? false));
+              (qt === void 0 || qt > St + kp) && (HE(pt, et.x, et.y, et.z, W.actor.CanFly ?? false), _e = no(me, pt, re, W.actor.CanFly ?? false));
             }
           }
           (_a4 = g.current) == null ? void 0 : _a4.call(g, _e);
@@ -23739,9 +23746,9 @@ ${y}: 1`;
         (_a4 = g.current) == null ? void 0 : _a4.call(g, null), F((Ee) => Ee === null ? Ee : null);
         return;
       }
-      const je = ps(B.actor.Position), te = Kl(B, s), he = to(s, te, ce, B.actor.CanFly ?? false);
+      const je = ps(B.actor.Position), te = Kl(B, s), he = no(s, te, ce, B.actor.CanFly ?? false);
       (!l.current || !d.current) && (l.current = te, d.current = true);
-      const me = to(s, l.current, ce, B.actor.CanFly ?? false);
+      const me = no(s, l.current, ce, B.actor.CanFly ?? false);
       (_b4 = g.current) == null ? void 0 : _b4.call(g, me);
       const W = d.current && me.x === he.x && me.y === he.y && me.h === he.h, re = y.current;
       if (re) {
@@ -23815,34 +23822,34 @@ ${y}: 1`;
     for (const [s, r] of e.buckets) t.set(s, tk(r));
     return t;
   }
-  let fo = null;
-  const ar = /* @__PURE__ */ new Map();
+  let go = null;
+  const or = /* @__PURE__ */ new Map();
   let ik = 1;
   function Pp(e) {
     return e instanceof Error ? e.message : String(e);
   }
   function ck(e) {
-    for (const [t, s] of ar) ar.delete(t), s({
+    for (const [t, s] of or) or.delete(t), s({
       buildId: t,
       error: e
     });
   }
   function _p(e, t) {
-    fo === e && (fo = null, e.terminate(), ck(t));
+    go === e && (go = null, e.terminate(), ck(t));
   }
   function lk() {
-    if (fo) return fo;
+    if (go) return go;
     const e = new Worker(new URL("/assets/voxelGeometryWorker-CzwJlVdP.js", import.meta.url), {
       type: "module"
     });
     return e.addEventListener("message", (t) => {
-      const s = ar.get(t.data.buildId);
-      s && (ar.delete(t.data.buildId), s(t.data));
+      const s = or.get(t.data.buildId);
+      s && (or.delete(t.data.buildId), s(t.data));
     }), e.addEventListener("error", (t) => {
       console.error(`[voxel-build] WORKER ERROR: ${t.message} (${t.filename}:${t.lineno}:${t.colno})`, t.error), _p(e, "The terrain geometry worker stopped unexpectedly.");
     }), e.addEventListener("messageerror", (t) => {
       console.error("[voxel-build] WORKER MESSAGE ERROR (structured-clone failed):", t), _p(e, "The terrain geometry worker returned an unreadable response.");
-    }), fo = e, e;
+    }), go = e, e;
   }
   function dk(e, t, s) {
     const [r, a] = f.useState(null), [o, i] = f.useState(null), [c, l] = f.useState(0), d = f.useCallback(() => {
@@ -23853,7 +23860,7 @@ ${y}: 1`;
         a(null), i(null);
         return;
       }
-      const u = e ? Vo(e) : new Uint8Array(0);
+      const u = e ? Go(e) : new Uint8Array(0);
       if (!e || Er(u) === 0) {
         a(null), i(null);
         return;
@@ -23872,7 +23879,7 @@ ${y}: 1`;
       }
       const y = lk(), v = ik++;
       let x = false;
-      i(null), ar.set(v, (b) => {
+      i(null), or.set(v, (b) => {
         if (!x) {
           if ("error" in b) {
             console.error(`[voxel-build] ${b.error}`), i(b.error);
@@ -23901,14 +23908,14 @@ ${y}: 1`;
           voxels: u
         });
       } catch (b) {
-        const w = ar.get(v);
-        ar.delete(v), w == null ? void 0 : w({
+        const w = or.get(v);
+        or.delete(v), w == null ? void 0 : w({
           buildId: v,
           error: `Failed to send terrain geometry to the worker: ${Pp(b)}`
         });
       }
       return () => {
-        x = true, ar.delete(v);
+        x = true, or.delete(v);
       };
     }, [
       s,
@@ -23989,7 +23996,7 @@ void main() {
         tFog: new tt(null),
         tDiffuse: new tt(null),
         tDepth: new tt(null),
-        uProjectionInverse: new tt(new wo()),
+        uProjectionInverse: new tt(new So()),
         uResolution: new tt(new Tt(1, 1)),
         uEdgeStrength: new tt(hk)
       },
@@ -23999,7 +24006,7 @@ void main() {
   }
   const fk = 32, gk = 16, xk = new Zt(0.9, 0.92, 0.96), vk = new Zt(0.58, 0.62, 0.7), yk = 0.35, bk = 1.8, wk = 0.7, Sk = 64, Ik = 0.12, Nk = 1.8, Ck = new Ne(0.015, 4e-3, 0.01), jk = 4, Ak = "/materials/fog_251/blueNoise64.png";
   function Hv(e) {
-    e.format = _u, e.type = Bo, e.magFilter = hn, e.minFilter = hn, e.wrapS = Mn, e.wrapT = Mn, e.wrapR = Mn, e.generateMipmaps = false, e.needsUpdate = true;
+    e.format = _u, e.type = Ho, e.magFilter = hn, e.minFilter = hn, e.wrapS = Mn, e.wrapT = Mn, e.wrapR = Mn, e.generateMipmaps = false, e.needsUpdate = true;
   }
   function Ek(e) {
     const t = new Hr(e.data, e.voxelWidth, e.voxelHeight, e.voxelLength);
@@ -24017,7 +24024,7 @@ void main() {
     const t = new Uint8Array(e * e * e);
     for (let r = 0; r < t.length; r++) t[r] = Math.random() * 256 | 0;
     const s = new Hr(t, e, e, e);
-    return s.format = _u, s.type = Bo, s.wrapS = Zn, s.wrapT = Zn, s.wrapR = Zn, s.minFilter = hn, s.magFilter = hn, s.generateMipmaps = false, s.needsUpdate = true, s;
+    return s.format = _u, s.type = Ho, s.wrapS = Zn, s.wrapT = Zn, s.wrapR = Zn, s.minFilter = hn, s.magFilter = hn, s.generateMipmaps = false, s.needsUpdate = true, s;
   }
   function Rk() {
     const e = new Jb(new Uint8Array([
@@ -24029,7 +24036,7 @@ void main() {
     return e.needsUpdate = true, e;
   }
   function Mk(e) {
-    new ir().load(Ak, (t) => {
+    new cr().load(Ak, (t) => {
       t.magFilter = Dr, t.minFilter = Dr, t.wrapS = Zn, t.wrapT = Zn, t.generateMipmaps = false, t.colorSpace = e0, t.needsUpdate = true, e(t);
     });
   }
@@ -24187,8 +24194,8 @@ void main() {
         uDepth: new tt(null),
         uBlueNoise: new tt(null),
         uBlueNoiseRes: new tt(1),
-        uProjectionInverse: new tt(new wo()),
-        uCameraMatrixWorld: new tt(new wo()),
+        uProjectionInverse: new tt(new So()),
+        uCameraMatrixWorld: new tt(new So()),
         uFogOrigin: new tt(new Ne()),
         uFogSize: new tt(new Ne(1, 1, 1)),
         uFogColorLow: new tt(xk.clone()),
@@ -24266,7 +24273,7 @@ void main() {
   }
   const Ok = 0.25;
   function Vv(e, t = false) {
-    e.format = _u, e.type = Bo, e.magFilter = hn, e.minFilter = hn, e.wrapS = Mn, e.wrapT = Mn, e.wrapR = Mn, e.generateMipmaps = false, e.needsUpdate = true;
+    e.format = _u, e.type = Ho, e.magFilter = hn, e.minFilter = hn, e.wrapS = Mn, e.wrapT = Mn, e.wrapR = Mn, e.generateMipmaps = false, e.needsUpdate = true;
   }
   function Fk(e, t = {}) {
     const s = new Hr(e.data, e.voxelWidth, e.voxelHeight, e.voxelLength);
@@ -24343,7 +24350,7 @@ void main() {
   function Bk() {
     if (Ii) return Ii;
     const e = new Uint8Array(4), t = new Hr(e, 1, 1, 1);
-    return t.format = kc, t.type = Bo, t.magFilter = Dr, t.minFilter = Dr, t.wrapS = Mn, t.wrapT = Mn, t.wrapR = Mn, t.generateMipmaps = false, t.needsUpdate = true, Ii = {
+    return t.format = kc, t.type = Ho, t.magFilter = Dr, t.minFilter = Dr, t.wrapS = Mn, t.wrapT = Mn, t.wrapR = Mn, t.generateMipmaps = false, t.needsUpdate = true, Ii = {
       texture: t,
       data: e,
       width: 1,
@@ -24456,7 +24463,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
   let Zl = null;
   function Zk() {
     if (!Zl) {
-      const e = new ir().load(Gk);
+      const e = new cr().load(Gk);
       e.colorSpace = t0, e.wrapS = Zn, e.wrapT = Zn, e.magFilter = hn, e.minFilter = hn, e.generateMipmaps = false, Zl = e;
     }
     return Zl;
@@ -24826,34 +24833,34 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     }
   }, Lp = "/materials/grass_242/grass_02_base_1k.png", TT = "/materials/grass_242/grass_02_normal_gl_1k.png", RT = "/materials/grass_242/grass_02_roughness_1k.png", MT = "/materials/grass_242/grass_02_amibent_occlusion_1k.png", PT = "#4f8f37", am = 0.75, _T = 1.45, DT = 0.45, Op = 0.86, yu = 1, LT = 8, OT = 1;
   let nd = null, sd = null, rd = null, ad = null, od = null;
-  function Lo(e, t = false) {
+  function Oo(e, t = false) {
     return e.wrapS = Zn, e.wrapT = Zn, e.magFilter = hn, e.minFilter = t ? hn : lg, e.anisotropy = t ? OT : LT, e.generateMipmaps = !t, e;
   }
   function FT(e) {
     if (e) {
       if (!sd) {
-        const s = Lo(new ir().load(Lp), true);
+        const s = Oo(new cr().load(Lp), true);
         s.colorSpace = Hs, sd = s;
       }
       return sd;
     }
     if (nd) return nd;
-    const t = Lo(new ir().load(Lp), false);
+    const t = Oo(new cr().load(Lp), false);
     return t.colorSpace = Hs, nd = t, t;
   }
   function UT() {
     if (rd) return rd;
-    const e = Lo(new ir().load(TT), false);
+    const e = Oo(new cr().load(TT), false);
     return rd = e, e;
   }
   function $T() {
     if (ad) return ad;
-    const e = Lo(new ir().load(RT), false);
+    const e = Oo(new cr().load(RT), false);
     return ad = e, e;
   }
   function BT() {
     if (od) return od;
-    const e = Lo(new ir().load(MT), false);
+    const e = Oo(new cr().load(MT), false);
     return od = e, e;
   }
   function HT() {
@@ -24998,7 +25005,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
   function om(e, t = 8, s = 1) {
     let r = null, a = null;
     const o = (i) => {
-      const c = new ir().load(e);
+      const c = new cr().load(e);
       return c.colorSpace = Hs, c.wrapS = Zn, c.wrapT = Zn, c.magFilter = hn, c.minFilter = i ? hn : lg, c.anisotropy = i ? s : t, c.generateMipmaps = !i, c;
     };
     return (i) => i ? a ?? (a = o(true)) : r ?? (r = o(false));
@@ -25973,13 +25980,13 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       }
     }
   }
-  const Oo = new Map(im.filter((e) => e.factory !== void 0).map((e) => [
+  const Fo = new Map(im.filter((e) => e.factory !== void 0).map((e) => [
     e.bucketKey,
     $1(e)
   ]));
   function vc(e, t, s) {
     const r = new Uint8Array(e * t * s * 4), a = new Hr(r, e, t, s);
-    return a.format = kc, a.type = Bo, a.magFilter = Dr, a.minFilter = Dr, a.wrapS = Mn, a.wrapT = Mn, a.wrapR = Mn, a.generateMipmaps = false, a.needsUpdate = true, {
+    return a.format = kc, a.type = Ho, a.magFilter = Dr, a.minFilter = Dr, a.wrapS = Mn, a.wrapT = Mn, a.wrapR = Mn, a.generateMipmaps = false, a.needsUpdate = true, {
       texture: a,
       data: r,
       width: e,
@@ -26040,7 +26047,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
       (_b3 = e.setFogVolume) == null ? void 0 : _b3.call(e, h);
       const p = [], m = [], g = [], y = [];
       for (const [x, b] of t.buckets) {
-        const I = (Oo.get(x) ?? Oo.get("default"))({
+        const I = (Fo.get(x) ?? Fo.get("default"))({
           performanceMode: l,
           movementHighlight: d ?? void 0,
           voxelAo: u,
@@ -26103,7 +26110,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
     ]), f.useEffect(() => {
       var _a3;
       const i = r.current;
-      if (!e || !i || !t || Er(Vo(t)) === 0) return;
+      if (!e || !i || !t || Er(Go(t)) === 0) return;
       const c = Zg(t), l = (c - 1) / 2;
       W1(i, t, c, l);
       const d = V1(t.Width, t.Length, c);
@@ -26559,7 +26566,7 @@ diffuseColor.rgb *= ${jt};`), o.fragmentShader = o.fragmentShader.replace("#incl
         h && e.requestShadowUpdate();
         return;
       }
-      const p = Math.max(0, Math.min(l, d)), m = new Zt(Da(u)), g = s && s.worldSizeX === i && s.worldSizeZ === c && s.worldSizeY === l ? s : null, y = g ? mM(g, p) : null, v = wu(u) || Qv(u), x = pM(i, c, p, m, y, v), b = wu(u) ? uM : Oo.get(Kv(u)) ?? Oo.get("default"), w = Gv(), I = b({
+      const p = Math.max(0, Math.min(l, d)), m = new Zt(Da(u)), g = s && s.worldSizeX === i && s.worldSizeZ === c && s.worldSizeY === l ? s : null, y = g ? mM(g, p) : null, v = wu(u) || Qv(u), x = pM(i, c, p, m, y, v), b = wu(u) ? uM : Fo.get(Kv(u)) ?? Fo.get("default"), w = Gv(), I = b({
         performanceMode: r,
         voxelAo: w
       }), k = new ut(x, I.material);
@@ -26661,9 +26668,9 @@ PROG ${o}`;
       b.style.position = "absolute", b.style.top = "48px", b.style.left = "0px", b.style.width = vM, b.style.boxSizing = "border-box", b.style.padding = "2px 3px", b.style.background = "rgba(0, 0, 0, 0.8)", b.style.color = "#0ff", b.style.font = "bold 9px Helvetica, Arial, sans-serif", b.style.lineHeight = "11px", b.style.whiteSpace = "pre", b.style.pointerEvents = "none", b.style.display = "none", b.textContent = sf(v.info), p.appendChild(b), a.current = b;
       const w = new jc();
       w.background = null;
-      const I = new dg(Ja.HEMISPHERE_SKY_COLOR, Ja.HEMISPHERE_GROUND_COLOR, Math.PI * Ja.HEMISPHERE_INTENSITY_MULTIPLIER);
+      const I = new dg(eo.HEMISPHERE_SKY_COLOR, eo.HEMISPHERE_GROUND_COLOR, Math.PI * eo.HEMISPHERE_INTENSITY_MULTIPLIER);
       w.add(I);
-      const k = new ug(Ja.DIRECTIONAL_COLOR, Math.PI * Ja.DIRECTIONAL_INTENSITY_MULTIPLIER);
+      const k = new ug(eo.DIRECTIONAL_COLOR, Math.PI * eo.DIRECTIONAL_INTENSITY_MULTIPLIER);
       k.castShadow = true;
       const j = m ? Yn.PERFORMANCE_MAP_SIZE : Yn.MAP_SIZE;
       k.shadow.mapSize.set(j, j), k.shadow.bias = Yn.BIAS, k.shadow.normalBias = Yn.NORMAL_BIAS, w.add(k), w.add(k.target), g.current = k;
@@ -26702,7 +26709,7 @@ PROG ${o}`;
       let T = false;
       (async () => {
         const L = B1(), U = vc(1, 1, 1), F = Gv(), z = [];
-        for (const [, $] of Oo) {
+        for (const [, $] of Fo) {
           const X = $({
             performanceMode: m,
             movementHighlight: U,
@@ -27230,7 +27237,7 @@ PROG ${o}`;
     matchedOrthoPose() {
       const t = this.rig.orthoCamera, s = this.rig.perspectiveCamera, r = this.rig.controls.target, o = t.top / (t.zoom || 1) / Math.tan(zt.degToRad(s.fov) / 2), i = new Ne().subVectors(t.position, r);
       i.lengthSq() === 0 && i.set(1, 1, 1), i.normalize();
-      const c = new Ne().copy(r).addScaledVector(i, o), l = new wo().lookAt(c, r, s.up), d = new l0().setFromRotationMatrix(l);
+      const c = new Ne().copy(r).addScaledVector(i, o), l = new So().lookAt(c, r, s.up), d = new l0().setFromRotationMatrix(l);
       return {
         position: c,
         quaternion: d,
@@ -27308,7 +27315,7 @@ PROG ${o}`;
         const k = I.h ?? 0, j = w.focusedActorSize;
         if (I.x !== m || I.y !== g || k !== y || j !== v || w.terrain !== x) {
           m = I.x, g = I.y, y = k, v = j, x = w.terrain;
-          const A = nr({
+          const A = sr({
             position: I
           }, w.terrain);
           u.set(A.x, A.y + $s.TORSO_OFFSET_Y, A.z), h = A.y;
@@ -27374,12 +27381,12 @@ PROG ${o}`;
     f.useEffect(() => {
       g.current = c;
     });
-    const y = pe(), { actionService: v } = Le(), { canAccessActor: x } = Ko(), { selectedActor: b, hoveredTile: w, selectActor: I, toggleActorSelection: k, clearSelection: j, updateHoveredTile: R } = zr(), A = IE(), { pings: E } = CE(), N = f.useMemo(() => e ? E.filter((Te) => Te.terrainId === e.Id) : [], [
+    const y = pe(), { actionService: v } = Le(), { canAccessActor: x } = Qo(), { selectedActor: b, hoveredTile: w, selectActor: I, toggleActorSelection: k, clearSelection: j, updateHoveredTile: R } = zr(), A = IE(), { pings: E } = CE(), N = f.useMemo(() => e ? E.filter((Te) => Te.terrainId === e.Id) : [], [
       E,
       e
     ]), S = f.useRef(0), T = f.useRef(fe.getPerformanceMode(y)).current, [P, _] = f.useState(false), D = o !== "first-person", M = Mc(o), O = M && P ? "actor-look" : "world-pointer", L = O === "world-pointer", U = f.useCallback((Te) => {
       var _a4;
-      (_a4 = u.current) == null ? void 0 : _a4.setFollowActorVisual(Te, er.ANCHOR_HEIGHT_Y);
+      (_a4 = u.current) == null ? void 0 : _a4.setFollowActorVisual(Te, tr.ANCHOR_HEIGHT_Y);
     }, []), F = (Te) => {
       const { renderer: He, container: bt, setActiveCamera: An } = Te, us = (bt.clientWidth || 1) / (bt.clientHeight || 1), xn = new EM(He.domElement, us, TM, An);
       return u.current = xn, xn.rig.setOrthoPanLimit(Tn.MIN_PAN_LIMIT_RADIUS), xn.onResize(bt.clientWidth || 1, bt.clientHeight || 1), xn;
@@ -27493,11 +27500,11 @@ PROG ${o}`;
     ].join(":") : "", re = e ? `${W}:${e.ContentHash ?? ""}` : "", Ie = f.useMemo(() => sk(e), [
       e,
       re
-    ]), Ee = W, Ae = f.useMemo(() => e ? Vo(e) : new Uint8Array(0), [
+    ]), Ee = W, Ae = f.useMemo(() => e ? Go(e) : new Uint8Array(0), [
       Ie
     ]), Fe = f.useMemo(() => e ? Ct(e) : null, [
       Ie
-    ]), { geometry: De, error: ot, retry: _t } = dk(e, Ie, z !== null), ct = Y == null ? void 0 : Y.Position.x, Et = Y == null ? void 0 : Y.Position.y, Bt = Y == null ? void 0 : Y.Position.h, pt = (_d2 = Y == null ? void 0 : Y.TurnStartPosition) == null ? void 0 : _d2.x, on = (_e2 = Y == null ? void 0 : Y.TurnStartPosition) == null ? void 0 : _e2.y, be = (_f2 = Y == null ? void 0 : Y.TurnStartPosition) == null ? void 0 : _f2.h, de = Y == null ? void 0 : Y.MoveSpeed, _e = Y == null ? void 0 : Y.CanFly, ze = f.useMemo(() => !D || !e || !Y || !se ? [] : Co(e, Y.Position, de ?? Kt.MOVE_SPEED, _e ?? false, B.Settings.MovementSettings).tiles, [
+    ]), { geometry: De, error: ot, retry: _t } = dk(e, Ie, z !== null), ct = Y == null ? void 0 : Y.Position.x, Et = Y == null ? void 0 : Y.Position.y, Bt = Y == null ? void 0 : Y.Position.h, pt = (_d2 = Y == null ? void 0 : Y.TurnStartPosition) == null ? void 0 : _d2.x, on = (_e2 = Y == null ? void 0 : Y.TurnStartPosition) == null ? void 0 : _e2.y, be = (_f2 = Y == null ? void 0 : Y.TurnStartPosition) == null ? void 0 : _f2.h, de = Y == null ? void 0 : Y.MoveSpeed, _e = Y == null ? void 0 : Y.CanFly, ze = f.useMemo(() => !D || !e || !Y || !se ? [] : jo(e, Y.Position, de ?? Kt.MOVE_SPEED, _e ?? false, B.Settings.MovementSettings).tiles, [
       D,
       e,
       se,
@@ -27584,7 +27591,7 @@ PROG ${o}`;
     ]), Is = f.useCallback((Te) => {
       if (!v) return;
       const He = Date.now();
-      He - S.current < ko || (v.execute("ping:create", {
+      He - S.current < To || (v.execute("ping:create", {
         terrainId: (e == null ? void 0 : e.Id) ?? "",
         x: Te.x,
         y: Te.y,
@@ -27653,7 +27660,7 @@ PROG ${o}`;
     }, [
       ot
     ]);
-    const Xs = z && e && Fe && Er(Ae) > 0, Qo = u.current, { request: qr, hover: Bn } = _r(Cn);
+    const Xs = z && e && Fe && Er(Ae) > 0, Zo = u.current, { request: qr, hover: Bn } = _r(Cn);
     let Hn = null;
     return qr && Bn && (Bn.kind === "actor" ? Hn = ((_g2 = te.find((He) => He.Id === Bn.actorId) ?? he.find((He) => He.Id === Bn.actorId)) == null ? void 0 : _g2.Name) ?? "actor" : Hn = `(${Bn.x}, ${Bn.y}, ${Bn.h})`), n.jsxs("div", {
       className: "relative w-full h-full",
@@ -27822,8 +27829,8 @@ PROG ${o}`;
             ]
           })
         }),
-        z && M && Qo && n.jsx(ek, {
-          controller: Qo,
+        z && M && Zo && n.jsx(ek, {
+          controller: Zo,
           cameraMode: o,
           terrain: e ?? null,
           terrainIndex: Fe,
@@ -28002,7 +28009,7 @@ PROG ${o}`;
     };
   }
   function DM(e) {
-    const t = lo(e.resolution), s = Na(t);
+    const t = uo(e.resolution), s = Na(t);
     return {
       width: We(Math.floor(e.width) || 1, 1, s),
       length: We(Math.floor(e.length) || 1, 1, s),
@@ -28571,7 +28578,7 @@ PROG ${o}`;
     const s = t.clientWidth || 1, r = t.clientHeight || 1;
     e.rig.resize(s, r), e.renderer.setSize(s, r);
   }
-  function oo(e, t, s) {
+  function io(e, t, s) {
     e.rig.resize(s.clientWidth || 1, s.clientHeight || 1), e.rig.frameOrtho({
       width: t.Width,
       length: t.Length,
@@ -28844,7 +28851,7 @@ PROG ${o}`;
     const h = new ut(u, c);
     i.add(h), l.set(e, h);
   }
-  function go(e, t) {
+  function xo(e, t) {
     for (const s of t.values()) s && (e.remove(s), s.geometry.dispose());
     t.clear();
   }
@@ -28868,7 +28875,7 @@ PROG ${o}`;
     });
     return new u0(r, a);
   }
-  function Fo(e) {
+  function Uo(e) {
     if (!e) return;
     e.geometry.dispose();
     const t = e.material;
@@ -29041,9 +29048,9 @@ PROG ${o}`;
   }
   function ff(e, t, s, r, a, o, i, c, l) {
     const d = c, u = l && s.resolution > 1, h = e.tacticalChunkLines.get(r);
-    h && (e.root.remove(h), Fo(h));
+    h && (e.root.remove(h), Uo(h));
     const p = e.voxelChunkLines.get(r);
-    if (p && (e.root.remove(p), Fo(p)), !d && !u) {
+    if (p && (e.root.remove(p), Uo(p)), !d && !u) {
       e.tacticalChunkLines.set(r, null), e.voxelChunkLines.set(r, null);
       return;
     }
@@ -29061,13 +29068,13 @@ PROG ${o}`;
     } else e.tacticalChunkLines.set(r, null);
   }
   function wd(e, t) {
-    e.boundsFrame && (e.root.remove(e.boundsFrame), Fo(e.boundsFrame));
+    e.boundsFrame && (e.root.remove(e.boundsFrame), Uo(e.boundsFrame));
     const s = t.vH / t.resolution, r = fP(t.tW, s, t.tL);
     e.root.add(r), e.boundsFrame = r;
   }
   function Sd(e) {
-    for (const t of e.tacticalChunkLines.values()) t && (e.root.remove(t), Fo(t));
-    for (const t of e.voxelChunkLines.values()) t && (e.root.remove(t), Fo(t));
+    for (const t of e.tacticalChunkLines.values()) t && (e.root.remove(t), Uo(t));
+    for (const t of e.voxelChunkLines.values()) t && (e.root.remove(t), Uo(t));
     e.tacticalChunkLines.clear(), e.voxelChunkLines.clear();
   }
   const vy = 0.014, yy = 15680580, yP = 16436245;
@@ -29214,12 +29221,12 @@ PROG ${o}`;
       return;
     }
     if (r === "link") {
-      const g = mm(s, d), y = _o({
+      const g = mm(s, d), y = Do({
         terrain: {
           Width: d.width,
           Length: d.length
         },
-        geometry: Po(),
+        geometry: _o(),
         anchor: g,
         locked: false,
         selected: true,
@@ -29252,20 +29259,20 @@ PROG ${o}`;
     const a = r ?? ((s == null ? void 0 : s.kind) === "box" ? cy(s) : null);
     a && e.selectionGroup.add(gP(a, t, r ? yP : yy, r ? 0.95 : 0.86));
   }
-  const xf = new Tt(), no = new _a(), Id = new Ne(), so = new Ne(), Nd = new Pu(), Ei = new Ne(), jP = new Ne(), Cd = new Pu(new Ne(0, 1, 0), 0.5);
+  const xf = new Tt(), so = new _a(), Id = new Ne(), ro = new Ne(), Nd = new Pu(), Ei = new Ne(), jP = new Ne(), Cd = new Pu(new Ne(0, 1, 0), 0.5);
   function by(e) {
     const t = (i) => {
       const c = e.resourcesRef.current;
       if (!c) return false;
       const l = c.renderer.domElement.getBoundingClientRect();
-      return xf.set((i.clientX - l.left) / l.width * 2 - 1, -((i.clientY - l.top) / l.height) * 2 + 1), no.setFromCamera(xf, c.camera), true;
-    }, s = (i, c) => (so.set((i.x + 0.5) / c.resolution - c.tW / 2, (i.y + 0.5) / c.resolution - 0.5, (i.z + 0.5) / c.resolution - c.tL / 2).addScaledVector(Id, 0.5 / c.resolution), Nd.setFromNormalAndCoplanarPoint(Id, so), Nd);
+      return xf.set((i.clientX - l.left) / l.width * 2 - 1, -((i.clientY - l.top) / l.height) * 2 + 1), so.setFromCamera(xf, c.camera), true;
+    }, s = (i, c) => (ro.set((i.x + 0.5) / c.resolution - c.tW / 2, (i.y + 0.5) / c.resolution - 0.5, (i.z + 0.5) / c.resolution - c.tL / 2).addScaledVector(Id, 0.5 / c.resolution), Nd.setFromNormalAndCoplanarPoint(Id, ro), Nd);
     return {
       getPickInfo: (i) => {
         if (!t(i)) return null;
         const c = e.dimsRef.current;
         if (!c) return null;
-        const l = bA(no.ray, e.editGridRef.current.occupied, c.vW, c.vH, c.vL, c.resolution, c.tW, c.tL);
+        const l = bA(so.ray, e.editGridRef.current.occupied, c.vW, c.vH, c.vL, c.resolution, c.tW, c.tL);
         if (l) {
           const { vx: h, vy: p, vz: m, nx: g, ny: y, nz: v } = l;
           return Id.set(g, y, v), s({
@@ -29288,11 +29295,11 @@ PROG ${o}`;
           };
         }
         const d = Ct(e.terrainRef.current);
-        if (!no.ray.intersectPlane(Cd, so)) return null;
+        if (!so.ray.intersectPlane(Cd, ro)) return null;
         const u = {
-          x: Math.floor((so.x + d.width / 2) * d.resolution),
+          x: Math.floor((ro.x + d.width / 2) * d.resolution),
           y: 0,
-          z: Math.floor((so.z + d.length / 2) * d.resolution)
+          z: Math.floor((ro.z + d.length / 2) * d.resolution)
         };
         return d.inVoxelBounds(u.x, u.y, u.z) ? {
           voxel: u,
@@ -29306,7 +29313,7 @@ PROG ${o}`;
         } : null;
       },
       getLockedPlanePickInfo: (i, c) => {
-        if (!t(i) || !no.ray.intersectPlane(c.plane, Ei)) return null;
+        if (!t(i) || !so.ray.intersectPlane(c.plane, Ei)) return null;
         const l = Ct(e.terrainRef.current), d = c.ground ? {
           x: Math.floor((Ei.x + l.width / 2) * l.resolution),
           y: 0,
@@ -29321,7 +29328,7 @@ PROG ${o}`;
           plane: c.plane.clone()
         } : null;
       },
-      getEventRaycaster: (i) => t(i) ? no : null,
+      getEventRaycaster: (i) => t(i) ? so : null,
       groundPlane: Cd
     };
   }
@@ -29390,12 +29397,12 @@ PROG ${o}`;
   function Ny(e, t, s) {
     return (e + RP(t, s)) * s.resolution;
   }
-  const ro = new Ne();
+  const ao = new Ne();
   function Cy(e, t, s) {
-    ro.set(s === "x" ? 1 : 0, s === "y" ? 1 : 0, s === "z" ? 1 : 0);
-    const r = e.direction, a = e.origin, o = a.x - t.x, i = a.y - t.y, c = a.z - t.z, l = r.dot(ro), d = 1 - l * l;
+    ao.set(s === "x" ? 1 : 0, s === "y" ? 1 : 0, s === "z" ? 1 : 0);
+    const r = e.direction, a = e.origin, o = a.x - t.x, i = a.y - t.y, c = a.z - t.z, l = r.dot(ao), d = 1 - l * l;
     if (Math.abs(d) < 1e-6) return null;
-    const u = r.x * o + r.y * i + r.z * c, p = (ro.x * o + ro.y * i + ro.z * c - l * u) / d;
+    const u = r.x * o + r.y * i + r.z * c, p = (ao.x * o + ao.y * i + ao.z * c - l * u) / d;
     return (s === "x" ? t.x : s === "y" ? t.y : t.z) + p;
   }
   function PP(e, t, s, r) {
@@ -29545,9 +29552,9 @@ PROG ${o}`;
     }
   }
   function $P(e, t, s) {
-    const r = new Ut(), a = [], o = Po();
+    const r = new Ut(), a = [], o = _o();
     for (const i of t) {
-      const c = i.linkId === s, l = _o({
+      const c = i.linkId === s, l = Do({
         terrain: e,
         geometry: o,
         anchor: i.anchor,
@@ -29576,7 +29583,7 @@ PROG ${o}`;
       for (const A of c.GameState.Characters) j.set(A.Position.terrainId, (j.get(A.Position.terrainId) ?? 0) + 1);
       for (const A of c.GameState.Entities) j.set(A.Position.terrainId, (j.get(A.Position.terrainId) ?? 0) + 1);
       const R = (A, E) => A > 0 ? 0 : E >= 0 ? 1 : 2;
-      return c.VoxelTerrains.filter((A) => !jo(A)).map((A) => ({
+      return c.VoxelTerrains.filter((A) => !Ao(A)).map((A) => ({
         terrain: A,
         occupants: j.get(A.Id) ?? 0,
         recentIndex: l.indexOf(A.Id)
@@ -29774,7 +29781,7 @@ PROG ${o}`;
       if (!m) return;
       const g = py(m, true);
       o.current = g;
-      const y = Po(), v = _o({
+      const y = _o(), v = Do({
         terrain: e,
         geometry: y,
         anchor: {
@@ -29841,21 +29848,21 @@ PROG ${o}`;
         O && a.current(O);
       }, T = g.renderer.domElement;
       return T.addEventListener("pointermove", E), T.addEventListener("pointerleave", N), T.addEventListener("pointerdown", S), T.addEventListener("pointerup", C), T.addEventListener("pointercancel", N), () => {
-        cancelAnimationFrame(b), k.disconnect(), T.removeEventListener("pointermove", E), T.removeEventListener("pointerleave", N), T.removeEventListener("pointerdown", S), T.removeEventListener("pointerup", C), T.removeEventListener("pointercancel", N), g.rig.dispose(), go(g.chunkGroup, d.current), tn(g.hoverGroup), g.terrainMaterial.dispose(), g.renderer.dispose(), T.parentElement === m && m.removeChild(T), o.current = null, u.current = null;
+        cancelAnimationFrame(b), k.disconnect(), T.removeEventListener("pointermove", E), T.removeEventListener("pointerleave", N), T.removeEventListener("pointerdown", S), T.removeEventListener("pointerup", C), T.removeEventListener("pointercancel", N), g.rig.dispose(), xo(g.chunkGroup, d.current), tn(g.hoverGroup), g.terrainMaterial.dispose(), g.renderer.dispose(), T.parentElement === m && m.removeChild(T), o.current = null, u.current = null;
       };
     }, []), f.useEffect(() => {
       l.current = e;
       const m = o.current, g = r.current;
       if (!m || !g) return;
       const y = Ct(e), v = Eu(y);
-      i.current = v, c.current = Au(e.Voxels, y), go(m.chunkGroup, d.current);
+      i.current = v, c.current = Au(e.Voxels, y), xo(m.chunkGroup, d.current);
       const x = /* @__PURE__ */ new Set();
       Gi(x, v);
       for (const b of x) {
         const { cx: w, cy: I, cz: k } = ay(b, v);
         gy(b, w, I, k, c.current, v, m.chunkGroup, m.terrainMaterial, d.current);
       }
-      u.current && (u.current.visible = false), h.current = null, oo(m, e, g);
+      u.current && (u.current.visible = false), h.current = null, io(m, e, g);
     }, [
       e
     ]);
@@ -29863,9 +29870,9 @@ PROG ${o}`;
     return f.useEffect(() => {
       const m = o.current;
       if (!m) return;
-      const g = new Ut(), y = Po();
+      const g = new Ut(), y = _o();
       for (const v of s ?? []) {
-        const x = _o({
+        const x = Do({
           terrain: e,
           geometry: y,
           anchor: v,
@@ -30797,7 +30804,7 @@ PROG ${o}`;
             n.jsx("div", {
               className: "grid",
               style: {
-                gridTemplateColumns: `repeat(${Ho}, 1fr)`
+                gridTemplateColumns: `repeat(${Vo}, 1fr)`
               },
               children: Ia.map((i, c) => n.jsx("button", {
                 type: "button",
@@ -31349,7 +31356,7 @@ PROG ${o}`;
     return t === "input" || t === "textarea" || t === "select" || e.isContentEditable;
   }
   const u_ = f.forwardRef(function({ terrain: t, onChange: s, readOnly: r = false, actors: a, stampSources: o, loadStampVoxels: i, links: c, terrainNamesById: l, loadTerrainVoxels: d, onCreateLink: u, onDeleteLink: h, onEditLink: p, canPlaceLinks: m = false }, g) {
-    const { setDirty: y } = qo(), v = f.useRef(null), x = f.useRef(null), b = f.useRef(null), w = f.useRef(t), I = f.useRef(zc(0)), k = f.useRef(/* @__PURE__ */ new Map()), j = f.useRef(/* @__PURE__ */ new Set()), R = f.useRef(null), A = f.useRef([]), E = f.useRef([]), N = f.useRef("place"), S = f.useRef("tactical"), C = f.useRef(1), T = f.useRef(es), P = f.useRef(r), _ = f.useRef(a ?? []), D = f.useRef(true), M = f.useRef("edit"), O = f.useRef(/* @__PURE__ */ new Map()), L = f.useRef(null), U = f.useRef(false), F = f.useRef(null), z = f.useRef([]), $ = f.useRef(null), X = f.useRef(false), J = f.useRef(null), B = f.useRef(false), ee = f.useRef(null), Y = f.useRef(null), se = f.useRef(Ps(t)), Z = f.useRef(s), ae = f.useRef(null), Q = f.useRef(mi), ue = f.useRef(i), H = f.useRef(d), ne = f.useRef("place"), ce = f.useRef(c ?? []), ye = f.useRef(u), Re = f.useRef(p), Ce = f.useRef(h), Ge = f.useRef(null), Ye = f.useRef(null), Ze = f.useRef(null), at = f.useRef(null), xe = f.useRef(1), Me = f.useRef(null), je = f.useRef(null), te = f.useRef(null), he = f.useRef("ortho"), me = f.useRef("ortho"), W = f.useRef(false), [re, Ie] = f.useState("edit"), [Ee, Ae] = f.useState("place"), [Fe, De] = f.useState("tactical"), [ot, _t] = f.useState(1), [ct, Et] = f.useState(es), Bt = Fe === "tactical", pt = Fe === "voxel", [on, be] = f.useState(true), [de, _e] = f.useState(false), [ze, qe] = f.useState(null), [it, et] = f.useState(false), [St, qt] = f.useState(null), [gn, Dt] = f.useState(0), [Is, $n] = f.useState(0), [Ns, Xs] = f.useState("ortho"), [Qo, qr] = f.useState(1), [Bn, Hn] = f.useState(null), Te = f.useRef(null), [He, bt] = f.useState(null), [An, us] = f.useState(mi), [xn, Yr] = f.useState(null), [Cs, cb] = f.useState(null), [Cm, lb] = f.useState(null), [db, jm] = f.useState(null), [ub, mb] = f.useState(0), [hb, pb] = f.useState(0), qs = f.useCallback(() => pb((G) => G + 1), []), Kr = f.useCallback(() => {
+    const { setDirty: y } = Yo(), v = f.useRef(null), x = f.useRef(null), b = f.useRef(null), w = f.useRef(t), I = f.useRef(zc(0)), k = f.useRef(/* @__PURE__ */ new Map()), j = f.useRef(/* @__PURE__ */ new Set()), R = f.useRef(null), A = f.useRef([]), E = f.useRef([]), N = f.useRef("place"), S = f.useRef("tactical"), C = f.useRef(1), T = f.useRef(es), P = f.useRef(r), _ = f.useRef(a ?? []), D = f.useRef(true), M = f.useRef("edit"), O = f.useRef(/* @__PURE__ */ new Map()), L = f.useRef(null), U = f.useRef(false), F = f.useRef(null), z = f.useRef([]), $ = f.useRef(null), X = f.useRef(false), J = f.useRef(null), B = f.useRef(false), ee = f.useRef(null), Y = f.useRef(null), se = f.useRef(Ps(t)), Z = f.useRef(s), ae = f.useRef(null), Q = f.useRef(mi), ue = f.useRef(i), H = f.useRef(d), ne = f.useRef("place"), ce = f.useRef(c ?? []), ye = f.useRef(u), Re = f.useRef(p), Ce = f.useRef(h), Ge = f.useRef(null), Ye = f.useRef(null), Ze = f.useRef(null), at = f.useRef(null), xe = f.useRef(1), Me = f.useRef(null), je = f.useRef(null), te = f.useRef(null), he = f.useRef("ortho"), me = f.useRef("ortho"), W = f.useRef(false), [re, Ie] = f.useState("edit"), [Ee, Ae] = f.useState("place"), [Fe, De] = f.useState("tactical"), [ot, _t] = f.useState(1), [ct, Et] = f.useState(es), Bt = Fe === "tactical", pt = Fe === "voxel", [on, be] = f.useState(true), [de, _e] = f.useState(false), [ze, qe] = f.useState(null), [it, et] = f.useState(false), [St, qt] = f.useState(null), [gn, Dt] = f.useState(0), [Is, $n] = f.useState(0), [Ns, Xs] = f.useState("ortho"), [Zo, qr] = f.useState(1), [Bn, Hn] = f.useState(null), Te = f.useRef(null), [He, bt] = f.useState(null), [An, us] = f.useState(mi), [xn, Yr] = f.useState(null), [Cs, cb] = f.useState(null), [Cm, lb] = f.useState(null), [db, jm] = f.useState(null), [ub, mb] = f.useState(0), [hb, pb] = f.useState(0), qs = f.useCallback(() => pb((G) => G + 1), []), Kr = f.useCallback(() => {
       P.current || y(true);
     }, [
       y
@@ -31359,7 +31366,7 @@ PROG ${o}`;
     }, []), Gn = f.useCallback((G) => {
       var _a3;
       at.current = G, lb(G), (_a3 = te.current) == null ? void 0 : _a3.call(te);
-    }, []), Zo = f.useCallback(() => xe.current++, []), Am = t.Lighting, fb = t.Background, gb = f.useMemo(() => Cs ? {
+    }, []), Jo = f.useCallback(() => xe.current++, []), Am = t.Lighting, fb = t.Background, gb = f.useMemo(() => Cs ? {
       bounds: cy(Cs),
       spaceCount: OM(Cs)
     } : null, [
@@ -31466,11 +31473,11 @@ PROG ${o}`;
       }), M.current === "preview" && Jc({
         Surroundings: G
       }));
-    }, Jo = f.useCallback((G) => {
+    }, ei = f.useCallback((G) => {
       const q = R.current;
-      q && (Gn(null), Vn(FM(I.current, q, jn(G), Zo())));
+      q && (Gn(null), Vn(FM(I.current, q, jn(G), Jo())));
     }, [
-      Zo,
+      Jo,
       Gn,
       Vn
     ]), cn = f.useCallback(() => {
@@ -31480,9 +31487,9 @@ PROG ${o}`;
       Vn
     ]), wb = f.useCallback((G) => {
       const q = jn(G);
-      T.current = q, Et(q), N.current === "colorSelect" && Jo(q);
+      T.current = q, Et(q), N.current === "colorSelect" && ei(q);
     }, [
-      Jo
+      ei
     ]);
     f.useEffect(() => {
       Z.current = s;
@@ -31578,9 +31585,9 @@ PROG ${o}`;
       const ht = Au(t.Voxels, q);
       I.current.length === ht.length ? PM(I.current, ht) : I.current = ht;
       const lt = x.current, nt = b.current;
-      if (Je && lt && nt && (go(lt.chunkGroup, k.current), Sd(nt), wd(nt, le), tn(lt.hoverGroup), tn(lt.selectionGroup), he.current === "ortho")) {
+      if (Je && lt && nt && (xo(lt.chunkGroup, k.current), Sd(nt), wd(nt, le), tn(lt.hoverGroup), tn(lt.selectionGroup), he.current === "ortho")) {
         const It = v.current;
-        It && oo(lt, t, It);
+        It && io(lt, t, It);
       }
       Gi(j.current, le), qs();
     }, [
@@ -31606,7 +31613,7 @@ PROG ${o}`;
     }, [
       Qr
     ]), Tm = f.useCallback((G) => {
-      const q = R.current ?? um(w.current.Width, w.current.Length, w.current.Height, Io(w.current)), le = LM(I.current, q, G);
+      const q = R.current ?? um(w.current.Width, w.current.Length, w.current.Height, No(w.current)), le = LM(I.current, q, G);
       I.current = le.grid, R.current = le.dims, A.current.length = 0, E.current.length = 0, Dt(0), $n(0), cn();
       const ve = {
         ...w.current,
@@ -31617,9 +31624,9 @@ PROG ${o}`;
       };
       w.current = ve;
       const Je = x.current, ht = b.current;
-      if (Je && ht && (go(Je.chunkGroup, k.current), Sd(ht), wd(ht, le.dims), tn(Je.hoverGroup), tn(Je.selectionGroup), Gi(j.current, le.dims), he.current === "ortho")) {
+      if (Je && ht && (xo(Je.chunkGroup, k.current), Sd(ht), wd(ht, le.dims), tn(Je.hoverGroup), tn(Je.selectionGroup), Gi(j.current, le.dims), he.current === "ortho")) {
         const lt = v.current;
-        lt && oo(Je, ve, lt);
+        lt && io(Je, ve, lt);
       }
       return Y.current = null, zn(), ve;
     }, [
@@ -31643,7 +31650,7 @@ PROG ${o}`;
       const le = G.size, ve = new Uint32Array(le), Je = new Uint16Array(le), ht = new Uint16Array(le);
       let lt = 0;
       for (const [It, Ks] of G) {
-        const ti = $t(I.current, It), ni = I.current.colors[It], ea = (ti ? 256 : 0) | ni;
+        const ni = $t(I.current, It), si = I.current.colors[It], ea = (ni ? 256 : 0) | si;
         ve[lt] = It, Je[lt] = Ks, ht[lt] = ea, lt++;
       }
       const nt = {
@@ -31662,7 +31669,7 @@ PROG ${o}`;
     }, [
       qs,
       Kr
-    ]), ei = f.useCallback(() => {
+    ]), ti = f.useCallback(() => {
       var _a3;
       if (E.current.length === 0) return;
       const G = R.current;
@@ -31691,13 +31698,13 @@ PROG ${o}`;
         const nt = Tu(q, G, S.current, le), It = at.current;
         return It ? (Vn({
           kind: "box",
-          id: Zo(),
+          id: Jo(),
           bounds: uf(It, nt, le)
         }), Gn(null)) : (Vn(null), Gn(nt)), false;
       }
       if (ve === "colorSelect") {
         const nt = dm(I.current, G.voxel.x, G.voxel.y, G.voxel.z, le.vW, le.vH, le.vL);
-        return nt === null || (T.current = nt, Et(nt), Jo(nt)), false;
+        return nt === null || (T.current = nt, Et(nt), ei(nt)), false;
       }
       const Je = Ze.current;
       if (Je && Ad(ve)) return mf(I.current, j.current, le, Je, ve, T.current, Ys).changed ? ((_a3 = te.current) == null ? void 0 : _a3.call(te), X.current || (X.current = true), true) : false;
@@ -31720,9 +31727,9 @@ PROG ${o}`;
     }, [
       Ys,
       el,
-      Zo,
-      Em,
       Jo,
+      Em,
+      ei,
       Gn,
       Vn
     ]), Sb = f.useCallback(() => {
@@ -31808,7 +31815,7 @@ PROG ${o}`;
     }, [
       a
     ]);
-    const ur = f.useMemo(() => !c || c.length === 0 ? [] : oc(c, t.Id).map(({ link: G, end: q, anchor: le, destination: ve }) => ({
+    const mr = f.useMemo(() => !c || c.length === 0 ? [] : oc(c, t.Id).map(({ link: G, end: q, anchor: le, destination: ve }) => ({
       id: `${G.Id}:${q}`,
       linkId: G.Id,
       anchor: {
@@ -31824,19 +31831,19 @@ PROG ${o}`;
       l
     ]);
     f.useEffect(() => {
-      ze && !ur.some((G) => G.linkId === ze) && qe(null);
+      ze && !mr.some((G) => G.linkId === ze) && qe(null);
     }, [
-      ur,
+      mr,
       ze
     ]), f.useEffect(() => {
       const G = x.current;
-      if (!G || (F.current && (G.scene.remove(F.current), yf(F.current), F.current = null, z.current = []), ur.length === 0)) return;
-      const { group: q, pickTargets: le } = $P(t, ur, ze);
+      if (!G || (F.current && (G.scene.remove(F.current), yf(F.current), F.current = null, z.current = []), mr.length === 0)) return;
+      const { group: q, pickTargets: le } = $P(t, mr, ze);
       return q.visible = U.current, G.scene.add(q), F.current = q, z.current = le, () => {
         G.scene.remove(q), yf(q), F.current === q && (F.current = null, z.current = []);
       };
     }, [
-      ur,
+      mr,
       ub,
       ze,
       t
@@ -31850,7 +31857,7 @@ PROG ${o}`;
       const ve = LP();
       q.scene.add(ve.group);
       const Je = w.current, ht = Ct(Je), lt = Eu(ht);
-      R.current = lt, I.current = Au(Je.Voxels, ht), Gi(j.current, lt), wd(le, lt), oo(q, Je, G), Y.current = `${ht.width}:${ht.length}:${ht.height}:${ht.resolution}`;
+      R.current = lt, I.current = Au(Je.Voxels, ht), Gi(j.current, lt), wd(le, lt), io(q, Je, G), Y.current = `${ht.width}:${ht.length}:${ht.height}:${ht.resolution}`;
       const nt = by({
         resourcesRef: x,
         dimsRef: R,
@@ -31858,31 +31865,31 @@ PROG ${o}`;
         terrainRef: w
       });
       let It = 0, Ks = 0;
-      const ti = (Se) => {
-        It = requestAnimationFrame(ti);
+      const ni = (Se) => {
+        It = requestAnimationFrame(ni);
         const Ke = Ks > 0 ? Math.min(0.1, (Se - Ks) / 1e3) : 1 / 60;
         Ks = Se;
         const Nt = j.current;
         if (Nt.size > 0) {
-          const Es = I.current, mr = R.current;
-          if (mr) {
+          const Es = I.current, hr = R.current;
+          if (hr) {
             const ms = M.current === "edit" && S.current === "tactical", vn = M.current === "edit" && S.current === "voxel";
             for (const Wn of Nt) {
-              const { cx: za, cy: Om, cz: Fm } = ay(Wn, mr);
-              gy(Wn, za, Om, Fm, Es, mr, q.chunkGroup, q.terrainMaterial, k.current), ff(le, Es, mr, Wn, za, Om, Fm, ms, vn);
+              const { cx: za, cy: Om, cz: Fm } = ay(Wn, hr);
+              gy(Wn, za, Om, Fm, Es, hr, q.chunkGroup, q.terrainMaterial, k.current), ff(le, Es, hr, Wn, za, Om, Fm, ms, vn);
             }
             Nt.clear();
           }
         }
         q.rig.update(Ke), ve.group.visible && ve.updateScreenScale(q.camera, q.renderer.domElement.clientHeight), q.renderer.render(q.scene, q.camera), L.current && O.current.size > 0 && UP(q.renderer.domElement, q.camera, w.current, _.current, O.current, D.current);
       };
-      It = requestAnimationFrame(ti);
-      const ni = new ResizeObserver(() => {
+      It = requestAnimationFrame(ni);
+      const si = new ResizeObserver(() => {
         zi(q, G);
       });
-      ni.observe(G);
+      si.observe(G);
       let ea = null;
-      const si = (Se = ea) => {
+      const ri = (Se = ea) => {
         const Ke = R.current;
         if (!Ke) return;
         if (M.current !== "edit") {
@@ -31898,11 +31905,11 @@ PROG ${o}`;
         const Ke = R.current;
         if (Ke) {
           if (M.current !== "edit") {
-            tn(q.hoverGroup), si(Se);
+            tn(q.hoverGroup), ri(Se);
             return;
           }
           if (N.current === "fill" || Ze.current && Ad(N.current)) {
-            tn(q.hoverGroup), si(Se);
+            tn(q.hoverGroup), ri(Se);
             return;
           }
           NP(q, {
@@ -31916,10 +31923,10 @@ PROG ${o}`;
             colorIndex: T.current,
             stampSource: ae.current,
             stampTransform: Q.current
-          }), si(Se);
+          }), ri(Se);
         }
       };
-      je.current = () => Ga(ea), te.current = () => si(ea);
+      je.current = () => Ga(ea), te.current = () => ri(ea);
       const ll = (Se, Ke) => Ke && !Se.shiftKey ? nt.getLockedPlanePickInfo(Se, Ke.lockedPlane) : nt.getPickInfo(Se), Eb = (Se, Ke) => {
         const Nt = Se.clientX - Ke.startClientX, Ht = Se.clientY - Ke.startClientY;
         return Nt * Nt + Ht * Ht >= o_ ** 2;
@@ -32004,9 +32011,9 @@ PROG ${o}`;
           }
         };
         $.current = Nt, X.current = false, J.current = null, ee.current = ol(Ke);
-        const Ht = N.current === "boxSelect" || N.current === "colorSelect", Es = N.current === "sample", mr = N.current === "link";
-        sl(Ke), Ga(ll(Se, Nt)), (Es || Ht || mr) && (q.renderer.domElement.releasePointerCapture(Se.pointerId), dl());
-      }, ri = (Se) => {
+        const Ht = N.current === "boxSelect" || N.current === "colorSelect", Es = N.current === "sample", hr = N.current === "link";
+        sl(Ke), Ga(ll(Se, Nt)), (Es || Ht || hr) && (q.renderer.domElement.releasePointerCapture(Se.pointerId), dl());
+      }, ai = (Se) => {
         const Ke = Me.current;
         if (Ke) {
           if (Ke.pointerId !== Se.pointerId) return;
@@ -32016,7 +32023,7 @@ PROG ${o}`;
         $.current && $.current.pointerId !== Se.pointerId || (q.renderer.domElement.hasPointerCapture(Se.pointerId) && q.renderer.domElement.releasePointerCapture(Se.pointerId), X.current && (As(), zn()), dl());
       }, Dm = () => {
         $.current || Ga(null);
-      }, Lm = (Se) => Se.preventDefault(), ai = (Se) => {
+      }, Lm = (Se) => Se.preventDefault(), oi = (Se) => {
         Se.button === 1 && Se.preventDefault();
       };
       q.rig.setCallbacks({
@@ -32032,8 +32039,8 @@ PROG ${o}`;
         }
       }), q.rig.attachInput();
       const Lt = q.renderer.domElement;
-      return Lt.addEventListener("pointermove", Pm), Lt.addEventListener("pointerdown", _m, true), Lt.addEventListener("pointerup", ri), Lt.addEventListener("pointercancel", ri), Lt.addEventListener("pointerleave", Dm), Lt.addEventListener("mousedown", ai, true), Lt.addEventListener("auxclick", ai), Lt.addEventListener("contextmenu", Lm), () => {
-        cancelAnimationFrame(It), ni.disconnect(), Lt.removeEventListener("pointermove", Pm), Lt.removeEventListener("pointerdown", _m, true), Lt.removeEventListener("pointerup", ri), Lt.removeEventListener("pointercancel", ri), Lt.removeEventListener("pointerleave", Dm), Lt.removeEventListener("mousedown", ai, true), Lt.removeEventListener("auxclick", ai), Lt.removeEventListener("contextmenu", Lm), W.current && q.pointerLockControls.unlock(), q.rig.dispose(), go(q.chunkGroup, k.current), Sd(le), q.terrainMaterial.dispose(), Wi(q.gridGroup), Wi(q.hoverGroup), Wi(q.selectionGroup), q.scene.remove(ve.group), ve.dispose(), q.renderer.dispose(), Lt.parentElement === G && G.removeChild(Lt), $.current = null, x.current = null, b.current = null, je.current = null, te.current = null;
+      return Lt.addEventListener("pointermove", Pm), Lt.addEventListener("pointerdown", _m, true), Lt.addEventListener("pointerup", ai), Lt.addEventListener("pointercancel", ai), Lt.addEventListener("pointerleave", Dm), Lt.addEventListener("mousedown", oi, true), Lt.addEventListener("auxclick", oi), Lt.addEventListener("contextmenu", Lm), () => {
+        cancelAnimationFrame(It), si.disconnect(), Lt.removeEventListener("pointermove", Pm), Lt.removeEventListener("pointerdown", _m, true), Lt.removeEventListener("pointerup", ai), Lt.removeEventListener("pointercancel", ai), Lt.removeEventListener("pointerleave", Dm), Lt.removeEventListener("mousedown", oi, true), Lt.removeEventListener("auxclick", oi), Lt.removeEventListener("contextmenu", Lm), W.current && q.pointerLockControls.unlock(), q.rig.dispose(), xo(q.chunkGroup, k.current), Sd(le), q.terrainMaterial.dispose(), Wi(q.gridGroup), Wi(q.hoverGroup), Wi(q.selectionGroup), q.scene.remove(ve.group), ve.dispose(), q.renderer.dispose(), Lt.parentElement === G && G.removeChild(Lt), $.current = null, x.current = null, b.current = null, je.current = null, te.current = null;
       };
     }, [
       sl,
@@ -32045,7 +32052,7 @@ PROG ${o}`;
       const G = x.current, q = v.current;
       if (!G || !q) return;
       const le = w.current, ve = Ct(le), Je = `${ve.width}:${ve.length}:${ve.height}:${ve.resolution}`;
-      Y.current !== Je && (tn(G.hoverGroup), he.current === "ortho" && oo(G, le, q), Y.current = Je);
+      Y.current !== Je && (tn(G.hoverGroup), he.current === "ortho" && io(G, le, q), Y.current = Je);
     }, [
       hb
     ]), f.useEffect(() => {
@@ -32102,11 +32109,11 @@ PROG ${o}`;
         var _a3, _b3;
         if (d_(q.target)) return;
         if ((q.ctrlKey || q.metaKey) && q.key.toLowerCase() === "z") {
-          q.preventDefault(), q.shiftKey ? ei() : nl();
+          q.preventDefault(), q.shiftKey ? ti() : nl();
           return;
         }
         if ((q.ctrlKey || q.metaKey) && q.key.toLowerCase() === "y") {
-          q.preventDefault(), ei();
+          q.preventDefault(), ti();
           return;
         }
         if (q.ctrlKey || q.metaKey || q.altKey) return;
@@ -32186,7 +32193,7 @@ PROG ${o}`;
       Jr,
       al,
       rl,
-      ei,
+      ti,
       Rm,
       nl
     ]);
@@ -32232,13 +32239,13 @@ PROG ${o}`;
       Zr
     ]), Va = Cm || (Cs == null ? void 0 : Cs.kind) === "box" ? "boxSelect" : (Cs == null ? void 0 : Cs.kind) === "mask" ? "colorSelect" : null, Mm = f.useMemo(() => {
       const G = /* @__PURE__ */ new Set();
-      return ur.filter((q) => G.has(q.linkId) ? false : (G.add(q.linkId), true)).map((q) => ({
+      return mr.filter((q) => G.has(q.linkId) ? false : (G.add(q.linkId), true)).map((q) => ({
         linkId: q.linkId,
         destinationName: q.destinationName,
         locked: q.locked
       }));
     }, [
-      ur
+      mr
     ]), jb = f.useCallback((G) => {
       if (G === "link") {
         if (!m) return;
@@ -32294,7 +32301,7 @@ PROG ${o}`;
                   undoDepth: gn,
                   redoDepth: Is,
                   onUndo: nl,
-                  onRedo: ei,
+                  onRedo: ti,
                   modKeyLabel: c_,
                   activeView: re,
                   onShowEdit: () => Ie("edit"),
@@ -32303,7 +32310,7 @@ PROG ${o}`;
                   voxFileInputRef: Te,
                   cameraMode: Ns,
                   onSelectCameraMode: il,
-                  freecamSpeedMult: Qo,
+                  freecamSpeedMult: Zo,
                   canPlaceLinks: m
                 }),
                 n.jsxs("div", {
@@ -32359,7 +32366,7 @@ PROG ${o}`;
                   background: fb,
                   surroundings: t.Surroundings,
                   maxSurroundingsHeight: t.Height,
-                  surroundingsResolution: Io(t),
+                  surroundingsResolution: No(t),
                   readOnly: r,
                   onLightingChange: vb,
                   onBackgroundChange: yb,
@@ -32597,7 +32604,7 @@ PROG ${o}`;
     });
   }
   function g_({ data: e, onChange: t, readOnly: s }) {
-    const r = pe(), { actionService: a } = Le(), { registerSaveResolver: o } = qo(), i = r.ActiveCampaign, c = f.useRef(null), l = !!(i == null ? void 0 : i.VoxelTerrains.some((N) => N.Id === e.Id)), d = f.useMemo(() => {
+    const r = pe(), { actionService: a } = Le(), { registerSaveResolver: o } = Yo(), i = r.ActiveCampaign, c = f.useRef(null), l = !!(i == null ? void 0 : i.VoxelTerrains.some((N) => N.Id === e.Id)), d = f.useMemo(() => {
       const N = /* @__PURE__ */ new Map();
       for (const S of (i == null ? void 0 : i.VoxelTerrains) ?? []) N.set(S.Id, S.Name);
       return N;
@@ -32643,14 +32650,14 @@ PROG ${o}`;
       width: e.Width,
       length: e.Length,
       height: Di(e.Height),
-      resolution: lo(e.Resolution)
+      resolution: uo(e.Resolution)
     })), w = f.useRef(null);
     f.useEffect(() => {
       v.current = e, b({
         width: e.Width,
         length: e.Length,
         height: Di(e.Height, e.Resolution),
-        resolution: lo(e.Resolution)
+        resolution: uo(e.Resolution)
       });
     }, [
       e
@@ -32703,7 +32710,7 @@ PROG ${o}`;
         ...x,
         ...N
       };
-      S.resolution = lo(S.resolution);
+      S.resolution = uo(S.resolution);
       const C = Na(S.resolution);
       S.width = Math.max(1, Math.min(C, Math.floor(S.width) || 1)), S.length = Math.max(1, Math.min(C, Math.floor(S.length) || 1)), S.height = Di(S.height, S.resolution), j(S);
     }, E = Na(x.resolution);
@@ -32944,7 +32951,7 @@ PROG ${o}`;
       }
     });
   }
-  const xo = "__unassigned__";
+  const vo = "__unassigned__";
   function Ay({ users: e, onSelect: t, currentId: s, title: r, emptyText: a = "No users available" }) {
     const [o, i] = f.useState(""), c = o.trim() ? e.filter((l) => l.Name.toLowerCase().includes(o.toLowerCase()) || l.Id.toLowerCase().includes(o.toLowerCase())) : e;
     return n.jsxs("div", {
@@ -33038,7 +33045,7 @@ PROG ${o}`;
   }
   function Ey(e) {
     var _a3, _b3, _c2;
-    const { peers: t, selfPeer: s } = Ko(), r = [], a = /* @__PURE__ */ new Set(), o = (i, c, l) => {
+    const { peers: t, selfPeer: s } = Qo(), r = [], a = /* @__PURE__ */ new Set(), o = (i, c, l) => {
       !i || a.has(i) || (a.add(i), r.push({
         Id: i,
         Name: c || "Unnamed user",
@@ -33092,7 +33099,7 @@ PROG ${o}`;
       });
     }, a = [
       {
-        Id: xo,
+        Id: vo,
         Name: "DM Library",
         Description: "No owner"
       },
@@ -33104,7 +33111,7 @@ PROG ${o}`;
       Description: "Current owner"
     });
     const o = e.UploadedBy ? ((_a3 = s.find((l) => l.Id === e.UploadedBy)) == null ? void 0 : _a3.Name) ?? `Unknown user (${e.UploadedBy.slice(0, 8)})` : "DM Library (no owner)", i = (l) => {
-      r("UploadedBy", l === xo ? void 0 : l);
+      r("UploadedBy", l === vo ? void 0 : l);
     }, c = (l) => l < 1024 ? `${l} B` : l < 1024 * 1024 ? `${(l / 1024).toFixed(1)} KB` : `${(l / 1024 / 1024).toFixed(2)} MB`;
     return n.jsxs(n.Fragment, {
       children: [
@@ -33239,7 +33246,7 @@ PROG ${o}`;
               }),
               n.jsx(v_, {
                 users: a,
-                currentId: e.UploadedBy ?? xo,
+                currentId: e.UploadedBy ?? vo,
                 onSelect: i,
                 buttonLabel: "Change Owner",
                 title: "Assign owner"
@@ -33266,7 +33273,7 @@ PROG ${o}`;
     }, c = (() => {
       const g = [
         {
-          Id: xo,
+          Id: vo,
           Name: "DM Library",
           Description: "No owner"
         },
@@ -33283,7 +33290,7 @@ PROG ${o}`;
     })(), l = (g, y) => {
       !t || g.length === 0 || t.execute("image:reassignOwner", {
         imageIds: g,
-        toUserId: y === xo ? void 0 : y
+        toUserId: y === vo ? void 0 : y
       });
     }, d = [
       {
@@ -33612,7 +33619,7 @@ PROG ${o}`;
       v,
       x
     ]), R = (M) => !j.has(M), A = f.useMemo(() => {
-      const M = e.VoxelTerrains.filter((F) => !jo(F)), O = new Map(M.map((F) => [
+      const M = e.VoxelTerrains.filter((F) => !Ao(F)), O = new Map(M.map((F) => [
         F.Id,
         F
       ])), L = M.filter((F) => j.has(F.Id)), U = [
@@ -34400,7 +34407,7 @@ PROG ${o}`;
         }
       });
     };
-    return n.jsx(Yo, {
+    return n.jsx(Ko, {
       isOpen: e,
       types: p,
       multiSelect: false,
@@ -36569,7 +36576,7 @@ PROG ${o}`;
             })
           ]
         }),
-        s && n.jsx(Yo, {
+        s && n.jsx(Ko, {
           isOpen: j,
           types: B,
           multiSelect: true,
@@ -38815,7 +38822,7 @@ PROG ${o}`;
     }, O = () => {
       if (!N) return;
       D(), j(false);
-      const $ = Date.now() & 268435455, X = zo(d, {
+      const $ = Date.now() & 268435455, X = Wo(d, {
         seed: $
       });
       M(X, () => {
@@ -40784,7 +40791,7 @@ PROG ${o}`;
             ]
           }, `${H.kind}:${H.actor.Id}`))
         }),
-        n.jsx(Yo, {
+        n.jsx(Ko, {
           isOpen: g,
           types: L,
           multiSelect: true,
@@ -41504,7 +41511,7 @@ PROG ${o}`;
     ]), f.useEffect(() => {
       if (!C) return;
       const xe = s.VoxelTerrains.find((Me) => Me.Id === C);
-      xe && !Be.isHydrated(xe) && Be.hydrateTerrain(s, C).then(() => co());
+      xe && !Be.isHydrated(xe) && Be.hydrateTerrain(s, C).then(() => lo());
     }, [
       C,
       s
@@ -41602,7 +41609,7 @@ PROG ${o}`;
                     onToggleTerrainLinks: () => p((xe) => !xe)
                   }),
                   !F && !r && !a && n.jsx("div", {
-                    className: `absolute z-20 ${po.anchor}`,
+                    className: `absolute z-20 ${fo.anchor}`,
                     children: n.jsx("div", {
                       className: "shadow-sm",
                       children: n.jsx(gc, {
@@ -41614,7 +41621,7 @@ PROG ${o}`;
                     })
                   }),
                   F && (r || !a) && n.jsx("div", {
-                    className: `absolute z-50 shadow-sm ${po.anchor}`,
+                    className: `absolute z-50 shadow-sm ${fo.anchor}`,
                     children: n.jsx(gc, {
                       value: m,
                       onChange: g,
@@ -42336,7 +42343,7 @@ PROG ${o}`;
   }
   function eb() {
     var _a3;
-    const [e, t] = f.useState(false), s = pe(), { peers: r, isDmConnected: a } = Ko(), o = f.useRef(null), i = f.useRef(null), c = V.getActiveCampaign(s);
+    const [e, t] = f.useState(false), s = pe(), { peers: r, isDmConnected: a } = Qo(), o = f.useRef(null), i = f.useRef(null), c = V.getActiveCampaign(s);
     if (f.useEffect(() => {
       if (!e) return;
       const y = (v) => {
@@ -43891,7 +43898,7 @@ PROG ${o}`;
             }, (b == null ? void 0 : b.id) || `create-${a}`);
           }
         }),
-        n.jsx(Yo, {
+        n.jsx(Ko, {
           isOpen: i,
           types: v,
           multiSelect: true,
@@ -44219,7 +44226,7 @@ PROG ${o}`;
     }
   ];
   function sD() {
-    const e = pe(), t = lr(), s = Vs(), [r, a] = f.useState("main"), o = e.ActiveCampaign;
+    const e = pe(), t = dr(), s = Vs(), [r, a] = f.useState("main"), o = e.ActiveCampaign;
     return o ? n.jsx(Wy, {
       children: n.jsxs("div", {
         className: "flex flex-col h-screen",
@@ -44538,7 +44545,7 @@ PROG ${o}`;
     });
   }
   function oD() {
-    const e = pe(), t = lr(), s = Vs(), { peers: r } = Ko(), a = e.ActiveCampaign;
+    const e = pe(), t = dr(), s = Vs(), { peers: r } = Qo(), a = e.ActiveCampaign;
     if (!a) return null;
     const o = e.User.SelectedCharacters[a.RoomCode], i = !!o, c = i ? a.GameState.Characters.find((d) => d.Id === o) : null, l = () => {
       Ls.selectCharacter({
@@ -44627,7 +44634,7 @@ PROG ${o}`;
     }
   };
   function Pd({ phase: e, roomCode: t, message: s }) {
-    const r = lr(), a = iD[e], o = e === "retrying";
+    const r = dr(), a = iD[e], o = e === "retrying";
     return n.jsxs("div", {
       className: "relative h-screen w-screen overflow-hidden bg-base-200",
       children: [
@@ -44684,7 +44691,7 @@ PROG ${o}`;
   }
   const cD = 2e4, lD = ":pose:v1", dD = 250, uD = 500;
   function mD() {
-    const { identifier: e } = Rb(), t = lr(), s = oe, { setActionService: r } = Le(), a = !!e && or(e), [o, i] = f.useState({
+    const { identifier: e } = Rb(), t = dr(), s = oe, { setActionService: r } = Le(), a = !!e && ir(e), [o, i] = f.useState({
       status: "loading"
     });
     return f.useEffect(() => {
@@ -44701,13 +44708,13 @@ PROG ${o}`;
         });
         return;
       }
-      const l = or(e);
+      const l = ir(e);
       let d = null, u = null, h = null, p = true, m = null, g = null, y = null, v = null;
       const x = () => {
-        g && (clearTimeout(g), g = null), h == null ? void 0 : h.actorPoseService.detachRoom(), u && (uo.leave(u), u = null);
+        g && (clearTimeout(g), g = null), h == null ? void 0 : h.actorPoseService.detachRoom(), u && (mo.leave(u), u = null);
       }, b = () => {
         if (!(!p || !h || !y || u)) try {
-          u = uo.join(`${y}${lD}`, {
+          u = mo.join(`${y}${lD}`, {
             passive: false,
             callbacks: {
               onJoinError: (j) => {
@@ -44785,7 +44792,7 @@ PROG ${o}`;
             }
           };
           if (!p) return;
-          d = uo.join(E, {
+          d = mo.join(E, {
             callbacks: N,
             passive: !l
           }), h = new XC(s, d), r(h), l ? b() : (h.onFirstUpdate(I), v = h.onDmConnectionLost(() => {
@@ -44842,10 +44849,10 @@ PROG ${o}`;
     }) : o.status === "waiting-for-dm" ? n.jsx(Pd, {
       phase: "waiting",
       roomCode: e
-    }) : or(e) ? n.jsx(sD, {}) : n.jsx(oD, {});
+    }) : ir(e) ? n.jsx(sD, {}) : n.jsx(oD, {});
   }
   function hD() {
-    const e = pe(), t = lr(), s = fe.getTheme(e), r = Math.round(fe.getPlayerVolume(e) * 100), a = Math.round(fe.getSfxVolume(e) * 100), o = fe.getPreserveFlyingHeightOnTileMove(e), i = fe.getPerformanceMode(e), c = fe.getCritSplashEnabled(e), l = fe.getHeroOcclusionEnabled(e), d = fe.getHeroOcclusionRadius(e), u = fe.getImageService(e), [h, p] = f.useState(false), [m, g] = f.useState(fe.getImagePromptTemplate(e)), y = Fi.find((v) => v.id === u) ?? Fi.find((v) => v.id === Xg);
+    const e = pe(), t = dr(), s = fe.getTheme(e), r = Math.round(fe.getPlayerVolume(e) * 100), a = Math.round(fe.getSfxVolume(e) * 100), o = fe.getPreserveFlyingHeightOnTileMove(e), i = fe.getPerformanceMode(e), c = fe.getCritSplashEnabled(e), l = fe.getHeroOcclusionEnabled(e), d = fe.getHeroOcclusionRadius(e), u = fe.getImageService(e), [h, p] = f.useState(false), [m, g] = f.useState(fe.getImagePromptTemplate(e)), y = Fi.find((v) => v.id === u) ?? Fi.find((v) => v.id === Xg);
     return n.jsx("div", {
       className: "min-h-screen bg-base-200",
       children: n.jsxs("div", {
@@ -45606,7 +45613,7 @@ PROG ${o}`;
     });
   }
   function SD() {
-    const e = lr();
+    const e = dr();
     return n.jsx("header", {
       className: "sticky top-0 z-30 border-b border-base-300 bg-base-100/95 backdrop-blur",
       children: n.jsxs("div", {
@@ -45623,7 +45630,7 @@ PROG ${o}`;
               "Home"
             ]
           }),
-          n.jsxs(Uo, {
+          n.jsxs($o, {
             to: "/wiki/",
             className: "btn btn-ghost btn-sm gap-2 text-lg",
             children: [
@@ -45643,26 +45650,26 @@ PROG ${o}`;
       })
     });
   }
-  const vo = 1040, yo = 420, Pi = 12;
+  const yo = 1040, bo = 420, Pi = 12;
   function ID(e, t) {
     const r = [
       {
-        x: vo * 0.64,
-        y: yo * 0.26,
+        x: yo * 0.64,
+        y: bo * 0.26,
         sx: 210,
         sy: 105,
         strength: 1.15
       },
       {
-        x: vo * 0.32,
-        y: yo * 0.72,
+        x: yo * 0.32,
+        y: bo * 0.72,
         sx: 155,
         sy: 90,
         strength: 0.72
       },
       {
-        x: vo * 0.88,
-        y: yo * 0.62,
+        x: yo * 0.88,
+        y: bo * 0.62,
         sx: 130,
         sy: 115,
         strength: 0.58
@@ -45675,7 +45682,7 @@ PROG ${o}`;
   }
   function ND() {
     const e = [];
-    for (let t = Pi / 2; t < yo; t += Pi) for (let s = Pi / 2; s < vo; s += Pi) {
+    for (let t = Pi / 2; t < bo; t += Pi) for (let s = Pi / 2; s < yo; s += Pi) {
       const r = ID(s, t);
       e.push({
         cx: s,
@@ -45691,7 +45698,7 @@ PROG ${o}`;
       "aria-hidden": "true",
       className: "pointer-events-none absolute inset-0 h-full w-full text-neutral-content mix-blend-normal",
       preserveAspectRatio: "xMidYMid slice",
-      viewBox: `0 0 ${vo} ${yo}`,
+      viewBox: `0 0 ${yo} ${bo}`,
       children: e.map((t) => n.jsx("circle", {
         cx: t.cx,
         cy: t.cy,
@@ -45821,7 +45828,7 @@ PROG ${o}`;
                   className: "grid gap-3 sm:grid-cols-2 lg:grid-cols-1",
                   children: s.map((c) => {
                     const l = Ma[c.category];
-                    return n.jsxs(Uo, {
+                    return n.jsxs($o, {
                       to: wm(c),
                       className: "group rounded-lg border border-neutral/15 bg-neutral/8 p-4 transition-colors hover:border-primary hover:bg-neutral/12",
                       children: [
@@ -45899,7 +45906,7 @@ PROG ${o}`;
                   n.jsx("ul", {
                     className: "menu gap-1 p-0",
                     children: s.pages.map((a) => n.jsx("li", {
-                      children: n.jsxs(Uo, {
+                      children: n.jsxs($o, {
                         to: wm(a),
                         className: `min-h-11 px-3 py-2.5 text-base ${a.slug === t.slug ? "menu-active" : ""}`,
                         children: [
@@ -45977,7 +45984,7 @@ PROG ${o}`;
           className: "grid gap-3 md:grid-cols-2",
           children: s.map((a) => {
             const o = Ma[a.category];
-            return n.jsxs(Uo, {
+            return n.jsxs($o, {
               to: wm(a),
               className: "group rounded-lg border border-base-300 bg-base-200 p-4 transition-all hover:border-primary hover:bg-base-100 hover:shadow-md",
               children: [
@@ -46076,7 +46083,7 @@ PROG ${o}`;
   }
   function Gt({ slug: e, children: t }) {
     const s = e ? `/wiki/${e}/` : "/wiki/";
-    return n.jsx(Uo, {
+    return n.jsx($o, {
       className: "link link-primary font-bold",
       to: s,
       children: t
@@ -49522,7 +49529,7 @@ if (actor) await game.log("Test harness ran on " + actor.Name);`;
       })
     });
   }
-  const GD = Object.keys(Ln).filter(Wo).sort();
+  const GD = Object.keys(Ln).filter(Xo).sort();
   function zD({ group: e }) {
     return n.jsxs("div", {
       className: "space-y-2",
@@ -49607,7 +49614,7 @@ if (actor) await game.log("Test harness ran on " + actor.Name);`;
                   }),
                   n.jsx("td", {
                     className: "text-xs align-top",
-                    children: Wo(t) ? "yes" : "\u2014"
+                    children: Xo(t) ? "yes" : "\u2014"
                   }),
                   n.jsx("td", {
                     className: "text-xs opacity-80",
@@ -52580,7 +52587,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
         o
       ]
     };
-  }, {}), io = rL(Object.entries(ZD).map(([e, t]) => {
+  }, {}), co = rL(Object.entries(ZD).map(([e, t]) => {
     const s = t.default, r = s.slug ?? eL(e), a = [
       ...(s.sections ?? []).map((o, i) => ({
         ...o,
@@ -52596,7 +52603,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
   }));
   function _d(e) {
     const t = e.replace(/^\/+|\/+$/g, "");
-    return io.find((s) => s.slug === t);
+    return co.find((s) => s.slug === t);
   }
   function oL(e) {
     return e.replace(/^\/wiki\/?/, "").replace(/\/+$/g, "");
@@ -52610,12 +52617,12 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
     }
   }
   function cL() {
-    const e = Mb(), t = oL(e.pathname), s = _d(t) ?? null, r = s ?? _d("") ?? io[0], [a, o] = f.useState(""), [i, c] = f.useState("All"), [l, d] = f.useState(iL), u = f.useMemo(() => xD(io), []), h = f.useMemo(() => vD(io, a, i), [
+    const e = Mb(), t = oL(e.pathname), s = _d(t) ?? null, r = s ?? _d("") ?? co[0], [a, o] = f.useState(""), [i, c] = f.useState("All"), [l, d] = f.useState(iL), u = f.useMemo(() => xD(co), []), h = f.useMemo(() => vD(co, a, i), [
       i,
       a
     ]), p = f.useMemo(() => l.map((y) => _d(y)).filter((y) => !!y), [
       l
-    ]), m = f.useMemo(() => io.filter((y) => [
+    ]), m = f.useMemo(() => co.filter((y) => [
       "getting-started",
       "terrains"
     ].includes(y.slug)), []), g = p.length > 0 ? p : m;
@@ -52818,7 +52825,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
   }
   function fL() {
     const e = pe(), [t, s] = f.useState(false), r = fe.getCloudBackup(e);
-    if ((r == null ? void 0 : r.connected) !== true || !r.lastStatus || r.lastStatus.ok) return null;
+    if ((r == null ? void 0 : r.connected) !== true || !r.lastStatus || r.lastStatus.ok || r.lastStatus.time === r.dismissedStatusTime) return null;
     const a = async () => {
       s(true);
       try {
@@ -52848,6 +52855,16 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
             children: t ? n.jsx("span", {
               className: "loading loading-spinner loading-xs"
             }) : "Retry"
+          }),
+          n.jsx("button", {
+            type: "button",
+            className: "btn btn-ghost btn-xs btn-circle shrink-0",
+            "aria-label": "Dismiss",
+            title: "Dismiss",
+            onClick: () => fe.dismissCloudBackupStatus(oe),
+            children: n.jsx("span", {
+              className: "icon-[mdi--close] w-3.5 h-3.5"
+            })
           })
         ]
       })
