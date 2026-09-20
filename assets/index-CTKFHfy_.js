@@ -20900,8 +20900,8 @@ ${y}: 1`;
     CUT_PLANE_EPSILON: 0.15
   }, IA = 0.1, er = {
     FOV: 58,
-    INITIAL_DISTANCE: 9,
-    MIN_DISTANCE: 3,
+    INITIAL_DISTANCE: 5,
+    MIN_DISTANCE: 1.2,
     MAX_DISTANCE: 30,
     ANCHOR_HEIGHT_Y: $s.TORSO_OFFSET_Y,
     UPWARD_CAMERA_FLOOR_OFFSET_FROM_ANCHOR: IA - $s.TORSO_OFFSET_Y,
@@ -23297,12 +23297,12 @@ ${y}: 1`;
       ]
     });
   }
-  function qE({ cameraMode: e, isPointerLocked: t, movementOverlay: s, canFly: r, linkFocus: a }) {
-    const o = e === "follow", i = o ? po.below : po.beside;
+  function qE({ cameraMode: e, hasTopToolbar: t, isPointerLocked: s, movementOverlay: r, canFly: a, linkFocus: o }) {
+    const i = e === "follow", c = t ? po.below : po.beside;
     return n.jsxs(n.Fragment, {
       children: [
         n.jsxs("div", {
-          className: `absolute z-20 flex items-center gap-2 ${i}`,
+          className: `absolute z-20 flex items-center gap-2 ${c}`,
           children: [
             n.jsxs("div", {
               className: "badge badge-neutral h-8 gap-1 px-3",
@@ -23310,10 +23310,10 @@ ${y}: 1`;
                 n.jsx("span", {
                   className: "icon-[mdi--mouse-right-click] w-4 h-4"
                 }),
-                t ? o ? "Follow movement" : "Look mode" : "Hold right click"
+                s ? i ? "Follow movement" : "Look mode" : "Hold right click"
               ]
             }),
-            t && n.jsxs("div", {
+            s && n.jsxs("div", {
               className: "badge badge-neutral gap-2 whitespace-nowrap",
               children: [
                 n.jsxs("span", {
@@ -23345,7 +23345,7 @@ ${y}: 1`;
                   className: "opacity-70",
                   children: "\xB7"
                 }),
-                r ? n.jsxs(n.Fragment, {
+                a ? n.jsxs(n.Fragment, {
                   children: [
                     n.jsxs("span", {
                       className: "flex items-center gap-1",
@@ -23395,16 +23395,16 @@ ${y}: 1`;
             })
           ]
         }),
-        s && n.jsx("div", {
-          className: `absolute left-1/2 -translate-x-1/2 z-20 ${o ? po.belowTop : "top-3"}`,
+        r && n.jsx("div", {
+          className: `absolute left-1/2 -translate-x-1/2 z-20 ${t ? po.belowTop : "top-3"}`,
           children: n.jsx("div", {
             className: "rounded bg-base-100/90 border border-base-300 px-3 py-1 shadow text-sm font-semibold",
             children: n.jsx(XE, {
-              movementOverlay: s
+              movementOverlay: r
             })
           })
         }),
-        (a == null ? void 0 : a.usable) && n.jsx("div", {
+        (o == null ? void 0 : o.usable) && n.jsx("div", {
           className: "pointer-events-none absolute left-1/2 top-[58%] z-20 -translate-x-1/2",
           children: n.jsx("div", {
             className: "rounded bg-base-100/90 border border-base-300 px-3 py-1.5 text-sm font-semibold text-base-content shadow",
@@ -23415,7 +23415,7 @@ ${y}: 1`;
                   className: "kbd kbd-sm text-neutral",
                   children: "E"
                 }),
-                a.destinationName ? `Travel to ${a.destinationName}` : "Use link"
+                o.destinationName ? `Travel to ${o.destinationName}` : "Use link"
               ]
             })
           })
@@ -23773,6 +23773,7 @@ ${y}: 1`;
         }),
         B && n.jsx(qE, {
           cameraMode: t,
+          hasTopToolbar: J === "dm" && t === "follow",
           isPointerLocked: z,
           movementOverlay: U,
           canFly: B.actor.CanFly ?? false,
@@ -27376,7 +27377,7 @@ PROG ${o}`;
     const y = pe(), { actionService: v } = Le(), { canAccessActor: x } = Ko(), { selectedActor: b, hoveredTile: w, selectActor: I, toggleActorSelection: k, clearSelection: j, updateHoveredTile: R } = zr(), A = IE(), { pings: E } = CE(), N = f.useMemo(() => e ? E.filter((Te) => Te.terrainId === e.Id) : [], [
       E,
       e
-    ]), S = f.useRef(0), T = f.useRef(fe.getPerformanceMode(y)).current, [P, _] = f.useState(false), D = o !== "first-person", M = Mc(o), O = o === "first-person" || o === "follow" && P ? "actor-look" : "world-pointer", L = O === "world-pointer", U = f.useCallback((Te) => {
+    ]), S = f.useRef(0), T = f.useRef(fe.getPerformanceMode(y)).current, [P, _] = f.useState(false), D = o !== "first-person", M = Mc(o), O = M && P ? "actor-look" : "world-pointer", L = O === "world-pointer", U = f.useCallback((Te) => {
       var _a4;
       (_a4 = u.current) == null ? void 0 : _a4.setFollowActorVisual(Te, er.ANCHOR_HEIGHT_Y);
     }, []), F = (Te) => {
