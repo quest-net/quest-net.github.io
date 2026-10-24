@@ -4378,12 +4378,15 @@ void main() {
       y: Math.max(0, Math.min(e.Length - 1, Math.floor(e.Length / 2)))
     };
   }
-  function yx(e, t) {
-    const s = vx(e), r = Math.max(e.Width, e.Length);
-    for (let a = 0; a <= r; a++) for (let o = s.y - a; o <= s.y + a; o++) for (let i = s.x - a; i <= s.x + a; i++) {
-      if (Math.max(Math.abs(i - s.x), Math.abs(o - s.y)) !== a || i < 0 || o < 0 || i >= e.Width || o >= e.Length) continue;
-      const c = t(i, o);
-      if (c !== null) return c;
+  function yx(e, t, s) {
+    const r = s && Number.isFinite(s.x) && Number.isFinite(s.y) ? {
+      x: Math.max(0, Math.min(e.Width - 1, Math.round(s.x))),
+      y: Math.max(0, Math.min(e.Length - 1, Math.round(s.y)))
+    } : vx(e), a = Math.max(e.Width, e.Length);
+    for (let o = 0; o <= a; o++) for (let i = r.y - o; i <= r.y + o; i++) for (let c = r.x - o; c <= r.x + o; c++) {
+      if (Math.max(Math.abs(c - r.x), Math.abs(i - r.y)) !== o || c < 0 || i < 0 || c >= e.Width || i >= e.Length) continue;
+      const l = t(c, i);
+      if (l !== null) return l;
     }
     return null;
   }
@@ -4967,7 +4970,7 @@ void main() {
         return null;
       }, l = i(o.x, o.y, o.h);
       if (l) return l;
-      const d = yx(t, (u, h) => u === o.x && h === o.y ? null : c(u, h));
+      const d = yx(t, (u, h) => u === o.x && h === o.y ? null : c(u, h), o);
       return d || c(o.x, o.y);
     }
   };
