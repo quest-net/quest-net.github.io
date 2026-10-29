@@ -3,7 +3,7 @@ var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { en
 var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 import { r as p, j as n, u as vr, a as zc, R as T0, b as k0, L as Jo, c as R0, H as M0, d as P0, e as no, f as _0, __tla as __tla_0 } from "./vendor-react-CVgSEKdc.js";
 import { p as ei, c as L0, d as D0, f as Og, u as Vr, h as Fg, j as O0, i as F0, k as U0, l as $0, m as B0 } from "./vendor-BcixiSSd.js";
-import { P as ic, S as Wc, C as Va, N as Gr, a as Gs, b as Dr, M as ft, W as qc, c as Kt, V as Dt, d as tn, O as Ug, G as em, T as H0, E as su, R as ru, e as au, f as $g, U as rt, L as fn, g as V0, h as je, i as zs, j as Bg, k as Hg, l as Ot, m as Ga, n as Xt, D as fr, o as ou, p as iu, q as zt, B as yr, r as Vg, A as G0, I as cu, s as _a, t as tm, u as Gg, v as zg, w as z0, x as W0, y as q0, z as Zr, F as nm, H as ti, J as Hn, K as X0, Q as Y0, X as K0, Y as mh, Z as lt, _ as Q0, $ as Z0, a0 as J0, a1 as ew, a2 as Xc, a3 as Wg, a4 as tw, a5 as cs, a6 as pr, a7 as nw, a8 as sw, a9 as qg, aa as rw, ab as aw, ac as ow, ad as iw, ae as cw, af as lw, ag as Xg, ah as Yg, ai as dw, aj as uw, ak as mw, al as hw, am as fw, an as hh, ao as lu, ap as pw, aq as gw } from "./vendor-three-dM6XnyZX.js";
+import { P as ic, S as Wc, C as Va, N as Gr, a as Gs, b as Dr, M as ft, W as qc, c as Kt, V as Dt, d as tn, O as Ug, G as em, T as H0, E as su, R as ru, e as au, f as $g, U as rt, L as fn, g as V0, h as Ce, i as zs, j as Bg, k as Hg, l as Ot, m as Ga, n as Xt, D as fr, o as ou, p as iu, q as zt, B as yr, r as Vg, A as G0, I as cu, s as _a, t as tm, u as Gg, v as zg, w as z0, x as W0, y as q0, z as Zr, F as nm, H as ti, J as Hn, K as X0, Q as Y0, X as K0, Y as mh, Z as lt, _ as Q0, $ as Z0, a0 as J0, a1 as ew, a2 as Xc, a3 as Wg, a4 as tw, a5 as cs, a6 as pr, a7 as nw, a8 as sw, a9 as qg, aa as rw, ab as aw, ac as ow, ad as iw, ae as cw, af as lw, ag as Xg, ah as Yg, ai as dw, aj as uw, ak as mw, al as hw, am as fw, an as hh, ao as lu, ap as pw, aq as gw } from "./vendor-three-dM6XnyZX.js";
 import { g as bt, u as xw, a as vw, m as yw } from "./vendor-motion-C4H9DWD2.js";
 import { e as bw } from "./vendor-mathjs-AzpyF3ff.js";
 Promise.all([
@@ -36,7 +36,7 @@ Promise.all([
       fetch(a.href, o);
     }
   })();
-  const Cn = "3.2.1";
+  const Cn = "3.2.2";
   function sm(e) {
     return {
       User: e,
@@ -221,7 +221,7 @@ Promise.all([
     const e = gh[Math.floor(Math.random() * gh.length)], t = xh[Math.floor(Math.random() * xh.length)];
     return `${e} ${t}`;
   }
-  const Fs = {
+  const Us = {
     setName(e, t) {
       const s = e.name.trim();
       s && (t.User.Name = s, wn());
@@ -665,7 +665,7 @@ Promise.all([
   }
   const Zw = new Uint8Array(0), Jr = /* @__PURE__ */ new Map();
   let hu = null;
-  function Os(e) {
+  function Fs(e) {
     var _a3;
     return ((_a3 = Jr.get(e)) == null ? void 0 : _a3.voxels) ?? Zw;
   }
@@ -695,7 +695,7 @@ Promise.all([
   }
   function ri(e) {
     const t = e.Voxels;
-    return t instanceof Uint8Array ? t : Os(e.Id);
+    return t instanceof Uint8Array ? t : Fs(e.Id);
   }
   function Jw(e) {
     return hu === e ? false : (hu = e, Jr.clear(), true);
@@ -722,7 +722,7 @@ Promise.all([
     const s = e.Voxels;
     return s instanceof Uint8Array ? Vn(s) : Wr(e.Id) ?? Vn(t);
   }
-  function Ds(e, t = e ? ri(e) : new Uint8Array(0)) {
+  function Os(e, t = e ? ri(e) : new Uint8Array(0)) {
     return e ? [
       e.Id,
       e.Width,
@@ -749,38 +749,38 @@ Promise.all([
   function Nn(e, t, s) {
     return `${e},${t},${s}`;
   }
-  const Ps = 32, rS = Ps * Ps * Ps;
+  const _s = 32, rS = _s * _s * _s;
   function aS(e, t, s) {
-    const r = Oo(e), a = e.Width * r, o = e.Length * r, i = e.Height * r, c = Ds(e, t), l = Math.ceil(a / Ps), d = Math.ceil(i / Ps), u = Math.ceil(o / Ps), m = new Array(l * d * u).fill(null);
+    const r = Oo(e), a = e.Width * r, o = e.Length * r, i = e.Height * r, c = Os(e, t), l = Math.ceil(a / _s), d = Math.ceil(i / _s), u = Math.ceil(o / _s), m = new Array(l * d * u).fill(null);
     let h = -1;
-    const f = (C, I, j) => (C >> 5) + (j >> 5) * l + (I >> 5) * l * u, g = (C, I, j) => (C & 31) + (j & 31) * Ps + (I & 31) * Ps * Ps, x = (C, I, j) => {
-      const A = m[f(C, I, j)];
-      return A ? A[g(C, I, j)] : 0;
-    }, y = (C, I, j, A) => {
-      const _ = f(C, I, j);
+    const f = (N, I, j) => (N >> 5) + (j >> 5) * l + (I >> 5) * l * u, g = (N, I, j) => (N & 31) + (j & 31) * _s + (I & 31) * _s * _s, x = (N, I, j) => {
+      const A = m[f(N, I, j)];
+      return A ? A[g(N, I, j)] : 0;
+    }, y = (N, I, j, A) => {
+      const _ = f(N, I, j);
       let T = m[_];
-      T || (T = new Uint16Array(rS), m[_] = T), T[g(C, I, j)] = A;
-    }, v = (C, I, j) => C >= 0 && C < a && I >= 0 && I < i && j >= 0 && j < o, b = Array.from(cc(t));
-    for (const C of b) v(C.x, C.y, C.z) && (y(C.x, C.y, C.z, (C.color & 255) + 1), C.y > h && (h = C.y));
+      T || (T = new Uint16Array(rS), m[_] = T), T[g(N, I, j)] = A;
+    }, v = (N, I, j) => N >= 0 && N < a && I >= 0 && I < i && j >= 0 && j < o, b = Array.from(cc(t));
+    for (const N of b) v(N.x, N.y, N.z) && (y(N.x, N.y, N.z, (N.color & 255) + 1), N.y > h && (h = N.y));
     const w = /* @__PURE__ */ new Map(), S = /* @__PURE__ */ new Map();
-    for (const C of b) {
-      if (!v(C.x, C.y, C.z) || so(C.color & 255)) continue;
-      const I = C.y + 1 < i ? x(C.x, C.y + 1, C.z) : 0;
+    for (const N of b) {
+      if (!v(N.x, N.y, N.z) || so(N.color & 255)) continue;
+      const I = N.y + 1 < i ? x(N.x, N.y + 1, N.z) : 0;
       if (I !== 0 && !so(I - 1)) continue;
-      const j = pn(Math.floor(C.x / r), Math.floor(C.z / r));
+      const j = pn(Math.floor(N.x / r), Math.floor(N.z / r));
       let A = w.get(j);
-      A || w.set(j, A = /* @__PURE__ */ new Set()), A.add(eS(C.y, r));
+      A || w.set(j, A = /* @__PURE__ */ new Set()), A.add(eS(N.y, r));
       let _ = S.get(j);
-      _ || S.set(j, _ = /* @__PURE__ */ new Set()), _.add(fu(C.y, r));
+      _ || S.set(j, _ = /* @__PURE__ */ new Set()), _.add(fu(N.y, r));
     }
-    const N = (C, I) => C - I, R = /* @__PURE__ */ new Map();
-    for (const [C, I] of w) R.set(C, [
+    const C = (N, I) => N - I, R = /* @__PURE__ */ new Map();
+    for (const [N, I] of w) R.set(N, [
       ...I
-    ].sort(N));
+    ].sort(C));
     const P = /* @__PURE__ */ new Map();
-    for (const [C, I] of S) P.set(C, [
+    for (const [N, I] of S) P.set(N, [
       ...I
-    ].sort(N));
+    ].sort(C));
     const L = e.Width, M = e.Length;
     return {
       revision: c,
@@ -796,19 +796,19 @@ Promise.all([
       allSurfaces: R,
       allSurfaceHeights: P,
       inVoxelBounds: v,
-      hasVoxel(C, I, j) {
-        if (!v(C, I, j)) return false;
-        const A = x(C, I, j);
+      hasVoxel(N, I, j) {
+        if (!v(N, I, j)) return false;
+        const A = x(N, I, j);
         return A !== 0 && !so(A - 1);
       },
-      blocksSight(C, I, j) {
-        if (!v(C, I, j)) return false;
-        const A = x(C, I, j);
+      blocksSight(N, I, j) {
+        if (!v(N, I, j)) return false;
+        const A = x(N, I, j);
         return A !== 0 && !so(A - 1) && !lx(A - 1);
       },
-      isVoxelOccupiedAtTile(C, I, j) {
+      isVoxelOccupiedAtTile(N, I, j) {
         if (j < 0 || j >= i) return false;
-        const A = C * r, _ = A + r, T = I * r, E = T + r;
+        const A = N * r, _ = A + r, T = I * r, E = T + r;
         if (A < 0 || T < 0 || A >= a || T >= o) return false;
         for (let D = T; D < E; D++) for (let U = A; U < _; U++) {
           const k = x(U, j, D);
@@ -820,7 +820,7 @@ Promise.all([
   }
   const oS = 2, Sr = /* @__PURE__ */ new Map();
   function Nt(e, t = ri(e)) {
-    const s = Ds(e, t), r = Sr.get(s);
+    const s = Os(e, t), r = Sr.get(s);
     if (r) return Sr.delete(s), Sr.set(s, r), r;
     const a = aS(e, t);
     for (Sr.set(s, a); Sr.size > oS; ) {
@@ -977,7 +977,7 @@ Promise.all([
     }
     static async saveTerrain(t, s) {
       if (!jr(s.Id)) return;
-      const r = Os(s.Id), a = Wr(s.Id) ?? Vn(r);
+      const r = Fs(s.Id), a = Wr(s.Id) ?? Vn(r);
       await this.writeRecord(t, s, r, a);
     }
     static async hydrateTerrain(t, s) {
@@ -1004,7 +1004,7 @@ Promise.all([
     }
     static async getPayloadForServing(t, s) {
       if (ro(t.Id) && jr(s)) {
-        const a = Os(s);
+        const a = Fs(s);
         return {
           voxels: a,
           contentHash: Wr(s) ?? Vn(a)
@@ -1030,9 +1030,9 @@ Promise.all([
         ...s,
         Voxels: o
       });
-      if (ao(s)) return r(Os(s.Id));
+      if (ao(s)) return r(Fs(s.Id));
       const a = await this.readStoredPayload(t, s.Id);
-      return a ? r(a.voxels) : !this.networkProvider || !await this.hydrateTerrain(t, s.Id) ? null : r(Os(s.Id));
+      return a ? r(a.voxels) : !this.networkProvider || !await this.hydrateTerrain(t, s.Id) ? null : r(Fs(s.Id));
     }
     static setPinnedTerrains(t) {
       this.pinnedTerrainIds = new Set(t);
@@ -2166,7 +2166,7 @@ Promise.all([
   }
   const Tr = {
     create() {
-      const e = sm(Fs.createNewUser());
+      const e = sm(Us.createNewUser());
       return this.save(e), e;
     },
     async load() {
@@ -2217,9 +2217,9 @@ Promise.all([
       bu.clear(), Et.remove(fc);
     },
     setUserRole(e, t) {
-      t.User.Role = e.role, e.role === "dm" && t.ActiveCampaign && (Fs.clearSelectedCharacter({
+      t.User.Role = e.role, e.role === "dm" && t.ActiveCampaign && (Us.clearSelectedCharacter({
         campaignId: t.ActiveCampaign.Id
-      }, t), Fs.clearSelectedCharacter({
+      }, t), Us.clearSelectedCharacter({
         campaignId: t.ActiveCampaign.RoomCode
       }, t));
     }
@@ -3563,7 +3563,7 @@ void main() {
       maxCursorMove: u,
       xGap: i,
       yGap: c
-    }), N = p.useRef(null);
+    }), C = p.useRef(null);
     return p.useEffect(() => {
       S.current = {
         lineColor: e,
@@ -3625,7 +3625,7 @@ void main() {
           b.current.push(Z);
         }
       }
-      function C(U) {
+      function N(U) {
         const k = b.current, O = w.current, $ = v.current, { waveSpeedX: z, waveSpeedY: F, waveAmpX: K, waveAmpY: re, friction: H, tension: ne, maxCursorMove: te } = S.current;
         k.forEach((Z) => {
           Z.forEach((Q) => {
@@ -3664,7 +3664,7 @@ void main() {
         const k = w.current;
         k.sx += (k.x - k.sx) * 0.1, k.sy += (k.y - k.sy) * 0.1;
         const O = k.x - k.lx, $ = k.y - k.ly, z = Math.hypot(O, $);
-        k.v = z, k.vs += (z - k.vs) * 0.1, k.vs = Math.min(100, k.vs), k.lx = k.x, k.ly = k.y, k.a = Math.atan2($, O), P.style.setProperty("--x", `${k.sx}px`), P.style.setProperty("--y", `${k.sy}px`), C(U), j(), N.current = requestAnimationFrame(A);
+        k.v = z, k.vs += (z - k.vs) * 0.1, k.vs = Math.min(100, k.vs), k.lx = k.x, k.ly = k.y, k.a = Math.atan2($, O), P.style.setProperty("--x", `${k.sx}px`), P.style.setProperty("--y", `${k.sy}px`), N(U), j(), C.current = requestAnimationFrame(A);
       }
       function _() {
         L(), M();
@@ -3680,10 +3680,10 @@ void main() {
         const O = w.current, $ = y.current;
         O.x = U - $.left, O.y = k - $.top, O.set || (O.sx = O.x, O.sy = O.y, O.lx = O.x, O.ly = O.y, O.set = true);
       }
-      return L(), M(), N.current = requestAnimationFrame(A), window.addEventListener("resize", _), window.addEventListener("mousemove", T), window.addEventListener("touchmove", E, {
+      return L(), M(), C.current = requestAnimationFrame(A), window.addEventListener("resize", _), window.addEventListener("mousemove", T), window.addEventListener("touchmove", E, {
         passive: false
       }), () => {
-        window.removeEventListener("resize", _), window.removeEventListener("mousemove", T), window.removeEventListener("touchmove", E), N.current !== null && cancelAnimationFrame(N.current);
+        window.removeEventListener("resize", _), window.removeEventListener("mousemove", T), window.removeEventListener("touchmove", E), C.current !== null && cancelAnimationFrame(C.current);
       };
     }, []), n.jsxs("div", {
       ref: f,
@@ -3745,7 +3745,7 @@ void main() {
       e.join(",")
     ]), t;
   }
-  const PI = ({ text: e, as: t = "div", typingSpeed: s = 50, initialDelay: r = 0, pauseDuration: a = 2e3, deletingSpeed: o = 30, loop: i = true, className: c = "", showCursor: l = true, hideCursorWhileTyping: d = false, cursorCharacter: u = "|", cursorClassName: m = "", cursorBlinkDuration: h = 0.5, textColors: f = [], variableSpeed: g, onSentenceComplete: x, startOnVisible: y = false, reverseMode: v = false, editableAfter: b = false, editOnClick: w = true, editAutoFocus: S = false, editClassName: N = "", commitOnBlur: R = true, enterToCommit: P = true, escapeToCancel: L = true, onEditCommit: M, onEditCancel: C, ariaLabelEditable: I = "Edit text", maxLength: j, showLengthCounter: A = false, lengthCounterClassName: _ = "", ...T }) => {
+  const PI = ({ text: e, as: t = "div", typingSpeed: s = 50, initialDelay: r = 0, pauseDuration: a = 2e3, deletingSpeed: o = 30, loop: i = true, className: c = "", showCursor: l = true, hideCursorWhileTyping: d = false, cursorCharacter: u = "|", cursorClassName: m = "", cursorBlinkDuration: h = 0.5, textColors: f = [], variableSpeed: g, onSentenceComplete: x, startOnVisible: y = false, reverseMode: v = false, editableAfter: b = false, editOnClick: w = true, editAutoFocus: S = false, editClassName: C = "", commitOnBlur: R = true, enterToCommit: P = true, escapeToCancel: L = true, onEditCommit: M, onEditCancel: N, ariaLabelEditable: I = "Edit text", maxLength: j, showLengthCounter: A = false, lengthCounterClassName: _ = "", ...T }) => {
     const [E, D] = p.useState(""), [U, k] = p.useState(0), [O, $] = p.useState(false), [z, F] = p.useState(0), [K, re] = p.useState(!y), [H, ne] = p.useState(false), [te, Z] = p.useState(false), [Q, X] = p.useState(""), ae = p.useRef(null), pe = p.useRef(null), be = p.useRef(null), J = p.useRef(null), se = p.useMemo(() => Array.isArray(e) ? e : [
       e
     ], [
@@ -3835,7 +3835,7 @@ void main() {
       const Pe = typeof j == "number" ? Q.slice(0, j) : Q;
       Z(false), D(Pe), k(Pe.length), M && M(Pe);
     }, Me = () => {
-      Z(false), C && C(E);
+      Z(false), N && N(E);
     }, Qe = (Pe) => {
       P && Pe.key === "Enter" ? (Pe.preventDefault(), we()) : L && Pe.key === "Escape" && (Pe.preventDefault(), Me());
     }, _t = (Pe) => {
@@ -3884,7 +3884,7 @@ void main() {
           onChange: _t,
           onKeyDown: Qe,
           onBlur: R ? we : void 0,
-          className: `bg-transparent w-90 outline-none border-b border-dashed border-base-content px-1 ${N}`,
+          className: `bg-transparent w-90 outline-none border-b border-dashed border-base-content px-1 ${C}`,
           ...typeof j == "number" ? {
             maxLength: j
           } : {}
@@ -4366,7 +4366,7 @@ void main() {
       h: fm(e.h)
     };
   }
-  function Is(e, t) {
+  function Ns(e, t) {
     return t ? e.VoxelTerrains.find((s) => s.Id === t) ?? null : null;
   }
   function _x(e) {
@@ -4427,7 +4427,7 @@ void main() {
     };
   }
   function xc(e, t, s = false) {
-    const r = Is(e, t);
+    const r = Ns(e, t);
     return r ? HI(r, s) : null;
   }
   const lr = Object.freeze([
@@ -4491,7 +4491,7 @@ void main() {
   }
   const XI = 4, Ir = /* @__PURE__ */ new Map();
   function YI(e) {
-    const t = Ds(e), s = Ir.get(t);
+    const t = Os(e), s = Ir.get(t);
     if (s) return Ir.delete(t), Ir.set(t, s), s;
     const r = qI(e);
     for (Ir.set(t, r); Ir.size > XI; ) {
@@ -4589,14 +4589,14 @@ void main() {
       tiles: [],
       costs: c
     };
-    const d = Nt(e), u = ai(e, d), m = r ? null : YI(e), h = (b, w, S, N) => {
+    const d = Nt(e), u = ai(e, d), m = r ? null : YI(e), h = (b, w, S, C) => {
       const R = Nn(b, w, S), P = l.get(R);
-      (!P || N < P.cost) && (l.set(R, {
+      (!P || C < P.cost) && (l.set(R, {
         x: b,
         y: w,
         h: S,
-        cost: N
-      }), c.set(R, N));
+        cost: C
+      }), c.set(R, C));
     };
     if (h(o.x, o.y, o.h, 0), i <= 0) return {
       tiles: Array.from(l.values()),
@@ -4608,14 +4608,14 @@ void main() {
       y: o.y,
       h: o.h
     }, 0);
-    const y = (b, w, S, N) => {
-      if (N > i) return;
+    const y = (b, w, S, C) => {
+      if (C > i) return;
       const R = Nn(b, w, S), P = g.get(R);
-      P !== void 0 && P <= N || (g.set(R, N), f.enqueue({
+      P !== void 0 && P <= C || (g.set(R, C), f.enqueue({
         x: b,
         y: w,
         h: S
-      }, N), h(b, w, S, N));
+      }, C), h(b, w, S, C));
     }, v = (b) => {
       const w = Math.max(0, b - o.h);
       if (w === 0) return 0;
@@ -4625,15 +4625,15 @@ void main() {
     for (; !f.isEmpty(); ) {
       const b = f.dequeue(), w = g.get(Nn(b.x, b.y, b.h));
       if (r) {
-        for (let N = 0; N < lr.length; N++) {
-          const { dx: R, dy: P } = lr[N], L = b.x + R, M = b.y + P;
+        for (let C = 0; C < lr.length; C++) {
+          const { dx: R, dy: P } = lr[C], L = b.x + R, M = b.y + P;
           Ur(e, L, M) && Nu(d, L, M, b.h) && y(L, M, b.h, w + 1);
         }
-        for (const N of [
+        for (const C of [
           1,
           -1
         ]) {
-          const R = b.h + N;
+          const R = b.h + C;
           if (!(R < 0 || R > u) && Nu(d, b.x, b.y, R)) {
             const P = Math.max(0, v(R) - v(b.h));
             y(b.x, b.y, R, w + P);
@@ -4642,12 +4642,12 @@ void main() {
         continue;
       }
       const S = m.getNeighborsByDirection(b.x, b.y, b.h);
-      for (let N = 0; N < lr.length; N++) {
-        const { dx: R, dy: P } = lr[N], L = b.x + R, M = b.y + P;
-        if (Ur(e, L, M)) for (const C of S[N]) {
+      for (let C = 0; C < lr.length; C++) {
+        const { dx: R, dy: P } = lr[C], L = b.x + R, M = b.y + P;
+        if (Ur(e, L, M)) for (const N of S[C]) {
           let I = 1;
-          const j = C.h - b.h;
-          j > 0 && (I += sf(j, a.heightCostLookup)), y(L, M, C.h, w + I);
+          const j = N.h - b.h;
+          j > 0 && (I += sf(j, a.heightCostLookup)), y(L, M, N.h, w + I);
         }
       }
     }
@@ -4885,7 +4885,7 @@ void main() {
       for (const r of t.GameState.Characters) s.add(r.Position.terrainId);
       for (const r of t.GameState.Entities) s.add(r.Position.terrainId);
       for (const r of s) {
-        const a = Is(t, r);
+        const a = Ns(t, r);
         if (!a || !$e.isHydrated(a)) continue;
         const o = /* @__PURE__ */ new Set(), i = Nt(a);
         Qt.repairActorArray(t.GameState.Entities, a, i, o, "entity", t, e), Qt.repairActorArray(t.GameState.Characters, a, i, o, "character", t, e);
@@ -4914,7 +4914,7 @@ void main() {
       for (const i of o) Gl(e, e.GameState.Entities, i, "entity", s, r);
     },
     validateActorMove(e, t, s) {
-      const r = e.Position.terrainId, a = Is(s, r);
+      const r = e.Position.terrainId, a = Ns(s, r);
       if (!a || !$e.isHydrated(a)) return !Number.isFinite(t.x) || !Number.isFinite(t.y) || !Number.isFinite(t.h) ? {
         ok: false,
         reason: "position is not finite"
@@ -5307,8 +5307,8 @@ void main() {
           total: g,
           status: `Importing image ${v + 1}/${f.length}...`
         });
-        const N = mc(w, S);
-        await ht.save(b, N);
+        const C = mc(w, S);
+        await ht.save(b, C);
       }
       r == null ? void 0 : r({
         current: f.length,
@@ -6038,7 +6038,7 @@ void main() {
     ]);
     const a = Mx("neutral", "primary"), i = ve.getTheme(e) == "dark" ? "#fdf9f3" : a.primary, c = Ws(), l = (d) => {
       const u = d.trim();
-      u && (r(u), Fs.setName({
+      u && (r(u), Us.setName({
         name: u
       }, ie));
     };
@@ -6240,16 +6240,16 @@ NET` : "QUEST-NET",
     const v = () => {
       if (!s || s === "none") return;
       const w = f.get(), S = d === "clockwise" ? 1 : -1;
-      let N, R = 1;
+      let C, R = 1;
       switch (s) {
         case "slowDown":
-          N = fa(t * 2, w);
+          C = fa(t * 2, w);
           break;
         case "speedUp":
-          N = fa(t / 4, w);
+          C = fa(t / 4, w);
           break;
         case "pause":
-          N = {
+          C = {
             rotate: {
               type: "spring",
               damping: 20,
@@ -6263,15 +6263,15 @@ NET` : "QUEST-NET",
           };
           break;
         case "goBonkers":
-          N = fa(t / 20, w), R = 0.8;
+          C = fa(t / 20, w), R = 0.8;
           break;
         default:
-          N = fa(t, w);
+          C = fa(t, w);
       }
       h.start({
         rotate: w + 360 * S,
         scale: R,
-        transition: N
+        transition: C
       });
     }, b = () => {
       if (!s || s === "none") return;
@@ -6296,7 +6296,7 @@ NET` : "QUEST-NET",
       onMouseEnter: v,
       onMouseLeave: b,
       children: m.map((w, S) => {
-        const R = 360 / m.length * S + l * S, P = R * Math.PI / 180, L = Math.cos(P) * x, M = Math.sin(P) * x, C = R + 90, I = `translate(${L}px, ${M}px) rotate(${C}deg)`;
+        const R = 360 / m.length * S + l * S, P = R * Math.PI / 180, L = Math.cos(P) * x, M = Math.sin(P) * x, N = R + 90, I = `translate(${L}px, ${M}px) rotate(${N}deg)`;
         return n.jsx("span", {
           className: `absolute inline-block transition-all duration-500 ease-[cubic-bezier(0,0,0,1)] ${a} ${o} ${c} ${u}`,
           style: {
@@ -6589,10 +6589,10 @@ void main(){
     const s = e.renderer.domElement;
     s.parentElement === t && t.removeChild(s);
   }
-  const FN = ({ variant: e = "square", pixelSize: t = 3, color: s = "#B19EEF", className: r, style: a, antialias: o = true, patternScale: i = 2, patternDensity: c = 1, liquid: l = false, liquidStrength: d = 0.1, liquidRadius: u = 1, pixelSizeJitter: m = 0, enableRipples: h = true, rippleIntensityScale: f = 1, rippleThickness: g = 0.1, rippleSpeed: x = 0.3, liquidWobbleSpeed: y = 4.5, autoPauseOffscreen: v = true, speed: b = 0.5, transparent: w = true, edgeFade: S = 0.5, noiseAmount: N = 0 }) => {
+  const FN = ({ variant: e = "square", pixelSize: t = 3, color: s = "#B19EEF", className: r, style: a, antialias: o = true, patternScale: i = 2, patternDensity: c = 1, liquid: l = false, liquidStrength: d = 0.1, liquidRadius: u = 1, pixelSizeJitter: m = 0, enableRipples: h = true, rippleIntensityScale: f = 1, rippleThickness: g = 0.1, rippleSpeed: x = 0.3, liquidWobbleSpeed: y = 4.5, autoPauseOffscreen: v = true, speed: b = 0.5, transparent: w = true, edgeFade: S = 0.5, noiseAmount: C = 0 }) => {
     const R = p.useRef(null), P = p.useRef({
       visible: true
-    }), L = p.useRef(b), M = p.useRef(null), C = p.useRef(null);
+    }), L = p.useRef(b), M = p.useRef(null), N = p.useRef(null);
     return p.useEffect(() => {
       const I = R.current;
       if (!I) return;
@@ -6604,12 +6604,12 @@ void main(){
       ], A = {
         antialias: o,
         liquid: l,
-        noiseAmount: N
+        noiseAmount: C
       };
       let _ = false;
       if (!M.current) _ = true;
-      else if (C.current) {
-        for (const T of j) if (C.current[T] !== A[T]) {
+      else if (N.current) {
+        for (const T of j) if (N.current[T] !== A[T]) {
           _ = true;
           break;
         }
@@ -6709,7 +6709,7 @@ void main(){
           const oe = new au(k, H);
           oe.renderToScreen = true, K.addPass(se), K.addPass(oe);
         }
-        if (N > 0) {
+        if (C > 0) {
           K || (K = new su(E), K.addPass(new ru(U, k)));
           const se = new $g("NoiseEffect", "uniform float uTime; uniform float uAmount; float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453);} void mainUv(inout vec2 uv){} void mainImage(const in vec4 inputColor,const in vec2 uv,out vec4 outputColor){ float n=hash(floor(uv*vec2(1920.0,1080.0))+floor(uTime*60.0)); float g=(n-0.5)*uAmount; outputColor=inputColor+vec4(vec3(g),0.0);} ", {
             uniforms: /* @__PURE__ */ new Map([
@@ -6719,7 +6719,7 @@ void main(){
               ],
               [
                 "uAmount",
-                new rt(N)
+                new rt(C)
               ]
             ])
           }), oe = new au(k, se);
@@ -6792,13 +6792,13 @@ void main(){
         }
         T.touch && (T.touch.radiusScale = u);
       }
-      return C.current = A, () => {
+      return N.current = A, () => {
         M.current && _ || M.current && (ff(M.current, I), M.current = null);
       };
     }, [
       o,
       l,
-      N,
+      C,
       t,
       i,
       c,
@@ -6940,7 +6940,7 @@ void main(){
         return;
       }
       t(`/${c.toLowerCase()}`);
-    }, N = async (I, j) => {
+    }, C = async (I, j) => {
       window.confirm(`Delete campaign "${j}"?`) && await V.delete({
         campaignId: I
       }, ie);
@@ -6979,7 +6979,7 @@ void main(){
     }, M = () => {
       var _a3;
       (_a3 = f.current) == null ? void 0 : _a3.click();
-    }, C = async (I) => {
+    }, N = async (I) => {
       var _a3;
       const j = (_a3 = I.target.files) == null ? void 0 : _a3[0];
       if (j) {
@@ -7008,7 +7008,7 @@ void main(){
           ref: f,
           type: "file",
           accept: ".json",
-          onChange: C,
+          onChange: N,
           className: "hidden"
         }),
         n.jsx("div", {
@@ -7349,7 +7349,7 @@ void main(){
                                 }),
                                 n.jsxs("button", {
                                   onClick: (j) => {
-                                    j.stopPropagation(), N(I.Id, I.Name);
+                                    j.stopPropagation(), C(I.Id, I.Name);
                                   },
                                   className: "btn btn-error btn-sm gap-1",
                                   children: [
@@ -7614,7 +7614,7 @@ void main(){
           "all"
         ],
         actorId: o.Id
-      }, t), Is(s, r) && Qt.repairActors(t);
+      }, t), Ns(s, r) && Qt.repairActors(t);
     },
     spawn(e, t) {
       var _a3, _b3;
@@ -7642,7 +7642,7 @@ void main(){
           "all"
         ],
         targetId: o.Id
-      }, t), Is(s, i) && Qt.repairActors(t);
+      }, t), Ns(s, i) && Qt.repairActors(t);
     },
     remove(e, t) {
       const s = V.getActiveCampaign(t), r = s.GameState.Characters.findIndex((c) => c.Id === e.characterId);
@@ -7843,7 +7843,7 @@ void main(){
         console.warn(`Voxel terrain not found: ${e.terrainId}`);
         return;
       }
-      const { Voxels: a, ...o } = e.updates, i = Os(r.Id), c = Wr(r.Id), l = r.Width, d = r.Length, u = r.Height, m = r.Resolution ?? 1;
+      const { Voxels: a, ...o } = e.updates, i = Fs(r.Id), c = Wr(r.Id), l = r.Width, d = r.Length, u = r.Height, m = r.Resolution ?? 1;
       if (Object.assign(r, o), a !== void 0) {
         const h = $e.materialize(r, a);
         await $e.saveTerrain(s, r), r.Width !== l || r.Length !== d || r.Height !== u || (r.Resolution ?? 1) !== m || $e.broadcastTerrainDelta({
@@ -8037,7 +8037,7 @@ void main(){
   function oi(e, t) {
     const s = tC(t), { items: r, canonical: a } = el(e), o = [], i = [];
     let c = 0;
-    const l = (v, b, w, S, N = 1) => {
+    const l = (v, b, w, S, C = 1) => {
       const R = w.map((I, j) => j);
       let P;
       if (!S) P = R;
@@ -8047,18 +8047,18 @@ void main(){
         ].sort((j, A) => w[j] - w[A]);
         P = S.type === "h" ? I.slice(-S.n) : I.slice(0, S.n), P.sort((j, A) => j - A);
       }
-      const L = P.map((I) => w[I]), C = L.reduce((I, j) => I + j, 0) * N;
+      const L = P.map((I) => w[I]), N = L.reduce((I, j) => I + j, 0) * C;
       o.push({
-        sign: N,
+        sign: C,
         count: w.length,
         sides: b,
         keep: S,
         rolls: w,
         usedIndices: P,
         usedValues: L,
-        subtotal: C,
+        subtotal: N,
         notation: `${w.length}d${b}${S ? `k${S.type}${S.n}` : ""}`
-      }), c += C;
+      }), c += N;
       for (let I = 0; I < w.length; I++) {
         const j = w[I];
         i.push({
@@ -8086,8 +8086,8 @@ void main(){
     c += u;
     const m = i.filter((v) => v.kept).map((v) => v.value), h = m.length ? Math.max(...m) : null, f = m.length ? Math.min(...m) : null, g = [];
     for (const v of o) {
-      const b = v.sign === 1 ? "+" : "-", w = v.count > 1 ? `[${v.rolls.join(",")}]` : `[${v.rolls[0]}]`, S = v.keep ? `k${v.keep.type}${v.keep.n}` : "", N = v.count > 1 || v.keep ? `=${Math.abs(v.subtotal)}` : "";
-      g.push(`${b}${w}${S}${N}`);
+      const b = v.sign === 1 ? "+" : "-", w = v.count > 1 ? `[${v.rolls.join(",")}]` : `[${v.rolls[0]}]`, S = v.keep ? `k${v.keep.type}${v.keep.n}` : "", C = v.count > 1 || v.keep ? `=${Math.abs(v.subtotal)}` : "";
+      g.push(`${b}${w}${S}${C}`);
     }
     u !== 0 && g.push(`${u > 0 ? "+" : "-"}${Math.abs(u)}`);
     let x = g.join("");
@@ -8261,7 +8261,7 @@ void main(){
     },
     distanceTo(e, t, s) {
       if (!(e == null ? void 0 : e.Position) || !(t == null ? void 0 : t.Position) || e.Position.terrainId !== t.Position.terrainId) return 1 / 0;
-      const r = Is(s, e.Position.terrainId);
+      const r = Ns(s, e.Position.terrainId);
       if (!r) return 1 / 0;
       const a = Bn(t.Position), { costs: o } = Uo(r, e.Position, Number.MAX_SAFE_INTEGER, e.CanFly ?? false, s.Settings.MovementSettings);
       return o.get(Nn(a.x, a.y, a.h)) ?? 1 / 0;
@@ -8319,7 +8319,7 @@ void main(){
         const c = i.OwnerId ? ym(s, r.Id, i.OwnerId) : null;
         c && (console.warn(`[Ownership] Ignoring owner for ${r.Name}: ${c}`), delete i.OwnerId);
       }
-      Object.assign(r, i), "OwnerId" in i && !r.OwnerId && delete r.OwnerId, a && "CanFly" in e.updates && o && !r.CanFly && Is(s, r.Position.terrainId) && Qt.repairActors(t), ce.create({
+      Object.assign(r, i), "OwnerId" in i && !r.OwnerId && delete r.OwnerId, a && "CanFly" in e.updates && o && !r.CanFly && Ns(s, r.Position.terrainId) && Qt.repairActors(t), ce.create({
         action: "Actor edited",
         details: `${r.Name} was updated`,
         category: "character",
@@ -8793,7 +8793,7 @@ void main(){
         return;
       }
       const d = hm(l, c, r.Position, s.Settings.StatDefinitions, s.Settings.ActionDefinitions);
-      s.GameState.Entities.push(d), i.splice(a, 1), Is(s, r.Position.terrainId) && Qt.repairActors(t), ce.create({
+      s.GameState.Entities.push(d), i.splice(a, 1), Ns(s, r.Position.terrainId) && Qt.repairActors(t), ce.create({
         action: "Item dropped",
         details: `${r.Name} dropped ${l.Name}`,
         category: "item",
@@ -8853,7 +8853,7 @@ void main(){
         y: 0,
         h: 0
       }, s.Settings.StatDefinitions, s.Settings.ActionDefinitions);
-      Pr(a, e.hidden), s.GameState.Entities.push(a), Is(s, e.terrainId) && Qt.repairActors(t), ce.create({
+      Pr(a, e.hidden), s.GameState.Entities.push(a), Ns(s, e.terrainId) && Qt.repairActors(t), ce.create({
         action: "Item spawned",
         details: `${r.Name} placed on the ground`,
         category: "item",
@@ -8989,7 +8989,7 @@ void main(){
           "all"
         ],
         targetId: l.Id
-      }, t), e.repairActors !== false && Is(s, r) && Qt.repairActors(t);
+      }, t), e.repairActors !== false && Ns(s, r) && Qt.repairActors(t);
     },
     remove(e, t) {
       const s = V.getActiveCampaign(t), r = s.GameState.Entities.findIndex((i) => i.Id === e.entityId);
@@ -9021,7 +9021,7 @@ void main(){
       RestoreRule: e.RestoreRule ?? t.RestoreRule
     };
   }
-  function Us(e, t) {
+  function $s(e, t) {
     const s = new Map(t.map((r) => [
       r.Id,
       r
@@ -9546,7 +9546,7 @@ void main(){
       const r = qa.findTemplate(t, s);
       if (r) return e.Skills.find((a) => a.Id === r.Id);
     }
-  }, Ms = {
+  }, Ps = {
     create(e, t) {
       V.getActiveCampaign(t).SkillTemplates.push(e.skill), ce.create({
         action: "Skill created",
@@ -11248,7 +11248,7 @@ void main(){
       roles: [
         "dm"
       ],
-      handler: Ms.create,
+      handler: Ps.create,
       scriptable: true
     },
     "skill:edit": {
@@ -11256,14 +11256,14 @@ void main(){
         "dm",
         "player"
       ],
-      handler: Ms.edit,
+      handler: Ps.edit,
       scriptable: true
     },
     "skill:delete": {
       roles: [
         "dm"
       ],
-      handler: Ms.delete,
+      handler: Ps.delete,
       scriptable: false
     },
     "skill:use": {
@@ -11271,7 +11271,7 @@ void main(){
         "dm",
         "player"
       ],
-      handler: Ms.use,
+      handler: Ps.use,
       scriptable: true
     },
     "skill:discard": {
@@ -11279,28 +11279,28 @@ void main(){
         "dm",
         "player"
       ],
-      handler: Ms.discard,
+      handler: Ps.discard,
       scriptable: true
     },
     "skill:give": {
       roles: [
         "dm"
       ],
-      handler: Ms.give,
+      handler: Ps.give,
       scriptable: true
     },
     "skill:bulkEditTags": {
       roles: [
         "dm"
       ],
-      handler: Ms.bulkEditTags,
+      handler: Ps.bulkEditTags,
       scriptable: true
     },
     "skill:bulkDelete": {
       roles: [
         "dm"
       ],
-      handler: Ms.bulkDelete,
+      handler: Ps.bulkDelete,
       scriptable: false
     },
     "skill:adjustUses": {
@@ -11308,7 +11308,7 @@ void main(){
         "dm",
         "player"
       ],
-      handler: Ms.adjustUses,
+      handler: Ps.adjustUses,
       scriptable: true
     },
     "entity:create": {
@@ -11976,8 +11976,8 @@ void main(){
       }
       const b = [
         ...f.newIndices
-      ].sort((N, R) => N - R), w = b.length;
-      b.every((N, R) => N === y - w + R) ? i.push({
+      ].sort((C, R) => C - R), w = b.length;
+      b.every((C, R) => C === y - w + R) ? i.push({
         path: g,
         indices: b
       }) : o.add(h);
@@ -12070,7 +12070,7 @@ void main(){
       this.unsubscribe(), this.buffer = [];
     }
   }
-  const ZC = 1024 * 1024, _s = 2048, JC = 0.85, ej = 250;
+  const ZC = 1024 * 1024, Ls = 2048, JC = 0.85, ej = 250;
   function tj(e, t, s) {
     if (t === 0 || s === 0) return false;
     const { data: r } = e.getImageData(0, 0, t, s);
@@ -12119,8 +12119,8 @@ void main(){
         r.src = (_a3 = o.target) == null ? void 0 : _a3.result;
       }, r.onload = () => {
         const o = r.width, i = r.height;
-        if (o > _s || i > _s) {
-          s(new Error(`GIF dimensions too large (${o}x${i}). Maximum dimension is ${_s}px. Please resize the GIF before uploading.`));
+        if (o > Ls || i > Ls) {
+          s(new Error(`GIF dimensions too large (${o}x${i}). Maximum dimension is ${Ls}px. Please resize the GIF before uploading.`));
           return;
         }
         if (e.size > ZC) {
@@ -12137,17 +12137,17 @@ void main(){
     });
   }
   function rj(e, t) {
-    if (e <= _s && t <= _s) return {
+    if (e <= Ls && t <= Ls) return {
       width: e,
       height: t
     };
     const s = e / t;
     return e > t ? {
-      width: _s,
-      height: Math.round(_s / s)
+      width: Ls,
+      height: Math.round(Ls / s)
     } : {
-      width: Math.round(_s * s),
-      height: _s
+      width: Math.round(Ls * s),
+      height: Ls
     };
   }
   const _f = 3e4, aj = 1024 * 1024;
@@ -12438,7 +12438,7 @@ void main(){
         return;
       }
       let d = null;
-      if (Wr(r) === a) d = Os(r);
+      if (Wr(r) === a) d = Fs(r);
       else {
         const m = await $e.readStoredPayload(c, r);
         m && m.contentHash === a && (d = m.voxels);
@@ -13942,7 +13942,7 @@ void main(){
       ...t.GameState.Characters,
       ...t.GameState.Entities
     ], a = s ? r.find((i) => i.Id === s) ?? null : null, o = (i) => {
-      Fs.impersonate({
+      Us.impersonate({
         campaignId: t.RoomCode,
         actorId: i
       }, ie);
@@ -14162,8 +14162,8 @@ void main(){
       children: t
     }), document.body) : null;
   }
-  function Cs({ domain: e, mutationDomain: t, entityId: s, initialData: r, onSave: a, onClose: o, onClone: i, onDelete: c, createTitle: l, editTitle: d, viewTitle: u, children: m, buttonConfig: h = {}, fullWidth: f = false }) {
-    const g = fe(), { showTopCancel: x = true, showTopSave: y = true, showBottomButtons: v = true, keepButtonsVisible: b = false } = h, w = t ?? e, S = Eo(g.User, `${e}:create`), N = Eo(g.User, `${w}:edit`), R = s && c && Eo(g.User, `${w}:delete`), P = !s && S ? "create" : s && N ? "edit" : "view", L = P === "view", [M, C] = p.useState(r), [I, j] = p.useState(P === "create"), [A, _] = p.useState(false), [T, E] = p.useState(null), D = p.useRef(r), U = p.useRef(null), k = p.useRef(/* @__PURE__ */ new Set()), O = p.useId();
+  function js({ domain: e, mutationDomain: t, entityId: s, initialData: r, onSave: a, onClose: o, onClone: i, onDelete: c, createTitle: l, editTitle: d, viewTitle: u, children: m, buttonConfig: h = {}, fullWidth: f = false }) {
+    const g = fe(), { showTopCancel: x = true, showTopSave: y = true, showBottomButtons: v = true, keepButtonsVisible: b = false } = h, w = t ?? e, S = Eo(g.User, `${e}:create`), C = Eo(g.User, `${w}:edit`), R = s && c && Eo(g.User, `${w}:delete`), P = !s && S ? "create" : s && C ? "edit" : "view", L = P === "view", [M, N] = p.useState(r), [I, j] = p.useState(P === "create"), [A, _] = p.useState(false), [T, E] = p.useState(null), D = p.useRef(r), U = p.useRef(null), k = p.useRef(/* @__PURE__ */ new Set()), O = p.useId();
     p.useEffect(() => (rA(O, I && !L), () => aA(O)), [
       O,
       I,
@@ -14180,7 +14180,7 @@ void main(){
       M
     ]);
     const X = p.useCallback((we) => {
-      D.current = we, C(we), E(null), P !== "view" && (j(true), _(true));
+      D.current = we, N(we), E(null), P !== "view" && (j(true), _(true));
     }, [
       P
     ]), ae = p.useCallback((we) => (U.current = we, () => {
@@ -14193,7 +14193,7 @@ void main(){
       const we = (_a3 = U.current) == null ? void 0 : _a3.call(U);
       if (we !== void 0) {
         const Me = we;
-        return D.current = Me, C(Me), Me;
+        return D.current = Me, N(Me), Me;
       }
       return D.current;
     }, J = () => {
@@ -14503,8 +14503,8 @@ void main(){
     });
   }
   function Hv({ value: e, onChange: t, readOnly: s, multiple: r = false, compact: a = false }) {
-    const o = fe(), { actionService: i } = De(), c = p.useRef(null), [l, d] = p.useState("idle"), [u, m] = p.useState(null), [h, f] = p.useState(false), [g, x] = p.useState([]), y = o.User.Role === "dm", v = async (C) => {
-      const j = Array.from(C).filter((A) => A.type.startsWith("image/"));
+    const o = fe(), { actionService: i } = De(), c = p.useRef(null), [l, d] = p.useState("idle"), [u, m] = p.useState(null), [h, f] = p.useState(false), [g, x] = p.useState([]), y = o.User.Role === "dm", v = async (N) => {
+      const j = Array.from(N).filter((A) => A.type.startsWith("image/"));
       if (j.length === 0) {
         m("Please select image files"), d("error"), setTimeout(() => {
           d("idle"), m(null);
@@ -14522,16 +14522,16 @@ void main(){
       m("Please select only one file, or enable multi-upload"), d("error"), setTimeout(() => {
         d("idle"), m(null);
       }, 3e3);
-    }, b = async (C) => {
+    }, b = async (N) => {
       m(null), d("processing");
       try {
-        const { blob: I, width: j, height: A, mimeType: _, cutout: T } = await Ec(C);
+        const { blob: I, width: j, height: A, mimeType: _, cutout: T } = await Ec(N);
         if (I.size > 1024 * 1024) throw new Error(`Image is too large (${(I.size / 1024 / 1024).toFixed(2)} MB). Maximum size is 1 MB.`);
         if (y) {
           d("uploading");
           const E = {
             Id: crypto.randomUUID(),
-            Name: C.name.replace(/\.[^/.]+$/, ""),
+            Name: N.name.replace(/\.[^/.]+$/, ""),
             FileSize: I.size,
             MimeType: _,
             Width: j,
@@ -14546,7 +14546,7 @@ void main(){
           if (d("uploading"), !i) throw new Error("Not connected to game session");
           const E = i.imageService;
           if (!E) throw new Error("Image service not available");
-          const D = await E.uploadImage(C, C.name.replace(/\.[^/.]+$/, ""), o.User.Id);
+          const D = await E.uploadImage(N, N.name.replace(/\.[^/.]+$/, ""), o.User.Id);
           t(D.Id), d("idle");
         }
       } catch (I) {
@@ -14554,9 +14554,9 @@ void main(){
           d("idle"), m(null);
         }, 5e3);
       }
-    }, w = async (C) => {
+    }, w = async (N) => {
       m(null), d("processing");
-      const I = C.map((j) => ({
+      const I = N.map((j) => ({
         file: j,
         state: "processing",
         progress: 0
@@ -14566,8 +14566,8 @@ void main(){
         const j = [], A = [
           ...I
         ];
-        for (let _ = 0; _ < C.length; _++) {
-          const T = C[_];
+        for (let _ = 0; _ < N.length; _++) {
+          const T = N[_];
           try {
             const { blob: E, width: D, height: U, mimeType: k, cutout: O } = await Ec(T);
             if (E.size > 1024 * 1024) throw new Error(`Too large (${(E.size / 1024 / 1024).toFixed(2)} MB). Max 1 MB.`);
@@ -14622,15 +14622,15 @@ void main(){
           d("idle"), m(null), x([]);
         }, 5e3);
       }
-    }, S = (C) => {
-      const I = C.target.files;
+    }, S = (N) => {
+      const I = N.target.files;
       I && I.length > 0 && v(I);
-    }, N = (C) => {
-      if (C.preventDefault(), f(false), s) return;
-      const I = C.dataTransfer.files;
+    }, C = (N) => {
+      if (N.preventDefault(), f(false), s) return;
+      const I = N.dataTransfer.files;
       I && I.length > 0 && v(I);
-    }, R = (C) => {
-      C.preventDefault(), s || f(true);
+    }, R = (N) => {
+      N.preventDefault(), s || f(true);
     }, P = () => {
       f(false);
     }, L = () => {
@@ -14679,7 +14679,7 @@ void main(){
       className: "space-y-2",
       children: [
         n.jsxs("div", {
-          onDrop: N,
+          onDrop: C,
           onDragOver: R,
           onDragLeave: P,
           className: `
@@ -14755,28 +14755,28 @@ void main(){
             }),
             g.length > 0 && n.jsx("div", {
               className: "flex flex-wrap justify-between gap-4",
-              children: g.map((C, I) => n.jsxs("div", {
+              children: g.map((N, I) => n.jsxs("div", {
                 className: "flex items-center gap-2 text-sm",
                 children: [
-                  C.state === "processing" && n.jsx("span", {
+                  N.state === "processing" && n.jsx("span", {
                     className: "loading loading-spinner loading-xs"
                   }),
-                  C.state === "uploading" && n.jsx("span", {
+                  N.state === "uploading" && n.jsx("span", {
                     className: "loading loading-spinner loading-xs text-primary"
                   }),
-                  C.state === "idle" && n.jsx("span", {
+                  N.state === "idle" && n.jsx("span", {
                     className: "icon-[mdi--check-circle] w-4 h-4 text-success"
                   }),
-                  C.state === "error" && n.jsx("span", {
+                  N.state === "error" && n.jsx("span", {
                     className: "icon-[mdi--alert-circle] w-4 h-4 text-error"
                   }),
                   n.jsx("span", {
                     className: "flex-1 truncate",
-                    children: C.file.name
+                    children: N.file.name
                   }),
-                  C.error && n.jsx("span", {
+                  N.error && n.jsx("span", {
                     className: "text-xs text-error",
-                    children: C.error
+                    children: N.error
                   })
                 ]
               }, I))
@@ -14803,18 +14803,18 @@ void main(){
     }, [
       f
     ]), !l || !o || l.requiresSecret && !i) return null;
-    const S = e || {}, N = ((_a3 = S.name) == null ? void 0 : _a3.trim()) || ((_b3 = S.objectType) == null ? void 0 : _b3.trim()) || "Generated Image", R = async () => {
+    const S = e || {}, C = ((_a3 = S.name) == null ? void 0 : _a3.trim()) || ((_b3 = S.objectType) == null ? void 0 : _b3.trim()) || "Generated Image", R = async () => {
       u("loading"), h(null);
       try {
-        const C = bI(c, {
+        const N = bI(c, {
           objectType: S.objectType,
           name: S.name,
           description: S.description
         });
-        b(C);
+        b(N);
         const { blob: I } = await wI({
           providerId: a,
-          prompt: C,
+          prompt: N,
           credentials: {
             apiKey: o,
             apiSecret: i
@@ -14823,8 +14823,8 @@ void main(){
         f && URL.revokeObjectURL(f);
         const j = URL.createObjectURL(I);
         g(j), y(I), u("ready");
-      } catch (C) {
-        console.error("[ImageGenerator] Failed to generate image:", C), y(null), g(null), u("error"), h(C instanceof Error ? C.message : "Image generation failed.");
+      } catch (N) {
+        console.error("[ImageGenerator] Failed to generate image:", N), y(null), g(null), u("error"), h(N instanceof Error ? N.message : "Image generation failed.");
       }
     }, P = async () => {
       if (!x) return;
@@ -14832,16 +14832,16 @@ void main(){
         u("error"), h("Not connected to a game session.");
         return;
       }
-      const C = N, I = new File([
+      const N = C, I = new File([
         x
-      ], `${C}.png`, {
+      ], `${N}.png`, {
         type: x.type || "image/png"
       });
       try {
         if (u("loading"), h(null), w) {
           const { blob: j, width: A, height: _, mimeType: T } = await Ec(I), E = {
             Id: crypto.randomUUID(),
-            Name: C,
+            Name: N,
             FileSize: j.size,
             MimeType: T,
             Width: A,
@@ -14854,7 +14854,7 @@ void main(){
         } else {
           const j = r.imageService;
           if (!j) throw new Error("Image service not available.");
-          const A = await j.uploadImage(I, C, s.User.Id);
+          const A = await j.uploadImage(I, N, s.User.Id);
           t(A.Id), u("ready");
         }
       } catch (j) {
@@ -14909,7 +14909,7 @@ void main(){
               className: "w-full md:w-48 h-48 bg-base-200 rounded-lg overflow-hidden flex items-center justify-center",
               children: n.jsx("img", {
                 src: f,
-                alt: N,
+                alt: C,
                 className: "w-full h-full object-contain"
               })
             }),
@@ -14984,24 +14984,24 @@ void main(){
       ]
     });
   }
-  function Ns({ value: e, onChange: t, readOnly: s, tall: r = false, generationContext: a }) {
+  function Cs({ value: e, onChange: t, readOnly: s, tall: r = false, generationContext: a }) {
     const o = fe(), i = V.getActiveCampaign(o), [c, l] = p.useState(false), [d, u] = p.useState(""), [m, h] = p.useState(false), [f, g] = p.useState(false), [x, y] = p.useState(1), v = 12, b = [
       ...i.Images
     ].reverse().filter((T) => {
       const E = T.Name.toLowerCase().includes(d.toLowerCase()), D = o.User.Role === "dm" || T.UploadedBy === o.User.Id;
       return E && D;
-    }), w = b.length === 0 ? 1 : Math.ceil(b.length / v), S = Math.min(x, w), N = (S - 1) * v, R = b.slice(N, N + v), P = () => {
+    }), w = b.length === 0 ? 1 : Math.ceil(b.length / v), S = Math.min(x, w), C = (S - 1) * v, R = b.slice(C, C + v), P = () => {
       y((T) => Math.max(1, T - 1));
     }, L = () => {
       y((T) => Math.min(w, T + 1));
     }, M = () => {
       s || (u(""), h(false), y(1), l(true));
-    }, C = (T) => {
+    }, N = (T) => {
       t(T), l(false);
     }, I = () => {
       l(false);
     }, j = (T) => {
-      T && C(T);
+      T && N(T);
     }, A = c ? n.jsxs(Wn, {
       title: "Select Image",
       onClose: I,
@@ -15042,7 +15042,7 @@ void main(){
         }),
         n.jsx(dA, {
           contextInfo: a,
-          onSelectImage: C
+          onSelectImage: N
         }),
         n.jsxs("div", {
           className: "flex gap-2 mb-2 mt-4",
@@ -15076,7 +15076,7 @@ void main(){
           }) : n.jsx("div", {
             className: "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3",
             children: R.map((T) => n.jsxs("div", {
-              onClick: () => C(T.Id),
+              onClick: () => N(T.Id),
               className: `
 										card bg-base-100 border-2 cursor-pointer transition-all
 										${e === T.Id ? "border-primary ring-2 ring-primary" : "border-base-300 hover:border-primary"}
@@ -15115,7 +15115,7 @@ void main(){
           className: "mt-2 flex items-center justify-between gap-2",
           children: [
             n.jsx("button", {
-              onClick: () => C(void 0),
+              onClick: () => N(void 0),
               className: "btn btn-ghost btn-sm",
               disabled: !e,
               children: "Remove Image"
@@ -15274,27 +15274,27 @@ void main(){
 `, g), v = y === -1 ? h.length : y;
       if (!h.slice(f, g).includes(`
 `) && !d.shiftKey) {
-        const C = h.slice(0, f) + "	" + h.slice(g);
+        const N = h.slice(0, f) + "	" + h.slice(g);
         a(u, {
-          Code: C
+          Code: N
         }), c(m, f + 1, f + 1);
         return;
       }
       const S = h.slice(x, v).split(`
 `);
-      let N = f, R = g, P;
+      let C = f, R = g, P;
       if (d.shiftKey) {
-        let C = 0, I = 0;
+        let N = 0, I = 0;
         P = S.map((j, A) => {
           const _ = j.startsWith("	") ? 1 : j.startsWith("  ") ? 2 : j.startsWith(" ") ? 1 : 0;
-          return A === 0 && (C = Math.min(_, f - x)), I += _, j.slice(_);
-        }), N = Math.max(x, f - C), R = Math.max(N, g - I);
-      } else P = S.map((C) => `	${C}`), N = f + 1, R = g + S.length;
+          return A === 0 && (N = Math.min(_, f - x)), I += _, j.slice(_);
+        }), C = Math.max(x, f - N), R = Math.max(C, g - I);
+      } else P = S.map((N) => `	${N}`), C = f + 1, R = g + S.length;
       const L = P.join(`
 `), M = h.slice(0, x) + L + h.slice(v);
       a(u, {
         Code: M
-      }), c(m, N, R);
+      }), c(m, C, R);
     };
     return n.jsxs("div", {
       className: "space-y-3",
@@ -15897,15 +15897,15 @@ void main(){
         const v = await navigator.clipboard.readText(), b = SA(v), w = [
           ...o,
           ...b.scripts
-        ], S = IA(i, b.parameters), N = {
+        ], S = IA(i, b.parameters), C = {
           ...e,
           Scripts: w.length ? w : void 0,
           Parameters: S.length ? S : void 0
         }, R = b.vars ? Object.keys(b.vars).length : 0, P = R > 0 && NA(e);
-        P && (N.ScriptVars = {
+        P && (C.ScriptVars = {
           ...e.ScriptVars ?? {},
           ...b.vars
-        }), t(N);
+        }), t(C);
         const L = [
           `Imported ${Pi(b.scripts.length, "script")}`
         ];
@@ -16078,7 +16078,7 @@ void main(){
   }
   const ad = 12;
   function di({ isOpen: e, types: t, defaultTypeIndex: s = 0, multiSelect: r = false, selectedIds: a = [], showCount: o = false, countLabel: i = "Count", countMax: c = 99, onConfirm: l, onCancel: d, title: u = "Select Objects", extraAction: m }) {
-    const [h, f] = p.useState(s), [g, x] = p.useState(""), [y, v] = p.useState(0), [b, w] = p.useState(a), [S, N] = p.useState(1), R = t[h];
+    const [h, f] = p.useState(s), [g, x] = p.useState(""), [y, v] = p.useState(0), [b, w] = p.useState(a), [S, C] = p.useState(1), R = t[h];
     if (!R) return console.error("No object types provided to ObjectPicker"), null;
     const P = p.useMemo(() => {
       const k = [
@@ -16099,7 +16099,7 @@ void main(){
     }, [
       P,
       y
-    ]), C = (k) => {
+    ]), N = (k) => {
       f(k), v(0), x("");
     }, I = (k) => {
       x(k), v(0);
@@ -16109,15 +16109,15 @@ void main(){
         k
       ]) : (l([
         k
-      ], R.typeKey, S), x(""), v(0), N(1));
+      ], R.typeKey, S), x(""), v(0), C(1));
     }, A = () => {
       for (const k of t) {
         const O = b.filter(($) => k.items.some((z) => z.Id === $));
         O.length > 0 && l(O, k.typeKey, S);
       }
-      w([]), x(""), v(0), N(1);
+      w([]), x(""), v(0), C(1);
     }, _ = () => {
-      w(a), x(""), v(0), N(1), d();
+      w(a), x(""), v(0), C(1), d();
     }, T = () => {
       w([]);
     }, E = () => {
@@ -16139,7 +16139,7 @@ void main(){
             const $ = b.filter((z) => k.items.some((F) => F.Id === z)).length;
             return n.jsxs("button", {
               className: `tab gap-2 ${O === h ? "tab-active" : ""}`,
-              onClick: () => C(O),
+              onClick: () => N(O),
               children: [
                 k.icon && n.jsx("span", {
                   className: `${k.icon} w-4 h-4`
@@ -16277,7 +16277,7 @@ void main(){
                   min: 1,
                   max: c,
                   value: S,
-                  onChange: (k) => N(Math.max(1, Math.min(c, Number(k.target.value)))),
+                  onChange: (k) => C(Math.max(1, Math.min(c, Number(k.target.value)))),
                   className: "input input-bordered input-sm w-16"
                 })
               ]
@@ -16364,39 +16364,39 @@ void main(){
   }
   function Im(e, t) {
     const { vW: s, vH: r, vL: a, resolution: o, tW: i, tL: c, hasVoxel: l, skipVoxel: d } = t, u = t.maxDistance ?? 1 / 0, m = d ? (H, ne, te) => l(H, ne, te) && !d(H, ne, te) : l, h = (e.origin.x + i / 2) * o, f = (e.origin.y + 0.5) * o, g = (e.origin.z + c / 2) * o, x = e.direction.x * o, y = e.direction.y * o, v = e.direction.z * o;
-    let b = 0, w = 1 / 0, S = 0, N = 0, R = 0;
+    let b = 0, w = 1 / 0, S = 0, C = 0, R = 0;
     if (x !== 0) {
       const H = (0 - h) / x, ne = (s - h) / x, te = Math.min(H, ne), Z = Math.max(H, ne);
-      te > b && (b = te, S = x > 0 ? -1 : 1, N = 0, R = 0), w = Math.min(w, Z);
+      te > b && (b = te, S = x > 0 ? -1 : 1, C = 0, R = 0), w = Math.min(w, Z);
     } else if (h < 0 || h >= s) return null;
     if (y !== 0) {
       const H = (0 - f) / y, ne = (r - f) / y, te = Math.min(H, ne), Z = Math.max(H, ne);
-      te > b && (b = te, S = 0, N = y > 0 ? -1 : 1, R = 0), w = Math.min(w, Z);
+      te > b && (b = te, S = 0, C = y > 0 ? -1 : 1, R = 0), w = Math.min(w, Z);
     } else if (f < 0 || f >= r) return null;
     if (v !== 0) {
       const H = (0 - g) / v, ne = (a - g) / v, te = Math.min(H, ne), Z = Math.max(H, ne);
-      te > b && (b = te, S = 0, N = 0, R = v > 0 ? -1 : 1), w = Math.min(w, Z);
+      te > b && (b = te, S = 0, C = 0, R = v > 0 ? -1 : 1), w = Math.min(w, Z);
     } else if (g < 0 || g >= a) return null;
     if (w <= b || b > u) return null;
     const P = h + b * x, L = f + b * y, M = g + b * v;
-    let C = Math.min(Math.max(Math.floor(P), 0), s - 1), I = Math.min(Math.max(Math.floor(L), 0), r - 1), j = Math.min(Math.max(Math.floor(M), 0), a - 1);
-    if (m(C, I, j)) return {
-      vx: C,
+    let N = Math.min(Math.max(Math.floor(P), 0), s - 1), I = Math.min(Math.max(Math.floor(L), 0), r - 1), j = Math.min(Math.max(Math.floor(M), 0), a - 1);
+    if (m(N, I, j)) return {
+      vx: N,
       vy: I,
       vz: j,
       nx: S,
-      ny: N,
+      ny: C,
       nz: R
     };
-    const A = x > 0 ? 1 : x < 0 ? -1 : 0, _ = y > 0 ? 1 : y < 0 ? -1 : 0, T = v > 0 ? 1 : v < 0 ? -1 : 0, E = x !== 0 ? Math.abs(1 / x) : 1 / 0, D = y !== 0 ? Math.abs(1 / y) : 1 / 0, U = v !== 0 ? Math.abs(1 / v) : 1 / 0, k = x >= 0 ? C + 1 : C, O = y >= 0 ? I + 1 : I, $ = v >= 0 ? j + 1 : j;
+    const A = x > 0 ? 1 : x < 0 ? -1 : 0, _ = y > 0 ? 1 : y < 0 ? -1 : 0, T = v > 0 ? 1 : v < 0 ? -1 : 0, E = x !== 0 ? Math.abs(1 / x) : 1 / 0, D = y !== 0 ? Math.abs(1 / y) : 1 / 0, U = v !== 0 ? Math.abs(1 / v) : 1 / 0, k = x >= 0 ? N + 1 : N, O = y >= 0 ? I + 1 : I, $ = v >= 0 ? j + 1 : j;
     let z = x !== 0 ? (k - h) / x : 1 / 0, F = y !== 0 ? (O - f) / y : 1 / 0, K = v !== 0 ? ($ - g) / v : 1 / 0;
     const re = s + r + a + 8;
-    for (let H = 0; H < re && !(Math.min(z, F, K) > u || (z <= F && z <= K ? (C += A, S = -A, N = 0, R = 0, z += E) : F <= K ? (I += _, S = 0, N = -_, R = 0, F += D) : (j += T, S = 0, N = 0, R = -T, K += U), C < 0 || C >= s || I < 0 || I >= r || j < 0 || j >= a)); H++) if (m(C, I, j)) return {
-      vx: C,
+    for (let H = 0; H < re && !(Math.min(z, F, K) > u || (z <= F && z <= K ? (N += A, S = -A, C = 0, R = 0, z += E) : F <= K ? (I += _, S = 0, C = -_, R = 0, F += D) : (j += T, S = 0, C = 0, R = -T, K += U), N < 0 || N >= s || I < 0 || I >= r || j < 0 || j >= a)); H++) if (m(N, I, j)) return {
+      vx: N,
       vy: I,
       vz: j,
       nx: S,
-      ny: N,
+      ny: C,
       nz: R
     };
     return null;
@@ -16517,7 +16517,7 @@ void main(){
     AIRBORNE_MIN_SCALE: 0.7,
     AIRBORNE_FALLOFF: 0.08,
     Y_OFFSET: 6e-3
-  }, $s = {
+  }, Bs = {
     SCALE_MULTIPLIER: 1.25,
     ALPHA_THRESHOLD: 8,
     BOUNDS_PADDING_PX: 10,
@@ -16597,7 +16597,7 @@ void main(){
   }
   function ws(e, t) {
     const s = (t.Width - 1) / 2, r = (t.Length - 1) / 2, a = Nm(e, t);
-    return new je(e.position.x - s, ll(a), e.position.y - r);
+    return new Ce(e.position.x - s, ll(a), e.position.y - r);
   }
   function Cm(e, t) {
     return t ? In.AIRBORNE_HALO_HEIGHT + (e.cutout ? In.CUTOUT_AIRBORNE_STANDEE_HALO_GAP : In.AIRBORNE_STANDEE_HALO_GAP) : Sn.HEIGHT + (e.cutout ? In.CUTOUT_STANDEE_BASE_GAP : In.STANDEE_BASE_GAP);
@@ -16683,7 +16683,7 @@ void main(){
     Y_OFFSET: 0.018,
     RENDER_ORDER: 80,
     HOVER_RENDER_ORDER: 82
-  }, Bs = {
+  }, Is = {
     RADIUS: bs.DEFAULT,
     CONE_SCALE: 2.6,
     FEATHER: 0.7,
@@ -16695,8 +16695,8 @@ void main(){
     INITIAL_DISTANCE: 5,
     MIN_DISTANCE: 1.2,
     MAX_DISTANCE: 30,
-    ANCHOR_HEIGHT_Y: Bs.TORSO_OFFSET_Y,
-    UPWARD_CAMERA_FLOOR_OFFSET_FROM_ANCHOR: OA - Bs.TORSO_OFFSET_Y,
+    ANCHOR_HEIGHT_Y: Is.TORSO_OFFSET_Y,
+    UPWARD_CAMERA_FLOOR_OFFSET_FROM_ANCHOR: OA - Is.TORSO_OFFSET_Y,
     MIN_POLAR_ANGLE: 0.08,
     MAX_POLAR_ANGLE: Math.PI - 0.08
   }, Zv = {
@@ -16958,9 +16958,9 @@ void main(){
   function YA(e, t) {
     const { data: s } = e.getImageData(0, 0, t, t);
     let r = t, a = t, o = -1, i = -1;
-    for (let l = 0; l < t; l++) for (let d = 0; d < t; d++) s[(l * t + d) * 4 + 3] <= $s.ALPHA_THRESHOLD || (r = Math.min(r, d), a = Math.min(a, l), o = Math.max(o, d), i = Math.max(i, l));
+    for (let l = 0; l < t; l++) for (let d = 0; d < t; d++) s[(l * t + d) * 4 + 3] <= Bs.ALPHA_THRESHOLD || (r = Math.min(r, d), a = Math.min(a, l), o = Math.max(o, d), i = Math.max(i, l));
     if (o < r || i < a) return null;
-    const c = Ea($s.BOUNDS_PADDING_PX, t);
+    const c = Ea(Bs.BOUNDS_PADDING_PX, t);
     return {
       minU: Kt.clamp((r - c) / t, 0, 1),
       maxU: Kt.clamp((o + 1 + c) / t, 0, 1),
@@ -17045,12 +17045,12 @@ void main(){
       if (d) return [
         {
           label: "Characters",
-          items: d.filter((N) => N.Id !== a),
+          items: d.filter((C) => C.Id !== a),
           icon: "icon-[mdi--account-group]",
           typeKey: "character"
         }
       ];
-      const v = (N) => (h === null || N.Position.terrainId === h) && xr(N, u.User, m.RoomCode, f), b = m.GameState.Characters.filter((N) => N.Id !== a && v(N)), w = m.GameState.Entities.filter((N) => N.Id !== a && v(N)), S = [
+      const v = (C) => (h === null || C.Position.terrainId === h) && xr(C, u.User, m.RoomCode, f), b = m.GameState.Characters.filter((C) => C.Id !== a && v(C)), w = m.GameState.Entities.filter((C) => C.Id !== a && v(C)), S = [
         {
           label: "Party",
           items: b,
@@ -17189,7 +17189,7 @@ void main(){
         actorId: e.Id
       });
     };
-    return n.jsx(Cs, {
+    return n.jsx(js, {
       domain: "character",
       mutationDomain: "actor",
       entityId: e == null ? void 0 : e.Id,
@@ -17235,7 +17235,7 @@ void main(){
               }),
               n.jsx(Ue, {
                 label: "Image",
-                children: n.jsx(Ns, {
+                children: n.jsx(Cs, {
                   value: e.Image,
                   onChange: (o) => a("Image", o)
                 })
@@ -17337,7 +17337,7 @@ void main(){
           description: "Character statistics (HP, Mana, etc.)",
           children: n.jsx("div", {
             className: "space-y-3",
-            children: Us(e.Stats, r.Settings.StatDefinitions).map((o) => n.jsxs("div", {
+            children: $s(e.Stats, r.Settings.StatDefinitions).map((o) => n.jsxs("div", {
               className: "flex items-center gap-4",
               children: [
                 n.jsx("div", {
@@ -17516,7 +17516,7 @@ void main(){
     });
   }
   function Ks({ items: e, title: t, description: s, createLabel: r = "Create", onCreateClick: a, extraButtons: o, searchEnabled: i = true, searchPlaceholder: c = "Search...", sortKey: l, itemsPerPage: d = 25, renderEditForm: u, editFormFullWidth: m = false, onBulkUpdateItemTags: h, selectionActions: f = [], onBulkDelete: g, emptyMessage: x = "No items yet. Create one to get started!", itemNounPlural: y = "Items" }) {
-    const [v, b] = p.useState(""), [w, S] = p.useState(null), [N, R] = p.useState(false), [P, L] = p.useState([]), [M, C] = p.useState(false), [I, j] = p.useState(false), [A, _] = p.useState(/* @__PURE__ */ new Set()), [T, E] = p.useState(""), [D, U] = p.useState(""), [k, O] = p.useState(1), [$, z] = p.useState(() => {
+    const [v, b] = p.useState(""), [w, S] = p.useState(null), [C, R] = p.useState(false), [P, L] = p.useState([]), [M, N] = p.useState(false), [I, j] = p.useState(false), [A, _] = p.useState(/* @__PURE__ */ new Set()), [T, E] = p.useState(""), [D, U] = p.useState(""), [k, O] = p.useState(1), [$, z] = p.useState(() => {
       if (l) try {
         return localStorage.getItem(l) || "newest";
       } catch {
@@ -17548,8 +17548,8 @@ void main(){
       P,
       v
     ]);
-    const pe = () => C(true), be = () => {
-      C(false), S(null), R(false);
+    const pe = () => N(true), be = () => {
+      N(false), S(null), R(false);
     }, J = (Y) => {
       I || (R(false), S(Y), pe());
     }, se = () => {
@@ -17636,7 +17636,7 @@ void main(){
           checked: M,
           onChange: (Y) => {
             const ue = Y.target.checked;
-            C(ue), ue || (S(null), R(false));
+            N(ue), ue || (S(null), R(false));
           }
         }),
         n.jsx("div", {
@@ -18033,7 +18033,7 @@ void main(){
             }),
             n.jsx("div", {
               className: `bg-base-200 min-h-full w-full p-6 overflow-y-auto ${m ? "" : "max-w-4xl"}`,
-              children: (w || N) && u(w, {
+              children: (w || C) && u(w, {
                 currentPath: P,
                 closeDrawer: be
               })
@@ -18317,10 +18317,10 @@ void main(){
           onBulkUpdateItemTags: m,
           selectionActions: g,
           renderEditForm: (v, { currentPath: b, closeDrawer: w }) => {
-            const S = v ? s.CharacterRoster.find((R) => R.Id === v.id) : void 0, N = b.length > 0 ? qs([], b) : void 0;
+            const S = v ? s.CharacterRoster.find((R) => R.Id === v.id) : void 0, C = b.length > 0 ? qs([], b) : void 0;
             return n.jsx(ty, {
               character: S,
-              initialTags: N,
+              initialTags: C,
               onClose: () => w == null ? void 0 : w()
             }, (v == null ? void 0 : v.id) || `create-${a}`);
           }
@@ -18987,13 +18987,13 @@ void main(){
                               onChange: (w) => {
                                 const S = Math.max(1, parseInt(w.target.value) || 1);
                                 h(f.Id, {
-                                  Stats: f.Stats.map((N) => N.Id === g.Id ? {
-                                    ...N,
+                                  Stats: f.Stats.map((C) => C.Id === g.Id ? {
+                                    ...C,
                                     Max: S,
-                                    ...N.Current !== null && N.Current === N.Max ? {
+                                    ...C.Current !== null && C.Current === C.Max ? {
                                       Current: S
                                     } : {}
-                                  } : N)
+                                  } : C)
                                 });
                               }
                             })
@@ -19012,11 +19012,11 @@ void main(){
                               disabled: a,
                               value: x.Current ?? "",
                               onChange: (w) => {
-                                const S = w.target.value, N = S === "" ? null : Number(S);
+                                const S = w.target.value, C = S === "" ? null : Number(S);
                                 h(f.Id, {
                                   Stats: f.Stats.map((R) => R.Id === g.Id ? {
                                     ...R,
-                                    Current: N
+                                    Current: C
                                   } : R)
                                 });
                               },
@@ -19062,11 +19062,11 @@ void main(){
                               disabled: a,
                               value: x.RegenRate ?? "",
                               onChange: (w) => {
-                                const S = w.target.value, N = S === "" ? void 0 : Number(S);
+                                const S = w.target.value, C = S === "" ? void 0 : Number(S);
                                 h(f.Id, {
                                   Stats: f.Stats.map((R) => R.Id === g.Id ? {
                                     ...R,
-                                    RegenRate: N
+                                    RegenRate: C
                                   } : R)
                                 });
                               },
@@ -19078,8 +19078,8 @@ void main(){
                                 h(f.Id, {
                                   Stats: f.Stats.map((w) => {
                                     if (w.Id !== g.Id) return w;
-                                    const { RegenRate: S, ...N } = w;
-                                    return N;
+                                    const { RegenRate: S, ...C } = w;
+                                    return C;
                                   })
                                 });
                               },
@@ -19127,8 +19127,8 @@ void main(){
                                 h(f.Id, {
                                   Stats: f.Stats.map((w) => {
                                     if (w.Id !== g.Id) return w;
-                                    const { RestoreRule: S, ...N } = w;
-                                    return N;
+                                    const { RestoreRule: S, ...C } = w;
+                                    return C;
                                   })
                                 });
                               },
@@ -20989,7 +20989,7 @@ ${x}: 1`;
     };
     return n.jsx("div", {
       className: "p-6",
-      children: n.jsx(Cs, {
+      children: n.jsx(js, {
         domain: "setting",
         entityId: s.Id,
         initialData: s,
@@ -21661,19 +21661,19 @@ ${x}: 1`;
         value: 0
       },
       actorPos: {
-        value: new je()
+        value: new Ce()
       },
       camPos: {
-        value: new je()
+        value: new Ce()
       },
       radius: {
-        value: Bs.RADIUS
+        value: Is.RADIUS
       },
       coneScale: {
-        value: Bs.CONE_SCALE
+        value: Is.CONE_SCALE
       },
       feather: {
-        value: Bs.FEATHER
+        value: Is.FEATHER
       },
       cutY: {
         value: 0
@@ -21688,7 +21688,7 @@ ${x}: 1`;
     const a = r.actorX - r.camX, o = r.actorY - r.camY, i = r.actorZ - r.camZ, c = Math.hypot(a, o, i);
     if (c < 1e-4) return false;
     const l = a / c, d = o / c, u = i / c, m = e - r.camX, h = t - r.camY, f = s - r.camZ, g = m * l + h * d + f * u;
-    if (g <= 0 || g >= c - Bs.ACTOR_MARGIN) return false;
+    if (g <= 0 || g >= c - Is.ACTOR_MARGIN) return false;
     const x = m - l * g, y = h - d * g, v = f - u * g, b = Math.hypot(x, y, v), w = r.radius * (1 + (r.coneScale - 1) * (1 - g / c));
     return b <= w;
   }
@@ -21720,7 +21720,7 @@ ${x}: 1`;
     "	if (distAct < 0.0001) return false;",
     "	vec3 axis = toActor / distAct;",
     "	float t = dot(P - uHeroCamPos, axis);",
-    `	if (t <= 0.0 || t >= distAct - ${Bs.ACTOR_MARGIN.toFixed(3)}) return false;`,
+    `	if (t <= 0.0 || t >= distAct - ${Is.ACTOR_MARGIN.toFixed(3)}) return false;`,
     "	float radial = length((P - uHeroCamPos) - axis * t);",
     "	float coneR = uHeroRadius * mix(1.0, uHeroConeScale, 1.0 - t / distAct);",
     "	if (radial > coneR + uHeroFeather) return false;",
@@ -21756,7 +21756,7 @@ ${x}: 1`;
   function Ka(e, t, s) {
     const r = RA(e, t, s);
     if (!r) return null;
-    const { vx: a, vy: o, vz: i, nx: c, ny: l, nz: d } = r, u = t.resolution, m = 0.5 / u, h = lc(t, a, o, i), f = new je(h.x + c * m, h.y + l * m, h.z + d * m), g = e.origin.distanceTo(f), x = new je(c, l, d), y = Math.floor(a / u), v = Math.floor(i / u), b = Math.floor((o + 1) / u);
+    const { vx: a, vy: o, vz: i, nx: c, ny: l, nz: d } = r, u = t.resolution, m = 0.5 / u, h = lc(t, a, o, i), f = new Ce(h.x + c * m, h.y + l * m, h.z + d * m), g = e.origin.distanceTo(f), x = new Ce(c, l, d), y = Math.floor(a / u), v = Math.floor(i / u), b = Math.floor((o + 1) / u);
     return {
       vx: a,
       vy: o,
@@ -21842,7 +21842,7 @@ ${x}: 1`;
     return Math.max(t, Math.min(s, e));
   }
   function KE(e, t) {
-    const s = e.domElement.getBoundingClientRect(), r = t.clone().project(e.camera), a = t.clone().add(new je(0, 1, 0)).project(e.camera), o = (a.x - r.x) * s.width / 2, i = -(a.y - r.y) * s.height / 2, c = Math.hypot(o, i);
+    const s = e.domElement.getBoundingClientRect(), r = t.clone().project(e.camera), a = t.clone().add(new Ce(0, 1, 0)).project(e.camera), o = (a.x - r.x) * s.width / 2, i = -(a.y - r.y) * s.height / 2, c = Math.hypot(o, i);
     return !Number.isFinite(c) || c <= 0 ? {
       pixelsPerHeight: wa.FALLBACK_PIXELS_PER_HEIGHT,
       projectedUpX: 0,
@@ -21937,7 +21937,7 @@ ${x}: 1`;
     return a.colorSpace = zs, a;
   }
   function xy(e, t, s) {
-    const r = new je(), a = new je();
+    const r = new Ce(), a = new Ce();
     t.getWorldPosition(r), s.getWorldPosition(a), e.rotation.y = Math.atan2(r.x - a.x, r.z - a.z);
   }
   const vy = "fogDepthOverride", Qf = {
@@ -21965,7 +21965,7 @@ ${x}: 1`;
     return u.position.y = a + i / 2, u.renderOrder = il.NORMAL, Ta(u, t), u.onBeforeRender = () => xy(u, s.camera, r), u;
   }
   function nT(e) {
-    const t = $s.SCALE_MULTIPLIER, s = (t - 1) / (2 * t), r = 1 / t;
+    const t = Bs.SCALE_MULTIPLIER, s = (t - 1) / (2 * t), r = 1 / t;
     return {
       minU: s + e.minU * r,
       maxU: s + e.maxU * r,
@@ -21976,7 +21976,7 @@ ${x}: 1`;
   function sT(e, t) {
     if (!e.uv) return false;
     const { x: s, y: r } = e.uv;
-    return s >= t.minU && s <= t.maxU && r >= t.minV && r <= t.maxV ? true : s >= $s.SUPPORT_U_MIN && s <= $s.SUPPORT_U_MAX && r <= $s.SUPPORT_BAND_MAX_V;
+    return s >= t.minU && s <= t.maxU && r >= t.minV && r <= t.maxV ? true : s >= Bs.SUPPORT_U_MIN && s <= Bs.SUPPORT_U_MAX && r <= Bs.SUPPORT_BAND_MAX_V;
   }
   function rT(e, t, s) {
     const r = t.userData.actorPickBounds;
@@ -21989,7 +21989,7 @@ ${x}: 1`;
     };
   }
   function aT(e, t, s, r, a) {
-    const { width: o, height: i } = Ys(e.size, e.cutout), c = new Gs(o * $s.SCALE_MULTIPLIER, i * $s.SCALE_MULTIPLIER), l = new Xt({
+    const { width: o, height: i } = Ys(e.size, e.cutout), c = new Gs(o * Bs.SCALE_MULTIPLIER, i * Bs.SCALE_MULTIPLIER), l = new Xt({
       transparent: true,
       opacity: 0,
       depthTest: false,
@@ -22123,8 +22123,8 @@ ${x}: 1`;
   }
   function lT(e, t, s) {
     const r = (t.Width - 1) / 2, a = (t.Length - 1) / 2, o = cl(e, t), i = e.position.x - r, c = e.position.y - a, l = o + In.TERRAIN_WORLD_Y_OFFSET + wa.GUIDE_Y_OFFSET, d = s.y, u = new yr().setFromPoints([
-      new je(i, l, c),
-      new je(i, d, c)
+      new Ce(i, l, c),
+      new Ce(i, d, c)
     ]), m = new Vg({
       color: wa.GUIDE_COLOR,
       transparent: true,
@@ -22134,8 +22134,8 @@ ${x}: 1`;
     return h.renderOrder = wa.GUIDE_RENDER_ORDER, h;
   }
   function dT({ resources: e, characters: t, entities: s, cutoutImageIds: r, selectedActor: a, terrain: o, terrainIndex: i, isDM: c, performanceMode: l, xRayActors: d = false, imageService: u, onActorClick: m, onActorSelect: h, interactionMode: f, canControlActor: g, onActorDragEnd: x, trackedActor: y, onTrackedActorVisualChange: v, draggableHeightRange: b }) {
-    const w = p.useRef(u), S = p.useRef(m), N = p.useRef(h), R = p.useRef(f), P = p.useRef(g), L = p.useRef(x), M = p.useRef(y ? ss(y.kind, y.id) : null), C = p.useRef(v), I = p.useRef(null), j = p.useRef(b), A = p.useRef(a), _ = p.useRef(d), T = p.useRef(o), E = p.useRef(i), D = p.useRef(/* @__PURE__ */ new Map()), U = p.useRef(0), k = p.useRef(/* @__PURE__ */ new Map()), O = p.useRef(/* @__PURE__ */ new Map()), $ = p.useRef(/* @__PURE__ */ new Map()), z = p.useRef(/* @__PURE__ */ new Map()), F = p.useRef(0), K = p.useRef(/* @__PURE__ */ new Map()), re = p.useRef(/* @__PURE__ */ new Map()), H = p.useRef(null), ne = p.useRef(null), te = p.useRef(/* @__PURE__ */ new Map()), Z = p.useRef(/* @__PURE__ */ new Map()), Q = p.useRef(null), X = p.useRef(null), ae = p.useRef(Xf(t, s, r)), { actionService: pe } = De();
-    M.current = y ? ss(y.kind, y.id) : null, C.current = v, ae.current = Xf(t, s, r), p.useEffect(() => {
+    const w = p.useRef(u), S = p.useRef(m), C = p.useRef(h), R = p.useRef(f), P = p.useRef(g), L = p.useRef(x), M = p.useRef(y ? ss(y.kind, y.id) : null), N = p.useRef(v), I = p.useRef(null), j = p.useRef(b), A = p.useRef(a), _ = p.useRef(d), T = p.useRef(o), E = p.useRef(i), D = p.useRef(/* @__PURE__ */ new Map()), U = p.useRef(0), k = p.useRef(/* @__PURE__ */ new Map()), O = p.useRef(/* @__PURE__ */ new Map()), $ = p.useRef(/* @__PURE__ */ new Map()), z = p.useRef(/* @__PURE__ */ new Map()), F = p.useRef(0), K = p.useRef(/* @__PURE__ */ new Map()), re = p.useRef(/* @__PURE__ */ new Map()), H = p.useRef(null), ne = p.useRef(null), te = p.useRef(/* @__PURE__ */ new Map()), Z = p.useRef(/* @__PURE__ */ new Map()), Q = p.useRef(null), X = p.useRef(null), ae = p.useRef(Xf(t, s, r)), { actionService: pe } = De();
+    M.current = y ? ss(y.kind, y.id) : null, N.current = v, ae.current = Xf(t, s, r), p.useEffect(() => {
       w.current = u;
     }, [
       u
@@ -22144,7 +22144,7 @@ ${x}: 1`;
     }, [
       m
     ]), p.useEffect(() => {
-      N.current = h;
+      C.current = h;
     }, [
       h
     ]), p.useEffect(() => {
@@ -22246,11 +22246,11 @@ ${x}: 1`;
           $.current.set(B, ue.clone()), Ee(B, de, de.position, ue);
         }
       };
-      I.current = ye, (_a3 = C.current) == null ? void 0 : _a3.call(C, ye);
+      I.current = ye, (_a3 = N.current) == null ? void 0 : _a3.call(N, ye);
     }, xe = (B) => {
       var _a3;
       const de = I.current;
-      !de || B && de.object !== B || (de.setLocalPosition(null), I.current = null, (_a3 = C.current) == null ? void 0 : _a3.call(C, null));
+      !de || B && de.object !== B || (de.setLocalPosition(null), I.current = null, (_a3 = N.current) == null ? void 0 : _a3.call(N, null));
     };
     p.useEffect(() => {
       const B = pe == null ? void 0 : pe.actorPoseService;
@@ -22266,7 +22266,7 @@ ${x}: 1`;
           if (!st) continue;
           Oe.add(Be), de.set(Be, me(nt.position));
           let xt = Le.get(Be);
-          xt || (xt = new je(), Le.set(Be, xt), Y(Be), z.current.delete(Be)), xt.set(st.position[0], st.position[1], st.position[2]);
+          xt || (xt = new Ce(), Le.set(Be, xt), Y(Be), z.current.delete(Be)), xt.set(st.position[0], st.position[1], st.position[2]);
         }
         for (const Be of Array.from(Le.keys())) {
           if (Oe.has(Be)) continue;
@@ -22363,7 +22363,7 @@ ${x}: 1`;
     return p.useEffect(() => {
       var _a3;
       const B = y ? ss(y.kind, y.id) : null, de = B ? O.current.get(B) : void 0;
-      return B && de ? q(B, de) : (_a3 = C.current) == null ? void 0 : _a3.call(C, null), () => xe();
+      return B && de ? q(B, de) : (_a3 = N.current) == null ? void 0 : _a3.call(N, null), () => xe();
     }, [
       y == null ? void 0 : y.kind,
       y == null ? void 0 : y.id,
@@ -22375,7 +22375,7 @@ ${x}: 1`;
       H.current = B, ne.current = ye;
       const me = k.current, Y = O.current, ue = $.current, ke = re.current;
       te.current.clear(), Z.current.clear(), me.clear(), Y.clear(), ue.clear(), ke.clear(), z.current.clear(), e.scene.add(B);
-      const Se = new Dt(), Le = new je(), Ze = (Ne) => {
+      const Se = new Dt(), Le = new Ce(), Ze = (Ne) => {
         const he = Hr(de, Ne, e, Se), _e = de.intersectObjects(e.actorPickTargets, true), He = ml(E.current, e.heroOcclusion), at = Ka(de.ray, E.current, He);
         for (const ct of _e) {
           if (!_.current && at && at.distance < ct.distance - Kv.EPSILON) continue;
@@ -22394,7 +22394,7 @@ ${x}: 1`;
           const sn = ss(nn, vt), Tt = ae.current.get(sn);
           if (!Tt || Tt.cutout) continue;
           ct.getWorldPosition(Le);
-          const js = Le.clone().project(e.camera), _n = (js.x + 1) / 2 * he.width + he.left, As = (1 - js.y) / 2 * he.height + he.top, Zs = Math.hypot(Ne.clientX - _n, Ne.clientY - As);
+          const As = Le.clone().project(e.camera), _n = (As.x + 1) / 2 * he.width + he.left, Es = (1 - As.y) / 2 * he.height + he.top, Zs = Math.hypot(Ne.clientX - _n, Ne.clientY - Es);
           Zs <= id.PROXIMITY_RADIUS_PX && (!Je || Zs < Je.distance) && (Je = {
             key: sn,
             actor: Tt,
@@ -22415,14 +22415,14 @@ ${x}: 1`;
       }, Be = (Ne, he) => {
         if (Ne.hasDragged || !Ne.canDragHeight) return;
         const _e = he.clientX - Ne.startClientX, He = he.clientY - Ne.startClientY;
-        Math.hypot(_e, He) < wa.START_THRESHOLD_PX || (Ne.hasDragged = true, A.current = Ne.actor, N.current(Ne.actor), Yf(k.current, Ne.actor), e.dragState.active = true);
+        Math.hypot(_e, He) < wa.START_THRESHOLD_PX || (Ne.hasDragged = true, A.current = Ne.actor, C.current(Ne.actor), Yf(k.current, Ne.actor), e.dragState.active = true);
       }, nt = (Ne) => {
         const he = Q.current;
         if (!he || Ne.pointerId !== he.pointerId || (Be(he, Ne), !he.hasDragged || !he.canDragHeight)) return;
-        const _e = Ne.clientX - he.startClientX, He = Ne.clientY - he.startClientY, at = (_e * he.projectedUpX + He * he.projectedUpY) / (he.pixelsPerHeight * he.pixelsPerHeight), Je = cT(he.descriptor, T.current, E.current), ct = j.current, vt = ct ? Math.max(Je.min, ct.min) : Je.min, nn = ct ? Math.min(Je.max, ct.max) : Je.max, sn = YE(Math.round(he.startPosition.h + at), vt, Math.max(vt, nn)), Tt = he.descriptor.canFly ?? false, js = Da(T.current, E.current, he.candidatePosition.x, he.candidatePosition.y, sn, Tt) ? sn : he.candidatePosition.h;
-        js !== he.candidatePosition.h && (he.candidatePosition = {
+        const _e = Ne.clientX - he.startClientX, He = Ne.clientY - he.startClientY, at = (_e * he.projectedUpX + He * he.projectedUpY) / (he.pixelsPerHeight * he.pixelsPerHeight), Je = cT(he.descriptor, T.current, E.current), ct = j.current, vt = ct ? Math.max(Je.min, ct.min) : Je.min, nn = ct ? Math.min(Je.max, ct.max) : Je.max, sn = YE(Math.round(he.startPosition.h + at), vt, Math.max(vt, nn)), Tt = he.descriptor.canFly ?? false, As = Da(T.current, E.current, he.candidatePosition.x, he.candidatePosition.y, sn, Tt) ? sn : he.candidatePosition.h;
+        As !== he.candidatePosition.h && (he.candidatePosition = {
           ...he.startPosition,
-          h: js
+          h: As
         }, Oe(he), Ne.preventDefault(), Ne.stopImmediatePropagation());
       }, st = (Ne) => {
         const he = re.current.get(Ne.actorKey), _e = ne.current, He = A.current ? ss(A.current.kind, A.current.id) : null, at = T.current;
@@ -22469,7 +22469,7 @@ ${x}: 1`;
         const { actor: _e, key: He } = he, at = {
           id: _e.id,
           kind: _e.kind,
-          moveSpeed: _e.moveSpeed ?? $s.FALLBACK_MOVE_SPEED
+          moveSpeed: _e.moveSpeed ?? Bs.FALLBACK_MOVE_SPEED
         }, Je = _e.canFly && (((_a3 = P.current) == null ? void 0 : _a3.call(P, at)) ?? false), ct = ws(_e, T.current), vt = KE(e, ct);
         Ne.preventDefault(), Ne.stopPropagation(), Ne.stopImmediatePropagation(), Q.current = {
           pointerId: Ne.pointerId,
@@ -22572,7 +22572,7 @@ ${x}: 1`;
     if (m && d + Jf < m.distance) return null;
     if (m) return fy(m);
     if (!i) return null;
-    const h = new je(), f = new tm(new je(0, 1, 0), -wy);
+    const h = new Ce(), f = new tm(new Ce(0, 1, 0), -wy);
     if (!a.ray.intersectPlane(f, h) || d + Jf < h.distanceTo(a.ray.origin)) return null;
     const g = (s.Width - 1) / 2, x = (s.Length - 1) / 2, y = Math.round(h.x + g), v = Math.round(h.z + x);
     return y < 0 || y >= s.Width || v < 0 || v >= s.Length || ((_c2 = r.allSurfaces.get(pn(y, v))) == null ? void 0 : _c2.includes(0)) ? null : {
@@ -22611,14 +22611,14 @@ ${x}: 1`;
       l
     ]), b = p.useMemo(() => d ? ep(d) : null, [
       d
-    ]), w = p.useRef(v), S = p.useRef(b), N = p.useRef(u), R = p.useRef(o), P = p.useRef(i), L = p.useRef(c), M = p.useRef(m), C = p.useRef(h), I = p.useRef(f), j = p.useRef(g), A = p.useRef(r), _ = p.useRef(a), T = p.useRef(x), E = p.useRef(y);
+    ]), w = p.useRef(v), S = p.useRef(b), C = p.useRef(u), R = p.useRef(o), P = p.useRef(i), L = p.useRef(c), M = p.useRef(m), N = p.useRef(h), I = p.useRef(f), j = p.useRef(g), A = p.useRef(r), _ = p.useRef(a), T = p.useRef(x), E = p.useRef(y);
     return p.useEffect(() => {
-      g !== "world-pointer" && (N.current = null, T.current(null), e.domElement.style.cursor = "");
+      g !== "world-pointer" && (C.current = null, T.current(null), e.domElement.style.cursor = "");
     }, [
       g,
       e
     ]), p.useEffect(() => {
-      w.current = v, S.current = b, N.current = u, R.current = o, P.current = i, L.current = c, M.current = m, C.current = h, I.current = f, j.current = g, A.current = r, _.current = a, T.current = x, E.current = y;
+      w.current = v, S.current = b, C.current = u, R.current = o, P.current = i, L.current = c, M.current = m, N.current = h, I.current = f, j.current = g, A.current = r, _.current = a, T.current = x, E.current = y;
     }, [
       v,
       b,
@@ -22687,7 +22687,7 @@ ${x}: 1`;
         if (!X || !ae || !L.current) return null;
         const pe = mT(Q, e, t, s, D, U, ae.CanFly ?? false);
         if (!pe) return null;
-        const be = tp(pe, ae, s, C.current), J = {
+        const be = tp(pe, ae, s, N.current), J = {
           ...pe,
           h: be
         }, se = k(J);
@@ -22704,19 +22704,19 @@ ${x}: 1`;
         const Q = $;
         if ($ = null, !Q) return;
         if (En.request) {
-          N.current && (N.current = null, T.current(null));
+          C.current && (C.current = null, T.current(null));
           return;
         }
         if (e.dragState.active) {
-          N.current = null, T.current(null), e.domElement.style.cursor = "grabbing";
+          C.current = null, T.current(null), e.domElement.style.cursor = "grabbing";
           return;
         }
-        const X = O(Q), ae = N.current;
-        (ae == null ? void 0 : ae.x) === (X == null ? void 0 : X.x) && (ae == null ? void 0 : ae.y) === (X == null ? void 0 : X.y) && (ae == null ? void 0 : ae.h) === (X == null ? void 0 : X.h) || (N.current = X, T.current(X), e.domElement.style.cursor = X ? "pointer" : "");
+        const X = O(Q), ae = C.current;
+        (ae == null ? void 0 : ae.x) === (X == null ? void 0 : X.x) && (ae == null ? void 0 : ae.y) === (X == null ? void 0 : X.y) && (ae == null ? void 0 : ae.h) === (X == null ? void 0 : X.h) || (C.current = X, T.current(X), e.domElement.style.cursor = X ? "pointer" : "");
       }, K = (Q) => {
         j.current === "world-pointer" && ($ = Q, z === 0 && (z = requestAnimationFrame(F)));
       }, re = () => {
-        $ = null, z !== 0 && (cancelAnimationFrame(z), z = 0), N.current = null, T.current(null), e.domElement.style.cursor = "";
+        $ = null, z !== 0 && (cancelAnimationFrame(z), z = 0), C.current = null, T.current(null), e.domElement.style.cursor = "";
       };
       let H = null;
       const ne = (Q) => {
@@ -22754,7 +22754,7 @@ ${x}: 1`;
         if (!be || !J || !L.current) return;
         const se = O(Q) ?? X.startedAtTile;
         if (!se) return;
-        const oe = tp(se, J, s, C.current), Ee = {
+        const oe = tp(se, J, s, N.current), Ee = {
           ...se,
           h: oe
         }, q = k(Ee);
@@ -22830,11 +22830,11 @@ ${x}: 1`;
           transparent: true,
           depthTest: true,
           depthWrite: false
-        }), w = new zg(b), S = gT(y, t), N = xT(y);
-        w.position.copy(S), w.scale.setScalar(N * os.POP_START_SCALE), w.renderOrder = os.RENDER_ORDER, u.push(v), m.push(b), h.push({
+        }), w = new zg(b), S = gT(y, t), C = xT(y);
+        w.position.copy(S), w.scale.setScalar(C * os.POP_START_SCALE), w.renderOrder = os.RENDER_ORDER, u.push(v), m.push(b), h.push({
           sprite: w,
           baseY: S.y,
-          worldSize: N,
+          worldSize: C,
           startedAt: performance.now()
         }), d.add(w);
       }
@@ -22863,7 +22863,7 @@ ${x}: 1`;
   function ST(e, t, s, r) {
     if (t < 0 || t >= e.Width || s < 0 || s >= e.Length) return null;
     const a = (e.Width - 1) / 2, o = (e.Length - 1) / 2, i = Kt.clamp(r, 0, e.Height);
-    return new je(t - a, ll(i) + Ke.TILE_Y_OFFSET, s - o);
+    return new Ce(t - a, ll(i) + Ke.TILE_Y_OFFSET, s - o);
   }
   function IT() {
     const t = 0.5 - Ke.OUTLINE_WIDTH, s = new z0([
@@ -22976,7 +22976,7 @@ ${x}: 1`;
       const f = () => {
         const g = Date.now();
         for (const x of h) {
-          const y = Math.max(0, Math.min(Vo, g - x.timestamp)), v = y / Vo, b = v < Ke.FADE_HOLD_PROGRESS ? 1 : Math.max(0, 1 - (v - Ke.FADE_HOLD_PROGRESS) / (1 - Ke.FADE_HOLD_PROGRESS)), w = y % Ke.PULSE_PERIOD_MS / Ke.PULSE_PERIOD_MS, S = 1 + Ke.PULSE_SCALE_MULTIPLIER * (0.5 - 0.5 * Math.cos(w * Math.PI * 2)), N = y % Ke.ARROW_BOUNCE_PERIOD_MS / Ke.ARROW_BOUNCE_PERIOD_MS, R = Ke.ARROW_BOUNCE_HEIGHT * Math.abs(Math.sin(N * Math.PI));
+          const y = Math.max(0, Math.min(Vo, g - x.timestamp)), v = y / Vo, b = v < Ke.FADE_HOLD_PROGRESS ? 1 : Math.max(0, 1 - (v - Ke.FADE_HOLD_PROGRESS) / (1 - Ke.FADE_HOLD_PROGRESS)), w = y % Ke.PULSE_PERIOD_MS / Ke.PULSE_PERIOD_MS, S = 1 + Ke.PULSE_SCALE_MULTIPLIER * (0.5 - 0.5 * Math.cos(w * Math.PI * 2)), C = y % Ke.ARROW_BOUNCE_PERIOD_MS / Ke.ARROW_BOUNCE_PERIOD_MS, R = Ke.ARROW_BOUNCE_HEIGHT * Math.abs(Math.sin(C * Math.PI));
           x.tileGroup.scale.set(S, 1, S), x.fillMaterial.opacity = Ke.FILL_OPACITY * b, x.outlineMaterial.opacity = Ke.OUTLINE_OPACITY * b, x.arrowMaterial.opacity = b, x.arrow.position.y = x.baseArrowY + R;
         }
       };
@@ -23005,8 +23005,8 @@ ${x}: 1`;
         h = null, v.preventDefault(), v.stopPropagation(), v.stopImmediatePropagation();
         const w = v.clientX - b.startX, S = v.clientY - b.startY;
         if (Math.hypot(w, S) > Ou.CLICK_DRAG_THRESHOLD_PX) return;
-        const N = AT(v, e, s, u, m);
-        N && l.current(N);
+        const C = AT(v, e, s, u, m);
+        C && l.current(C);
       }, x = (v) => {
         (h == null ? void 0 : h.pointerId) === v.pointerId && (h = null);
       }, y = (v) => {
@@ -23028,8 +23028,8 @@ ${x}: 1`;
     const s = new Zr(e.data, e.voxelWidth, e.voxelHeight, e.voxelLength);
     return Sy(s, t.performanceMode ?? false), {
       texture: s,
-      origin: new je(e.worldOriginX, e.worldOriginY, e.worldOriginZ),
-      size: new je(e.worldSizeX, e.worldSizeY, e.worldSizeZ),
+      origin: new Ce(e.worldOriginX, e.worldOriginY, e.worldOriginZ),
+      size: new Ce(e.worldSizeX, e.worldSizeY, e.worldSizeZ),
       voxelSize: e.voxelSize
     };
   }
@@ -23037,8 +23037,8 @@ ${x}: 1`;
     const e = new Uint8Array(1), t = new Zr(e, 1, 1, 1);
     return Sy(t), {
       texture: t,
-      origin: new je(0, 0, 0),
-      size: new je(1, 1, 1),
+      origin: new Ce(0, 0, 0),
+      size: new Ce(1, 1, 1),
       voxelSize: 1
     };
   }
@@ -23262,11 +23262,11 @@ ${x}: 1`;
       const g = `${Math.floor(m.x / o)},${Math.floor(m.z / o)}`;
       let x = r.get(g);
       x || r.set(g, x = {
-        sum: new je(),
+        sum: new Ce(),
         count: 0
       });
       const y = lc(t, m.x, m.y, m.z);
-      x.sum.add(new je(y.x, y.y, y.z)), x.count++;
+      x.sum.add(new Ce(y.x, y.y, y.z)), x.count++;
     }
     const l = [];
     for (const [u, m] of s) {
@@ -23285,7 +23285,7 @@ ${x}: 1`;
         }), g = x;
       }
     }
-    const d = Array.from(r.values()).sort((u, m) => m.count - u.count).slice(0, jt.LIGHT_COUNT).map((u) => u.sum.divideScalar(u.count).add(new je(0, 0.6, 0)));
+    const d = Array.from(r.values()).sort((u, m) => m.count - u.count).slice(0, jt.LIGHT_COUNT).map((u) => u.sum.divideScalar(u.count).add(new Ce(0, 0.6, 0)));
     return {
       runs: l,
       voxelSize: t.voxelSize,
@@ -23475,13 +23475,13 @@ void main() {
         side: fr,
         ...dk
       }), g = new cu(h, f, a.length);
-      a.forEach((M, C) => {
+      a.forEach((M, N) => {
         const I = op(M, o);
-        m.makeScale(I.width, I.height, I.width), m.setPosition(I.x, I.y, I.z), g.setMatrixAt(C, m);
+        m.makeScale(I.width, I.height, I.width), m.setPosition(I.x, I.y, I.z), g.setMatrixAt(N, m);
       }), g.frustumCulled = false, g.renderOrder = jt.RENDER_ORDER, i.add(g), u.push(g, h, f);
       const x = a.filter((M) => M.grounded);
       if (x.length > 0) {
-        const M = new Gs(1, 1).rotateX(-Math.PI / 2), C = new Dr({
+        const M = new Gs(1, 1).rotateX(-Math.PI / 2), N = new Dr({
           vertexShader: ok,
           fragmentShader: ik,
           uniforms: {
@@ -23493,16 +23493,16 @@ void main() {
           polygonOffset: true,
           polygonOffsetFactor: -1,
           polygonOffsetUnits: -4
-        }), I = new cu(M, C, x.length), j = jt.GLOW_SIZE * o;
+        }), I = new cu(M, N, x.length), j = jt.GLOW_SIZE * o;
         x.forEach((A, _) => {
           m.makeScale(j, 1, j), m.setPosition(A.x, A.y + 2e-3, A.z), I.setMatrixAt(_, m);
-        }), I.renderOrder = jt.RENDER_ORDER - 1, i.add(I), u.push(I, M, C);
+        }), I.renderOrder = jt.RENDER_ORDER - 1, i.add(I), u.push(I, M, N);
       }
       const y = a.length * jt.EMBERS_PER_FLAME, v = new Float32Array(y * 4), b = new Float32Array(y);
-      a.forEach((M, C) => {
+      a.forEach((M, N) => {
         const I = op(M, o);
         for (let j = 0; j < jt.EMBERS_PER_FLAME; j++) {
-          const A = C * jt.EMBERS_PER_FLAME + j;
+          const A = N * jt.EMBERS_PER_FLAME + j;
           v.set([
             I.x,
             I.y,
@@ -23524,20 +23524,20 @@ void main() {
         transparent: true,
         depthWrite: false,
         blending: mh
-      }), N = new Hg(w, S);
-      N.frustumCulled = false, N.renderOrder = jt.RENDER_ORDER + 1, i.add(N), u.push(w, S);
+      }), C = new Hg(w, S);
+      C.frustumCulled = false, C.renderOrder = jt.RENDER_ORDER + 1, i.add(C), u.push(w, S);
       const R = Array.from({
         length: jt.LIGHT_COUNT
-      }, (M, C) => {
-        const I = r.lights[C], j = new Q0(jt.LIGHT_COLOR, I ? jt.LIGHT_INTENSITY : 0, jt.LIGHT_DISTANCE, jt.LIGHT_DECAY);
+      }, (M, N) => {
+        const I = r.lights[N], j = new Q0(jt.LIGHT_COLOR, I ? jt.LIGHT_INTENSITY : 0, jt.LIGHT_DISTANCE, jt.LIGHT_DECAY);
         return I && j.position.copy(I), i.add(j), j;
       }), P = r.lights.length;
       e.scene.add(i);
       const L = (M) => {
-        const C = M * 1e-3;
-        c.value = C, d.value = e.domElement.height, R.forEach((I, j) => {
+        const N = M * 1e-3;
+        c.value = N, d.value = e.domElement.height, R.forEach((I, j) => {
           if (j >= P) return;
-          const A = 0.8 + 0.12 * Math.sin(C * 9.1 + j * 2.3) + 0.08 * Math.sin(C * 23.7 + j * 5.1);
+          const A = 0.8 + 0.12 * Math.sin(N * 9.1 + j * 2.3) + 0.08 * Math.sin(N * 23.7 + j * 5.1);
           I.intensity = jt.LIGHT_INTENSITY * A;
         });
       };
@@ -23615,14 +23615,14 @@ void main() {
       }, S = (_) => {
         const T = _ ? _.kind === "actor" ? `a:${_.actorId}` : `p:${_.x},${_.y},${_.h}` : "";
         T !== y && (y = T, od(_));
-      }, N = () => {
+      }, C = () => {
         g = 0;
         const _ = f;
         if (f = null, !_) return;
         const T = b(_);
         w(T), S(T);
       }, R = (_) => {
-        f = _, g === 0 && (g = requestAnimationFrame(N));
+        f = _, g === 0 && (g = requestAnimationFrame(C));
       }, P = () => {
         x = requestAnimationFrame(P), S(b(null));
       }, L = (_) => {
@@ -23646,7 +23646,7 @@ void main() {
         if (Math.hypot(E, D) > Ou.CLICK_DRAG_THRESHOLD_PX) return;
         const U = b(o ? _ : null);
         U && ((_a3 = En.request) == null ? void 0 : _a3.onResolve(U), tc());
-      }, C = (_) => {
+      }, N = (_) => {
         (h == null ? void 0 : h.pointerId) === _.pointerId && (h = null);
       }, I = () => {
         y = "", od(null);
@@ -23661,8 +23661,8 @@ void main() {
         }
         tc();
       };
-      return l.addEventListener("pointerdown", L, true), window.addEventListener("pointerup", M, true), window.addEventListener("pointercancel", C, true), window.addEventListener("keydown", j, true), o ? (w(null), l.addEventListener("pointermove", R), l.addEventListener("pointerleave", I), a && l.addEventListener("contextmenu", A, true)) : x = requestAnimationFrame(P), () => {
-        g !== 0 && cancelAnimationFrame(g), x !== 0 && cancelAnimationFrame(x), l.style.cursor = d, od(null), l.removeEventListener("pointerdown", L, true), window.removeEventListener("pointerup", M, true), window.removeEventListener("pointercancel", C, true), window.removeEventListener("keydown", j, true), l.removeEventListener("pointermove", R), l.removeEventListener("pointerleave", I), l.removeEventListener("contextmenu", A, true);
+      return l.addEventListener("pointerdown", L, true), window.addEventListener("pointerup", M, true), window.addEventListener("pointercancel", N, true), window.addEventListener("keydown", j, true), o ? (w(null), l.addEventListener("pointermove", R), l.addEventListener("pointerleave", I), a && l.addEventListener("contextmenu", A, true)) : x = requestAnimationFrame(P), () => {
+        g !== 0 && cancelAnimationFrame(g), x !== 0 && cancelAnimationFrame(x), l.style.cursor = d, od(null), l.removeEventListener("pointerdown", L, true), window.removeEventListener("pointerup", M, true), window.removeEventListener("pointercancel", N, true), window.removeEventListener("keydown", j, true), l.removeEventListener("pointermove", R), l.removeEventListener("pointerleave", I), l.removeEventListener("contextmenu", A, true);
       };
     }, [
       c,
@@ -23718,9 +23718,9 @@ void main() {
     return e ? `${e.linkId}:${e.usable ? 1 : 0}:${e.locked ? 1 : 0}:${e.authoring ? 1 : 0}:${e.destinationName ?? ""}` : "";
   }
   function Sk({ resources: e, interactionMode: t, terrain: s, terrainIndex: r, links: a, terrainNamesById: o, controlledActor: i, getControlledActorPosition: c, isDM: l, showLinkMarkers: d, onTraverse: u, onToggleLinkLocked: m, onFocusChange: h }) {
-    const f = t === "world-pointer", g = p.useRef(i), x = p.useRef(o), y = p.useRef(l), v = p.useRef(d), b = p.useRef(c), w = p.useRef(u), S = p.useRef(m), N = p.useRef(h), R = p.useRef([]);
+    const f = t === "world-pointer", g = p.useRef(i), x = p.useRef(o), y = p.useRef(l), v = p.useRef(d), b = p.useRef(c), w = p.useRef(u), S = p.useRef(m), C = p.useRef(h), R = p.useRef([]);
     p.useEffect(() => {
-      g.current = i, x.current = o, y.current = l, v.current = d, b.current = c, w.current = u, S.current = m, N.current = h;
+      g.current = i, x.current = o, y.current = l, v.current = d, b.current = c, w.current = u, S.current = m, C.current = h;
     }, [
       i,
       o,
@@ -23738,7 +23738,7 @@ void main() {
     ]);
     const P = wk(a, s.Id);
     return p.useEffect(() => {
-      const L = Nc(a, s.Id), M = new Ot(), C = [], I = l && d, j = qo();
+      const L = Nc(a, s.Id), M = new Ot(), N = [], I = l && d, j = qo();
       for (const { link: A, anchor: _, destination: T } of L) {
         const E = Xo({
           terrain: s,
@@ -23755,11 +23755,11 @@ void main() {
           destination: T,
           locked: A.Locked
         };
-        E.userData = D, M.add(E), C.push(E), e.linkPickTargets.push(E);
+        E.userData = D, M.add(E), N.push(E), e.linkPickTargets.push(E);
       }
-      return e.scene.add(M), R.current = C, () => {
+      return e.scene.add(M), R.current = N, () => {
         e.scene.remove(M);
-        for (const A of C) {
+        for (const A of N) {
           const _ = e.linkPickTargets.indexOf(A);
           _ !== -1 && e.linkPickTargets.splice(_, 1);
         }
@@ -23772,11 +23772,11 @@ void main() {
       l,
       d
     ]), p.useEffect(() => {
-      const L = new Ga(), M = new Dt(), C = (ne) => ne.destination.terrainId === ne.anchor.terrainId ? null : x.current.get(ne.destination.terrainId) ?? "another area", I = (ne, te) => {
+      const L = new Ga(), M = new Dt(), N = (ne) => ne.destination.terrainId === ne.anchor.terrainId ? null : x.current.get(ne.destination.terrainId) ?? "another area", I = (ne, te) => {
         const Z = ne.userData;
         if (f && y.current && v.current) return {
           linkId: Z.linkId,
-          destinationName: C(Z),
+          destinationName: N(Z),
           locked: Z.locked,
           usable: false,
           authoring: true,
@@ -23785,7 +23785,7 @@ void main() {
         const X = g.current, ae = X ? b.current() ?? X.position : null, pe = ZN(Z.anchor, ae, Z.locked);
         return !pe || pe.locked ? null : {
           linkId: Z.linkId,
-          destinationName: C(Z),
+          destinationName: N(Z),
           locked: false,
           usable: pe.usable,
           screen: te
@@ -23836,7 +23836,7 @@ void main() {
       }, O = {
         current: null
       }, $ = (ne) => {
-        ip(ne) === ip(O.current) && (!ne || !ne.screen) || (O.current = ne, N.current(ne));
+        ip(ne) === ip(O.current) && (!ne || !ne.screen) || (O.current = ne, C.current(ne));
       };
       if (f) {
         let ne = null, te = 0;
@@ -24094,8 +24094,8 @@ void main() {
     if (m > h || f > g || x > y) return false;
     for (let v = f; v <= g; v++) for (let b = x; b <= y; b++) for (let w = m; w <= h; w++) {
       if (!t.hasVoxel(w, v, b)) continue;
-      const S = w / t.resolution - e.Width / 2, N = S + t.voxelSize, R = v / t.resolution - 0.5, P = R + t.voxelSize, L = b / t.resolution - e.Length / 2, M = L + t.voxelSize;
-      if (Ek(r, s, S, N, R, P, L, M)) return true;
+      const S = w / t.resolution - e.Width / 2, C = S + t.voxelSize, R = v / t.resolution - 0.5, P = R + t.voxelSize, L = b / t.resolution - e.Length / 2, M = L + t.voxelSize;
+      if (Ek(r, s, S, C, R, P, L, M)) return true;
     }
     return false;
   }
@@ -24196,7 +24196,7 @@ void main() {
     const u = Ak(t);
     if (Mk(e, t, s, r, a, o, u)) return;
     const m = {
-      position: i.clone().add(new je(0, u, 0)),
+      position: i.clone().add(new Ce(0, u, 0)),
       velocity: c.clone()
     };
     if (hn(e, t, s, m.position)) {
@@ -24243,13 +24243,13 @@ void main() {
     e.grounded = false;
   }
   function Dk(e) {
-    const t = new je(-Math.sin(e.yaw), 0, -Math.cos(e.yaw)), s = new je(Math.cos(e.yaw), 0, -Math.sin(e.yaw)), r = t.multiplyScalar(e.forwardInput).add(s.multiplyScalar(e.rightInput));
+    const t = new Ce(-Math.sin(e.yaw), 0, -Math.cos(e.yaw)), s = new Ce(Math.cos(e.yaw), 0, -Math.sin(e.yaw)), r = t.multiplyScalar(e.forwardInput).add(s.multiplyScalar(e.rightInput));
     return r.lengthSq() > 1 && r.normalize(), r;
   }
   function vd(e, t) {
     return {
       position: ey(e, t),
-      velocity: new je(),
+      velocity: new Ce(),
       grounded: !(e.actor.CanFly ?? false)
     };
   }
@@ -24611,7 +24611,7 @@ void main() {
       var _a4;
       (_a4 = g.current) == null ? void 0 : _a4.call(g, null);
     }, []);
-    const S = p.useRef(false), N = p.useRef(0), R = p.useRef(null), P = p.useRef(null), L = p.useRef(s), M = p.useRef(null), C = p.useRef(null), I = p.useRef(false), j = p.useRef(false), A = p.useRef(false), _ = p.useRef(null), T = p.useMemo(() => s ? `${s.Id}:${s.Width}:${s.Length}:${s.Height}:${s.Resolution ?? 1}` : "", [
+    const S = p.useRef(false), C = p.useRef(0), R = p.useRef(null), P = p.useRef(null), L = p.useRef(s), M = p.useRef(null), N = p.useRef(null), I = p.useRef(false), j = p.useRef(false), A = p.useRef(false), _ = p.useRef(null), T = p.useMemo(() => s ? `${s.Id}:${s.Width}:${s.Length}:${s.Height}:${s.Resolution ?? 1}` : "", [
       s
     ]), E = fe(), { actionService: D } = De(), { canAccessActor: U } = ui(), { selectActor: k } = na(), [O, $] = p.useState(null), [z, F] = p.useState(e.isPointerLocked), K = V.getActiveCampaign(E), re = E.User.Role === "dm" ? "dm" : "player", H = p.useMemo(() => jm(re, K.RoomCode, E.User.SelectedCharacters, E.User.ImpersonatedActors, K.GameState.Characters, K.GameState.Entities), [
       re,
@@ -24653,7 +24653,7 @@ void main() {
     }, [
       se
     ]), p.useEffect(() => {
-      C.current = Ee;
+      N.current = Ee;
     }, [
       Ee
     ]), p.useEffect(() => {
@@ -24733,13 +24733,13 @@ void main() {
     }, [
       we
     ]), Qe = p.useCallback((B, de) => {
-      const ye = R.current, me = M.current, Y = C.current;
+      const ye = R.current, me = M.current, Y = N.current;
       if (!ye || !me || !Y) {
         $((Oe) => Oe === null ? Oe : null);
         return;
       }
-      if (B - N.current < UA) return;
-      N.current = B;
+      if (B - C.current < UA) return;
+      C.current = B;
       const ue = hp(ye), ke = fp(Y, me, de);
       if (ke === void 0) {
         const Oe = j.current ? {
@@ -24804,7 +24804,7 @@ void main() {
           });
           let He = xo(me, pt, ue, Y.actor.CanFly ?? false);
           if (A.current) {
-            const ct = C.current, vt = _.current;
+            const ct = N.current, vt = _.current;
             if (ct && vt) {
               const nn = hp(Y), sn = fp(ct, ue, He);
               (sn === void 0 || sn > nn + mp) && (Uk(pt, vt.x, vt.y, vt.z, Y.actor.CanFly ?? false), He = xo(me, pt, ue, Y.actor.CanFly ?? false));
@@ -24918,7 +24918,7 @@ void main() {
     const t = new yr();
     return t.setAttribute("position", new lt(e.positions, 3)), t.setAttribute("normal", new lt(e.normals, 3)), e.colors && t.setAttribute("color", new lt(e.colors, 3)), e.surfaceDeformStrength && t.setAttribute("surfaceDeformStrength", new lt(e.surfaceDeformStrength, 1)), t.setAttribute("tileHeight", new lt(e.tileHeights, 1)), t.setAttribute("highlightStrength", new lt(e.highlightStrengths, 1)), t.setIndex(new lt(e.indices, 1)), t.computeBoundingBox(), t.computeBoundingSphere(), t;
   }
-  const Jk = 4, Lr = /* @__PURE__ */ new Map(), eR = Ds;
+  const Jk = 4, Lr = /* @__PURE__ */ new Map(), eR = Os;
   function tR(e) {
     const t = Lr.get(e);
     return t ? (Lr.delete(e), Lr.set(e, t), t) : null;
@@ -25129,7 +25129,7 @@ void main() {
       fragmentShader: lR
     });
   }
-  const mR = 32, hR = 16, fR = new tn(0.9, 0.92, 0.96), pR = new tn(0.58, 0.62, 0.7), gR = 0.35, xR = 1.8, vR = 0.7, yR = 64, bR = 0.12, wR = 1.8, SR = new je(0.015, 4e-3, 0.01), IR = 4, NR = "/materials/fog_251/blueNoise64.png";
+  const mR = 32, hR = 16, fR = new tn(0.9, 0.92, 0.96), pR = new tn(0.58, 0.62, 0.7), gR = 0.35, xR = 1.8, vR = 0.7, yR = 64, bR = 0.12, wR = 1.8, SR = new Ce(0.015, 4e-3, 0.01), IR = 4, NR = "/materials/fog_251/blueNoise64.png";
   function _y(e) {
     e.format = nm, e.type = ti, e.magFilter = fn, e.minFilter = fn, e.wrapS = Hn, e.wrapT = Hn, e.wrapR = Hn, e.generateMipmaps = false, e.needsUpdate = true;
   }
@@ -25137,8 +25137,8 @@ void main() {
     const t = new Zr(e.data, e.voxelWidth, e.voxelHeight, e.voxelLength);
     return _y(t), {
       texture: t,
-      origin: new je(e.worldOriginX, e.worldOriginY, e.worldOriginZ),
-      size: new je(e.worldSizeX, e.worldSizeY, e.worldSizeZ)
+      origin: new Ce(e.worldOriginX, e.worldOriginY, e.worldOriginZ),
+      size: new Ce(e.worldSizeX, e.worldSizeY, e.worldSizeZ)
     };
   }
   function jR() {
@@ -25321,8 +25321,8 @@ void main() {
         uBlueNoiseRes: new rt(1),
         uProjectionInverse: new rt(new _a()),
         uCameraMatrixWorld: new rt(new _a()),
-        uFogOrigin: new rt(new je()),
-        uFogSize: new rt(new je(1, 1, 1)),
+        uFogOrigin: new rt(new Ce()),
+        uFogSize: new rt(new Ce(1, 1, 1)),
         uFogColorLow: new rt(fR.clone()),
         uFogColorHigh: new rt(pR.clone()),
         uAmbient: new rt(gR),
@@ -27386,8 +27386,8 @@ diffuseColor.rgb *= ${Ct};`), o.fragmentShader = o.fragmentShader.replace("#incl
           heroOcclusion: e.heroOcclusion
         });
         S.onAnimationFrame && (e.animationCallbacks.add(S.onAnimationFrame), x.push(S.onAnimationFrame));
-        const N = new ft(b, S.material);
-        N.castShadow = S.castShadow, N.receiveShadow = S.receiveShadow, N.renderOrder = S.renderOrder ?? 0, S.customDepthMaterial && (N.customDepthMaterial = S.customDepthMaterial, g.push(S.customDepthMaterial)), h.push(N), f.push(b), g.push(S.material);
+        const C = new ft(b, S.material);
+        C.castShadow = S.castShadow, C.receiveShadow = S.receiveShadow, C.renderOrder = S.renderOrder ?? 0, S.customDepthMaterial && (C.customDepthMaterial = S.customDepthMaterial, g.push(S.customDepthMaterial)), h.push(C), f.push(b), g.push(S.material);
       }
       const y = r.current;
       if (y) {
@@ -27446,7 +27446,7 @@ diffuseColor.rgb *= ${Ct};`), o.fragmentShader = o.fragmentShader.replace("#incl
       const c = _x(t), l = (c - 1) / 2;
       f_(i, t, c, l);
       const d = u_(t.Width, t.Length, c);
-      i.shadow.camera.left = d.left, i.shadow.camera.right = d.right, i.shadow.camera.top = d.top, i.shadow.camera.bottom = d.bottom, i.shadow.camera.near = d.near, i.shadow.camera.far = d.far, i.shadow.camera.updateProjectionMatrix(), e.requestShadowUpdate(), (_a3 = e.setDepthOfFieldFocus) == null ? void 0 : _a3.call(e, new je(0, l, 0), Math.max(Sa.MIN_FOCUS_RANGE, Math.max(t.Width, t.Length, c) * Sa.FOCUS_RANGE_MULTIPLIER));
+      i.shadow.camera.left = d.left, i.shadow.camera.right = d.right, i.shadow.camera.top = d.top, i.shadow.camera.bottom = d.bottom, i.shadow.camera.near = d.near, i.shadow.camera.far = d.far, i.shadow.camera.updateProjectionMatrix(), e.requestShadowUpdate(), (_a3 = e.setDepthOfFieldFocus) == null ? void 0 : _a3.call(e, new Ce(0, l, 0), Math.max(Sa.MIN_FOCUS_RANGE, Math.max(t.Width, t.Length, c) * Sa.FOCUS_RANGE_MULTIPLIER));
     }, [
       e,
       t,
@@ -27466,9 +27466,9 @@ diffuseColor.rgb *= ${Ct};`), o.fragmentShader = o.fragmentShader.replace("#incl
     const { data: s, voxelWidth: r, voxelHeight: a, voxelLength: o } = e, i = a / e.worldSizeY, c = Math.round(t * i), l = c - 1, d = r * o, u = r * a, m = new Uint8Array(d), h = l >= 0 && l < a, f = c >= 0 && c < a;
     for (let b = 0; b < o; b++) {
       const w = b * u, S = b * r;
-      for (let N = 0; N < r; N++) {
-        const R = h && s[w + l * r + N] !== 0, P = f && s[w + c * r + N] !== 0;
-        m[S + N] = R || P ? 0 : 1;
+      for (let C = 0; C < r; C++) {
+        const R = h && s[w + l * r + C] !== 0, P = f && s[w + c * r + C] !== 0;
+        m[S + C] = R || P ? 0 : 1;
       }
     }
     const g = new Uint8Array(d), x = new Int32Array(d);
@@ -27555,7 +27555,7 @@ diffuseColor.rgb *= ${Ct};`), o.fragmentShader = o.fragmentShader.replace("#incl
         U > j + 1e-6 && T.push(U);
       }
       return T.push(A), T;
-    }, N = (j, A, _, T, E) => {
+    }, C = (j, A, _, T, E) => {
       const D = S(j, A, -i), U = S(_, T, -c);
       for (let k = 0; k < U.length - 1; k++) for (let O = 0; O < D.length - 1; O++) {
         const $ = D[O], z = D[O + 1], F = U[k], K = U[k + 1];
@@ -27567,7 +27567,7 @@ diffuseColor.rgb *= ${Ct};`), o.fragmentShader = o.fragmentShader.replace("#incl
         ]);
       }
     }, R = a !== null && o, P = Math.min(i + pa.DETAIL_MARGIN, u), L = Math.min(c + pa.DETAIL_MARGIN, u), M = R ? x_(a, P, L) : null;
-    if (M ? (N(-P, P, -L, -c, M), N(-P, P, c, L, M), N(-P, -i, -c, c, M), N(i, P, -c, c, M), L < u && (b(-u, u, -u, -L), b(-u, u, L, u)), P < u && (b(-u, -P, -L, L), b(P, u, -L, L))) : (b(-u, u, -u, -c), b(-u, u, c, u), b(-u, -i, -c, c), b(i, u, -c, c)), a) {
+    if (M ? (C(-P, P, -L, -c, M), C(-P, P, c, L, M), C(-P, -i, -c, c, M), C(i, P, -c, c, M), L < u && (b(-u, u, -u, -L), b(-u, u, L, u)), P < u && (b(-u, -P, -L, L), b(P, u, -L, L))) : (b(-u, u, -u, -c), b(-u, u, c, u), b(-u, -i, -c, c), b(i, u, -c, c)), a) {
       const { covered: j, voxelWidth: A, voxelLength: _, stepX: T, stepZ: E, originX: D, originZ: U } = a, k = new Uint8Array(j.length);
       for (let O = 0; O < _; O++) for (let $ = 0; $ < A; $++) {
         const z = O * A + $;
@@ -27592,7 +27592,7 @@ diffuseColor.rgb *= ${Ct};`), o.fragmentShader = o.fragmentShader.replace("#incl
           k.fill(1, Q, Q + F);
         }
         const re = D + $ * T, H = D + ($ + F) * T, ne = U + O * E, te = U + (O + K) * E;
-        M ? N(re, H, ne, te, M) : b(re, H, ne, te);
+        M ? C(re, H, ne, te, M) : b(re, H, ne, te);
       }
     }
     if (d > l) {
@@ -27711,8 +27711,8 @@ diffuseColor.rgb *= ${Ct};`), o.fragmentShader = o.fragmentShader.replace("#incl
         ]);
       });
     }
-    const C = h.length / 3, I = new yr();
-    return I.setAttribute("position", new lt(new Float32Array(h), 3)), I.setAttribute("normal", new lt(new Float32Array(f), 3)), I.setAttribute("color", new lt(new Float32Array(g), 3)), I.setAttribute("surfaceDeformStrength", new lt(new Float32Array(x), 1)), I.setAttribute("tileHeight", new lt(new Float32Array(C), 1)), I.setAttribute("highlightStrength", new lt(new Float32Array(C), 1)), I.setIndex(new lt(new Uint32Array(y), 1)), I;
+    const N = h.length / 3, I = new yr();
+    return I.setAttribute("position", new lt(new Float32Array(h), 3)), I.setAttribute("normal", new lt(new Float32Array(f), 3)), I.setAttribute("color", new lt(new Float32Array(g), 3)), I.setAttribute("surfaceDeformStrength", new lt(new Float32Array(x), 1)), I.setAttribute("tileHeight", new lt(new Float32Array(N), 1)), I.setAttribute("highlightStrength", new lt(new Float32Array(N), 1)), I.setIndex(new lt(new Uint32Array(y), 1)), I;
   }
   function y_(e, t, s, r) {
     var _a3, _b3;
@@ -27736,9 +27736,9 @@ diffuseColor.rgb *= ${Ct};`), o.fragmentShader = o.fragmentShader.replace("#incl
       const h = Math.max(0, Math.min(l, d)), f = new tn(za(u)), g = s && s.worldSizeX === i && s.worldSizeZ === c && s.worldSizeY === l ? s : null, x = g ? g_(g, h) : null, y = Dm(u) || Yy(u), v = v_(i, c, h, f, x, y), b = c_(u), w = Iy(), S = b({
         performanceMode: r,
         voxelAo: w
-      }), N = new ft(v, S.material);
-      N.castShadow = false, N.receiveShadow = S.receiveShadow, N.renderOrder = S.renderOrder ?? 0, e.scene.add(N), S.onAnimationFrame && e.animationCallbacks.add(S.onAnimationFrame), a.current = {
-        mesh: N,
+      }), C = new ft(v, S.material);
+      C.castShadow = false, C.receiveShadow = S.receiveShadow, C.renderOrder = S.renderOrder ?? 0, e.scene.add(C), S.onAnimationFrame && e.animationCallbacks.add(S.onAnimationFrame), a.current = {
+        mesh: C,
         geometry: v,
         material: S.material,
         voxelAo: w,
@@ -27837,10 +27837,10 @@ PROG ${o}`;
       w.background = null;
       const S = new Xg(fo.HEMISPHERE_SKY_COLOR, fo.HEMISPHERE_GROUND_COLOR, Math.PI * fo.HEMISPHERE_INTENSITY_MULTIPLIER);
       w.add(S);
-      const N = new Yg(fo.DIRECTIONAL_COLOR, Math.PI * fo.DIRECTIONAL_INTENSITY_MULTIPLIER);
-      N.castShadow = true;
+      const C = new Yg(fo.DIRECTIONAL_COLOR, Math.PI * fo.DIRECTIONAL_INTENSITY_MULTIPLIER);
+      C.castShadow = true;
       const R = f ? as.PERFORMANCE_MAP_SIZE : as.MAP_SIZE;
-      N.shadow.mapSize.set(R, R), N.shadow.bias = as.BIAS, N.shadow.normalBias = as.NORMAL_BIAS, w.add(N), w.add(N.target), g.current = N;
+      C.shadow.mapSize.set(R, R), C.shadow.bias = as.BIAS, C.shadow.normalBias = as.NORMAL_BIAS, w.add(C), w.add(C.target), g.current = C;
       const L = x({
         renderer: y,
         scene: w,
@@ -27850,10 +27850,10 @@ PROG ${o}`;
           var _a3;
           o.current && (o.current.camera = k), (_a3 = i.current) == null ? void 0 : _a3.setCamera(k);
         }
-      }), M = L.camera, C = b_(y, w, M, {
+      }), M = L.camera, N = b_(y, w, M, {
         performanceMode: f
       });
-      i.current = C;
+      i.current = N;
       const I = Fc(1, 1, 1), j = {
         scene: w,
         camera: M,
@@ -27870,8 +27870,8 @@ PROG ${o}`;
         dragState: {
           active: false
         },
-        setFogVolume: C.setFogVolume,
-        setDepthOfFieldFocus: C.setDepthOfFieldFocus
+        setFogVolume: N.setFogVolume,
+        setDepthOfFieldFocus: N.setDepthOfFieldFocus
       };
       let A = false;
       (async () => {
@@ -27899,13 +27899,13 @@ PROG ${o}`;
         if (T = k, !s.current.paused) {
           L.onFrame(k, O);
           for (const $ of j.animationCallbacks) $(k);
-          v.begin(), y.info.reset(), C.render(), b.style.display !== "none" && (b.textContent = $p(y.info)), v.end();
+          v.begin(), y.info.reset(), N.render(), b.style.display !== "none" && (b.textContent = $p(y.info)), v.end();
         }
       };
       E();
       const D = () => {
         const k = h.clientWidth, O = h.clientHeight;
-        k === 0 || O === 0 || (L.onResize(k, O), C.setSize(k, O));
+        k === 0 || O === 0 || (L.onResize(k, O), N.setSize(k, O));
       };
       l.current = D;
       const U = new ResizeObserver(D);
@@ -27913,7 +27913,7 @@ PROG ${o}`;
         var _a3, _b3, _c2;
         A = true, u(null), cancelAnimationFrame(_), U.disconnect(), l.current = null, L.dispose(j);
         for (const k of c.current) w.remove(k);
-        c.current = [], o.current = null, C.dispose(), i.current = null, y.dispose(), g.current = null, y.domElement.parentElement === h && h.removeChild(y.domElement), ((_b3 = (_a3 = r.current) == null ? void 0 : _a3.dom) == null ? void 0 : _b3.parentElement) === h && h.removeChild(r.current.dom), ((_c2 = a.current) == null ? void 0 : _c2.parentElement) === h && h.removeChild(a.current), r.current = null, a.current = null;
+        c.current = [], o.current = null, N.dispose(), i.current = null, y.dispose(), g.current = null, y.domElement.parentElement === h && h.removeChild(y.domElement), ((_b3 = (_a3 = r.current) == null ? void 0 : _a3.dom) == null ? void 0 : _b3.parentElement) === h && h.removeChild(r.current.dom), ((_c2 = a.current) == null ? void 0 : _c2.parentElement) === h && h.removeChild(a.current), r.current = null, a.current = null;
       };
     }, []), p.useEffect(() => {
       const h = (f) => {
@@ -27983,18 +27983,18 @@ PROG ${o}`;
       __publicField(this, "viewportHeight", 1);
       __publicField(this, "inputAttached", false);
       __publicField(this, "followCfg");
-      __publicField(this, "_followAnchor", new je());
+      __publicField(this, "_followAnchor", new Ce());
       __publicField(this, "_hasFollowAnchor", false);
       __publicField(this, "_followOrbit", new dw());
-      __publicField(this, "_followResolvedAnchor", new je());
-      __publicField(this, "_followLookDirection", new je());
-      __publicField(this, "_followAimTarget", new je());
-      __publicField(this, "_orthoCursor", new je());
+      __publicField(this, "_followResolvedAnchor", new Ce());
+      __publicField(this, "_followLookDirection", new Ce());
+      __publicField(this, "_followAimTarget", new Ce());
+      __publicField(this, "_orthoCursor", new Ce());
       __publicField(this, "_orthoMaxTargetRadius", 1 / 0);
       __publicField(this, "_savedEnablePan", true);
       __publicField(this, "_savedMinPolarAngle", 0);
       __publicField(this, "_savedMaxPolarAngle", Math.PI);
-      __publicField(this, "_orthoOffset", new je());
+      __publicField(this, "_orthoOffset", new Ce());
       __publicField(this, "keys", {
         w: false,
         a: false,
@@ -28003,10 +28003,10 @@ PROG ${o}`;
         shift: false,
         space: false
       });
-      __publicField(this, "_lookDir", new je());
-      __publicField(this, "_rightDir", new je());
-      __publicField(this, "_worldUp", new je(0, 1, 0));
-      __publicField(this, "_tmpDir", new je());
+      __publicField(this, "_lookDir", new Ce());
+      __publicField(this, "_rightDir", new Ce());
+      __publicField(this, "_worldUp", new Ce(0, 1, 0));
+      __publicField(this, "_tmpDir", new Ce());
       __publicField(this, "onMouseDown", (t) => {
         var _a3, _b3;
         this._mode !== "freecam" || t.button !== 2 || (t.preventDefault(), (_b3 = (_a3 = this.callbacks).beforePointerLock) == null ? void 0 : _b3.call(_a3), this._pointerLocked || this.pointerLockControls.lock());
@@ -28107,7 +28107,7 @@ PROG ${o}`;
       return Math.max(s.floor, (t.width + t.length) / Math.SQRT2 / 2 * s.diagonalMultiplier, t.height * s.heightMultiplier);
     }
     defaultOrthoCenter(t) {
-      return new je(0, Math.max(0, t.height / 2 - 0.5), 0);
+      return new Ce(0, Math.max(0, t.height / 2 - 0.5), 0);
     }
     updateOrthoExtents(t, s = {}) {
       this.setTerrain(t);
@@ -28234,19 +28234,19 @@ PROG ${o}`;
       __publicField(this, "pointerLockListeners", /* @__PURE__ */ new Set());
       __publicField(this, "followActorVisual", null);
       __publicField(this, "followAnchorOffsetY", 0);
-      __publicField(this, "controlledActorBodyPosition", new je());
+      __publicField(this, "controlledActorBodyPosition", new Ce());
       __publicField(this, "hasControlledActorPose", false);
       __publicField(this, "driveFollowVisual", false);
       __publicField(this, "controlledActorEyeHeight", 0);
       __publicField(this, "controlledActorPositionSmoothing", is.POSITION_SMOOTHING);
-      __publicField(this, "desiredFirstPersonCameraPosition", new je());
+      __publicField(this, "desiredFirstPersonCameraPosition", new Ce());
       __publicField(this, "firstPersonCameraPositionInitialized", false);
       __publicField(this, "actorLookYaw", 0);
       __publicField(this, "actorLookPitch", 0);
       __publicField(this, "localVisualOverrideApplied", false);
-      __publicField(this, "followVisualAnchor", new je());
-      __publicField(this, "followEntryViewDirection", new je());
-      __publicField(this, "tmpDirection", new je());
+      __publicField(this, "followVisualAnchor", new Ce());
+      __publicField(this, "followEntryViewDirection", new Ce());
+      __publicField(this, "tmpDirection", new Ce());
       __publicField(this, "tween", null);
       __publicField(this, "onPointerLockChange", () => {
         var _a3;
@@ -28406,9 +28406,9 @@ PROG ${o}`;
       return t === "ortho" ? this.matchedOrthoPose() : ga(t === "follow" ? this.rig.followEntryCamera(this.followEntryViewDirection) : this.rig.perspectiveEntryCamera());
     }
     matchedOrthoPose() {
-      const t = this.rig.orthoCamera, s = this.rig.perspectiveCamera, r = this.rig.controls.target, o = t.top / (t.zoom || 1) / Math.tan(Kt.degToRad(s.fov) / 2), i = new je().subVectors(t.position, r);
+      const t = this.rig.orthoCamera, s = this.rig.perspectiveCamera, r = this.rig.controls.target, o = t.top / (t.zoom || 1) / Math.tan(Kt.degToRad(s.fov) / 2), i = new Ce().subVectors(t.position, r);
       i.lengthSq() === 0 && i.set(1, 1, 1), i.normalize();
-      const c = new je().copy(r).addScaledVector(i, o), l = new _a().lookAt(c, r, s.up), d = new hw().setFromRotationMatrix(l);
+      const c = new Ce().copy(r).addScaledVector(i, o), l = new _a().lookAt(c, r, s.up), d = new hw().setFromRotationMatrix(l);
       return {
         position: c,
         quaternion: d,
@@ -28475,30 +28475,37 @@ PROG ${o}`;
       radius: i
     }, p.useEffect(() => {
       if (!e) return;
-      const l = e.heroOcclusion, d = new je(), u = new je();
-      let m = 0, h = 0, f = NaN, g = NaN, x = NaN, y = null, v = null;
-      const b = () => {
-        const w = c.current, S = w.focusedActorPosition;
-        if (l.radius.value = w.radius, !w.enabled || !w.isWorld || !w.terrain || !S) {
-          l.enabled.value = 0, v = null;
+      const l = e.heroOcclusion, d = new Ce(), u = new Ce(), m = new Ce();
+      let h = 0, f = 0, g = NaN, x = NaN, y = NaN, v = null, b = null;
+      const w = () => {
+        const S = c.current, C = S.focusedActorPosition;
+        if (l.radius.value = S.radius, !S.enabled || !S.isWorld || !S.terrain || !C || C.terrainId !== S.terrain.Id) {
+          l.enabled.value = 0, b = null;
           return;
         }
-        const N = S.h ?? 0, R = w.focusedActorSize;
-        if (S.x !== f || S.y !== g || N !== x || R !== y || w.terrain !== v) {
-          f = S.x, g = S.y, x = N, y = R, v = w.terrain;
-          const L = ws({
-            position: S
-          }, w.terrain);
-          u.set(L.x, L.y + Bs.TORSO_OFFSET_Y, L.z), m = L.y;
-          const M = nc.BASE_HEIGHT * Xv[R ?? "small"];
-          h = L.y + M;
+        const R = C.h ?? 0, P = S.focusedActorSize;
+        if (C.x !== g || C.y !== x || R !== y || P !== v || S.terrain !== b) {
+          g = C.x, x = C.y, y = R, v = P, b = S.terrain;
+          const N = ws({
+            position: C
+          }, S.terrain);
+          m.set(N.x, N.y + Is.TORSO_OFFSET_Y, N.z), h = N.y;
+          const I = nc.BASE_HEIGHT * Xv[P ?? "small"];
+          f = N.y + I;
         }
-        l.actorPos.value.copy(u), e.camera.getWorldPosition(d), l.camPos.value.copy(d);
-        const P = Bs.CUT_PLANE_EPSILON;
-        d.y >= u.y ? (l.cutSign.value = 1, l.cutY.value = m + P) : (l.cutSign.value = -1, l.cutY.value = h - P), l.enabled.value = 1;
+        l.actorPos.value.copy(m), e.camera.getWorldPosition(d);
+        const L = e.camera.isOrthographicCamera;
+        if (L) {
+          e.camera.getWorldDirection(u);
+          const N = d.distanceTo(m);
+          d.copy(m).addScaledVector(u, -N);
+        }
+        l.coneScale.value = L ? Is.CONE_SCALE : 1, l.camPos.value.copy(d);
+        const M = Is.CUT_PLANE_EPSILON;
+        d.y >= m.y ? (l.cutSign.value = 1, l.cutY.value = h + M) : (l.cutSign.value = -1, l.cutY.value = f - M), l.enabled.value = 1;
       };
-      return b(), e.animationCallbacks.add(b), () => {
-        e.animationCallbacks.delete(b), l.enabled.value = 0;
+      return w(), e.animationCallbacks.add(w), () => {
+        e.animationCallbacks.delete(w), l.enabled.value = 0;
       };
     }, [
       e
@@ -28552,7 +28559,7 @@ PROG ${o}`;
     p.useEffect(() => {
       g.current = c;
     });
-    const x = fe(), { actionService: y } = De(), { canAccessActor: v } = ui(), { selectedActor: b, hoveredTile: w, selectActor: S, toggleActorSelection: N, clearSelection: R, updateHoveredTile: P } = na(), L = Ik(), { pings: M } = Ck(), C = p.useMemo(() => e ? M.filter((Re) => Re.terrainId === e.Id) : [], [
+    const x = fe(), { actionService: y } = De(), { canAccessActor: v } = ui(), { selectedActor: b, hoveredTile: w, selectActor: S, toggleActorSelection: C, clearSelection: R, updateHoveredTile: P } = na(), L = Ik(), { pings: M } = Ck(), N = p.useMemo(() => e ? M.filter((Re) => Re.terrainId === e.Id) : [], [
       M,
       e
     ]), I = p.useRef(0), A = p.useRef(ve.getPerformanceMode(x)).current, [_, T] = p.useState(false), E = o !== "first-person", D = Zc(o), U = D && _ ? "actor-look" : "world-pointer", k = U === "world-pointer", O = p.useCallback((Re) => {
@@ -28722,9 +28729,9 @@ PROG ${o}`;
       nt,
       st
     ]), ct = p.useCallback((Re) => {
-      N(Re);
+      C(Re);
     }, [
-      N
+      C
     ]), vt = p.useCallback((Re) => {
       S(Re);
     }, [
@@ -28760,7 +28767,7 @@ PROG ${o}`;
     }, [
       y,
       K
-    ]), js = p.useCallback((Re) => {
+    ]), As = p.useCallback((Re) => {
       if (!y) return;
       const ze = Date.now();
       ze - I.current < Vo || (y.execute("ping:create", {
@@ -28776,7 +28783,7 @@ PROG ${o}`;
       e
     ]), _n = p.useCallback((Re) => v(Re.id), [
       v
-    ]), As = p.useCallback((Re, ze) => {
+    ]), Es = p.useCallback((Re, ze) => {
       y && (S(Re), y.execute("actor:move", {
         actorId: Re.id,
         position: ze
@@ -28858,7 +28865,7 @@ PROG ${o}`;
               onActorClick: ct,
               onActorSelect: vt,
               canControlActor: E ? _n : void 0,
-              onActorDragEnd: E ? As : void 0,
+              onActorDragEnd: E ? Es : void 0,
               interactionMode: U,
               trackedActor: o === "follow" && Pe ? {
                 id: Pe.id,
@@ -28903,8 +28910,8 @@ PROG ${o}`;
               resources: z,
               terrain: e,
               terrainIndex: Le,
-              activePings: C,
-              onPingTile: js,
+              activePings: N,
+              onPingTile: As,
               interactionMode: U
             }),
             n.jsx(gk, {
@@ -29538,13 +29545,13 @@ PROG ${o}`;
       }
     }, y = u - d + 1, v = y * (g - f + 1), b = m - 1;
     let w = new Int16Array(v), S = new Int16Array(v);
-    const N = new Uint8Array(v), R = new Uint8Array(v);
-    for (let C = f; C <= g; C++) for (let I = d; I <= u; I++) {
-      const j = Ia(I, C, x, y), A = Xu(e, s, I, C, m, h);
-      w[j] = A.height, A.color !== null && (N[j] = Tn(A.color), R[j] = 1);
+    const C = new Uint8Array(v), R = new Uint8Array(v);
+    for (let N = f; N <= g; N++) for (let I = d; I <= u; I++) {
+      const j = Ia(I, N, x, y), A = Xu(e, s, I, N, m, h);
+      w[j] = A.height, A.color !== null && (C[j] = Tn(A.color), R[j] = 1);
     }
-    const P = Ye(Math.floor(a) || Q_, ib, K_), L = (C, I) => C < 0 || C >= i || I < 0 || I >= l ? null : C >= d && C <= u && I >= f && I <= g ? w[Ia(C, I, x, y)] : Xu(e, s, C, I, m, h).height;
-    for (let C = 0; C < P; C++) {
+    const P = Ye(Math.floor(a) || Q_, ib, K_), L = (N, I) => N < 0 || N >= i || I < 0 || I >= l ? null : N >= d && N <= u && I >= f && I <= g ? w[Ia(N, I, x, y)] : Xu(e, s, N, I, m, h).height;
+    for (let N = 0; N < P; N++) {
       for (let j = f; j <= g; j++) for (let A = d; A <= u; A++) {
         let _ = 0, T = 0;
         for (let O = -1; O <= 1; O++) for (let $ = -1; $ <= 1; $++) {
@@ -29560,10 +29567,10 @@ PROG ${o}`;
       w = S, S = I;
     }
     let M = false;
-    for (let C = f; C <= g; C++) for (let I = d; I <= u; I++) {
-      const j = Ia(I, C, x, y), A = w[j], _ = Z_(e, s, x, N, R, y, I, C);
+    for (let N = f; N <= g; N++) for (let I = d; I <= u; I++) {
+      const j = Ia(I, N, x, y), A = w[j], _ = Z_(e, s, x, C, R, y, I, N);
       for (let T = m; T <= h; T++) {
-        const E = xn(I, T, C, i, l), D = Gt(e, E);
+        const E = xn(I, T, N, i, l), D = Gt(e, E);
         if (T <= A) {
           D || (o == null ? void 0 : o(E), e.colors[E] = _, ls(e, E, true), M = true);
           continue;
@@ -29741,11 +29748,11 @@ PROG ${o}`;
     const a = /* @__PURE__ */ new Map();
     for (let S = 8; S < t.length; ) {
       if (S + 12 > t.length) throw new Error(".qvx file is truncated.");
-      const N = String.fromCharCode(...t.subarray(S, S + 4)), R = s.getUint32(S + 4, true);
+      const C = String.fromCharCode(...t.subarray(S, S + 4)), R = s.getUint32(S + 4, true);
       if (S + 12 + R > t.length) throw new Error(".qvx file is truncated.");
       const P = t.subarray(S + 8, S + 8 + R);
-      if (db(P) !== s.getUint32(S + 8 + R, true)) throw new Error(`.qvx file is corrupted (${N} chunk).`);
-      a.set(N, P), S += 12 + R;
+      if (db(P) !== s.getUint32(S + 8 + R, true)) throw new Error(`.qvx file is corrupted (${C} chunk).`);
+      a.set(C, P), S += 12 + R;
     }
     const o = a.get("META"), i = a.get("VOXL");
     if (!o || !(i == null ? void 0 : i.length)) throw new Error(".qvx file is missing its terrain data.");
@@ -29771,8 +29778,8 @@ PROG ${o}`;
     else throw new Error(`.qvx voxel encoding ${i[0]} is not supported.`);
     const { positions: g } = si(f), x = l * m, y = u * m, v = d * m;
     for (let S = 0; S < g.length; S++) {
-      const N = g[S];
-      if ((N & 255) >= x || (N >>> 8 & 255) >= y || (N >>> 16 & 255) >= v) throw new Error(".qvx file has voxels outside its terrain size.");
+      const C = g[S];
+      if ((C & 255) >= x || (C >>> 8 & 255) >= y || (C >>> 16 & 255) >= v) throw new Error(".qvx file has voxels outside its terrain size.");
     }
     const b = c.Lighting, w = b && typeof b.Color == "string" && [
       b.Intensity,
@@ -30130,23 +30137,23 @@ PROG ${o}`;
     const e = new tn();
     for (let t = 0; t < 256; t++) e.set(za(Tn(t))), oc[t * 3] = e.r, oc[t * 3 + 1] = e.g, oc[t * 3 + 2] = e.b, hb[t] = a_(t) ? 1 : 0;
   }
-  const Hd = oc, h2 = hb, sa = Za.length, Ra = new Float32Array(sa * 3), Ls = new Int8Array(sa * 3), Ma = new Float32Array(sa * 4 * 3);
+  const Hd = oc, h2 = hb, sa = Za.length, Ra = new Float32Array(sa * 3), Ds = new Int8Array(sa * 3), Ma = new Float32Array(sa * 4 * 3);
   for (let e = 0; e < sa; e++) {
     const t = Za[e];
-    Ra[e * 3] = t.normal[0], Ra[e * 3 + 1] = t.normal[1], Ra[e * 3 + 2] = t.normal[2], Ls[e * 3] = t.neighborOffset[0], Ls[e * 3 + 1] = t.neighborOffset[1], Ls[e * 3 + 2] = t.neighborOffset[2];
+    Ra[e * 3] = t.normal[0], Ra[e * 3 + 1] = t.normal[1], Ra[e * 3 + 2] = t.normal[2], Ds[e * 3] = t.neighborOffset[0], Ds[e * 3 + 1] = t.neighborOffset[1], Ds[e * 3 + 2] = t.neighborOffset[2];
     for (let s = 0; s < 4; s++) Ma[(e * 4 + s) * 3] = t.corners[s][0], Ma[(e * 4 + s) * 3 + 1] = t.corners[s][1], Ma[(e * 4 + s) * 3 + 2] = t.corners[s][2];
   }
   const gl = it * it * it * sa * 4, f2 = it * it * it * sa * 6, Ui = new Float32Array(gl * 3), $i = new Float32Array(gl * 3), Bi = new Float32Array(gl * 3), Kp = new Float32Array(gl), Cr = new Uint32Array(f2);
   function p2(e, t, s, r, a) {
-    const { vW: o, vH: i, vL: c, resolution: l, tW: d, tL: u } = t, m = d / 2, h = u / 2, f = 1 / l, g = f / 2, x = o * c, { startX: y, startY: v, startZ: b, endX: w, endY: S, endZ: N } = tb(s, r, a, t);
+    const { vW: o, vH: i, vL: c, resolution: l, tW: d, tL: u } = t, m = d / 2, h = u / 2, f = 1 / l, g = f / 2, x = o * c, { startX: y, startY: v, startZ: b, endX: w, endY: S, endZ: C } = tb(s, r, a, t);
     let R = 0, P = 0;
-    for (let M = v; M < S; M++) for (let C = b; C < N; C++) for (let I = y; I < w; I++) {
-      const j = xn(I, M, C, o, c);
+    for (let M = v; M < S; M++) for (let N = b; N < C; N++) for (let I = y; I < w; I++) {
+      const j = xn(I, M, N, o, c);
       if (!Gt(e, j)) continue;
-      const A = e.colors[j], _ = A * 3, T = Hd[_], E = Hd[_ + 1], D = Hd[_ + 2], U = h2[A], k = I / l - m + g, O = (M + 0.5) / l - 0.5, $ = C / l - h + g;
+      const A = e.colors[j], _ = A * 3, T = Hd[_], E = Hd[_ + 1], D = Hd[_ + 2], U = h2[A], k = I / l - m + g, O = (M + 0.5) / l - 0.5, $ = N / l - h + g;
       for (let z = 0; z < sa; z++) {
-        const F = z * 3, K = I + Ls[F], re = M + Ls[F + 1], H = C + Ls[F + 2];
-        if (K >= 0 && K < o && re >= 0 && re < i && H >= 0 && H < c && Gt(e, j + Ls[F] + Ls[F + 2] * o + Ls[F + 1] * x)) continue;
+        const F = z * 3, K = I + Ds[F], re = M + Ds[F + 1], H = N + Ds[F + 2];
+        if (K >= 0 && K < o && re >= 0 && re < i && H >= 0 && H < c && Gt(e, j + Ds[F] + Ds[F + 2] * o + Ds[F + 1] * x)) continue;
         const ne = R, te = Ra[F], Z = Ra[F + 1], Q = Ra[F + 2], X = z * 4 * 3;
         for (let ae = 0; ae < 4; ae++) {
           const pe = X + ae * 3, be = R * 3;
@@ -30350,8 +30357,8 @@ PROG ${o}`;
     e.push(t, r, a, s, r, a), e.push(s, r, a, s, r, o), e.push(s, r, o, t, r, o), e.push(t, r, o, t, r, a);
   }
   function j2(e, t, s, r, a, o, i, c) {
-    const { vW: l, vH: d, vL: u, resolution: m, tW: h, tL: f } = t, g = h / 2, x = f / 2, { startX: y, startY: v, startZ: b, endX: w, endY: S, endZ: N } = tb(s, r, a, t);
-    for (let R = v; R < S; R++) for (let P = b; P < N; P++) for (let L = y; L < w; L++) {
+    const { vW: l, vH: d, vL: u, resolution: m, tW: h, tL: f } = t, g = h / 2, x = f / 2, { startX: y, startY: v, startZ: b, endX: w, endY: S, endZ: C } = tb(s, r, a, t);
+    for (let R = v; R < S; R++) for (let P = b; P < C; P++) for (let L = y; L < w; L++) {
       const M = xn(L, R, P, l, u);
       if (!Gt(e, M) || !(R + 1 >= d || !Gt(e, xn(L, R + 1, P, l, u)))) continue;
       const I = L / m - g, j = (L + 1) / m - g, A = P / m - x, _ = (P + 1) / m - x;
@@ -30399,7 +30406,7 @@ PROG ${o}`;
   const gb = 0.014, xb = 15680580, A2 = 16436245;
   function xl(e, t) {
     const s = e.voxelSize / 2;
-    return new je(t.x / e.resolution - e.width / 2 + s, (t.y + 0.5) / e.resolution - 0.5, t.z / e.resolution - e.length / 2 + s);
+    return new Ce(t.x / e.resolution - e.width / 2 + s, (t.y + 0.5) / e.resolution - 0.5, t.z / e.resolution - e.length / 2 + s);
   }
   function E2(e) {
     const t = new tn(za(Tn(e)));
@@ -30426,8 +30433,8 @@ PROG ${o}`;
         z: g
       }), v = E2(x);
       for (const b of Za) {
-        const [w, S, N] = b.neighborOffset;
-        qu(e, h + w, f + S, g + N, a, o, i) || vl(c, l, d, y, s.voxelSize, b, v, gb);
+        const [w, S, C] = b.neighborOffset;
+        qu(e, h + w, f + S, g + C, a, o, i) || vl(c, l, d, y, s.voxelSize, b, v, gb);
       }
     }
     return yl(c, l, d);
@@ -30443,8 +30450,8 @@ PROG ${o}`;
         z: x
       });
       for (const v of Za) {
-        const [b, w, S] = v.neighborOffset, N = qr(f + b, g + w, x + S);
-        u.has(N) || qu(e, f + b, g + w, x + S, a, o, i) || vl(c, l, d, y, s.voxelSize, v, m, 0);
+        const [b, w, S] = v.neighborOffset, C = qr(f + b, g + w, x + S);
+        u.has(C) || qu(e, f + b, g + w, x + S, a, o, i) || vl(c, l, d, y, s.voxelSize, v, m, 0);
       }
     }
     return yl(c, l, d);
@@ -30483,7 +30490,7 @@ PROG ${o}`;
       });
       h.set(za(g));
       for (const w of Za) {
-        const [S, N, R] = w.neighborOffset, P = qr(x + S, y + N, v + R);
+        const [S, C, R] = w.neighborOffset, P = qr(x + S, y + C, v + R);
         l.has(P) || vl(d, u, m, b, a.voxelSize, w, h, gb);
       }
     }
@@ -30578,7 +30585,7 @@ PROG ${o}`;
     const a = r ?? ((s == null ? void 0 : s.kind) === "box" ? nb(s) : null);
     a && e.selectionGroup.add(N2(a, t, r ? A2 : xb, r ? 0.95 : 0.86));
   }
-  const eg = new Dt(), vo = new Ga(), zd = new je(), yo = new je(), Wd = new tm(), Hi = new je(), _2 = new je(), qd = new tm(new je(0, 1, 0), 0.5);
+  const eg = new Dt(), vo = new Ga(), zd = new Ce(), yo = new Ce(), Wd = new tm(), Hi = new Ce(), _2 = new Ce(), qd = new tm(new Ce(0, 1, 0), 0.5);
   function vb(e) {
     const t = (i) => {
       const c = e.resourcesRef.current;
@@ -30660,37 +30667,37 @@ PROG ${o}`;
       face: "+x",
       axis: "x",
       sign: 1,
-      dir: new je(1, 0, 0)
+      dir: new Ce(1, 0, 0)
     },
     {
       face: "-x",
       axis: "x",
       sign: -1,
-      dir: new je(-1, 0, 0)
+      dir: new Ce(-1, 0, 0)
     },
     {
       face: "+y",
       axis: "y",
       sign: 1,
-      dir: new je(0, 1, 0)
+      dir: new Ce(0, 1, 0)
     },
     {
       face: "-y",
       axis: "y",
       sign: -1,
-      dir: new je(0, -1, 0)
+      dir: new Ce(0, -1, 0)
     },
     {
       face: "+z",
       axis: "z",
       sign: 1,
-      dir: new je(0, 0, 1)
+      dir: new Ce(0, 0, 1)
     },
     {
       face: "-z",
       axis: "z",
       sign: -1,
-      dir: new je(0, 0, -1)
+      dir: new Ce(0, 0, -1)
     }
   ];
   function bb(e, t) {
@@ -30716,7 +30723,7 @@ PROG ${o}`;
   function Sb(e, t, s) {
     return (e + U2(t, s)) * s.resolution;
   }
-  const bo = new je();
+  const bo = new Ce();
   function Ib(e, t, s) {
     bo.set(s === "x" ? 1 : 0, s === "y" ? 1 : 0, s === "z" ? 1 : 0);
     const r = e.direction, a = e.origin, o = a.x - t.x, i = a.y - t.y, c = a.z - t.z, l = r.dot(bo), d = 1 - l * l;
@@ -30727,7 +30734,7 @@ PROG ${o}`;
   function B2(e, t, s, r) {
     const a = yb.find((l) => l.face === e);
     if (!a) return null;
-    const o = bb(t, s), i = wb(a, o, new je()), c = Ib(r, i, a.axis);
+    const o = bb(t, s), i = wb(a, o, new Ce()), c = Ib(r, i, a.axis);
     return c === null ? null : {
       face: e,
       axis: a.axis,
@@ -30763,7 +30770,7 @@ PROG ${o}`;
     };
     return f.min[c] = m, f.max[c] = h, f;
   }
-  const V2 = new je(0, 1, 0);
+  const V2 = new Ce(0, 1, 0);
   function G2() {
     const e = new Ot();
     e.visible = false;
@@ -30799,7 +30806,7 @@ PROG ${o}`;
         root: g,
         material: f,
         baseColor: new tn(tg[h.axis]),
-        center: new je()
+        center: new Ce()
       });
     }
     return {
@@ -30838,7 +30845,7 @@ PROG ${o}`;
       }
     };
   }
-  const z2 = 0.2, Vi = new je();
+  const z2 = 0.2, Vi = new Ce();
   function W2(e, t) {
     for (; e.firstChild; ) e.removeChild(e.firstChild);
     const s = /* @__PURE__ */ new Map();
@@ -30899,16 +30906,16 @@ PROG ${o}`;
   function $m({ isOpen: e, onConfirm: t, onCancel: s, title: r = "Select Terrain", currentTerrainId: a }) {
     const o = fe(), i = V.getActiveCampaign(o), { viewedTerrainIds: c } = ms(), [l, d] = p.useState(""), [u, m] = p.useState(0), h = p.useMemo(() => {
       const w = /* @__PURE__ */ new Map();
-      for (const N of i.GameState.Characters) w.set(N.Position.terrainId, (w.get(N.Position.terrainId) ?? 0) + 1);
-      for (const N of i.GameState.Entities) w.set(N.Position.terrainId, (w.get(N.Position.terrainId) ?? 0) + 1);
-      const S = (N, R) => N > 0 ? 0 : R >= 0 ? 1 : 2;
-      return i.VoxelTerrains.filter((N) => !$o(N)).map((N) => ({
-        terrain: N,
-        occupants: w.get(N.Id) ?? 0,
-        recentIndex: c.indexOf(N.Id)
-      })).sort((N, R) => {
-        const P = S(N.occupants, N.recentIndex), L = S(R.occupants, R.recentIndex);
-        return P !== L ? P - L : P === 0 ? R.occupants - N.occupants : P === 1 ? N.recentIndex - R.recentIndex : 0;
+      for (const C of i.GameState.Characters) w.set(C.Position.terrainId, (w.get(C.Position.terrainId) ?? 0) + 1);
+      for (const C of i.GameState.Entities) w.set(C.Position.terrainId, (w.get(C.Position.terrainId) ?? 0) + 1);
+      const S = (C, R) => C > 0 ? 0 : R >= 0 ? 1 : 2;
+      return i.VoxelTerrains.filter((C) => !$o(C)).map((C) => ({
+        terrain: C,
+        occupants: w.get(C.Id) ?? 0,
+        recentIndex: c.indexOf(C.Id)
+      })).sort((C, R) => {
+        const P = S(C.occupants, C.recentIndex), L = S(R.occupants, R.recentIndex);
+        return P !== L ? P - L : P === 0 ? R.occupants - C.occupants : P === 1 ? C.recentIndex - R.recentIndex : 0;
       });
     }, [
       i.VoxelTerrains,
@@ -30967,7 +30974,7 @@ PROG ${o}`;
           }) : n.jsx("div", {
             className: "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3",
             children: x.map(({ terrain: w, occupants: S }) => {
-              const N = w.Id === a;
+              const C = w.Id === a;
               return n.jsxs("div", {
                 onClick: () => v(w.Id),
                 className: "card bg-base-100 border-2 cursor-pointer transition-all border-base-300 hover:border-primary",
@@ -31004,7 +31011,7 @@ PROG ${o}`;
                               S
                             ]
                           }),
-                          N && n.jsx("span", {
+                          C && n.jsx("span", {
                             className: "badge badge-ghost badge-xs",
                             children: "Current"
                           })
@@ -31105,8 +31112,8 @@ PROG ${o}`;
         w = _, g.rig.update(T), g.renderer.render(g.scene, g.camera);
       };
       b = requestAnimationFrame(S);
-      const N = new ResizeObserver(() => rc(g, f));
-      N.observe(f);
+      const C = new ResizeObserver(() => rc(g, f));
+      C.observe(f);
       const R = (_) => {
         const T = l.current;
         Ey(y, T, _), y.visible = true;
@@ -31125,7 +31132,7 @@ PROG ${o}`;
         m.current = $, R($);
       };
       let L = null;
-      const M = (_) => P(_), C = () => {
+      const M = (_) => P(_), N = () => {
         y.visible = false, m.current = null;
       }, I = (_) => {
         _.button === 0 && (L = {
@@ -31143,8 +31150,8 @@ PROG ${o}`;
         const U = m.current;
         U && a.current(U);
       }, A = g.renderer.domElement;
-      return A.addEventListener("pointermove", M), A.addEventListener("pointerleave", C), A.addEventListener("pointerdown", I), A.addEventListener("pointerup", j), A.addEventListener("pointercancel", C), () => {
-        cancelAnimationFrame(b), N.disconnect(), A.removeEventListener("pointermove", M), A.removeEventListener("pointerleave", C), A.removeEventListener("pointerdown", I), A.removeEventListener("pointerup", j), A.removeEventListener("pointercancel", C), g.rig.dispose(), Mo(g.chunkGroup, d.current), on(g.hoverGroup), g.terrainMaterial.dispose(), g.renderer.dispose(), A.parentElement === f && f.removeChild(A), o.current = null, u.current = null;
+      return A.addEventListener("pointermove", M), A.addEventListener("pointerleave", N), A.addEventListener("pointerdown", I), A.addEventListener("pointerup", j), A.addEventListener("pointercancel", N), () => {
+        cancelAnimationFrame(b), C.disconnect(), A.removeEventListener("pointermove", M), A.removeEventListener("pointerleave", N), A.removeEventListener("pointerdown", I), A.removeEventListener("pointerup", j), A.removeEventListener("pointercancel", N), g.rig.dispose(), Mo(g.chunkGroup, d.current), on(g.hoverGroup), g.terrainMaterial.dispose(), g.renderer.dispose(), A.parentElement === f && f.removeChild(A), o.current = null, u.current = null;
       };
     }, []), p.useEffect(() => {
       l.current = e;
@@ -31155,8 +31162,8 @@ PROG ${o}`;
       const v = /* @__PURE__ */ new Set();
       sc(v, y);
       for (const b of v) {
-        const { cx: w, cy: S, cz: N } = Jy(b, y);
-        fb(b, w, S, N, c.current, y, f.chunkGroup, f.terrainMaterial, d.current);
+        const { cx: w, cy: S, cz: C } = Jy(b, y);
+        fb(b, w, S, C, c.current, y, f.chunkGroup, f.terrainMaterial, d.current);
       }
       u.current && (u.current.visible = false), m.current = null, Io(f, e, g);
     }, [
@@ -31234,7 +31241,7 @@ PROG ${o}`;
     });
   }
   function J2(e) {
-    const { tool: t, activeSelectionTool: s, onToolClick: r, onFillSelection: a, onSmoothSelection: o, canFillSelection: i, canSmoothSelection: c, brushSize: l, onBrushSizeChange: d, granularity: u, onGranularityChange: m, readOnly: h, stampSources: f, loadStampVoxels: g, stampLoadingId: x, onSelectStamp: y, onExitStampMode: v, canPlaceLinks: b, undoDepth: w, redoDepth: S, onUndo: N, onRedo: R, modKeyLabel: P, activeView: L, onShowEdit: M, onShowPreview: C, onVoxFileSelected: I, onExportQvx: j, voxFileInputRef: A, cameraMode: _, onSelectCameraMode: T, freecamSpeedMult: E } = e, D = A, U = (k) => {
+    const { tool: t, activeSelectionTool: s, onToolClick: r, onFillSelection: a, onSmoothSelection: o, canFillSelection: i, canSmoothSelection: c, brushSize: l, onBrushSizeChange: d, granularity: u, onGranularityChange: m, readOnly: h, stampSources: f, loadStampVoxels: g, stampLoadingId: x, onSelectStamp: y, onExitStampMode: v, canPlaceLinks: b, undoDepth: w, redoDepth: S, onUndo: C, onRedo: R, modKeyLabel: P, activeView: L, onShowEdit: M, onShowPreview: N, onVoxFileSelected: I, onExportQvx: j, voxFileInputRef: A, cameraMode: _, onSelectCameraMode: T, freecamSpeedMult: E } = e, D = A, U = (k) => {
       const O = "btn btn-square btn-sm join-item", $ = k === "boxSelect" || k === "colorSelect";
       return s === k ? `${O} btn-primary hover:bg-error hover:border-error hover:text-error-content` : $ && t === k ? `${O} btn-primary` : `${O} ${t === k ? "btn-neutral" : ""}`;
     };
@@ -31467,7 +31474,7 @@ PROG ${o}`;
                 n.jsx("button", {
                   type: "button",
                   className: "btn btn-square btn-sm join-item",
-                  onClick: N,
+                  onClick: C,
                   disabled: w === 0 || h,
                   title: `Undo (${P}+Z)`,
                   "aria-label": `Undo (${P}+Z)`,
@@ -31557,7 +31564,7 @@ PROG ${o}`;
                 }),
                 n.jsx(gt, {
                   active: L === "preview",
-                  onClick: C,
+                  onClick: N,
                   className: "btn-sm join-item",
                   children: "Preview"
                 })
@@ -32271,7 +32278,7 @@ PROG ${o}`;
                     type: "checkbox",
                     className: "toggle toggle-sm toggle-secondary",
                     checked: l,
-                    onChange: (N) => d(N.target.checked)
+                    onChange: (C) => d(C.target.checked)
                   })
                 ]
               })
@@ -32308,15 +32315,15 @@ PROG ${o}`;
                       type: "checkbox",
                       className: "toggle toggle-sm toggle-secondary",
                       checked: f,
-                      onChange: (N) => g(N.target.checked)
+                      onChange: (C) => g(C.target.checked)
                     })
                   ]
                 }),
                 m.length > 0 && n.jsx("div", {
                   className: "flex flex-col gap-1",
-                  children: m.map((N) => {
-                    const R = h === N.linkId, P = () => {
-                      x(N.linkId), g(true);
+                  children: m.map((C) => {
+                    const R = h === C.linkId, P = () => {
+                      x(C.linkId), g(true);
                     };
                     return n.jsxs("div", {
                       role: "button",
@@ -32334,29 +32341,29 @@ PROG ${o}`;
                           className: "min-w-0 flex-1",
                           children: n.jsx("div", {
                             className: "truncate font-medium",
-                            children: N.destinationName
+                            children: C.destinationName
                           })
                         }),
                         n.jsx(gt, {
-                          active: N.locked,
+                          active: C.locked,
                           kind: "independent",
                           quiet: true,
                           className: "btn-xs btn-square",
                           onClick: (L) => {
-                            L.stopPropagation(), y == null ? void 0 : y(N.linkId, !N.locked);
+                            L.stopPropagation(), y == null ? void 0 : y(C.linkId, !C.locked);
                           },
                           disabled: !y,
-                          title: N.locked ? "Unlock link" : "Lock link",
-                          "aria-label": N.locked ? "Unlock link" : "Lock link",
+                          title: C.locked ? "Unlock link" : "Lock link",
+                          "aria-label": C.locked ? "Unlock link" : "Lock link",
                           children: n.jsx("span", {
-                            className: `${N.locked ? "icon-[mdi--lock]" : "icon-[mdi--lock-open-variant]"} w-4 h-4`
+                            className: `${C.locked ? "icon-[mdi--lock]" : "icon-[mdi--lock-open-variant]"} w-4 h-4`
                           })
                         }),
                         n.jsx("button", {
                           type: "button",
                           className: "btn btn-xs btn-square btn-ghost text-error",
                           onClick: (L) => {
-                            L.stopPropagation(), v == null ? void 0 : v(N.linkId);
+                            L.stopPropagation(), v == null ? void 0 : v(C.linkId);
                           },
                           disabled: !v,
                           title: "Delete link",
@@ -32366,7 +32373,7 @@ PROG ${o}`;
                           })
                         })
                       ]
-                    }, N.linkId);
+                    }, C.linkId);
                   })
                 })
               ]
@@ -32665,7 +32672,7 @@ PROG ${o}`;
     return t === "input" || t === "textarea" || t === "select" || e.isContentEditable;
   }
   const yL = p.forwardRef(function({ terrain: t, onChange: s, readOnly: r = false, actors: a, stampSources: o, loadStampVoxels: i, links: c, terrainNamesById: l, loadTerrainVoxels: d, onCreateLink: u, onDeleteLink: m, onEditLink: h, canPlaceLinks: f = false }, g) {
-    const { setDirty: x } = li(), y = p.useRef(null), v = p.useRef(null), b = p.useRef(null), w = p.useRef(t), S = p.useRef(fl(0)), N = p.useRef(/* @__PURE__ */ new Map()), R = p.useRef(/* @__PURE__ */ new Set()), P = p.useRef(null), L = p.useRef([]), M = p.useRef([]), C = p.useRef("place"), I = p.useRef("tactical"), j = p.useRef(1), A = p.useRef(ds), _ = p.useRef(r), T = p.useRef(a ?? []), E = p.useRef(true), D = p.useRef("edit"), U = p.useRef(/* @__PURE__ */ new Map()), k = p.useRef(null), O = p.useRef(false), $ = p.useRef(null), z = p.useRef([]), F = p.useRef(null), K = p.useRef(false), re = p.useRef(null), H = p.useRef(false), ne = p.useRef(null), te = p.useRef(null), Z = p.useRef(Ds(t)), Q = p.useRef(s), X = p.useRef(null), ae = p.useRef(Ci), pe = p.useRef(i), be = p.useRef(d), J = p.useRef("place"), se = p.useRef(c ?? []), oe = p.useRef(u), Ee = p.useRef(h), q = p.useRef(m), xe = p.useRef(null), we = p.useRef(null), Me = p.useRef(null), Qe = p.useRef(null), _t = p.useRef(1), Pe = p.useRef(null), Xe = p.useRef(null), B = p.useRef(null), de = p.useRef("ortho"), ye = p.useRef("ortho"), me = p.useRef(false), [Y, ue] = p.useState("edit"), [ke, Se] = p.useState("place"), [Le, Ze] = p.useState("tactical"), [Oe, Be] = p.useState(1), [nt, st] = p.useState(ds), xt = Le === "tactical", Lt = Le === "voxel", [pt, Ne] = p.useState(true), [he, _e] = p.useState(false), [He, at] = p.useState(null), [Je, ct] = p.useState(false), [vt, nn] = p.useState(null), [sn, Tt] = p.useState(0), [js, _n] = p.useState(0), [As, Zs] = p.useState("ortho"), [mi, ra] = p.useState(1), [Zn, Ln] = p.useState(null), Re = p.useRef(null), [ze, It] = p.useState(null), [Dn, vs] = p.useState(Ci), [vn, aa] = p.useState(null), [Es, o0] = p.useState(null), [Zm, i0] = p.useState(null), [c0, Jm] = p.useState(null), [l0, d0] = p.useState(0), [u0, m0] = p.useState(0), Js = p.useCallback(() => m0((G) => G + 1), []), oa = p.useCallback(() => {
+    const { setDirty: x } = li(), y = p.useRef(null), v = p.useRef(null), b = p.useRef(null), w = p.useRef(t), S = p.useRef(fl(0)), C = p.useRef(/* @__PURE__ */ new Map()), R = p.useRef(/* @__PURE__ */ new Set()), P = p.useRef(null), L = p.useRef([]), M = p.useRef([]), N = p.useRef("place"), I = p.useRef("tactical"), j = p.useRef(1), A = p.useRef(ds), _ = p.useRef(r), T = p.useRef(a ?? []), E = p.useRef(true), D = p.useRef("edit"), U = p.useRef(/* @__PURE__ */ new Map()), k = p.useRef(null), O = p.useRef(false), $ = p.useRef(null), z = p.useRef([]), F = p.useRef(null), K = p.useRef(false), re = p.useRef(null), H = p.useRef(false), ne = p.useRef(null), te = p.useRef(null), Z = p.useRef(Os(t)), Q = p.useRef(s), X = p.useRef(null), ae = p.useRef(Ci), pe = p.useRef(i), be = p.useRef(d), J = p.useRef("place"), se = p.useRef(c ?? []), oe = p.useRef(u), Ee = p.useRef(h), q = p.useRef(m), xe = p.useRef(null), we = p.useRef(null), Me = p.useRef(null), Qe = p.useRef(null), _t = p.useRef(1), Pe = p.useRef(null), Xe = p.useRef(null), B = p.useRef(null), de = p.useRef("ortho"), ye = p.useRef("ortho"), me = p.useRef(false), [Y, ue] = p.useState("edit"), [ke, Se] = p.useState("place"), [Le, Ze] = p.useState("tactical"), [Oe, Be] = p.useState(1), [nt, st] = p.useState(ds), xt = Le === "tactical", Lt = Le === "voxel", [pt, Ne] = p.useState(true), [he, _e] = p.useState(false), [He, at] = p.useState(null), [Je, ct] = p.useState(false), [vt, nn] = p.useState(null), [sn, Tt] = p.useState(0), [As, _n] = p.useState(0), [Es, Zs] = p.useState("ortho"), [mi, ra] = p.useState(1), [Zn, Ln] = p.useState(null), Re = p.useRef(null), [ze, It] = p.useState(null), [Dn, vs] = p.useState(Ci), [vn, aa] = p.useState(null), [Ts, o0] = p.useState(null), [Zm, i0] = p.useState(null), [c0, Jm] = p.useState(null), [l0, d0] = p.useState(0), [u0, m0] = p.useState(0), Js = p.useCallback(() => m0((G) => G + 1), []), oa = p.useCallback(() => {
       _.current || x(true);
     }, [
       x
@@ -32675,11 +32682,11 @@ PROG ${o}`;
     }, []), es = p.useCallback((G) => {
       var _a3;
       Qe.current = G, i0(G), (_a3 = B.current) == null ? void 0 : _a3.call(B);
-    }, []), hi = p.useCallback(() => _t.current++, []), eh = t.Lighting, h0 = t.Background, f0 = p.useMemo(() => Es ? {
-      bounds: nb(Es),
-      spaceCount: B_(Es)
+    }, []), hi = p.useCallback(() => _t.current++, []), eh = t.Lighting, h0 = t.Background, f0 = p.useMemo(() => Ts ? {
+      bounds: nb(Ts),
+      spaceCount: B_(Ts)
     } : null, [
-      Es
+      Ts
     ]), er = p.useCallback(() => {
       const G = P.current;
       return G ? {
@@ -32708,12 +32715,12 @@ PROG ${o}`;
         y: We,
         h: ut
       };
-    }, []), Ts = p.useCallback(() => {
+    }, []), ks = p.useCallback(() => {
       xe.current = null, we.current = null, ct(false), nn(null);
     }, []), ca = p.useCallback(() => {
-      Ts(), Se(J.current);
+      ks(), Se(J.current);
     }, [
-      Ts
+      ks
     ]), Il = p.useCallback((G) => {
       const W = xe.current;
       if (Au(se.current, G)) {
@@ -32729,12 +32736,12 @@ PROG ${o}`;
         return;
       }
       const le = oe.current;
-      le && (le(W, G), _e(true), Ts());
+      le && (le(W, G), _e(true), ks());
     }, [
-      Ts
+      ks
     ]), p0 = p.useCallback(async (G) => {
       if (!xe.current) {
-        Ts();
+        ks();
         return;
       }
       if (ct(false), G === w.current.Id) {
@@ -32753,9 +32760,9 @@ PROG ${o}`;
       }
       we.current = Ie, nn(Ie);
     }, [
-      Ts
+      ks
     ]), Nl = (G) => {
-      w.current = G, Z.current = Ds(G), Q.current(G);
+      w.current = G, Z.current = Os(G), Q.current(G);
     }, g0 = (G) => {
       if (r) return;
       const W = {
@@ -32796,7 +32803,7 @@ PROG ${o}`;
       Jn
     ]), y0 = p.useCallback((G) => {
       const W = Tn(G);
-      A.current = W, st(W), C.current === "colorSelect" && fi(W);
+      A.current = W, st(W), N.current === "colorSelect" && fi(W);
     }, [
       fi
     ]);
@@ -32806,7 +32813,7 @@ PROG ${o}`;
       s
     ]), p.useEffect(() => {
       var _a3;
-      C.current = ke, I.current = Le, j.current = Oe, A.current = nt, _.current = r, (_a3 = Xe.current) == null ? void 0 : _a3.call(Xe);
+      N.current = ke, I.current = Le, j.current = Oe, A.current = nt, _.current = r, (_a3 = Xe.current) == null ? void 0 : _a3.call(Xe);
     }, [
       ke,
       Le,
@@ -32830,9 +32837,9 @@ PROG ${o}`;
     }, [
       Y
     ]), p.useEffect(() => {
-      de.current = As, As !== "freecam" && (ye.current = As);
+      de.current = Es, Es !== "freecam" && (ye.current = Es);
     }, [
-      As
+      Es
     ]), p.useEffect(() => {
       var _a3;
       X.current = ze, (_a3 = Xe.current) == null ? void 0 : _a3.call(Xe);
@@ -32877,14 +32884,14 @@ PROG ${o}`;
       es,
       ke
     ]), p.useEffect(() => {
-      ke !== "link" && (xe.current || we.current || Je) && Ts();
+      ke !== "link" && (xe.current || we.current || Je) && ks();
     }, [
       Je,
-      Ts,
+      ks,
       ke
     ]), p.useEffect(() => {
-      const G = Ds(t);
-      if (G === Ds(w.current) && G === Z.current) {
+      const G = Os(t);
+      if (G === Os(w.current) && G === Z.current) {
         w.current = t;
         return;
       }
@@ -32894,7 +32901,7 @@ PROG ${o}`;
       const ut = Yu(t.Voxels, W);
       S.current.length === ut.length ? O_(S.current, ut) : S.current = ut;
       const mt = v.current, ot = b.current;
-      if (We && mt && ot && (Mo(mt.chunkGroup, N.current), Gd(ot), Vd(ot, le), on(mt.hoverGroup), on(mt.selectionGroup), de.current === "ortho")) {
+      if (We && mt && ot && (Mo(mt.chunkGroup, C.current), Gd(ot), Vd(ot, le), on(mt.hoverGroup), on(mt.selectionGroup), de.current === "ortho")) {
         const kt = y.current;
         kt && Io(mt, t, kt);
       }
@@ -32918,7 +32925,7 @@ PROG ${o}`;
       ia
     ]), nh = p.useCallback(() => {
       const G = er();
-      return w.current = G, Z.current = Ds(G), G;
+      return w.current = G, Z.current = Os(G), G;
     }, [
       er
     ]), sh = p.useCallback((G) => {
@@ -32933,7 +32940,7 @@ PROG ${o}`;
       };
       w.current = Ie;
       const We = v.current, ut = b.current;
-      if (We && ut && (Mo(We.chunkGroup, N.current), Gd(ut), Vd(ut, le.dims), on(We.hoverGroup), on(We.selectionGroup), sc(R.current, le.dims), de.current === "ortho")) {
+      if (We && ut && (Mo(We.chunkGroup, C.current), Gd(ut), Vd(ut, le.dims), on(We.hoverGroup), on(We.selectionGroup), sc(R.current, le.dims), de.current === "ortho")) {
         const mt = y.current;
         mt && Io(We, Ie, mt);
       }
@@ -32949,7 +32956,7 @@ PROG ${o}`;
       nh,
       sh
     ]);
-    const ks = p.useCallback(() => {
+    const Rs = p.useCallback(() => {
       const G = re.current, W = H.current;
       if (re.current = null, H.current = false, W) {
         L.current.length = 0, M.current.length = 0, Tt(0), _n(0);
@@ -33002,7 +33009,7 @@ PROG ${o}`;
       if (_.current) return false;
       const W = Nt(w.current), le = P.current;
       if (!le) return false;
-      const Ie = C.current;
+      const Ie = N.current;
       if (Ie === "boxSelect") {
         const ot = Zu(W, G, I.current, le), kt = Qe.current;
         return kt ? (Jn({
@@ -33032,7 +33039,7 @@ PROG ${o}`;
       if (Ie === "link") return Il(th(G, w.current)), false;
       if (Ie === "fill") return false;
       const ut = Ie, mt = Y_(S.current, W, R.current, le, G, ut, I.current, j.current, A.current, tr);
-      return mt.sampledColor !== null ? (A.current = mt.sampledColor, st(mt.sampledColor), C.current = "paint", Se("paint"), false) : mt.changed ? (K.current || (K.current = true), true) : false;
+      return mt.sampledColor !== null ? (A.current = mt.sampledColor, st(mt.sampledColor), N.current = "paint", Se("paint"), false) : mt.changed ? (K.current || (K.current = true), true) : false;
     }, [
       tr,
       Il,
@@ -33052,10 +33059,10 @@ PROG ${o}`;
         re.current = null;
         return;
       }
-      ks(), (_a3 = B.current) == null ? void 0 : _a3.call(B), ts();
+      Rs(), (_a3 = B.current) == null ? void 0 : _a3.call(B), ts();
     }, [
       ts,
-      ks,
+      Rs,
       tr
     ]), Al = p.useCallback(() => {
       var _a3;
@@ -33068,17 +33075,17 @@ PROG ${o}`;
         re.current = null;
         return;
       }
-      ks(), (_a3 = B.current) == null ? void 0 : _a3.call(B), ts();
+      Rs(), (_a3 = B.current) == null ? void 0 : _a3.call(B), ts();
     }, [
       ts,
-      ks,
+      Rs,
       tr
     ]), El = p.useCallback(() => {
       Se(J.current), It(null), vs(Ci), aa(null);
     }, []), w0 = p.useCallback(async (G) => {
       const W = pe.current;
       if (W) {
-        C.current !== "stamp" && C.current !== "link" && (J.current = C.current), aa(G);
+        N.current !== "stamp" && N.current !== "link" && (J.current = N.current), aa(G);
         try {
           const le = await W(G);
           if (!le) {
@@ -33091,7 +33098,7 @@ PROG ${o}`;
         }
       }
     }, []), Tl = p.useCallback((G) => {
-      if (C.current === "stamp") {
+      if (N.current === "stamp") {
         const W = X.current, le = ae.current;
         return [
           "stamp",
@@ -33107,7 +33114,7 @@ PROG ${o}`;
         ].join(":");
       }
       return [
-        C.current,
+        N.current,
         I.current,
         j.current,
         G.voxel.x,
@@ -33180,12 +33187,12 @@ PROG ${o}`;
         nr = Ae;
         const Rt = R.current;
         if (Rt.size > 0) {
-          const Rs = S.current, wr = P.current;
+          const Ms = S.current, wr = P.current;
           if (wr) {
             const ys = D.current === "edit" && I.current === "tactical", yn = D.current === "edit" && I.current === "voxel";
             for (const ns of Rt) {
               const { cx: to, cy: dh, cz: uh } = Jy(ns, wr);
-              fb(ns, to, dh, uh, Rs, wr, W.chunkGroup, W.terrainMaterial, N.current), Zp(le, Rs, wr, ns, to, dh, uh, ys, yn);
+              fb(ns, to, dh, uh, Ms, wr, W.chunkGroup, W.terrainMaterial, C.current), Zp(le, Ms, wr, ns, to, dh, uh, ys, yn);
             }
             Rt.clear();
           }
@@ -33205,7 +33212,7 @@ PROG ${o}`;
           on(W.selectionGroup), Ie.setVisible(false);
           return;
         }
-        const Rt = C.current === "boxSelect" && Qe.current && Ae ? qp(Qe.current, Zu(Nt(w.current), Ae, I.current, et), et) : null;
+        const Rt = N.current === "boxSelect" && Qe.current && Ae ? qp(Qe.current, Zu(Nt(w.current), Ae, I.current, et), et) : null;
         P2(W, et, Me.current, Rt);
         const Wt = Me.current;
         (Wt == null ? void 0 : Wt.kind) === "box" && !Rt && !Qe.current && !_.current ? (Ie.update(Wt.bounds, et), Ie.setVisible(true), Ie.updateScreenScale(W.camera, W.renderer.domElement.clientHeight)) : (Ie.setVisible(false), Ie.setHighlight(null));
@@ -33217,7 +33224,7 @@ PROG ${o}`;
             on(W.hoverGroup), vi(Ae);
             return;
           }
-          if (C.current === "fill" || Me.current && Yd(C.current)) {
+          if (N.current === "fill" || Me.current && Yd(N.current)) {
             on(W.hoverGroup), vi(Ae);
             return;
           }
@@ -33226,7 +33233,7 @@ PROG ${o}`;
             dims: et,
             index: Nt(w.current),
             pick: Ae,
-            tool: C.current,
+            tool: N.current,
             granularity: I.current,
             brushSize: j.current,
             colorIndex: A.current,
@@ -33266,21 +33273,21 @@ PROG ${o}`;
           }
         } else Ie.setHighlight(null);
         const Rt = ((_c2 = F.current) == null ? void 0 : _c2.pointerId) === Ae.pointerId ? F.current : null, Wt = Ml(Ae, Rt);
-        if (eo(Wt), !Rt || !Wt || C.current === "sample" || C.current === "stamp" || C.current === "link" || C.current === "boxSelect" || C.current === "colorSelect" || Me.current && Yd(C.current)) return;
+        if (eo(Wt), !Rt || !Wt || N.current === "sample" || N.current === "stamp" || N.current === "link" || N.current === "boxSelect" || N.current === "colorSelect" || Me.current && Yd(N.current)) return;
         if (!Rt.dragStarted) {
           if (!A0(Ae, Rt)) return;
           Rt.dragStarted = true;
         }
-        const Rs = Tl(Wt);
-        if (ne.current === Rs) return;
-        ne.current = Rs, jl(Wt) && eo(Ml(Ae, Rt));
+        const Ms = Tl(Wt);
+        if (ne.current === Ms) return;
+        ne.current = Ms, jl(Wt) && eo(Ml(Ae, Rt));
       }, E0 = (Ae) => {
         var _a3, _b3;
-        if (C.current === "link" || !O.current || z.current.length === 0) return false;
+        if (N.current === "link" || !O.current || z.current.length === 0) return false;
         const et = ot.getEventRaycaster(Ae);
         if (!et) return false;
         const Wt = (_b3 = (_a3 = et.intersectObjects(z.current, false)[0]) == null ? void 0 : _a3.object.userData) == null ? void 0 : _b3.linkId;
-        return typeof Wt != "string" ? false : (Ae.preventDefault(), Ae.stopPropagation(), at((Rs) => Rs === Wt ? null : Wt), _e(true), true);
+        return typeof Wt != "string" ? false : (Ae.preventDefault(), Ae.stopPropagation(), at((Ms) => Ms === Wt ? null : Wt), _e(true), true);
       }, ih = (Ae) => {
         var _a3;
         if (D.current !== "edit" || me.current) return;
@@ -33320,8 +33327,8 @@ PROG ${o}`;
           }
         };
         F.current = Rt, K.current = false, re.current = null, ne.current = Tl(et);
-        const Wt = C.current === "boxSelect" || C.current === "colorSelect", Rs = C.current === "sample", wr = C.current === "link";
-        jl(et), eo(Ml(Ae, Rt)), (Rs || Wt || wr) && (W.renderer.domElement.releasePointerCapture(Ae.pointerId), Pl());
+        const Wt = N.current === "boxSelect" || N.current === "colorSelect", Ms = N.current === "sample", wr = N.current === "link";
+        jl(et), eo(Ml(Ae, Rt)), (Ms || Wt || wr) && (W.renderer.domElement.releasePointerCapture(Ae.pointerId), Pl());
       }, yi = (Ae) => {
         const et = Pe.current;
         if (et) {
@@ -33329,7 +33336,7 @@ PROG ${o}`;
           Pe.current = null, W.renderer.domElement.hasPointerCapture(Ae.pointerId) && W.renderer.domElement.releasePointerCapture(Ae.pointerId);
           return;
         }
-        F.current && F.current.pointerId !== Ae.pointerId || (W.renderer.domElement.hasPointerCapture(Ae.pointerId) && W.renderer.domElement.releasePointerCapture(Ae.pointerId), K.current && (ks(), ts()), Pl());
+        F.current && F.current.pointerId !== Ae.pointerId || (W.renderer.domElement.hasPointerCapture(Ae.pointerId) && W.renderer.domElement.releasePointerCapture(Ae.pointerId), K.current && (Rs(), ts()), Pl());
       }, ch = () => {
         F.current || eo(null);
       }, lh = (Ae) => Ae.preventDefault(), bi = (Ae) => {
@@ -33344,18 +33351,18 @@ PROG ${o}`;
         },
         onFreecamSpeedChange: (Ae) => ra(Ae),
         beforePointerLock: () => {
-          K.current && (ks(), ts()), Pl();
+          K.current && (Rs(), ts()), Pl();
         }
       }), W.rig.attachInput();
       const $t = W.renderer.domElement;
       return $t.addEventListener("pointermove", oh), $t.addEventListener("pointerdown", ih, true), $t.addEventListener("pointerup", yi), $t.addEventListener("pointercancel", yi), $t.addEventListener("pointerleave", ch), $t.addEventListener("mousedown", bi, true), $t.addEventListener("auxclick", bi), $t.addEventListener("contextmenu", lh), () => {
-        cancelAnimationFrame(kt), xi.disconnect(), $t.removeEventListener("pointermove", oh), $t.removeEventListener("pointerdown", ih, true), $t.removeEventListener("pointerup", yi), $t.removeEventListener("pointercancel", yi), $t.removeEventListener("pointerleave", ch), $t.removeEventListener("mousedown", bi, true), $t.removeEventListener("auxclick", bi), $t.removeEventListener("contextmenu", lh), me.current && W.pointerLockControls.unlock(), W.rig.dispose(), Mo(W.chunkGroup, N.current), Gd(le), W.terrainMaterial.dispose(), ac(W.gridGroup), ac(W.hoverGroup), ac(W.selectionGroup), W.scene.remove(Ie.group), Ie.dispose(), W.renderer.dispose(), $t.parentElement === G && G.removeChild($t), F.current = null, v.current = null, b.current = null, Xe.current = null, B.current = null;
+        cancelAnimationFrame(kt), xi.disconnect(), $t.removeEventListener("pointermove", oh), $t.removeEventListener("pointerdown", ih, true), $t.removeEventListener("pointerup", yi), $t.removeEventListener("pointercancel", yi), $t.removeEventListener("pointerleave", ch), $t.removeEventListener("mousedown", bi, true), $t.removeEventListener("auxclick", bi), $t.removeEventListener("contextmenu", lh), me.current && W.pointerLockControls.unlock(), W.rig.dispose(), Mo(W.chunkGroup, C.current), Gd(le), W.terrainMaterial.dispose(), ac(W.gridGroup), ac(W.hoverGroup), ac(W.selectionGroup), W.scene.remove(Ie.group), Ie.dispose(), W.renderer.dispose(), $t.parentElement === G && G.removeChild($t), F.current = null, v.current = null, b.current = null, Xe.current = null, B.current = null;
       };
     }, [
       jl,
       ts,
       Tl,
-      ks,
+      Rs,
       Jn
     ]), p.useEffect(() => {
       const G = v.current, W = y.current;
@@ -33395,7 +33402,7 @@ PROG ${o}`;
       var _a3;
       const W = v.current;
       if (!W || G === de.current) return;
-      K.current && (ks(), ts()), F.current = null, K.current = false, re.current = null, ne.current = null;
+      K.current && (Rs(), ts()), F.current = null, K.current = false, re.current = null, ne.current = null;
       const le = w.current;
       W.rig.setTerrain({
         width: le.Width,
@@ -33406,7 +33413,7 @@ PROG ${o}`;
       Ie && rc(W, Ie), de.current = G, Zs(G), (_a3 = Xe.current) == null ? void 0 : _a3.call(Xe);
     }, [
       ts,
-      ks
+      Rs
     ]), rh = p.useCallback(() => {
       const G = de.current;
       kl(G === "freecam" ? ye.current : "freecam");
@@ -33432,7 +33439,7 @@ PROG ${o}`;
           return;
         }
         if (!me.current) {
-          if (C.current === "stamp") {
+          if (N.current === "stamp") {
             if (le === "r") {
               W.preventDefault(), vs((Ie) => JI(Ie));
               return;
@@ -33446,7 +33453,7 @@ PROG ${o}`;
               return;
             }
           }
-          if (le === "escape" && C.current === "link") {
+          if (le === "escape" && N.current === "link") {
             W.preventDefault(), ca();
             return;
           }
@@ -33473,11 +33480,11 @@ PROG ${o}`;
               break;
             case "k":
               if (f) {
-                if (C.current === "link") {
+                if (N.current === "link") {
                   ca();
                   break;
                 }
-                C.current !== "stamp" && (J.current = C.current), It(null), aa(null), Se("link");
+                N.current !== "stamp" && (J.current = N.current), It(null), aa(null), Se("link");
               }
               break;
             case "b":
@@ -33579,7 +33586,7 @@ PROG ${o}`;
       ia(), ue("preview");
     }, [
       ia
-    ]), Ja = Zm || (Es == null ? void 0 : Es.kind) === "box" ? "boxSelect" : (Es == null ? void 0 : Es.kind) === "mask" ? "colorSelect" : null, ah = p.useMemo(() => {
+    ]), Ja = Zm || (Ts == null ? void 0 : Ts.kind) === "box" ? "boxSelect" : (Ts == null ? void 0 : Ts.kind) === "mask" ? "colorSelect" : null, ah = p.useMemo(() => {
       const G = /* @__PURE__ */ new Set();
       return br.filter((W) => G.has(W.linkId) ? false : (G.add(W.linkId), true)).map((W) => ({
         linkId: W.linkId,
@@ -33591,11 +33598,11 @@ PROG ${o}`;
     ]), C0 = p.useCallback((G) => {
       if (G === "link") {
         if (!f) return;
-        if (C.current === "link") {
+        if (N.current === "link") {
           ca();
           return;
         }
-        C.current !== "stamp" && (J.current = C.current), It(null), aa(null), Zt(), Se("link");
+        N.current !== "stamp" && (J.current = N.current), It(null), aa(null), Zt(), Se("link");
         return;
       }
       if (G === "boxSelect" || G === "colorSelect") {
@@ -33628,8 +33635,8 @@ PROG ${o}`;
                   onToolClick: C0,
                   onFillSelection: Al,
                   onSmoothSelection: b0,
-                  canFillSelection: !!Es,
-                  canSmoothSelection: (Es == null ? void 0 : Es.kind) === "box",
+                  canFillSelection: !!Ts,
+                  canSmoothSelection: (Ts == null ? void 0 : Ts.kind) === "box",
                   brushSize: Oe,
                   onBrushSizeChange: j0,
                   granularity: Le,
@@ -33641,7 +33648,7 @@ PROG ${o}`;
                   onSelectStamp: w0,
                   onExitStampMode: El,
                   undoDepth: sn,
-                  redoDepth: js,
+                  redoDepth: As,
                   onUndo: Cl,
                   onRedo: pi,
                   modKeyLabel: gL,
@@ -33651,7 +33658,7 @@ PROG ${o}`;
                   onVoxFileSelected: (G) => void S0(G),
                   onExportQvx: () => void I0(),
                   voxFileInputRef: Re,
-                  cameraMode: As,
+                  cameraMode: Es,
                   onSelectCameraMode: kl,
                   freecamSpeedMult: mi,
                   canPlaceLinks: f
@@ -33715,7 +33722,7 @@ PROG ${o}`;
                   onSurroundingsChange: v0
                 }) : n.jsx(nL, {
                   tool: ke,
-                  selection: Es,
+                  selection: Ts,
                   boxSelectionAnchor: Zm,
                   selectionSummary: f0,
                   selectedColorIndex: nt,
@@ -33739,7 +33746,7 @@ PROG ${o}`;
                   },
                   onDeleteLink: r ? void 0 : (G) => {
                     var _a3;
-                    (_a3 = q.current) == null ? void 0 : _a3.call(q, G), He === G && at(null), Ts();
+                    (_a3 = q.current) == null ? void 0 : _a3.call(q, G), He === G && at(null), ks();
                   }
                 })
               })
@@ -33778,7 +33785,7 @@ PROG ${o}`;
   function SL({ terrain: e, isDeleteProtected: t, initialTags: s, onClose: r }) {
     const { actionService: a } = De(), i = fe().ActiveCampaign, [c, l] = p.useState(() => e && $e.isHydrated(e) ? {
       ...e,
-      Voxels: Os(e.Id)
+      Voxels: Fs(e.Id)
     } : void 0), [d, u] = p.useState(null);
     p.useEffect(() => {
       if (!e) {
@@ -33789,7 +33796,7 @@ PROG ${o}`;
       if (u(null), $e.isHydrated(e)) {
         l({
           ...e,
-          Voxels: Os(e.Id)
+          Voxels: Fs(e.Id)
         });
         return;
       }
@@ -33912,17 +33919,17 @@ PROG ${o}`;
       a.execute("terrain:create", {
         terrain: w
       });
-      const S = (N) => ({
-        ...N,
+      const S = (C) => ({
+        ...C,
         terrainId: b
       });
-      for (const N of (i == null ? void 0 : i.TerrainLinks) ?? []) N.A.terrainId !== v || N.B.terrainId !== v || a.execute("terrainLink:create", {
-        a: S(N.A),
-        b: S(N.B)
+      for (const C of (i == null ? void 0 : i.TerrainLinks) ?? []) C.A.terrainId !== v || C.B.terrainId !== v || a.execute("terrainLink:create", {
+        a: S(C.A),
+        b: S(C.B)
       });
       r();
     };
-    return n.jsx(Cs, {
+    return n.jsx(js, {
       domain: "terrain",
       entityId: e == null ? void 0 : e.Id,
       initialData: f,
@@ -33946,28 +33953,28 @@ PROG ${o}`;
     });
   }
   function NL({ data: e, onChange: t, readOnly: s }) {
-    const r = fe(), { actionService: a } = De(), { registerSaveResolver: o } = li(), i = r.ActiveCampaign, c = p.useRef(null), l = !!(i == null ? void 0 : i.VoxelTerrains.some((C) => C.Id === e.Id)), d = p.useMemo(() => {
-      const C = /* @__PURE__ */ new Map();
-      for (const I of (i == null ? void 0 : i.VoxelTerrains) ?? []) C.set(I.Id, I.Name);
-      return C;
+    const r = fe(), { actionService: a } = De(), { registerSaveResolver: o } = li(), i = r.ActiveCampaign, c = p.useRef(null), l = !!(i == null ? void 0 : i.VoxelTerrains.some((N) => N.Id === e.Id)), d = p.useMemo(() => {
+      const N = /* @__PURE__ */ new Map();
+      for (const I of (i == null ? void 0 : i.VoxelTerrains) ?? []) N.set(I.Id, I.Name);
+      return N;
     }, [
       i == null ? void 0 : i.VoxelTerrains
-    ]), u = p.useCallback((C, I) => {
+    ]), u = p.useCallback((N, I) => {
       a == null ? void 0 : a.execute("terrainLink:create", {
-        a: C,
+        a: N,
         b: I
       });
     }, [
       a
-    ]), m = p.useCallback((C) => {
+    ]), m = p.useCallback((N) => {
       a == null ? void 0 : a.execute("terrainLink:delete", {
-        linkId: C
+        linkId: N
       });
     }, [
       a
-    ]), h = p.useCallback((C, I) => {
+    ]), h = p.useCallback((N, I) => {
       a == null ? void 0 : a.execute("terrainLink:edit", {
-        linkId: C,
+        linkId: N,
         updates: I
       });
     }, [
@@ -33975,16 +33982,16 @@ PROG ${o}`;
     ]), f = e.Id && i ? [
       ...i.GameState.Characters ?? [],
       ...i.GameState.Entities ?? []
-    ].filter((C) => C.Position.terrainId === e.Id).map((C) => ({
-      id: C.Id,
-      name: C.Name,
-      position: C.Position
+    ].filter((N) => N.Position.terrainId === e.Id).map((N) => ({
+      id: N.Id,
+      name: N.Name,
+      position: N.Position
     })) : [], g = p.useMemo(() => tN((i == null ? void 0 : i.VoxelTerrains) ?? [], e.Id), [
       i,
       e.Id
-    ]), x = p.useCallback(async (C) => {
+    ]), x = p.useCallback(async (N) => {
       if (!i) return null;
-      const I = i.VoxelTerrains.find((j) => j.Id === C);
+      const I = i.VoxelTerrains.find((j) => j.Id === N);
       return I ? $e.loadTerrainForEditing(i, I) : null;
     }, [
       i
@@ -34009,48 +34016,48 @@ PROG ${o}`;
     }), [
       o
     ]);
-    const S = (C, I) => {
+    const S = (N, I) => {
       t({
         ...e,
-        [C]: I
+        [N]: I
       });
-    }, N = p.useCallback((C) => {
+    }, C = p.useCallback((N) => {
       var _a3;
       const I = ((_a3 = c.current) == null ? void 0 : _a3.reshapeDraft({
-        width: C.width,
-        length: C.length,
-        height: C.height,
-        resolution: C.resolution
+        width: N.width,
+        length: N.length,
+        height: N.height,
+        resolution: N.resolution
       })) ?? {
         ...y.current,
-        Width: C.width,
-        Length: C.length,
-        Height: C.height,
-        Resolution: C.resolution
+        Width: N.width,
+        Length: N.length,
+        Height: N.height,
+        Resolution: N.resolution
       };
       y.current = I, t(I);
     }, [
       t
-    ]), R = p.useCallback((C) => {
-      b(C), w.current && clearTimeout(w.current), w.current = setTimeout(() => {
-        w.current = null, N(C);
+    ]), R = p.useCallback((N) => {
+      b(N), w.current && clearTimeout(w.current), w.current = setTimeout(() => {
+        w.current = null, C(N);
       }, wL);
     }, [
-      N
+      C
     ]), P = p.useCallback(() => {
-      w.current && (clearTimeout(w.current), w.current = null, N(v));
+      w.current && (clearTimeout(w.current), w.current = null, C(v));
     }, [
-      N,
+      C,
       v
     ]);
     p.useEffect(() => () => {
       w.current && clearTimeout(w.current);
     }, []);
-    const L = (C) => {
+    const L = (N) => {
       if (s) return;
       const I = {
         ...v,
-        ...C
+        ...N
       };
       I.resolution = jo(I.resolution);
       const j = Xr(I.resolution);
@@ -34076,7 +34083,7 @@ PROG ${o}`;
                     n.jsx("input", {
                       type: "text",
                       value: e.Name,
-                      onChange: (C) => S("Name", C.target.value),
+                      onChange: (N) => S("Name", N.target.value),
                       className: "input input-bordered w-full",
                       placeholder: "Terrain Name",
                       disabled: s,
@@ -34104,8 +34111,8 @@ PROG ${o}`;
                     n.jsx("input", {
                       type: "number",
                       value: v.width,
-                      onChange: (C) => L({
-                        width: Number(C.target.value)
+                      onChange: (N) => L({
+                        width: Number(N.target.value)
                       }),
                       onBlur: P,
                       className: "input input-bordered w-full",
@@ -34136,8 +34143,8 @@ PROG ${o}`;
                     n.jsx("input", {
                       type: "number",
                       value: v.length,
-                      onChange: (C) => L({
-                        length: Number(C.target.value)
+                      onChange: (N) => L({
+                        length: Number(N.target.value)
                       }),
                       onBlur: P,
                       className: "input input-bordered w-full",
@@ -34168,8 +34175,8 @@ PROG ${o}`;
                     n.jsx("input", {
                       type: "number",
                       value: v.height,
-                      onChange: (C) => L({
-                        height: Number(C.target.value)
+                      onChange: (N) => L({
+                        height: Number(N.target.value)
                       }),
                       onBlur: P,
                       className: "input input-bordered w-full",
@@ -34189,16 +34196,16 @@ PROG ${o}`;
                     }),
                     n.jsx("select", {
                       value: v.resolution,
-                      onChange: (C) => L({
-                        resolution: Number(C.target.value)
+                      onChange: (N) => L({
+                        resolution: Number(N.target.value)
                       }),
                       onBlur: P,
                       className: "select select-bordered w-full",
                       disabled: s,
-                      children: bL.map((C) => n.jsx("option", {
-                        value: C.value,
-                        children: C.label
-                      }, C.value))
+                      children: bL.map((N) => n.jsx("option", {
+                        value: N.value,
+                        children: N.label
+                      }, N.value))
                     })
                   ]
                 })
@@ -34235,7 +34242,7 @@ PROG ${o}`;
                 }),
                 n.jsx(Xs, {
                   tags: e.Tags || [],
-                  onChange: (C) => S("Tags", C)
+                  onChange: (N) => S("Tags", N)
                 })
               ]
             })
@@ -34416,7 +34423,7 @@ PROG ${o}`;
         imageId: e.Id
       }), ht.remove(e.Id));
     };
-    return n.jsx(Cs, {
+    return n.jsx(js, {
       domain: "image",
       entityId: e.Id,
       initialData: e,
@@ -34733,7 +34740,7 @@ PROG ${o}`;
       R.key === "Enter" && (R.preventDefault(), b());
     };
     if (!e) return null;
-    const N = l.length === 0;
+    const C = l.length === 0;
     return n.jsxs(Wn, {
       title: n.jsxs(n.Fragment, {
         children: [
@@ -34859,7 +34866,7 @@ PROG ${o}`;
             })
           ]
         }),
-        N && n.jsxs("div", {
+        C && n.jsxs("div", {
           className: "alert alert-warning mt-3 text-sm",
           children: [
             n.jsx("span", {
@@ -34954,7 +34961,7 @@ PROG ${o}`;
         actorIds: w.map((D) => D.Id),
         toTerrainId: d
       });
-    }, N = (D) => y.some((U) => U.Position.terrainId === D), R = p.useMemo(() => {
+    }, C = (D) => y.some((U) => U.Position.terrainId === D), R = p.useMemo(() => {
       const D = /* @__PURE__ */ new Set();
       for (const U of y) D.add(U.Position.terrainId);
       for (const U of v) D.add(U.Position.terrainId);
@@ -34967,8 +34974,8 @@ PROG ${o}`;
         $.Id,
         $
       ])), k = D.filter(($) => R.has($.Id)), O = [
-        ...k.filter(($) => N($.Id)),
-        ...k.filter(($) => !N($.Id))
+        ...k.filter(($) => C($.Id)),
+        ...k.filter(($) => !C($.Id))
       ];
       for (const $ of u) {
         if (R.has($)) continue;
@@ -34994,9 +35001,9 @@ PROG ${o}`;
       if (U.length === 0) return [];
       const k = U.slice(0, Qd);
       return U.length > Qd && k.push(`+${U.length - Qd} more`), k;
-    }, C = p.useRef(null), I = p.useRef(null), [j, A] = p.useState(L.length), _ = L.map((D) => `${D.Id}:${D.Name}:${P(D.Id) ? 1 : 0}`).join("|");
+    }, N = p.useRef(null), I = p.useRef(null), [j, A] = p.useState(L.length), _ = L.map((D) => `${D.Id}:${D.Name}:${P(D.Id) ? 1 : 0}`).join("|");
     p.useLayoutEffect(() => {
-      const D = C.current, U = I.current;
+      const D = N.current, U = I.current;
       if (!D || !U) return;
       const k = () => {
         const $ = Array.from(U.children).map((te) => te.getBoundingClientRect().width), z = $.length, F = D.clientWidth;
@@ -35075,7 +35082,7 @@ PROG ${o}`;
           ]
         }),
         n.jsxs("div", {
-          ref: C,
+          ref: N,
           className: "relative min-w-0 flex-1",
           children: [
             n.jsx("div", {
@@ -35248,7 +35255,7 @@ PROG ${o}`;
       if (!c) return;
       const P = (M) => {
         if (!i.current) return;
-        const C = i.current.getBoundingClientRect(), I = M.clientX - C.left, j = Math.max(0, Math.min(100, I / C.width * 100)), A = Math.round(j / 100 * f);
+        const N = i.current.getBoundingClientRect(), I = M.clientX - N.left, j = Math.max(0, Math.min(100, I / N.width * 100)), A = Math.round(j / 100 * f);
         u(Math.max(0, Math.min(f, A)));
       }, L = () => {
         l(false), d !== null && d !== o && (h(d), s(d)), u(null);
@@ -35265,12 +35272,12 @@ PROG ${o}`;
     ]), e.Current === null) return null;
     const w = (P) => {
       if (!i.current) return v;
-      const L = i.current.getBoundingClientRect(), M = P - L.left, C = Math.max(0, Math.min(100, M / L.width * 100)), I = Math.round(C / 100 * f);
+      const L = i.current.getBoundingClientRect(), M = P - L.left, N = Math.max(0, Math.min(100, M / L.width * 100)), I = Math.round(N / 100 * f);
       return Math.max(0, Math.min(f, I));
     }, S = (P) => {
       const L = w(P.clientX);
       u(L), l(true);
-    }, N = (P) => {
+    }, C = (P) => {
       const L = Math.max(0, Math.min(f, P));
       h(L), x(L);
     }, R = (P) => {
@@ -35305,20 +35312,20 @@ PROG ${o}`;
               children: [
                 n.jsx("button", {
                   className: "btn btn-xs btn-ghost",
-                  onClick: () => N(m - 1),
+                  onClick: () => C(m - 1),
                   children: "-"
                 }),
                 n.jsx("input", {
                   type: "number",
                   value: v,
-                  onChange: (P) => N(Number(P.target.value)),
+                  onChange: (P) => C(Number(P.target.value)),
                   className: "input input-bordered input-xs w-16 text-center",
                   min: 0,
                   max: f
                 }),
                 n.jsx("button", {
                   className: "btn btn-xs btn-ghost",
-                  onClick: () => N(m + 1),
+                  onClick: () => C(m + 1),
                   children: "+"
                 }),
                 n.jsxs("span", {
@@ -35507,10 +35514,10 @@ PROG ${o}`;
             }, S.id)),
             [
               ...Array(10)
-            ].map((S, N) => n.jsx("div", {
+            ].map((S, C) => n.jsx("div", {
               className: "w-64",
               "aria-hidden": "true"
-            }, `ghost-${N}`))
+            }, `ghost-${C}`))
           ]
         }) : n.jsx("div", {
           className: "space-y-2",
@@ -35829,8 +35836,8 @@ PROG ${o}`;
     }, []);
     const g = (M) => {
       if (!a) return;
-      const C = a.min ?? 0, I = a.max ?? Number.MAX_SAFE_INTEGER;
-      u(Math.min(I, Math.max(C, M))), m.current = true;
+      const N = a.min ?? 0, I = a.max ?? Number.MAX_SAFE_INTEGER;
+      u(Math.min(I, Math.max(N, M))), m.current = true;
     }, x = () => {
       a && (a.onCommit(d), m.current = false);
     }, y = (M) => {
@@ -35858,7 +35865,7 @@ PROG ${o}`;
         }),
         M.label
       ]
-    }, M.key), b = s.actions.filter((M) => M.visible !== false), w = (M) => M.confirm || M.dividerBefore, S = b.filter((M) => !w(M)), N = b.filter(w), R = s.restoreRules ?? [], P = (M) => {
+    }, M.key), b = s.actions.filter((M) => M.visible !== false), w = (M) => M.confirm || M.dividerBefore, S = b.filter((M) => !w(M)), C = b.filter(w), R = s.restoreRules ?? [], P = (M) => {
       o == null ? void 0 : o.onSelect(M), i(null), t();
     }, L = !r.imageId;
     return n.jsxs(n.Fragment, {
@@ -35873,7 +35880,7 @@ PROG ${o}`;
               children: [
                 n.jsx("div", {
                   className: "w-64 shrink-0",
-                  children: L ? n.jsx(Ns, {
+                  children: L ? n.jsx(Cs, {
                     value: r.imageId,
                     onChange: r.onChange
                   }) : n.jsx(BL, {
@@ -35893,12 +35900,12 @@ PROG ${o}`;
                       children: "Actions"
                     }),
                     S.map(v),
-                    (_a3 = s.costWarnings) == null ? void 0 : _a3.map((M, C) => n.jsx(HL, {
+                    (_a3 = s.costWarnings) == null ? void 0 : _a3.map((M, N) => n.jsx(HL, {
                       kind: M.kind,
                       name: M.name,
                       current: M.current,
                       required: M.required
-                    }, C)),
+                    }, N)),
                     a && n.jsx(Zd, {
                       title: a.title,
                       children: n.jsxs("div", {
@@ -35921,12 +35928,12 @@ PROG ${o}`;
                         ]
                       })
                     }),
-                    N.length > 0 && n.jsxs(n.Fragment, {
+                    C.length > 0 && n.jsxs(n.Fragment, {
                       children: [
                         n.jsx("div", {
                           className: "divider my-2"
                         }),
-                        N.map(v)
+                        C.map(v)
                       ]
                     })
                   ]
@@ -35943,11 +35950,11 @@ PROG ${o}`;
             n.jsxs(Zd, {
               title: "Properties",
               children: [
-                s.properties.map((M, C) => n.jsx($L, {
+                s.properties.map((M, N) => n.jsx($L, {
                   label: M.label,
                   valueClassName: M.valueClassName,
                   children: M.value
-                }, C)),
+                }, N)),
                 R.length > 0 && n.jsxs("div", {
                   className: "py-2",
                   children: [
@@ -35957,9 +35964,9 @@ PROG ${o}`;
                     }),
                     n.jsx("ul", {
                       className: "text-sm list-disc list-inside space-y-1",
-                      children: R.map((M, C) => n.jsx("li", {
+                      children: R.map((M, N) => n.jsx("li", {
                         children: M
-                      }, C))
+                      }, N))
                     })
                   ]
                 })
@@ -36155,7 +36162,7 @@ PROG ${o}`;
       value: l.DiceRoll,
       valueClassName: "font-mono"
     });
-    const N = {
+    const C = {
       title: l.Name,
       image: {
         imageId: l.Image,
@@ -36187,7 +36194,7 @@ PROG ${o}`;
     return n.jsx(Hm, {
       isOpen: e,
       onClose: t,
-      config: N
+      config: C
     });
   }
   function Mb({ value: e, onChange: t }) {
@@ -36437,7 +36444,7 @@ PROG ${o}`;
         itemId: e.Id
       });
     };
-    return n.jsx(Cs, {
+    return n.jsx(js, {
       domain: "item",
       entityId: e == null ? void 0 : e.Id,
       initialData: i,
@@ -36479,7 +36486,7 @@ PROG ${o}`;
               }),
               n.jsx(Ue, {
                 label: "Image",
-                children: n.jsx(Ns, {
+                children: n.jsx(Cs, {
                   value: e.Image,
                   onChange: (r) => s("Image", r),
                   generationContext: {
@@ -36838,7 +36845,7 @@ PROG ${o}`;
         skillId: e.Id
       });
     };
-    return n.jsx(Cs, {
+    return n.jsx(js, {
       domain: "skill",
       entityId: e == null ? void 0 : e.Id,
       initialData: i,
@@ -36880,7 +36887,7 @@ PROG ${o}`;
               }),
               n.jsx(Ue, {
                 label: "Image",
-                children: n.jsx(Ns, {
+                children: n.jsx(Cs, {
                   value: e.Image,
                   onChange: (r) => s("Image", r),
                   generationContext: {
@@ -37157,7 +37164,7 @@ PROG ${o}`;
         statusId: e.Id
       });
     };
-    return n.jsx(Cs, {
+    return n.jsx(js, {
       domain: "status",
       entityId: e == null ? void 0 : e.Id,
       initialData: i,
@@ -37240,7 +37247,7 @@ PROG ${o}`;
               }),
               n.jsx(Ue, {
                 label: "Image",
-                children: n.jsx(Ns, {
+                children: n.jsx(Cs, {
                   value: e.Image,
                   onChange: (l) => s("Image", l),
                   generationContext: {
@@ -37668,10 +37675,10 @@ PROG ${o}`;
     });
   }
   function ZL({ actor: e, kind: t, isDM: s, isMyCharacter: r, canManage: a, actionService: o, playersSeeEntityHealth: i }) {
-    const c = fe(), l = V.getActiveCampaign(c), [d, u] = p.useState("info"), [m, h] = p.useState(false), [f, g] = p.useState(e.Name), [x, y] = p.useState(e.Description || ""), [v, b] = p.useState(e.MoveSpeed), [w, S] = p.useState(e.Color ?? (t === "character" ? Ft.CHARACTER : Ft.ENTITY)), [N, R] = p.useState(new Map(e.Attributes.map((Z) => [
+    const c = fe(), l = V.getActiveCampaign(c), [d, u] = p.useState("info"), [m, h] = p.useState(false), [f, g] = p.useState(e.Name), [x, y] = p.useState(e.Description || ""), [v, b] = p.useState(e.MoveSpeed), [w, S] = p.useState(e.Color ?? (t === "character" ? Ft.CHARACTER : Ft.ENTITY)), [C, R] = p.useState(new Map(e.Attributes.map((Z) => [
       Z.Id,
       Z.Value
-    ]))), [P, L] = p.useState(false), [M, C] = p.useState(false);
+    ]))), [P, L] = p.useState(false), [M, N] = p.useState(false);
     p.useEffect(() => {
       g(e.Name), y(e.Description || ""), b(e.MoveSpeed), S(e.Color ?? (t === "character" ? Ft.CHARACTER : Ft.ENTITY)), R(new Map(e.Attributes.map((Z) => [
         Z.Id,
@@ -37738,7 +37745,7 @@ PROG ${o}`;
           e.Id
         ],
         toTerrainId: Z
-      }), C(false));
+      }), N(false));
     }, H = (Z, Q, X) => {
       o && (o.execute(`${Q}:give`, {
         [`${Q}Ids`]: Z,
@@ -37829,7 +37836,7 @@ PROG ${o}`;
                   localDescription: x,
                   localMoveSpeed: v,
                   localColor: w,
-                  localAttributes: N,
+                  localAttributes: C,
                   playersSeeEntityHealth: i,
                   editingMaxStats: m,
                   setEditingMaxStats: h,
@@ -37843,7 +37850,7 @@ PROG ${o}`;
                   handleActionsChange: F,
                   handleDespawn: K,
                   setShowObjectPicker: L,
-                  setShowTerrainPicker: C,
+                  setShowTerrainPicker: N,
                   actionService: o,
                   isMyCharacter: r,
                   canManage: a
@@ -37879,14 +37886,14 @@ PROG ${o}`;
           isOpen: M,
           currentTerrainId: e.Position.terrainId,
           onConfirm: re,
-          onCancel: () => C(false),
+          onCancel: () => N(false),
           title: `Move ${e.Name} to\u2026`
         })
       ]
     });
   }
-  function JL({ actor: e, kind: t, isDM: s, campaign: r, isMyCharacter: a, canManage: o, localName: i, localDescription: c, localMoveSpeed: l, localColor: d, localAttributes: u, playersSeeEntityHealth: m, editingMaxStats: h, setEditingMaxStats: f, handleNameChange: g, handleDescriptionChange: x, handleMoveSpeedChange: y, handleColorChange: v, handleAttributeChange: b, handleFieldChange: w, handleStatChange: S, handleActionsChange: N, handleDespawn: R, setShowObjectPicker: P, setShowTerrainPicker: L, actionService: M }) {
-    const { requestRoll: C } = Wm(), I = r.Settings.VisibilitySettings, j = !o && t === "entity", A = !j || I.playersSeeEntityDescriptions !== false, _ = !j || I.playersSeeEntityAttributes !== false, T = !j || I.playersSeeEntityActions !== false;
+  function JL({ actor: e, kind: t, isDM: s, campaign: r, isMyCharacter: a, canManage: o, localName: i, localDescription: c, localMoveSpeed: l, localColor: d, localAttributes: u, playersSeeEntityHealth: m, editingMaxStats: h, setEditingMaxStats: f, handleNameChange: g, handleDescriptionChange: x, handleMoveSpeedChange: y, handleColorChange: v, handleAttributeChange: b, handleFieldChange: w, handleStatChange: S, handleActionsChange: C, handleDespawn: R, setShowObjectPicker: P, setShowTerrainPicker: L, actionService: M }) {
+    const { requestRoll: N } = Wm(), I = r.Settings.VisibilitySettings, j = !o && t === "entity", A = !j || I.playersSeeEntityDescriptions !== false, _ = !j || I.playersSeeEntityAttributes !== false, T = !j || I.playersSeeEntityActions !== false;
     return n.jsxs("div", {
       className: "space-y-3",
       children: [
@@ -37968,7 +37975,7 @@ PROG ${o}`;
         }),
         o ? n.jsx("div", {
           className: "flex items-center justify-center",
-          children: n.jsx(Ns, {
+          children: n.jsx(Cs, {
             tall: true,
             value: e.Image,
             onChange: (E) => {
@@ -38002,7 +38009,7 @@ PROG ${o}`;
             }),
             n.jsx("div", {
               className: "space-y-3",
-              children: Us(e.Stats, r.Settings.StatDefinitions).map((E) => n.jsx(bl, {
+              children: $s(e.Stats, r.Settings.StatDefinitions).map((E) => n.jsx(bl, {
                 stat: E,
                 editingMax: h,
                 onCurrentChange: (D) => S(E.Id, "Current", D),
@@ -38012,7 +38019,7 @@ PROG ${o}`;
           ]
         }) : t === "character" || m ? n.jsx("div", {
           className: "space-y-3",
-          children: Us(e.Stats, r.Settings.StatDefinitions).map((E) => {
+          children: $s(e.Stats, r.Settings.StatDefinitions).map((E) => {
             if (E.Current === null) return null;
             const D = E.Current, U = D / E.Max * 100;
             return n.jsxs("div", {
@@ -38050,7 +38057,7 @@ PROG ${o}`;
           })
         }) : n.jsx("div", {
           className: "space-y-2",
-          children: Us(e.Stats, r.Settings.StatDefinitions).map((E) => {
+          children: $s(e.Stats, r.Settings.StatDefinitions).map((E) => {
             if (E.Current === null) return null;
             const D = E.Current, U = E.Max - D;
             return U <= 0 ? null : n.jsxs("div", {
@@ -38068,7 +38075,7 @@ PROG ${o}`;
           className: "pt-2",
           children: n.jsx(wl, {
             actions: Wa(e.Actions, r.Settings.ActionDefinitions),
-            onChange: N,
+            onChange: C,
             readonly: !o && !a
           })
         }),
@@ -38202,7 +38209,7 @@ PROG ${o}`;
             localValues: u,
             onChange: b,
             readOnly: !o,
-            onRoll: C
+            onRoll: N
           })
         }),
         s && n.jsxs("div", {
@@ -38242,13 +38249,13 @@ PROG ${o}`;
     ]), g = o.daysPerWeek > 0, x = (o.weekLabel ?? "").trim() || "week", y = (o.monthLabel ?? "").trim(), v = (o.yearLabel ?? "").trim() || "Year", b = p.useMemo(() => y ? false : !o.monthNames || o.monthNames.length === 0 ? true : o.monthNames.every((E) => !E || !E.trim()), [
       o.monthNames,
       y
-    ]), w = s.GameState.RemainingShortRests ?? 0, S = s.Settings.RestSettings.shortRestsPerDay, N = (E, D, U) => Math.max(D, Math.min(U, Math.trunc(E))), R = (E) => {
+    ]), w = s.GameState.RemainingShortRests ?? 0, S = s.Settings.RestSettings.shortRestsPerDay, C = (E, D, U) => Math.max(D, Math.min(U, Math.trunc(E))), R = (E) => {
       if (!a || !t) return;
       const D = Math.trunc(E);
       d(D), u(D);
     }, P = (E) => {
       if (!a) return;
-      const D = N(E.year ?? m.year, 1, Number.MAX_SAFE_INTEGER), U = N(E.month ?? m.month, 1, o.monthsPerYear), k = N(E.day ?? m.day, 1, o.daysPerMonth);
+      const D = C(E.year ?? m.year, 1, Number.MAX_SAFE_INTEGER), U = C(E.month ?? m.month, 1, o.monthsPerYear), k = C(E.day ?? m.day, 1, o.daysPerMonth);
       R(fv({
         year: D,
         month: U,
@@ -38260,7 +38267,7 @@ PROG ${o}`;
       if (!g || m.dayOfWeekIndex == null || !a) return;
       const D = m.dayOfWeekIndex, U = o.daysPerWeek, k = (E - D + U) % U;
       k !== 0 && L(k);
-    }, C = () => {
+    }, N = () => {
       !a || !t || t.execute("calendar:shortRest", {});
     }, I = () => {
       !a || !t || t.execute("calendar:longRest", {});
@@ -38355,7 +38362,7 @@ PROG ${o}`;
           className: "flex items-center justify-center gap-3 mt-4",
           children: [
             n.jsxs("button", {
-              onClick: C,
+              onClick: N,
               disabled: w <= 0,
               className: "btn btn-sm btn-outline gap-2",
               title: `Short rest (${w}/${S} remaining)`,
@@ -38442,7 +38449,7 @@ PROG ${o}`;
                 n.jsx("button", {
                   className: "btn btn-sm",
                   onClick: () => P({
-                    day: N(m.day - 1, 1, o.daysPerMonth)
+                    day: C(m.day - 1, 1, o.daysPerMonth)
                   }),
                   children: "\u2212"
                 }),
@@ -38453,13 +38460,13 @@ PROG ${o}`;
                   className: "input input-bordered input-sm w-24 text-center",
                   value: m.day,
                   onChange: (E) => P({
-                    day: N(Number(E.target.value) || 1, 1, o.daysPerMonth)
+                    day: C(Number(E.target.value) || 1, 1, o.daysPerMonth)
                   })
                 }),
                 n.jsx("button", {
                   className: "btn btn-sm",
                   onClick: () => P({
-                    day: N(m.day + 1, 1, o.daysPerMonth)
+                    day: C(m.day + 1, 1, o.daysPerMonth)
                   }),
                   children: "+"
                 })
@@ -38482,7 +38489,7 @@ PROG ${o}`;
                 n.jsx("button", {
                   className: "btn btn-sm",
                   onClick: () => P({
-                    year: N(m.year - 1, 1, Number.MAX_SAFE_INTEGER)
+                    year: C(m.year - 1, 1, Number.MAX_SAFE_INTEGER)
                   }),
                   children: "\u2212"
                 }),
@@ -38492,7 +38499,7 @@ PROG ${o}`;
                   className: "input input-bordered input-sm w-28 text-center",
                   value: m.year,
                   onChange: (E) => P({
-                    year: N(Number(E.target.value) || 1, 1, Number.MAX_SAFE_INTEGER)
+                    year: C(Number(E.target.value) || 1, 1, Number.MAX_SAFE_INTEGER)
                   })
                 }),
                 n.jsx("button", {
@@ -38628,9 +38635,9 @@ PROG ${o}`;
   }
   function cD({ terrainId: e }) {
     var _a3, _b3, _c2, _d2, _e;
-    const t = fe(), { actionService: s } = De(), r = V.getActiveCampaign(t), a = t.User.Role === "dm", o = r.VoxelTerrains.find((O) => O.Id === e), i = a && !!s && !!o, c = (o == null ? void 0 : o.Name) ?? "Unknown Terrain", l = $e.isHydrated(o), d = a || !l, [u, m] = p.useState(false), [h, f] = p.useState(null), [g, x] = p.useState(null), [y, v] = p.useState(""), b = p.useRef(null), w = p.useRef(null), S = p.useRef(null), N = p.useRef(s);
+    const t = fe(), { actionService: s } = De(), r = V.getActiveCampaign(t), a = t.User.Role === "dm", o = r.VoxelTerrains.find((O) => O.Id === e), i = a && !!s && !!o, c = (o == null ? void 0 : o.Name) ?? "Unknown Terrain", l = $e.isHydrated(o), d = a || !l, [u, m] = p.useState(false), [h, f] = p.useState(null), [g, x] = p.useState(null), [y, v] = p.useState(""), b = p.useRef(null), w = p.useRef(null), S = p.useRef(null), C = p.useRef(s);
     p.useEffect(() => {
-      N.current = s;
+      C.current = s;
     }, [
       s
     ]), p.useEffect(() => {
@@ -38656,7 +38663,7 @@ PROG ${o}`;
       R,
       P
     ]);
-    const L = h ?? R, M = g ?? P, C = M.Color ?? sx, I = p.useMemo(() => sy(r.Settings), [
+    const L = h ?? R, M = g ?? P, N = M.Color ?? sx, I = p.useMemo(() => sy(r.Settings), [
       r.Settings.TerrainEnvironmentPresets
     ]), j = p.useMemo(() => I.find((O) => gg(L, M, O)) ?? null, [
       L,
@@ -38664,7 +38671,7 @@ PROG ${o}`;
       I
     ]), A = (O, $) => {
       var _a4;
-      (_a4 = N.current) == null ? void 0 : _a4.execute("terrain:edit", {
+      (_a4 = C.current) == null ? void 0 : _a4.execute("terrain:edit", {
         terrainId: O,
         updates: $,
         repairActors: false
@@ -38700,7 +38707,7 @@ PROG ${o}`;
         },
         Background: Wi(M)
       };
-      (_a4 = N.current) == null ? void 0 : _a4.execute("setting:edit", {
+      (_a4 = C.current) == null ? void 0 : _a4.execute("setting:edit", {
         updates: {
           TerrainEnvironmentPresets: [
             ...I.map(am),
@@ -38820,7 +38827,7 @@ PROG ${o}`;
                                 n.jsx("input", {
                                   type: "color",
                                   className: "h-8 w-12 cursor-pointer rounded border border-base-300 bg-base-100 p-1 disabled:cursor-not-allowed disabled:brightness-75",
-                                  value: C,
+                                  value: N,
                                   onChange: (O) => k({
                                     Color: O.target.value
                                   }),
@@ -38994,8 +39001,8 @@ PROG ${o}`;
         d = y;
         for (let b = 0; b < t; b++) {
           if (m[b] -= v, m[b] <= 0) {
-            const S = b % 4 === 0 ? 0.9 : b % 3 === 0 ? 0.6 : 0.75, N = Math.pow(Math.random(), 1.25), R = 0.15 + 0.85 * l;
-            f[b] = Math.min(1, N * R * S), m[b] = u[b] + (Math.random() * 140 - 70);
+            const S = b % 4 === 0 ? 0.9 : b % 3 === 0 ? 0.6 : 0.75, C = Math.pow(Math.random(), 1.25), R = 0.15 + 0.85 * l;
+            f[b] = Math.min(1, C * R * S), m[b] = u[b] + (Math.random() * 140 - 70);
           }
           h[b] += (f[b] - h[b]) * g;
           const w = 0.04 + 0.08 * l;
@@ -39069,7 +39076,7 @@ PROG ${o}`;
     }, [
       x
     ]);
-    const N = p.useMemo(() => {
+    const C = p.useMemo(() => {
       const A = v.trim().toLowerCase(), _ = d.filter((E) => A === "" || E.toLowerCase().includes(A)).map((E) => ({
         kind: "playlist",
         key: `pl:${E}`,
@@ -39103,7 +39110,7 @@ PROG ${o}`;
       t && t.execute("audio:stopTrack", {});
     }, M = () => {
       y(false), b("");
-    }, C = (A) => {
+    }, N = (A) => {
       if (!t) {
         M();
         return;
@@ -39169,13 +39176,13 @@ PROG ${o}`;
             }),
             n.jsx("div", {
               className: "max-h-64 overflow-y-auto -mx-1",
-              children: N.length === 0 ? n.jsx(dt, {
+              children: C.length === 0 ? n.jsx(dt, {
                 children: "No matches found"
               }) : n.jsx("ul", {
                 className: "menu menu-sm p-0 [&_li>*]:rounded-md",
-                children: N.map((A) => n.jsx("li", {
+                children: C.map((A) => n.jsx("li", {
                   children: n.jsxs("a", {
-                    onClick: () => C(A),
+                    onClick: () => N(A),
                     className: "flex items-center gap-2",
                     children: [
                       A.kind === "playlist" ? n.jsx("span", {
@@ -39407,7 +39414,7 @@ PROG ${o}`;
     ]), w = p.useMemo(() => s.Images.find((_) => _.Id === r.FocusImageId), [
       s.Images,
       r.FocusImageId
-    ]), S = b && b.Height > 0 ? b.Width / b.Height : 16 / 9, N = w && w.Height > 0 ? w.Width / w.Height : 1;
+    ]), S = b && b.Height > 0 ? b.Width / b.Height : 16 / 9, C = w && w.Height > 0 ? w.Width / w.Height : 1;
     p.useEffect(() => {
       if (i === "window") {
         const _ = g.height, T = Math.round(_ * S);
@@ -39437,7 +39444,7 @@ PROG ${o}`;
       m(i), d(true);
     }, M = () => {
       d(false), c(u);
-    }, C = () => {
+    }, N = () => {
       if (i === "fixed" && y.current) {
         const _ = y.current.getBoundingClientRect();
         x({
@@ -39483,8 +39490,8 @@ PROG ${o}`;
             P && n.jsx("div", {
               className: "absolute bottom-2 right-2 pointer-events-none transition-all duration-300 ease-in-out",
               style: {
-                width: `min(35%, calc(50% * ${N}))`,
-                aspectRatio: `${N}`
+                width: `min(35%, calc(50% * ${C}))`,
+                aspectRatio: `${C}`
               },
               children: n.jsx(Ut, {
                 imageId: r.FocusImageId,
@@ -39496,7 +39503,7 @@ PROG ${o}`;
               className: "absolute top-2 right-2 flex gap-1 z-10",
               children: [
                 !a && n.jsx("button", {
-                  onClick: C,
+                  onClick: N,
                   className: "btn btn-circle btn-ghost btn-xs bg-base-100/50 hover:bg-base-100",
                   title: "Switch to window mode",
                   children: n.jsx("span", {
@@ -39573,8 +39580,8 @@ PROG ${o}`;
             P && n.jsx("div", {
               className: "absolute bottom-2 right-2 pointer-events-none",
               style: {
-                width: `min(35%, calc(50% * ${N}))`,
-                aspectRatio: `${N}`
+                width: `min(35%, calc(50% * ${C}))`,
+                aspectRatio: `${C}`
               },
               children: n.jsx(Ut, {
                 imageId: r.FocusImageId,
@@ -39586,7 +39593,7 @@ PROG ${o}`;
               className: "absolute top-2 right-2 flex gap-1 z-10 pointer-events-auto",
               children: [
                 n.jsx("button", {
-                  onClick: C,
+                  onClick: N,
                   className: "btn btn-circle btn-ghost btn-xs bg-base-100/50 hover:bg-base-100",
                   title: "Switch to fixed mode",
                   children: n.jsx("span", {
@@ -39662,7 +39669,7 @@ PROG ${o}`;
                 className: "text-sm opacity-70 mb-4",
                 children: "The main background image for the scene"
               }),
-              n.jsx(Ns, {
+              n.jsx(Cs, {
                 value: r.EnvironmentImageId,
                 onChange: i
               })
@@ -39708,7 +39715,7 @@ PROG ${o}`;
                   })
                 ]
               }),
-              n.jsx(Ns, {
+              n.jsx(Cs, {
                 value: r.FocusImageId,
                 onChange: c
               })
@@ -39830,8 +39837,8 @@ PROG ${o}`;
     const s = e.length;
     let r = "";
     for (let a = 0; a < s; a++) {
-      const o = e[a], i = e[(a - 1 + s) % s], c = e[(a + 1) % s], l = o[0] - i[0], d = o[1] - i[1], u = Math.sqrt(l * l + d * d), m = c[0] - o[0], h = c[1] - o[1], f = Math.sqrt(m * m + h * h), g = l / u * Math.min(t, u / 2), x = d / u * Math.min(t, u / 2), y = m / f * Math.min(t, f / 2), v = h / f * Math.min(t, f / 2), b = o[0] - g, w = o[1] - x, S = o[0] + y, N = o[1] + v;
-      a === 0 ? r += `M ${b} ${w}` : r += ` L ${b} ${w}`, r += ` Q ${o[0]} ${o[1]} ${S} ${N}`;
+      const o = e[a], i = e[(a - 1 + s) % s], c = e[(a + 1) % s], l = o[0] - i[0], d = o[1] - i[1], u = Math.sqrt(l * l + d * d), m = c[0] - o[0], h = c[1] - o[1], f = Math.sqrt(m * m + h * h), g = l / u * Math.min(t, u / 2), x = d / u * Math.min(t, u / 2), y = m / f * Math.min(t, f / 2), v = h / f * Math.min(t, f / 2), b = o[0] - g, w = o[1] - x, S = o[0] + y, C = o[1] + v;
+      a === 0 ? r += `M ${b} ${w}` : r += ` L ${b} ${w}`, r += ` Q ${o[0]} ${o[1]} ${S} ${C}`;
     }
     return r += " Z", r;
   }
@@ -40068,7 +40075,7 @@ PROG ${o}`;
       } catch {
         return true;
       }
-    }), [f, g] = p.useState(false), [x, y] = p.useState(null), [v, b] = p.useState([]), [w, S] = p.useState(0), [N, R] = p.useState(false), P = p.useRef(null), L = p.useRef(null), M = p.useRef(null), { canRoll: C, error: I } = p.useMemo(() => {
+    }), [f, g] = p.useState(false), [x, y] = p.useState(null), [v, b] = p.useState([]), [w, S] = p.useState(0), [C, R] = p.useState(false), P = p.useRef(null), L = p.useRef(null), M = p.useRef(null), { canRoll: N, error: I } = p.useMemo(() => {
       if (!d.trim()) return {
         canRoll: false,
         error: null
@@ -40146,7 +40153,7 @@ PROG ${o}`;
         });
       }, 35);
     }, U = () => {
-      if (!C) return;
+      if (!N) return;
       E(), R(false);
       const F = Date.now() & 268435455, K = oi(d, {
         seed: F
@@ -40183,7 +40190,7 @@ PROG ${o}`;
       }), u("");
     };
     p.useEffect(() => {
-      if (m && C) return P.current && window.clearTimeout(P.current), P.current = window.setTimeout(() => {
+      if (m && N) return P.current && window.clearTimeout(P.current), P.current = window.setTimeout(() => {
         U();
       }, 1e3), () => {
         P.current && window.clearTimeout(P.current);
@@ -40193,13 +40200,13 @@ PROG ${o}`;
       m
     ]), p.useEffect(() => {
       const F = () => {
-        N && c && !document.hidden ? T() : E();
+        C && c && !document.hidden ? T() : E();
       };
       return F(), document.addEventListener("visibilitychange", F), () => {
         document.removeEventListener("visibilitychange", F), E();
       };
     }, [
-      N,
+      C,
       c
     ]), p.useEffect(() => {
       if (!o || !c) return;
@@ -40301,7 +40308,7 @@ PROG ${o}`;
                     children: [
                       n.jsx("input", {
                         type: "text",
-                        className: `input input-sm  flex-1 font-mono bg-base-200  ${C || !d.trim() ? "" : "input-error"}`,
+                        className: `input input-sm  flex-1 font-mono bg-base-200  ${N || !d.trim() ? "" : "input-error"}`,
                         placeholder: "e.g., 2d20kh1 + 5",
                         value: d,
                         onChange: (F) => $(F.target.value),
@@ -40328,7 +40335,7 @@ PROG ${o}`;
                       n.jsx("button", {
                         className: "btn btn-primary btn-sm px-4 shadow-lg hover:shadow-xl transition-all",
                         onClick: U,
-                        disabled: !C || f,
+                        disabled: !N || f,
                         children: f ? n.jsx("span", {
                           className: "loading loading-spinner loading-sm"
                         }) : n.jsxs(n.Fragment, {
@@ -40394,7 +40401,7 @@ PROG ${o}`;
                             value: F.displayValue,
                             isCrit: !F.spinning && K,
                             isFumble: !F.spinning && re,
-                            rainbowPhase: N && H ? w : void 0,
+                            rainbowPhase: C && H ? w : void 0,
                             className: `relative z-10 w-20 h-20 ${!F.spinning && K && H ? "drop-shadow-[0_0_20px_rgba(139,92,246,0.8)]" : !F.spinning && K ? "drop-shadow-[0_0_16px_rgba(34,197,94,1)]" : !F.spinning && re ? "drop-shadow-[0_0_16px_rgba(239,68,68,1)]" : "drop-shadow-lg"} ${F.spinning ? "animate-spin [animation-duration:400ms]" : ""}`
                           }),
                           !F.spinning && K && n.jsx("div", {
@@ -40691,7 +40698,7 @@ PROG ${o}`;
   }
   const Ig = "quest-net-log-filters", Ng = 50, eu = 50, CD = 100, jD = 100;
   function AD({ isFloating: e = false, onClose: t }) {
-    const s = fe(), { actionService: r } = De(), o = ND() === "dark" ? ID : SD, [i, c] = p.useState(""), [l, d] = p.useState(""), [u, m] = p.useState(false), [h, f] = p.useState(Ng), [g, x] = p.useState(false), y = p.useRef(null), v = p.useRef(null), b = p.useRef(null), w = p.useRef(true), S = p.useRef(null), N = p.useRef(0), R = p.useRef(void 0), P = V.getActiveCampaign(s), L = s.User.Role, M = s.User.SelectedCharacters[P.RoomCode], C = p.useMemo(() => bD(P), [
+    const s = fe(), { actionService: r } = De(), o = ND() === "dark" ? ID : SD, [i, c] = p.useState(""), [l, d] = p.useState(""), [u, m] = p.useState(false), [h, f] = p.useState(Ng), [g, x] = p.useState(false), y = p.useRef(null), v = p.useRef(null), b = p.useRef(null), w = p.useRef(true), S = p.useRef(null), C = p.useRef(0), R = p.useRef(void 0), P = V.getActiveCampaign(s), L = s.User.Role, M = s.User.SelectedCharacters[P.RoomCode], N = p.useMemo(() => bD(P), [
       P.GameState.Characters
     ]), I = qm(), j = (J, se) => Ic(se, I(J)), [A, _] = p.useState(() => {
       try {
@@ -40760,8 +40767,8 @@ PROG ${o}`;
       h
     ]), p.useLayoutEffect(() => {
       var _a3, _b3;
-      const J = O.length, se = (_a3 = O[J - 1]) == null ? void 0 : _a3.Id, oe = J > N.current, Ee = se !== R.current;
-      N.current = J, R.current = se, !(!oe || !Ee) && (l.trim() || w.current && ((_b3 = y.current) == null ? void 0 : _b3.scrollIntoView({
+      const J = O.length, se = (_a3 = O[J - 1]) == null ? void 0 : _a3.Id, oe = J > C.current, Ee = se !== R.current;
+      C.current = J, R.current = se, !(!oe || !Ee) && (l.trim() || w.current && ((_b3 = y.current) == null ? void 0 : _b3.scrollIntoView({
         behavior: "auto",
         block: "end"
       })));
@@ -40784,7 +40791,7 @@ PROG ${o}`;
       if (!r || !i.trim()) return;
       let J;
       L !== "dm" && (J = s.User.SelectedCharacters[P.RoomCode]);
-      const se = i.trim(), { mentionedActorIds: oe } = wg(se, C);
+      const se = i.trim(), { mentionedActorIds: oe } = wg(se, N);
       r.execute("log:create", {
         action: se,
         category: "chat",
@@ -40823,10 +40830,10 @@ PROG ${o}`;
           })
         ]
       });
-    }, ae = p.useMemo(() => new Set(C.map((J) => J.name.toLowerCase())), [
-      C
+    }, ae = p.useMemo(() => new Set(N.map((J) => J.name.toLowerCase())), [
+      N
     ]), pe = (J) => {
-      const { matches: se } = wg(J.Action, C);
+      const { matches: se } = wg(J.Action, N);
       if (se.length === 0) return J.Action;
       const oe = [];
       let Ee = 0;
@@ -41072,7 +41079,7 @@ PROG ${o}`;
           content: d
         }
       }), g(false), l(""), u(""));
-    }, N = () => {
+    }, C = () => {
       g(false), l(""), u("");
     }, R = (A) => {
       i(A.Id), l(A.title), u(A.content || ""), g(false), a("");
@@ -41095,7 +41102,7 @@ PROG ${o}`;
           noteId: A
         }), h(null), i(null);
       } else h(A);
-    }, C = (A) => {
+    }, N = (A) => {
       const _ = new Date(A);
       return _.toLocaleDateString() + " " + _.toLocaleTimeString([], {
         hour: "2-digit",
@@ -41126,7 +41133,7 @@ PROG ${o}`;
                   ]
                 }),
                 n.jsxs("button", {
-                  onClick: f ? N : L,
+                  onClick: f ? C : L,
                   className: "btn btn-sm btn-ghost gap-1",
                   children: [
                     n.jsx("span", {
@@ -41254,7 +41261,7 @@ PROG ${o}`;
                     }),
                     n.jsx("span", {
                       className: "text-xs opacity-70 shrink-0",
-                      children: C(A.lastUpdated)
+                      children: N(A.lastUpdated)
                     })
                   ]
                 }),
@@ -41277,9 +41284,9 @@ PROG ${o}`;
     });
   }
   function TD() {
-    const e = fe(), { actionService: t } = De(), { requestRoll: s } = Wm(), r = V.getActiveCampaign(e), [a, o] = p.useState(false), [i, c] = p.useState(null), l = e.User.SelectedCharacters[r.RoomCode], d = r.GameState.Characters.find((X) => X.Id === l), [u, m] = p.useState(""), [h, f] = p.useState(""), [g, x] = p.useState(""), [y, v] = p.useState(Ft.CHARACTER), [b, w] = p.useState(/* @__PURE__ */ new Map()), [S, N] = p.useState(0);
+    const e = fe(), { actionService: t } = De(), { requestRoll: s } = Wm(), r = V.getActiveCampaign(e), [a, o] = p.useState(false), [i, c] = p.useState(null), l = e.User.SelectedCharacters[r.RoomCode], d = r.GameState.Characters.find((X) => X.Id === l), [u, m] = p.useState(""), [h, f] = p.useState(""), [g, x] = p.useState(""), [y, v] = p.useState(Ft.CHARACTER), [b, w] = p.useState(/* @__PURE__ */ new Map()), [S, C] = p.useState(0);
     p.useEffect(() => {
-      d && (m(d.Name), f(d.Description || ""), x(d.CritMessage || ""), v(d.Color ?? Ft.CHARACTER), N(d.MoveSpeed), w(new Map(d.Attributes.map((X) => [
+      d && (m(d.Name), f(d.Description || ""), x(d.CritMessage || ""), v(d.Color ?? Ft.CHARACTER), C(d.MoveSpeed), w(new Map(d.Attributes.map((X) => [
         X.Id,
         X.Value
       ]))));
@@ -41293,7 +41300,7 @@ PROG ${o}`;
           [X]: ae
         }
       });
-    }, P = dn((X) => R("Name", X)), L = dn((X) => R("Description", X)), M = dn((X) => R("CritMessage", X)), C = dn((X) => R("Color", X)), I = dn((X) => R("MoveSpeed", X)), j = dn((X) => R("Attributes", X));
+    }, P = dn((X) => R("Name", X)), L = dn((X) => R("Description", X)), M = dn((X) => R("CritMessage", X)), N = dn((X) => R("Color", X)), I = dn((X) => R("MoveSpeed", X)), j = dn((X) => R("Attributes", X));
     if (!d) return n.jsx(dt, {
       children: "No character selected"
     });
@@ -41305,10 +41312,10 @@ PROG ${o}`;
       const ae = X.slice(0, 50);
       x(ae), M(ae || void 0);
     }, E = (X) => {
-      v(X), C(X);
+      v(X), N(X);
     }, D = (X) => {
       const ae = Math.max(0, Math.min(99, X));
-      N(ae), I(ae);
+      C(ae), I(ae);
     }, U = (X, ae, pe) => {
       if (!t) return;
       const be = d.Stats.map((J) => J.Id === X ? {
@@ -41341,7 +41348,7 @@ PROG ${o}`;
           Actions: ae
         }
       });
-    }, $ = Us(d.Stats, r.Settings.StatDefinitions), z = $.length <= 2, F = p.useRef(null), K = p.useRef(null), re = p.useRef(null), [H, ne] = p.useState(false), te = !!d.Actions && d.Actions.length > 0;
+    }, $ = $s(d.Stats, r.Settings.StatDefinitions), z = $.length <= 2, F = p.useRef(null), K = p.useRef(null), re = p.useRef(null), [H, ne] = p.useState(false), te = !!d.Actions && d.Actions.length > 0;
     p.useLayoutEffect(() => {
       const X = F.current, ae = K.current;
       if (!X || !ae) return;
@@ -41382,7 +41389,7 @@ PROG ${o}`;
                 n.jsx("div", {
                   ref: F,
                   className: "[&_img]:max-h-80",
-                  children: n.jsx(Ns, {
+                  children: n.jsx(Cs, {
                     tall: true,
                     value: d.Image,
                     onChange: (X) => {
@@ -41677,7 +41684,7 @@ PROG ${o}`;
     ] : d : []).filter((T) => sl(T, g, i.Settings)), w = f.isActive ? rl(b, g, i.Settings) : [], S = new Map(w.map((T) => [
       T.ActorId,
       T.Order
-    ])), N = new Set(f.RoundCompleted ?? []), R = new Map(u.map((T, E) => [
+    ])), C = new Set(f.RoundCompleted ?? []), R = new Map(u.map((T, E) => [
       T.Id,
       E
     ])), P = f.isActive ? [
@@ -41691,7 +41698,7 @@ PROG ${o}`;
       moveSpeed: T.MoveSpeed
     }), M = (T) => {
       L(T), e(T.Id);
-    }, C = (T, E) => {
+    }, N = (T, E) => {
       Pa(T.target, T.currentTarget) || (t(E.Id), L(E));
     }, I = (T, E) => {
       Pa(T.target, T.currentTarget) || M(E);
@@ -41704,7 +41711,7 @@ PROG ${o}`;
     }, _ = (T) => {
       const E = T.Id, D = S.get(E);
       if (D === void 0) return null;
-      const U = N.has(E), k = c(T);
+      const U = C.has(E), k = c(T);
       return n.jsx("button", {
         type: "button",
         onClick: () => A(T),
@@ -41731,7 +41738,7 @@ PROG ${o}`;
           children: P.map((T) => n.jsxs("div", {
             role: "button",
             tabIndex: 0,
-            onClick: (E) => C(E, T),
+            onClick: (E) => N(E, T),
             onDoubleClick: (E) => I(E, T),
             onKeyDown: (E) => j(E, T),
             title: "Click to select, double-click to inspect",
@@ -41763,7 +41770,7 @@ PROG ${o}`;
                       }),
                       n.jsx("div", {
                         className: "flex-1 space-y-2",
-                        children: Us(T.Stats, i.Settings.StatDefinitions).map((E) => {
+                        children: $s(T.Stats, i.Settings.StatDefinitions).map((E) => {
                           if (E.Current === null) return null;
                           const D = E.Current / E.Max * 100;
                           return n.jsxs("div", {
@@ -41819,7 +41826,7 @@ PROG ${o}`;
     });
   }
   function MD({ onInspectActor: e, onSelectActor: t }) {
-    const s = fe(), { actionService: r } = De(), { selectActor: a, selectedActor: o } = na(), { viewedTerrainId: i } = ms(), c = V.getActiveCampaign(s), [l, d] = p.useState("all"), [u, m] = p.useState("viewed"), [h, f] = p.useState(""), [g, x] = p.useState([]), [y, v] = p.useState(false), [b, w] = p.useState(false), S = c.GameState.CombatState, N = c.Settings.InitiativeSettings, P = ((N == null ? void 0 : N.Mode) ?? "party") === "individual", L = [
+    const s = fe(), { actionService: r } = De(), { selectActor: a, selectedActor: o } = na(), { viewedTerrainId: i } = ms(), c = V.getActiveCampaign(s), [l, d] = p.useState("all"), [u, m] = p.useState("viewed"), [h, f] = p.useState(""), [g, x] = p.useState([]), [y, v] = p.useState(false), [b, w] = p.useState(false), S = c.GameState.CombatState, C = c.Settings.InitiativeSettings, P = ((C == null ? void 0 : C.Mode) ?? "party") === "individual", L = [
       ...c.GameState.Characters.map((q) => ({
         actor: q,
         kind: "character"
@@ -41828,7 +41835,7 @@ PROG ${o}`;
         actor: q,
         kind: "entity"
       }))
-    ], M = (q) => !S.isActive || q.kind === "entity" && Vt(q.actor) ? false : P ? true : Oa(q.actor, q.kind) === (S.initiativeSide === "party"), C = L.filter((q) => M(q) && sl(q.actor, N, c.Settings)).map((q) => q.actor), I = S.isActive ? rl(C, N, c.Settings) : [], j = new Map(I.map((q) => [
+    ], M = (q) => !S.isActive || q.kind === "entity" && Vt(q.actor) ? false : P ? true : Oa(q.actor, q.kind) === (S.initiativeSide === "party"), N = L.filter((q) => M(q) && sl(q.actor, C, c.Settings)).map((q) => q.actor), I = S.isActive ? rl(N, C, c.Settings) : [], j = new Map(I.map((q) => [
       q.ActorId,
       q.Order
     ])), A = new Set(S.RoundCompleted ?? []), _ = new Map(L.map((q, xe) => [
@@ -42168,7 +42175,7 @@ PROG ${o}`;
                       n.jsx("div", {
                         className: "flex-1 space-y-2",
                         "data-card-action": true,
-                        children: Us(q.actor.Stats, c.Settings.StatDefinitions).map((xe) => n.jsx(bl, {
+                        children: $s(q.actor.Stats, c.Settings.StatDefinitions).map((xe) => n.jsx(bl, {
                           stat: xe,
                           editingMax: false,
                           onCurrentChange: (we) => J(q, xe.Id, "Current", we),
@@ -42271,7 +42278,7 @@ PROG ${o}`;
     }), w = 3, S = b.length > w ? [
       ...b.slice(0, w),
       `${b.length - w} more`
-    ] : b, N = S.length > 1 ? `${S.slice(0, -1).join(", ")} and ${S[S.length - 1]}` : S[0] ?? "", R = l.isActive && g.length > 0, P = !r && R && v.some((k) => vm(e.User, s, k)), L = l.initiativeSide === "party", M = m ? b.length === 1 ? `${N}'s turn` : "Tied turn" : L ? "Party's turn" : "Enemies' turn", C = R ? b.length === 0 ? m ? "Everyone has acted this round." : L ? "All party members have acted this round." : "All enemies have acted this round." : m && b.length === 1 ? null : `Up now: ${N}` : "No one has an initiative value yet.", I = m ? "border-base-content/30" : L ? "border-primary" : "border-error", j = n.jsxs("div", {
+    ] : b, C = S.length > 1 ? `${S.slice(0, -1).join(", ")} and ${S[S.length - 1]}` : S[0] ?? "", R = l.isActive && g.length > 0, P = !r && R && v.some((k) => vm(e.User, s, k)), L = l.initiativeSide === "party", M = m ? b.length === 1 ? `${C}'s turn` : "Tied turn" : L ? "Party's turn" : "Enemies' turn", N = R ? b.length === 0 ? m ? "Everyone has acted this round." : L ? "All party members have acted this round." : "All enemies have acted this round." : m && b.length === 1 ? null : `Up now: ${C}` : "No one has an initiative value yet.", I = m ? "border-base-content/30" : L ? "border-primary" : "border-error", j = n.jsxs("div", {
       className: `flex items-center gap-3 rounded-lg border-l-4 bg-base-200 px-4 py-3 text-left ${I}`,
       children: [
         n.jsx("span", {
@@ -42284,10 +42291,10 @@ PROG ${o}`;
               className: "text-lg font-semibold leading-tight",
               children: M
             }),
-            C && n.jsx("div", {
+            N && n.jsx("div", {
               className: "text-sm opacity-70 truncate",
-              title: C,
-              children: C
+              title: N,
+              children: N
             })
           ]
         }),
@@ -42586,7 +42593,7 @@ PROG ${o}`;
               ]
             }),
             e.Stats.length > 0 && (() => {
-              const y = Us(e.Stats, r.Settings.StatDefinitions), v = y.filter((w) => w.Current === null).length, b = y.some((w) => w.Current !== null);
+              const y = $s(e.Stats, r.Settings.StatDefinitions), v = y.filter((w) => w.Current === null).length, b = y.some((w) => w.Current !== null);
               return n.jsxs("div", {
                 className: "mb-4",
                 children: [
@@ -42771,7 +42778,7 @@ PROG ${o}`;
     var _a3, _b3;
     const t = fe(), s = V.getActiveCampaign(t), r = Yr(), a = Ws(), [o, i] = p.useState(false), [c, l] = p.useState(false), [d, u] = p.useState(false), [m, h] = p.useState(false), f = ve.getCameraMode(t), g = p.useCallback((B) => ve.setCameraMode({
       mode: B
-    }, ie), []), [x, y] = p.useState(false), [v, b] = p.useState("calendar"), [w, S] = p.useState(r ? "overview" : "character"), [N, R] = p.useState(null), P = N !== null, L = t.User.SelectedCharacters[s.RoomCode], M = L ? s.GameState.Characters.find((B) => B.Id === L) : null, { viewedTerrainId: C, setViewedTerrain: I } = ms(), j = r ? C : (M == null ? void 0 : M.Position.terrainId) ?? null, A = j ? s.VoxelTerrains.find((B) => B.Id === j) : void 0, _ = A && $e.isHydrated(A) ? A : void 0, T = ta(), E = p.useMemo(() => s.GameState.Characters.filter((B) => B.Position.terrainId === j && xr(B, t.User, s.RoomCode, T)), [
+    }, ie), []), [x, y] = p.useState(false), [v, b] = p.useState("calendar"), [w, S] = p.useState(r ? "overview" : "character"), [C, R] = p.useState(null), P = C !== null, L = t.User.SelectedCharacters[s.RoomCode], M = L ? s.GameState.Characters.find((B) => B.Id === L) : null, { viewedTerrainId: N, setViewedTerrain: I } = ms(), j = r ? N : (M == null ? void 0 : M.Position.terrainId) ?? null, A = j ? s.VoxelTerrains.find((B) => B.Id === j) : void 0, _ = A && $e.isHydrated(A) ? A : void 0, T = ta(), E = p.useMemo(() => s.GameState.Characters.filter((B) => B.Position.terrainId === j && xr(B, t.User, s.RoomCode, T)), [
       s.GameState.Characters,
       j,
       t.User,
@@ -42965,9 +42972,9 @@ PROG ${o}`;
       r,
       L
     ]), Me = p.useRef(null), Qe = p.useCallback((B) => {
-      Me.current = B === N ? null : B;
+      Me.current = B === C ? null : B;
     }, [
-      N
+      C
     ]), _t = p.useCallback((B) => {
       R(B);
       const de = B !== null && Me.current === B;
@@ -43261,8 +43268,8 @@ PROG ${o}`;
     const e = fe(), t = V.getActiveCampaign(e), [s, r] = p.useState([]), [a, o] = p.useState(/* @__PURE__ */ new Set()), i = e.User.Role, c = e.User.SelectedCharacters[t.RoomCode], l = ve.getCritSplashEnabled(e), d = qm(), u = (g) => !g.MentionedActorIds || g.MentionedActorIds.length === 0 ? false : !!(c && g.MentionedActorIds.includes(c) || i === "dm" && g.MentionedActorIds.includes(qb));
     p.useEffect(() => {
       const g = Date.now(), y = Gn.getChronologicalLog(t).filter((b) => {
-        const w = b.Level === "important" || b.Level === "critical", S = g - b.Timestamp < HD, N = Gn.canUserSeeEntry(b, i, c);
-        return (w || u(b)) && (!Tu(b) || !l) && S && !a.has(b.Id) && N;
+        const w = b.Level === "important" || b.Level === "critical", S = g - b.Timestamp < HD, C = Gn.canUserSeeEntry(b, i, c);
+        return (w || u(b)) && (!Tu(b) || !l) && S && !a.has(b.Id) && C;
       });
       if (y.length === 0) return;
       const v = y.map((b) => ({
@@ -43306,9 +43313,9 @@ PROG ${o}`;
           const x = nl(g.entry), y = Tu(g.entry), v = oC(g.entry), b = u(g.entry), w = y ? h(g.entry) : "CRITICAL!";
           let S = "icon-[mdi--information]";
           b ? S = "icon-[mdi--at]" : y ? S = "icon-[game-icons--trophy]" : v ? S = "icon-[game-icons--broken-skull]" : x && (S = "icon-[game-icons--dice-twenty-faces-one]");
-          let N = "alert-info", R = "animate-slide-in";
-          return b ? N = "alert-warning" : y ? (N = "alert-success", R = "animate-bounce") : v && (N = "alert-error", R = "animate-shake"), n.jsxs("div", {
-            className: `alert ${N} shadow-lg max-w-md pointer-events-auto ${R} py-2 min-h-0 ${y ? "border-2 border-success" : ""} ${v ? "border-2 border-error" : ""}`,
+          let C = "alert-info", R = "animate-slide-in";
+          return b ? C = "alert-warning" : y ? (C = "alert-success", R = "animate-bounce") : v && (C = "alert-error", R = "animate-shake"), n.jsxs("div", {
+            className: `alert ${C} shadow-lg max-w-md pointer-events-auto ${R} py-2 min-h-0 ${y ? "border-2 border-success" : ""} ${v ? "border-2 border-error" : ""}`,
             children: [
               n.jsx("span", {
                 className: `${S} w-5 h-5 shrink-0 ${y ? "text-success-content" : ""} ${v ? "text-error-content" : ""}`
@@ -43470,7 +43477,7 @@ PROG ${o}`;
     });
     const b = e.clientWidth || window.innerWidth, w = 90;
     i.style.maxWidth = Math.round(b * 0.72) + "px";
-    const S = i.offsetWidth, N = c.offsetWidth, R = b + w, P = -(S + w), L = b + w, M = -(N + w), C = R + (P - R) * yt.msg.crashTo, I = L + (M - L) * yt.msg.crashTo, j = [], A = () => j.forEach((Z) => Z.kill()), _ = () => {
+    const S = i.offsetWidth, C = c.offsetWidth, R = b + w, P = -(S + w), L = b + w, M = -(C + w), N = R + (P - R) * yt.msg.crashTo, I = L + (M - L) * yt.msg.crashTo, j = [], A = () => j.forEach((Z) => Z.kill()), _ = () => {
       e.style.visibility = "hidden", A(), a();
     };
     if (r) {
@@ -43485,7 +43492,7 @@ PROG ${o}`;
       }), bt.set(m, {
         opacity: 1
       }), bt.set(i, {
-        x: C
+        x: N
       }), bt.set(c, {
         x: I
       }), bt.set(l, {
@@ -43599,11 +43606,11 @@ PROG ${o}`;
       duration: F,
       ease: "power3.in"
     }, K)), H.to(i, {
-      x: C,
+      x: N,
       duration: k,
       ease: "expo.out"
     }, U), H.to(i, {
-      x: C - $,
+      x: N - $,
       duration: O,
       ease: "none"
     }, U + k), H.to(i, {
@@ -43700,14 +43707,14 @@ PROG ${o}`;
       return (async () => {
         let b = null;
         if (u.imageId) try {
-          const N = await ol.loadBlob(u.imageId, t == null ? void 0 : t.imageService);
-          N && !g && (x = URL.createObjectURL(N), b = x);
+          const C = await ol.loadBlob(u.imageId, t == null ? void 0 : t.imageService);
+          C && !g && (x = URL.createObjectURL(C), b = x);
         } catch {
         }
         let w = false;
         if (b) try {
-          const N = new Image();
-          N.src = b, await N.decode(), w = N.naturalWidth > 0 && N.naturalHeight / N.naturalWidth > 4 / 3;
+          const C = new Image();
+          C.src = b, await C.decode(), w = C.naturalWidth > 0 && C.naturalHeight / C.naturalWidth > 4 / 3;
         } catch {
         }
         if (g) return;
@@ -44023,7 +44030,7 @@ PROG ${o}`;
     });
   }
   function e0() {
-    const e = fe(), [t, s] = p.useState(false), [r, a] = p.useState(ve.getTheme(e)), [o, i] = p.useState(Math.round(ve.getSfxVolume(e) * 100)), [c, l] = p.useState(ve.getPreserveFlyingHeightOnTileMove(e)), [d, u] = p.useState(ve.getPerformanceMode(e)), [m, h] = p.useState(false), [f, g] = p.useState(ve.getCritSplashEnabled(e)), [x, y] = p.useState(ve.getHeroOcclusionEnabled(e)), [v, b] = p.useState(ve.getHeroOcclusionRadius(e)), [w, S] = p.useState(false), N = p.useRef(null), R = p.useRef(null);
+    const e = fe(), [t, s] = p.useState(false), [r, a] = p.useState(ve.getTheme(e)), [o, i] = p.useState(Math.round(ve.getSfxVolume(e) * 100)), [c, l] = p.useState(ve.getPreserveFlyingHeightOnTileMove(e)), [d, u] = p.useState(ve.getPerformanceMode(e)), [m, h] = p.useState(false), [f, g] = p.useState(ve.getCritSplashEnabled(e)), [x, y] = p.useState(ve.getHeroOcclusionEnabled(e)), [v, b] = p.useState(ve.getHeroOcclusionRadius(e)), [w, S] = p.useState(false), C = p.useRef(null), R = p.useRef(null);
     p.useEffect(() => {
       a(ve.getTheme(e)), i(Math.round(ve.getSfxVolume(e) * 100)), l(ve.getPreserveFlyingHeightOnTileMove(e)), u(ve.getPerformanceMode(e)), g(ve.getCritSplashEnabled(e)), y(ve.getHeroOcclusionEnabled(e)), b(ve.getHeroOcclusionRadius(e));
     }, [
@@ -44031,7 +44038,7 @@ PROG ${o}`;
     ]), p.useEffect(() => {
       if (!t) return;
       const k = ($) => {
-        N.current && R.current && !N.current.contains($.target) && !R.current.contains($.target) && s(false);
+        C.current && R.current && !C.current.contains($.target) && !R.current.contains($.target) && s(false);
       }, O = ($) => {
         $.key === "Escape" && s(false);
       };
@@ -44054,7 +44061,7 @@ PROG ${o}`;
       l(k), ve.setPreserveFlyingHeightOnTileMove({
         preserve: k
       }, ie);
-    }, C = (k) => {
+    }, N = (k) => {
       u(k), h(true), ve.setPerformanceMode({
         enabled: k
       }, ie);
@@ -44102,7 +44109,7 @@ PROG ${o}`;
           })
         }),
         t && n.jsx("div", {
-          ref: N,
+          ref: C,
           className: "absolute top-full left-0 mt-2 w-80 bg-base-100 border-2 border-base-300 rounded-lg shadow-xl z-50",
           children: n.jsxs("div", {
             className: "p-4",
@@ -44306,7 +44313,7 @@ PROG ${o}`;
                         type: "checkbox",
                         className: "toggle toggle-primary toggle-sm",
                         checked: d,
-                        onChange: (k) => C(k.target.checked),
+                        onChange: (k) => N(k.target.checked),
                         "aria-label": "Performance mode"
                       })
                     ]
@@ -44503,7 +44510,7 @@ PROG ${o}`;
         audioId: e.Id
       });
     };
-    return n.jsx(Cs, {
+    return n.jsx(js, {
       domain: "audio",
       entityId: e == null ? void 0 : e.Id,
       initialData: o,
@@ -44852,12 +44859,12 @@ PROG ${o}`;
           loop: 1
         },
         events: {
-          onReady: N,
+          onReady: C,
           onStateChange: R
         }
       }));
-    }, N = (I) => {
-      (I == null ? void 0 : I.target) && (s.current = I.target), r.current = true, w(), g.current.length > 0 && x.current !== a.current && C(g.current), g.current.length > 1 && L();
+    }, C = (I) => {
+      (I == null ? void 0 : I.target) && (s.current = I.target), r.current = true, w(), g.current.length > 0 && x.current !== a.current && N(g.current), g.current.length > 1 && L();
     }, R = (I) => {
       I.data === 1 && m.length > 1 && P();
     }, P = () => {
@@ -44877,7 +44884,7 @@ PROG ${o}`;
       }, 1e3);
     }, M = () => {
       i.current && (clearInterval(i.current), i.current = null);
-    }, C = (I) => {
+    }, N = (I) => {
       const j = b();
       if (!(!j || I.length === 0)) try {
         v(0), I.length === 1 ? (j.loadPlaylist({
@@ -44896,7 +44903,7 @@ PROG ${o}`;
     return p.useEffect(() => {
       const I = b();
       if (I) {
-        if (m.length > 0 && h !== a.current) C(m);
+        if (m.length > 0 && h !== a.current) N(m);
         else if (m.length === 0 && a.current) try {
           I.stopVideo(), a.current = "", v(0), M();
         } catch (j) {
@@ -44995,7 +45002,7 @@ PROG ${o}`;
         actorId: e.Id
       });
     };
-    return n.jsx(Cs, {
+    return n.jsx(js, {
       domain: "entity",
       mutationDomain: "actor",
       entityId: e == null ? void 0 : e.Id,
@@ -45041,7 +45048,7 @@ PROG ${o}`;
               }),
               n.jsx(Ue, {
                 label: "Image",
-                children: n.jsx(Ns, {
+                children: n.jsx(Cs, {
                   value: e.Image,
                   onChange: (o) => a("Image", o),
                   generationContext: {
@@ -45133,7 +45140,7 @@ PROG ${o}`;
           description: "Entity statistics (HP, Mana, etc.)",
           children: n.jsx("div", {
             className: "space-y-3",
-            children: Us(e.Stats, r.Settings.StatDefinitions).map((o) => {
+            children: $s(e.Stats, r.Settings.StatDefinitions).map((o) => {
               const i = e.Stats.find((l) => l.Id === o.Id), c = i ? i.Current !== null && i.Current === i.Max : true;
               return n.jsxs("div", {
                 className: "flex items-center gap-4",
@@ -45378,9 +45385,9 @@ PROG ${o}`;
           onBulkDelete: h,
           selectionActions: x,
           renderEditForm: (b, { currentPath: w, closeDrawer: S }) => {
-            const N = b ? s.EntityTemplates.find((P) => P.Id === b.id) : void 0, R = w.length > 0 ? qs([], w) : void 0;
+            const C = b ? s.EntityTemplates.find((P) => P.Id === b.id) : void 0, R = w.length > 0 ? qs([], w) : void 0;
             return n.jsx(sO, {
-              entity: N,
+              entity: C,
               initialTags: R,
               onClose: () => S == null ? void 0 : S()
             }, (b == null ? void 0 : b.id) || `create-${a}`);
@@ -45464,7 +45471,7 @@ PROG ${o}`;
         scenarioId: e.Id
       });
     };
-    return n.jsx(Cs, {
+    return n.jsx(js, {
       domain: "scenario",
       entityId: e == null ? void 0 : e.Id,
       initialData: a,
@@ -45819,7 +45826,7 @@ PROG ${o}`;
       f && c.add(f), (_c2 = (_b3 = h.user) == null ? void 0 : _b3.ClaimedCharacters) == null ? void 0 : _c2.forEach((g) => c.add(g));
     });
     const l = s.GameState.Characters.filter((h) => !c.has(h.Id) && !h.OwnerId), d = (h) => {
-      Fs.selectCharacter({
+      Us.selectCharacter({
         campaignId: s.RoomCode,
         characterId: h.Id
       }, ie);
@@ -46031,7 +46038,7 @@ PROG ${o}`;
     const e = fe(), t = vr(), s = Ws(), { peers: r } = ui(), a = e.ActiveCampaign;
     if (!a) return null;
     const o = e.User.SelectedCharacters[a.RoomCode], i = !!o, c = i ? a.GameState.Characters.find((d) => d.Id === o) : null, l = () => {
-      Fs.selectCharacter({
+      Us.selectCharacter({
         campaignId: a.RoomCode,
         characterId: null
       }, ie);
@@ -46238,24 +46245,24 @@ PROG ${o}`;
             role: "player"
           }, s), l) {
             const L = s.ActiveCampaign, M = L ? !!(s.User.SelectedCharacters[L.Id] || s.User.SelectedCharacters[L.RoomCode]) : void 0;
-            L && M && (Fs.clearSelectedCharacter({
+            L && M && (Us.clearSelectedCharacter({
               campaignId: L.Id
-            }, s), Fs.clearSelectedCharacter({
+            }, s), Us.clearSelectedCharacter({
               campaignId: L.RoomCode
             }, s));
           }
-          const N = s.ActiveCampaign, R = l && (N == null ? void 0 : N.RoomCode) || e;
+          const C = s.ActiveCampaign, R = l && (C == null ? void 0 : C.RoomCode) || e;
           g = R;
           const P = {
-            onPeerHandshake: async (L, M, C, I) => {
+            onPeerHandshake: async (L, M, N, I) => {
               const j = s.User;
               let A;
               if (I) {
                 await M(j);
-                const { data: _ } = await C();
+                const { data: _ } = await N();
                 A = _;
               } else {
-                const { data: _ } = await C();
+                const { data: _ } = await N();
                 await M(j), A = _;
               }
               m == null ? void 0 : m.recordPeerUser(L, A);
@@ -47570,7 +47577,7 @@ PROG ${o}`;
       children: e
     });
   }
-  function Ce({ tone: e = "info", title: t, children: s }) {
+  function je({ tone: e = "info", title: t, children: s }) {
     return n.jsxs("div", {
       className: `my-4 rounded-lg border p-4 text-base-content ${Ym[e]} ${DO[e]}`,
       children: [
@@ -47725,7 +47732,7 @@ PROG ${o}`;
                 " from the sidebar. All settings on this screen are shared across the entire campaign \u2014 they apply to all characters, entities, and sessions. Only the DM can save changes."
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Initiative settings shortcut",
               children: n.jsxs("p", {
@@ -47782,7 +47789,7 @@ PROG ${o}`;
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "success",
               title: "Per-actor overrides",
               children: n.jsx("p", {
@@ -47821,7 +47828,7 @@ PROG ${o}`;
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Reset on round advance",
               children: n.jsx("p", {
@@ -47850,7 +47857,7 @@ PROG ${o}`;
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "success",
               title: "Used for initiative",
               children: n.jsx("p", {
@@ -48006,7 +48013,7 @@ PROG ${o}`;
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "What rests restore",
               children: n.jsxs("p", {
@@ -48053,7 +48060,7 @@ PROG ${o}`;
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "success",
               title: "Full combat reference",
               children: n.jsxs("p", {
@@ -48094,7 +48101,7 @@ PROG ${o}`;
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Saving presets",
               children: n.jsxs("p", {
@@ -48238,7 +48245,7 @@ PROG ${o}`;
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Item entities",
               children: n.jsx("p", {
@@ -48287,7 +48294,7 @@ PROG ${o}`;
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "warning",
               title: "Deleting vs. removing",
               children: n.jsx("p", {
@@ -48369,7 +48376,7 @@ PROG ${o}`;
                 ]
               })
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "success",
               title: "Entity auto-naming",
               children: n.jsxs("p", {
@@ -48504,7 +48511,7 @@ PROG ${o}`;
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Slot vs. definition precedence",
               children: n.jsxs("p", {
@@ -48551,7 +48558,7 @@ PROG ${o}`;
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "success",
               title: "Spending actions",
               children: n.jsx("p", {
@@ -48571,7 +48578,7 @@ PROG ${o}`;
             n.jsx("p", {
               children: "Attributes are freeform text fields \u2014 Class, Level, Race, Alignment, and anything else your system tracks as a label rather than a number. Each actor automatically receives a slot for every attribute type defined in Campaign Settings. Slots with no value are hidden from the character sheet."
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "success",
               title: "Initiative from attributes",
               children: n.jsxs("p", {
@@ -48619,7 +48626,7 @@ PROG ${o}`;
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Template reference",
               children: n.jsx("p", {
@@ -48668,7 +48675,7 @@ PROG ${o}`;
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "warning",
               title: "Combat end clears turn-based statuses",
               children: n.jsxs("p", {
@@ -48733,7 +48740,7 @@ PROG ${o}`;
                 " \u2014 a snapshot of where they were at the start of their turn. The map uses this to display remaining movement range rather than the full budget. It is set when combat starts and refreshed whenever the acting side changes. It is removed when combat ends."
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Movement reference",
               children: n.jsxs("p", {
@@ -48817,7 +48824,7 @@ PROG ${o}`;
                 })
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Excluded from combat",
               children: n.jsxs("p", {
@@ -48929,7 +48936,7 @@ PROG ${o}`;
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "No sources = no order display",
               children: n.jsx("p", {
@@ -49063,7 +49070,7 @@ PROG ${o}`;
                 ]
               })
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "success",
               title: "Individual mode",
               children: n.jsx("p", {
@@ -49144,7 +49151,7 @@ PROG ${o}`;
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "warning",
               title: "Regen and rewind",
               children: n.jsx("p", {
@@ -49252,7 +49259,7 @@ PROG ${o}`;
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Permanent statuses survive",
               children: n.jsx("p", {
@@ -49293,7 +49300,7 @@ PROG ${o}`;
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "success",
               title: "Movement reference",
               children: n.jsxs("p", {
@@ -49349,7 +49356,7 @@ PROG ${o}`;
                 ". That object is the shell around the current user, campaign list, app settings, and the currently opened campaign. For DMs, the opened campaign is the authoritative table state."
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "accent",
               title: "One table, three layers",
               children: n.jsx(Pt, {
@@ -49466,7 +49473,7 @@ PROG ${o}`;
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "warning",
               title: "Developer guardrail",
               children: n.jsxs("p", {
@@ -49574,7 +49581,7 @@ PROG ${o}`;
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "DM identity rule",
               children: n.jsxs("p", {
@@ -49739,7 +49746,7 @@ PROG ${o}`;
                 ]
               })
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "success",
               title: "DM guide translation",
               children: n.jsxs("p", {
@@ -49786,7 +49793,7 @@ PROG ${o}`;
                 "; entities are currently just actors."
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "accent",
               title: "Template plus slot pattern",
               children: n.jsxs("p", {
@@ -49876,7 +49883,7 @@ PROG ${o}`;
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "warning",
               title: "Terrain hydration rule",
               children: n.jsx("p", {
@@ -49917,7 +49924,7 @@ PROG ${o}`;
                 " right as the page unloads. So the refresh re-persists everything you just deleted before the fresh page loads. This is great for crash safety, but it means a manual clear loses the race."
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "success",
               title: "Why this protects users",
               children: n.jsx("p", {
@@ -49942,7 +49949,7 @@ navigator.storage.getDirectory().then(d => d.removeEntry('terrains', { recursive
 Storage.prototype.setItem = () => {}; // block the beforeunload re-save
 location.reload();`
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Server-down alternative",
               children: n.jsxs("p", {
@@ -50021,7 +50028,7 @@ location.reload();`
                 })
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Where to add new behavior",
               children: n.jsxs("p", {
@@ -50168,7 +50175,7 @@ location.reload();`
                 ]
               })
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Related structure",
               children: n.jsxs("p", {
@@ -50322,7 +50329,7 @@ location.reload();`
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "warning",
               title: "Channel naming",
               children: n.jsxs("p", {
@@ -50397,7 +50404,7 @@ location.reload();`
                 ]
               })
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "error",
               title: "Secret mode",
               children: n.jsxs("p", {
@@ -50484,7 +50491,7 @@ location.reload();`
                 })
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Player apply path",
               children: n.jsxs("p", {
@@ -50604,7 +50611,7 @@ location.reload();`
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Trystero owns liveness",
               children: n.jsxs("p", {
@@ -50808,14 +50815,14 @@ if (actor) await game.log("Test harness ran on " + actor.Name);`;
         });
         return;
       }
-      const w = Mg(t), S = Mg(t), N = {
+      const w = Mg(t), S = Mg(t), C = {
         ...e,
         ActiveCampaign: S,
         IsOptimistic: false
       }, R = ((_a3 = s[r]) == null ? void 0 : _a3.selection) ?? {
         kind: "campaign"
       }, P = await Er.runForTest({
-        context: N,
+        context: C,
         host: R,
         code: f,
         triggerKey: o,
@@ -51216,7 +51223,7 @@ if (actor) await game.log("Test harness ran on " + actor.Name);`;
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "warning",
               title: "No sandbox \u2014 author and import with care",
               children: n.jsxs("p", {
@@ -51276,7 +51283,7 @@ if (actor) await game.log("Test harness ran on " + actor.Name);`;
               ]
             }),
             n.jsx(ZO, {}),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Where a script lives vs. what it can reach",
               children: n.jsxs("p", {
@@ -51305,7 +51312,7 @@ if (actor) await game.log("Test harness ran on " + actor.Name);`;
                 ]
               })
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Scope: a script only hears about its own bearer",
               children: n.jsxs("p", {
@@ -51506,7 +51513,7 @@ goblin.toast("Only you hear this...");      // private toast/whisper to this act
 
 goblin.Name, goblin.Position, goblin.Stats // any live field reads straight through`
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "await is optional, but recommended",
               children: n.jsxs("p", {
@@ -51661,7 +51668,7 @@ await funds.transferItemTo("Hero", "Map");      // move an item out  \xB7  disca
               children: `event.params.amount *= 2;   // rewrite the action's params in place
 event.cancel();             // veto: the action (and its after-reactions) never run`
             }),
-            n.jsxs(Ce, {
+            n.jsxs(je, {
               tone: "info",
               title: "Intercepting a dice roll",
               children: [
@@ -51682,7 +51689,7 @@ if (skill?.DiceRoll) event.params.diceFormula = skill.DiceRoll + " + 1d4";`
                 })
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "warning",
               title: "Before-scripts run on the DM only",
               children: n.jsxs("p", {
@@ -51745,7 +51752,7 @@ await game.action("status:give", { statusIds: [s.Id], actorIds: [this.actor.Id],
                 children: e
               }, t))
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Why some actions are missing",
               children: n.jsxs("p", {
@@ -51806,7 +51813,7 @@ await game.action("status:give", { statusIds: [s.Id], actorIds: [this.actor.Id],
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: 'Scheduling for "later"',
               children: n.jsxs("p", {
@@ -51919,7 +51926,7 @@ this.actor.toast("The poison whispers through your veins...");
 // Or, from a world rule, target a specific character by name:
 game.toast("Aria", "A cold presence watches you from the dark.");`
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Who sees a toast / whisper",
               children: n.jsxs("p", {
@@ -52076,7 +52083,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 ]
               })
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Links have no appearance of their own",
               children: n.jsx("p", {
@@ -52219,7 +52226,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 })
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Press Escape to stop",
               children: n.jsxs("p", {
@@ -52264,7 +52271,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "warning",
               title: "Decoration is optional and independent",
               children: n.jsxs("p", {
@@ -52335,7 +52342,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
             n.jsx("p", {
               children: "Every link has a lock state. A locked link is completely hidden and unusable for anyone controlling an actor \u2014 there is no hover hint, no prompt, and no way to travel through it. This is your switch for doors that are barred, passages not yet discovered, or portals that only activate once a condition is met."
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Only the DM sees locked links",
               children: n.jsx("p", {
@@ -52383,7 +52390,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Crossing moves the actor",
               children: n.jsx("p", {
@@ -52463,7 +52470,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Related reading",
               children: n.jsxs("p", {
@@ -52550,7 +52557,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 ]
               })
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Player visibility",
               children: n.jsx("p", {
@@ -52678,7 +52685,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "warning",
               title: "Practical advice",
               children: n.jsx("p", {
@@ -52745,7 +52752,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Shortcut help",
               children: n.jsx("p", {
@@ -52814,7 +52821,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "warning",
               title: "Dragging across faces",
               children: n.jsx("p", {
@@ -52915,7 +52922,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 })
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Clearing a selection",
               children: n.jsx("p", {
@@ -52963,7 +52970,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 })
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "warning",
               title: "Large selection caution",
               children: n.jsx("p", {
@@ -53011,7 +53018,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 })
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Good smoothing uses",
               children: n.jsx("p", {
@@ -53050,7 +53057,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "warning",
               title: "DM clarity",
               children: n.jsx("p", {
@@ -53176,7 +53183,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 })
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Organization tip",
               children: n.jsx("p", {
@@ -53218,7 +53225,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 })
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "warning",
               title: "Import safety",
               children: n.jsx("p", {
@@ -53290,7 +53297,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
             n.jsx("p", {
               children: "You can edit the terrain the table is currently using. That is useful when the environment changes mid-session: a bridge collapses, lava rises, a secret door opens, rubble appears, or a ritual changes the ground."
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "warning",
               title: "Use care during live play",
               children: n.jsx("p", {
@@ -53363,7 +53370,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Developer reference",
               children: n.jsxs("p", {
@@ -53431,7 +53438,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 "."
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "warning",
               title: "The voxel payload is not on this object",
               children: n.jsxs("p", {
@@ -53573,7 +53580,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 })
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "O(1) count metadata",
               children: n.jsxs("p", {
@@ -53801,7 +53808,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "VOX import",
               children: n.jsx("p", {
@@ -53920,7 +53927,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "success",
               title: "Remaining range",
               children: n.jsxs("p", {
@@ -53976,7 +53983,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 ]
               })
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "accent",
               title: "Material reference",
               children: n.jsxs("p", {
@@ -54027,7 +54034,7 @@ game.toast("Aria", "A cold presence watches you from the dark.");`
                 }
               ]
             }),
-            n.jsx(Ce, {
+            n.jsx(je, {
               tone: "info",
               title: "Networking reference",
               children: n.jsxs("p", {
