@@ -6125,7 +6125,7 @@ void main() {
                 text: c ? `QUEST
 NET` : "QUEST-NET",
                 enableWaves: false,
-                asciiFontSize: c ? 10 : 12,
+                asciiFontSize: c ? 6 : 12,
                 planeBaseHeight: c ? 6 : 4,
                 textColor: i
               })
@@ -16451,11 +16451,11 @@ void main(){
     SIZE: "small"
   }, Pc = {
     BASE_SIZE: 512,
-    CHARACTER_HIGH_RES_SIZE: 1024,
+    HIGH_RES_SIZE: 1024,
     TEXT_FILL: "#ffffff"
   };
-  function PA(e, t) {
-    return e === "entity" || t ? Pc.BASE_SIZE : Pc.CHARACTER_HIGH_RES_SIZE;
+  function PA(e) {
+    return e ? Pc.BASE_SIZE : Pc.HIGH_RES_SIZE;
   }
   const ln = {
     FILL: "#4b5563",
@@ -16969,7 +16969,7 @@ void main(){
     };
   }
   async function KA(e, t) {
-    const s = PA(e.kind, t.performanceMode ?? false), r = document.createElement("canvas");
+    const s = PA(t.performanceMode ?? false), r = document.createElement("canvas");
     r.width = s, r.height = s;
     const a = r.getContext("2d");
     if (!a) throw new Error("Unable to create actor token canvas");
